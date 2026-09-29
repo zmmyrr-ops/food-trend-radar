@@ -367,7 +367,9 @@ export function VideoStudio() {
                   void action(project.plan.length ? "preview" : "analyze")
                 }
               >
-                重试
+                {project.error.includes("Arrearage")
+                  ? "账户恢复后重试"
+                  : "重试"}
               </button>
             </p>
           )}

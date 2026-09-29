@@ -13,6 +13,7 @@ import {
 import { createRequire } from "node:module";
 import { join } from "node:path";
 import { z } from "zod";
+import { bailianError } from "./bailian-error.js";
 import {
   type Asset,
   automaticPlan,
@@ -169,14 +170,15 @@ async function ask(model: string, content: unknown[], limit = 1000) {
       );
       continue;
     }
-    if (!res.ok)
-      throw Error(
-        [401, 403].includes(res.status)
-          ? "百炼密钥或模型权限不可用"
-          : res.status === 402
-            ? "百炼余额不足"
-            : `百炼调用失败（${res.status}）`,
+    if (!res.ok) {
+      const failure = bailianError(
+        res.status,
+        await res.json().catch(() => null),
       );
+      // Account-level rejection never started inference; release this call's reservation.
+      if (failure.accountRejected) report({ cost: spentBefore });
+      throw Error(failure.message);
+    }
     const data = await res.json();
     const usage = data.usage;
     // Conservative upper input tier; output rates include longer input tiers.
