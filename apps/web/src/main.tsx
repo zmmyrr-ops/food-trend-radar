@@ -21,6 +21,7 @@ import { Admission } from "./Admission";
 import { appFetch, appUrl } from "./app-url";
 import { CouponRadar } from "./CouponRadar";
 import { Sources } from "./Sources";
+import { VideoLibrary } from "./VideoLibrary";
 import { VideoStudio } from "./VideoStudio";
 import "./style.css";
 
@@ -62,7 +63,11 @@ function App() {
   } | null>(null);
   const [sources, setSources] = useState<DataSource[]>([]);
   const [reviewBrand, setReviewBrand] = useState<Brand | null>(null);
-  const [tab, setTab] = useState("radar"),
+  const [tab, setTab] = useState(
+      new URLSearchParams(location.search).get("tab") === "videos"
+        ? "videos"
+        : "radar",
+    ),
     [brands, setBrands] = useState<Brand[]>([]),
     [events, setEvents] = useState<FoodEvent[]>([]);
   const [error, setError] = useState(""),
@@ -225,12 +230,19 @@ function App() {
       </header>
       <section className="intro">
         <p className="eyebrow">上海美食选题助手</p>
-        <h1>{tab === "radar" ? "今天，哪些券值得拍？" : "品牌与数据管理"}</h1>
+        <h1>
+          {tab === "radar"
+            ? "今天，哪些券值得拍？"
+            : tab === "videos"
+              ? "我的视频"
+              : "品牌与数据管理"}
+        </h1>
         <p>发现优惠变化，捕捉销量升温，把数据变成下一条选题。</p>
       </section>
       <nav aria-label="工作台导航">
         {[
           ["radar", "选券工作台"],
+          ["videos", "我的视频"],
           ["brands", "品牌库"],
           ["events", "事件管理"],
           ["import", "CSV导入"],
@@ -243,6 +255,9 @@ function App() {
             aria-pressed={tab === key}
             onClick={() => {
               setTab(key);
+              const u = new URL(location.href);
+              u.searchParams.set("tab", key);
+              window.history.replaceState({}, "", u);
               refresh().catch((e) => setError(e.message));
               setError("");
               setNotice("");
@@ -267,6 +282,7 @@ function App() {
       )}
       {!loaded && !error && <p role="status">正在加载工作台…</p>}
       {tab === "radar" && <CouponRadar />}
+      {tab === "videos" && <VideoLibrary />}
       {tab === "brands" && (
         <div className="workspace">
           <section className="panel">

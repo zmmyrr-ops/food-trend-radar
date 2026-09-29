@@ -237,6 +237,7 @@ export function VideoStudio() {
       <header className="studio-header">
         <div>
           <a href={appUrl("/")}>← 返回选券工作台</a>
+          <a href={appUrl("/?tab=videos")}>我的视频 →</a>
           <h1>美食短视频工作室</h1>
           <p>
             {project?.brand_name || "挑好素材，自动剪成一条短片"}

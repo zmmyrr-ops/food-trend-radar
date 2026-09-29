@@ -135,6 +135,14 @@ test("编辑时间线采用修订号，过期版本不能覆盖；重启标记�
   const server = app.listen(0);
   const url = `http://127.0.0.1:${(server.address() as { port: number }).port}/api/v3/video-projects/${id}`;
   try {
+    const library = await (
+      await fetch(url.slice(0, url.lastIndexOf("/")))
+    ).json();
+    assert.equal(library.items.length, 1);
+    assert.equal(library.items[0].id, id);
+    assert.equal(library.items[0].brand_id, p.brand_id);
+    assert.equal(library.items[0].assets, undefined);
+    assert.ok(!JSON.stringify(library).includes("/private/file"));
     const recovered = (await (await fetch(url)).json()).project;
     assert.equal(recovered.state, "interrupted");
     assert.equal(recovered.assets.length, 8);

@@ -270,6 +270,32 @@ export async function createVideoProjects(db: PGlite, root: string) {
     app.get(
       "/api/v3/video-projects",
       wrap(async (req, res) => {
+        if (
+          req.query.brand_id === undefined &&
+          req.query.product_id === undefined
+        ) {
+          const rows = await db.query<{ payload: VideoProject }>(
+            "SELECT payload FROM video_projects ORDER BY payload->>'updated_at' DESC LIMIT 50",
+          );
+          res.json({
+            items: rows.rows.map(({ payload: p }) => ({
+              id: p.id,
+              brand_id: p.brand_id,
+              product_id: p.product_id,
+              brand_name: p.brand_name,
+              title: p.title,
+              seconds: p.seconds,
+              state: p.state,
+              progress: p.progress,
+              error: p.error,
+              revision: p.revision,
+              preview_revision: p.preview_revision,
+              export_revision: p.export_revision,
+              updated_at: p.updated_at,
+            })),
+          });
+          return;
+        }
         const brand = uuid.parse(req.query.brand_id),
           product = z.string().max(80).parse(req.query.product_id);
         res.json({
