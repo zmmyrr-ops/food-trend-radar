@@ -34,6 +34,7 @@ export function aiCandidates(picks: Pick[], now = Date.now()) {
         age >= 0 &&
         age <= 36 * 3600000 &&
         !p.use_outlook.fully_excluded &&
+        p.priority.value_gate.eligible &&
         (p.priority.score > 0 ||
           p.kind === "first_observed" ||
           p.kind === "price_drop")
@@ -70,6 +71,7 @@ export function aiCandidates(picks: Pick[], now = Date.now()) {
       latest_monthly_sales: p.latest_sales,
       sales_reason: p.reason.slice(0, 500),
       priority_score: p.priority.score,
+      value_gate: p.priority.value_gate,
       missing: p.priority.missing,
       brand_index: p.brand_index?.usable
         ? {

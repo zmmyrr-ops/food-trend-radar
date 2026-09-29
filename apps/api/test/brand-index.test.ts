@@ -51,10 +51,10 @@ test("品牌指数严格区分7日概览、缺失与过期，不接收未来统�
 });
 test("指数正负环比按公开规则计分，未知不加分", () => {
   const base = { speed: null, acceleration: null, reduction_rate: null };
-  assert.equal(pickPriority(base).score, 0);
-  assert.equal(pickPriority({ ...base, brand_growth: -0.27 }).score, 0);
-  assert.equal(pickPriority({ ...base, brand_growth: -0.02 }).score, 4.6);
-  assert.equal(pickPriority({ ...base, brand_growth: 0.25 }).score, 10);
+  assert.equal(pickPriority(base).raw_score, 0);
+  assert.equal(pickPriority({ ...base, brand_growth: -0.27 }).raw_score, 0);
+  assert.equal(pickPriority({ ...base, brand_growth: -0.02 }).raw_score, 4.6);
+  assert.equal(pickPriority({ ...base, brand_growth: 0.25 }).raw_score, 10);
 });
 test("网页观测持久保存，旧观测不能覆盖同窗口新数据", async () => {
   const db = await openDatabase();

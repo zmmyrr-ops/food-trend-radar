@@ -20,6 +20,7 @@ function pick(at = now) {
       monthly_sales: String(120 - i * 20),
       platform_brand_id: "p",
       identity: "name_match",
+      origin_price_fen: 200,
       price_min_fen: 100,
       price_max_fen: 100,
       name: "测试券",

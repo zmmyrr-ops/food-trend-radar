@@ -18,6 +18,7 @@ function pick() {
       monthly_sales: String(120 - i * 20),
       platform_brand_id: "p",
       identity: "name_match",
+      origin_price_fen: 200,
       price_min_fen: 100,
       price_max_fen: 100,
       name: "测试券",
@@ -54,6 +55,14 @@ test("AI candidates exclude stale/unusable, diversify brands, and reject invente
   const p = pick();
   const rows = aiCandidates([
     p,
+    {
+      ...p,
+      brand_id: "weak-offer",
+      priority: {
+        ...p.priority,
+        value_gate: { ...p.priority.value_gate, eligible: false },
+      },
+    },
     { ...p, product_id: "2" },
     { ...p, product_id: "3" },
     { ...p, product_id: "4" },

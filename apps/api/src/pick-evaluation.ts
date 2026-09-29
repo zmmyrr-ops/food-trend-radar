@@ -116,6 +116,7 @@ export async function createPickEvaluation(
           (p) =>
             !p.use_outlook.fully_excluded &&
             p.priority.score > 0 &&
+            p.priority.value_gate.eligible &&
             Date.parse(p.observed_at) <= capturedAt,
         )
         .sort(
@@ -128,7 +129,7 @@ export async function createPickEvaluation(
       // Empty startup results must not consume this half-day's observation.
       if (ranked.length)
         await db.query(
-          "INSERT INTO coupon_pick_evaluations(slot,captured_at,version,payload) VALUES($1,$2,'priority-v3',$3) ON CONFLICT DO NOTHING",
+          "INSERT INTO coupon_pick_evaluations(slot,captured_at,version,payload) VALUES($1,$2,'priority-v4',$3) ON CONFLICT DO NOTHING",
           [
             slot,
             new Date(capturedAt).toISOString(),

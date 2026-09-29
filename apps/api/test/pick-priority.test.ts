@@ -65,3 +65,37 @@ test("原价折扣独立于上次降价；多规格、异常和缺失价格不�
   assert.equal(pickPriority({ ...base, discount_rate: null }).coverage, 0);
   assert.equal(pickPriority({ ...base, discount_rate: 0 }).coverage, 25);
 });
+
+test("南京大牌档1%优惠降权，已知弱折扣不能被涨速或历史降价救回", () => {
+  const input = {
+    speed: 25.6,
+    acceleration: 9.42,
+    discount_rate: 0.01,
+    reduction_rate: null,
+  };
+  const result = pickPriority(input);
+  assert.equal(result.raw_score, 35.9);
+  assert.equal(result.score, 1.8);
+  assert.equal(result.value_gate.eligible, false);
+  assert.equal(
+    pickPriority({ ...input, reduction_rate: 0.5 }).value_gate.eligible,
+    false,
+  );
+  assert.equal(
+    pickPriority({ ...input, discount_rate: 0.1 }).value_gate.eligible,
+    true,
+  );
+  assert.equal(
+    pickPriority({ ...input, discount_rate: 0.2 }).value_gate.factor,
+    1,
+  );
+  assert.equal(
+    pickPriority({ ...input, discount_rate: null }).value_gate.eligible,
+    false,
+  );
+  assert.equal(
+    pickPriority({ ...input, discount_rate: null, reduction_rate: 0.2 })
+      .value_gate.eligible,
+    true,
+  );
+});

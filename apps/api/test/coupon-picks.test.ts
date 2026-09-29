@@ -146,7 +146,7 @@ test("选券API先全量筛选排序再分页，CSV包含当前筛选全部记�
     assert.equal(all.items[0].product_id, "2");
     const ranked = await (await fetch(base + "?limit=1")).json();
     assert.equal(ranked.items[0].product_id, "1");
-    assert.equal(ranked.model.version, "priority-v3");
+    assert.equal(ranked.model.version, "priority-v4");
     assert.equal(ranked.context, null);
     const filtered = await (
       await fetch(base + "?view=value_rising&limit=1")
@@ -302,4 +302,18 @@ test("已有快照原价传入评分和CSV，不依赖历史降价事件", () =>
   );
   const lines = picksCsv([pick]).split("\r\n");
   assert.equal(lines[0].split(",").length, lines[1].split(",").length);
+});
+
+test("弱优惠即使热销也不进入优先券，仍可在全部券查看", () => {
+  const item = combinePicks([heat("1", "120", 808)], [signal], now)[0];
+  assert.equal(item.priority.value_gate.eligible, false);
+  assert.ok(item.priority.score < 5);
+  assert.equal(
+    selectPicks([item], { ...query, view: "recommended" }).filtered.length,
+    0,
+  );
+  assert.equal(
+    selectPicks([item], { ...query, view: "all" }).filtered.length,
+    1,
+  );
 });

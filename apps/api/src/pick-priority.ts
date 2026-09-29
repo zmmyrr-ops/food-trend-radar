@@ -74,9 +74,36 @@ export function pickPriority(input: {
     ...x,
     value: x.value === null ? null : Math.round(x.value * 10) / 10,
   }));
+  const raw_score =
+    Math.round(parts.reduce((n, x) => n + (x.value ?? 0), 0) * 10) / 10;
+  const hasDiscount =
+    input.discount_rate != null &&
+    Number.isFinite(input.discount_rate) &&
+    input.discount_rate >= 0 &&
+    input.discount_rate < 1;
+  const hasReduction =
+    valid(input.reduction_rate) &&
+    input.reduction_rate! >= 0 &&
+    input.reduction_rate! <= 1;
+  // A known weak current discount cannot be rescued by historical price movement.
+  const rate = hasDiscount
+    ? input.discount_rate!
+    : hasReduction
+      ? input.reduction_rate!
+      : null;
+  const factor =
+    rate === null ? 0 : Math.min(1, Math.round(rate * 1000000) / 1000000 / 0.2);
+  const eligible = rate !== null && Math.round(rate * 1000000) >= 100000;
+  const basis = hasDiscount ? "相对平台原价" : "相对上次售价（原价折扣缺失）";
+  const reason =
+    rate === null
+      ? "优惠证据不足，暂不进入优先券"
+      : `${basis}优惠 ${(rate * 100).toFixed(1)}%；${eligible ? "达到优先券优惠门槛" : "不足10%，不进入优先券"}；优惠不足20%时按比例降低总分`;
   return {
-    version: "priority-v3",
-    score: Math.round(parts.reduce((n, x) => n + (x.value ?? 0), 0) * 10) / 10,
+    version: "priority-v4",
+    raw_score,
+    value_gate: { rate, factor, eligible, reason },
+    score: Math.round(raw_score * factor * 10) / 10,
     coverage: parts.reduce((n, x) => n + (x.value === null ? 0 : x.weight), 0),
     parts,
     missing: parts.filter((x) => x.value === null).map((x) => x.name),

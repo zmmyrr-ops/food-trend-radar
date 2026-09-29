@@ -141,7 +141,9 @@ export function selectPicks(
   );
   const matches = (x: (typeof items)[number], v: string) =>
     v === "recommended"
-      ? !x.use_outlook.fully_excluded && x.priority.score > 0
+      ? !x.use_outlook.fully_excluded &&
+        x.priority.value_gate.eligible &&
+        x.priority.score > 0
       : v === "watching"
         ? x.watching
         : v === "value_rising"
@@ -202,6 +204,9 @@ export function picksCsv(items: ReturnType<typeof combinePicks>) {
     [
       [
         "优先分（非概率）",
+        "基础分",
+        "优惠系数",
+        "优惠门槛依据",
         "已具备指标权重",
         "缺失指标",
         "72小时可用判断",
@@ -230,6 +235,9 @@ export function picksCsv(items: ReturnType<typeof combinePicks>) {
       ],
       ...items.map((x) => [
         x.priority.score,
+        x.priority.raw_score,
+        x.priority.value_gate.factor,
+        x.priority.value_gate.reason,
         x.priority.coverage,
         x.priority.missing.join("、"),
         x.use_outlook.fully_excluded
@@ -361,8 +369,8 @@ export function registerCouponPicks(
           ? { outlook: environment.outlook, source: environment.attribution }
           : null,
         model: {
-          version: "priority-v3",
-          note: "初始规则排序，非爆款概率。销量速度30、加速度15、原价折扣25、较上次降价10、品牌指数10、环境适配10。原价折扣以平台原价为参考，优惠比例达到50%得25分，线性封顶；仅在单一明确售价且原价不低于售价时计算，平台原价不等于历史成交价；缺失项不计分、不重新分配权重。品牌指数使用上海7日搜索指数环比，-25%计0分、持平5分、+25%计10分，线性封顶，超过72小时不计分。天气与节假日目前仅作背景，不推断销量增益。",
+          version: "priority-v4",
+          note: "初始规则排序，非爆款概率。先计算基础分，再乘优惠系数min(1,优惠比例/20%)；优惠不足10%或证据不足不进入优先券。优先使用原价折扣，缺失时用历史降价替代，已知低折扣不能被历史降价抵消。销量速度30、加速度15、原价折扣25、较上次降价10、品牌指数10、环境适配10。原价折扣以平台原价为参考，优惠比例达到50%得25分，线性封顶；仅在单一明确售价且原价不低于售价时计算，平台原价不等于历史成交价；缺失项不计分、不重新分配权重。品牌指数使用上海7日搜索指数环比，-25%计0分、持平5分、+25%计10分，线性封顶，超过72小时不计分。天气与节假日目前仅作背景，不推断销量增益。",
         },
         counts,
         total: filtered.length,

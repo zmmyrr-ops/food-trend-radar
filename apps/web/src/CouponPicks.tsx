@@ -25,6 +25,8 @@ type Pick = {
     days: { date: string; status: string; reasons: string[] }[];
   };
   priority: {
+    raw_score: number;
+    value_gate: { factor: number; eligible: boolean; reason: string };
     score: number;
     coverage: number;
     missing: string[];
@@ -327,6 +329,11 @@ export function CouponPicks({ brandId }: { brandId: string }) {
                   </span>
                   <span>{x.priority.coverage}% 指标已具备</span>
                 </div>
+                {!x.priority.value_gate.eligible && (
+                  <p className="availability-note">
+                    {x.priority.value_gate.reason}
+                  </p>
+                )}
                 <p className="availability-note">
                   {x.use_outlook.fully_excluded
                     ? "未来72小时明确不可用"
@@ -390,6 +397,12 @@ export function CouponPicks({ brandId }: { brandId: string }) {
                   <p>
                     <strong>优先分 {x.priority.score.toFixed(1)} / 100</strong>{" "}
                     · 已具备指标权重 {x.priority.coverage}%（非爆款概率）
+                  </p>
+                  <p>
+                    基础分 {x.priority.raw_score.toFixed(1)} × 优惠系数{" "}
+                    {x.priority.value_gate.factor.toFixed(2)} ={" "}
+                    {x.priority.score.toFixed(1)} 分。
+                    {x.priority.value_gate.reason}
                   </p>
                   <p>
                     {x.priority.parts
