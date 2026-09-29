@@ -452,6 +452,20 @@ export function VideoStudio() {
                 >
                   一键复制字幕
                 </button>
+                <button
+                  type="button"
+                  disabled={locked || !plan.length}
+                  onClick={() => {
+                    if (
+                      plan.some((c) => c.caption.trim()) &&
+                      !window.confirm("重新生成会替换当前字幕，是否继续？")
+                    )
+                      return;
+                    void action("captions");
+                  }}
+                >
+                  AI生成连贯字幕
+                </button>
                 <span role="status" className="studio-hint">
                   {copyStatus ||
                     (!captionText

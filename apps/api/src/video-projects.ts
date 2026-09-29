@@ -145,6 +145,29 @@ export async function createVideoProjects(db: PGlite, root: string) {
     if (running(p.state)) return p;
     if (!p.rights_confirmed) throw Error("请先确认素材使用权限");
     if (mode !== "analyze") validatePlan(p.plan, p.assets, p.seconds);
+    if (mode === "analyze" || mode === "captions") {
+      const row = (
+        await db.query<{ payload: any; observed_at: string }>(
+          "SELECT payload,observed_at FROM coupon_items WHERE brand_id=$1 AND product_id=$2 AND payload->>'identity'='name_match' ORDER BY observed_at DESC LIMIT 1",
+          [p.brand_id, p.product_id],
+        )
+      ).rows[0];
+      if (row)
+        p.coupon_facts = {
+          name: String(row.payload.name || p.title).slice(0, 500),
+          price_min_fen:
+            Number.isSafeInteger(row.payload.price_min_fen) &&
+            row.payload.price_min_fen >= 0
+              ? row.payload.price_min_fen
+              : null,
+          price_max_fen:
+            Number.isSafeInteger(row.payload.price_max_fen) &&
+            row.payload.price_max_fen >= 0
+              ? row.payload.price_max_fen
+              : null,
+          observed_at: new Date(row.observed_at).toISOString(),
+        };
+    }
     p.state = "queued";
     p.error = null;
     p.progress = "等待视频处理";
@@ -450,7 +473,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
         res.json({ project: visible(p) });
       }),
     );
-    for (const action of ["analyze", "preview", "export"])
+    for (const action of ["analyze", "preview", "export", "captions"])
       app.post(
         `/api/v3/video-projects/:id/${action}`,
         wrap(async (req, res) => {

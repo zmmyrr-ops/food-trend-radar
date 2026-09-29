@@ -47,6 +47,13 @@ export type VideoProject = {
   created_at: string;
   updated_at: string;
   music_id?: string;
+  captions_pending?: boolean;
+  coupon_facts?: {
+    name: string;
+    price_min_fen: number | null;
+    price_max_fen: number | null;
+    observed_at: string;
+  };
 };
 export function validatePlan(plan: Clip[], assets: Asset[], seconds: number) {
   planSchema.parse(plan);
