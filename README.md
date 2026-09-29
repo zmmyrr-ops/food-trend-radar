@@ -118,3 +118,13 @@ node scripts/configure-deepseek.mjs
 接口：`GET /api/v3/ai-recommendations` 查询配置状态/任务状态/最近成功结果；`POST /api/v3/ai-recommendations`，JSON `{}` 启动分析，返回202；冷却时返回429。分析结果与原始候选证据存储在本机 `ai_coupon_reports`。券名等来源文本按不可信输入处理；服务端拒绝候选之外或重复的券ID、非JSON及截断输出。生成文字仍属于AI判断，不能替代完整权益核验。
 
 接入依据：[DeepSeek Chat Completions 官方文档](https://api-docs.deepseek.com/api/create-chat-completion/)，使用 `deepseek-flash`、非思考模式和 JSON 输出。
+
+## 小红书实况素材
+
+优先选券卡片下展开“小红书实况素材”，点击“获取资源”后，按券的品牌和名称调用搜索及详情接口。每次最多检查 20 篇笔记、读取 2 页搜索结果、保留 40 个去重后的实况资源；数量不足时如实展示。只有明确标记 `live_photo=true` 且具有受支持 CDN 视频地址、正文或标题包含品牌/别名的内容才入选。属于相关探店参考，不代表已核实同券；不参与优惠券评分。
+
+小红书独立全局串行队列，请求完成后间隔 3–5 秒；重复点击复用任务，成功结果和已读取笔记缓存 4 小时。授权错误暂停该凭据的后续请求，更新凭据后恢复；限流/网络错误至少冷却 10 分钟。服务重启后的未完成任务标记中断，避免自动重复大量请求。已获取内容保留，可点击停止任务。视频仅在点击播放后加载，媒体链接失效时可查看原文。
+
+后端凭据文件为私有 `data/secrets/xiaohongshu-requests.json`，内容为两个请求模板的数组，每项包含 `url`、`headers`、原始 JSON 字符串 `body`。只支持 `https://so.xiaohongshu.com/api/sns/web/v2/search/notes` 和 `https://edith.xiaohongshu.com/api/sns/web/v1/feed`。Cookie、签名仅在服务端使用，不发送前端、不提交 Git；请求签名与登录态的长期有效性不作保证，失效时需更新请求模板。媒体请求不携带接口 Cookie。
+
+接口：`GET /api/v3/coupon-media?brand_id=...&product_id=...` 读取任务；`POST /api/v3/coupon-media` 提交相同字段；`POST /api/v3/coupon-media/:id/cancel` 停止。GET 和轮询仅访问本项目数据库，不触发小红书采集。

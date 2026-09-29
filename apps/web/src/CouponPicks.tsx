@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { appFetch, appUrl } from "./app-url";
 import { CouponConditionComparison } from "./CouponConditionComparison";
+import { CouponMedia } from "./CouponMedia";
 import { CouponRules } from "./CouponRules";
 import { CouponStores } from "./CouponStores";
 import { PickEvaluation } from "./PickEvaluation";
@@ -410,6 +411,7 @@ export function CouponPicks({ brandId }: { brandId: string }) {
                   <CouponRules productId={x.product_id} brandId={x.brand_id} />
                   <CouponStores productId={x.product_id} brandId={x.brand_id} />
                 </details>
+                <CouponMedia brandId={x.brand_id} productId={x.product_id} />
               </article>
             ))}
           </div>

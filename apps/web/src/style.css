@@ -869,3 +869,136 @@ footer {
 .overview-metrics article {
   min-width: 0;
 }
+
+.coupon-media {
+  border-top: 1px solid var(--line);
+  margin-top: 16px;
+  padding-top: 12px;
+  min-width: 0;
+}
+.coupon-media-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 8px 0;
+  text-align: left;
+  font-size: 13px;
+}
+.coupon-media-toggle span:last-child {
+  color: var(--muted);
+  font-size: 12px;
+}
+.coupon-media-body {
+  padding-top: 12px;
+}
+.coupon-media-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.coupon-media-toolbar > div {
+  flex: 1 1 180px;
+}
+.coupon-media-toolbar strong {
+  font-size: 14px;
+}
+.coupon-media-toolbar p,
+.coupon-media-query {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.coupon-media-status {
+  font-size: 12px;
+  min-height: 20px;
+  margin: 12px 0 4px;
+}
+.coupon-media-query {
+  display: block;
+  margin-bottom: 12px;
+}
+.live-media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  max-height: 640px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 4px;
+}
+.live-media-tile {
+  margin: 0;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  overflow: hidden;
+  background: #fff;
+}
+.live-media-visual {
+  aspect-ratio: 3 / 4;
+  background: #f0f1f3;
+  overflow: hidden;
+}
+.live-media-visual video,
+.live-media-preview,
+.live-media-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.live-media-visual video {
+  object-fit: contain;
+  background: #111;
+}
+.live-media-preview {
+  position: relative;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  display: block;
+}
+.live-media-play {
+  position: absolute;
+  bottom: 8px;
+  left: 6px;
+  right: 6px;
+  background: #000a;
+  color: white;
+  border-radius: 4px;
+  font-size: 10px;
+  padding: 4px 6px;
+}
+.live-media-tile figcaption {
+  padding: 8px;
+}
+.live-media-tile figcaption > a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+.live-media-tile figcaption > span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 6px;
+}
+.coupon-media-empty {
+  padding: 20px;
+  background: #f7f8fa;
+  color: var(--muted);
+  font-size: 12px;
+  border-radius: 8px;
+}
+@media (max-width: 600px) {
+  .live-media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: 65vh;
+  }
+}

@@ -3,6 +3,7 @@ import { AiRecommendations } from "./AiRecommendations";
 import { appFetch } from "./app-url";
 import { BrandCoverage } from "./BrandCoverage";
 import { CouponConditionComparison } from "./CouponConditionComparison";
+import { CouponMedia } from "./CouponMedia";
 import { CouponPicks } from "./CouponPicks";
 import { CouponRules } from "./CouponRules";
 import { CouponScoreHistory } from "./CouponScoreHistory";
@@ -774,6 +775,14 @@ export function CouponRadar() {
                   {new Date(x.observed_at).toLocaleString("zh-CN")} · 商品{" "}
                   {x.payload.product_id}
                 </small>
+                {x.payload.identity === "name_match" &&
+                  !x.historical_only &&
+                  brands.some((b) => b.id === x.brand_id && b.active) && (
+                    <CouponMedia
+                      brandId={x.brand_id}
+                      productId={x.payload.product_id}
+                    />
+                  )}
               </article>
             ))}
           </div>

@@ -8,6 +8,7 @@ import { createAlerts } from "./alerts.js";
 import { brandCoverage } from "./brand-coverage.js";
 import { createBrandIndex } from "./brand-index.js";
 import { couponAcceptance } from "./coupon-acceptance.js";
+import { createCouponMedia } from "./coupon-media.js";
 import { createPickReader, registerCouponPicks } from "./coupon-picks.js";
 import { createEnvironment } from "./environment.js";
 import { createOpportunityBoard } from "./opportunity-board.js";
@@ -51,6 +52,10 @@ export async function createOperations(
     },
     credentialPath: join(backupDir, "..", "secrets", "deepseek.json"),
   });
+  const media = await createCouponMedia(
+    db,
+    join(backupDir, "..", "secrets", "xiaohongshu-requests.json"),
+  );
   let busy = false;
   let backupError: string | null = null;
   async function backup() {
@@ -206,6 +211,7 @@ export async function createOperations(
     );
     brandIndex.register(app);
     ai.register(app);
+    media.register(app);
     evaluation.register(app);
     alerts.register(app);
     scores.register(app);
@@ -279,7 +285,11 @@ export async function createOperations(
     backup,
     register,
     drain: async () => {
-      await Promise.all([active ?? Promise.resolve(), ai.drain()]);
+      await Promise.all([
+        active ?? Promise.resolve(),
+        ai.drain(),
+        media.stop(),
+      ]);
     },
   };
 }
