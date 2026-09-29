@@ -1,0 +1,93 @@
+{
+  "verified_at": "2026-09-29T04:41:42.858Z",
+  "resumed": {
+    "id": 1,
+    "enabled": true,
+    "pause_reason": null,
+    "worker_active": true,
+    "request_pending": false
+  },
+  "recovery": {
+    "interrupted": 3,
+    "note": "仅在取得数据库独占锁后的服务启动阶段，将上次进程未完成的请求标记为中断。恢复时间不是请求结束时间；游标和重试预算保持不变。"
+  },
+  "requests": [
+    {
+      "kind": "commodity",
+      "outcome": "NETWORK_ERROR",
+      "count": 12,
+      "latest_finished_at": "2026-09-28T14:11:12.532Z",
+      "latest_recovered_at": null
+    },
+    {
+      "kind": "commodity",
+      "outcome": "OK",
+      "count": 3454,
+      "latest_finished_at": "2026-09-29T04:39:57.523Z",
+      "latest_recovered_at": null
+    },
+    {
+      "kind": "selection",
+      "outcome": "INTERRUPTED",
+      "count": 2,
+      "latest_finished_at": null,
+      "latest_recovered_at": "2026-09-29T04:41:25.547Z"
+    },
+    {
+      "kind": "selection",
+      "outcome": "NETWORK_ERROR",
+      "count": 17,
+      "latest_finished_at": "2026-09-29T03:18:34.534Z",
+      "latest_recovered_at": null
+    },
+    {
+      "kind": "selection",
+      "outcome": "OK",
+      "count": 5738,
+      "latest_finished_at": "2026-09-29T04:41:40.442Z",
+      "latest_recovered_at": null
+    },
+    {
+      "kind": "selection",
+      "outcome": "REQUEST_TIMEOUT",
+      "count": 1,
+      "latest_finished_at": "2026-09-29T03:56:12.420Z",
+      "latest_recovered_at": null
+    },
+    {
+      "kind": "store_lookup",
+      "outcome": "NETWORK_ERROR",
+      "count": 5,
+      "latest_finished_at": "2026-09-28T12:00:03.729Z",
+      "latest_recovered_at": null
+    },
+    {
+      "kind": "store_lookup",
+      "outcome": "OK",
+      "count": 2758,
+      "latest_finished_at": "2026-09-29T04:37:19.528Z",
+      "latest_recovered_at": null
+    },
+    {
+      "kind": "store_scope",
+      "outcome": "INTERRUPTED",
+      "count": 1,
+      "latest_finished_at": null,
+      "latest_recovered_at": "2026-09-29T04:41:25.547Z"
+    },
+    {
+      "kind": "store_scope",
+      "outcome": "NETWORK_ERROR",
+      "count": 8,
+      "latest_finished_at": "2026-09-28T14:11:14.020Z",
+      "latest_recovered_at": null
+    },
+    {
+      "kind": "store_scope",
+      "outcome": "OK",
+      "count": 1285,
+      "latest_finished_at": "2026-09-29T04:41:42.400Z",
+      "latest_recovered_at": null
+    }
+  ]
+}

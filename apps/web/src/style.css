@@ -1,0 +1,850 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #f5f6f2;
+  color: #23372b;
+  font-family:
+    Inter, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+}
+main {
+  max-width: 1180px;
+  margin: auto;
+  padding: 0 36px;
+}
+header {
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dce1d7;
+  gap: 20px;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 750;
+  font-size: 23px;
+}
+a span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-left: 14px;
+  color: #738273;
+}
+small {
+  color: #788276;
+}
+.intro {
+  padding: 62px 0 36px;
+}
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #51755b;
+}
+h1 {
+  font-size: clamp(32px, 4.6vw, 52px);
+  line-height: 1.25;
+  letter-spacing: -1px;
+  margin: 18px 0;
+}
+.intro > p:last-child {
+  line-height: 1.8;
+  color: #6c796b;
+  font-size: 14px;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.metrics article {
+  border: 1px solid #dde4d8;
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+}
+.metrics span {
+  font-size: 13px;
+  color: #788273;
+}
+.metrics strong {
+  font-size: 28px;
+  font-weight: 600;
+  display: block;
+  margin: 18px 0;
+}
+.metrics p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #788273;
+  margin: 0;
+}
+.radar {
+  margin-top: 36px;
+  background: #fff;
+  border: 1px solid #dde4d8;
+  border-radius: 14px;
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 26px;
+  border-bottom: 1px solid #edf0e8;
+}
+.section-title h2 {
+  font-size: 17px;
+  margin: 0;
+}
+.section-title span {
+  font-size: 12px;
+  color: #80907b;
+}
+.empty {
+  text-align: center;
+  padding: 30px 18px 40px;
+}
+.dot {
+  font-size: 45px;
+  color: #9daf87;
+}
+h3 {
+  font-size: 17px;
+  font-weight: 500;
+}
+.empty p,
+footer {
+  color: #7d8778;
+  font-size: 13px;
+  line-height: 1.8;
+}
+button {
+  border: 0;
+  border-radius: 8px;
+  background: #2e583d;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+footer {
+  padding: 24px 0 40px;
+}
+@media (max-width: 700px) {
+  main {
+    padding: 0 20px;
+  }
+  header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 10px;
+  }
+  .intro {
+    padding-top: 35px;
+  }
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+  a span {
+    display: none;
+  }
+}
+nav {
+  display: flex;
+  gap: 10px;
+  margin: 30px 0 20px;
+}
+nav button {
+  background: transparent;
+  color: #607064;
+  border: 1px solid #d4ded2;
+}
+nav button[aria-pressed="true"] {
+  background: #2e583d;
+  color: white;
+}
+.workspace {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 22px;
+  align-items: start;
+}
+.panel {
+  background: white;
+  border: 1px solid #dde4d8;
+  border-radius: 14px;
+  padding: 24px;
+  min-width: 0;
+}
+.panel h2 {
+  font-size: 19px;
+  margin: 0 0 20px;
+}
+.panel p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #657363;
+}
+label {
+  display: block;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 14px 0;
+  color: #54634f;
+}
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 5px;
+  border: 1px solid #ccd7c9;
+  border-radius: 7px;
+  background: #fff;
+  color: #23372b;
+  font: inherit;
+}
+textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+.csv {
+  min-height: 230px;
+  font-family: monospace;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.secondary {
+  background: #eef2e9;
+  color: #36563d;
+  margin-top: 10px;
+  margin-right: 8px;
+}
+.filters {
+  display: flex;
+  gap: 10px;
+}
+.record {
+  padding: 22px 0;
+  border-bottom: 1px solid #e8ede4;
+}
+.record h3 {
+  margin: 8px 0;
+}
+.record a {
+  font-size: 12px;
+  color: #326849;
+}
+.record details {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #6a7c63;
+}
+code {
+  overflow-wrap: anywhere;
+}
+pre {
+  overflow: auto;
+  max-height: 260px;
+  font-size: 11px;
+  background: #f4f6f0;
+  padding: 14px;
+}
+.message {
+  padding: 14px 18px;
+  background: #e9f0df;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+.error {
+  background: #fff0e9;
+  color: #853c21;
+}
+.error button {
+  margin-left: 15px;
+}
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+summary {
+  cursor: pointer;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible {
+  outline: 2px solid #718e5a;
+  outline-offset: 2px;
+}
+@media (max-width: 850px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+  .filters {
+    flex-direction: column;
+  }
+}
+
+.coupon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.coupon-card {
+  background: #fff;
+  padding: 22px;
+  border: 1px solid #dce4de;
+  border-radius: 14px;
+  overflow-wrap: anywhere;
+}
+.coupon-card strong {
+  font-size: 24px;
+  color: #17624b;
+}
+.coupon-card p {
+  font-size: 14px;
+  color: #536359;
+}
+.coupon-run {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+.coupon-radar .actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.coupon-radar .actions button[aria-pressed="true"] {
+  background: #173f35;
+  color: #fff;
+  border-color: #173f35;
+}
+
+/* Workspace layout: navigation, selection, then evidence. */
+:root {
+  --ink: #172c2b;
+  --muted: #6b7b78;
+  --line: #e0e7e4;
+  --accent: #176c58;
+}
+body {
+  background: #f4f6f5;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+main {
+  max-width: 1600px;
+  margin: 72px auto 0 216px;
+  padding: 0 40px;
+}
+header {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  min-height: 72px;
+  padding: 0 32px;
+  background: #fff;
+  border-color: var(--line);
+}
+header a {
+  font-size: 23px;
+  letter-spacing: -0.5px;
+}
+header small {
+  background: #eef4f1;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+main > nav {
+  position: fixed;
+  top: 98px;
+  left: 16px;
+  width: 184px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0;
+}
+main > nav button {
+  text-align: left;
+  border: 0;
+  border-radius: 10px;
+  padding: 13px 18px;
+  font-weight: 550;
+}
+main > nav button[aria-pressed="true"] {
+  background: #163f37;
+  box-shadow: 0 4px 14px #173f3512;
+}
+main > nav::after {
+  content: "上海 · 美食优惠券雷达";
+  margin: 24px 18px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.intro {
+  padding: 28px 0 20px;
+}
+.intro h1 {
+  font-size: 30px;
+  margin: 6px 0;
+  letter-spacing: -0.7px;
+}
+.intro .eyebrow {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+.intro > p:last-child {
+  margin: 6px 0 0;
+  font-size: 13px;
+}
+h2 {
+  font-size: 22px;
+  letter-spacing: -0.4px;
+  margin: 0 0 6px;
+}
+h3 {
+  line-height: 1.5;
+  font-weight: 600;
+}
+a {
+  font-size: inherit;
+  color: var(--accent);
+  font-weight: 550;
+}
+button {
+  font: inherit;
+  font-size: 13px;
+  padding: 9px 16px;
+  background: var(--accent);
+  transition: background 0.15s;
+}
+button:hover:not(:disabled) {
+  filter: brightness(0.94);
+}
+button:disabled {
+  cursor: not-allowed;
+}
+:focus-visible {
+  outline: 3px solid #75b7a6;
+  outline-offset: 3px;
+}
+.overview-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.overview-metrics article {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 12px;
+}
+.overview-metrics span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+.overview-metrics strong {
+  display: block;
+  font-size: 25px;
+  font-weight: 600;
+  margin: 5px 0;
+}
+.overview-metrics strong small {
+  font-size: 11px;
+  font-weight: 400;
+}
+.overview-metrics .status-value {
+  font-size: 19px;
+  margin: 9px 0;
+}
+.overview-metrics small {
+  font-size: 11px;
+}
+progress {
+  display: block;
+  width: 100%;
+  height: 5px;
+  accent-color: var(--accent);
+}
+.workspace-tabs {
+  display: flex;
+  gap: 25px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 20px;
+}
+.workspace-tabs button {
+  background: none;
+  color: var(--muted);
+  border-radius: 0;
+  border-bottom: 3px solid transparent;
+  padding: 10px 2px 14px;
+  font-size: 14px;
+}
+.workspace-tabs button[aria-pressed="true"] {
+  color: var(--accent);
+  border-color: var(--accent);
+  font-weight: 650;
+}
+.brand-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+.brand-toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-size: 12px;
+}
+.brand-toolbar select {
+  margin: 0;
+  width: 240px;
+  padding: 7px 10px;
+}
+.picks-panel > p,
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+.picks-panel > .actions {
+  align-items: flex-end;
+  margin: 16px 0;
+}
+.picks-panel > .actions label {
+  margin: 0;
+  min-width: 180px;
+}
+.picks-panel > .actions label:first-child {
+  flex: 1;
+}
+.picks-panel > .actions a {
+  margin-left: auto;
+  font-size: 12px;
+  padding: 10px 2px;
+}
+.filter-chips {
+  gap: 7px !important;
+}
+.filter-chips button {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+.picks-panel > details {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 20px 10px 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+.picks-panel > details[open] {
+  display: block;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.result-meta {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  font-size: 12px !important;
+}
+.picks-panel .coupon-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.coupon-card {
+  padding: 20px;
+  border-radius: 12px;
+  min-width: 0;
+  box-shadow: 0 2px 3px #142c2303;
+}
+.brand-line {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+}
+.coupon-card h3 {
+  margin: 10px 0 16px;
+  font-size: 16px;
+  min-height: 48px;
+}
+.coupon-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 15px 0;
+  border-top: 1px solid #edf0ef;
+  border-bottom: 1px solid #edf0ef;
+}
+.coupon-stats span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+}
+.coupon-stats strong {
+  display: block;
+  font-size: 23px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 4px;
+}
+.coupon-stats em {
+  font-size: 11px;
+  font-style: normal;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 3px;
+}
+.signal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 13px 0;
+}
+.signal-tags span {
+  font-size: 11px;
+  background: #edf4f1;
+  padding: 3px 7px;
+  border-radius: 4px;
+  color: #537365;
+}
+.coupon-card .availability-note {
+  color: #916936;
+  font-size: 11px;
+  margin: 0 0 12px;
+}
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.card-footer small {
+  font-size: 11px;
+}
+.quiet-button {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  font-size: 11px;
+}
+.card-evidence {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  margin-top: 12px;
+  font-size: 12px;
+}
+.card-evidence p {
+  font-size: 12px;
+}
+.card-evidence strong {
+  font-size: 15px;
+}
+.ai-panel {
+  padding-bottom: 24px;
+}
+.ai-consent {
+  font-size: 12px;
+  color: var(--muted);
+  max-width: 760px;
+}
+.ai-panel > button {
+  margin: 8px 0 12px;
+}
+.ai-panel > p {
+  font-size: 13px;
+}
+.ai-summary {
+  background: #eaf2ee;
+  border: 1px solid #dce8e0;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin: 16px 0;
+  font-size: 13px;
+}
+.ai-summary p {
+  line-height: 1.9;
+}
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 20px 0;
+  align-items: start;
+}
+.ai-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 22px;
+  border-radius: 12px;
+  min-width: 0;
+}
+.ai-card-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--accent);
+}
+.ai-card-label span:first-child {
+  background: #e8f1ed;
+  border-radius: 5px;
+  padding: 3px 8px;
+}
+.ai-card h3 {
+  font-size: 17px;
+  margin: 14px 0;
+}
+.ai-card p {
+  font-size: 13px;
+  color: #526560;
+  line-height: 1.85;
+}
+.ai-card strong {
+  color: var(--ink);
+}
+.ai-caveats {
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: #8a6737;
+}
+.management-panel,
+.snapshot-panel {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.management-panel > section,
+.management-panel > details {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.management-panel .coupon-run {
+  padding: 12px 0;
+  border-bottom: 1px solid #edf0ef;
+  flex-wrap: wrap;
+}
+footer {
+  font-size: 11px;
+  border-top: 1px solid var(--line);
+  margin-top: 30px;
+}
+@media (min-width: 1600px) {
+  .picks-panel .coupon-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 1100px) {
+  main {
+    margin-left: 184px;
+    padding: 0 24px;
+  }
+  main > nav {
+    width: 152px;
+  }
+  .overview-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .coupon-stats strong {
+    font-size: 19px;
+  }
+}
+@media (max-width: 800px) {
+  main {
+    margin: 0;
+    padding: 0 18px;
+  }
+  header {
+    position: static;
+    height: auto;
+    min-height: 66px;
+    padding: 15px 0;
+    flex-direction: row;
+    align-items: center;
+  }
+  header a span {
+    display: none;
+  }
+  header small {
+    font-size: 10px;
+  }
+  main > nav {
+    position: static;
+    width: auto;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 5px 0 12px;
+    margin-bottom: 20px;
+  }
+  main > nav button {
+    white-space: nowrap;
+    padding: 8px 12px;
+  }
+  main > nav::after {
+    display: none;
+  }
+  .intro {
+    padding: 22px 0;
+  }
+  .intro h1 {
+    font-size: 26px;
+  }
+  .picks-panel .coupon-grid,
+  .ai-grid {
+    grid-template-columns: 1fr;
+  }
+  .workspace-tabs {
+    gap: 20px;
+  }
+  .overview-metrics article {
+    padding: 14px;
+  }
+  .overview-metrics strong {
+    font-size: 22px;
+  }
+  .brand-toolbar {
+    justify-content: flex-start;
+  }
+  .coupon-stats strong {
+    font-size: 24px;
+  }
+  .management-panel,
+  .snapshot-panel {
+    padding: 16px;
+  }
+  .picks-panel > .actions label {
+    min-width: 0;
+    flex: 1 1 150px;
+  }
+}

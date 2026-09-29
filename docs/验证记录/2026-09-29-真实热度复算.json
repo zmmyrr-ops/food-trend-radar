@@ -1,0 +1,200 @@
+{
+  "checked_at": "2026-09-29T03:41:24.674Z",
+  "source_generated_at": "2026-09-29T03:40:34.230Z",
+  "version": "numeric-audit-v1",
+  "counts": {
+    "coupons": 3103,
+    "speed": 1022,
+    "acceleration": 18,
+    "positive_acceleration": 13,
+    "baseline": 0,
+    "lift": 0
+  },
+  "passed": true,
+  "errors": [],
+  "caveat": "仅独立复算已发布数字，不验证平台统计定义、品牌归属或完整权益；未知指标不算验收通过。",
+  "examples": [
+    {
+      "brand_id": "526f7a89-af7d-422c-8248-fb4b4f24cd51",
+      "brand_name": "幻师",
+      "product_id": "1827858207679514",
+      "title": "【畅饮】经典酒单单人3小时畅饮",
+      "price_fen": 9800,
+      "samples": [
+        {
+          "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+          "observed_at": "2026-09-29T11:26:33.736+08:00",
+          "missing": false,
+          "query_signature": "6793ca9bda382ec9f0888de6325d5fc846ba0a5fc7ecfd0b5df4362cfac7aa4e",
+          "monthly_sales": "月售 984",
+          "parsed_value": 984,
+          "precision": "integer_display",
+          "rules": null
+        },
+        {
+          "run_id": "d0774287-969d-4d32-b0a4-495ab849d182",
+          "observed_at": "2026-09-28T16:39:33.534+08:00",
+          "missing": false,
+          "query_signature": "6793ca9bda382ec9f0888de6325d5fc846ba0a5fc7ecfd0b5df4362cfac7aa4e",
+          "monthly_sales": "月售 852",
+          "parsed_value": 852,
+          "precision": "integer_display",
+          "rules": {
+            "status": "received",
+            "observed_at": "2026-09-28T18:09:49.96+08:00",
+            "rule_fingerprint": "4ee50daf43d99cc8a9b4320b03f33e55b4e29d3b6da45c23eb767a6d1b2b5130",
+            "commodity_fingerprint": "9606d176e6fb2c689db8092379d23d5b7d58f6726dcfcd79c4bfa6d568d9bded"
+          }
+        },
+        {
+          "run_id": "7cc8aa5a-c19d-4f01-b36e-30d4b3a0fd66",
+          "observed_at": "2026-09-28T15:39:08.306+08:00",
+          "missing": false,
+          "query_signature": "6793ca9bda382ec9f0888de6325d5fc846ba0a5fc7ecfd0b5df4362cfac7aa4e",
+          "monthly_sales": "月售 851",
+          "parsed_value": 851,
+          "precision": "integer_display",
+          "rules": {
+            "status": "received",
+            "observed_at": "2026-09-28T15:42:08.395+08:00",
+            "rule_fingerprint": "4ee50daf43d99cc8a9b4320b03f33e55b4e29d3b6da45c23eb767a6d1b2b5130",
+            "commodity_fingerprint": "9606d176e6fb2c689db8092379d23d5b7d58f6726dcfcd79c4bfa6d568d9bded"
+          }
+        }
+      ],
+      "content_comparison": "unknown",
+      "net_change": 132,
+      "hours": 18.783389444444445,
+      "speed": 7.027485661755343,
+      "previous_speed": 0.9930409894219068,
+      "speed_change": 6.034444672333437,
+      "acceleration": 0.6098356293280951,
+      "price_changed": false,
+      "baseline_speed": null,
+      "lift_ratio": null,
+      "baseline_windows": 1,
+      "baseline_reason": "至少需要 4 个连续历史窗口且覆盖 24 小时；当前窗口不计入基准。",
+      "acceleration_reason": "两段连续窗口可比较。",
+      "status": "measured",
+      "reason": "按平台整数展示计算月售净变化，不等于期间新增订单。"
+    },
+    {
+      "brand_id": "526f7a89-af7d-422c-8248-fb4b4f24cd51",
+      "brand_name": "幻师",
+      "product_id": "1876270873634858",
+      "title": "焕新经典2-3人餐",
+      "price_fen": 25800,
+      "samples": [
+        {
+          "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+          "observed_at": "2026-09-29T11:27:09.628+08:00",
+          "missing": false,
+          "query_signature": "6793ca9bda382ec9f0888de6325d5fc846ba0a5fc7ecfd0b5df4362cfac7aa4e",
+          "monthly_sales": "月售 2700",
+          "parsed_value": 2700,
+          "precision": "integer_display",
+          "rules": null
+        },
+        {
+          "run_id": "d0774287-969d-4d32-b0a4-495ab849d182",
+          "observed_at": "2026-09-28T16:39:33.534+08:00",
+          "missing": false,
+          "query_signature": "6793ca9bda382ec9f0888de6325d5fc846ba0a5fc7ecfd0b5df4362cfac7aa4e",
+          "monthly_sales": "月售 2582",
+          "parsed_value": 2582,
+          "precision": "integer_display",
+          "rules": {
+            "status": "received",
+            "observed_at": "2026-09-28T22:51:46.662+08:00",
+            "rule_fingerprint": "3c28acd3eaba27fcdcea38526e9ccf788a547a564a15e36f36f7f1cdd3ace0ce",
+            "commodity_fingerprint": "e3f0b06a6d88a6b131121e939cfe1c2d2b84599ecaa415def798387969033868"
+          }
+        },
+        {
+          "run_id": "7cc8aa5a-c19d-4f01-b36e-30d4b3a0fd66",
+          "observed_at": "2026-09-28T15:39:08.306+08:00",
+          "missing": false,
+          "query_signature": "6793ca9bda382ec9f0888de6325d5fc846ba0a5fc7ecfd0b5df4362cfac7aa4e",
+          "monthly_sales": "月售 2581",
+          "parsed_value": 2581,
+          "precision": "integer_display",
+          "rules": null
+        }
+      ],
+      "content_comparison": "unknown",
+      "net_change": 118,
+      "hours": 18.793359444444445,
+      "speed": 6.278813553735455,
+      "previous_speed": 0.9930409894219068,
+      "speed_change": 5.2857725643135485,
+      "acceleration": 0.5339065184994402,
+      "price_changed": false,
+      "baseline_speed": null,
+      "lift_ratio": null,
+      "baseline_windows": 1,
+      "baseline_reason": "至少需要 4 个连续历史窗口且覆盖 24 小时；当前窗口不计入基准。",
+      "acceleration_reason": "两段连续窗口可比较。",
+      "status": "measured",
+      "reason": "按平台整数展示计算月售净变化，不等于期间新增订单。"
+    },
+    {
+      "brand_id": "526f7a89-af7d-422c-8248-fb4b4f24cd51",
+      "brand_name": "幻师",
+      "product_id": "1875924621761577",
+      "title": "【赠周边·碰杯欢聚】 招牌小酒桶套餐",
+      "price_fen": 15900,
+      "samples": [
+        {
+          "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+          "observed_at": "2026-09-29T11:27:09.628+08:00",
+          "missing": false,
+          "query_signature": "6793ca9bda382ec9f0888de6325d5fc846ba0a5fc7ecfd0b5df4362cfac7aa4e",
+          "monthly_sales": "月售 771",
+          "parsed_value": 771,
+          "precision": "integer_display",
+          "rules": null
+        },
+        {
+          "run_id": "d0774287-969d-4d32-b0a4-495ab849d182",
+          "observed_at": "2026-09-28T16:39:35.985+08:00",
+          "missing": false,
+          "query_signature": "6793ca9bda382ec9f0888de6325d5fc846ba0a5fc7ecfd0b5df4362cfac7aa4e",
+          "monthly_sales": "月售 708",
+          "parsed_value": 708,
+          "precision": "integer_display",
+          "rules": {
+            "status": "received",
+            "observed_at": "2026-09-28T22:49:20.971+08:00",
+            "rule_fingerprint": "9edacf97ddf4f4a637f5fb6376e4f63efaf9ad63174379b261d4b0c497c57637",
+            "commodity_fingerprint": "6841af4adfb0a1b023ccac1da14fc7313d7e837e3938508908906c48b8d5d277"
+          }
+        },
+        {
+          "run_id": "7cc8aa5a-c19d-4f01-b36e-30d4b3a0fd66",
+          "observed_at": "2026-09-28T15:39:10.097+08:00",
+          "missing": false,
+          "query_signature": "6793ca9bda382ec9f0888de6325d5fc846ba0a5fc7ecfd0b5df4362cfac7aa4e",
+          "monthly_sales": "月售 708",
+          "parsed_value": 708,
+          "precision": "integer_display",
+          "rules": null
+        }
+      ],
+      "content_comparison": "unknown",
+      "net_change": 63,
+      "hours": 18.79267861111111,
+      "speed": 3.352369361691284,
+      "previous_speed": 0,
+      "speed_change": 3.352369361691284,
+      "acceleration": 0.33862539589629514,
+      "price_changed": false,
+      "baseline_speed": null,
+      "lift_ratio": null,
+      "baseline_windows": 1,
+      "baseline_reason": "至少需要 4 个连续历史窗口且覆盖 24 小时；当前窗口不计入基准。",
+      "acceleration_reason": "两段连续窗口可比较。",
+      "status": "measured",
+      "reason": "按平台整数展示计算月售净变化，不等于期间新增订单。"
+    }
+  ]
+}

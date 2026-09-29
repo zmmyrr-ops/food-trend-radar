@@ -1,0 +1,52 @@
+{
+  "observations": [
+    {
+      "source": "baidu_web",
+      "region": "上海",
+      "device": "PC+移动",
+      "metric": "search_index_7d_summary",
+      "period_start": "2026-09-22",
+      "period_end": "2026-09-28",
+      "observed_at": "2026-09-29T06:39:44.437Z",
+      "brand_id": "d2b059f3-825e-420e-8d9f-1e36ca7a1c6c",
+      "keyword": "瑞幸咖啡",
+      "daily_average": 225,
+      "mom": -0.02,
+      "status": "available",
+      "source_url": "https://index.baidu.com/v2/main/index.html#/trend/%E7%91%9E%E5%B9%B8%E5%92%96%E5%95%A1?words=%E7%91%9E%E5%B9%B8%E5%92%96%E5%95%A1"
+    },
+    {
+      "source": "baidu_web",
+      "region": "上海",
+      "device": "PC+移动",
+      "metric": "search_index_7d_summary",
+      "period_start": "2026-09-22",
+      "period_end": "2026-09-28",
+      "observed_at": "2026-09-29T06:39:44.437Z",
+      "brand_id": "0be5fe1f-37b1-425a-8362-713147daea59",
+      "keyword": "dq冰淇淋",
+      "daily_average": 74,
+      "mom": -0.27,
+      "status": "available",
+      "source_url": "https://index.baidu.com/v2/main/index.html#/trend/dq%E5%86%B0%E6%B7%87%E6%B7%8B?words=dq%E5%86%B0%E6%B7%87%E6%B7%8B"
+    },
+    {
+      "source": "baidu_web",
+      "region": "上海",
+      "device": "PC+移动",
+      "metric": "search_index_7d_summary",
+      "period_start": "2026-09-22",
+      "period_end": "2026-09-28",
+      "observed_at": "2026-09-29T06:41:13.036Z",
+      "brand_id": "d329b334-0649-4e9f-b395-d8b1f40a0da3",
+      "keyword": "牛new",
+      "daily_average": null,
+      "mom": null,
+      "status": "not_indexed",
+      "source_url": "https://index.baidu.com/v2/main/index.html#/trend/%E7%89%9Bnew?words=%E7%89%9Bnew"
+    }
+  ],
+  "tests": 154,
+  "verified_contribution": 4.6,
+  "unattended_collection": false
+}

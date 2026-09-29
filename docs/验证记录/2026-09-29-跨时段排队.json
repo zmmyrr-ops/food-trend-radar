@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-09-29T03:36:11.350Z",
+  "tests": {
+    "passed": 121,
+    "failed": 0
+  },
+  "service": {
+    "enabled": true,
+    "pause_reason": null,
+    "concurrency": 1,
+    "interval_ms": [1000, 2000]
+  },
+  "running": [
+    {
+      "id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "slot": "2026-09-29T00:00:00+08:00",
+      "status": "running",
+      "started_at": "2026-09-28T16:00:20.024Z",
+      "finished_at": null,
+      "total": 308,
+      "completed": 146
+    }
+  ],
+  "note": "跨时段排队由隔离库测试验证；生产等待自然中午触发，不创建模拟时段"
+}

@@ -1,0 +1,119 @@
+{
+  "status_code": 0,
+  "commodity_info": {
+    "item_groups": [
+      {
+        "group_name": "自助畅吃",
+        "item_list": [
+          {
+            "count": 1,
+            "name": "单人工作日精选超值版自助畅吃",
+            "price": 15900,
+            "unit": "份"
+          }
+        ],
+        "option_count": 1,
+        "total_count": 1
+      }
+    ]
+  },
+  "use_rule_info": {
+    "body": [
+      {
+        "key": "use_date",
+        "name": "可用日期",
+        "value": [
+          {
+            "content": "有效期: 购买后7天内有效",
+            "note_type": 1
+          },
+          {
+            "content": "不可用日期: 周六、周日、中秋节(09.25-09.27)、国庆节(10.01-10.07)、元旦、春节、清明节、劳动节、端午节",
+            "note_type": 1
+          }
+        ]
+      },
+      {
+        "key": "use_time",
+        "name": "可用时间",
+        "value": [
+          {
+            "content": "11:00-11:30、16:30-17:30",
+            "note_type": 1
+          }
+        ]
+      },
+      {
+        "key": "appointment_rule",
+        "name": "预约规则",
+        "value": [
+          {
+            "content": "到店消费：无需预约，高峰期可能需要排队",
+            "note_type": 1
+          }
+        ]
+      },
+      {
+        "key": "food_use_rule",
+        "name": "使用规则",
+        "value": [
+          {
+            "content": "不与店内优惠同享",
+            "note_type": 1
+          }
+        ]
+      },
+      {
+        "key": "purchase_restriction_rule",
+        "name": "购买限制",
+        "value": [
+          {
+            "content": "每人每天最多买2份",
+            "note_type": 1
+          }
+        ]
+      },
+      {
+        "key": "refund_rule",
+        "name": "退款规则",
+        "value": [
+          {
+            "content": "整单退款：核销前，支持随时退，过期自动退",
+            "note_type": 1
+          }
+        ]
+      },
+      {
+        "key": "other_rules",
+        "name": "其他规则",
+        "value": [
+          {
+            "content": "发票问题请询问商家",
+            "note_type": 1
+          },
+          {
+            "content": "儿童价格：1.2m以下免费；1.2-1.4m半价；1.4m包含以上全价",
+            "note_type": 1
+          },
+          {
+            "content": "每位大人可带两位儿童，不与其他优惠同享",
+            "note_type": 1
+          },
+          {
+            "content": "此套餐建议本人使用，不可转赠转售（谨防诈骗或第三方盗取）",
+            "note_type": 1
+          },
+          {
+            "content": "同桌就餐用户需选相同档位自助套餐，以桌为单位提供锅底。",
+            "note_type": 1
+          },
+          {
+            "content": "如部分菜品因时令或其他不可抗因素导致无法提供，请联系商家协商处理，感谢您的理解",
+            "note_type": 1
+          }
+        ]
+      }
+    ],
+    "title": "购买须知"
+  }
+}

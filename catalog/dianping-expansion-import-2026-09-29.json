@@ -1,0 +1,861 @@
+{
+  "batch": "shanghai-dianping-expansion-2026-09-29",
+  "applied": true,
+  "started_at": "2026-09-29T08:06:10.387Z",
+  "before_total": 379,
+  "before_active": 350,
+  "created": 126,
+  "existing": 15,
+  "evidence": 153,
+  "records": [
+    {
+      "name": "泰廊餐厅Thai Gallery",
+      "id": "ee50ecc4-0cba-439b-be9a-b3a40645b938",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "Professor Lee",
+      "id": "61355b4d-3d14-4743-9497-4e5904d97fb8",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "青鹤谷韩国料理",
+      "id": "c719f25f-b8de-4079-aa74-499d6a5e3609",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "BELLOCO倍乐",
+      "id": "42135cb3-8af8-49bc-91a4-555862d0ebda",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "酒吞mix米野吞烤肉",
+      "id": "ea22b119-3eab-412f-97f5-6a938a42ee11",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "帕蓝·暹罗料理",
+      "id": "2155fb4e-0a54-4d2b-af15-89afca912bf8",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "酒吞",
+      "id": "9c849eec-c39f-4b1e-9364-1cc70c9018eb",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "钟路商会·缘家",
+      "id": "d8e95609-3040-4efb-80e4-aca187eee3d6",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "逸品淮扬",
+      "id": "10e21e43-9090-459c-a6d4-59713cad92af",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "MIKAKU",
+      "id": "b2a4e126-9eba-4266-b44a-0a827f96ef48",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "遇外滩",
+      "id": "21c25947-d456-4842-aa67-79a2c93e9158",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "上海和平饭店龙凤厅 Dragon Phoenix",
+      "id": "bb584fed-9963-413e-be0a-fd8ee3b96b56",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "沪西老弄堂面馆",
+      "id": "84f08b34-3717-4c6d-bb5e-aeb283cc1d02",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "老兴鲜",
+      "id": "a21a73de-ac59-424d-9f09-d082b091d9e7",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "兴兴·海派本帮菜",
+      "id": "e14e057b-574e-42bd-acc7-b96034c057a9",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "Jean Georges",
+      "id": "e6cbfbbb-4219-4b89-9a61-79c2dad29712",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "Solo",
+      "id": "4a887fee-b79b-4f83-a6ed-0d2359ecc014",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "甬府小鲜",
+      "id": "d95d6cbe-4500-490f-91f3-72e5c99b3b32",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "人和馆·上海菜",
+      "id": "ba2cb7a1-6dcc-4f51-88f6-722db4b45b73",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "鹿园 MOOSE",
+      "id": "86515c02-1dbf-4fb8-8997-3ba121685a14",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "THE NEST 环外滩露台餐厅",
+      "id": "171423b5-72f7-442b-851e-c9c4fbaed63b",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "福1088",
+      "id": "620c1f83-df25-4c3a-85a1-40bfd05a11c3",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "新荣记",
+      "id": "46ba6648-8b35-42c7-9eca-d37f66eaad4f",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "食廬",
+      "id": "4d6fb9d5-fccf-487c-bfd1-c81375d594f7",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "BROWNSTONE布朗石西班牙餐厅",
+      "id": "89967bbb-efd7-4157-8241-ae4d68a6d1be",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "上海滩餐厅",
+      "id": "e040db5a-3845-4e2d-9677-8639115d2e50",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "茹丝葵经典牛排馆",
+      "id": "ea0c9a4b-a223-4350-bad9-267d1f290c29",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "香江姳苑粥饭",
+      "id": "ac31a897-14c6-4d6f-8de0-df9ae385964d",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "新白鹿餐厅",
+      "id": "a0c14af3-5409-43e9-9ed3-de55dfd7bab9",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "親父的右腕",
+      "id": "cd1cfd6e-825f-48c2-badd-42c9e970f492",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "四季和府",
+      "id": "8d1ae66c-a5ea-40d9-b078-b7615066ddac",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "映水芙蓉·新川菜",
+      "id": "4f910b9d-d20a-4509-a70f-56b1f934296f",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "三号黄浦会Canton Table",
+      "id": "ec84f5cc-6626-4eec-86d0-c6014f537075",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "O.P.S. CAFE",
+      "id": "744a8827-910f-4d1e-9df3-05a311e5bfad",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "牛New寿喜烧",
+      "id": "d329b334-0649-4e9f-b395-d8b1f40a0da3",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "Kathleen’s Bistro 凯圣琳西餐厅",
+      "id": "e6b5ee38-789f-46cc-b2a1-a21607233a51",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "随堂里",
+      "id": "52904ef8-4f8a-4210-acba-a6e685c6a156",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "一绪寿喜烧",
+      "id": "90526e0c-22c1-4080-80f4-1c24de42197b",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "醉东Oriental House",
+      "id": "05f4a15f-26a2-4107-a788-8ad1deec2dea",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "荣新馆",
+      "id": "509b6e71-81dc-4a3b-9d7f-36735f97a339",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "汤记传菜",
+      "id": "6f57757e-5f98-4596-ba00-2962e1a72766",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "海逸海鲜酒家",
+      "id": "a67a4b27-7348-442a-aa29-9facda5d8f90",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "haxnbauer海森堡德国餐厅",
+      "id": "ec37499b-7a35-4aab-8c95-fad0dd21a6a4",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "鸣龙上雅铁板烧日料",
+      "id": "87aa81c3-1f8f-4a68-8c0d-3709f5b0f875",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "荣先森·福建菜",
+      "id": "0109b8d5-1612-424b-a457-3498bdceebf5",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "本怡吧都韩国料理",
+      "id": "38d7a996-f115-4f05-9935-12e137dd2b95",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "黑渡口·茶",
+      "id": "94f745c3-53fd-4f59-9ff3-fb3ffed59867",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "初花·日本料理",
+      "id": "bddfaf2a-a702-45eb-a484-fad42d27ddbe",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "Barista Made Coffee·BMC",
+      "id": "5a977470-59d0-4761-8ea3-b7dcd6bf65cd",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "巡湘记",
+      "id": "72103797-0e55-4d8f-901f-3b2bcfa25160",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "The BREW·酿餐厅",
+      "id": "66ee6138-176d-4bff-a859-39a76e742086",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "姚稷大铁锅",
+      "id": "54d10a8c-fe8d-42c4-8834-6850fa7482b9",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "万岛日本料理铁板烧",
+      "id": "09d782c1-3f96-43e1-b112-be590aa02609",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "轻蔬不用等·素食",
+      "id": "0fb8b7b5-e1a8-41e3-905b-156d95a2a21c",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "点都德",
+      "id": "749a78f7-f5ea-428d-b51e-5b4b71b65d96",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "蟹家大院",
+      "id": "941b663a-770e-4095-981b-01e3fabf22b1",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "桂满陇",
+      "id": "66d3c859-6b05-4d98-8f29-76d6c623f8ff",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "贯贯吉·清真餐厅",
+      "id": "634f646e-b2a3-4cf0-a75e-4e0ee795bedd",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "bananaGG",
+      "id": "110f8226-5e26-480c-b9b8-eb985287c8fa",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "MUF MUF",
+      "id": "981515b8-27f1-46fa-baf0-24141f5b99dc",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "细记港九早茶包房夜宵",
+      "id": "746d9b21-f14c-48ca-bdf6-42b6e8a7f31b",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "阿吾罗日本料理",
+      "id": "1a8f40d1-e75f-46e0-8672-08bd80f38cc3",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "荟廷",
+      "id": "49aaaf65-faf4-401e-95e9-0a35d2f4a426",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "喜鼎",
+      "id": "a62fa910-46f0-47f0-9d71-512ed1032679",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "膳道",
+      "id": "95390619-4a2e-4106-ae85-fbb93d0953b1",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "罗福索love&salt牛排馆",
+      "id": "40a885e3-bc13-4372-89b8-2b8d501638aa",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "Kathleen's Waitan 凯圣琳江景西餐厅",
+      "id": "c168886c-6988-437c-a913-afd417e61f5a",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "米禾良日料",
+      "id": "e1841b2a-3126-47ab-be50-4bfcf46d2e3e",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "潮界",
+      "id": "210b590a-5699-4ae4-abcd-0eb5dd1594d2",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "宝丽轩中餐厅BAOLIXUAN",
+      "id": "b9aaf062-3566-4233-8ee8-0f728d55b794",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "AJIYA炭火烤肉",
+      "id": "f841dc87-9999-47ef-a627-64d0cc0bac5b",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "左庭右院",
+      "id": "1432aa1e-8d8e-4976-9c87-58e9eb2a0b17",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "天辣",
+      "id": "a2eb8ea4-9fdf-44ab-9296-395166d3f674",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "晶焱上海菜",
+      "id": "f09e9b1f-0bde-41bf-b2d0-2b37b8742018",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "DA VITTORIO SHANGHAI",
+      "id": "b5792abd-a428-4896-a164-f0bcabf3318c",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "楼上火锅",
+      "id": "4ac89916-eae8-4e03-926e-9ea9465fbfd1",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "蟹榭·本帮江浙菜·蟹宴",
+      "id": "fbea174c-4241-4b6e-bbb3-6289d38cb8e3",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "老乾杯",
+      "id": "89fa7f5b-9b4d-4b71-9773-e1b5fcb55694",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "欧巴韩式炭烤肉·烤牛肠 오빠 숯불구이",
+      "id": "6cd636ab-1f44-488e-bda4-5382d8f66315",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "鸿姐老火锅",
+      "id": "9183a697-85a0-4203-9d8c-ec19de238ef4",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "季福楼 Jhouse",
+      "id": "4c32229c-54ab-456d-a5f5-d4e406f167f4",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "有喜屋",
+      "id": "c22c12f7-2a41-4103-a36a-dbf7cb6e35c8",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "Maison Lameloise莱美露滋",
+      "id": "f89ef38d-885a-4fa1-8735-69b56d026ea1",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "上海苏宁宝丽嘉酒店·Cafe Bellagio西餐厅",
+      "id": "72b64f33-1a59-4e44-b9ad-3c1a86fb22a1",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "厚贞日式烤肉",
+      "id": "ebbfcf71-067a-4b29-9024-ff0eecb6db0c",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "弦月窗LUNETTE BY AMANDA",
+      "id": "b9218078-0dcb-40f1-9f86-ca6d075730ab",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "HIGH YAKI modern izakaya & bar 烧肉居酒屋",
+      "id": "f46575c3-df83-4c8b-8e6f-64038cde335d",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "荣小馆",
+      "id": "f42137a2-2503-4f02-9d43-a15ed9ced7e3",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "西堤牛排",
+      "id": "016622d9-1bd3-445b-b668-3ed2c09d7a6b",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "菁禧荟",
+      "id": "3c36f524-3709-492a-9b23-58999a29d93c",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "潘小烧·云南烧烤",
+      "id": "0004d11f-f04d-4193-908f-670924ec3c34",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "鮨匠·割烹料理",
+      "id": "2a36eb1a-dc6e-48b5-bb0a-284584a14554",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "珍宝海鲜JUMBO Seafood",
+      "id": "7da21e7c-b60d-4068-9ff3-fd6d6d182935",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "Da Ivo哒伊沃意大利魔镜餐厅",
+      "id": "8466b1a4-5e29-4979-9fb6-61fad3fb46fe",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "很久以前羊肉串",
+      "id": "acb3d63a-c8a9-441c-9cf5-9c743df94671",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "阿纳迪酒店·秘境西餐厅",
+      "id": "0b852e4e-e4c9-4bf3-a5f1-13e7ca738f36",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "夏朵花园",
+      "id": "4202c8fc-4164-461a-84a7-60be48255594",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "Dal Cuore 达可芮冰淇淋",
+      "id": "4df14ba7-ef29-48b7-9bb2-0f831588ab94",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "小大董·烤鸭",
+      "id": "87a7ae12-0960-4d1a-a887-627677f3107b",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "香木香羊",
+      "id": "35107af6-21e5-4cfc-a2ab-596910cd0988",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "黑门和牛",
+      "id": "38aee91c-9a63-4941-9b32-8c62dd1d9e74",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "福1015",
+      "id": "e59fb376-df8e-4e22-9a7e-32e0ca64b4b6",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "上海苏宁宝丽嘉酒店·LAGO 餐厅酒吧",
+      "id": "6a7a9bf7-650b-4696-9762-633a04a4938c",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "海底捞",
+      "id": "cba5a3eb-14da-4b80-9a93-1a00c0b46482",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "MOTOYA别邸·寿喜锅·活蟹",
+      "id": "05b083b6-8ca4-4891-8d6e-945ac894a8ce",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "荣府宴",
+      "id": "d4968472-9d42-41db-ba0a-731e30ca1e50",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "甬府",
+      "id": "a28b7c43-9c94-4527-85ad-9a31cf9b1262",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "宁国素斋",
+      "id": "30b43de7-45ac-4a43-944c-f90faf2e33e5",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "汤伯府-现熬猪肚鸡火锅",
+      "id": "4e879d02-fbf7-4bcd-a715-0ab88b1f56f8",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "临湖素食·焱格格",
+      "id": "291d2062-9f23-4155-9498-fad057b8acb4",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "慕雲·熟成烧鸟&螃蟹料理",
+      "id": "a093c549-d181-45dd-9263-16bde2fe95a0",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "三利音·浦之舟",
+      "id": "3e2c2bfa-fc71-446d-9e63-94827a8c5125",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "广舟",
+      "id": "693a1671-86e1-4406-b0a5-b7a764ff2c2c",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "Ministry Of Crab",
+      "id": "23242767-00b7-43e7-8dfb-a200c4309817",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "四面泰",
+      "id": "01472411-0e7b-4346-91dd-cc35fe6163a7",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "圈儿潮汕牛肉火锅·夜宵",
+      "id": "e5c4ac4a-8ae4-4060-8a65-a5751103b306",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "Stone Sal 言盐西餐厅",
+      "id": "582dc4d4-fb94-4129-944b-95ed6b27b391",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "福和慧",
+      "id": "8f47824c-7f6d-4bbb-a76b-c60fcc6fcc51",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "那都不是锅",
+      "id": "4454477a-19b5-46ec-bea3-82164b6e723e",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "洋房火锅",
+      "id": "70a372d8-63eb-42c0-a0a2-eeeba78b7782",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "1886德国汽车餐厅",
+      "id": "78bf6ff0-d833-4ed7-9ec7-3df9e6bcc33a",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "润苑·悦椿轩",
+      "id": "9a905f18-1805-4e85-aa85-3d76078821df",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "Le Bistrot de Racine",
+      "id": "bf1703bf-1cbb-4ba0-b4bf-275cbbdd9973",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "高桌牛排馆",
+      "id": "b94d36a0-e1dd-4009-a91f-bd46f03d5db5",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "The Pine 松涧",
+      "id": "a264a71e-5f37-4243-a3b9-90f707b3f42f",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "龍码头•螃蟹王",
+      "id": "9f04133a-b922-4905-b330-b5f1c6bf3dd6",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "Le Comptoir de Pierre Gagnaire",
+      "id": "6ee4671d-21a3-4076-8a2e-28c5f969fc3e",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "鮨青•Omakase",
+      "id": "e85635ee-cb1d-4449-ae96-72e34e8f9c7e",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "鳗重",
+      "id": "2f9d03ad-032f-4a04-bb50-1a7c26f86b60",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "楼上荟馆",
+      "id": "a26faaf2-9346-4777-a5a7-7c7825ab89f0",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "JW酒廊 JW Lounge",
+      "id": "9c0eb31f-3de3-4d90-a8d8-8bc91a2908ad",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "壳里西餐厅Coquille Seafood Bistro",
+      "id": "a331db67-d3ee-4210-871d-fc5b7f634d38",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "22號和牛烧肉",
+      "id": "f93c9b10-c92e-4c29-b865-e1567d00a105",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "LUNEURS月乐诗·法式冰淇淋",
+      "id": "8680b4c8-6e92-46c2-a76e-251888bf55f1",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "三个蒙古大叔羊肉串",
+      "id": "48238f71-30a8-4e8b-835d-2d419037ba89",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "樽宴",
+      "id": "d6cff2ad-7520-4f1c-b69e-cebff829e881",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "地球美食剧场",
+      "id": "258ecaa8-dfa9-4ad7-8d63-d160c7089a60",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "香守·潮汕海鲜港式火锅",
+      "id": "a2827496-490e-4321-a055-896e8381b57d",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "哥哥深夜食堂",
+      "id": "88152ede-d5d6-42fb-9e38-5ad8d6cf496d",
+      "created": false,
+      "active": true
+    },
+    {
+      "name": "黄记大闸蟹专卖店·活蟹·醉蟹",
+      "id": "c7b05c84-6445-4f00-b183-ae14cef6d3d7",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "鮨空海·怀石料理",
+      "id": "caf36bd5-da8c-45a0-9afb-52c947288995",
+      "created": true,
+      "active": true
+    }
+  ],
+  "after_total": 505,
+  "after_active": 476,
+  "finished_at": "2026-09-29T08:06:11.105Z"
+}

@@ -1,0 +1,236 @@
+{
+  "version": "2026-09-29",
+  "scope": "有来源支持的精确名称修正（官网/公开来源及已授权平台快照）；不代表商户认证、全部门店或可比权益确认",
+  "corrections": [
+    {
+      "brand_id": "cba5a3eb-14da-4b80-9a93-1a00c0b46482",
+      "expected_name": "海底捞",
+      "name": "海底捞",
+      "aliases": ["海底捞火锅"],
+      "source_url": "https://www.haidilao.com/about/?luicode=10000011",
+      "evidence": "品牌官网关于海底捞页面使用海底捞火锅门店名称；仅补充堂食名称别名。",
+      "excluded_from_aliases": ["海底捞外送", "海底捞大排档火锅"],
+      "note": "外送和其他业态保留独立平台名称，不将券当作堂食同权益。"
+    },
+    {
+      "brand_id": "d375b35d-36ce-4258-9bce-af116a42e403",
+      "expected_name": "西贝莜面村",
+      "name": "西贝",
+      "aliases": ["西贝莜面村"],
+      "source_url": "https://www.xibei.com.cn/",
+      "evidence": "官网标题为西贝-内蒙古西贝餐饮集团有限公司官网，meta keywords 同时列西贝及西贝莜面村。以西贝作为后续检索词，旧名称作为别名保留。",
+      "excluded_from_aliases": ["莜面村", "西北菜", "面馆"],
+      "note": "不把通用品类词或其他面馆作为品牌别名。"
+    },
+    {
+      "brand_id": "6e99425f-6e16-4247-9e22-4e0a62fbbb66",
+      "expected_name": "巴奴毛肚火锅",
+      "name": "巴奴毛肚火锅",
+      "aliases": ["巴奴"],
+      "source_url": "https://www.banu.cn/",
+      "evidence": "官网同时使用巴奴品牌简称，并在发展历程说明巴奴毛肚火锅名称。",
+      "excluded_from_aliases": [],
+      "note": "仅名称候选修正，保留平台品牌ID；不是抖音商户认证或完整权益核验。"
+    },
+    {
+      "brand_id": "639a8756-49b8-4b14-8a2f-a6452163b4d6",
+      "expected_name": "太二酸菜鱼",
+      "name": "太二酸菜鱼",
+      "aliases": ["太二"],
+      "source_url": "https://www.taier.net/",
+      "evidence": "品牌官网标题及品牌故事使用太二，关于品牌部分使用太二酸菜鱼。",
+      "excluded_from_aliases": [],
+      "note": "仅名称候选修正，保留平台品牌ID；不是抖音商户认证或完整权益核验。"
+    },
+    {
+      "brand_id": "926db11d-22a7-4365-8483-ffcc0457ec85",
+      "expected_name": "小菜园",
+      "name": "小菜园",
+      "aliases": ["小菜园新徽菜"],
+      "source_url": "https://www.xiaocaiyuan.com/cn/about-us/brand-story/",
+      "evidence": "小菜园官网品牌故事说明新徽菜品牌定位；关联平台返回的完整品牌名称，不接受单独新徽菜作为别名。",
+      "excluded_from_aliases": [],
+      "note": "仅名称候选修正，保留平台品牌ID；不是抖音商户认证或完整权益核验。"
+    },
+    {
+      "brand_id": "f256b7fe-42f0-45c5-a3fa-035838129ea4",
+      "expected_name": "林里柠檬茶",
+      "name": "林里柠檬茶",
+      "aliases": ["LINLEE"],
+      "source_url": "https://www.linlee.com.cn/?target=page_2",
+      "evidence": "官网同时使用 LINLEE 与林里柠檬茶名称。",
+      "excluded_from_aliases": [],
+      "note": "仅名称候选修正，保留平台品牌ID；不是抖音商户认证或完整权益核验。"
+    },
+    {
+      "brand_id": "be4a658d-f2e7-47bb-a601-55ad216a4e63",
+      "expected_name": "翠华",
+      "name": "翠华",
+      "aliases": ["翠华餐厅"],
+      "source_url": "https://www.tsuiwah.com/index.php/sc/aboutus/abouttsuiwahholdings",
+      "evidence": "翠华集团官方品牌介绍使用翠华餐厅名称。",
+      "excluded_from_aliases": [],
+      "note": "仅名称候选修正，保留平台品牌ID；不是抖音商户认证或完整权益核验。"
+    },
+    {
+      "brand_id": "72d2a583-4fe4-4c1d-a2a1-97680df0bfa5",
+      "expected_name": "八合里",
+      "name": "八合里",
+      "aliases": ["八合里牛肉火锅"],
+      "source_url": "https://www.newtownplaza.com.hk/zh-hant/%E7%BE%8E%E9%A3%9F/%E5%85%AB%E5%90%88%E9%87%8C%E7%89%9B%E8%82%89%E7%81%AB%E9%8D%8B/",
+      "evidence": "新城市广场官方商户资料以八合里牛肉火锅为商户名，介绍使用八合里简称；仅支持名称关系，不作为上海营业证明。",
+      "excluded_from_aliases": [],
+      "note": "仅名称候选修正，保留平台品牌ID；不是抖音商户认证或完整权益核验。"
+    },
+    {
+      "brand_id": "0be5fe1f-37b1-425a-8362-713147daea59",
+      "expected_name": "DQ冰雪皇后",
+      "name": "DQ冰雪皇后",
+      "aliases": ["DQ冰淇淋"],
+      "source_url": "https://www.cfbgroup.net/zh-cn/news/dq-cake-burgers-afternoon-tea-business",
+      "evidence": "运营集团官方资讯同时使用 DQ冰淇淋、DQ、Dairy Queen 和冰雪皇后。",
+      "excluded_from_aliases": [],
+      "note": "仅品牌名称候选，不作为具体券权益一致、平台账号认证或完整归属核验。"
+    },
+    {
+      "brand_id": "1d87a7ef-49d1-45f8-9db3-ea8559f5f3b4",
+      "expected_name": "绝味鸭脖",
+      "name": "绝味鸭脖",
+      "aliases": ["绝味"],
+      "source_url": "https://www.juewei.cn/app/page/jwd/jwd.html",
+      "evidence": "品牌官网列绝味鸭脖品牌，并以绝味简称叙述门店经营。",
+      "excluded_from_aliases": [],
+      "note": "仅品牌名称候选，不作为具体券权益一致、平台账号认证或完整归属核验。"
+    },
+    {
+      "brand_id": "b6f1d62d-71d7-48bf-b943-6ceefeec042d",
+      "expected_name": "LOKAL By Wagas",
+      "name": "LOKAL By Wagas",
+      "aliases": ["LOKAL"],
+      "source_url": "https://www.wagas.com.cn/member_en.html",
+      "evidence": "Wagas官方会员说明明确列独立姐妹品牌LOKAL；结合已存商场官网LOKAL By Wagas资料确认名称关系。不能把Wagas或BAKER & SPICE本身作为LOKAL别名。",
+      "excluded_from_aliases": ["Wagas", "BAKER & SPICE"],
+      "note": "仅品牌名称候选，不作为具体券权益一致、平台账号认证或完整归属核验。"
+    },
+    {
+      "brand_id": "526f7a89-af7d-422c-8248-fb4b4f24cd51",
+      "expected_name": "幻师",
+      "name": "幻师",
+      "aliases": ["COMMUNE"],
+      "source_url": "https://www.jiwusiwei.com/",
+      "evidence": "运营集团官网列COMMUNE幻师名称；此处仅品牌层名称对应，普通门店与臻选门店权益不得自动合并。",
+      "excluded_from_aliases": [],
+      "note": "仅品牌名称候选，不作为具体券权益一致、平台账号认证或完整归属核验。"
+    },
+    {
+      "brand_id": "edb30cbb-e004-4451-bedf-4aea33645c04",
+      "expected_name": "MANNER COFFEE",
+      "name": "MANNER",
+      "aliases": ["MANNER COFFEE"],
+      "source_url": "https://cdn.wearemanner.com/",
+      "evidence": "官方品牌页面同时使用MANNER和MANNER COFFEE。采用MANNER作为后续主检索名称，保留原名称及既有别名；未采用搜索中的非官方加盟网站。",
+      "excluded_from_aliases": [],
+      "note": "来源支持名称关系，平台ID和券权益仍需独立核验。"
+    },
+    {
+      "brand_id": "e40f3545-5a0f-4f0a-8169-fa0e22ef5406",
+      "expected_name": "和府捞面",
+      "name": "和府捞面",
+      "aliases": ["和府"],
+      "source_url": "https://www.hefumian.com/store-lm.html",
+      "evidence": "品牌官方页面同时使用和府及和府捞面；仅精确名称候选，不合并其他带府或面字的商家。",
+      "excluded_from_aliases": [],
+      "note": "来源支持名称关系，平台ID和券权益仍需独立核验。"
+    },
+    {
+      "brand_id": "64857e76-e0ff-4a87-b40c-7fef34a58fa8",
+      "expected_name": "Latina巴西牛排馆",
+      "name": "Latina巴西牛排馆",
+      "aliases": ["拉蒂娜"],
+      "source_url": "https://www.redhotoffers.hsbc.com.hk/media/83160120/contact_YRO2025_batch1_7_Latina-Brazilian-Steakhouse_SC.pdf",
+      "evidence": "汇丰官方合作商户优惠资料以拉蒂娜巴西牛排馆为中文商户名，文件对应Latina Brazilian Steakhouse；仅名称关系，不作为上海实时营业证明。",
+      "excluded_from_aliases": [],
+      "note": "来源支持名称关系，平台ID和券权益仍需独立核验。"
+    },
+    {
+      "brand_id": "befa3682-f66e-471d-af69-5056fa3da90a",
+      "expected_name": "柠季手打柠檬茶",
+      "name": "柠季手打柠檬茶",
+      "aliases": ["柠季·手打柠檬", "柠季"],
+      "source_url": "https://ningjitea.com/news.html",
+      "evidence": "官方柠季网站标题明确手打柠檬茶品牌定位，结合平台实际返回柠季·手打柠檬做精确名称候选；不接纳其他柠檬茶品牌。",
+      "excluded_from_aliases": [],
+      "note": "来源支持名称关系，平台ID和券权益仍需独立核验。"
+    },
+    {
+      "brand_id": "4044ac68-e818-46c2-a81c-8ce5c151ddda",
+      "expected_name": "Tuna Maki寿司",
+      "name": "Tuna Maki寿司",
+      "aliases": ["TUNAMAKI"],
+      "source_url": "https://www.shangchan.cn/brands/show-6469.html",
+      "evidence": "已保存选品快照的平台品牌名、品牌ID、券名、门店名及地址共同支持精确别名；见 docs/验证记录/2026-09-29-品牌别名证据.json。",
+      "excluded_from_aliases": [],
+      "note": "只对新采集使用配置，不改历史身份；不推断品牌全部门店/法人主体一致。"
+    },
+    {
+      "brand_id": "90526e0c-22c1-4080-80f4-1c24de42197b",
+      "expected_name": "一绪寿喜烧",
+      "name": "一绪寿喜烧",
+      "aliases": ["一绪に寿喜烧"],
+      "source_url": "https://eos.douyin.com/livesite/commission/goods/list",
+      "evidence": "已保存选品快照的平台品牌名、品牌ID、券名、门店名及地址共同支持精确别名；见 docs/验证记录/2026-09-29-品牌别名证据.json。",
+      "excluded_from_aliases": ["一绪寿喜烧自助"],
+      "note": "只对新采集使用配置，不改历史身份；不推断品牌全部门店/法人主体一致。"
+    },
+    {
+      "brand_id": "a8ab5417-b1c7-4d4c-b413-4ecf5f4c5899",
+      "expected_name": "太琼",
+      "name": "太琼",
+      "aliases": ["太琼糟粕醋"],
+      "source_url": "https://www.amap.com/place/B0J21UBEK1",
+      "evidence": "已保存选品快照的平台品牌名、品牌ID、券名、门店名及地址共同支持精确别名；见 docs/验证记录/2026-09-29-品牌别名证据.json。",
+      "excluded_from_aliases": [],
+      "note": "只对新采集使用配置，不改历史身份；不推断品牌全部门店/法人主体一致。"
+    },
+    {
+      "brand_id": "7b425888-9061-44ba-8af2-a803ab4cd22a",
+      "expected_name": "张亮麻辣烫",
+      "name": "张亮麻辣烫",
+      "aliases": ["张亮麻辣烫 我们不一样!"],
+      "source_url": "https://cbgc.scol.com.cn/home/2292418",
+      "evidence": "已保存选品快照的平台品牌名、品牌ID、券名、门店名及地址共同支持精确别名；见 docs/验证记录/2026-09-29-品牌别名证据.json。",
+      "excluded_from_aliases": [],
+      "note": "只对新采集使用配置，不改历史身份；不推断品牌全部门店/法人主体一致。"
+    },
+    {
+      "brand_id": "97404502-b9cd-4bb5-aa10-f5ec49fbfea8",
+      "expected_name": "无花果与橄榄",
+      "name": "无花果与橄榄",
+      "aliases": ["Fig＆Olive无花果与橄榄"],
+      "source_url": "https://www.shanghai.gov.cn/nw17239/20260520/5cfb6e3c17e848baa028579e5611d3b7.html",
+      "evidence": "已保存选品快照的平台品牌名、品牌ID、券名、门店名及地址共同支持精确别名；见 docs/验证记录/2026-09-29-品牌别名证据.json。",
+      "excluded_from_aliases": [],
+      "note": "只对新采集使用配置，不改历史身份；不推断品牌全部门店/法人主体一致。"
+    },
+    {
+      "brand_id": "97cecf1f-0f6b-4826-817e-6d8784cfc0f4",
+      "expected_name": "江边城外烤全鱼",
+      "name": "江边城外烤全鱼",
+      "aliases": ["江边城外"],
+      "source_url": "https://weibo.com/jbcw",
+      "evidence": "已保存选品快照的平台品牌名、品牌ID、券名、门店名及地址共同支持精确别名；见 docs/验证记录/2026-09-29-品牌别名证据.json。",
+      "excluded_from_aliases": [],
+      "note": "只对新采集使用配置，不改历史身份；不推断品牌全部门店/法人主体一致。"
+    },
+    {
+      "brand_id": "b3bdc343-0592-4dd6-98d8-971e0e3024bb",
+      "expected_name": "立方铁",
+      "name": "立方铁",
+      "aliases": ["立方铁@铁板烧"],
+      "source_url": "https://eos.douyin.com/livesite/commission/goods/list",
+      "evidence": "已保存选品快照的平台品牌名、品牌ID、券名、门店名及地址共同支持精确别名；见 docs/验证记录/2026-09-29-品牌别名证据.json。",
+      "excluded_from_aliases": [],
+      "note": "只对新采集使用配置，不改历史身份；不推断品牌全部门店/法人主体一致。"
+    }
+  ]
+}

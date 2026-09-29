@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-09-29T03:46:17.582Z",
+  "status": {
+    "enabled": true,
+    "pause_reason": null,
+    "concurrency": 1,
+    "interval_ms": [1000, 2000]
+  },
+  "audit": {
+    "generated_at": "2026-09-29T03:46:12.997Z",
+    "version": "numeric-audit-v1",
+    "counts": {
+      "coupons": 3103,
+      "speed": 1022,
+      "acceleration": 18,
+      "positive_acceleration": 13,
+      "baseline": 0,
+      "lift": 0
+    },
+    "passed": true,
+    "errors": [],
+    "caveat": "仅独立复算已发布数字，不验证平台统计定义、品牌归属或完整权益；未知指标不算验收通过。"
+  }
+}

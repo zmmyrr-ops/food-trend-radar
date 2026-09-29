@@ -1,0 +1,29 @@
+[Unit]
+Description=Food Trend Radar
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=food-radar
+Group=food-radar
+WorkingDirectory=/opt/food-trend-radar/app
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=3011
+Environment=WEB_ORIGIN=https://ruming.top
+Environment=DATA_DIR=/opt/food-trend-radar/data/postgres
+Environment=PATH=/opt/food-trend-radar/node/bin:/usr/bin:/bin
+ExecStart=/opt/food-trend-radar/node/bin/node apps/api/dist/server.js
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=45
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/food-trend-radar/data
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,1088 @@
+{
+  "created": 216,
+  "existing": 0,
+  "reviewed": 111,
+  "evidence": 231,
+  "records": [
+    {
+      "name": "北海宴",
+      "id": "2d71193b-cc69-40da-88ed-826d710fa25b",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "佬鲜纪",
+      "id": "2efe662c-2e09-4238-8735-fb2c40c788e1",
+      "research_status": "conflicting_directory"
+    },
+    {
+      "name": "蔡澜点心",
+      "id": "5d1b79b6-66b6-4c46-a5ad-b1f4ef68a849",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "平成屋",
+      "id": "5760d87e-9c84-45d0-be06-9d8de58807c4",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "悦湘遇",
+      "id": "3ac85655-2b07-4e28-98bf-ad52a1e96a42",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "火辣关爷",
+      "id": "b20a8703-7b62-4e4a-9932-fbdb678295d4",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "贴芯贴忆",
+      "id": "8b85a77c-e6fe-448e-adf8-8dbef593361e",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "瑞幸咖啡",
+      "id": "d2b059f3-825e-420e-8d9f-1e36ca7a1c6c",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "黄油&渔",
+      "id": "2a9088f3-5dc0-464b-a5fc-4d1aaf3dbc31",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "Lavazza",
+      "id": "ec0b3e54-14c0-4256-ad68-c1e4a3bf3f63",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "Gavo巧克力",
+      "id": "e33241cf-ee01-46dc-9e99-fccac4314136",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "粤状元",
+      "id": "6222dc76-8350-4ae9-99f1-7d5989672716",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "楚汉传奇",
+      "id": "5de0b05b-fc45-4467-871a-1771a9532a8b",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "間道面",
+      "id": "ba2c9244-cac8-4143-a5bd-0dddbe8e36b8",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "知鱼之味",
+      "id": "fd65f369-3d13-400a-a758-a3cead4c1af7",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "赵记羊肉馆",
+      "id": "10e473bf-7ddb-407a-ab07-826f2bcecff5",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "沪上蒸嗨",
+      "id": "88358de7-4458-4ed6-a644-e0dea745b51d",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "金洪兴",
+      "id": "ab9f548d-8388-4d75-903a-e08e05a70751",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "满巍明",
+      "id": "bb8ef578-2aac-4326-8480-d53e12fc4d18",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "新良记卤粉王",
+      "id": "2a42c292-6216-4a0e-938a-749ea3124ff8",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "张亮麻辣烫",
+      "id": "7b425888-9061-44ba-8af2-a803ab4cd22a",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "苏小柳",
+      "id": "8c564e75-d28a-4b5a-a181-496607a409fc",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "云阿蛮米线",
+      "id": "73b01d94-f6cc-4366-86e9-47a137c35cfb",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "呛头家",
+      "id": "414b454f-3645-46f6-bbee-242d1bc983e0",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "翠华",
+      "id": "be4a658d-f2e7-47bb-a601-55ad216a4e63",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "南里山房",
+      "id": "9eef911f-3fa5-409e-9ea0-429d9f9b24ce",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "eat n work",
+      "id": "bf8ca506-edb4-40fb-980b-9de90088f3e1",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "啊撒啊撒",
+      "id": "a355f773-162c-4f69-b90d-790beb1fa451",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "喜茶",
+      "id": "31af484e-6d39-42c2-9e40-ad1c689b9479",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "费大厨",
+      "id": "bc4229ca-4f94-4340-bb3d-a1510b7307d6",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "3号仓库",
+      "id": "54eb47fe-af62-4029-b05e-d296cc03a62a",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "阳坊涮肉",
+      "id": "93900ea9-fa8d-4f9d-a650-19b399bb10a8",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "星巴克",
+      "id": "7dfd3138-64b5-42a5-929f-de5ec823948a",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "UP矢量咖啡",
+      "id": "e62b09a7-146c-452f-aa3b-3ef96f5a8c93",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "富天添牛腩煲火锅",
+      "id": "433facea-23b0-4500-aa64-e372960a8efc",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "兴蜀府",
+      "id": "5f1bb5d7-97a9-4c94-bbe0-8bb524eb7b62",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "毕真烤肉店",
+      "id": "55c4bd4c-6f15-428c-8e76-ef0b54e8d0c0",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "左庭右院",
+      "id": "1432aa1e-8d8e-4976-9c87-58e9eb2a0b17",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "哲平鳗满",
+      "id": "c2228103-0fc4-4365-ba66-715bafb0daf1",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "樾鲜食馆",
+      "id": "28167cc8-78d2-4db8-b440-da9e2c693ece",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "缘味先",
+      "id": "86807bde-c1d5-482d-aa5c-5ca24e9c4184",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "圆苑",
+      "id": "f15c07d7-8850-45c5-ab14-a58b53525c5e",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "雨松",
+      "id": "f488191c-a3d3-40e3-92a1-8b8b45ef5b59",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "鱼酷",
+      "id": "137bd90d-7c79-41fe-8496-7aa74b7abc80",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "耶里夏丽",
+      "id": "f2270503-85ef-42c1-bdd1-356bf75dee7a",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "巡湘记",
+      "id": "72103797-0e55-4d8f-901f-3b2bcfa25160",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "小菜园",
+      "id": "926db11d-22a7-4365-8483-ffcc0457ec85",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "湘辣辣",
+      "id": "996b33ac-0b19-46f4-a808-ba2e8c6a7f78",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "喜顶上品",
+      "id": "32f76eb4-2575-4cdc-8262-ad4e2f747ccb",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "萨莉亚",
+      "id": "722aff01-cdfe-41e6-bf55-b2a5fd76f189",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "青川",
+      "id": "96781b61-8706-4dcf-85e7-bc486e370499",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "浦江晓月",
+      "id": "ba3bd686-f9db-4f9d-94ce-035387c7ae77",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "璞徽",
+      "id": "0640781f-562c-45c7-997c-007ca43f07ca",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "柠季手打柠檬茶",
+      "id": "befa3682-f66e-471d-af69-5056fa3da90a",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "米村拌饭",
+      "id": "b0044842-52f7-4efc-b3c2-e743a3945918",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "麻六记",
+      "id": "64881565-2295-4205-b685-7124a2378967",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "临家",
+      "id": "f3895cec-605c-4b14-a7ab-1be340ec245d",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "辣堂赣",
+      "id": "6ee99366-ca01-451d-aefc-b9a1d3980ac1",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "锦之楼",
+      "id": "5c73c3e2-536a-402d-a78e-489f8b25a313",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "金匠寿司",
+      "id": "0231a892-027c-4c0f-a002-20d4a5c69997",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "好利来",
+      "id": "3cbedf85-9551-46b0-a139-3f30b2be3113",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "汉堡王",
+      "id": "d8cf92b7-c614-4de7-94ee-b95daf9e0c35",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "哥哥深夜食堂",
+      "id": "88152ede-d5d6-42fb-9e38-5ad8d6cf496d",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "港丽餐厅",
+      "id": "1bd56a37-5735-4528-88cf-914149865a2d",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "俄式厨房",
+      "id": "b4c8c633-e71d-492b-bbb5-ea351813ac9d",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "点都德",
+      "id": "749a78f7-f5ea-428d-b51e-5b4b71b65d96",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "不二君",
+      "id": "528f12ad-26a2-48da-9074-b3f669423c33",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "霸王茶姬",
+      "id": "7429be9b-ff2f-4f1d-b533-b7a9c29aa107",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "安又胖",
+      "id": "5d7d9dcf-2c21-4e0b-b3da-96e3d13f3ba1",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "Yes 啫啫",
+      "id": "46d859d9-f797-428d-8b61-3215d99d1df1",
+      "research_status": "conflicting_directory"
+    },
+    {
+      "name": "失重餐厅",
+      "id": "0958f4c2-33a1-4473-a24e-04a5c90857f3",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "麦当劳",
+      "id": "3104e3b9-d1d7-4fda-bf9f-cbe55cf6103a",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "LOKAL By Wagas",
+      "id": "b6f1d62d-71d7-48bf-b943-6ceefeec042d",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "本就茶饮",
+      "id": "40367f61-5576-46bf-a793-89ba64b6b8a5",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "阿里疆",
+      "id": "979abb12-ecd9-4187-8ecb-504584feba15",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "粵玺荟",
+      "id": "0e56b356-51be-41ba-ac48-ce385259b170",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "富罟",
+      "id": "b5cb7c63-d7df-4100-9c60-dd1b223f1256",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "鮨麗・笑鱼&鳥龍・笑鱼",
+      "id": "8d7f9a0e-5d03-4cbc-a85b-fdfac487ae55",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "银平",
+      "id": "35ea4170-5508-4192-8836-15e243f1f7c9",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "白安其",
+      "id": "568d4e48-e5eb-4b1e-9fe6-de2234c487f5",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "东莱馋房",
+      "id": "a0bcc3b5-e35f-43b3-b500-8235488f4020",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "娜娜 打抛小馆",
+      "id": "d8e87861-882f-4302-844b-c222011a638b",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "香溢焙客",
+      "id": "643267ac-e31a-410d-80f1-5bf1c1fe76f1",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "gaga",
+      "id": "d3b70762-aac4-440b-83ec-191531d87f76",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "裕莲茶楼",
+      "id": "b64e03e3-900b-4687-a740-6d72fe972eea",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "胡子大厨",
+      "id": "e939aff4-abec-4bd5-a11a-fa4d443b570a",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "初唤",
+      "id": "2873b8a5-a558-457c-b235-146a22272360",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "藕巷·藕汤饭",
+      "id": "f6ab0a0b-650f-4e69-980d-6cb6ee0e7829",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "纹兵卫",
+      "id": "4e9615c3-ca0c-45d3-944c-f834fa1b7205",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "大肥羅",
+      "id": "910c95a1-f461-44af-9eb9-10b443ed668d",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "大发越南粉",
+      "id": "8cc60560-5332-4756-8477-be0f342fd9ec",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "哒优乃",
+      "id": "8c3e472d-8fed-4a8a-9658-545357640b19",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "MANNER COFFEE",
+      "id": "edb30cbb-e004-4451-bedf-4aea33645c04",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "屯京拉面",
+      "id": "705e7c14-341d-445e-9c12-af2512fe7946",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "馍都",
+      "id": "b198f764-3638-4313-97cd-32840a063c00",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "喜家德",
+      "id": "fe1efd80-6cae-4984-ac76-9dc7450c0af6",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "幻师",
+      "id": "526f7a89-af7d-422c-8248-fb4b4f24cd51",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "派悦坊",
+      "id": "2865f7ff-70bc-4816-bf6e-1d9062c3159d",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "麦记牛奶公司",
+      "id": "f9543ceb-b725-4c5c-b8e3-041be32b99e8",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "鲜芋仙",
+      "id": "6bf83e6e-cfb4-44d5-a78a-8a8998046355",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "糖纸",
+      "id": "98fd0073-40d2-4d20-9b5c-e10a238853ad",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "野人先生",
+      "id": "d6ac5afc-5b1b-4e0e-86e6-1a7c084178d5",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "阿狗手作",
+      "id": "3d80e00f-9653-4d9c-a7eb-75a5b845d3f3",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "满记甜品",
+      "id": "97d83b5c-147f-4a40-960b-e70e439cdac2",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "兴烨汇",
+      "id": "49cf995f-038d-4e1e-adcb-97bc3d0d82b6",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "芭蕉扇",
+      "id": "ec331d23-95e3-4183-8daa-f214e3d4ce14",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "云潇潇",
+      "id": "49b0a2cd-9945-435b-95f5-357a97138ea7",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "尚乐泰食",
+      "id": "dd34ae0f-d28f-4651-95d4-977e54c383c7",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "胖哥俩",
+      "id": "51ac1b7e-14d9-4581-b241-7488990ebe1e",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "江边城外烤全鱼",
+      "id": "97cecf1f-0f6b-4826-817e-6d8784cfc0f4",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "山野板札",
+      "id": "ad40fdb8-ce3d-42d9-a3f4-e3db4bcc1191",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "新发现",
+      "id": "cd094e1e-8ec4-4b7e-bd5e-4b1a53a78de0",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "杨有喜",
+      "id": "15741665-be6f-4719-b1ef-2a09f8d9dad9",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "王奋斗",
+      "id": "bdd9b5dc-9707-4ffa-9baf-8f7f74b9959c",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "立方铁",
+      "id": "b3bdc343-0592-4dd6-98d8-971e0e3024bb",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "菌彩",
+      "id": "3ab7f391-1b63-4542-8f0b-61f7fefd0eb7",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "披头士",
+      "id": "82cbb9b7-c0d5-4ea9-ac04-7fba67191004",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "俄士厨房",
+      "id": "90e8698d-3b61-4e20-85c3-95e007de248b",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "另茶",
+      "id": "e413012a-44cb-4be4-a6f7-248dac57070e",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "塔哈尔",
+      "id": "669cacad-5c6c-42ba-97ce-5c2147132d0e",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "旺顺融",
+      "id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "桂满陇",
+      "id": "66d3c859-6b05-4d98-8f29-76d6c623f8ff",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "蛙来哒",
+      "id": "b29e948a-4a83-40a9-be98-d089a95d5393",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "上海人家",
+      "id": "36ff1d79-4025-4130-b6b6-e321c4c691a1",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "顺风港湾",
+      "id": "f6b6c973-08b0-4d28-9e29-42190c1fc496",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "八合里",
+      "id": "72d2a583-4fe4-4c1d-a2a1-97680df0bfa5",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "太琼",
+      "id": "a8ab5417-b1c7-4d4c-b413-4ecf5f4c5899",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "南京大牌档",
+      "id": "c7534d8d-27be-4b53-8438-205197657e78",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "七欣天",
+      "id": "1a10c172-6565-4a87-828d-8d4885f8cf45",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "海底捞",
+      "id": "cba5a3eb-14da-4b80-9a93-1a00c0b46482",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "老滇山寨",
+      "id": "e63ac1c6-8ac1-4d92-9188-5d67d2be96de",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "鱼粉王",
+      "id": "4851ef6c-4fda-4d3c-b2a9-69dab4509750",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "CoCo都可",
+      "id": "cb41c6d8-eee8-4fd0-927e-7a371530e0bf",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "山崎面包",
+      "id": "aef9adef-7518-479b-9010-f5e4a6b3c04d",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "花花卷卷",
+      "id": "f89695a5-747e-48eb-8b87-288f6d17011a",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "匡朵",
+      "id": "02bff3f6-02a0-4277-9041-4962ab406538",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "金饭碗",
+      "id": "2fef6548-0181-447b-a92e-771b925c0394",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "茉酸奶",
+      "id": "5db692f3-cf7e-46c4-bc54-5bd6b18bb84f",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "唐饼家",
+      "id": "81004c3d-7f30-40b8-8252-4c64af4489c1",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "朴下隆九",
+      "id": "b7bcf901-6a03-4fe6-b93d-b70cafd2bd3d",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "古早万丹",
+      "id": "af355aa9-68f5-4ccd-8541-48b342eae3be",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "周黑鸭",
+      "id": "69e47852-fe61-450b-bb3b-489da3fd8d17",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "黄阿饼",
+      "id": "12c3ac2f-b2f7-45a3-90fd-684759ca0728",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "佳家汤包",
+      "id": "e3025014-a88b-4058-a569-56185291c510",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "福和面馆",
+      "id": "3bc287e2-fbee-4d03-803d-456c3c09517a",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "隔壁妈妈",
+      "id": "b3495810-057e-4674-9c2e-cc1ddd019d11",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "望丘山",
+      "id": "4a34f7f7-b10e-4eb2-a55a-e8445d4f3073",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "加个面",
+      "id": "82ad569a-9d0f-43ec-9081-c64db0626102",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "鲜得来",
+      "id": "311bd6f7-6435-417f-8f31-c3e20ac55ab0",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "一人烧",
+      "id": "594331a1-fb63-4516-8bb6-680e46a530cd",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "古陕情",
+      "id": "f76a16a1-9ee6-408a-9780-b3ca1ea2e2af",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "卤山川",
+      "id": "1d6a1796-82d0-4ee2-a0e0-eda316abbab5",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "沪食光",
+      "id": "55eecb61-68cd-4b3b-9e6d-0e6dc931bbb3",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "舒味老友",
+      "id": "60d86f86-854b-432c-bbfd-a3b334c5e51a",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "糕阿叔",
+      "id": "6b097cfc-c4db-4448-b4c3-e6bdec1d650a",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "孤独得寿喜烧",
+      "id": "0ab23a24-a452-4a3a-bfe0-dbb6cfe03d34",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "顾二叔",
+      "id": "a7238eee-9e5e-46ce-928e-8e8e68b81eb6",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "阿亮宁波菜",
+      "id": "f65a7859-3b12-40a2-b845-2e1185ba3859",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "茶米有言",
+      "id": "3e3f46f5-5e21-4b14-96a9-a319824b94a2",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "鱼鳍食堂",
+      "id": "dc248eaf-f052-407d-bd05-0330b54a5e8c",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "七八冷面",
+      "id": "d930dae5-2e7d-4a3e-8aec-d492e413489a",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "汕心",
+      "id": "7b608f78-e2c5-42ae-a083-f2ebea37d1a1",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "町田商店",
+      "id": "0a2139db-f54b-4c74-aa2f-2b7b0f574325",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "新秀",
+      "id": "3a5de055-b3cd-45c9-a837-fcdf61c83e08",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "井梅",
+      "id": "a1fb86ed-1fc1-4b7d-9837-d95570d5f6c8",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "山苗苗",
+      "id": "8bab3c99-b7c1-4c8f-88c1-466b7849b43f",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "野云雀",
+      "id": "b8448d0c-1357-4b40-8a1c-2e3202295ac2",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "大米先生",
+      "id": "cdb0fc18-918a-42ce-9d8d-8743dc645a72",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "大壶春",
+      "id": "d0c7fbc6-76b1-4b88-a475-a1d4c1118f27",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "罗宋千礼",
+      "id": "3ab46555-2a55-40b1-a898-f7f71109cabf",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "读酥世家",
+      "id": "03a2cbca-5a0f-4a90-b415-e969920ba3d8",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "鹅匠",
+      "id": "22b56d17-c474-4c5f-8d13-fd6292b92c00",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "精悦蓉",
+      "id": "0423fb8e-9264-46fc-8f2b-a9474038b1f1",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "梧桐姥姥",
+      "id": "227e410f-3c98-486f-8193-8bc521f22cd6",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "申什一杯",
+      "id": "11e9e8fe-ac30-404b-8f73-38b64734deff",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "乐乐茶",
+      "id": "ec19a088-8b38-48f3-87f2-3527b967e453",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "林里柠檬茶",
+      "id": "f256b7fe-42f0-45c5-a3fa-035838129ea4",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "本尼黄金烤鸡",
+      "id": "ebc1e279-7206-46e9-82e4-7012b879984e",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "花博食堂",
+      "id": "7a1fd64f-bef3-48c6-8b4f-01f85035cd73",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "赫生活咖啡店",
+      "id": "6e9f5cb9-ffab-4c45-a5fd-9653f2c4b1b8",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "小Q饭堂",
+      "id": "bfe9bc1a-3f9e-43b3-a10e-1e5857942941",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "智面局",
+      "id": "79be906a-dda9-4f70-a32f-ae3f725e9770",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "南粤小厨",
+      "id": "7ec7ac7c-494c-4403-b7e4-40e08442289e",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "有方一杯",
+      "id": "7e00f1d1-94b6-484c-b250-85548150ef3d",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "邵氏茶铺",
+      "id": "194139c6-6d40-401b-9c3c-1884bfc1a0f5",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "食其家",
+      "id": "2a18d092-090b-44dd-8808-29cdaefa0f51",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "小莳煮物",
+      "id": "1603b4f9-a100-4c31-8f1f-535457ca0996",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "比星咖啡",
+      "id": "a850ec1d-6bc8-4f60-8cf7-58f100990597",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "赛百味",
+      "id": "9db0e84c-142a-453c-a639-25780adc132f",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "白茶金库",
+      "id": "9b37f363-d160-4769-ad83-7e1b5706a1ca",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "颜无界",
+      "id": "8b9e64b4-1ab6-4fc4-97c1-71406ceacb1a",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "海鲜阁",
+      "id": "2271b0ae-1793-49ef-80bd-856f016fb4ae",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "南粤点心专门店",
+      "id": "52d427f4-033f-43c6-b665-c067478bfb0c",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "漠漠家",
+      "id": "97a67dad-a605-463a-ad76-d46df648443f",
+      "research_status": "directory_checked"
+    },
+    {
+      "name": "Another Mountain",
+      "id": "e5236c75-adb1-4e07-968c-d81fa4718e31",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Davenport Cafe",
+      "id": "060cb74b-ffae-461c-b078-12394fa2554e",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "OR.SO Coffee Lab & Bar",
+      "id": "b8342030-1c39-4010-a417-d28fdf4ccf67",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Coffee Date",
+      "id": "0e0acfe1-9862-4895-9e98-f687687d2028",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Nod Cafe",
+      "id": "3281cdcb-9c05-40e8-9f7f-7a0da134acbc",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Tuan bakery+cafe",
+      "id": "87c54ee7-ad36-49be-9b6e-0793e71d2ed9",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Liu Coffee",
+      "id": "c046e55a-01a7-430f-8680-2636631b9752",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "The Second Coffee Brewers",
+      "id": "1eba625b-d48b-4026-9ebc-9220570fb81a",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Bird Water Tower",
+      "id": "c8e357ce-f79f-49b7-9e0c-fef640311880",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Xiao Ban Coffee",
+      "id": "48734998-be5c-431e-a322-1fc710da9ed6",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Cafe Le Bon Temps",
+      "id": "0dd3a92d-5921-40bf-a335-b87f215e4b6e",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "One Step Garden",
+      "id": "fc5e920c-e49f-4fa4-88ce-b6a6ef6be108",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Yuan Dang Cafe",
+      "id": "7d6b1150-d761-4ddf-80fe-75a9f0f9e674",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "O_S Cafe",
+      "id": "52117486-bab0-4b43-be4e-e07cd62809d6",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Neighborhood Coffee & Dessert Bar",
+      "id": "efb68ec9-c24e-42a5-8552-c27ac70eeab0",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Yes Coffee",
+      "id": "44d45a5c-36de-4bc1-8cf6-9e8d72f85246",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Ennook Coffee",
+      "id": "ecbf036f-ea0e-4e1f-8e13-2242460861f1",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Keran Danqing",
+      "id": "59e20f33-7937-497f-816b-b3302b61a1ab",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Huanxi Xiaoyuan",
+      "id": "5ceab92f-226a-41a3-86d1-790e5401626a",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Hula",
+      "id": "dcde0474-e04d-4fd4-8e97-7bc13113c64a",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Millions Coffee",
+      "id": "b65aa78f-3005-4c14-9224-0d523638098f",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Meraki Cafe",
+      "id": "a015c0b2-3939-40ff-9ce6-d3d5398ec32d",
+      "research_status": "historical_evidence_only"
+    }
+  ]
+}

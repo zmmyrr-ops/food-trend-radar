@@ -1,0 +1,147 @@
+{
+  "checked_at": "2026-09-29T05:55:59.708Z",
+  "failed_brand": "鱼鳍食堂",
+  "failed_cursor": "96",
+  "single_page_recheck": {
+    "http": 200,
+    "status_code": 0,
+    "count": 12
+  },
+  "status": {
+    "id": 1,
+    "enabled": true,
+    "pause_reason": null,
+    "worker_active": true,
+    "request_pending": false,
+    "credential_configured": true,
+    "schedule": "每日 00:00 / 12:00（上海）",
+    "concurrency": 1,
+    "interval_ms": [1000, 2000],
+    "missing_sources": [
+      "月售速度历史与统计口径",
+      "平台指数",
+      "环境适配与节假日核销条件",
+      "规则结构化与全部适用门店核验"
+    ],
+    "stage": "券快照、月售热度与天气背景",
+    "query_scope": "上海 · 美食 · 不限直播/短视频"
+  },
+  "completed": 304,
+  "pending": [
+    {
+      "brand_id": "b65aa78f-3005-4c14-9224-0d523638098f",
+      "name": "Millions Coffee",
+      "state": "partial",
+      "pages": 4,
+      "error_code": "NETWORK_ERROR",
+      "retries": 2,
+      "retry_at": "2026-09-29T00:40:12.532Z",
+      "comparison_status": null,
+      "completed_at": null,
+      "previous_run_id": null,
+      "recalled": 38,
+      "matched": 0
+    },
+    {
+      "brand_id": "2a9088f3-5dc0-464b-a5fc-4d1aaf3dbc31",
+      "name": "黄油&渔",
+      "state": "queued",
+      "pages": 6,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": null,
+      "completed_at": null,
+      "previous_run_id": null,
+      "recalled": 64,
+      "matched": 0
+    },
+    {
+      "brand_id": "12c3ac2f-b2f7-45a3-90fd-684759ca0728",
+      "name": "黄阿饼",
+      "state": "queued",
+      "pages": 0,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": null,
+      "completed_at": null,
+      "previous_run_id": null,
+      "recalled": 0,
+      "matched": 0
+    },
+    {
+      "brand_id": "5d1b80f2-495f-4917-860b-7814e0d1c6c7",
+      "name": "黔香阁",
+      "state": "queued",
+      "pages": 0,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": null,
+      "completed_at": null,
+      "previous_run_id": null,
+      "recalled": 0,
+      "matched": 0
+    }
+  ],
+  "recent_requests": [
+    {
+      "brand": "麻六记",
+      "cursor": "0",
+      "kind": "selection",
+      "outcome": "OK",
+      "gap_ms": 1370
+    },
+    {
+      "brand": "黄油&渔",
+      "cursor": "0",
+      "kind": "selection",
+      "outcome": "OK",
+      "gap_ms": 1273
+    },
+    {
+      "brand": "黄油&渔",
+      "cursor": "12",
+      "kind": "selection",
+      "outcome": "OK",
+      "gap_ms": 1907
+    },
+    {
+      "brand": "黄油&渔",
+      "cursor": "24",
+      "kind": "selection",
+      "outcome": "OK",
+      "gap_ms": 1272
+    },
+    {
+      "brand": "比星咖啡",
+      "cursor": "1774481850376212",
+      "kind": "commodity",
+      "outcome": "OK",
+      "gap_ms": 1857
+    },
+    {
+      "brand": "黄油&渔",
+      "cursor": "36",
+      "kind": "selection",
+      "outcome": "OK",
+      "gap_ms": 1379
+    },
+    {
+      "brand": "黄油&渔",
+      "cursor": "48",
+      "kind": "selection",
+      "outcome": "OK",
+      "gap_ms": 2479
+    },
+    {
+      "brand": "黄油&渔",
+      "cursor": "60",
+      "kind": "selection",
+      "outcome": "OK",
+      "gap_ms": 1644
+    }
+  ],
+  "limitation": "历史异常响应未保留，无法确定当时业务或结构异常原因；恢复成功不代表长期稳定验收通过。"
+}

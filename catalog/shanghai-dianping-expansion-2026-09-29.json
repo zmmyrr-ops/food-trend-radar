@@ -1,0 +1,3265 @@
+{
+  "batch": "shanghai-dianping-expansion-2026-09-29",
+  "observed_at": "2026-09-29T08:06:00.951496+00:00",
+  "coverage": "11 pages with shops; page 12 empty/unconfirmed. Not all Shanghai brands.",
+  "brands": [
+    {
+      "name": "泰廊餐厅Thai Gallery",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["泰廊餐厅Thai Gallery"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k3ZbV7SZiJdS33o8",
+      "evidence": [
+        {
+          "source_title": "泰廊餐厅Thai Gallery",
+          "url": "https://www.dianping.com/shop/k3ZbV7SZiJdS33o8",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Professor Lee",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["Professor Lee"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G7lZQSVUguP43EIT",
+      "evidence": [
+        {
+          "source_title": "Professor Lee(K11艺术中心店)",
+          "url": "https://www.dianping.com/shop/G7lZQSVUguP43EIT",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "青鹤谷韩国料理",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["青鹤谷韩国料理"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G8vQ1zgGBMlcfSli",
+      "evidence": [
+        {
+          "source_title": "青鹤谷韩国料理(总店)",
+          "url": "https://www.dianping.com/shop/G8vQ1zgGBMlcfSli",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "BELLOCO倍乐",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["BELLOCO倍乐"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l1RrUsweyvuUY3yr",
+      "evidence": [
+        {
+          "source_title": "BELLOCO倍乐(静安店)",
+          "url": "https://www.dianping.com/shop/l1RrUsweyvuUY3yr",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        },
+        {
+          "source_title": "BELLOCO倍乐(古北店)",
+          "url": "https://www.dianping.com/shop/H50CSf69APq5I5T8",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "酒吞mix米野吞烤肉",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["酒吞mix米野吞烤肉"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H5qBv8fpgAkr9ujJ",
+      "evidence": [
+        {
+          "source_title": "酒吞mix米野吞烤肉(南翔印象城MEGA店)",
+          "url": "https://www.dianping.com/shop/H5qBv8fpgAkr9ujJ",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "帕蓝·暹罗料理",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["帕蓝·暹罗料理"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/iBZIJbBb1Hy5lKAE",
+      "evidence": [
+        {
+          "source_title": "帕蓝·暹罗料理(大学路店)",
+          "url": "https://www.dianping.com/shop/iBZIJbBb1Hy5lKAE",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "酒吞",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["酒吞"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H4oBabjhdDVaYZqT",
+      "evidence": [
+        {
+          "source_title": "酒吞(乐坊店)",
+          "url": "https://www.dianping.com/shop/H4oBabjhdDVaYZqT",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        },
+        {
+          "source_title": "酒吞(世纪汇店)",
+          "url": "https://www.dianping.com/shop/kanArfMiRkMoZBk3",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        },
+        {
+          "source_title": "酒吞(七宝领展广场店)",
+          "url": "https://www.dianping.com/shop/l5DDcqwV2OhXrdzO",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "钟路商会·缘家",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["钟路商会·缘家"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H4DN7SgoRQlpAfnx",
+      "evidence": [
+        {
+          "source_title": "钟路商会·缘家(虹泉路店)",
+          "url": "https://www.dianping.com/shop/H4DN7SgoRQlpAfnx",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "逸品淮扬",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["逸品淮扬"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H8i06HJAk0NOXaL7",
+      "evidence": [
+        {
+          "source_title": "逸品淮扬(白玉兰广场店)",
+          "url": "https://www.dianping.com/shop/H8i06HJAk0NOXaL7",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "MIKAKU",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["MIKAKU"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/EzgJJU7ShvUKQwiB",
+      "evidence": [
+        {
+          "source_title": "MIKAKU",
+          "url": "https://www.dianping.com/shop/EzgJJU7ShvUKQwiB",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "遇外滩",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["遇外滩"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H4lIT1pVYp0WprHz",
+      "evidence": [
+        {
+          "source_title": "遇外滩(BFC外滩金融中心店)",
+          "url": "https://www.dianping.com/shop/H4lIT1pVYp0WprHz",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "上海和平饭店龙凤厅 Dragon Phoenix",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["上海和平饭店龙凤厅 Dragon Phoenix"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G6fMtgrohnhj26b2",
+      "evidence": [
+        {
+          "source_title": "上海和平饭店龙凤厅 Dragon Phoenix",
+          "url": "https://www.dianping.com/shop/G6fMtgrohnhj26b2",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "沪西老弄堂面馆",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["沪西老弄堂面馆"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/jzrv0KqUI0MlKSdJ",
+      "evidence": [
+        {
+          "source_title": "沪西老弄堂面馆(广东路店)",
+          "url": "https://www.dianping.com/shop/jzrv0KqUI0MlKSdJ",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        },
+        {
+          "source_title": "沪西老弄堂面馆(定西路店)",
+          "url": "https://www.dianping.com/shop/k5E0E7ekSXJs9d71",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "老兴鲜",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["老兴鲜"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H7vprrMRBaF2iOCZ",
+      "evidence": [
+        {
+          "source_title": "老兴鲜(黄浦店)",
+          "url": "https://www.dianping.com/shop/H7vprrMRBaF2iOCZ",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第1页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "兴兴·海派本帮菜",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["兴兴·海派本帮菜"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l5hFCdlh267XuYk4",
+      "evidence": [
+        {
+          "source_title": "兴兴·海派本帮菜",
+          "url": "https://www.dianping.com/shop/l5hFCdlh267XuYk4",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Jean Georges",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["Jean Georges"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G4jWgoOJ6XL6HNP1",
+      "evidence": [
+        {
+          "source_title": "Jean Georges",
+          "url": "https://www.dianping.com/shop/G4jWgoOJ6XL6HNP1",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Solo",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["Solo"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G2LQYgctM49uMwzc",
+      "evidence": [
+        {
+          "source_title": "Solo(衡山路店)",
+          "url": "https://www.dianping.com/shop/G2LQYgctM49uMwzc",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "甬府小鲜",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["甬府小鲜"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H6ygYjra5h7qQgIO",
+      "evidence": [
+        {
+          "source_title": "甬府小鲜(陆家嘴中心店)",
+          "url": "https://www.dianping.com/shop/H6ygYjra5h7qQgIO",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "人和馆·上海菜",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["人和馆·上海菜"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G41TRhMLL80DPFTN",
+      "evidence": [
+        {
+          "source_title": "人和馆·上海菜(徐汇店)",
+          "url": "https://www.dianping.com/shop/G41TRhMLL80DPFTN",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "鹿园 MOOSE",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["鹿园 MOOSE"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l85TPdfsmlIlumBO",
+      "evidence": [
+        {
+          "source_title": "鹿园 MOOSE(长宁店)",
+          "url": "https://www.dianping.com/shop/l85TPdfsmlIlumBO",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "THE NEST 环外滩露台餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["THE NEST 环外滩露台餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l2Tl4nLusiHtG87h",
+      "evidence": [
+        {
+          "source_title": "THE NEST 环外滩露台餐厅(外滩店)",
+          "url": "https://www.dianping.com/shop/l2Tl4nLusiHtG87h",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "福1088",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["福1088"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k7JENCdJrdXyhtMW",
+      "evidence": [
+        {
+          "source_title": "福1088",
+          "url": "https://www.dianping.com/shop/k7JENCdJrdXyhtMW",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "新荣记",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["新荣记"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/jvEO2BltK1bTciHD",
+      "evidence": [
+        {
+          "source_title": "新荣记(BFC外滩金融中心店)",
+          "url": "https://www.dianping.com/shop/jvEO2BltK1bTciHD",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        },
+        {
+          "source_title": "新荣记(南京西路店)",
+          "url": "https://www.dianping.com/shop/k9Sreb0bXu6fq1Ue",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "食廬",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["食廬"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l2fQWxlX4e60IUjp",
+      "evidence": [
+        {
+          "source_title": "食廬(虹桥南丰城店)",
+          "url": "https://www.dianping.com/shop/l2fQWxlX4e60IUjp",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "BROWNSTONE布朗石西班牙餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["BROWNSTONE布朗石西班牙餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l7iLeGsS8NBZWcZU",
+      "evidence": [
+        {
+          "source_title": "BROWNSTONE布朗石西班牙餐厅(富城店)",
+          "url": "https://www.dianping.com/shop/l7iLeGsS8NBZWcZU",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "上海滩餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["上海滩餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G4mmqiZrzgkpQZGY",
+      "evidence": [
+        {
+          "source_title": "上海滩餐厅(BFC外滩金融中心店)",
+          "url": "https://www.dianping.com/shop/G4mmqiZrzgkpQZGY",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "茹丝葵经典牛排馆",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["茹丝葵经典牛排馆"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G3KyBCe9fLT3CcF4",
+      "evidence": [
+        {
+          "source_title": "茹丝葵经典牛排馆(上海外滩店)",
+          "url": "https://www.dianping.com/shop/G3KyBCe9fLT3CcF4",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "香江姳苑粥饭",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["香江姳苑粥饭"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H5xqIFZBWP0Zt3nd",
+      "evidence": [
+        {
+          "source_title": "香江姳苑粥饭(人民广场店)",
+          "url": "https://www.dianping.com/shop/H5xqIFZBWP0Zt3nd",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第2页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "新白鹿餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["新白鹿餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G1PUPaOlLNpU8Z1h",
+      "evidence": [
+        {
+          "source_title": "新白鹿餐厅(世博源店)",
+          "url": "https://www.dianping.com/shop/G1PUPaOlLNpU8Z1h",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "親父的右腕",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["親父的右腕"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/HamwTV4hxUhGFCUw",
+      "evidence": [
+        {
+          "source_title": "親父的右腕(中山公园店)",
+          "url": "https://www.dianping.com/shop/HamwTV4hxUhGFCUw",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "四季和府",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["四季和府"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k1ibjwFzQNtwCh61",
+      "evidence": [
+        {
+          "source_title": "四季和府(外滩店)",
+          "url": "https://www.dianping.com/shop/k1ibjwFzQNtwCh61",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "映水芙蓉·新川菜",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["映水芙蓉·新川菜"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H8CqC5iJnRHFRTHh",
+      "evidence": [
+        {
+          "source_title": "映水芙蓉·新川菜(白玉兰广场店)",
+          "url": "https://www.dianping.com/shop/H8CqC5iJnRHFRTHh",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "三号黄浦会Canton Table",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["三号黄浦会Canton Table"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l4LSkZ25uyGUhLiU",
+      "evidence": [
+        {
+          "source_title": "三号黄浦会Canton Table",
+          "url": "https://www.dianping.com/shop/l4LSkZ25uyGUhLiU",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "O.P.S. CAFE",
+      "category": "咖啡",
+      "aliases": [],
+      "keywords": ["O.P.S. CAFE"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l2p6Zk0OLjKMt9UG",
+      "evidence": [
+        {
+          "source_title": "O.P.S. CAFE",
+          "url": "https://www.dianping.com/shop/l2p6Zk0OLjKMt9UG",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "牛New寿喜烧",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["牛New寿喜烧"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k49jcDI05lVXTzTS",
+      "evidence": [
+        {
+          "source_title": "牛New寿喜烧(南方商城店)",
+          "url": "https://www.dianping.com/shop/k49jcDI05lVXTzTS",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Kathleen’s Bistro 凯圣琳西餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["Kathleen’s Bistro 凯圣琳西餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/EawjWXgD9W31ipcB",
+      "evidence": [
+        {
+          "source_title": "Kathleen’s Bistro 凯圣琳西餐厅(陆家嘴店)",
+          "url": "https://www.dianping.com/shop/EawjWXgD9W31ipcB",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "随堂里",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["随堂里"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/j3uTuM4AvRXSjMcq",
+      "evidence": [
+        {
+          "source_title": "随堂里",
+          "url": "https://www.dianping.com/shop/j3uTuM4AvRXSjMcq",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "一绪寿喜烧",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["一绪寿喜烧"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/HakKUU3zE9LGyGp3",
+      "evidence": [
+        {
+          "source_title": "一绪に寿喜烧放题(合生汇店)",
+          "url": "https://www.dianping.com/shop/HakKUU3zE9LGyGp3",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "醉东Oriental House",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["醉东Oriental House"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l4zdBR7WJX4nLLxs",
+      "evidence": [
+        {
+          "source_title": "醉东Oriental House(港汇恒隆广场店)",
+          "url": "https://www.dianping.com/shop/l4zdBR7WJX4nLLxs",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        },
+        {
+          "source_title": "醉东Oriental House(静安嘉里中心店)",
+          "url": "https://www.dianping.com/shop/l1pFxEUMxhYPVMz7",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "荣新馆",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["荣新馆"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l9C1R4WzyBc2UwR5",
+      "evidence": [
+        {
+          "source_title": "荣新馆(兴义路1号店)",
+          "url": "https://www.dianping.com/shop/l9C1R4WzyBc2UwR5",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第3页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "汤记传菜",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["汤记传菜"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G1WjRqTI608KSbVE",
+      "evidence": [
+        {
+          "source_title": "汤记传菜(秀浦路店)",
+          "url": "https://www.dianping.com/shop/G1WjRqTI608KSbVE",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "海逸海鲜酒家",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["海逸海鲜酒家"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l8ivVxeqHjFhvKPH",
+      "evidence": [
+        {
+          "source_title": "海逸海鲜酒家(滨江店)",
+          "url": "https://www.dianping.com/shop/l8ivVxeqHjFhvKPH",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "haxnbauer海森堡德国餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["haxnbauer海森堡德国餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G8pVXq6bajcNtCK8",
+      "evidence": [
+        {
+          "source_title": "haxnbauer海森堡德国餐厅(长泰广场店)",
+          "url": "https://www.dianping.com/shop/G8pVXq6bajcNtCK8",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "鸣龙上雅铁板烧日料",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["鸣龙上雅铁板烧日料"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/kaDzzbivKltAoqgQ",
+      "evidence": [
+        {
+          "source_title": "鸣龙上雅铁板烧日料(长宁店)",
+          "url": "https://www.dianping.com/shop/kaDzzbivKltAoqgQ",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "荣先森·福建菜",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["荣先森·福建菜"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l6oXOK0VejTK3pYN",
+      "evidence": [
+        {
+          "source_title": "荣先森·福建菜(人广来福士店)",
+          "url": "https://www.dianping.com/shop/l6oXOK0VejTK3pYN",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "本怡吧都韩国料理",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["本怡吧都韩国料理"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G8Nh1Vv6szG6YbdP",
+      "evidence": [
+        {
+          "source_title": "本怡吧都韩国料理(闵行店)",
+          "url": "https://www.dianping.com/shop/G8Nh1Vv6szG6YbdP",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "黑渡口·茶",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["黑渡口·茶"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l8szEllC9E6s2slv",
+      "evidence": [
+        {
+          "source_title": "黑渡口·茶(广富林店)",
+          "url": "https://www.dianping.com/shop/l8szEllC9E6s2slv",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "初花·日本料理",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["初花·日本料理"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H3acHiARlWLRZ9jz",
+      "evidence": [
+        {
+          "source_title": "初花·日本料理",
+          "url": "https://www.dianping.com/shop/H3acHiARlWLRZ9jz",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Barista Made Coffee·BMC",
+      "category": "咖啡",
+      "aliases": [],
+      "keywords": ["Barista Made Coffee·BMC"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k32P9hetD57Fffv6",
+      "evidence": [
+        {
+          "source_title": "Barista Made Coffee·BMC",
+          "url": "https://www.dianping.com/shop/k32P9hetD57Fffv6",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "巡湘记",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["巡湘记"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l9KopgNVvqn7OEBC",
+      "evidence": [
+        {
+          "source_title": "巡湘记·现炒鲜牛肉(上海七宝领展广场店)",
+          "url": "https://www.dianping.com/shop/l9KopgNVvqn7OEBC",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "The BREW·酿餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["The BREW·酿餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H5MYtAltn7wJzqqy",
+      "evidence": [
+        {
+          "source_title": "The BREW·酿餐厅(浦东嘉里大酒店)",
+          "url": "https://www.dianping.com/shop/H5MYtAltn7wJzqqy",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "姚稷大铁锅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["姚稷大铁锅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H2hsBpbjhlPDDnHC",
+      "evidence": [
+        {
+          "source_title": "姚稷大铁锅(崂山路店)",
+          "url": "https://www.dianping.com/shop/H2hsBpbjhlPDDnHC",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "万岛日本料理铁板烧",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["万岛日本料理铁板烧"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/ifAONfTkYxgMiiiR",
+      "evidence": [
+        {
+          "source_title": "万岛日本料理铁板烧(五角场店)",
+          "url": "https://www.dianping.com/shop/ifAONfTkYxgMiiiR",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "轻蔬不用等·素食",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["轻蔬不用等·素食"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H6FNYRt0FJKFqQMi",
+      "evidence": [
+        {
+          "source_title": "轻蔬不用等·素食(江苏路店)",
+          "url": "https://www.dianping.com/shop/H6FNYRt0FJKFqQMi",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "点都德",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["点都德"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G3If7J1ew2lHoK7c",
+      "evidence": [
+        {
+          "source_title": "点都德(白玉兰广场店)",
+          "url": "https://www.dianping.com/shop/G3If7J1ew2lHoK7c",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第4页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "蟹家大院",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["蟹家大院"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H7s38tgIvEEHGCpF",
+      "evidence": [
+        {
+          "source_title": "蟹家大院 · 独揽江景(滨江店)",
+          "url": "https://www.dianping.com/shop/H7s38tgIvEEHGCpF",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        },
+        {
+          "source_title": "蟹家大院(外滩店)",
+          "url": "https://www.dianping.com/shop/G9parnTPI1bpOZ2W",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "桂满陇",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["桂满陇"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k4SqFoavatjMGX2T",
+      "evidence": [
+        {
+          "source_title": "桂满陇(人民广场世茂店)",
+          "url": "https://www.dianping.com/shop/k4SqFoavatjMGX2T",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "贯贯吉·清真餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["贯贯吉·清真餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k85LtrjNWMlCCZ3x",
+      "evidence": [
+        {
+          "source_title": "贯贯吉·清真餐厅(浙江中路店)",
+          "url": "https://www.dianping.com/shop/k85LtrjNWMlCCZ3x",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "bananaGG",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["bananaGG"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/Gan7po1f5IyHVYV0",
+      "evidence": [
+        {
+          "source_title": "bananaGG(襄阳南路店)",
+          "url": "https://www.dianping.com/shop/Gan7po1f5IyHVYV0",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "MUF MUF",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["MUF MUF"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l2agJy0MKlCYV6rC",
+      "evidence": [
+        {
+          "source_title": "MUFMUF渔味料理(北外滩三件套景观店)",
+          "url": "https://www.dianping.com/shop/l2agJy0MKlCYV6rC",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "细记港九早茶包房夜宵",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["细记港九早茶包房夜宵"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G7lsGtLhJKqWDF9J",
+      "evidence": [
+        {
+          "source_title": "细记港九早茶包房夜宵(东湖路总店)",
+          "url": "https://www.dianping.com/shop/G7lsGtLhJKqWDF9J",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "阿吾罗日本料理",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["阿吾罗日本料理"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H8Y2PqxYAJpkqohA",
+      "evidence": [
+        {
+          "source_title": "阿吾罗日本料理(芮欧百货店)",
+          "url": "https://www.dianping.com/shop/H8Y2PqxYAJpkqohA",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "荟廷",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["荟廷"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G28Kt50EtfD5qEMX",
+      "evidence": [
+        {
+          "source_title": "荟廷(高岛屋百货店)",
+          "url": "https://www.dianping.com/shop/G28Kt50EtfD5qEMX",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "喜鼎",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["喜鼎"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/HabN0YuEMPBF2xjI",
+      "evidence": [
+        {
+          "source_title": "喜鼎(上海泸定路店)",
+          "url": "https://www.dianping.com/shop/HabN0YuEMPBF2xjI",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "膳道",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["膳道"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/EDUjKOMnuMdy6bnn",
+      "evidence": [
+        {
+          "source_title": "膳道(西郊店)",
+          "url": "https://www.dianping.com/shop/EDUjKOMnuMdy6bnn",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "罗福索love&salt牛排馆",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["罗福索love&salt牛排馆"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k4NxM4MmeaOVGeGv",
+      "evidence": [
+        {
+          "source_title": "罗福索love&salt牛排馆(巨鹿路店)",
+          "url": "https://www.dianping.com/shop/k4NxM4MmeaOVGeGv",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Kathleen's Waitan 凯圣琳江景西餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["Kathleen's Waitan 凯圣琳江景西餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G5VwQ2UHRdpEc366",
+      "evidence": [
+        {
+          "source_title": "Kathleen's Waitan 凯圣琳江景西餐厅(外滩店)",
+          "url": "https://www.dianping.com/shop/G5VwQ2UHRdpEc366",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "米禾良日料",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["米禾良日料"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/FqtXP0OHI8aIcOcV",
+      "evidence": [
+        {
+          "source_title": "米禾良日料(人民广场店)",
+          "url": "https://www.dianping.com/shop/FqtXP0OHI8aIcOcV",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "潮界",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["潮界"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H5HZknapqleZex4S",
+      "evidence": [
+        {
+          "source_title": "潮界(LU·ONE凯德晶萃广场店)",
+          "url": "https://www.dianping.com/shop/H5HZknapqleZex4S",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第5页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        },
+        {
+          "source_title": "潮界(大学路店)",
+          "url": "https://www.dianping.com/shop/H46cr3Z9uIXEMv72",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "宝丽轩中餐厅BAOLIXUAN",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["宝丽轩中餐厅BAOLIXUAN"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/FQX0dXDza0e3sw3z",
+      "evidence": [
+        {
+          "source_title": "宝丽轩中餐厅BAOLIXUAN",
+          "url": "https://www.dianping.com/shop/FQX0dXDza0e3sw3z",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "AJIYA炭火烤肉",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["AJIYA炭火烤肉"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/Gad2SFYFpRwVsMHk",
+      "evidence": [
+        {
+          "source_title": "AJIYA炭火烤肉(仙霞路店)",
+          "url": "https://www.dianping.com/shop/Gad2SFYFpRwVsMHk",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "左庭右院",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["左庭右院"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H1ddCENdIAHA2riL",
+      "evidence": [
+        {
+          "source_title": "左庭右院鲜牛肉火锅(南翔印象城MEGA店)",
+          "url": "https://www.dianping.com/shop/H1ddCENdIAHA2riL",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "天辣",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["天辣"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/irMAj0b2IdwuBzEt",
+      "evidence": [
+        {
+          "source_title": "天辣(上海首店·日月光店)",
+          "url": "https://www.dianping.com/shop/irMAj0b2IdwuBzEt",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "晶焱上海菜",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["晶焱上海菜"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l1PHjU9ZbiHiTQ8X",
+      "evidence": [
+        {
+          "source_title": "晶焱上海菜(徐汇店)",
+          "url": "https://www.dianping.com/shop/l1PHjU9ZbiHiTQ8X",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "DA VITTORIO SHANGHAI",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["DA VITTORIO SHANGHAI"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/EPUtTsUfAUCxSmc5",
+      "evidence": [
+        {
+          "source_title": "DA VITTORIO SHANGHAI(外滩店)",
+          "url": "https://www.dianping.com/shop/EPUtTsUfAUCxSmc5",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "楼上火锅",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["楼上火锅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k344ik9mj4R4WmLe",
+      "evidence": [
+        {
+          "source_title": "楼上火锅(茂名南路店)",
+          "url": "https://www.dianping.com/shop/k344ik9mj4R4WmLe",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "蟹榭·本帮江浙菜·蟹宴",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["蟹榭·本帮江浙菜·蟹宴"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H5qxTMyFyfh5PnY0",
+      "evidence": [
+        {
+          "source_title": "蟹榭·本帮江浙菜·蟹宴(五角场合生汇商场店)",
+          "url": "https://www.dianping.com/shop/H5qxTMyFyfh5PnY0",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "老乾杯",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["老乾杯"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H4cybeASYmtcc1Qa",
+      "evidence": [
+        {
+          "source_title": "老乾杯(外滩本店)",
+          "url": "https://www.dianping.com/shop/H4cybeASYmtcc1Qa",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "欧巴韩式炭烤肉·烤牛肠 오빠 숯불구이",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["欧巴韩式炭烤肉·烤牛肠 오빠 숯불구이"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G6lUt8p6xQvkx4jf",
+      "evidence": [
+        {
+          "source_title": "欧巴韩式炭烤肉·烤牛肠 오빠 숯불구이(虹泉路店)",
+          "url": "https://www.dianping.com/shop/G6lUt8p6xQvkx4jf",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "鸿姐老火锅",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["鸿姐老火锅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/F4nE08K09Ptc47y4",
+      "evidence": [
+        {
+          "source_title": "鸿姐老火锅(静安店)",
+          "url": "https://www.dianping.com/shop/F4nE08K09Ptc47y4",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "季福楼 Jhouse",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["季福楼 Jhouse"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k5z8H92o9GB1PMTO",
+      "evidence": [
+        {
+          "source_title": "季福楼 Jhouse(静安店)",
+          "url": "https://www.dianping.com/shop/k5z8H92o9GB1PMTO",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "有喜屋",
+      "category": "其他餐饮",
+      "aliases": ["有喜屋·鲜鸡板前烧鸟"],
+      "keywords": ["有喜屋"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k6qxl4KqAs2Q56CM",
+      "evidence": [
+        {
+          "source_title": "有喜屋·鲜鸡板前烧鸟(徐家汇店)",
+          "url": "https://www.dianping.com/shop/k6qxl4KqAs2Q56CM",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Maison Lameloise莱美露滋",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["Maison Lameloise莱美露滋"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H9pQr3xgTq2Wke1F",
+      "evidence": [
+        {
+          "source_title": "Maison Lameloise莱美露滋(上海中心店)",
+          "url": "https://www.dianping.com/shop/H9pQr3xgTq2Wke1F",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "上海苏宁宝丽嘉酒店·Cafe Bellagio西餐厅",
+      "category": "咖啡",
+      "aliases": [],
+      "keywords": ["上海苏宁宝丽嘉酒店·Cafe Bellagio西餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k1xzA8DG1qQ5B5fn",
+      "evidence": [
+        {
+          "source_title": "上海苏宁宝丽嘉酒店·Cafe Bellagio西餐厅",
+          "url": "https://www.dianping.com/shop/k1xzA8DG1qQ5B5fn",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第6页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "厚贞日式烤肉",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["厚贞日式烤肉"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G1rrksnDtXGdAV0c",
+      "evidence": [
+        {
+          "source_title": "厚贞日式烤肉(杨浦合生汇店)",
+          "url": "https://www.dianping.com/shop/G1rrksnDtXGdAV0c",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "弦月窗LUNETTE BY AMANDA",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["弦月窗LUNETTE BY AMANDA"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G8yGSDZwbwIFAiFt",
+      "evidence": [
+        {
+          "source_title": "弦月窗LUNETTE BY AMANDA(复兴路洋房店)",
+          "url": "https://www.dianping.com/shop/G8yGSDZwbwIFAiFt",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "HIGH YAKI modern izakaya & bar 烧肉居酒屋",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["HIGH YAKI modern izakaya & bar 烧肉居酒屋"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l488STCX0d3XMdww",
+      "evidence": [
+        {
+          "source_title": "HIGH YAKI modern izakaya & bar 烧肉居酒屋",
+          "url": "https://www.dianping.com/shop/l488STCX0d3XMdww",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "荣小馆",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["荣小馆"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G5fkD33G5aLyFJWb",
+      "evidence": [
+        {
+          "source_title": "荣小馆(安达仕店)",
+          "url": "https://www.dianping.com/shop/G5fkD33G5aLyFJWb",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "西堤牛排",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["西堤牛排"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H1GZ6KNQ9XpOpEKP",
+      "evidence": [
+        {
+          "source_title": "西堤牛排(上海美罗城店)",
+          "url": "https://www.dianping.com/shop/H1GZ6KNQ9XpOpEKP",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "菁禧荟",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["菁禧荟"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/FFyTp5INQLk5x4eh",
+      "evidence": [
+        {
+          "source_title": "菁禧荟(外滩店)",
+          "url": "https://www.dianping.com/shop/FFyTp5INQLk5x4eh",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        },
+        {
+          "source_title": "菁禧荟(虹桥店)",
+          "url": "https://www.dianping.com/shop/l9h8XAEspl5I3qdV",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "潘小烧·云南烧烤",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["潘小烧·云南烧烤"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k86QquSR5ZW6gjKP",
+      "evidence": [
+        {
+          "source_title": "潘小烧·云南烧烤(外滩总店)",
+          "url": "https://www.dianping.com/shop/k86QquSR5ZW6gjKP",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "鮨匠·割烹料理",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["鮨匠·割烹料理"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H7zo8DaIKqOzMa9j",
+      "evidence": [
+        {
+          "source_title": "鮨匠·割烹料理(外滩店)",
+          "url": "https://www.dianping.com/shop/H7zo8DaIKqOzMa9j",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        },
+        {
+          "source_title": "鮨匠·割烹料理(物华路店)",
+          "url": "https://www.dianping.com/shop/H8iphWFaOWEwsh0W",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "珍宝海鲜JUMBO Seafood",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["珍宝海鲜JUMBO Seafood"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/jriZe4G6ij53TsdO",
+      "evidence": [
+        {
+          "source_title": "珍宝海鲜JUMBO Seafood(环贸店)",
+          "url": "https://www.dianping.com/shop/jriZe4G6ij53TsdO",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Da Ivo哒伊沃意大利魔镜餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["Da Ivo哒伊沃意大利魔镜餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G3PRxWvmBAFzyst2",
+      "evidence": [
+        {
+          "source_title": "Da Ivo哒伊沃意大利魔镜餐厅(外滩店)",
+          "url": "https://www.dianping.com/shop/G3PRxWvmBAFzyst2",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "很久以前羊肉串",
+      "category": "火锅烧烤",
+      "aliases": ["很久以前"],
+      "keywords": ["很久以前羊肉串"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k6ixZ6ptDximb5FH",
+      "evidence": [
+        {
+          "source_title": "很久以前羊肉串(南京路第一百货店)",
+          "url": "https://www.dianping.com/shop/k6ixZ6ptDximb5FH",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "阿纳迪酒店·秘境西餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["阿纳迪酒店·秘境西餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G6QFGSz3s3wlHERz",
+      "evidence": [
+        {
+          "source_title": "阿纳迪酒店·秘境西餐厅",
+          "url": "https://www.dianping.com/shop/G6QFGSz3s3wlHERz",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第7页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "夏朵花园",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["夏朵花园"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k6M808TAhkoQIqyR",
+      "evidence": [
+        {
+          "source_title": "夏朵花园(复兴西路店)",
+          "url": "https://www.dianping.com/shop/k6M808TAhkoQIqyR",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Dal Cuore 达可芮冰淇淋",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["Dal Cuore 达可芮冰淇淋"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G3Gwgtgr80j1uOVK",
+      "evidence": [
+        {
+          "source_title": "Dal Cuore 达可芮冰淇淋(陕西北路店)",
+          "url": "https://www.dianping.com/shop/G3Gwgtgr80j1uOVK",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "小大董·烤鸭",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["小大董·烤鸭"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k27UFCjq9csGLJ0k",
+      "evidence": [
+        {
+          "source_title": "小大董·烤鸭(LuOne凯德店)",
+          "url": "https://www.dianping.com/shop/k27UFCjq9csGLJ0k",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        },
+        {
+          "source_title": "小大董·烤鸭(观景餐厅·南京西路店)",
+          "url": "https://www.dianping.com/shop/l6J4HdEd83pD8LwN",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "香木香羊",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["香木香羊"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k6NdgOdeLlHu0fEh",
+      "evidence": [
+        {
+          "source_title": "香木香羊(大治路店)",
+          "url": "https://www.dianping.com/shop/k6NdgOdeLlHu0fEh",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "黑门和牛",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["黑门和牛"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/E3B7f0z8tWSn8iBY",
+      "evidence": [
+        {
+          "source_title": "黑门和牛(虹桥新天地店)",
+          "url": "https://www.dianping.com/shop/E3B7f0z8tWSn8iBY",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "福1015",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["福1015"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H3X9dE01nQLkzEiK",
+      "evidence": [
+        {
+          "source_title": "福1015(愚园路店)",
+          "url": "https://www.dianping.com/shop/H3X9dE01nQLkzEiK",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "上海苏宁宝丽嘉酒店·LAGO 餐厅酒吧",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["上海苏宁宝丽嘉酒店·LAGO 餐厅酒吧"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H6Z6KQc1NDgbR6aI",
+      "evidence": [
+        {
+          "source_title": "上海苏宁宝丽嘉酒店·LAGO 餐厅酒吧",
+          "url": "https://www.dianping.com/shop/H6Z6KQc1NDgbR6aI",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "海底捞",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["海底捞"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l9qwmkX3FoD9tExc",
+      "evidence": [
+        {
+          "source_title": "海底捞火锅(人民广场店)",
+          "url": "https://www.dianping.com/shop/l9qwmkX3FoD9tExc",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "MOTOYA别邸·寿喜锅·活蟹",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["MOTOYA别邸·寿喜锅·活蟹"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l6flOUdLLLdQmc41",
+      "evidence": [
+        {
+          "source_title": "MOTOYA别邸·寿喜锅·活蟹(虹梅店)",
+          "url": "https://www.dianping.com/shop/l6flOUdLLLdQmc41",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "荣府宴",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["荣府宴"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G9C85TZLT6SkMvPv",
+      "evidence": [
+        {
+          "source_title": "荣府宴(南阳路店)",
+          "url": "https://www.dianping.com/shop/G9C85TZLT6SkMvPv",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "甬府",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["甬府"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G7wyUzgcED3C284F",
+      "evidence": [
+        {
+          "source_title": "甬府(黄浦店)",
+          "url": "https://www.dianping.com/shop/G7wyUzgcED3C284F",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "宁国素斋",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["宁国素斋"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k9Vw5b99I8KWKSgp",
+      "evidence": [
+        {
+          "source_title": "宁国素斋(华泾路店)",
+          "url": "https://www.dianping.com/shop/k9Vw5b99I8KWKSgp",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第8页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "汤伯府-现熬猪肚鸡火锅",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["汤伯府-现熬猪肚鸡火锅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k2Hc0pMcafTygaYg",
+      "evidence": [
+        {
+          "source_title": "汤伯府-现熬猪肚鸡火锅(泗泾店)",
+          "url": "https://www.dianping.com/shop/k2Hc0pMcafTygaYg",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "临湖素食·焱格格",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["临湖素食·焱格格"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k847iL0VU3GAWVRf",
+      "evidence": [
+        {
+          "source_title": "临湖素食·焱格格(保利时光里店)",
+          "url": "https://www.dianping.com/shop/k847iL0VU3GAWVRf",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "慕雲·熟成烧鸟&螃蟹料理",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["慕雲·熟成烧鸟&螃蟹料理"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k3aFWpnIhwpJ6iO0",
+      "evidence": [
+        {
+          "source_title": "慕雲·熟成烧鸟&螃蟹料理(虹桥店)",
+          "url": "https://www.dianping.com/shop/k3aFWpnIhwpJ6iO0",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "三利音·浦之舟",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["三利音·浦之舟"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G1R7eXylV3SYEBwh",
+      "evidence": [
+        {
+          "source_title": "三利音·浦之舟(滨江大道店)",
+          "url": "https://www.dianping.com/shop/G1R7eXylV3SYEBwh",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "广舟",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["广舟"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H91CBzLcBtsM86Cz",
+      "evidence": [
+        {
+          "source_title": "广舟(千禧店)",
+          "url": "https://www.dianping.com/shop/H91CBzLcBtsM86Cz",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Ministry Of Crab",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["Ministry Of Crab"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k6PsJUVXD6UA2Utz",
+      "evidence": [
+        {
+          "source_title": "Ministry Of Crab",
+          "url": "https://www.dianping.com/shop/k6PsJUVXD6UA2Utz",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "四面泰",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["四面泰"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k2Av1jka9tz4GWPW",
+      "evidence": [
+        {
+          "source_title": "四面泰(万象城店)",
+          "url": "https://www.dianping.com/shop/k2Av1jka9tz4GWPW",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "圈儿潮汕牛肉火锅·夜宵",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["圈儿潮汕牛肉火锅·夜宵"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G9HpE5EefZxSAZPc",
+      "evidence": [
+        {
+          "source_title": "圈儿潮汕牛肉火锅·夜宵(定西路店)",
+          "url": "https://www.dianping.com/shop/G9HpE5EefZxSAZPc",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Stone Sal 言盐西餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["Stone Sal 言盐西餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H1mpT43N7q5jRWtz",
+      "evidence": [
+        {
+          "source_title": "Stone Sal 言盐西餐厅(东湖路店)",
+          "url": "https://www.dianping.com/shop/H1mpT43N7q5jRWtz",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "福和慧",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["福和慧"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H4B6SfePZ3EAekLE",
+      "evidence": [
+        {
+          "source_title": "福和慧(愚园路店)",
+          "url": "https://www.dianping.com/shop/H4B6SfePZ3EAekLE",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "那都不是锅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["那都不是锅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8v3pl8x8ZeFj7Ji",
+      "evidence": [
+        {
+          "source_title": "那都不是锅(菏泽路店)",
+          "url": "https://www.dianping.com/shop/k8v3pl8x8ZeFj7Ji",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "洋房火锅",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["洋房火锅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k75buZODHJaHPyBp",
+      "evidence": [
+        {
+          "source_title": "洋房火锅(上海新天地南北里店)",
+          "url": "https://www.dianping.com/shop/k75buZODHJaHPyBp",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "1886德国汽车餐厅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["1886德国汽车餐厅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H5957jSkSZIklxg2",
+      "evidence": [
+        {
+          "source_title": "1886德国汽车餐厅(外滩中央地标景观店)",
+          "url": "https://www.dianping.com/shop/H5957jSkSZIklxg2",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "润苑·悦椿轩",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["润苑·悦椿轩"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H1gWkmjKKW0MgG7j",
+      "evidence": [
+        {
+          "source_title": "润苑·悦椿轩(徐汇万科中心一期店)",
+          "url": "https://www.dianping.com/shop/H1gWkmjKKW0MgG7j",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Le Bistrot de Racine",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["Le Bistrot de Racine"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k87oaNpfOEThb5hW",
+      "evidence": [
+        {
+          "source_title": "Le Bistrot de Racine",
+          "url": "https://www.dianping.com/shop/k87oaNpfOEThb5hW",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第9页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "高桌牛排馆",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["高桌牛排馆"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/HaXbG8zPJznhm66Q",
+      "evidence": [
+        {
+          "source_title": "Primotable高桌牛排馆(陆家嘴紫金山店)",
+          "url": "https://www.dianping.com/shop/HaXbG8zPJznhm66Q",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "The Pine 松涧",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["The Pine 松涧"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k7EfP3AYujLc86zt",
+      "evidence": [
+        {
+          "source_title": "The Pine 松涧",
+          "url": "https://www.dianping.com/shop/k7EfP3AYujLc86zt",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "龍码头•螃蟹王",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["龍码头•螃蟹王"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H5BGCjcalZb5NV7G",
+      "evidence": [
+        {
+          "source_title": "龍码头•螃蟹王(保利时光里店)",
+          "url": "https://www.dianping.com/shop/H5BGCjcalZb5NV7G",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "Le Comptoir de Pierre Gagnaire",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["Le Comptoir de Pierre Gagnaire"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l3b8AOMTkNqRHZa9",
+      "evidence": [
+        {
+          "source_title": "Le Comptoir de Pierre Gagnaire",
+          "url": "https://www.dianping.com/shop/l3b8AOMTkNqRHZa9",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "鮨青•Omakase",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["鮨青•Omakase"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8iVtPmCBnFHhTf1",
+      "evidence": [
+        {
+          "source_title": "鮨青•Omakase(恒基名人购物中心店)",
+          "url": "https://www.dianping.com/shop/k8iVtPmCBnFHhTf1",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "鳗重",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["鳗重"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/jGbtatTUCi3x5tZs",
+      "evidence": [
+        {
+          "source_title": "鳗重(愚园路店)",
+          "url": "https://www.dianping.com/shop/jGbtatTUCi3x5tZs",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "楼上荟馆",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["楼上荟馆"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/iNL1nhgyvWiREVKg",
+      "evidence": [
+        {
+          "source_title": "楼上荟馆(静安嘉里中心店)",
+          "url": "https://www.dianping.com/shop/iNL1nhgyvWiREVKg",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        },
+        {
+          "source_title": "楼上荟馆(浦东国金店)",
+          "url": "https://www.dianping.com/shop/k4yZiQZCdJ9f1XfZ",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "JW酒廊 JW Lounge",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["JW酒廊 JW Lounge"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k3nVSa8zosPKlEI9",
+      "evidence": [
+        {
+          "source_title": "JW酒廊 JW Lounge(JW万豪侯爵酒店)",
+          "url": "https://www.dianping.com/shop/k3nVSa8zosPKlEI9",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "壳里西餐厅Coquille Seafood Bistro",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["壳里西餐厅Coquille Seafood Bistro"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l6cQSLZA0x2nW6Wr",
+      "evidence": [
+        {
+          "source_title": "壳里西餐厅Coquille Seafood Bistro(蒙自路店)",
+          "url": "https://www.dianping.com/shop/l6cQSLZA0x2nW6Wr",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "22號和牛烧肉",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["22號和牛烧肉"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G82Ce0pDTU2BTpJE",
+      "evidence": [
+        {
+          "source_title": "22號和牛烧肉(静安店)",
+          "url": "https://www.dianping.com/shop/G82Ce0pDTU2BTpJE",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "LUNEURS月乐诗·法式冰淇淋",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["LUNEURS月乐诗·法式冰淇淋"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k2BgLVzbu6PUyAqb",
+      "evidence": [
+        {
+          "source_title": "LUNEURS月乐诗·法式冰淇淋(环贸店)",
+          "url": "https://www.dianping.com/shop/k2BgLVzbu6PUyAqb",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "三个蒙古大叔羊肉串",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["三个蒙古大叔羊肉串"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l34OsaGnHpSRN9I6",
+      "evidence": [
+        {
+          "source_title": "三个蒙古大叔羊肉串(大宁店)",
+          "url": "https://www.dianping.com/shop/l34OsaGnHpSRN9I6",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "樽宴",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["樽宴"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k5JmcwCPWhYPn7NR",
+      "evidence": [
+        {
+          "source_title": "樽宴",
+          "url": "https://www.dianping.com/shop/k5JmcwCPWhYPn7NR",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第10页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "地球美食剧场",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["地球美食剧场"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8ZlQIWaZmVOAxSP",
+      "evidence": [
+        {
+          "source_title": "地球美食剧场",
+          "url": "https://www.dianping.com/shop/k8ZlQIWaZmVOAxSP",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第11页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "香守·潮汕海鲜港式火锅",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["香守·潮汕海鲜港式火锅"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/laq08xyvo8Ie8JWo",
+      "evidence": [
+        {
+          "source_title": "香守·潮汕海鲜港式火锅",
+          "url": "https://www.dianping.com/shop/laq08xyvo8Ie8JWo",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第11页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "哥哥深夜食堂",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["哥哥深夜食堂"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/isZAHlfHjag4yBFJ",
+      "evidence": [
+        {
+          "source_title": "哥哥の深夜食堂(西岸梦中心店)",
+          "url": "https://www.dianping.com/shop/isZAHlfHjag4yBFJ",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第11页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "黄记大闸蟹专卖店·活蟹·醉蟹",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["黄记大闸蟹专卖店·活蟹·醉蟹"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G9vPsqMwT9SnsR17",
+      "evidence": [
+        {
+          "source_title": "黄记大闸蟹专卖店·活蟹·醉蟹",
+          "url": "https://www.dianping.com/shop/G9vPsqMwT9SnsR17",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第11页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    },
+    {
+      "name": "鮨空海·怀石料理",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["鮨空海·怀石料理"],
+      "active": true,
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k1bqCHIZydfov3ww",
+      "evidence": [
+        {
+          "source_title": "鮨空海·怀石料理(杨浦店)",
+          "url": "https://www.dianping.com/shop/k1bqCHIZydfov3ww",
+          "source_name": "大众点评上海美食列表",
+          "location": "上海；具体门店地址待详情核实",
+          "position": "上海美食列表第11页",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T08:06:00.951496+00:00",
+          "research_status": "directory_checked",
+          "note": "使用用户提供的会话访问上海美食列表，提取门店名称及链接。仅证明采集时出现在上海目录；不代表已核实营业状态、抖音团购或热销。去除末尾门店括号后归并，同集团不同招牌未自动合并。"
+        }
+      ]
+    }
+  ],
+  "pending_truncated_names": [
+    {
+      "name": "Efes Turkish & Mediterranean Cuisine 艾菲斯餐厅(陆...",
+      "url": "https://www.dianping.com/shop/l1yXBrwHP2CaGWws",
+      "list_page": 3
+    },
+    {
+      "name": "Wolfgang’s Steakhouse 沃夫冈牛排馆(上海白玉兰广场...",
+      "url": "https://www.dianping.com/shop/H9CDhWhRY88pNNTp",
+      "list_page": 7
+    }
+  ]
+}

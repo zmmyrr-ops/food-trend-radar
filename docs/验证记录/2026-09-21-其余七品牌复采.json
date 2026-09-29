@@ -1,0 +1,128 @@
+{
+  "run_id": "4858bcff-184a-4f8c-9f49-8c3be1b158b6",
+  "exported_at": "2026-09-20T16:53:45.894Z",
+  "run": {
+    "id": "4858bcff-184a-4f8c-9f49-8c3be1b158b6",
+    "slot": null,
+    "status": "complete",
+    "started_at": "2026-09-20T16:51:48.157Z",
+    "finished_at": "2026-09-20T16:53:43.684Z",
+    "total": 7,
+    "completed": 7
+  },
+  "pause_reason": null,
+  "audit": {
+    "total": 52,
+    "min_gap_ms": 1039,
+    "short_gaps": 0,
+    "non_success": 0
+  },
+  "totals": {
+    "brands": 7,
+    "complete": 7,
+    "pages": 52,
+    "recalled": 509,
+    "name_matched": 218
+  },
+  "tasks": [
+    {
+      "brand_id": "31af484e-6d39-42c2-9e40-ad1c689b9479",
+      "name": "喜茶",
+      "state": "complete",
+      "pages": 2,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "LEGACY_BASELINE",
+      "completed_at": "2026-09-20T16:51:50.546Z",
+      "previous_run_id": "ff0c7eab-e909-4711-984e-875341ce9a21",
+      "recalled": 21,
+      "matched": 18
+    },
+    {
+      "brand_id": "cba5a3eb-14da-4b80-9a93-1a00c0b46482",
+      "name": "海底捞",
+      "state": "complete",
+      "pages": 7,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "QUERY_CHANGED",
+      "completed_at": "2026-09-20T16:52:05.682Z",
+      "previous_run_id": "2183f85b-85cc-457e-8268-1fb84b8e7400",
+      "recalled": 75,
+      "matched": 0
+    },
+    {
+      "brand_id": "d2b059f3-825e-420e-8d9f-1e36ca7a1c6c",
+      "name": "瑞幸咖啡",
+      "state": "complete",
+      "pages": 16,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "LEGACY_BASELINE",
+      "completed_at": "2026-09-20T16:52:41.278Z",
+      "previous_run_id": "822e9c2b-b4a1-4918-a77e-4fb8ea5753ed",
+      "recalled": 145,
+      "matched": 145
+    },
+    {
+      "brand_id": "a93c37c9-65eb-4787-97c9-9eb20817f471",
+      "name": "老乡鸡",
+      "state": "complete",
+      "pages": 3,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "QUERY_CHANGED",
+      "completed_at": "2026-09-20T16:52:48.447Z",
+      "previous_run_id": "2183f85b-85cc-457e-8268-1fb84b8e7400",
+      "recalled": 32,
+      "matched": 32
+    },
+    {
+      "brand_id": "d375b35d-36ce-4258-9bce-af116a42e403",
+      "name": "西贝莜面村",
+      "state": "complete",
+      "pages": 21,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "QUERY_CHANGED",
+      "completed_at": "2026-09-20T16:53:36.578Z",
+      "previous_run_id": "2183f85b-85cc-457e-8268-1fb84b8e7400",
+      "recalled": 213,
+      "matched": 0
+    },
+    {
+      "brand_id": "eef3891d-8979-40db-a97e-56a1760765aa",
+      "name": "达美乐比萨",
+      "state": "complete",
+      "pages": 2,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "QUERY_CHANGED",
+      "completed_at": "2026-09-20T16:53:41.587Z",
+      "previous_run_id": "2183f85b-85cc-457e-8268-1fb84b8e7400",
+      "recalled": 20,
+      "matched": 20
+    },
+    {
+      "brand_id": "cb68f3bc-d129-44fe-b038-ceb157e5d33b",
+      "name": "鲍师傅糕点",
+      "state": "complete",
+      "pages": 1,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "QUERY_CHANGED",
+      "completed_at": "2026-09-20T16:53:43.677Z",
+      "previous_run_id": "2183f85b-85cc-457e-8268-1fb84b8e7400",
+      "recalled": 3,
+      "matched": 3
+    }
+  ],
+  "caveat": "分页完成不等于品牌全量覆盖；名称匹配不等于身份及权益核验。"
+}

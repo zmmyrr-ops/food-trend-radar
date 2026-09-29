@@ -1,0 +1,246 @@
+{
+  "verified_at": "2026-09-29T04:27:44.718Z",
+  "resumed": {
+    "id": 1,
+    "enabled": true,
+    "pause_reason": null,
+    "worker_active": true,
+    "request_pending": false
+  },
+  "store_coverage": {
+    "total": 3130,
+    "with_shanghai_evidence": 516,
+    "partial_with_shanghai_evidence": 253,
+    "groups": [
+      {
+        "reason": "scope_pending",
+        "label": "等待获取门店范围",
+        "coupons": 2585,
+        "source_id_gap": 0,
+        "lookup_gap": 0,
+        "examples": [
+          {
+            "brand_id": "417f8d63-4f12-4d7f-8240-34b90f29b320",
+            "brand_name": "1点点",
+            "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+            "product_id": "1841573729499163",
+            "title": "【国庆】【1点点】可可芭蕾（中杯）",
+            "state": "queued",
+            "error_code": null,
+            "reported_count": null,
+            "returned_count": null,
+            "queried_count": 0,
+            "received_count": null,
+            "shanghai_count": null,
+            "snapshot_complete": null,
+            "observed_at": null
+          },
+          {
+            "brand_id": "417f8d63-4f12-4d7f-8240-34b90f29b320",
+            "brand_name": "1点点",
+            "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+            "product_id": "1849652857834537",
+            "title": "【国庆】【1点点】冰淇淋红茶（中杯）",
+            "state": "queued",
+            "error_code": null,
+            "reported_count": null,
+            "returned_count": null,
+            "queried_count": 0,
+            "received_count": null,
+            "shanghai_count": null,
+            "snapshot_complete": null,
+            "observed_at": null
+          },
+          {
+            "brand_id": "417f8d63-4f12-4d7f-8240-34b90f29b320",
+            "brand_name": "1点点",
+            "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+            "product_id": "1849652955282489",
+            "title": "【国庆】【1点点】藏青盐咸奶绿（中杯）",
+            "state": "queued",
+            "error_code": null,
+            "reported_count": null,
+            "returned_count": null,
+            "queried_count": 0,
+            "received_count": null,
+            "shanghai_count": null,
+            "snapshot_complete": null,
+            "observed_at": null
+          }
+        ]
+      },
+      {
+        "reason": "complete",
+        "label": "返回范围已完整核对",
+        "coupons": 263,
+        "source_id_gap": 0,
+        "lookup_gap": 0,
+        "examples": [
+          {
+            "brand_id": "54eb47fe-af62-4029-b05e-d296cc03a62a",
+            "brand_name": "3号仓库",
+            "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+            "product_id": "1715305243852839",
+            "title": "上海区丨本味家烧3-4人餐",
+            "state": "complete",
+            "error_code": null,
+            "reported_count": 14,
+            "returned_count": 14,
+            "queried_count": 14,
+            "received_count": 14,
+            "shanghai_count": 14,
+            "snapshot_complete": true,
+            "observed_at": "2026-09-28T16:01:13.127Z"
+          },
+          {
+            "brand_id": "54eb47fe-af62-4029-b05e-d296cc03a62a",
+            "brand_name": "3号仓库",
+            "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+            "product_id": "1731346209757207",
+            "title": "【招牌必点】双人套餐｜上海杭州通用丨南京路步行街丨约会团建商务宴请生日宴聚餐情侣拍照",
+            "state": "complete",
+            "error_code": null,
+            "reported_count": 18,
+            "returned_count": 18,
+            "queried_count": 18,
+            "received_count": 18,
+            "shanghai_count": 15,
+            "snapshot_complete": true,
+            "observed_at": "2026-09-28T16:02:08.470Z"
+          },
+          {
+            "brand_id": "54eb47fe-af62-4029-b05e-d296cc03a62a",
+            "brand_name": "3号仓库",
+            "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+            "product_id": "1736427677554727",
+            "title": "【宝藏小城】现磨生椰拿铁｜上海区丨人民广场南京东路陆家嘴徐家汇浦东新区外滩东方明珠豫园城隍庙巴黎",
+            "state": "complete",
+            "error_code": null,
+            "reported_count": 15,
+            "returned_count": 15,
+            "queried_count": 15,
+            "received_count": 15,
+            "shanghai_count": 15,
+            "snapshot_complete": true,
+            "observed_at": "2026-09-28T16:03:12.306Z"
+          }
+        ]
+      },
+      {
+        "reason": "scope_truncated",
+        "label": "返回的门店 ID 少于平台声明总数",
+        "coupons": 253,
+        "source_id_gap": 609606,
+        "lookup_gap": 0,
+        "examples": [
+          {
+            "brand_id": "417f8d63-4f12-4d7f-8240-34b90f29b320",
+            "brand_name": "1点点",
+            "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+            "product_id": "1784360500535328",
+            "title": "【国庆】【1点点】抹茶奶茶（中杯）",
+            "state": "incomplete",
+            "error_code": "STORE_COUNT_MISMATCH",
+            "reported_count": 5339,
+            "returned_count": 50,
+            "queried_count": 50,
+            "received_count": 50,
+            "shanghai_count": 50,
+            "snapshot_complete": false,
+            "observed_at": "2026-09-29T02:31:35.166Z"
+          },
+          {
+            "brand_id": "cb41c6d8-eee8-4fd0-927e-7a371530e0bf",
+            "brand_name": "CoCo都可",
+            "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+            "product_id": "1781886373728308",
+            "title": "【双节】【招牌鲜芋】鲜芋系列2选1（自动发券至小程序）",
+            "state": "incomplete",
+            "error_code": "STORE_COUNT_MISMATCH",
+            "reported_count": 2755,
+            "returned_count": 50,
+            "queried_count": 50,
+            "received_count": 50,
+            "shanghai_count": 50,
+            "snapshot_complete": false,
+            "observed_at": "2026-09-28T22:09:14.882Z"
+          },
+          {
+            "brand_id": "ec0b3e54-14c0-4256-ad68-c1e4a3bf3f63",
+            "brand_name": "Lavazza",
+            "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+            "product_id": "1787671885915156",
+            "title": "【风味拿铁】特色奶咖6选1",
+            "state": "incomplete",
+            "error_code": "STORE_COUNT_MISMATCH",
+            "reported_count": 203,
+            "returned_count": 50,
+            "queried_count": 50,
+            "received_count": 50,
+            "shanghai_count": 50,
+            "snapshot_complete": false,
+            "observed_at": "2026-09-29T02:33:58.464Z"
+          }
+        ]
+      },
+      {
+        "reason": "lookup_pending",
+        "label": "已取得范围，等待查询剩余门店",
+        "coupons": 29,
+        "source_id_gap": 35783,
+        "lookup_gap": 0,
+        "examples": [
+          {
+            "brand_id": "7376f066-316f-4b46-a473-aa61d3d13274",
+            "brand_name": "哈根达斯",
+            "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+            "product_id": "1789588956388388",
+            "title": "【假期】哈根达斯 经典咖啡4选1（3次卡）",
+            "state": "queued",
+            "error_code": "STORE_COUNT_MISMATCH",
+            "reported_count": 128,
+            "returned_count": 50,
+            "queried_count": 40,
+            "received_count": null,
+            "shanghai_count": null,
+            "snapshot_complete": null,
+            "observed_at": null
+          },
+          {
+            "brand_id": "75907def-bd95-46da-8778-679c2ff0c539",
+            "brand_name": "塔可钟",
+            "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+            "product_id": "1781235463168048",
+            "title": "【中秋】【爆款三重奏】塔可缤纷4件套",
+            "state": "queued",
+            "error_code": null,
+            "reported_count": 30,
+            "returned_count": 30,
+            "queried_count": 0,
+            "received_count": null,
+            "shanghai_count": null,
+            "snapshot_complete": null,
+            "observed_at": null
+          },
+          {
+            "brand_id": "5d7d9dcf-2c21-4e0b-b3da-96e3d13f3ba1",
+            "brand_name": "安又胖",
+            "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+            "product_id": "1716921869203470",
+            "title": "50元代金券【结账必用】",
+            "state": "queued",
+            "error_code": "STORE_COUNT_MISMATCH",
+            "reported_count": 96,
+            "returned_count": 50,
+            "queried_count": 20,
+            "received_count": null,
+            "shanghai_count": null,
+            "snapshot_complete": null,
+            "observed_at": null
+          }
+        ]
+      }
+    ],
+    "caveat": "已取得上海门店不代表取得全部上海门店，也不代表完整权益已核验。缺口按券累计，同一门店可能重复计数；不是缺失门店去重总数。声明总数与返回 ID 不一致时不猜测原因、不标完整、不自动无限重查。待查询状态不能当作平台缺失。"
+  }
+}

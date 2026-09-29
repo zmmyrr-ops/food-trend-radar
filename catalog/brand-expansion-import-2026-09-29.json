@@ -1,0 +1,435 @@
+{
+  "batch": "2026-09-29-multi-channel",
+  "applied": true,
+  "started_at": "2026-09-29T07:42:18.575Z",
+  "before_total": 309,
+  "before_active": 308,
+  "created": 70,
+  "existing": 0,
+  "evidence": 71,
+  "records": [
+    {
+      "name": "大富贵",
+      "id": "5d0833c0-ac96-42a7-a407-cfaac77c2138",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "鸿瑞兴",
+      "id": "ff1811b3-9b37-48d0-8773-270d8bf183b5",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "老盛昌",
+      "id": "da1b904d-af99-44cf-8f38-879e3c617c10",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "老盛兴",
+      "id": "b2e7b101-2e41-4d40-a279-2de3f388483a",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "笼百味",
+      "id": "7dbfd52b-6b4e-4b75-9959-1886f743ed3f",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "觅江南",
+      "id": "7952ea69-8e11-479a-b277-1f5cc23447f2",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "清美味道",
+      "id": "079d69df-b7d3-47e9-8a2d-d91dd90b8f07",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "新里上海点心",
+      "id": "eb9502c2-8811-41ae-aff8-c222bd5957f0",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "新迎园",
+      "id": "bd36cec0-615e-4761-ba03-339a94936761",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "永和大王",
+      "id": "5dffc63f-39b7-42c0-afbd-c5d89ac2370e",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "Wagas",
+      "id": "04bfb7eb-34ea-4917-bf20-15d4c10388a9",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "韩渔面馆",
+      "id": "cb74c49e-643d-41cc-80e3-6a957892e00f",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "红子鸡凤凰楼",
+      "id": "07d5d89d-34f3-462d-87d7-554f9783d085",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "伊祥·敦煌楼",
+      "id": "49d13922-e512-4f44-8e29-90fa78376cf9",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "金湘隆",
+      "id": "23aa1972-e2b6-4ce3-801b-6ad59ee1cecb",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "宁夏印象·盐池滩羊肉体验店",
+      "id": "f5d0ff18-9348-4149-8484-aae512dc616d",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "张记天增面馆",
+      "id": "daca558b-b4b0-4ecc-8181-cd8a0b6b3f7b",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "小辫子羊肉馆",
+      "id": "455a95db-d66d-43b0-aa4d-5dd0d6680508",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "盈田盈粥庄",
+      "id": "1fcf48ea-4e19-4621-8568-be3cff033327",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "张师傅广东肠粉",
+      "id": "8f9f154c-e8f3-4084-bb4b-240734e87b7c",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "菰城宴",
+      "id": "e7798feb-9af8-4d89-b046-c0dee0e4ae41",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "宁波汤团店",
+      "id": "661aa8b2-d7d5-4143-893c-e7c5412908bc",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "盛兴汤团",
+      "id": "286677d7-0d7d-4b87-88dc-ed19f0cd0506",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "光明邨",
+      "id": "25ba57cd-2d53-4b5d-8bf5-d70180d8dcd1",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "王宝和",
+      "id": "26ab3650-cd3f-47dc-9ddc-11b55675c4b2",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "沈大成",
+      "id": "c93fbd30-f960-4986-ac83-27158672cef1",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "东泰祥",
+      "id": "922856ed-51ac-4284-aec4-0e80382f22bd",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "七宝老街汤团",
+      "id": "665e1ecb-90cc-458c-b1ab-6cb511bd7aa6",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "美新点心店",
+      "id": "accaa986-cbbb-4191-98d9-89bb42fa06e3",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "王家沙",
+      "id": "4b4ff290-6ae8-4140-98aa-81608953829a",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "高行汤团",
+      "id": "a8895241-ca02-48a5-bc95-d71d978f4d3d",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "四新汤团",
+      "id": "3f551114-30f8-45b0-8a5c-99c2b67ac8ea",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "五芳斋",
+      "id": "15f96e6b-917f-4e5e-80cc-a5fce5111fee",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "杏花楼",
+      "id": "8e79400a-c557-4061-859f-f0427159d6c8",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "邵万生",
+      "id": "34a5c781-75a8-4816-a4cc-9a6053e40099",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "功德林",
+      "id": "be48d77a-eacb-4321-aa9d-1841c11c49bb",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "龙华素斋",
+      "id": "f492e15e-bfd7-4f5f-8aaa-f6b856017517",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "张小妹粽子",
+      "id": "6b25a1af-c75c-41fe-98da-57b9b69095c5",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "芦芳粽子王",
+      "id": "da640a58-4e25-4e99-9bce-77e426cfb1ae",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "新雅粤菜馆",
+      "id": "48e16669-d944-40ea-abf9-1056dd5ee5a1",
+      "created": true,
+      "active": false
+    },
+    {
+      "name": "捞王",
+      "id": "bfe05098-ed3c-4354-a691-95140e1b9307",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "寿司郎",
+      "id": "9f9c1519-50a0-44f7-93bd-44d986e57a65",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "吉野家",
+      "id": "0c74b0fe-6d6e-41e6-8473-f19ebf47b295",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "爷爷不泡茶",
+      "id": "63800855-5d76-4aa8-afeb-0d249ec1a1eb",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "湊湊",
+      "id": "e875f649-0424-4387-a7b3-e92a7543a30d",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "袁记云饺",
+      "id": "1adfb9a1-e421-40b1-9077-d2365a4cb02a",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "杨国福麻辣烫",
+      "id": "9940aa8e-129c-42d5-8f68-583b37e97fdb",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "塔斯汀",
+      "id": "097db758-9baa-44ae-b20f-e11b71b9fd10",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "德克士",
+      "id": "66efcdd9-cf8a-4586-872e-683eef0d0572",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "华莱士",
+      "id": "5fe0e144-8511-4562-86ac-4e3be3947701",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "半天妖烤鱼",
+      "id": "b4f48372-e388-4614-bff5-393011ccd69f",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "呷哺呷哺",
+      "id": "4d33dcb6-8a21-4230-99cd-3340b26e9dfc",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "朱光玉火锅馆",
+      "id": "1eaa1cd1-2307-4c1b-b283-b2d842855798",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "探鱼",
+      "id": "622308c0-e057-484b-bbe0-6b3da40c0903",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "莉莲蛋挞",
+      "id": "682c7466-ec68-4a5c-9e8c-1d9ebf6629cd",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "蓝瓶咖啡",
+      "id": "5e9006c3-dcf4-454e-b7b6-5af3f7184936",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "% Arabica",
+      "id": "2bb9747b-d76e-4335-b6a6-5d5bce494d3c",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "味千拉面",
+      "id": "79d1bc2b-16d5-4076-b1d7-f920e5e3d5a9",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "红宝石",
+      "id": "7d802b2d-a29a-43b9-86ae-688e3977e0fd",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "遇见小面",
+      "id": "5e054149-1f3c-40c0-834b-84cc3b028448",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "肥汁米蘭",
+      "id": "e3b4245c-6681-41da-9145-d0c0f49d7cbe",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "陶陶居",
+      "id": "fd6033fc-0c9f-407f-b560-d327bae45eb9",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "阿嬷手作",
+      "id": "375a3cf4-29cf-466d-9067-dd6c6c711f40",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "果呀呀",
+      "id": "15e1c281-d7a1-443c-bd2c-066d82e73da0",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "真功夫",
+      "id": "5e829d02-daa4-47ec-b46b-92aeb94382a9",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "悸动烧仙草",
+      "id": "490cc2f9-10ea-44cc-a683-814ab4f7024f",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "正新鸡排",
+      "id": "6d6502d9-447d-45c2-99ab-64acc311fa9a",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "一鸣真鲜奶吧",
+      "id": "4859d3d4-d371-42a4-b46f-496eecdcad74",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "棒约翰",
+      "id": "eb780795-38a6-4660-bdec-f980f5ba4b0d",
+      "created": true,
+      "active": true
+    },
+    {
+      "name": "蓝蛙",
+      "id": "5b409432-a893-40e3-8483-faf20977637e",
+      "created": true,
+      "active": true
+    }
+  ],
+  "after_total": 379,
+  "after_active": 350,
+  "finished_at": "2026-09-29T07:42:18.964Z"
+}

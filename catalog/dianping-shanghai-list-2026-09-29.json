@@ -1,0 +1,845 @@
+{
+  "source": "https://www.dianping.com/shanghai/ch10",
+  "pages": [
+    {
+      "page": 1,
+      "status": 200,
+      "shop_count": 15
+    },
+    {
+      "page": 2,
+      "status": 200,
+      "shop_count": 15
+    },
+    {
+      "page": 3,
+      "status": 200,
+      "shop_count": 15
+    },
+    {
+      "page": 4,
+      "status": 200,
+      "shop_count": 15
+    },
+    {
+      "page": 5,
+      "status": 200,
+      "shop_count": 15
+    },
+    {
+      "page": 6,
+      "status": 200,
+      "shop_count": 15
+    },
+    {
+      "page": 7,
+      "status": 200,
+      "shop_count": 15
+    },
+    {
+      "page": 8,
+      "status": 200,
+      "shop_count": 15
+    },
+    {
+      "page": 9,
+      "status": 200,
+      "shop_count": 15
+    },
+    {
+      "page": 10,
+      "status": 200,
+      "shop_count": 15
+    },
+    {
+      "page": 11,
+      "status": 200,
+      "shop_count": 5
+    },
+    {
+      "page": 12,
+      "status": 200,
+      "shop_count": 0
+    }
+  ],
+  "shops": [
+    {
+      "name": "泰廊餐厅Thai Gallery",
+      "url": "https://www.dianping.com/shop/k3ZbV7SZiJdS33o8",
+      "list_page": 1
+    },
+    {
+      "name": "Professor Lee(K11艺术中心店)",
+      "url": "https://www.dianping.com/shop/G7lZQSVUguP43EIT",
+      "list_page": 1
+    },
+    {
+      "name": "青鹤谷韩国料理(总店)",
+      "url": "https://www.dianping.com/shop/G8vQ1zgGBMlcfSli",
+      "list_page": 1
+    },
+    {
+      "name": "BELLOCO倍乐(静安店)",
+      "url": "https://www.dianping.com/shop/l1RrUsweyvuUY3yr",
+      "list_page": 1
+    },
+    {
+      "name": "酒吞mix米野吞烤肉(南翔印象城MEGA店)",
+      "url": "https://www.dianping.com/shop/H5qBv8fpgAkr9ujJ",
+      "list_page": 1
+    },
+    {
+      "name": "帕蓝·暹罗料理(大学路店)",
+      "url": "https://www.dianping.com/shop/iBZIJbBb1Hy5lKAE",
+      "list_page": 1
+    },
+    {
+      "name": "酒吞(乐坊店)",
+      "url": "https://www.dianping.com/shop/H4oBabjhdDVaYZqT",
+      "list_page": 1
+    },
+    {
+      "name": "钟路商会·缘家(虹泉路店)",
+      "url": "https://www.dianping.com/shop/H4DN7SgoRQlpAfnx",
+      "list_page": 1
+    },
+    {
+      "name": "BELLOCO倍乐(古北店)",
+      "url": "https://www.dianping.com/shop/H50CSf69APq5I5T8",
+      "list_page": 1
+    },
+    {
+      "name": "逸品淮扬(白玉兰广场店)",
+      "url": "https://www.dianping.com/shop/H8i06HJAk0NOXaL7",
+      "list_page": 1
+    },
+    {
+      "name": "MIKAKU",
+      "url": "https://www.dianping.com/shop/EzgJJU7ShvUKQwiB",
+      "list_page": 1
+    },
+    {
+      "name": "遇外滩(BFC外滩金融中心店)",
+      "url": "https://www.dianping.com/shop/H4lIT1pVYp0WprHz",
+      "list_page": 1
+    },
+    {
+      "name": "上海和平饭店龙凤厅 Dragon Phoenix",
+      "url": "https://www.dianping.com/shop/G6fMtgrohnhj26b2",
+      "list_page": 1
+    },
+    {
+      "name": "沪西老弄堂面馆(广东路店)",
+      "url": "https://www.dianping.com/shop/jzrv0KqUI0MlKSdJ",
+      "list_page": 1
+    },
+    {
+      "name": "老兴鲜(黄浦店)",
+      "url": "https://www.dianping.com/shop/H7vprrMRBaF2iOCZ",
+      "list_page": 1
+    },
+    {
+      "name": "兴兴·海派本帮菜",
+      "url": "https://www.dianping.com/shop/l5hFCdlh267XuYk4",
+      "list_page": 2
+    },
+    {
+      "name": "Jean Georges",
+      "url": "https://www.dianping.com/shop/G4jWgoOJ6XL6HNP1",
+      "list_page": 2
+    },
+    {
+      "name": "Solo(衡山路店)",
+      "url": "https://www.dianping.com/shop/G2LQYgctM49uMwzc",
+      "list_page": 2
+    },
+    {
+      "name": "甬府小鲜(陆家嘴中心店)",
+      "url": "https://www.dianping.com/shop/H6ygYjra5h7qQgIO",
+      "list_page": 2
+    },
+    {
+      "name": "沪西老弄堂面馆(定西路店)",
+      "url": "https://www.dianping.com/shop/k5E0E7ekSXJs9d71",
+      "list_page": 2
+    },
+    {
+      "name": "人和馆·上海菜(徐汇店)",
+      "url": "https://www.dianping.com/shop/G41TRhMLL80DPFTN",
+      "list_page": 2
+    },
+    {
+      "name": "鹿园 MOOSE(长宁店)",
+      "url": "https://www.dianping.com/shop/l85TPdfsmlIlumBO",
+      "list_page": 2
+    },
+    {
+      "name": "THE NEST 环外滩露台餐厅(外滩店)",
+      "url": "https://www.dianping.com/shop/l2Tl4nLusiHtG87h",
+      "list_page": 2
+    },
+    {
+      "name": "福1088",
+      "url": "https://www.dianping.com/shop/k7JENCdJrdXyhtMW",
+      "list_page": 2
+    },
+    {
+      "name": "新荣记(BFC外滩金融中心店)",
+      "url": "https://www.dianping.com/shop/jvEO2BltK1bTciHD",
+      "list_page": 2
+    },
+    {
+      "name": "食廬(虹桥南丰城店)",
+      "url": "https://www.dianping.com/shop/l2fQWxlX4e60IUjp",
+      "list_page": 2
+    },
+    {
+      "name": "BROWNSTONE布朗石西班牙餐厅(富城店)",
+      "url": "https://www.dianping.com/shop/l7iLeGsS8NBZWcZU",
+      "list_page": 2
+    },
+    {
+      "name": "上海滩餐厅(BFC外滩金融中心店)",
+      "url": "https://www.dianping.com/shop/G4mmqiZrzgkpQZGY",
+      "list_page": 2
+    },
+    {
+      "name": "茹丝葵经典牛排馆(上海外滩店)",
+      "url": "https://www.dianping.com/shop/G3KyBCe9fLT3CcF4",
+      "list_page": 2
+    },
+    {
+      "name": "香江姳苑粥饭(人民广场店)",
+      "url": "https://www.dianping.com/shop/H5xqIFZBWP0Zt3nd",
+      "list_page": 2
+    },
+    {
+      "name": "新白鹿餐厅(世博源店)",
+      "url": "https://www.dianping.com/shop/G1PUPaOlLNpU8Z1h",
+      "list_page": 3
+    },
+    {
+      "name": "親父的右腕(中山公园店)",
+      "url": "https://www.dianping.com/shop/HamwTV4hxUhGFCUw",
+      "list_page": 3
+    },
+    {
+      "name": "四季和府(外滩店)",
+      "url": "https://www.dianping.com/shop/k1ibjwFzQNtwCh61",
+      "list_page": 3
+    },
+    {
+      "name": "酒吞(世纪汇店)",
+      "url": "https://www.dianping.com/shop/kanArfMiRkMoZBk3",
+      "list_page": 3
+    },
+    {
+      "name": "Efes Turkish & Mediterranean Cuisine 艾菲斯餐厅(陆...",
+      "url": "https://www.dianping.com/shop/l1yXBrwHP2CaGWws",
+      "list_page": 3
+    },
+    {
+      "name": "映水芙蓉·新川菜(白玉兰广场店)",
+      "url": "https://www.dianping.com/shop/H8CqC5iJnRHFRTHh",
+      "list_page": 3
+    },
+    {
+      "name": "三号黄浦会Canton Table",
+      "url": "https://www.dianping.com/shop/l4LSkZ25uyGUhLiU",
+      "list_page": 3
+    },
+    {
+      "name": "O.P.S. CAFE",
+      "url": "https://www.dianping.com/shop/l2p6Zk0OLjKMt9UG",
+      "list_page": 3
+    },
+    {
+      "name": "牛New寿喜烧(南方商城店)",
+      "url": "https://www.dianping.com/shop/k49jcDI05lVXTzTS",
+      "list_page": 3
+    },
+    {
+      "name": "Kathleen’s Bistro 凯圣琳西餐厅(陆家嘴店)",
+      "url": "https://www.dianping.com/shop/EawjWXgD9W31ipcB",
+      "list_page": 3
+    },
+    {
+      "name": "随堂里",
+      "url": "https://www.dianping.com/shop/j3uTuM4AvRXSjMcq",
+      "list_page": 3
+    },
+    {
+      "name": "一绪に寿喜烧放题(合生汇店)",
+      "url": "https://www.dianping.com/shop/HakKUU3zE9LGyGp3",
+      "list_page": 3
+    },
+    {
+      "name": "醉东Oriental House(港汇恒隆广场店)",
+      "url": "https://www.dianping.com/shop/l4zdBR7WJX4nLLxs",
+      "list_page": 3
+    },
+    {
+      "name": "荣新馆(兴义路1号店)",
+      "url": "https://www.dianping.com/shop/l9C1R4WzyBc2UwR5",
+      "list_page": 3
+    },
+    {
+      "name": "酒吞(七宝领展广场店)",
+      "url": "https://www.dianping.com/shop/l5DDcqwV2OhXrdzO",
+      "list_page": 3
+    },
+    {
+      "name": "汤记传菜(秀浦路店)",
+      "url": "https://www.dianping.com/shop/G1WjRqTI608KSbVE",
+      "list_page": 4
+    },
+    {
+      "name": "海逸海鲜酒家(滨江店)",
+      "url": "https://www.dianping.com/shop/l8ivVxeqHjFhvKPH",
+      "list_page": 4
+    },
+    {
+      "name": "haxnbauer海森堡德国餐厅(长泰广场店)",
+      "url": "https://www.dianping.com/shop/G8pVXq6bajcNtCK8",
+      "list_page": 4
+    },
+    {
+      "name": "鸣龙上雅铁板烧日料(长宁店)",
+      "url": "https://www.dianping.com/shop/kaDzzbivKltAoqgQ",
+      "list_page": 4
+    },
+    {
+      "name": "荣先森·福建菜(人广来福士店)",
+      "url": "https://www.dianping.com/shop/l6oXOK0VejTK3pYN",
+      "list_page": 4
+    },
+    {
+      "name": "本怡吧都韩国料理(闵行店)",
+      "url": "https://www.dianping.com/shop/G8Nh1Vv6szG6YbdP",
+      "list_page": 4
+    },
+    {
+      "name": "黑渡口·茶(广富林店)",
+      "url": "https://www.dianping.com/shop/l8szEllC9E6s2slv",
+      "list_page": 4
+    },
+    {
+      "name": "初花·日本料理",
+      "url": "https://www.dianping.com/shop/H3acHiARlWLRZ9jz",
+      "list_page": 4
+    },
+    {
+      "name": "Barista Made Coffee·BMC",
+      "url": "https://www.dianping.com/shop/k32P9hetD57Fffv6",
+      "list_page": 4
+    },
+    {
+      "name": "巡湘记·现炒鲜牛肉(上海七宝领展广场店)",
+      "url": "https://www.dianping.com/shop/l9KopgNVvqn7OEBC",
+      "list_page": 4
+    },
+    {
+      "name": "The BREW·酿餐厅(浦东嘉里大酒店)",
+      "url": "https://www.dianping.com/shop/H5MYtAltn7wJzqqy",
+      "list_page": 4
+    },
+    {
+      "name": "姚稷大铁锅(崂山路店)",
+      "url": "https://www.dianping.com/shop/H2hsBpbjhlPDDnHC",
+      "list_page": 4
+    },
+    {
+      "name": "万岛日本料理铁板烧(五角场店)",
+      "url": "https://www.dianping.com/shop/ifAONfTkYxgMiiiR",
+      "list_page": 4
+    },
+    {
+      "name": "轻蔬不用等·素食(江苏路店)",
+      "url": "https://www.dianping.com/shop/H6FNYRt0FJKFqQMi",
+      "list_page": 4
+    },
+    {
+      "name": "点都德(白玉兰广场店)",
+      "url": "https://www.dianping.com/shop/G3If7J1ew2lHoK7c",
+      "list_page": 4
+    },
+    {
+      "name": "蟹家大院 · 独揽江景(滨江店)",
+      "url": "https://www.dianping.com/shop/H7s38tgIvEEHGCpF",
+      "list_page": 5
+    },
+    {
+      "name": "桂满陇(人民广场世茂店)",
+      "url": "https://www.dianping.com/shop/k4SqFoavatjMGX2T",
+      "list_page": 5
+    },
+    {
+      "name": "贯贯吉·清真餐厅(浙江中路店)",
+      "url": "https://www.dianping.com/shop/k85LtrjNWMlCCZ3x",
+      "list_page": 5
+    },
+    {
+      "name": "bananaGG(襄阳南路店)",
+      "url": "https://www.dianping.com/shop/Gan7po1f5IyHVYV0",
+      "list_page": 5
+    },
+    {
+      "name": "醉东Oriental House(静安嘉里中心店)",
+      "url": "https://www.dianping.com/shop/l1pFxEUMxhYPVMz7",
+      "list_page": 5
+    },
+    {
+      "name": "MUFMUF渔味料理(北外滩三件套景观店)",
+      "url": "https://www.dianping.com/shop/l2agJy0MKlCYV6rC",
+      "list_page": 5
+    },
+    {
+      "name": "细记港九早茶包房夜宵(东湖路总店)",
+      "url": "https://www.dianping.com/shop/G7lsGtLhJKqWDF9J",
+      "list_page": 5
+    },
+    {
+      "name": "阿吾罗日本料理(芮欧百货店)",
+      "url": "https://www.dianping.com/shop/H8Y2PqxYAJpkqohA",
+      "list_page": 5
+    },
+    {
+      "name": "荟廷(高岛屋百货店)",
+      "url": "https://www.dianping.com/shop/G28Kt50EtfD5qEMX",
+      "list_page": 5
+    },
+    {
+      "name": "喜鼎(上海泸定路店)",
+      "url": "https://www.dianping.com/shop/HabN0YuEMPBF2xjI",
+      "list_page": 5
+    },
+    {
+      "name": "膳道(西郊店)",
+      "url": "https://www.dianping.com/shop/EDUjKOMnuMdy6bnn",
+      "list_page": 5
+    },
+    {
+      "name": "罗福索love&salt牛排馆(巨鹿路店)",
+      "url": "https://www.dianping.com/shop/k4NxM4MmeaOVGeGv",
+      "list_page": 5
+    },
+    {
+      "name": "Kathleen's Waitan 凯圣琳江景西餐厅(外滩店)",
+      "url": "https://www.dianping.com/shop/G5VwQ2UHRdpEc366",
+      "list_page": 5
+    },
+    {
+      "name": "米禾良日料(人民广场店)",
+      "url": "https://www.dianping.com/shop/FqtXP0OHI8aIcOcV",
+      "list_page": 5
+    },
+    {
+      "name": "潮界(LU·ONE凯德晶萃广场店)",
+      "url": "https://www.dianping.com/shop/H5HZknapqleZex4S",
+      "list_page": 5
+    },
+    {
+      "name": "宝丽轩中餐厅BAOLIXUAN",
+      "url": "https://www.dianping.com/shop/FQX0dXDza0e3sw3z",
+      "list_page": 6
+    },
+    {
+      "name": "AJIYA炭火烤肉(仙霞路店)",
+      "url": "https://www.dianping.com/shop/Gad2SFYFpRwVsMHk",
+      "list_page": 6
+    },
+    {
+      "name": "左庭右院鲜牛肉火锅(南翔印象城MEGA店)",
+      "url": "https://www.dianping.com/shop/H1ddCENdIAHA2riL",
+      "list_page": 6
+    },
+    {
+      "name": "天辣(上海首店·日月光店)",
+      "url": "https://www.dianping.com/shop/irMAj0b2IdwuBzEt",
+      "list_page": 6
+    },
+    {
+      "name": "晶焱上海菜(徐汇店)",
+      "url": "https://www.dianping.com/shop/l1PHjU9ZbiHiTQ8X",
+      "list_page": 6
+    },
+    {
+      "name": "DA VITTORIO SHANGHAI(外滩店)",
+      "url": "https://www.dianping.com/shop/EPUtTsUfAUCxSmc5",
+      "list_page": 6
+    },
+    {
+      "name": "楼上火锅(茂名南路店)",
+      "url": "https://www.dianping.com/shop/k344ik9mj4R4WmLe",
+      "list_page": 6
+    },
+    {
+      "name": "蟹榭·本帮江浙菜·蟹宴(五角场合生汇商场店)",
+      "url": "https://www.dianping.com/shop/H5qxTMyFyfh5PnY0",
+      "list_page": 6
+    },
+    {
+      "name": "老乾杯(外滩本店)",
+      "url": "https://www.dianping.com/shop/H4cybeASYmtcc1Qa",
+      "list_page": 6
+    },
+    {
+      "name": "欧巴韩式炭烤肉·烤牛肠 오빠 숯불구이(虹泉路店)",
+      "url": "https://www.dianping.com/shop/G6lUt8p6xQvkx4jf",
+      "list_page": 6
+    },
+    {
+      "name": "鸿姐老火锅(静安店)",
+      "url": "https://www.dianping.com/shop/F4nE08K09Ptc47y4",
+      "list_page": 6
+    },
+    {
+      "name": "季福楼 Jhouse(静安店)",
+      "url": "https://www.dianping.com/shop/k5z8H92o9GB1PMTO",
+      "list_page": 6
+    },
+    {
+      "name": "有喜屋·鲜鸡板前烧鸟(徐家汇店)",
+      "url": "https://www.dianping.com/shop/k6qxl4KqAs2Q56CM",
+      "list_page": 6
+    },
+    {
+      "name": "Maison Lameloise莱美露滋(上海中心店)",
+      "url": "https://www.dianping.com/shop/H9pQr3xgTq2Wke1F",
+      "list_page": 6
+    },
+    {
+      "name": "上海苏宁宝丽嘉酒店·Cafe Bellagio西餐厅",
+      "url": "https://www.dianping.com/shop/k1xzA8DG1qQ5B5fn",
+      "list_page": 6
+    },
+    {
+      "name": "厚贞日式烤肉(杨浦合生汇店)",
+      "url": "https://www.dianping.com/shop/G1rrksnDtXGdAV0c",
+      "list_page": 7
+    },
+    {
+      "name": "弦月窗LUNETTE BY AMANDA(复兴路洋房店)",
+      "url": "https://www.dianping.com/shop/G8yGSDZwbwIFAiFt",
+      "list_page": 7
+    },
+    {
+      "name": "HIGH YAKI modern izakaya & bar 烧肉居酒屋",
+      "url": "https://www.dianping.com/shop/l488STCX0d3XMdww",
+      "list_page": 7
+    },
+    {
+      "name": "潮界(大学路店)",
+      "url": "https://www.dianping.com/shop/H46cr3Z9uIXEMv72",
+      "list_page": 7
+    },
+    {
+      "name": "荣小馆(安达仕店)",
+      "url": "https://www.dianping.com/shop/G5fkD33G5aLyFJWb",
+      "list_page": 7
+    },
+    {
+      "name": "西堤牛排(上海美罗城店)",
+      "url": "https://www.dianping.com/shop/H1GZ6KNQ9XpOpEKP",
+      "list_page": 7
+    },
+    {
+      "name": "菁禧荟(外滩店)",
+      "url": "https://www.dianping.com/shop/FFyTp5INQLk5x4eh",
+      "list_page": 7
+    },
+    {
+      "name": "潘小烧·云南烧烤(外滩总店)",
+      "url": "https://www.dianping.com/shop/k86QquSR5ZW6gjKP",
+      "list_page": 7
+    },
+    {
+      "name": "鮨匠·割烹料理(外滩店)",
+      "url": "https://www.dianping.com/shop/H7zo8DaIKqOzMa9j",
+      "list_page": 7
+    },
+    {
+      "name": "珍宝海鲜JUMBO Seafood(环贸店)",
+      "url": "https://www.dianping.com/shop/jriZe4G6ij53TsdO",
+      "list_page": 7
+    },
+    {
+      "name": "Da Ivo哒伊沃意大利魔镜餐厅(外滩店)",
+      "url": "https://www.dianping.com/shop/G3PRxWvmBAFzyst2",
+      "list_page": 7
+    },
+    {
+      "name": "新荣记(南京西路店)",
+      "url": "https://www.dianping.com/shop/k9Sreb0bXu6fq1Ue",
+      "list_page": 7
+    },
+    {
+      "name": "Wolfgang’s Steakhouse 沃夫冈牛排馆(上海白玉兰广场...",
+      "url": "https://www.dianping.com/shop/H9CDhWhRY88pNNTp",
+      "list_page": 7
+    },
+    {
+      "name": "很久以前羊肉串(南京路第一百货店)",
+      "url": "https://www.dianping.com/shop/k6ixZ6ptDximb5FH",
+      "list_page": 7
+    },
+    {
+      "name": "阿纳迪酒店·秘境西餐厅",
+      "url": "https://www.dianping.com/shop/G6QFGSz3s3wlHERz",
+      "list_page": 7
+    },
+    {
+      "name": "蟹家大院(外滩店)",
+      "url": "https://www.dianping.com/shop/G9parnTPI1bpOZ2W",
+      "list_page": 8
+    },
+    {
+      "name": "夏朵花园(复兴西路店)",
+      "url": "https://www.dianping.com/shop/k6M808TAhkoQIqyR",
+      "list_page": 8
+    },
+    {
+      "name": "Dal Cuore 达可芮冰淇淋(陕西北路店)",
+      "url": "https://www.dianping.com/shop/G3Gwgtgr80j1uOVK",
+      "list_page": 8
+    },
+    {
+      "name": "小大董·烤鸭(LuOne凯德店)",
+      "url": "https://www.dianping.com/shop/k27UFCjq9csGLJ0k",
+      "list_page": 8
+    },
+    {
+      "name": "香木香羊(大治路店)",
+      "url": "https://www.dianping.com/shop/k6NdgOdeLlHu0fEh",
+      "list_page": 8
+    },
+    {
+      "name": "黑门和牛(虹桥新天地店)",
+      "url": "https://www.dianping.com/shop/E3B7f0z8tWSn8iBY",
+      "list_page": 8
+    },
+    {
+      "name": "福1015(愚园路店)",
+      "url": "https://www.dianping.com/shop/H3X9dE01nQLkzEiK",
+      "list_page": 8
+    },
+    {
+      "name": "菁禧荟(虹桥店)",
+      "url": "https://www.dianping.com/shop/l9h8XAEspl5I3qdV",
+      "list_page": 8
+    },
+    {
+      "name": "上海苏宁宝丽嘉酒店·LAGO 餐厅酒吧",
+      "url": "https://www.dianping.com/shop/H6Z6KQc1NDgbR6aI",
+      "list_page": 8
+    },
+    {
+      "name": "海底捞火锅(人民广场店)",
+      "url": "https://www.dianping.com/shop/l9qwmkX3FoD9tExc",
+      "list_page": 8
+    },
+    {
+      "name": "MOTOYA别邸·寿喜锅·活蟹(虹梅店)",
+      "url": "https://www.dianping.com/shop/l6flOUdLLLdQmc41",
+      "list_page": 8
+    },
+    {
+      "name": "荣府宴(南阳路店)",
+      "url": "https://www.dianping.com/shop/G9C85TZLT6SkMvPv",
+      "list_page": 8
+    },
+    {
+      "name": "甬府(黄浦店)",
+      "url": "https://www.dianping.com/shop/G7wyUzgcED3C284F",
+      "list_page": 8
+    },
+    {
+      "name": "小大董·烤鸭(观景餐厅·南京西路店)",
+      "url": "https://www.dianping.com/shop/l6J4HdEd83pD8LwN",
+      "list_page": 8
+    },
+    {
+      "name": "宁国素斋(华泾路店)",
+      "url": "https://www.dianping.com/shop/k9Vw5b99I8KWKSgp",
+      "list_page": 8
+    },
+    {
+      "name": "汤伯府-现熬猪肚鸡火锅(泗泾店)",
+      "url": "https://www.dianping.com/shop/k2Hc0pMcafTygaYg",
+      "list_page": 9
+    },
+    {
+      "name": "临湖素食·焱格格(保利时光里店)",
+      "url": "https://www.dianping.com/shop/k847iL0VU3GAWVRf",
+      "list_page": 9
+    },
+    {
+      "name": "慕雲·熟成烧鸟&螃蟹料理(虹桥店)",
+      "url": "https://www.dianping.com/shop/k3aFWpnIhwpJ6iO0",
+      "list_page": 9
+    },
+    {
+      "name": "三利音·浦之舟(滨江大道店)",
+      "url": "https://www.dianping.com/shop/G1R7eXylV3SYEBwh",
+      "list_page": 9
+    },
+    {
+      "name": "广舟(千禧店)",
+      "url": "https://www.dianping.com/shop/H91CBzLcBtsM86Cz",
+      "list_page": 9
+    },
+    {
+      "name": "Ministry Of Crab",
+      "url": "https://www.dianping.com/shop/k6PsJUVXD6UA2Utz",
+      "list_page": 9
+    },
+    {
+      "name": "四面泰(万象城店)",
+      "url": "https://www.dianping.com/shop/k2Av1jka9tz4GWPW",
+      "list_page": 9
+    },
+    {
+      "name": "圈儿潮汕牛肉火锅·夜宵(定西路店)",
+      "url": "https://www.dianping.com/shop/G9HpE5EefZxSAZPc",
+      "list_page": 9
+    },
+    {
+      "name": "Stone Sal 言盐西餐厅(东湖路店)",
+      "url": "https://www.dianping.com/shop/H1mpT43N7q5jRWtz",
+      "list_page": 9
+    },
+    {
+      "name": "福和慧(愚园路店)",
+      "url": "https://www.dianping.com/shop/H4B6SfePZ3EAekLE",
+      "list_page": 9
+    },
+    {
+      "name": "那都不是锅(菏泽路店)",
+      "url": "https://www.dianping.com/shop/k8v3pl8x8ZeFj7Ji",
+      "list_page": 9
+    },
+    {
+      "name": "洋房火锅(上海新天地南北里店)",
+      "url": "https://www.dianping.com/shop/k75buZODHJaHPyBp",
+      "list_page": 9
+    },
+    {
+      "name": "1886德国汽车餐厅(外滩中央地标景观店)",
+      "url": "https://www.dianping.com/shop/H5957jSkSZIklxg2",
+      "list_page": 9
+    },
+    {
+      "name": "润苑·悦椿轩(徐汇万科中心一期店)",
+      "url": "https://www.dianping.com/shop/H1gWkmjKKW0MgG7j",
+      "list_page": 9
+    },
+    {
+      "name": "Le Bistrot de Racine",
+      "url": "https://www.dianping.com/shop/k87oaNpfOEThb5hW",
+      "list_page": 9
+    },
+    {
+      "name": "Primotable高桌牛排馆(陆家嘴紫金山店)",
+      "url": "https://www.dianping.com/shop/HaXbG8zPJznhm66Q",
+      "list_page": 10
+    },
+    {
+      "name": "The Pine 松涧",
+      "url": "https://www.dianping.com/shop/k7EfP3AYujLc86zt",
+      "list_page": 10
+    },
+    {
+      "name": "龍码头•螃蟹王(保利时光里店)",
+      "url": "https://www.dianping.com/shop/H5BGCjcalZb5NV7G",
+      "list_page": 10
+    },
+    {
+      "name": "鮨匠·割烹料理(物华路店)",
+      "url": "https://www.dianping.com/shop/H8iphWFaOWEwsh0W",
+      "list_page": 10
+    },
+    {
+      "name": "Le Comptoir de Pierre Gagnaire",
+      "url": "https://www.dianping.com/shop/l3b8AOMTkNqRHZa9",
+      "list_page": 10
+    },
+    {
+      "name": "鮨青•Omakase(恒基名人购物中心店)",
+      "url": "https://www.dianping.com/shop/k8iVtPmCBnFHhTf1",
+      "list_page": 10
+    },
+    {
+      "name": "鳗重(愚园路店)",
+      "url": "https://www.dianping.com/shop/jGbtatTUCi3x5tZs",
+      "list_page": 10
+    },
+    {
+      "name": "楼上荟馆(静安嘉里中心店)",
+      "url": "https://www.dianping.com/shop/iNL1nhgyvWiREVKg",
+      "list_page": 10
+    },
+    {
+      "name": "JW酒廊 JW Lounge(JW万豪侯爵酒店)",
+      "url": "https://www.dianping.com/shop/k3nVSa8zosPKlEI9",
+      "list_page": 10
+    },
+    {
+      "name": "壳里西餐厅Coquille Seafood Bistro(蒙自路店)",
+      "url": "https://www.dianping.com/shop/l6cQSLZA0x2nW6Wr",
+      "list_page": 10
+    },
+    {
+      "name": "楼上荟馆(浦东国金店)",
+      "url": "https://www.dianping.com/shop/k4yZiQZCdJ9f1XfZ",
+      "list_page": 10
+    },
+    {
+      "name": "22號和牛烧肉(静安店)",
+      "url": "https://www.dianping.com/shop/G82Ce0pDTU2BTpJE",
+      "list_page": 10
+    },
+    {
+      "name": "LUNEURS月乐诗·法式冰淇淋(环贸店)",
+      "url": "https://www.dianping.com/shop/k2BgLVzbu6PUyAqb",
+      "list_page": 10
+    },
+    {
+      "name": "三个蒙古大叔羊肉串(大宁店)",
+      "url": "https://www.dianping.com/shop/l34OsaGnHpSRN9I6",
+      "list_page": 10
+    },
+    {
+      "name": "樽宴",
+      "url": "https://www.dianping.com/shop/k5JmcwCPWhYPn7NR",
+      "list_page": 10
+    },
+    {
+      "name": "地球美食剧场",
+      "url": "https://www.dianping.com/shop/k8ZlQIWaZmVOAxSP",
+      "list_page": 11
+    },
+    {
+      "name": "香守·潮汕海鲜港式火锅",
+      "url": "https://www.dianping.com/shop/laq08xyvo8Ie8JWo",
+      "list_page": 11
+    },
+    {
+      "name": "哥哥の深夜食堂(西岸梦中心店)",
+      "url": "https://www.dianping.com/shop/isZAHlfHjag4yBFJ",
+      "list_page": 11
+    },
+    {
+      "name": "黄记大闸蟹专卖店·活蟹·醉蟹",
+      "url": "https://www.dianping.com/shop/G9vPsqMwT9SnsR17",
+      "list_page": 11
+    },
+    {
+      "name": "鮨空海·怀石料理(杨浦店)",
+      "url": "https://www.dianping.com/shop/k1bqCHIZydfov3ww",
+      "list_page": 11
+    }
+  ],
+  "complete_city_coverage": false,
+  "observed_at": "2026-09-29T08:06:00.951496+00:00",
+  "stop_reason": "Page 12 returned HTTP 200 but no parsed shop rows; end-of-list versus validation/structure change unconfirmed."
+}

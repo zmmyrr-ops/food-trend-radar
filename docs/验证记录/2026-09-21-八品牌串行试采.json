@@ -1,0 +1,142 @@
+{
+  "run_id": "2183f85b-85cc-457e-8268-1fb84b8e7400",
+  "exported_at": "2026-09-20T16:37:39.742Z",
+  "run": {
+    "id": "2183f85b-85cc-457e-8268-1fb84b8e7400",
+    "slot": null,
+    "status": "complete",
+    "started_at": "2026-09-20T16:32:32.126Z",
+    "finished_at": "2026-09-20T16:37:12.557Z",
+    "total": 8,
+    "completed": 8
+  },
+  "pause_reason": null,
+  "audit": {
+    "total": 128,
+    "min_gap_ms": 1005,
+    "short_gaps": 0,
+    "non_success": 0
+  },
+  "totals": {
+    "brands": 8,
+    "complete": 8,
+    "pages": 128,
+    "recalled": 1282,
+    "name_matched": 0
+  },
+  "tasks": [
+    {
+      "brand_id": "a7900d69-baa0-45d7-93f6-47d6588d4e26",
+      "name": "沪上阿姨",
+      "state": "complete",
+      "pages": 21,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "FIRST_BASELINE",
+      "completed_at": "2026-09-20T16:33:18.166Z",
+      "previous_run_id": null,
+      "recalled": 196,
+      "matched": 0
+    },
+    {
+      "brand_id": "cba5a3eb-14da-4b80-9a93-1a00c0b46482",
+      "name": "海底捞",
+      "state": "complete",
+      "pages": 1,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "FIRST_BASELINE",
+      "completed_at": "2026-09-20T16:33:20.374Z",
+      "previous_run_id": null,
+      "recalled": 4,
+      "matched": 0
+    },
+    {
+      "brand_id": "d329b334-0649-4e9f-b395-d8b1f40a0da3",
+      "name": "牛New寿喜烧",
+      "state": "complete",
+      "pages": 21,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "FIRST_BASELINE",
+      "completed_at": "2026-09-20T16:34:05.670Z",
+      "previous_run_id": null,
+      "recalled": 233,
+      "matched": 0
+    },
+    {
+      "brand_id": "a93c37c9-65eb-4787-97c9-9eb20817f471",
+      "name": "老乡鸡",
+      "state": "complete",
+      "pages": 21,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "FIRST_BASELINE",
+      "completed_at": "2026-09-20T16:34:51.791Z",
+      "previous_run_id": null,
+      "recalled": 209,
+      "matched": 0
+    },
+    {
+      "brand_id": "7399442b-801f-41f4-adf0-3d2cad0d8891",
+      "name": "肯德基",
+      "state": "complete",
+      "pages": 1,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "FIRST_BASELINE",
+      "completed_at": "2026-09-20T16:34:53.370Z",
+      "previous_run_id": null,
+      "recalled": 0,
+      "matched": 0
+    },
+    {
+      "brand_id": "d375b35d-36ce-4258-9bce-af116a42e403",
+      "name": "西贝莜面村",
+      "state": "complete",
+      "pages": 21,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "FIRST_BASELINE",
+      "completed_at": "2026-09-20T16:35:40.485Z",
+      "previous_run_id": null,
+      "recalled": 224,
+      "matched": 0
+    },
+    {
+      "brand_id": "eef3891d-8979-40db-a97e-56a1760765aa",
+      "name": "达美乐比萨",
+      "state": "complete",
+      "pages": 21,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "FIRST_BASELINE",
+      "completed_at": "2026-09-20T16:36:26.893Z",
+      "previous_run_id": null,
+      "recalled": 200,
+      "matched": 0
+    },
+    {
+      "brand_id": "cb68f3bc-d129-44fe-b038-ceb157e5d33b",
+      "name": "鲍师傅糕点",
+      "state": "complete",
+      "pages": 21,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "FIRST_BASELINE",
+      "completed_at": "2026-09-20T16:37:12.493Z",
+      "previous_run_id": null,
+      "recalled": 216,
+      "matched": 0
+    }
+  ],
+  "caveat": "分页完成不等于品牌全量覆盖；名称匹配不等于身份及权益核验。"
+}

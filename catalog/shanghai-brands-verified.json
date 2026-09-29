@@ -1,0 +1,4069 @@
+{
+  "version": "shanghai-public-brands-2026-09-20",
+  "retrieved_at": "2026-09-20T11:27:28.455046+00:00",
+  "scope": "上海；仅包含当前官网目录资料核对通过的品牌，不代表实时营业或数据接入授权",
+  "sources": {
+    "sbm": {
+      "url": "https://www.superbrandmall.com/cn/eating",
+      "title": "正大广场官方餐饮目录",
+      "address": "上海市浦东新区陆家嘴西路168号",
+      "kind": "current_directory",
+      "published_at": null,
+      "retrieved_at": "2026-09-20T11:13:02.413670+00:00",
+      "sha256": "ff6cf7f0247cc404386966b8b01add999912d2ec243a4ea7a251a28283042ad7"
+    },
+    "swfc": {
+      "url": "https://www.swfc-shanghai.com/building_retail.php",
+      "title": "上海环球金融中心官方商业目录",
+      "address": "上海市浦东新区世纪大道100号",
+      "kind": "current_directory",
+      "published_at": null,
+      "retrieved_at": "2026-09-20T11:13:02.413670+00:00",
+      "sha256": "f6b4dd61c54bb90a9be00803882a9a19f5839ec1e15b8f670df4853939565970"
+    },
+    "changning": {
+      "url": "https://www.shcn.gov.cn/col7344/20260611/1310724.html",
+      "title": "长宁区政府2026电影节商户名单",
+      "address": "上海市长宁区长宁路1018号",
+      "kind": "historical_notice",
+      "published_at": "2026-06-10",
+      "retrieved_at": "2026-09-20T11:13:02.413670+00:00",
+      "sha256": "5bb3e283b73c607ce0fc808440855ad8677ec208aa092cbb5dba7b5bc638155a"
+    },
+    "mart": {
+      "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "title": "上海世贸商城官方配套餐饮目录",
+      "address": "上海市长宁区延安西路2299号",
+      "kind": "current_directory",
+      "published_at": null,
+      "retrieved_at": "2026-09-20T11:13:02.413670+00:00",
+      "sha256": "a5e1559714a3f0648eccf8b3cdc5ab97521b37d02a3d2e9c53201b4ae47f7ed5"
+    },
+    "putuo": {
+      "url": "https://english.shanghai.gov.cn/en-Cafes/20251027/99821045c38f4a9ebf07013726974582.html",
+      "title": "上海市政府普陀咖啡指南",
+      "address": "上海市普陀区",
+      "kind": "historical_guide",
+      "published_at": "2025-10-27",
+      "retrieved_at": "2026-09-20T11:13:02.413670+00:00",
+      "sha256": null
+    },
+    "qingpu": {
+      "url": "https://english.shanghai.gov.cn/en-Cafes/20260108/027fdf7f5aa740239127de3bb15b116c.html",
+      "title": "上海市政府青浦咖啡指南",
+      "address": "上海市青浦区",
+      "kind": "historical_guide",
+      "published_at": "2026-01-08",
+      "retrieved_at": "2026-09-20T11:13:02.413670+00:00",
+      "sha256": null
+    },
+    "songjiang": {
+      "url": "https://english.shanghai.gov.cn/en-Cafes/20251111/3945b2e106ce461b88a42bf4496c4486.html",
+      "title": "上海市政府松江咖啡指南",
+      "address": "上海市松江区",
+      "kind": "historical_guide",
+      "published_at": "2025-11-11",
+      "retrieved_at": "2026-09-20T11:13:02.413670+00:00",
+      "sha256": null
+    },
+    "bfc": {
+      "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=index&language=zh&type=1",
+      "title": "BFC外滩金融中心官方餐饮目录",
+      "address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+      "kind": "current_directory",
+      "published_at": null,
+      "retrieved_at": "2026-09-20T11:27:28.455046+00:00",
+      "sha256": "bbd97052c1574e9fb91fece992308b975b4623bb4706d7007104bfb77f57225f"
+    },
+    "centre21": {
+      "url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+      "title": "上海商城官方餐饮目录—westerncuisine",
+      "address": "上海商城（上海市静安区南京西路1376号）",
+      "kind": "current_directory",
+      "published_at": null,
+      "retrieved_at": "2026-09-20T11:27:28.455046+00:00",
+      "sha256": "1778a9afefc5afd668f2c1db6ef836d9d5b6a8e449828e077dc029282ab29a97"
+    },
+    "centre22": {
+      "url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+      "title": "上海商城官方餐饮目录—asiancuisine",
+      "address": "上海商城（上海市静安区南京西路1376号）",
+      "kind": "current_directory",
+      "published_at": null,
+      "retrieved_at": "2026-09-20T11:27:28.455046+00:00",
+      "sha256": "7eea2f8564e9393fe0e9ccdb15d507c03450caa837538f497a075646073c8700"
+    },
+    "centre23": {
+      "url": "https://www.shanghaicentre.com/site_chinese/comedine_cafes.aspx",
+      "title": "上海商城官方餐饮目录—cafes",
+      "address": "上海商城（上海市静安区南京西路1376号）",
+      "kind": "current_directory",
+      "published_at": null,
+      "retrieved_at": "2026-09-20T11:27:28.455046+00:00",
+      "sha256": "57262649a067c276f9a3457d677661d0ec669a4acef95d978de169b2b46a8c11"
+    },
+    "times": {
+      "url": "https://www.shtimessquare.com/food.php",
+      "title": "大上海时代广场官方美食指南（第1页）",
+      "address": "上海市黄浦区淮海中路99号大上海时代广场",
+      "kind": "current_directory",
+      "published_at": null,
+      "retrieved_at": "2026-09-20T11:27:28.455046+00:00",
+      "sha256": "435704dfc404b9416d0f7b05a66fe8cb414c6508bca3b1256c7757acb198cb62"
+    },
+    "times2": {
+      "url": "https://www.shtimessquare.com/food.php?page=2",
+      "title": "大上海时代广场官方美食指南（第2页）",
+      "address": "上海市黄浦区淮海中路99号大上海时代广场",
+      "kind": "current_directory",
+      "published_at": null,
+      "retrieved_at": "2026-09-20T11:27:28.455046+00:00",
+      "sha256": "ebfa09a3ca9289b6a2f470b41831dbc1773fe3b11efa2052f862f0f199e7ac38"
+    }
+  },
+  "brands": [
+    {
+      "name": "北海宴",
+      "category": "中餐及本地特色",
+      "aliases": ["北海宴.渔哥"],
+      "keywords": ["北海宴", "北海宴 上海", "北海宴 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "北海宴.渔哥",
+          "url": "https://www.superbrandmall.com/cn/store/69fef363ce02149fbe37c063",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "7F04-05A",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/69fef363ce02149fbe37c063",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "蔡澜点心",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["蔡澜点心", "蔡澜点心 上海", "蔡澜点心 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "蔡澜点心",
+          "url": "https://www.superbrandmall.com/cn/store/698d713bce02149fbe37c031",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "6F12A",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/698d713bce02149fbe37c031",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "平成屋",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["平成屋", "平成屋 上海", "平成屋 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "平成屋",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ebc",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "5F08",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "changning",
+          "source_name": "平成屋",
+          "url": "https://www.shcn.gov.cn/col7344/20260611/1310724.html",
+          "mall_or_address": "上海市长宁区长宁路1018号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-06-10",
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ebc",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "悦湘遇",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["悦湘遇", "悦湘遇 上海", "悦湘遇 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "悦湘遇",
+          "url": "https://www.superbrandmall.com/cn/store/691b1008a00a2a955e99ab00",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2FL25-22",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/691b1008a00a2a955e99ab00",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "火辣关爷",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["火辣关爷", "火辣关爷 上海", "火辣关爷 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "火辣关爷",
+          "url": "https://www.superbrandmall.com/cn/store/691b0600a00a2a955e99aafd",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2FL25-23",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/691b0600a00a2a955e99aafd",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "贴芯贴忆",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["贴芯贴忆", "贴芯贴忆 上海", "贴芯贴忆 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "贴芯贴忆",
+          "url": "https://www.superbrandmall.com/cn/store/691b0a60a00a2a955e99aafe",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2FL25-20",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/691b0a60a00a2a955e99aafe",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "瑞幸咖啡",
+      "category": "咖啡",
+      "aliases": ["瑞幸咖啡 LUCKIN COFFEE"],
+      "keywords": ["瑞幸咖啡", "瑞幸咖啡 上海", "瑞幸咖啡 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "瑞幸咖啡",
+          "url": "https://www.superbrandmall.com/cn/store/693792aea00a2a955e99ab12",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2FL25-16",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "sbm",
+          "source_name": "瑞幸咖啡 LUCKIN COFFEE",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ec3",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "GF32B",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/693792aea00a2a955e99ab12",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "黄油&渔",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["黄油&渔", "黄油&渔 上海", "黄油&渔 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "黄油&渔",
+          "url": "https://www.superbrandmall.com/cn/store/6979bf9ace02149fbe37c028",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "临5F05",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/6979bf9ace02149fbe37c028",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "Lavazza",
+      "category": "咖啡",
+      "aliases": ["拉瓦萨咖啡"],
+      "keywords": ["Lavazza", "Lavazza 上海", "Lavazza 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "Lavazza",
+          "url": "https://www.superbrandmall.com/cn/store/6979b9cece02149fbe37c026",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "GF37",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "swfc",
+          "source_name": "拉瓦萨咖啡",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=163",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "2F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/6979b9cece02149fbe37c026",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "Gavo巧克力",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["Gavo巧克力", "Gavo巧克力 上海", "Gavo巧克力 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "Gavo巧克力",
+          "url": "https://www.superbrandmall.com/cn/store/693791a5a00a2a955e99ab11",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2E-15",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/693791a5a00a2a955e99ab11",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "粤状元",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["粤状元", "粤状元 上海", "粤状元 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "粤状元",
+          "url": "https://www.superbrandmall.com/cn/store/691b120aa00a2a955e99ab01",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2E-21",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/691b120aa00a2a955e99ab01",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "楚汉传奇",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["楚汉传奇", "楚汉传奇 上海", "楚汉传奇 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "楚汉传奇",
+          "url": "https://www.superbrandmall.com/cn/store/691b18f8a00a2a955e99ab06",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2E-24",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/691b18f8a00a2a955e99ab06",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "間道面",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["間道面", "間道面 上海", "間道面 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "間道面",
+          "url": "https://www.superbrandmall.com/cn/store/691b1573a00a2a955e99ab03",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2E-18",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/691b1573a00a2a955e99ab03",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "知鱼之味",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["知鱼之味", "知鱼之味 上海", "知鱼之味 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "知鱼之味",
+          "url": "https://www.superbrandmall.com/cn/store/691b17fca00a2a955e99ab05",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2E-17",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/691b17fca00a2a955e99ab05",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "赵记羊肉馆",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["赵记羊肉馆", "赵记羊肉馆 上海", "赵记羊肉馆 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "赵记羊肉馆",
+          "url": "https://www.superbrandmall.com/cn/store/691b16b1a00a2a955e99ab04",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2F-11",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/691b16b1a00a2a955e99ab04",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "沪上蒸嗨",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["沪上蒸嗨", "沪上蒸嗨 上海", "沪上蒸嗨 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "沪上蒸嗨",
+          "url": "https://www.superbrandmall.com/cn/store/691b13c1a00a2a955e99ab02",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2E-13",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/691b13c1a00a2a955e99ab02",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "金洪兴",
+      "category": "中式快餐小吃",
+      "aliases": ["金洪兴蟹黄面"],
+      "keywords": ["金洪兴", "金洪兴 上海", "金洪兴 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "金洪兴蟹黄面",
+          "url": "https://www.superbrandmall.com/cn/store/695b96056bef15bf8443c040",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2-13",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/695b96056bef15bf8443c040",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "满巍明",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["满巍明", "满巍明 上海", "满巍明 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "满巍明",
+          "url": "https://www.superbrandmall.com/cn/store/691b0ea0a00a2a955e99aaff",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2E-09",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/691b0ea0a00a2a955e99aaff",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "新良记卤粉王",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["新良记卤粉王", "新良记卤粉王 上海", "新良记卤粉王 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "新良记卤粉王",
+          "url": "https://www.superbrandmall.com/cn/store/6932b0dda00a2a955e99ab0c",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2E-08",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/6932b0dda00a2a955e99ab0c",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "张亮麻辣烫",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["张亮麻辣烫", "张亮麻辣烫 上海", "张亮麻辣烫 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "张亮麻辣烫",
+          "url": "https://www.superbrandmall.com/cn/store/69379046a00a2a955e99ab10",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2E-07",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/69379046a00a2a955e99ab10",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "苏小柳",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["苏小柳", "苏小柳 上海", "苏小柳 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "苏小柳",
+          "url": "https://www.superbrandmall.com/cn/store/691af4c7a00a2a955e99aaf8",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2E-1+2+3",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/691af4c7a00a2a955e99aaf8",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "云阿蛮米线",
+      "category": "中式快餐小吃",
+      "aliases": ["云阿蛮"],
+      "keywords": ["云阿蛮米线", "云阿蛮米线 上海", "云阿蛮米线 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "云阿蛮米线",
+          "url": "https://www.superbrandmall.com/cn/store/691afe3ea00a2a955e99aafb",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2E-04",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "changning",
+          "source_name": "云阿蛮",
+          "url": "https://www.shcn.gov.cn/col7344/20260611/1310724.html",
+          "mall_or_address": "上海市长宁区长宁路1018号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-06-10",
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/691afe3ea00a2a955e99aafb",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "呛头家",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["呛头家", "呛头家 上海", "呛头家 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "呛头家",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ec0",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "7F29B",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ec0",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "翠华",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["翠华", "翠华 上海", "翠华 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "翠华",
+          "url": "https://www.superbrandmall.com/cn/store/6811dbd2c32411ff30a4040c",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "6F10",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/6811dbd2c32411ff30a4040c",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "南里山房",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["南里山房", "南里山房 上海", "南里山房 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "南里山房",
+          "url": "https://www.superbrandmall.com/cn/store/6819ab83f628ce237d4a2336",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "7F02B",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/6819ab83f628ce237d4a2336",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "eat n work",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["eat n work", "eat n work 上海", "eat n work 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "eat n work",
+          "url": "https://www.superbrandmall.com/cn/store/67bee71fd39e4fd06335aaa3",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "9F03A、9F04-05",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/67bee71fd39e4fd06335aaa3",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "啊撒啊撒",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["啊撒啊撒", "啊撒啊撒 上海", "啊撒啊撒 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "啊撒啊撒",
+          "url": "https://www.superbrandmall.com/cn/store/6800acaa56538e1c4c522cd1",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "7F57-58",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/6800acaa56538e1c4c522cd1",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "喜茶",
+      "category": "茶饮果饮",
+      "aliases": ["喜茶/HEYTEA"],
+      "keywords": ["喜茶", "喜茶 上海", "喜茶 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "喜茶/HEYTEA",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ece",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "5F48K",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "bfc",
+          "source_name": "喜茶",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=135&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "官方美食目录列示，未给出铺位",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=135&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "费大厨",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["费大厨", "费大厨 上海", "费大厨 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "费大厨",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ea4",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "6F11",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ea4",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "3号仓库",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["3号仓库", "3号仓库 上海", "3号仓库 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "3号仓库",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e89",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "2F17-18",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e89",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "阳坊涮肉",
+      "category": "火锅烧烤",
+      "aliases": ["阳坊 涮肉"],
+      "keywords": ["阳坊涮肉", "阳坊涮肉 上海", "阳坊涮肉 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "阳坊 涮肉",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ed7",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "6F01",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ed7",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "星巴克",
+      "category": "咖啡",
+      "aliases": ["Starbucks", "星巴克咖啡", "Starbucks咖啡"],
+      "keywords": ["星巴克", "星巴克 上海", "星巴克 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "Starbucks",
+          "url": "https://www.superbrandmall.com/cn/store/67bee92de4dcb35f6a886136",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "03FL48号",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "swfc",
+          "source_name": "星巴克咖啡",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=30",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "mart",
+          "source_name": "Starbucks咖啡",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02C50",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "centre23",
+          "source_name": "星巴克",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_cafes.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "西峰，103室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        },
+        {
+          "source_id": "times",
+          "source_name": "星巴克",
+          "url": "https://www.shtimessquare.com/food.php",
+          "mall_or_address": "上海市黄浦区淮海中路99号大上海时代广场",
+          "position": "L130",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shtimessquare.com/food.php",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "UP矢量咖啡",
+      "category": "咖啡",
+      "aliases": ["UP矢量咖啡COFFEE"],
+      "keywords": ["UP矢量咖啡", "UP矢量咖啡 上海", "UP矢量咖啡 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "UP矢量咖啡COFFEE",
+          "url": "https://www.superbrandmall.com/cn/store/67bee939e4dcb35f6a886137",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "2F40B",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/67bee939e4dcb35f6a886137",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "富天添牛腩煲火锅",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": [
+        "富天添牛腩煲火锅",
+        "富天添牛腩煲火锅 上海",
+        "富天添牛腩煲火锅 新品"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "富天添牛腩煲火锅",
+          "url": "https://www.superbrandmall.com/cn/store/67beea6059792867d6511f0f",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "8F08B-09",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/67beea6059792867d6511f0f",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "兴蜀府",
+      "category": "中餐及本地特色",
+      "aliases": ["兴蜀府·臻宴"],
+      "keywords": ["兴蜀府", "兴蜀府 上海", "兴蜀府 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "兴蜀府",
+          "url": "https://www.superbrandmall.com/cn/store/67beec84ab0c5fb47ab1b803",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "4F29Z",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "swfc",
+          "source_name": "兴蜀府·臻宴",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=166",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "2F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/67beec84ab0c5fb47ab1b803",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "毕真烤肉店",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["毕真烤肉店", "毕真烤肉店 上海", "毕真烤肉店 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "毕真烤肉店",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ee4",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "8F30",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ee4",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "左庭右院",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["左庭右院", "左庭右院 上海", "左庭右院 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "左庭右院",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ee3",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "8F26",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "changning",
+          "source_name": "左庭右院",
+          "url": "https://www.shcn.gov.cn/col7344/20260611/1310724.html",
+          "mall_or_address": "上海市长宁区长宁路1018号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-06-10",
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ee3",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "哲平鳗满",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["哲平鳗满", "哲平鳗满 上海", "哲平鳗满 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "哲平鳗满",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ee0",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "8F24",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ee0",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "樾鲜食馆",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["樾鲜食馆", "樾鲜食馆 上海", "樾鲜食馆 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "樾鲜食馆",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ede",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "8F01B+02B",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ede",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "缘味先",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["缘味先", "缘味先 上海", "缘味先 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "缘味先",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3edd",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "6F16内B2-1",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3edd",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "圆苑",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["圆苑", "圆苑 上海", "圆苑 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "圆苑",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3edc",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "4F30-31",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3edc",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "雨松",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["雨松", "雨松 上海", "雨松 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "雨松",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3edb",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "7F53B+7F54+7F55",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3edb",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "鱼酷",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["鱼酷", "鱼酷 上海", "鱼酷 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "鱼酷",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eda",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "7F30A",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eda",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "耶里夏丽",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["耶里夏丽", "耶里夏丽 上海", "耶里夏丽 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "耶里夏丽",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ed9",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "7F01A",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ed9",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "巡湘记",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["巡湘记", "巡湘记 上海", "巡湘记 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "巡湘记",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ed6",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "6F13B",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ed6",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "小菜园",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["小菜园", "小菜园 上海", "小菜园 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "小菜园",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ed3",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "8F27",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ed3",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "湘辣辣",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["湘辣辣", "湘辣辣 上海", "湘辣辣 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "湘辣辣",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ed1",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "8F28",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ed1",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "喜顶上品",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["喜顶上品", "喜顶上品 上海", "喜顶上品 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "喜顶上品",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ecf",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "8F21",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ecf",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "萨莉亚",
+      "category": "西式快餐",
+      "aliases": ["萨莉亚意式餐厅"],
+      "keywords": ["萨莉亚", "萨莉亚 上海", "萨莉亚 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "萨莉亚意式餐厅",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ec4",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "5F05-06A",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ec4",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "青川",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["青川", "青川 上海", "青川 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "青川",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ec2",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "5F03-04",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ec2",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "浦江晓月",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["浦江晓月", "浦江晓月 上海", "浦江晓月 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "浦江晓月",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ebe",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "5F22-23",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ebe",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "璞徽",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["璞徽", "璞徽 上海", "璞徽 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "璞徽",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ebd",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "5F24-26",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ebd",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "柠季手打柠檬茶",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": [
+        "柠季手打柠檬茶",
+        "柠季手打柠檬茶 上海",
+        "柠季手打柠檬茶 新品"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "柠季手打柠檬茶",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eba",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "临6F08",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eba",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "米村拌饭",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["米村拌饭", "米村拌饭 上海", "米村拌饭 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "米村拌饭",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eb7",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "6F16内11号",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eb7",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "麻六记",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["麻六记", "麻六记 上海", "麻六记 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "麻六记",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eb6",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "6F12B",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eb6",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "临家",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["临家", "临家 上海", "临家 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "临家",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eb4",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "7F05B+7F08A",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eb4",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "辣堂赣",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["辣堂赣", "辣堂赣 上海", "辣堂赣 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "辣堂赣",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eb2",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "6F51内A3",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eb2",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "锦之楼",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["锦之楼", "锦之楼 上海", "锦之楼 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "锦之楼",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eb1",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "6F44-46",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eb1",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "金匠寿司",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["金匠寿司", "金匠寿司 上海", "金匠寿司 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "金匠寿司",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eb0",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "5F32,59-60",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eb0",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "好利来",
+      "category": "烘焙甜品",
+      "aliases": ["好利来Holiland"],
+      "keywords": ["好利来", "好利来 上海", "好利来 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "好利来Holiland",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ead",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "3F41-42",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ead",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "汉堡王",
+      "category": "西式快餐",
+      "aliases": [],
+      "keywords": ["汉堡王", "汉堡王 上海", "汉堡王 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "汉堡王",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eab",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "B2-06+07",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3eab",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "哥哥深夜食堂",
+      "category": "其他餐饮",
+      "aliases": ["哥哥の深夜食堂"],
+      "keywords": ["哥哥深夜食堂", "哥哥深夜食堂 上海", "哥哥深夜食堂 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "哥哥深夜食堂",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ea7",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "7F56",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "bfc",
+          "source_name": "哥哥の深夜食堂",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=150&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "BFC北区N2",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=150&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "港丽餐厅",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["港丽餐厅", "港丽餐厅 上海", "港丽餐厅 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "港丽餐厅",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ea6",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "7F02A",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ea6",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "俄式厨房",
+      "category": "其他餐饮",
+      "aliases": ["俄士厨房"],
+      "keywords": ["俄式厨房", "俄式厨房 上海", "俄式厨房 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "俄式厨房",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ea2",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "7F30BCD",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "changning",
+          "source_name": "俄士厨房",
+          "url": "https://www.shcn.gov.cn/col7344/20260611/1310724.html",
+          "mall_or_address": "上海市长宁区长宁路1018号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-06-10",
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ea2",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。 俄士厨房与正大目录俄式厨房按同品牌归并，保留两个来源。"
+    },
+    {
+      "name": "点都德",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["点都德", "点都德 上海", "点都德 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "点都德",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ea0",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "6F14",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "changning",
+          "source_name": "点都德",
+          "url": "https://www.shcn.gov.cn/col7344/20260611/1310724.html",
+          "mall_or_address": "上海市长宁区长宁路1018号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-06-10",
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3ea0",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "不二君",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["不二君", "不二君 上海", "不二君 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "不二君",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e9a",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "8F29",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e9a",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "霸王茶姬",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["霸王茶姬", "霸王茶姬 上海", "霸王茶姬 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "霸王茶姬",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e98",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "03FL49A",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "swfc",
+          "source_name": "霸王茶姬",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=179",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "2F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e98",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "安又胖",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["安又胖", "安又胖 上海", "安又胖 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "安又胖",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e97",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "8F22",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "changning",
+          "source_name": "安又胖",
+          "url": "https://www.shcn.gov.cn/col7344/20260611/1310724.html",
+          "mall_or_address": "上海市长宁区长宁路1018号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-06-10",
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e97",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "失重餐厅",
+      "category": "其他餐饮",
+      "aliases": ["SPACELAB失重餐厅"],
+      "keywords": ["失重餐厅", "失重餐厅 上海", "失重餐厅 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "SPACELAB失重餐厅",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e95",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "5F35-36",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e95",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "麦当劳",
+      "category": "西式快餐",
+      "aliases": ["McDonald's"],
+      "keywords": ["麦当劳", "麦当劳 上海", "麦当劳 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "McDonald's",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e92",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "5F02",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "mart",
+          "source_name": "麦当劳",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "01B55",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e92",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "LOKAL By Wagas",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": [
+        "LOKAL By Wagas",
+        "LOKAL By Wagas 上海",
+        "LOKAL By Wagas 新品"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "LOKAL By Wagas",
+          "url": "https://www.superbrandmall.com/cn/store/67bee740d39e4fd06335aaa5",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "GF52(GF28-29)",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/67bee740d39e4fd06335aaa5",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "本就茶饮",
+      "category": "茶饮果饮",
+      "aliases": ["BonJour本就茶饮"],
+      "keywords": ["本就茶饮", "本就茶饮 上海", "本就茶饮 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "sbm",
+          "source_name": "BonJour本就茶饮",
+          "url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e8b",
+          "mall_or_address": "上海市浦东新区陆家嘴西路168号",
+          "position": "03FL46A",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.superbrandmall.com/cn/store/677e110a4ef30ee9445a3e8b",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "阿里疆",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["阿里疆", "阿里疆 上海", "阿里疆 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "阿里疆",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=171",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "3F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=171",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "粵玺荟",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["粵玺荟", "粵玺荟 上海", "粵玺荟 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "粵玺荟",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=165",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "3F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=165",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "富罟",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["富罟", "富罟 上海", "富罟 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "富罟",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=153",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "3F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=153",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "鮨麗・笑鱼&鳥龍・笑鱼",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": [
+        "鮨麗・笑鱼&鳥龍・笑鱼",
+        "鮨麗・笑鱼&鳥龍・笑鱼 上海",
+        "鮨麗・笑鱼&鳥龍・笑鱼 新品"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "鮨麗・笑鱼&鳥龍・笑鱼",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=155",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "3F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=155",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "银平",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["银平", "银平 上海", "银平 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "银平",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=113",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "3F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=113",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "白安其",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["白安其", "白安其 上海", "白安其 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "白安其",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=173",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "2F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=173",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "东莱馋房",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["东莱馋房", "东莱馋房 上海", "东莱馋房 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "东莱馋房",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=137",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "2F / 3F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=137",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "娜娜 打抛小馆",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["娜娜 打抛小馆", "娜娜 打抛小馆 上海", "娜娜 打抛小馆 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "娜娜 打抛小馆",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=177",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "2F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=177",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "香溢焙客",
+      "category": "烘焙甜品",
+      "aliases": ["Baker & Spice", "BAKER & SPICE", "Baker&Spice"],
+      "keywords": ["香溢焙客", "香溢焙客 上海", "香溢焙客 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "香溢焙客",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=161",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "2F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "bfc",
+          "source_name": "Baker&Spice",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=54&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "官方美食目录列示，未给出铺位",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        },
+        {
+          "source_id": "centre21",
+          "source_name": "Baker & Spice",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "东峰，118室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=161",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。 SWFC同一商户i=161中英文页面证实香溢焙客与BAKER & SPICE为同一品牌。"
+    },
+    {
+      "name": "gaga",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["gaga", "gaga 上海", "gaga 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "gaga",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=145",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "2F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=145",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "裕莲茶楼",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["裕莲茶楼", "裕莲茶楼 上海", "裕莲茶楼 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "裕莲茶楼",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=169",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "2F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=169",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "胡子大厨",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["胡子大厨", "胡子大厨 上海", "胡子大厨 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "胡子大厨",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=164",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "B1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=164",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "初唤",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["初唤", "初唤 上海", "初唤 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "初唤",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=184",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "B1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=184",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "藕巷·藕汤饭",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["藕巷·藕汤饭", "藕巷·藕汤饭 上海", "藕巷·藕汤饭 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "藕巷·藕汤饭",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=183",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "B1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=183",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "纹兵卫",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["纹兵卫", "纹兵卫 上海", "纹兵卫 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "纹兵卫",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=180",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "B1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=180",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "大肥羅",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["大肥羅", "大肥羅 上海", "大肥羅 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "大肥羅",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=160",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "B1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=160",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "大发越南粉",
+      "category": "其他餐饮",
+      "aliases": ["大发越南"],
+      "keywords": ["大发越南粉", "大发越南粉 上海", "大发越南粉 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "大发越南粉",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=150",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "B1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "changning",
+          "source_name": "大发越南",
+          "url": "https://www.shcn.gov.cn/col7344/20260611/1310724.html",
+          "mall_or_address": "上海市长宁区长宁路1018号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-06-10",
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=150",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "哒优乃",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["哒优乃", "哒优乃 上海", "哒优乃 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "哒优乃",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=127",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "B1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=127",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "MANNER COFFEE",
+      "category": "咖啡",
+      "aliases": ["慢勒咖啡", "Manner咖啡", "Manner Coffee"],
+      "keywords": ["MANNER COFFEE", "MANNER COFFEE 上海", "MANNER COFFEE 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "慢勒咖啡",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=147",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "B1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "mart",
+          "source_name": "Manner咖啡",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02B60",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        },
+        {
+          "source_id": "centre23",
+          "source_name": "Manner Coffee",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_cafes.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "一楼广场，112B室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_cafes.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "屯京拉面",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["屯京拉面", "屯京拉面 上海", "屯京拉面 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "屯京拉面",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=38",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "B1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=38",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "馍都",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["馍都", "馍都 上海", "馍都 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "馍都",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=134",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "B1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=134",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "喜家德",
+      "category": "中式快餐小吃",
+      "aliases": ["喜家德虾仁水饺"],
+      "keywords": ["喜家德", "喜家德 上海", "喜家德 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "喜家德虾仁水饺",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=143",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "B1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=143",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "幻师",
+      "category": "其他餐饮",
+      "aliases": ["幻师臻选"],
+      "keywords": ["幻师", "幻师 上海", "幻师 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "swfc",
+          "source_name": "幻师臻选",
+          "url": "https://www.swfc-shanghai.com/building_retail_one.php?i=168",
+          "mall_or_address": "上海市浦东新区世纪大道100号",
+          "position": "B1F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.swfc-shanghai.com/building_retail_one.php?i=168",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "花博食堂",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["花博食堂", "花博食堂 上海", "花博食堂 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "花博食堂",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "B1D06",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "赫生活咖啡店",
+      "category": "咖啡",
+      "aliases": [],
+      "keywords": ["赫生活咖啡店", "赫生活咖啡店 上海", "赫生活咖啡店 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "赫生活咖啡店",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "01B01",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "小Q饭堂",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["小Q饭堂", "小Q饭堂 上海", "小Q饭堂 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "小Q饭堂",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "200、201等",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "智面局",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["智面局", "智面局 上海", "智面局 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "智面局",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02B75",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "南粤小厨",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["南粤小厨", "南粤小厨 上海", "南粤小厨 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "南粤小厨",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02B55、02B59",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "有方一杯",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["有方一杯", "有方一杯 上海", "有方一杯 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "有方一杯",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02B62",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "邵氏茶铺",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["邵氏茶铺", "邵氏茶铺 上海", "邵氏茶铺 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "邵氏茶铺",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02B61",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "食其家",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["食其家", "食其家 上海", "食其家 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "食其家",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02B65",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "小莳煮物",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["小莳煮物", "小莳煮物 上海", "小莳煮物 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "小莳煮物",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02B69、02B71",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "比星咖啡",
+      "category": "咖啡",
+      "aliases": [],
+      "keywords": ["比星咖啡", "比星咖啡 上海", "比星咖啡 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "比星咖啡",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02B77",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "赛百味",
+      "category": "西式快餐",
+      "aliases": [],
+      "keywords": ["赛百味", "赛百味 上海", "赛百味 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "赛百味",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02B79",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "白茶金库",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["白茶金库", "白茶金库 上海", "白茶金库 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "白茶金库",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02B89、02B90",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "颜无界",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["颜无界", "颜无界 上海", "颜无界 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "颜无界",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02C55、02B56",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "海鲜阁",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["海鲜阁", "海鲜阁 上海", "海鲜阁 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "海鲜阁",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02M10",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "南粤点心专门店",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": [
+        "南粤点心专门店",
+        "南粤点心专门店 上海",
+        "南粤点心专门店 新品"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "南粤点心专门店",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02M18",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "漠漠家",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["漠漠家", "漠漠家 上海", "漠漠家 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "mart",
+          "source_name": "漠漠家",
+          "url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+          "mall_or_address": "上海市长宁区延安西路2299号",
+          "position": "02M22",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:13:02.413670+00:00"
+        }
+      ],
+      "category_note": "按公开业态与品牌名称初分，复核时可调整",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaimart.com/Service/service_foot.aspx",
+      "review_note": "公开目录资料核对，未电话或实地确认营业；活动、库存和优惠另行核验。"
+    },
+    {
+      "name": "DA VITTORIO SHANGHAI",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": [
+        "DA VITTORIO SHANGHAI 上海",
+        "DA VITTORIO SHANGHAI 新品",
+        "DA VITTORIO SHANGHAI 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "DA VITTORIO SHANGHAI",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=25&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "上海市黄浦区中山东二路600号BFC外滩金融中心北区N3栋3层",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=25&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "翠蝶",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["翠蝶 上海", "翠蝶 新品", "翠蝶 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "翠蝶",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=56&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "官方美食目录列示，未给出铺位",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=56&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "晴空",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["晴空 上海", "晴空 新品", "晴空 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "晴空",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=85&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "官方美食目录列示，未给出铺位",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=85&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "泰珍荟",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["泰珍荟 上海", "泰珍荟 新品", "泰珍荟 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "泰珍荟",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=88&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "官方美食目录列示，未给出铺位",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=88&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "Le Jardin de JR",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": [
+        "Le Jardin de JR 上海",
+        "Le Jardin de JR 新品",
+        "Le Jardin de JR 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "Le Jardin de JR",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=111&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "官方美食目录列示，未给出铺位",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=111&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "隐溪茶馆",
+      "category": "茶饮果饮",
+      "aliases": ["隐溪茶馆Tea House"],
+      "keywords": ["隐溪茶馆 上海", "隐溪茶馆 新品", "隐溪茶馆 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "隐溪茶馆Tea House",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=113&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "官方美食目录列示，未给出铺位",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=113&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "橘焱胡同烧肉夜食",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": [
+        "橘焱胡同烧肉夜食 上海",
+        "橘焱胡同烧肉夜食 新品",
+        "橘焱胡同烧肉夜食 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "橘焱胡同烧肉夜食",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=118&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "官方美食目录列示，未给出铺位",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=118&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "Tuna Maki寿司",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": [
+        "Tuna Maki寿司 上海",
+        "Tuna Maki寿司 新品",
+        "Tuna Maki寿司 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "Tuna Maki寿司",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=119&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "官方美食目录列示，未给出铺位",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=119&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "白茸",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["白茸 上海", "白茸 新品", "白茸 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "白茸",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=132&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "官方美食目录列示，未给出铺位",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=132&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "老吉堂",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["老吉堂 上海", "老吉堂 新品", "老吉堂 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "老吉堂",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=140&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "BFC商场南区4F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=140&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "蝶园海鲜酒馆",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": [
+        "蝶园海鲜酒馆 上海",
+        "蝶园海鲜酒馆 新品",
+        "蝶园海鲜酒馆 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "蝶园海鲜酒馆",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=141&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "BFC商场南区4F",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=141&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "菁禧荟",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["菁禧荟 上海", "菁禧荟 新品", "菁禧荟 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "菁禧荟",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=16&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "上海市黄浦区中山东二路600号BFC外滩金融中心南区四层",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=16&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "上海滩餐厅",
+      "category": "中餐及本地特色",
+      "aliases": ["上海滩"],
+      "keywords": [
+        "上海滩餐厅 上海",
+        "上海滩餐厅 新品",
+        "上海滩餐厅 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "上海滩",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=21&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "上海市黄浦区中山东二路600号BFC外滩金融中心北区N3栋五层",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=21&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "新荣记",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["新荣记 上海", "新荣记 新品", "新荣记 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "新荣记",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=22&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "上海市黄浦区中山东二路600号BFC外滩金融中心北区N3栋三层",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=22&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "高桌牛排馆",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": [
+        "高桌牛排馆 上海",
+        "高桌牛排馆 新品",
+        "高桌牛排馆 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "高桌牛排馆",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=46&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "BFC外滩金融中心南区商场4楼",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=46&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "遇外滩",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["遇外滩 上海", "遇外滩 新品", "遇外滩 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "遇外滩",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=48&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "BFC外滩金融中心南区商场3层",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=48&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "NUMATASOU沼田双",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": [
+        "NUMATASOU沼田双 上海",
+        "NUMATASOU沼田双 新品",
+        "NUMATASOU沼田双 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "NUMATASOU沼田双",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=133&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "上海市黄浦区中山东二路558号 N1幢107A单元",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=133&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "满堂by Bar Choice",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": [
+        "满堂by Bar Choice 上海",
+        "满堂by Bar Choice 新品",
+        "满堂by Bar Choice 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "满堂by Bar Choice",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=151&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "BFC北区N1栋106A室（人民路沿街店铺）",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=151&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "M Stand",
+      "category": "咖啡",
+      "aliases": ["M STAND"],
+      "keywords": ["M Stand 上海", "M Stand 新品", "M Stand 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "M Stand",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=40&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "上海市中山东二路600号BFC外滩金融中心南区B1层",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        },
+        {
+          "source_id": "centre23",
+          "source_name": "M STAND",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_cafes.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "一楼广场，112C室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        },
+        {
+          "source_id": "times",
+          "source_name": "M Stand",
+          "url": "https://www.shtimessquare.com/food.php",
+          "mall_or_address": "上海市黄浦区淮海中路99号大上海时代广场",
+          "position": "S105",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shtimessquare.com/food.php",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "莆田餐厅",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["莆田餐厅 上海", "莆田餐厅 新品", "莆田餐厅 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "莆田餐厅",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=20&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "上海市黄浦区中山东二路600号BFC外滩金融中心南区B2层",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=20&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "Whites",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["Whites 上海", "Whites 新品", "Whites 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "Whites",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=58&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "官方美食目录列示，未给出铺位",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=58&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "松鹤楼苏式汤面",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": [
+        "松鹤楼苏式汤面 上海",
+        "松鹤楼苏式汤面 新品",
+        "松鹤楼苏式汤面 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "松鹤楼苏式汤面",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=104&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "官方美食目录列示，未给出铺位",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=104&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "巴黎蜜语 La Parisienne",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": [
+        "巴黎蜜语 La Parisienne 上海",
+        "巴黎蜜语 La Parisienne 新品",
+        "巴黎蜜语 La Parisienne 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "bfc",
+          "source_name": "巴黎蜜语 La Parisienne",
+          "url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=11&language=zh",
+          "mall_or_address": "上海市黄浦区中山东二路600号BFC外滩金融中心",
+          "position": "上海市黄浦区 黄浦区中山东二路600号BFC外滩金融中心南区一层",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.bfcsh.com/index.php?m=Zhweb&c=Store&a=show&id=11&language=zh",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "Beef & Liberty",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": [
+        "Beef & Liberty 上海",
+        "Beef & Liberty 新品",
+        "Beef & Liberty 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre21",
+          "source_name": "Beef & Liberty",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "西峰，111室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "ELI FALAFEL",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": [
+        "ELI FALAFEL 上海",
+        "ELI FALAFEL 新品",
+        "ELI FALAFEL 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre21",
+          "source_name": "ELI FALAFEL",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "西峰，107室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "无花果与橄榄",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": [
+        "无花果与橄榄 上海",
+        "无花果与橄榄 新品",
+        "无花果与橄榄 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre21",
+          "source_name": "无花果与橄榄",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "东峰，112室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "PISTOLERA",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["PISTOLERA 上海", "PISTOLERA 新品", "PISTOLERA 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre21",
+          "source_name": "PISTOLERA",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "东峰，120室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "PORTMAN’S",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["PORTMAN’S 上海", "PORTMAN’S 新品", "PORTMAN’S 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre21",
+          "source_name": "PORTMAN’S",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "波特曼丽嘉酒店，1楼",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "R.MANDA",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["R.MANDA 上海", "R.MANDA 新品", "R.MANDA 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre21",
+          "source_name": "R.MANDA",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "广场，115室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "Stefanie’s Gelato",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": [
+        "Stefanie’s Gelato 上海",
+        "Stefanie’s Gelato 新品",
+        "Stefanie’s Gelato 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre21",
+          "source_name": "Stefanie’s Gelato",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "西峰沿街，A07室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_westerncuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "炭一",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["炭一 上海", "炭一 新品", "炭一 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre22",
+          "source_name": "炭一",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "东峰，122室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "广屋",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["广屋 上海", "广屋 新品", "广屋 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre22",
+          "source_name": "广屋",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "东峰，208A室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "笼溏面馆",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["笼溏面馆 上海", "笼溏面馆 新品", "笼溏面馆 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre22",
+          "source_name": "笼溏面馆",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "西峰，104室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "MUF MUF",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["MUF MUF 上海", "MUF MUF 新品", "MUF MUF 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre22",
+          "source_name": "MUF MUF",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "西峰，200B室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "西贡妈妈",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["西贡妈妈 上海", "西贡妈妈 新品", "西贡妈妈 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre22",
+          "source_name": "西贡妈妈",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "西峰，113室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "SONAMU",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["SONAMU 上海", "SONAMU 新品", "SONAMU 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre22",
+          "source_name": "SONAMU",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "西峰，200A室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "头灶",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["头灶 上海", "头灶 新品", "头灶 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre22",
+          "source_name": "头灶",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "东峰，211室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "鮨世",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["鮨世 上海", "鮨世 新品", "鮨世 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre22",
+          "source_name": "鮨世",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "西峰，202室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_asiancuisine.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "宝珠奶酪",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["宝珠奶酪 上海", "宝珠奶酪 新品", "宝珠奶酪 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre23",
+          "source_name": "宝珠奶酪",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_cafes.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "一楼广场，131室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_cafes.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "machi machi",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": [
+        "machi machi 上海",
+        "machi machi 新品",
+        "machi machi 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "centre23",
+          "source_name": "machi machi",
+          "url": "https://www.shanghaicentre.com/site_chinese/comedine_cafes.aspx",
+          "mall_or_address": "上海商城（上海市静安区南京西路1376号）",
+          "position": "东峰沿街，A08室",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shanghaicentre.com/site_chinese/comedine_cafes.aspx",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "竹屋川菜",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["竹屋川菜 上海", "竹屋川菜 新品", "竹屋川菜 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "times",
+          "source_name": "竹屋川菜",
+          "url": "https://www.shtimessquare.com/food.php",
+          "mall_or_address": "上海市黄浦区淮海中路99号大上海时代广场",
+          "position": "B107",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shtimessquare.com/food.php",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "熹誉海鲜火锅",
+      "category": "火锅烧烤",
+      "aliases": ["熹誉 · 海鲜火锅"],
+      "keywords": [
+        "熹誉海鲜火锅 上海",
+        "熹誉海鲜火锅 新品",
+        "熹誉海鲜火锅 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "times",
+          "source_name": "熹誉 · 海鲜火锅",
+          "url": "https://www.shtimessquare.com/food.php",
+          "mall_or_address": "上海市黄浦区淮海中路99号大上海时代广场",
+          "position": "L501",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shtimessquare.com/food.php",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "翰林轩",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["翰林轩 上海", "翰林轩 新品", "翰林轩 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "times",
+          "source_name": "翰林轩",
+          "url": "https://www.shtimessquare.com/food.php",
+          "mall_or_address": "上海市黄浦区淮海中路99号大上海时代广场",
+          "position": "L509-511",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shtimessquare.com/food.php",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "黔香阁",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["黔香阁 上海", "黔香阁 新品", "黔香阁 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "times2",
+          "source_name": "黔香阁",
+          "url": "https://www.shtimessquare.com/food.php?page=2",
+          "mall_or_address": "上海市黄浦区淮海中路99号大上海时代广场",
+          "position": "L603",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shtimessquare.com/food.php?page=2",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "嘢牛烧",
+      "category": "火锅烧烤",
+      "aliases": ["嘢牛烧-烧肉专门店"],
+      "keywords": ["嘢牛烧 上海", "嘢牛烧 新品", "嘢牛烧 上海 门店"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "times2",
+          "source_name": "嘢牛烧-烧肉专门店",
+          "url": "https://www.shtimessquare.com/food.php?page=2",
+          "mall_or_address": "上海市黄浦区淮海中路99号大上海时代广场",
+          "position": "L605",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shtimessquare.com/food.php?page=2",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    },
+    {
+      "name": "Latina巴西牛排馆",
+      "category": "其他餐饮",
+      "aliases": ["HOOK x Latina 巴西牛排馆"],
+      "keywords": [
+        "Latina巴西牛排馆 上海",
+        "Latina巴西牛排馆 新品",
+        "Latina巴西牛排馆 上海 门店"
+      ],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "times2",
+          "source_name": "HOOK x Latina 巴西牛排馆",
+          "url": "https://www.shtimessquare.com/food.php?page=2",
+          "mall_or_address": "上海市黄浦区淮海中路99号大上海时代广场",
+          "position": "B101-102",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T11:27:28.455046+00:00"
+        }
+      ],
+      "category_note": "按官方餐饮目录和品牌介绍初分",
+      "research_status": "directory_checked",
+      "shanghai_evidence_url": "https://www.shtimessquare.com/food.php?page=2",
+      "review_note": "公开官网餐饮目录资料核对；仅确认目录列示上海店铺，未实地或电话确认，目录可能滞后；活动、优惠和库存须单独核验。"
+    }
+  ]
+}

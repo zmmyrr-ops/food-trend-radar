@@ -1,0 +1,63 @@
+{
+  "verified_at": "2026-09-29T03:56:41.093Z",
+  "status": {
+    "id": 1,
+    "enabled": true,
+    "pause_reason": "REQUEST_TIMEOUT",
+    "worker_active": false,
+    "request_pending": false,
+    "credential_configured": true,
+    "schedule": "每日 00:00 / 12:00（上海）",
+    "concurrency": 1,
+    "interval_ms": [1000, 2000],
+    "missing_sources": [
+      "月售速度历史与统计口径",
+      "平台指数",
+      "环境适配与节假日核销条件",
+      "规则结构化与全部适用门店核验"
+    ],
+    "stage": "券快照、月售热度与天气背景",
+    "query_scope": "上海 · 美食 · 不限直播/短视频"
+  },
+  "requests": [
+    {
+      "id": "9a9b5c58-d4ad-4956-92b0-9b84574641f8",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "168",
+      "attempt": 1,
+      "started_at": "2026-09-29T03:51:43.484Z",
+      "finished_at": null,
+      "gap_ms": 1390,
+      "outcome": "in_flight",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "a0e918f5-8999-4d53-bde9-e3b2b0c29498",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "168",
+      "attempt": 1,
+      "started_at": "2026-09-29T03:55:41.012Z",
+      "finished_at": "2026-09-29T03:55:42.063Z",
+      "gap_ms": null,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "4a42af77-244f-44de-bd3d-b30081eabc7c",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "180",
+      "attempt": 1,
+      "started_at": "2026-09-29T03:55:43.144Z",
+      "finished_at": "2026-09-29T03:56:12.420Z",
+      "gap_ms": 1081,
+      "outcome": "REQUEST_TIMEOUT",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    }
+  ]
+}

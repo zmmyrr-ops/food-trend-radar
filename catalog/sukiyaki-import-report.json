@@ -1,0 +1,28 @@
+{
+  "created": 4,
+  "existing": 0,
+  "reviewed": 0,
+  "evidence": 5,
+  "records": [
+    {
+      "name": "牛New寿喜烧",
+      "id": "d329b334-0649-4e9f-b395-d8b1f40a0da3",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "一绪寿喜烧",
+      "id": "90526e0c-22c1-4080-80f4-1c24de42197b",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "大牛寿喜烧",
+      "id": "167e70ae-a88e-44ce-bcd1-7b45406c2f4a",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "刃极日料自助",
+      "id": "1af9bf12-4369-491e-8a93-fed33f84a9c4",
+      "research_status": "historical_evidence_only"
+    }
+  ]
+}

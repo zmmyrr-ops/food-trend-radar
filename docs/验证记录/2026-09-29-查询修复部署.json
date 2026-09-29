@@ -1,0 +1,504 @@
+{
+  "started_at": "2026-09-29T04:06:46.122Z",
+  "finished_at": "2026-09-29T04:07:15.775Z",
+  "api": [
+    {
+      "path": "/selection-board",
+      "status": 200,
+      "ms": 373
+    },
+    {
+      "path": "/selection-brief",
+      "status": 200,
+      "ms": 1679
+    },
+    {
+      "path": "/sales-heat",
+      "status": 200,
+      "ms": 2216
+    },
+    {
+      "path": "/opportunities?view=all&limit=50",
+      "status": 200,
+      "ms": 2818
+    },
+    {
+      "path": "/status",
+      "status": 200,
+      "ms": 2840
+    },
+    {
+      "path": "/operations",
+      "status": 200,
+      "ms": 2824
+    },
+    {
+      "path": "/selection-board",
+      "status": 200,
+      "ms": 367
+    },
+    {
+      "path": "/selection-brief",
+      "status": 200,
+      "ms": 367
+    },
+    {
+      "path": "/status",
+      "status": 200,
+      "ms": 371
+    },
+    {
+      "path": "/sales-heat",
+      "status": 200,
+      "ms": 951
+    },
+    {
+      "path": "/opportunities?view=all&limit=50",
+      "status": 200,
+      "ms": 1336
+    },
+    {
+      "path": "/operations",
+      "status": 200,
+      "ms": 1336
+    },
+    {
+      "path": "/selection-board",
+      "status": 200,
+      "ms": 368
+    },
+    {
+      "path": "/selection-brief",
+      "status": 200,
+      "ms": 369
+    },
+    {
+      "path": "/sales-heat",
+      "status": 200,
+      "ms": 881
+    },
+    {
+      "path": "/status",
+      "status": 200,
+      "ms": 883
+    },
+    {
+      "path": "/opportunities?view=all&limit=50",
+      "status": 200,
+      "ms": 1445
+    },
+    {
+      "path": "/operations",
+      "status": 200,
+      "ms": 1445
+    },
+    {
+      "path": "/runs/09f20b9b-390d-4077-8e2d-f05f83d4389c/requests?limit=1",
+      "status": 200,
+      "ms": 10
+    },
+    {
+      "path": "/runs/09f20b9b-390d-4077-8e2d-f05f83d4389c/requests?limit=25&offset=1484",
+      "status": 200,
+      "ms": 10
+    }
+  ],
+  "snapshots": [
+    {
+      "at": "2026-09-29T04:06:48.964Z",
+      "status": {
+        "id": 1,
+        "enabled": true,
+        "pause_reason": null,
+        "worker_active": true,
+        "request_pending": false,
+        "credential_configured": true,
+        "schedule": "每日 00:00 / 12:00（上海）",
+        "concurrency": 1,
+        "interval_ms": [1000, 2000],
+        "missing_sources": [
+          "月售速度历史与统计口径",
+          "平台指数",
+          "环境适配与节假日核销条件",
+          "规则结构化与全部适用门店核验"
+        ],
+        "stage": "券快照、月售热度与天气背景",
+        "query_scope": "上海 · 美食 · 不限直播/短视频"
+      },
+      "errors": []
+    },
+    {
+      "at": "2026-09-29T04:07:02.306Z",
+      "status": {
+        "id": 1,
+        "enabled": true,
+        "pause_reason": null,
+        "worker_active": true,
+        "request_pending": true,
+        "credential_configured": true,
+        "schedule": "每日 00:00 / 12:00（上海）",
+        "concurrency": 1,
+        "interval_ms": [1000, 2000],
+        "missing_sources": [
+          "月售速度历史与统计口径",
+          "平台指数",
+          "环境适配与节假日核销条件",
+          "规则结构化与全部适用门店核验"
+        ],
+        "stage": "券快照、月售热度与天气背景",
+        "query_scope": "上海 · 美食 · 不限直播/短视频"
+      },
+      "errors": []
+    },
+    {
+      "at": "2026-09-29T04:07:15.755Z",
+      "status": {
+        "id": 1,
+        "enabled": true,
+        "pause_reason": null,
+        "worker_active": true,
+        "request_pending": true,
+        "credential_configured": true,
+        "schedule": "每日 00:00 / 12:00（上海）",
+        "concurrency": 1,
+        "interval_ms": [1000, 2000],
+        "missing_sources": [
+          "月售速度历史与统计口径",
+          "平台指数",
+          "环境适配与节假日核销条件",
+          "规则结构化与全部适用门店核验"
+        ],
+        "stage": "券快照、月售热度与天气背景",
+        "query_scope": "上海 · 美食 · 不限直播/短视频"
+      },
+      "errors": []
+    }
+  ],
+  "requests": [
+    {
+      "id": "7c6d6c2b-6fdf-4931-adf0-5bcec06141f1",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "132",
+      "attempt": 1,
+      "started_at": "2026-09-29T03:51:03.694Z",
+      "finished_at": "2026-09-29T03:51:27.503Z",
+      "gap_ms": 20240,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "b76e82f9-d7f8-4947-b2d9-222b4bfbeb9f",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "144",
+      "attempt": 1,
+      "started_at": "2026-09-29T03:51:38.266Z",
+      "finished_at": "2026-09-29T03:51:39.810Z",
+      "gap_ms": 10763,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "186397f9-3b1e-422e-be2c-c1bdfcfe9f70",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "156",
+      "attempt": 1,
+      "started_at": "2026-09-29T03:51:41.399Z",
+      "finished_at": "2026-09-29T03:51:42.094Z",
+      "gap_ms": 1589,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "9a9b5c58-d4ad-4956-92b0-9b84574641f8",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "168",
+      "attempt": 1,
+      "started_at": "2026-09-29T03:51:43.484Z",
+      "finished_at": null,
+      "gap_ms": 1390,
+      "outcome": "in_flight",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "a0e918f5-8999-4d53-bde9-e3b2b0c29498",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "168",
+      "attempt": 1,
+      "started_at": "2026-09-29T03:55:41.012Z",
+      "finished_at": "2026-09-29T03:55:42.063Z",
+      "gap_ms": null,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "4a42af77-244f-44de-bd3d-b30081eabc7c",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "180",
+      "attempt": 1,
+      "started_at": "2026-09-29T03:55:43.144Z",
+      "finished_at": "2026-09-29T03:56:12.420Z",
+      "gap_ms": 1081,
+      "outcome": "REQUEST_TIMEOUT",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "df1f1954-8b19-43b8-ad4c-afd8434c649d",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "180",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:24.220Z",
+      "finished_at": "2026-09-29T04:06:26.229Z",
+      "gap_ms": 611800,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "0c5391b2-11a0-4b78-a1d3-80365625f961",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "192",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:28.043Z",
+      "finished_at": "2026-09-29T04:06:28.840Z",
+      "gap_ms": 1814,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "cf80afbe-8b3a-4c93-939b-b5e2236345fe",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "204",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:29.934Z",
+      "finished_at": "2026-09-29T04:06:30.714Z",
+      "gap_ms": 1094,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "39220bbd-90d7-43b1-9647-d8b7a25a78c3",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "216",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:32.475Z",
+      "finished_at": "2026-09-29T04:06:33.255Z",
+      "gap_ms": 1761,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "1635f66e-ba2a-451e-96b8-3cfd78ce92d7",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "228",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:34.748Z",
+      "finished_at": "2026-09-29T04:06:35.429Z",
+      "gap_ms": 1493,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "b1d7bcf9-7c73-46e3-be01-43d2d1146228",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "dfd14655-7f0b-4b9e-92d9-d7c578315951",
+      "cursor": "1877208039044138:0",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:37.211Z",
+      "finished_at": "2026-09-29T04:06:37.589Z",
+      "gap_ms": 2211,
+      "outcome": "OK",
+      "kind": "store_scope",
+      "brand_name": "必胜客"
+    },
+    {
+      "id": "8cabf1d8-050b-490f-89b5-9af3e3546e14",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "cursor": "240",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:38.708Z",
+      "finished_at": "2026-09-29T04:06:39.361Z",
+      "gap_ms": 1119,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "旺顺融"
+    },
+    {
+      "id": "85dc2940-ef58-4fed-ad2c-445fefa4dc13",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "7dfd3138-64b5-42a5-929f-de5ec823948a",
+      "cursor": "0",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:41.309Z",
+      "finished_at": "2026-09-29T04:06:42.157Z",
+      "gap_ms": 1948,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "星巴克"
+    },
+    {
+      "id": "81c98bd5-5b7d-49c1-b87e-b7d6d535b1d9",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "7dfd3138-64b5-42a5-929f-de5ec823948a",
+      "cursor": "12",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:44.098Z",
+      "finished_at": "2026-09-29T04:06:44.675Z",
+      "gap_ms": 1941,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "星巴克"
+    },
+    {
+      "id": "b903ff24-e67a-4577-8af2-402737e89208",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "7dfd3138-64b5-42a5-929f-de5ec823948a",
+      "cursor": "24",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:48.957Z",
+      "finished_at": "2026-09-29T04:06:49.562Z",
+      "gap_ms": 4282,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "星巴克"
+    },
+    {
+      "id": "e392433b-ec87-4b4a-89be-845a6a60c1ca",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "7dfd3138-64b5-42a5-929f-de5ec823948a",
+      "cursor": "36",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:50.626Z",
+      "finished_at": "2026-09-29T04:06:51.239Z",
+      "gap_ms": 1064,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "星巴克"
+    },
+    {
+      "id": "6f612747-d3c2-467f-80b4-5fcd561b7fe6",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "dfd14655-7f0b-4b9e-92d9-d7c578315951",
+      "cursor": "1877103731038250",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:52.962Z",
+      "finished_at": "2026-09-29T04:06:53.575Z",
+      "gap_ms": 1962,
+      "outcome": "OK",
+      "kind": "commodity",
+      "brand_name": "必胜客"
+    },
+    {
+      "id": "8e58da6a-fe2b-45ce-b24f-f25926817fe6",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "7dfd3138-64b5-42a5-929f-de5ec823948a",
+      "cursor": "48",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:55.414Z",
+      "finished_at": "2026-09-29T04:06:55.959Z",
+      "gap_ms": 1839,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "星巴克"
+    },
+    {
+      "id": "f0784471-516f-4212-acf9-f63f24cc6088",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "7dfd3138-64b5-42a5-929f-de5ec823948a",
+      "cursor": "60",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:06:57.928Z",
+      "finished_at": "2026-09-29T04:07:02.304Z",
+      "gap_ms": 1969,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "星巴克"
+    },
+    {
+      "id": "d17ba07b-ae76-4bbf-a70b-49fd0718c6aa",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "7dfd3138-64b5-42a5-929f-de5ec823948a",
+      "cursor": "72",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:07:03.342Z",
+      "finished_at": "2026-09-29T04:07:04.184Z",
+      "gap_ms": 1038,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "星巴克"
+    },
+    {
+      "id": "e03a11dd-8747-425b-9c13-2df952fae3f7",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "ae5fd8a4-2bb5-443d-93b0-0880f1efd745",
+      "cursor": "0",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:07:05.616Z",
+      "finished_at": "2026-09-29T04:07:06.389Z",
+      "gap_ms": 1432,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "晴空"
+    },
+    {
+      "id": "111fdba1-b2c6-40b5-ab02-8e351078de29",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "79be906a-dda9-4f70-a32f-ae3f725e9770",
+      "cursor": "0",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:07:07.623Z",
+      "finished_at": "2026-09-29T04:07:08.469Z",
+      "gap_ms": 1234,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "智面局"
+    },
+    {
+      "id": "4d336e79-b58b-4ef4-9d81-9ccffcf943f7",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "dfd14655-7f0b-4b9e-92d9-d7c578315951",
+      "cursor": "1803101038606394:0",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:07:09.761Z",
+      "finished_at": "2026-09-29T04:07:10.357Z",
+      "gap_ms": 1761,
+      "outcome": "OK",
+      "kind": "store_lookup",
+      "brand_name": "必胜客"
+    },
+    {
+      "id": "73ac8a9a-1be3-43ce-8133-d56d497b89a3",
+      "run_id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "brand_id": "79be906a-dda9-4f70-a32f-ae3f725e9770",
+      "cursor": "12",
+      "attempt": 1,
+      "started_at": "2026-09-29T04:07:13.754Z",
+      "finished_at": "2026-09-29T04:07:15.749Z",
+      "gap_ms": 3397,
+      "outcome": "OK",
+      "kind": "selection",
+      "brand_name": "智面局"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "verified_at": "2026-09-29T04:24:40.443Z",
+  "product_id": "1784360500535328",
+  "requests": [
+    {
+      "path": "/life/alliance/v2/goods/product/detail/get",
+      "parameters": {
+        "from_type": "5",
+        "product_id": "1784360500535328",
+        "image_size": "{\"width\":750}",
+        "with_calendar": "true"
+      },
+      "status_code": 0,
+      "keys": [
+        "ab_params",
+        "log_id",
+        "now",
+        "poi_count",
+        "poi_id_list",
+        "poi_nearest",
+        "product_info",
+        "status_code",
+        "status_msg"
+      ]
+    },
+    {
+      "path": "/life/alliance/v1/goods/product_info/poi_list/get",
+      "parameters": {
+        "product_id": "1784360500535328",
+        "key_word": "上海",
+        "cursor": "0",
+        "count": "20",
+        "poi_id_count": 50
+      },
+      "status_code": 0,
+      "keys": ["log_id", "now", "poi_list", "status_code", "status_msg"]
+    }
+  ],
+  "detail": {
+    "reported_count": 5339,
+    "returned_count": 50
+  },
+  "lookup": {
+    "returned_count": 50,
+    "cursor": null,
+    "has_more": null,
+    "total": null,
+    "cities": ["上海市"],
+    "outside_requested": 0
+  },
+  "cursor_probe": {
+    "cursor": "20",
+    "count": "20",
+    "status_code": 0,
+    "returned_count": 50,
+    "has_more": null,
+    "next_cursor": null,
+    "same_requested_set": true
+  }
+}

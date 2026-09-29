@@ -1,0 +1,1380 @@
+[
+  {
+    "generated_at": "2026-09-29T04:55:52.309Z",
+    "pending": 0,
+    "active": [],
+    "slow": [
+      {
+        "id": 9,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 1753.597125,
+        "duration_ms": 519,
+        "failed": false
+      },
+      {
+        "id": 7,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 1538.478209,
+        "duration_ms": 1073,
+        "failed": false
+      },
+      {
+        "id": 787,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 2969.802167,
+        "duration_ms": 456,
+        "failed": false
+      },
+      {
+        "id": 788,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 3445.348542,
+        "duration_ms": 495,
+        "failed": false
+      },
+      {
+        "id": 789,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 3951.984417,
+        "duration_ms": 663,
+        "failed": false
+      },
+      {
+        "id": 786,
+        "label": "brief.read",
+        "caller": "stage",
+        "started_ms": 2969.557834,
+        "duration_ms": 1673,
+        "failed": false
+      },
+      {
+        "id": 793,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 4642.974959,
+        "duration_ms": 480,
+        "failed": false
+      },
+      {
+        "id": 792,
+        "label": "salesHeat.read",
+        "caller": "stage",
+        "started_ms": 4642.930042,
+        "duration_ms": 492,
+        "failed": false
+      }
+    ],
+    "event_loop": {
+      "last_lag_ms": 1,
+      "max_lag_ms": 1577
+    },
+    "caveat": "耗时包含数据库排队，不等同于 SQL 执行时间。只保留最近 100 次超过 250 毫秒的调用，不保存 SQL、参数、响应正文或异常消息。进程重启清空；事件循环完全阻塞时此接口也无法即时响应。",
+    "http_ms": 22
+  },
+  {
+    "generated_at": "2026-09-29T04:55:57.337Z",
+    "pending": 0,
+    "active": [],
+    "slow": [
+      {
+        "id": 9,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 1753.597125,
+        "duration_ms": 519,
+        "failed": false
+      },
+      {
+        "id": 7,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 1538.478209,
+        "duration_ms": 1073,
+        "failed": false
+      },
+      {
+        "id": 787,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 2969.802167,
+        "duration_ms": 456,
+        "failed": false
+      },
+      {
+        "id": 788,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 3445.348542,
+        "duration_ms": 495,
+        "failed": false
+      },
+      {
+        "id": 789,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 3951.984417,
+        "duration_ms": 663,
+        "failed": false
+      },
+      {
+        "id": 786,
+        "label": "brief.read",
+        "caller": "stage",
+        "started_ms": 2969.557834,
+        "duration_ms": 1673,
+        "failed": false
+      },
+      {
+        "id": 793,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 4642.974959,
+        "duration_ms": 480,
+        "failed": false
+      },
+      {
+        "id": 792,
+        "label": "salesHeat.read",
+        "caller": "stage",
+        "started_ms": 4642.930042,
+        "duration_ms": 492,
+        "failed": false
+      }
+    ],
+    "event_loop": {
+      "last_lag_ms": 5,
+      "max_lag_ms": 1577
+    },
+    "caveat": "耗时包含数据库排队，不等同于 SQL 执行时间。只保留最近 100 次超过 250 毫秒的调用，不保存 SQL、参数、响应正文或异常消息。进程重启清空；事件循环完全阻塞时此接口也无法即时响应。",
+    "http_ms": 9
+  },
+  {
+    "generated_at": "2026-09-29T04:56:02.347Z",
+    "pending": 0,
+    "active": [],
+    "slow": [
+      {
+        "id": 9,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 1753.597125,
+        "duration_ms": 519,
+        "failed": false
+      },
+      {
+        "id": 7,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 1538.478209,
+        "duration_ms": 1073,
+        "failed": false
+      },
+      {
+        "id": 787,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 2969.802167,
+        "duration_ms": 456,
+        "failed": false
+      },
+      {
+        "id": 788,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 3445.348542,
+        "duration_ms": 495,
+        "failed": false
+      },
+      {
+        "id": 789,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 3951.984417,
+        "duration_ms": 663,
+        "failed": false
+      },
+      {
+        "id": 786,
+        "label": "brief.read",
+        "caller": "stage",
+        "started_ms": 2969.557834,
+        "duration_ms": 1673,
+        "failed": false
+      },
+      {
+        "id": 793,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 4642.974959,
+        "duration_ms": 480,
+        "failed": false
+      },
+      {
+        "id": 792,
+        "label": "salesHeat.read",
+        "caller": "stage",
+        "started_ms": 4642.930042,
+        "duration_ms": 492,
+        "failed": false
+      },
+      {
+        "id": 971,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 33511.403417,
+        "duration_ms": 445,
+        "failed": false
+      },
+      {
+        "id": 974,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 34006.841125,
+        "duration_ms": 498,
+        "failed": false
+      },
+      {
+        "id": 984,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 34560.772709,
+        "duration_ms": 453,
+        "failed": false
+      },
+      {
+        "id": 985,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 35030.528584,
+        "duration_ms": 496,
+        "failed": false
+      },
+      {
+        "id": 986,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 35537.379459,
+        "duration_ms": 682,
+        "failed": false
+      }
+    ],
+    "event_loop": {
+      "last_lag_ms": 5,
+      "max_lag_ms": 1577
+    },
+    "caveat": "耗时包含数据库排队，不等同于 SQL 执行时间。只保留最近 100 次超过 250 毫秒的调用，不保存 SQL、参数、响应正文或异常消息。进程重启清空；事件循环完全阻塞时此接口也无法即时响应。",
+    "http_ms": 6
+  },
+  {
+    "generated_at": "2026-09-29T04:56:07.355Z",
+    "pending": 0,
+    "active": [],
+    "slow": [
+      {
+        "id": 9,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 1753.597125,
+        "duration_ms": 519,
+        "failed": false
+      },
+      {
+        "id": 7,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 1538.478209,
+        "duration_ms": 1073,
+        "failed": false
+      },
+      {
+        "id": 787,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 2969.802167,
+        "duration_ms": 456,
+        "failed": false
+      },
+      {
+        "id": 788,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 3445.348542,
+        "duration_ms": 495,
+        "failed": false
+      },
+      {
+        "id": 789,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 3951.984417,
+        "duration_ms": 663,
+        "failed": false
+      },
+      {
+        "id": 786,
+        "label": "brief.read",
+        "caller": "stage",
+        "started_ms": 2969.557834,
+        "duration_ms": 1673,
+        "failed": false
+      },
+      {
+        "id": 793,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 4642.974959,
+        "duration_ms": 480,
+        "failed": false
+      },
+      {
+        "id": 792,
+        "label": "salesHeat.read",
+        "caller": "stage",
+        "started_ms": 4642.930042,
+        "duration_ms": 492,
+        "failed": false
+      },
+      {
+        "id": 971,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 33511.403417,
+        "duration_ms": 445,
+        "failed": false
+      },
+      {
+        "id": 974,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 34006.841125,
+        "duration_ms": 498,
+        "failed": false
+      },
+      {
+        "id": 984,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 34560.772709,
+        "duration_ms": 453,
+        "failed": false
+      },
+      {
+        "id": 985,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 35030.528584,
+        "duration_ms": 496,
+        "failed": false
+      },
+      {
+        "id": 986,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 35537.379459,
+        "duration_ms": 682,
+        "failed": false
+      }
+    ],
+    "event_loop": {
+      "last_lag_ms": 1,
+      "max_lag_ms": 1577
+    },
+    "caveat": "耗时包含数据库排队，不等同于 SQL 执行时间。只保留最近 100 次超过 250 毫秒的调用，不保存 SQL、参数、响应正文或异常消息。进程重启清空；事件循环完全阻塞时此接口也无法即时响应。",
+    "http_ms": 10
+  },
+  {
+    "generated_at": "2026-09-29T04:56:12.368Z",
+    "pending": 0,
+    "active": [],
+    "slow": [
+      {
+        "id": 9,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 1753.597125,
+        "duration_ms": 519,
+        "failed": false
+      },
+      {
+        "id": 7,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 1538.478209,
+        "duration_ms": 1073,
+        "failed": false
+      },
+      {
+        "id": 787,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 2969.802167,
+        "duration_ms": 456,
+        "failed": false
+      },
+      {
+        "id": 788,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 3445.348542,
+        "duration_ms": 495,
+        "failed": false
+      },
+      {
+        "id": 789,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 3951.984417,
+        "duration_ms": 663,
+        "failed": false
+      },
+      {
+        "id": 786,
+        "label": "brief.read",
+        "caller": "stage",
+        "started_ms": 2969.557834,
+        "duration_ms": 1673,
+        "failed": false
+      },
+      {
+        "id": 793,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 4642.974959,
+        "duration_ms": 480,
+        "failed": false
+      },
+      {
+        "id": 792,
+        "label": "salesHeat.read",
+        "caller": "stage",
+        "started_ms": 4642.930042,
+        "duration_ms": 492,
+        "failed": false
+      },
+      {
+        "id": 971,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 33511.403417,
+        "duration_ms": 445,
+        "failed": false
+      },
+      {
+        "id": 974,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 34006.841125,
+        "duration_ms": 498,
+        "failed": false
+      },
+      {
+        "id": 984,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 34560.772709,
+        "duration_ms": 453,
+        "failed": false
+      },
+      {
+        "id": 985,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 35030.528584,
+        "duration_ms": 496,
+        "failed": false
+      },
+      {
+        "id": 986,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 35537.379459,
+        "duration_ms": 682,
+        "failed": false
+      }
+    ],
+    "event_loop": {
+      "last_lag_ms": 1,
+      "max_lag_ms": 1577
+    },
+    "caveat": "耗时包含数据库排队，不等同于 SQL 执行时间。只保留最近 100 次超过 250 毫秒的调用，不保存 SQL、参数、响应正文或异常消息。进程重启清空；事件循环完全阻塞时此接口也无法即时响应。",
+    "http_ms": 7
+  },
+  {
+    "generated_at": "2026-09-29T04:56:17.385Z",
+    "pending": 0,
+    "active": [],
+    "slow": [
+      {
+        "id": 9,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 1753.597125,
+        "duration_ms": 519,
+        "failed": false
+      },
+      {
+        "id": 7,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 1538.478209,
+        "duration_ms": 1073,
+        "failed": false
+      },
+      {
+        "id": 787,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 2969.802167,
+        "duration_ms": 456,
+        "failed": false
+      },
+      {
+        "id": 788,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 3445.348542,
+        "duration_ms": 495,
+        "failed": false
+      },
+      {
+        "id": 789,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 3951.984417,
+        "duration_ms": 663,
+        "failed": false
+      },
+      {
+        "id": 786,
+        "label": "brief.read",
+        "caller": "stage",
+        "started_ms": 2969.557834,
+        "duration_ms": 1673,
+        "failed": false
+      },
+      {
+        "id": 793,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 4642.974959,
+        "duration_ms": 480,
+        "failed": false
+      },
+      {
+        "id": 792,
+        "label": "salesHeat.read",
+        "caller": "stage",
+        "started_ms": 4642.930042,
+        "duration_ms": 492,
+        "failed": false
+      },
+      {
+        "id": 971,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 33511.403417,
+        "duration_ms": 445,
+        "failed": false
+      },
+      {
+        "id": 974,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 34006.841125,
+        "duration_ms": 498,
+        "failed": false
+      },
+      {
+        "id": 984,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 34560.772709,
+        "duration_ms": 453,
+        "failed": false
+      },
+      {
+        "id": 985,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 35030.528584,
+        "duration_ms": 496,
+        "failed": false
+      },
+      {
+        "id": 986,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 35537.379459,
+        "duration_ms": 682,
+        "failed": false
+      }
+    ],
+    "event_loop": {
+      "last_lag_ms": 0,
+      "max_lag_ms": 1577
+    },
+    "caveat": "耗时包含数据库排队，不等同于 SQL 执行时间。只保留最近 100 次超过 250 毫秒的调用，不保存 SQL、参数、响应正文或异常消息。进程重启清空；事件循环完全阻塞时此接口也无法即时响应。",
+    "http_ms": 15
+  },
+  {
+    "generated_at": "2026-09-29T04:56:22.394Z",
+    "pending": 0,
+    "active": [],
+    "slow": [
+      {
+        "id": 9,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 1753.597125,
+        "duration_ms": 519,
+        "failed": false
+      },
+      {
+        "id": 7,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 1538.478209,
+        "duration_ms": 1073,
+        "failed": false
+      },
+      {
+        "id": 787,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 2969.802167,
+        "duration_ms": 456,
+        "failed": false
+      },
+      {
+        "id": 788,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 3445.348542,
+        "duration_ms": 495,
+        "failed": false
+      },
+      {
+        "id": 789,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 3951.984417,
+        "duration_ms": 663,
+        "failed": false
+      },
+      {
+        "id": 786,
+        "label": "brief.read",
+        "caller": "stage",
+        "started_ms": 2969.557834,
+        "duration_ms": 1673,
+        "failed": false
+      },
+      {
+        "id": 793,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 4642.974959,
+        "duration_ms": 480,
+        "failed": false
+      },
+      {
+        "id": 792,
+        "label": "salesHeat.read",
+        "caller": "stage",
+        "started_ms": 4642.930042,
+        "duration_ms": 492,
+        "failed": false
+      },
+      {
+        "id": 971,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 33511.403417,
+        "duration_ms": 445,
+        "failed": false
+      },
+      {
+        "id": 974,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 34006.841125,
+        "duration_ms": 498,
+        "failed": false
+      },
+      {
+        "id": 984,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 34560.772709,
+        "duration_ms": 453,
+        "failed": false
+      },
+      {
+        "id": 985,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 35030.528584,
+        "duration_ms": 496,
+        "failed": false
+      },
+      {
+        "id": 986,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 35537.379459,
+        "duration_ms": 682,
+        "failed": false
+      }
+    ],
+    "event_loop": {
+      "last_lag_ms": 1,
+      "max_lag_ms": 1577
+    },
+    "caveat": "耗时包含数据库排队，不等同于 SQL 执行时间。只保留最近 100 次超过 250 毫秒的调用，不保存 SQL、参数、响应正文或异常消息。进程重启清空；事件循环完全阻塞时此接口也无法即时响应。",
+    "http_ms": 7
+  },
+  {
+    "generated_at": "2026-09-29T04:56:29.090Z",
+    "pending": 0,
+    "active": [],
+    "slow": [
+      {
+        "id": 9,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 1753.597125,
+        "duration_ms": 519,
+        "failed": false
+      },
+      {
+        "id": 7,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 1538.478209,
+        "duration_ms": 1073,
+        "failed": false
+      },
+      {
+        "id": 787,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 2969.802167,
+        "duration_ms": 456,
+        "failed": false
+      },
+      {
+        "id": 788,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 3445.348542,
+        "duration_ms": 495,
+        "failed": false
+      },
+      {
+        "id": 789,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 3951.984417,
+        "duration_ms": 663,
+        "failed": false
+      },
+      {
+        "id": 786,
+        "label": "brief.read",
+        "caller": "stage",
+        "started_ms": 2969.557834,
+        "duration_ms": 1673,
+        "failed": false
+      },
+      {
+        "id": 793,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 4642.974959,
+        "duration_ms": 480,
+        "failed": false
+      },
+      {
+        "id": 792,
+        "label": "salesHeat.read",
+        "caller": "stage",
+        "started_ms": 4642.930042,
+        "duration_ms": 492,
+        "failed": false
+      },
+      {
+        "id": 971,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 33511.403417,
+        "duration_ms": 445,
+        "failed": false
+      },
+      {
+        "id": 974,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 34006.841125,
+        "duration_ms": 498,
+        "failed": false
+      },
+      {
+        "id": 984,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 34560.772709,
+        "duration_ms": 453,
+        "failed": false
+      },
+      {
+        "id": 985,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 35030.528584,
+        "duration_ms": 496,
+        "failed": false
+      },
+      {
+        "id": 986,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 35537.379459,
+        "duration_ms": 682,
+        "failed": false
+      },
+      {
+        "id": 1122,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 60527.452167,
+        "duration_ms": 499,
+        "failed": false
+      },
+      {
+        "id": 1125,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 61051.661959,
+        "duration_ms": 414,
+        "failed": false
+      },
+      {
+        "id": 1126,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 61481.344084,
+        "duration_ms": 499,
+        "failed": false
+      },
+      {
+        "id": 1127,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 61994.5535,
+        "duration_ms": 703,
+        "failed": false
+      },
+      {
+        "id": 1141,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 62890.848334,
+        "duration_ms": 545,
+        "failed": false
+      },
+      {
+        "id": 1138,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 62729.48525,
+        "duration_ms": 977,
+        "failed": false
+      },
+      {
+        "id": 1892,
+        "label": "backup",
+        "caller": "stage",
+        "started_ms": 63706.70325,
+        "duration_ms": 422,
+        "failed": false
+      },
+      {
+        "id": 1912,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 64134.822042,
+        "duration_ms": 479,
+        "failed": false
+      }
+    ],
+    "event_loop": {
+      "last_lag_ms": 176,
+      "max_lag_ms": 1577
+    },
+    "caveat": "耗时包含数据库排队，不等同于 SQL 执行时间。只保留最近 100 次超过 250 毫秒的调用，不保存 SQL、参数、响应正文或异常消息。进程重启清空；事件循环完全阻塞时此接口也无法即时响应。",
+    "http_ms": 1698
+  },
+  {
+    "generated_at": "2026-09-29T04:56:34.108Z",
+    "pending": 0,
+    "active": [],
+    "slow": [
+      {
+        "id": 9,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 1753.597125,
+        "duration_ms": 519,
+        "failed": false
+      },
+      {
+        "id": 7,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 1538.478209,
+        "duration_ms": 1073,
+        "failed": false
+      },
+      {
+        "id": 787,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 2969.802167,
+        "duration_ms": 456,
+        "failed": false
+      },
+      {
+        "id": 788,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 3445.348542,
+        "duration_ms": 495,
+        "failed": false
+      },
+      {
+        "id": 789,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 3951.984417,
+        "duration_ms": 663,
+        "failed": false
+      },
+      {
+        "id": 786,
+        "label": "brief.read",
+        "caller": "stage",
+        "started_ms": 2969.557834,
+        "duration_ms": 1673,
+        "failed": false
+      },
+      {
+        "id": 793,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 4642.974959,
+        "duration_ms": 480,
+        "failed": false
+      },
+      {
+        "id": 792,
+        "label": "salesHeat.read",
+        "caller": "stage",
+        "started_ms": 4642.930042,
+        "duration_ms": 492,
+        "failed": false
+      },
+      {
+        "id": 971,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 33511.403417,
+        "duration_ms": 445,
+        "failed": false
+      },
+      {
+        "id": 974,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 34006.841125,
+        "duration_ms": 498,
+        "failed": false
+      },
+      {
+        "id": 984,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 34560.772709,
+        "duration_ms": 453,
+        "failed": false
+      },
+      {
+        "id": 985,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 35030.528584,
+        "duration_ms": 496,
+        "failed": false
+      },
+      {
+        "id": 986,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 35537.379459,
+        "duration_ms": 682,
+        "failed": false
+      },
+      {
+        "id": 1122,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 60527.452167,
+        "duration_ms": 499,
+        "failed": false
+      },
+      {
+        "id": 1125,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 61051.661959,
+        "duration_ms": 414,
+        "failed": false
+      },
+      {
+        "id": 1126,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 61481.344084,
+        "duration_ms": 499,
+        "failed": false
+      },
+      {
+        "id": 1127,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 61994.5535,
+        "duration_ms": 703,
+        "failed": false
+      },
+      {
+        "id": 1141,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 62890.848334,
+        "duration_ms": 545,
+        "failed": false
+      },
+      {
+        "id": 1138,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 62729.48525,
+        "duration_ms": 977,
+        "failed": false
+      },
+      {
+        "id": 1892,
+        "label": "backup",
+        "caller": "stage",
+        "started_ms": 63706.70325,
+        "duration_ms": 422,
+        "failed": false
+      },
+      {
+        "id": 1912,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 64134.822042,
+        "duration_ms": 479,
+        "failed": false
+      },
+      {
+        "id": 1929,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 64995.482459,
+        "duration_ms": 451,
+        "failed": false
+      },
+      {
+        "id": 1930,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 65461.790084,
+        "duration_ms": 490,
+        "failed": false
+      },
+      {
+        "id": 1931,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 65961.145917,
+        "duration_ms": 662,
+        "failed": false
+      },
+      {
+        "id": 1928,
+        "label": "brief.read",
+        "caller": "stage",
+        "started_ms": 64995.396459,
+        "duration_ms": 1652,
+        "failed": false
+      },
+      {
+        "id": 1935,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 66647.1745,
+        "duration_ms": 479,
+        "failed": false
+      },
+      {
+        "id": 1934,
+        "label": "salesHeat.read",
+        "caller": "stage",
+        "started_ms": 66647.108167,
+        "duration_ms": 487,
+        "failed": false
+      }
+    ],
+    "event_loop": {
+      "last_lag_ms": 1,
+      "max_lag_ms": 1577
+    },
+    "caveat": "耗时包含数据库排队，不等同于 SQL 执行时间。只保留最近 100 次超过 250 毫秒的调用，不保存 SQL、参数、响应正文或异常消息。进程重启清空；事件循环完全阻塞时此接口也无法即时响应。",
+    "http_ms": 9
+  },
+  {
+    "generated_at": "2026-09-29T04:56:39.121Z",
+    "pending": 0,
+    "active": [],
+    "slow": [
+      {
+        "id": 9,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 1753.597125,
+        "duration_ms": 519,
+        "failed": false
+      },
+      {
+        "id": 7,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 1538.478209,
+        "duration_ms": 1073,
+        "failed": false
+      },
+      {
+        "id": 787,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 2969.802167,
+        "duration_ms": 456,
+        "failed": false
+      },
+      {
+        "id": 788,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 3445.348542,
+        "duration_ms": 495,
+        "failed": false
+      },
+      {
+        "id": 789,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 3951.984417,
+        "duration_ms": 663,
+        "failed": false
+      },
+      {
+        "id": 786,
+        "label": "brief.read",
+        "caller": "stage",
+        "started_ms": 2969.557834,
+        "duration_ms": 1673,
+        "failed": false
+      },
+      {
+        "id": 793,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 4642.974959,
+        "duration_ms": 480,
+        "failed": false
+      },
+      {
+        "id": 792,
+        "label": "salesHeat.read",
+        "caller": "stage",
+        "started_ms": 4642.930042,
+        "duration_ms": 492,
+        "failed": false
+      },
+      {
+        "id": 971,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 33511.403417,
+        "duration_ms": 445,
+        "failed": false
+      },
+      {
+        "id": 974,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 34006.841125,
+        "duration_ms": 498,
+        "failed": false
+      },
+      {
+        "id": 984,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 34560.772709,
+        "duration_ms": 453,
+        "failed": false
+      },
+      {
+        "id": 985,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 35030.528584,
+        "duration_ms": 496,
+        "failed": false
+      },
+      {
+        "id": 986,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 35537.379459,
+        "duration_ms": 682,
+        "failed": false
+      },
+      {
+        "id": 1122,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 60527.452167,
+        "duration_ms": 499,
+        "failed": false
+      },
+      {
+        "id": 1125,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 61051.661959,
+        "duration_ms": 414,
+        "failed": false
+      },
+      {
+        "id": 1126,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 61481.344084,
+        "duration_ms": 499,
+        "failed": false
+      },
+      {
+        "id": 1127,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 61994.5535,
+        "duration_ms": 703,
+        "failed": false
+      },
+      {
+        "id": 1141,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 62890.848334,
+        "duration_ms": 545,
+        "failed": false
+      },
+      {
+        "id": 1138,
+        "label": "scores.refresh",
+        "caller": "stage",
+        "started_ms": 62729.48525,
+        "duration_ms": 977,
+        "failed": false
+      },
+      {
+        "id": 1892,
+        "label": "backup",
+        "caller": "stage",
+        "started_ms": 63706.70325,
+        "duration_ms": 422,
+        "failed": false
+      },
+      {
+        "id": 1912,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 64134.822042,
+        "duration_ms": 479,
+        "failed": false
+      },
+      {
+        "id": 1929,
+        "label": "db.query:600b060933484cb1",
+        "caller": "opportunity-board.js:127:32",
+        "started_ms": 64995.482459,
+        "duration_ms": 451,
+        "failed": false
+      },
+      {
+        "id": 1930,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 65461.790084,
+        "duration_ms": 490,
+        "failed": false
+      },
+      {
+        "id": 1931,
+        "label": "db.query:aae0f17f3498b374",
+        "caller": "cross-coupon.js:169:31",
+        "started_ms": 65961.145917,
+        "duration_ms": 662,
+        "failed": false
+      },
+      {
+        "id": 1928,
+        "label": "brief.read",
+        "caller": "stage",
+        "started_ms": 64995.396459,
+        "duration_ms": 1652,
+        "failed": false
+      },
+      {
+        "id": 1935,
+        "label": "db.query:faac71a287571431",
+        "caller": "sales-heat.js:221:32",
+        "started_ms": 66647.1745,
+        "duration_ms": 479,
+        "failed": false
+      },
+      {
+        "id": 1934,
+        "label": "salesHeat.read",
+        "caller": "stage",
+        "started_ms": 66647.108167,
+        "duration_ms": 487,
+        "failed": false
+      }
+    ],
+    "event_loop": {
+      "last_lag_ms": 1,
+      "max_lag_ms": 1577
+    },
+    "caveat": "耗时包含数据库排队，不等同于 SQL 执行时间。只保留最近 100 次超过 250 毫秒的调用，不保存 SQL、参数、响应正文或异常消息。进程重启清空；事件循环完全阻塞时此接口也无法即时响应。",
+    "http_ms": 5
+  }
+]

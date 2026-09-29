@@ -1,0 +1,4729 @@
+{
+  "version": 1,
+  "policy": "category_popularity_top100_then_group_deal",
+  "city": "上海",
+  "top_n": 100,
+  "request_interval_seconds": 2,
+  "category_source": "https://www.dianping.com/shanghai/ch10",
+  "categories": [
+    {
+      "id": "101",
+      "name": "江浙菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g101"
+    },
+    {
+      "id": "113",
+      "name": "日式料理",
+      "url": "https://www.dianping.com/shanghai/ch10/g113"
+    },
+    {
+      "id": "112",
+      "name": "小吃快餐",
+      "url": "https://www.dianping.com/shanghai/ch10/g112"
+    },
+    {
+      "id": "117",
+      "name": "面包蛋糕甜品",
+      "url": "https://www.dianping.com/shanghai/ch10/g117"
+    },
+    {
+      "id": "110",
+      "name": "火锅",
+      "url": "https://www.dianping.com/shanghai/ch10/g110"
+    },
+    {
+      "id": "116",
+      "name": "西餐",
+      "url": "https://www.dianping.com/shanghai/ch10/g116"
+    },
+    {
+      "id": "111",
+      "name": "自助餐",
+      "url": "https://www.dianping.com/shanghai/ch10/g111"
+    },
+    {
+      "id": "103",
+      "name": "粤菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g103"
+    },
+    {
+      "id": "114",
+      "name": "韩式料理",
+      "url": "https://www.dianping.com/shanghai/ch10/g114"
+    },
+    {
+      "id": "102",
+      "name": "川菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g102"
+    },
+    {
+      "id": "118",
+      "name": "其他美食",
+      "url": "https://www.dianping.com/shanghai/ch10/g118"
+    },
+    {
+      "id": "132",
+      "name": "咖啡",
+      "url": "https://www.dianping.com/shanghai/ch10/g132"
+    },
+    {
+      "id": "219",
+      "name": "小龙虾",
+      "url": "https://www.dianping.com/shanghai/ch10/g219"
+    },
+    {
+      "id": "508",
+      "name": "烧烤烤串",
+      "url": "https://www.dianping.com/shanghai/ch10/g508"
+    },
+    {
+      "id": "115",
+      "name": "东南亚菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g115"
+    },
+    {
+      "id": "34236",
+      "name": "饮品",
+      "url": "https://www.dianping.com/shanghai/ch10/g34236"
+    },
+    {
+      "id": "215",
+      "name": "面馆",
+      "url": "https://www.dianping.com/shanghai/ch10/g215"
+    },
+    {
+      "id": "251",
+      "name": "鱼鲜海鲜",
+      "url": "https://www.dianping.com/shanghai/ch10/g251"
+    },
+    {
+      "id": "106",
+      "name": "东北菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g106"
+    },
+    {
+      "id": "3243",
+      "name": "新疆菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g3243"
+    },
+    {
+      "id": "109",
+      "name": "素食",
+      "url": "https://www.dianping.com/shanghai/ch10/g109"
+    },
+    {
+      "id": "104",
+      "name": "湘菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g104"
+    },
+    {
+      "id": "34055",
+      "name": "早茶",
+      "url": "https://www.dianping.com/shanghai/ch10/g34055"
+    },
+    {
+      "id": "311",
+      "name": "北京菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g311"
+    },
+    {
+      "id": "25474",
+      "name": "农家菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g25474"
+    },
+    {
+      "id": "2714",
+      "name": "水果生鲜",
+      "url": "https://www.dianping.com/shanghai/ch10/g2714"
+    },
+    {
+      "id": "1783",
+      "name": "家常菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g1783"
+    },
+    {
+      "id": "33759",
+      "name": "食品滋补",
+      "url": "https://www.dianping.com/shanghai/ch10/g33759"
+    },
+    {
+      "id": "34351",
+      "name": "地方菜系",
+      "url": "https://www.dianping.com/shanghai/ch10/g34351"
+    },
+    {
+      "id": "34284",
+      "name": "特色菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g34284"
+    },
+    {
+      "id": "34303",
+      "name": "烤肉",
+      "url": "https://www.dianping.com/shanghai/ch10/g34303"
+    },
+    {
+      "id": "1338",
+      "name": "私房菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g1338"
+    },
+    {
+      "id": "250",
+      "name": "创意菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g250"
+    },
+    {
+      "id": "32725",
+      "name": "螺蛳粉",
+      "url": "https://www.dianping.com/shanghai/ch10/g32725"
+    },
+    {
+      "id": "234",
+      "name": "中东菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g234"
+    },
+    {
+      "id": "2797",
+      "name": "非洲菜",
+      "url": "https://www.dianping.com/shanghai/ch10/g2797"
+    }
+  ],
+  "renames": {
+    "炭一·日料·烧肉": "炭一",
+    "披头士烧鸟居酒屋": "披头士",
+    "耶里夏丽·丝路国际新疆菜": "耶里夏丽",
+    "Primotable高桌牛排馆": "高桌牛排馆",
+    "胖哥俩肉蟹煲": "胖哥俩",
+    "喜顶上品家餐厅·海胆水饺": "喜顶上品",
+    "平成屋· Late Night 食堂": "平成屋",
+    "平成屋·Late Night 食堂": "平成屋",
+    "平成屋·午肴夜酒": "平成屋",
+    "BROWNSTONE布朗石西班牙餐厅酒吧": "BROWNSTONE布朗石西班牙餐厅",
+    "塔哈尔·新疆盛宴": "塔哈尔",
+    "苏小柳点心·手作小笼包": "苏小柳",
+    "莆田餐厅PUTIEN": "莆田餐厅",
+    "bluefrog蓝蛙": "蓝蛙",
+    "星巴克臻选上海烘焙工坊": "星巴克",
+    "捞王猪肚鸡火锅": "捞王",
+    "左庭右院鲜牛肉火锅": "左庭右院",
+    "% Arabica阿拉比卡咖啡烘焙工坊": "% Arabica",
+    "COMMUNE幻师": "幻师",
+    "八合里潮汕鲜牛肉火锅": "八合里",
+    "红宝石·鲜奶小方": "红宝石",
+    "DQ·蛋糕·冰淇淋": "DQ冰雪皇后",
+    "东泰祥生煎馆": "东泰祥",
+    "光明邨大酒家": "光明邨",
+    "桂滿隴·北緯三十度": "桂满陇",
+    "桂满陇·蟹黄小笼汤包": "桂满陇",
+    "橘焱胡同烧肉·板前串烧": "橘焱胡同烧肉夜食",
+    "焱格格·临湖": "临湖素食·焱格格",
+    "東盛炭烤自助料理": "东盛炭烤自助料理",
+    "東盛自助料理": "东盛炭烤自助料理",
+    "炙柒Sekinana·精致日料": "炙柒Sekinana",
+    "红盔甲·小龙虾": "红盔甲",
+    "杨记齐齐哈尔烤肉·烧烤": "杨记齐齐哈尔烤肉",
+    "咕的咕的碳烤肉店": "咕的咕的·炭烤肉店",
+    "南里山房·新淮扬菜": "南里山房",
+    "南里山房·宴山海": "南里山房",
+    "南里山房·上海菜·淮扬菜": "南里山房",
+    "老吉堂上海本帮菜": "老吉堂",
+    "福和面馆·上海现炒浇头面": "福和面馆",
+    "鲜得来排骨年糕": "鲜得来",
+    "太琼糟粕醋·海南酸汤火锅": "太琼",
+    "云潇潇抚仙湖石锅鱼": "云潇潇",
+    "eat n work·江景西餐厅": "eat n work",
+    "铭门盛宴·蒸汽海鲜自助": "铭门盛宴",
+    "拉蒂娜·巴西牛排馆 Latina·Brazilian Steakhouse": "Latina巴西牛排馆",
+    "圈儿潮汕牛肉火锅": "圈儿潮汕牛肉火锅·夜宵",
+    "外滩家宴·上海菜": "外滩家宴",
+    "外滩家宴·上海本帮菜": "外滩家宴",
+    "锦府园·新台州菜": "锦府园",
+    "锦府园·雅宴·新台州菜": "锦府园",
+    "大宝口福·生焗海鲜·煲煲好": "大宝口福",
+    "大宝口福·本帮·江浙菜·聚会餐厅": "大宝口福",
+    "甬季·浙鲜小酒馆": "甬季",
+    "甬季·宁波渔家菜": "甬季",
+    "李百蟹·蟹黄面·临江餐厅": "李百蟹",
+    "李百蟹·蟹黄面": "李百蟹",
+    "黃啓雲私房牛肉面工坊·旗舰店Ken’s Kitchen": "黃啓雲私房牛肉面工坊",
+    "熊治现作·现烤面包": "熊治面包",
+    "熊治面包•现烤面包": "熊治面包",
+    "吞吞鸭·砂锅海鸭煲·夜宵": "吞吞鸭",
+    "吞吞鸭·砂锅海鸭煲": "吞吞鸭",
+    "李莫颠•鲜椒鱼蛙馆•夜宵": "李莫颠",
+    "李莫颠•鲜椒鱼蛙馆": "李莫颠",
+    "额尔敦传统涮·烤全羊": "额尔敦传统涮",
+    "额尔敦传统涮·内蒙烧烤·烤羊腿": "额尔敦传统涮",
+    "阿拉有牛·烤串自助·精酿原浆鲜啤畅饮": "阿拉有牛",
+    "阿拉有牛·烤串自助·精酿原浆畅饮": "阿拉有牛",
+    "超级安答·鲜活牛肉·鲜活龙虾": "超级安答",
+    "安答龙虾·烧烤·大排档": "安答龙虾",
+    "千両": "千两"
+  },
+  "known_brands": [
+    {
+      "id": "c0cd9ffa-9e68-4e74-8c54-1930267a9c3b",
+      "name": "安和里园林餐厅",
+      "aliases": []
+    },
+    {
+      "id": "ff626783-88ee-49c3-a9d4-dbff5b8f2c88",
+      "name": "御鲤湘",
+      "aliases": []
+    },
+    {
+      "id": "e3294221-42ee-4ec5-98bb-47e53c4b365e",
+      "name": "云锦荟",
+      "aliases": []
+    },
+    {
+      "id": "41ff5d9a-2846-458e-bfcd-598b7e20a8b6",
+      "name": "淘淘园",
+      "aliases": []
+    },
+    {
+      "id": "b1489ca0-801e-418b-9a7a-48bfb308dece",
+      "name": "青春贝壳烤肉·韩国汤饭",
+      "aliases": []
+    },
+    {
+      "id": "b88de606-2422-4111-8b3d-40ac7938365c",
+      "name": "海宁煲谢记",
+      "aliases": []
+    },
+    {
+      "id": "b5d3d0ac-5299-4c4e-b2ec-40d1903a3e28",
+      "name": "泡面男孩Ramen Boy",
+      "aliases": []
+    },
+    {
+      "id": "53a46d04-6566-4019-959b-6269607cc50c",
+      "name": "凤寿司",
+      "aliases": []
+    },
+    {
+      "id": "4dcccdbb-f4df-4a9a-bf01-8eb560e5ac14",
+      "name": "庄行曹记羊肉",
+      "aliases": []
+    },
+    {
+      "id": "a3a6ef01-cd30-472e-bf35-2515bcd4234e",
+      "name": "百特喜·意大利餐厅",
+      "aliases": []
+    },
+    {
+      "id": "eb83beb8-d3ca-4e3c-a4b9-ed5b441cf374",
+      "name": "旺清进洞米肠汤",
+      "aliases": []
+    },
+    {
+      "id": "c25360bc-b76a-4a32-b82e-01fb667e4f72",
+      "name": "和兴港式打边炉",
+      "aliases": []
+    },
+    {
+      "id": "e07cbc3a-ee57-48f1-a355-a13256847674",
+      "name": "阿平牛杂·鲜切牛杂牛腩煲·粉面",
+      "aliases": []
+    },
+    {
+      "id": "4d720aba-0f59-48e4-9784-3375a45d84cb",
+      "name": "MIXING COFFEE",
+      "aliases": []
+    },
+    {
+      "id": "6f7fdf54-2779-4e67-a9c0-0bfc455d3afc",
+      "name": "大钱龙虾",
+      "aliases": []
+    },
+    {
+      "id": "f7399a4a-fc6c-48dc-b44b-02fdb6e225bd",
+      "name": "2nd cup coffee",
+      "aliases": []
+    },
+    {
+      "id": "e96f6f01-2181-43f2-a486-28f60b3e1609",
+      "name": "璐坊粽王",
+      "aliases": []
+    },
+    {
+      "id": "c0324bf4-bb47-4c29-982d-a54f5a0ced92",
+      "name": "福菓子西点Patisserie FU",
+      "aliases": []
+    },
+    {
+      "id": "200a8013-321d-43e0-be1f-d5e95bcf55fe",
+      "name": "茶人村·前滩江景雅宴",
+      "aliases": []
+    },
+    {
+      "id": "6e0cdc3d-336d-4507-9ca9-94a1f3075815",
+      "name": "那时新疆·乌孙",
+      "aliases": []
+    },
+    {
+      "id": "2c3983b9-c8a2-440c-bd43-98760750cf9d",
+      "name": "郑状元面馆",
+      "aliases": []
+    },
+    {
+      "id": "9082fe9c-d940-49b5-88dc-ffda5dc6138b",
+      "name": "峯铁板烧",
+      "aliases": []
+    },
+    {
+      "id": "e6e15d66-d5df-4da4-9b01-aebeb0bbbcad",
+      "name": "疆域时光·南疆南羊肉串",
+      "aliases": []
+    },
+    {
+      "id": "2ab9d10d-4094-43ae-8264-ea0599d4d20a",
+      "name": "東大門·吉尼大排档·正宗韩国料理",
+      "aliases": []
+    },
+    {
+      "id": "7bc41f8c-7248-4b35-8418-6385f0865c99",
+      "name": "上海笑鱼  SUSHI KAKURE  鮨 隠",
+      "aliases": []
+    },
+    {
+      "id": "13e472ad-b60b-4c3e-8212-12bf4924cbd5",
+      "name": "上海陆家嘴禧玥酒店餐厅·沫八",
+      "aliases": []
+    },
+    {
+      "id": "71d0aeb5-aa4f-43a1-823d-d7d7e5a1c825",
+      "name": "LE COQ大公鸡小酒馆·摩登餐厅",
+      "aliases": []
+    },
+    {
+      "id": "ce6c390c-8d71-4465-a699-d56d7b704767",
+      "name": "緣明土菜館",
+      "aliases": []
+    },
+    {
+      "id": "e249e812-d5d5-48ba-a5ce-79b027196f99",
+      "name": "老爸厨房",
+      "aliases": []
+    },
+    {
+      "id": "2910d072-65b3-4a8e-8135-d7d193b568d4",
+      "name": "常赢三兄弟·清真涮肉",
+      "aliases": []
+    },
+    {
+      "id": "224a17d1-63b1-4072-b8f3-ca29f906082d",
+      "name": "子福慧",
+      "aliases": []
+    },
+    {
+      "id": "d7ee39cf-ae51-4c60-880c-227ee58d9fc7",
+      "name": "Metal hands·铁手咖啡",
+      "aliases": []
+    },
+    {
+      "id": "0c5e2803-18cc-4a6c-bf87-03c642ac10ae",
+      "name": "红料理|串串有瘾·烧烤",
+      "aliases": []
+    },
+    {
+      "id": "efc15ceb-b155-4491-8631-4d28d080d6d9",
+      "name": "聪菜馆",
+      "aliases": []
+    },
+    {
+      "id": "5c02aedf-11d3-4451-8a11-9324c86b7dcb",
+      "name": "禄银肠粉·煲仔饭",
+      "aliases": []
+    },
+    {
+      "id": "9d431953-ffc9-4425-989b-65cd62f21fc5",
+      "name": "销魂美蛙鱼头火锅",
+      "aliases": []
+    },
+    {
+      "id": "9d8ea9a2-fee7-48b9-9f10-6f17a195410b",
+      "name": "天比高·粤菜",
+      "aliases": []
+    },
+    {
+      "id": "9b687339-e556-46d1-bba2-bc9035389106",
+      "name": "桃山日本料理铁板烧",
+      "aliases": []
+    },
+    {
+      "id": "2fe1be3e-4404-4f1e-b5c9-25a4fa994f9c",
+      "name": "金芬食府",
+      "aliases": []
+    },
+    {
+      "id": "a6e81606-fe2f-4ca7-abf0-5a10bbbda877",
+      "name": "农家大灶台.地锅鸡",
+      "aliases": []
+    },
+    {
+      "id": "4444259f-499b-44b7-ad61-7e155df7c674",
+      "name": "缘·烧肉酒场·和牛刺身自助双放题",
+      "aliases": []
+    },
+    {
+      "id": "6cde3f6d-be7d-4379-ab19-85d3e0989180",
+      "name": "蒋记海鲜姿造•洋房别墅",
+      "aliases": []
+    },
+    {
+      "id": "bcec8ddf-6831-4610-b131-d8ae05638d2c",
+      "name": "柒厢食事雅谈",
+      "aliases": []
+    },
+    {
+      "id": "58769f02-e5db-496d-b040-e816b79159dd",
+      "name": "Halley Pizza&Kebab 清真",
+      "aliases": []
+    },
+    {
+      "id": "d6dc202f-8b60-4904-b7ae-a7e23fd03ebc",
+      "name": "汉巴味德自助餐厅",
+      "aliases": []
+    },
+    {
+      "id": "86fb1f70-d7de-4d9d-8555-8e2f5b6e424f",
+      "name": "MARU玛露音乐餐厅",
+      "aliases": []
+    },
+    {
+      "id": "89248bf6-553d-4c5b-b632-69632a6d223a",
+      "name": "king大志烤肉黑毛牛专门店",
+      "aliases": []
+    },
+    {
+      "id": "d5abff39-d552-41ec-a7de-7e05f9df557a",
+      "name": "The COOK·厨餐厅·自助餐",
+      "aliases": []
+    },
+    {
+      "id": "9920c817-b87d-431c-96fa-72ebc730319a",
+      "name": "協樂火鍋",
+      "aliases": []
+    },
+    {
+      "id": "1bea4386-8cc7-44a5-9020-7ac282706817",
+      "name": "FAT PHO大發越南粉",
+      "aliases": []
+    },
+    {
+      "id": "c0e246b0-b731-428c-beb9-10a5e7fa4b32",
+      "name": "芝湖参鸡汤",
+      "aliases": []
+    },
+    {
+      "id": "d8076dc3-2a0a-4344-89a3-f60316c77e4f",
+      "name": "撸啊撸铁签小肉",
+      "aliases": []
+    },
+    {
+      "id": "99aa9b85-9298-4e9a-88ee-0350b0666d09",
+      "name": "JUJU炭火烤肉·干杯小酒馆",
+      "aliases": []
+    },
+    {
+      "id": "3b245e66-32c6-4ac5-9d79-c9326fa2231f",
+      "name": "Brut Eatery悦璞食堂",
+      "aliases": []
+    },
+    {
+      "id": "13759211-c6e3-40b8-b32f-d79c0e053671",
+      "name": "鮨蓮•日本料理",
+      "aliases": []
+    },
+    {
+      "id": "24c7e51b-cb30-4133-ae69-10c3cd150808",
+      "name": "鮨·谦八·寿司",
+      "aliases": []
+    },
+    {
+      "id": "10dabd8b-dd60-4115-bd0c-59db5c519b33",
+      "name": "ALBALUZ 西班牙餐厅",
+      "aliases": []
+    },
+    {
+      "id": "5140a5da-0d72-4504-bfdb-f9165b7cf6d3",
+      "name": "一尺花园",
+      "aliases": []
+    },
+    {
+      "id": "493b8e6e-b9d5-4335-8e6b-18cb15bb0a32",
+      "name": "温暖你的猪",
+      "aliases": []
+    },
+    {
+      "id": "211f0b59-9a35-4551-969c-6844bc6fa8ba",
+      "name": "Mata·Mata玛塔",
+      "aliases": []
+    },
+    {
+      "id": "2f225cc7-32e9-4fba-82fa-2a903f2a5e6d",
+      "name": "PhoToShop福秀越南",
+      "aliases": []
+    },
+    {
+      "id": "de2a3efb-ac3f-472c-885c-2dd004224ab6",
+      "name": "火地铁板烧",
+      "aliases": []
+    },
+    {
+      "id": "28dbf50d-ba45-4f24-8c05-dd6b07557772",
+      "name": "Little Mermaid Bakery",
+      "aliases": []
+    },
+    {
+      "id": "41c7cd1e-353d-41f5-a9b8-035f9f37d90e",
+      "name": "企鹅餐厅",
+      "aliases": []
+    },
+    {
+      "id": "ca07ddce-d8dd-4d27-82ef-636d0f5c0654",
+      "name": "桂桂茶",
+      "aliases": []
+    },
+    {
+      "id": "f92750cf-b7c6-44f9-9068-01ea244c6033",
+      "name": "大脸猫私家烘焙蛋糕",
+      "aliases": []
+    },
+    {
+      "id": "86de330c-3755-4dfb-b4b8-cc9355cc161c",
+      "name": "新疆古城喀什烤肉饭店",
+      "aliases": []
+    },
+    {
+      "id": "ee3b0bdc-f605-4348-b7c2-6cd30b06bd07",
+      "name": "傲椒鱼活鱼火锅",
+      "aliases": []
+    },
+    {
+      "id": "dc3426f0-5d5b-4be1-b7da-3834e21dedd4",
+      "name": "张奶奶海参",
+      "aliases": []
+    },
+    {
+      "id": "cd0af520-95cc-4c52-8c55-daf8d8b5cc1f",
+      "name": "小满手工粉",
+      "aliases": []
+    },
+    {
+      "id": "1d8e36ce-f072-4dc9-87eb-982fdb1fb214",
+      "name": "莫尔顿扒房",
+      "aliases": []
+    },
+    {
+      "id": "c92034db-17fc-484a-bf3d-489323bb083f",
+      "name": "岸花·神户寿喜烧",
+      "aliases": []
+    },
+    {
+      "id": "432a0b80-34b2-4fe0-a789-518d765aea58",
+      "name": "香港龙凤楼",
+      "aliases": []
+    },
+    {
+      "id": "842d1568-01ce-4db7-ba3e-151b996efbf1",
+      "name": "炎韩友烤牛肉·韩料牛肠",
+      "aliases": []
+    },
+    {
+      "id": "ba203ba1-269c-4e4e-b72d-5e2e78d531a5",
+      "name": "CHAR CHAR BISTRO·恰恰好牛排酒馆",
+      "aliases": []
+    },
+    {
+      "id": "94479973-b202-4406-8c52-14b946a424c6",
+      "name": "馨源楼",
+      "aliases": []
+    },
+    {
+      "id": "81191002-b0ab-4f2b-975d-62195aa3e6da",
+      "name": "紫霞门韩国料理",
+      "aliases": []
+    },
+    {
+      "id": "16ffadd5-32ac-479d-b2a3-ce4f9af868c4",
+      "name": "Quay江畔餐厅",
+      "aliases": []
+    },
+    {
+      "id": "2507e5f9-c159-4336-9fac-218343a23593",
+      "name": "植藤",
+      "aliases": []
+    },
+    {
+      "id": "3847f302-ea78-47a6-8066-4e31591b7bec",
+      "name": "LH TEPPANYAKI铁板烧",
+      "aliases": []
+    },
+    {
+      "id": "71fa977f-b00e-4934-a39f-66e70b76630e",
+      "name": "Ginza Onodera 鮨",
+      "aliases": []
+    },
+    {
+      "id": "cdeb1b41-219c-4c5b-b582-f8d13eebb5fe",
+      "name": "浩海火燒雲傣家菜",
+      "aliases": []
+    },
+    {
+      "id": "d27fe0b7-77f6-4420-a667-8f11e03426bc",
+      "name": "金桔香港茶餐",
+      "aliases": []
+    },
+    {
+      "id": "09aa5e10-5bbc-4803-84dd-638afb15427f",
+      "name": "酷矿冰淇淋",
+      "aliases": []
+    },
+    {
+      "id": "80a0026c-2635-4b9a-bec7-415061922f81",
+      "name": "雍颐庭",
+      "aliases": []
+    },
+    {
+      "id": "897eb11d-b556-481f-82b0-3fcb2fbf1b82",
+      "name": "金龙·打边炉",
+      "aliases": []
+    },
+    {
+      "id": "d23f8663-01fa-4347-a56d-4ff64e30ff6f",
+      "name": "米唐北方小厨",
+      "aliases": []
+    },
+    {
+      "id": "27d02f4f-c271-45c7-9b44-7dc39279769e",
+      "name": "割烹·哲 OMAKASE",
+      "aliases": []
+    },
+    {
+      "id": "99cd7fdd-e6da-4856-8c53-f3968ee3e197",
+      "name": "旺达WUNDER",
+      "aliases": []
+    },
+    {
+      "id": "307f9b1b-ed53-46da-806d-b32c0e525416",
+      "name": "阿勇鲁肉饭",
+      "aliases": []
+    },
+    {
+      "id": "594c62ea-8d1b-4407-844d-54ea96eb9e8b",
+      "name": "二街坊面店",
+      "aliases": []
+    },
+    {
+      "id": "dc6265bc-c310-4709-950f-fad9d71f7756",
+      "name": "塘湾壹品",
+      "aliases": []
+    },
+    {
+      "id": "e52fbf0b-096d-4a25-bf2b-c42f8c279041",
+      "name": "C Cafe",
+      "aliases": []
+    },
+    {
+      "id": "b7a7786b-3a6a-4144-ace0-d909946f87f9",
+      "name": "新兴餐厅",
+      "aliases": []
+    },
+    {
+      "id": "3ba39b8a-b674-453d-a59d-7cb097ef4d57",
+      "name": "都恩客",
+      "aliases": []
+    },
+    {
+      "id": "5bcbe2cf-61f5-46c0-92e5-9eca4cd9e0af",
+      "name": "新旺茶餐厅",
+      "aliases": []
+    },
+    {
+      "id": "b1cf1b84-d52c-4087-8075-3d511e3812e9",
+      "name": "Pierre Marcolini",
+      "aliases": []
+    },
+    {
+      "id": "0a9fe2f4-3795-41a1-8b5a-9332fbd5097f",
+      "name": "昌里第一炸·香酥鸡·好吃来",
+      "aliases": []
+    },
+    {
+      "id": "ae151568-e17d-4ff9-bc34-762624e23183",
+      "name": "阿文·潮汕食府",
+      "aliases": []
+    },
+    {
+      "id": "67976d67-3df9-4d63-90ec-43abc8f92573",
+      "name": "两季烧烤",
+      "aliases": []
+    },
+    {
+      "id": "249e6471-5db7-4ba8-8177-54bb3b42558c",
+      "name": "正兴高桥松饼",
+      "aliases": []
+    },
+    {
+      "id": "2d9a2118-8a27-46ac-a17f-dc7335e143d1",
+      "name": "昇鳗鱼家",
+      "aliases": []
+    },
+    {
+      "id": "514d4089-2dd1-421b-b95f-5ee97c29076a",
+      "name": "仁义火锅城·熟食店",
+      "aliases": []
+    },
+    {
+      "id": "4b171aa2-fcb5-415a-95cd-977c0941471b",
+      "name": "一阳轩",
+      "aliases": []
+    },
+    {
+      "id": "6d083c72-03e6-412c-8dcd-fe5cb6cd8366",
+      "name": "陕六哥",
+      "aliases": []
+    },
+    {
+      "id": "c69326b3-86ba-4f9b-94a5-e62e5bc6efe5",
+      "name": "Totino Panino",
+      "aliases": []
+    },
+    {
+      "id": "db5ef83f-6a7f-4bbc-9c5a-b8ea7ce6c30a",
+      "name": "CRAZYONES西班牙海鲜饭",
+      "aliases": []
+    },
+    {
+      "id": "9f34073e-8a60-405c-b30c-f3cbb2fb42a8",
+      "name": "山石榴·贵州菜",
+      "aliases": []
+    },
+    {
+      "id": "8069931e-8913-4831-b20c-f325a429236f",
+      "name": "2NITE.BAR",
+      "aliases": []
+    },
+    {
+      "id": "8bd62f95-f5fa-4e0e-b84b-2ce30bb07ee4",
+      "name": "香然会·园林雅宴",
+      "aliases": []
+    },
+    {
+      "id": "33936807-8393-4488-bbf6-544248874d4e",
+      "name": "上海早晨",
+      "aliases": []
+    },
+    {
+      "id": "e7242048-f718-4735-9b91-5732ad6d24b8",
+      "name": "El Bodegon阿根廷秘鲁餐厅",
+      "aliases": []
+    },
+    {
+      "id": "d9fc63cc-710a-45c7-b455-83ef4f710413",
+      "name": "普朗姆生蚝吧",
+      "aliases": []
+    },
+    {
+      "id": "5627bd41-d751-4c39-b2a7-2bfacd6517c1",
+      "name": "WHITE 白餐厅",
+      "aliases": []
+    },
+    {
+      "id": "f1cfb014-1ec5-4dcd-9ad9-cc6ea13d5695",
+      "name": "HUGO HUSKY HOUSE•全天早午餐•舒芙蕾•蛋糕",
+      "aliases": []
+    },
+    {
+      "id": "b936a387-0815-4d69-a19f-d23bb6333fb8",
+      "name": "三生小馆",
+      "aliases": []
+    },
+    {
+      "id": "d2f875e1-92e9-41c2-92ce-698213513c2b",
+      "name": "峯烧鸟しんやしょくどう",
+      "aliases": []
+    },
+    {
+      "id": "b6547465-ba6d-465a-b7ae-810702250310",
+      "name": "裕兴记·蟹黄面馆",
+      "aliases": []
+    },
+    {
+      "id": "2e18365d-58a7-47de-8669-f2f9cfab85b7",
+      "name": "胖胖君的新疆抓饭",
+      "aliases": []
+    },
+    {
+      "id": "c322e245-5dca-4cef-ba5c-01c281055181",
+      "name": "Alimentari早午餐",
+      "aliases": []
+    },
+    {
+      "id": "5d289126-e3a7-4ce5-8049-d0c6dad168e1",
+      "name": "彩丰楼中餐厅",
+      "aliases": []
+    },
+    {
+      "id": "3f2fcbab-4088-4ea8-ac81-7907c76aaeae",
+      "name": "Bites&Brews",
+      "aliases": []
+    },
+    {
+      "id": "33986f17-5e83-4209-bdde-c34f673becec",
+      "name": "爱蝦乃家",
+      "aliases": []
+    },
+    {
+      "id": "8491f85f-2a55-4bd3-8370-f8d76980c742",
+      "name": "二雷吉林烧烤",
+      "aliases": []
+    },
+    {
+      "id": "ebb0c283-6397-4816-9658-081ee820cb09",
+      "name": "泰煌鸡·上海白斩鸡·沪菜",
+      "aliases": []
+    },
+    {
+      "id": "7f1e9e0e-8743-4b6e-a825-68a778a814a4",
+      "name": "诚家日本料理",
+      "aliases": []
+    },
+    {
+      "id": "af106b17-c460-4c72-821d-78eb5040bcb8",
+      "name": "小杨龙虾海鲜馆",
+      "aliases": []
+    },
+    {
+      "id": "d1e539e3-fd21-403a-b7e2-da81828362e3",
+      "name": "Q太郎",
+      "aliases": []
+    },
+    {
+      "id": "dcfd1a60-0061-496e-b688-ddfd01c62e78",
+      "name": "闲得咖啡馆 Leisure Cafe",
+      "aliases": []
+    },
+    {
+      "id": "45be02ef-eab3-4591-8075-835afea0216d",
+      "name": "胡家双锅贴",
+      "aliases": []
+    },
+    {
+      "id": "1fea2b12-f2db-4f14-aa18-491e2e4d3da0",
+      "name": "咖啡伦敦",
+      "aliases": []
+    },
+    {
+      "id": "b0cfcfe1-a830-4049-8487-fa135e8d1013",
+      "name": "上海虹口糕团食品厂",
+      "aliases": []
+    },
+    {
+      "id": "2815e95c-7be8-47f8-9980-df86c7809c4f",
+      "name": "洪福楼",
+      "aliases": []
+    },
+    {
+      "id": "ead4e76e-4bd9-4c06-8ceb-89fe2d124a6f",
+      "name": "Strictly Cookies",
+      "aliases": []
+    },
+    {
+      "id": "ed5167b3-5fa0-4a20-9047-ff6cde24a725",
+      "name": "上海金陵紫金山大酒店·汇海餐厅",
+      "aliases": []
+    },
+    {
+      "id": "27f12b74-6f2c-42d8-96bf-1a3c3edafdf3",
+      "name": "锋味面",
+      "aliases": []
+    },
+    {
+      "id": "8ec0423d-585c-4079-9bd2-ffac88a24b2f",
+      "name": "远洋宾馆·江景餐厅",
+      "aliases": []
+    },
+    {
+      "id": "5a31c13d-1918-4548-9176-7f25e19a3746",
+      "name": "石屋料理",
+      "aliases": []
+    },
+    {
+      "id": "c80350f6-b6ff-4a10-b957-6e98b4a7b99c",
+      "name": "新疆亚克西餐厅",
+      "aliases": []
+    },
+    {
+      "id": "cf39aeba-2792-4731-9d69-849c3ba59410",
+      "name": "两勺子一碗口水鸡拌面",
+      "aliases": []
+    },
+    {
+      "id": "a65fe701-51fe-4833-a936-1725d73977d6",
+      "name": "避风塘",
+      "aliases": []
+    },
+    {
+      "id": "267e65f3-4e59-4cab-b4a5-07bf529aa0d5",
+      "name": "Spread the Bagel·CinnaSwirl",
+      "aliases": []
+    },
+    {
+      "id": "3d96d3e4-10be-4f15-8eb7-b859facc06e3",
+      "name": "榕港海鲜·江浙菜·家宴",
+      "aliases": []
+    },
+    {
+      "id": "c2bd709a-29bb-450b-87a9-be2f8b437cc7",
+      "name": "李先生的首尔小馆",
+      "aliases": []
+    },
+    {
+      "id": "8b626bf5-eb51-4ea2-8565-5140ed83748a",
+      "name": "紅鯉魚港式大排檔",
+      "aliases": []
+    },
+    {
+      "id": "c23ad245-1ffe-4f3b-a63c-987df4ff0a26",
+      "name": "鳗享屋·烧鸟·日式食堂",
+      "aliases": []
+    },
+    {
+      "id": "c12738d1-8f33-4041-8cb7-a56b5bfaddc0",
+      "name": "台南担仔面·卤肉饭",
+      "aliases": []
+    },
+    {
+      "id": "446429a3-f053-4aba-b1fb-84cf6c0d5677",
+      "name": "福1039",
+      "aliases": []
+    },
+    {
+      "id": "05558b65-f932-47a1-9582-e68f33f65fe0",
+      "name": "Mr & Mrs Bund by Paul Pairet",
+      "aliases": []
+    },
+    {
+      "id": "c0940564-c685-4b05-a821-431f94f84eeb",
+      "name": "威皇广福和小海鲜",
+      "aliases": []
+    },
+    {
+      "id": "e9871eeb-090a-4bcb-9d92-063eb75bd8f2",
+      "name": "Tubestation站点比萨",
+      "aliases": []
+    },
+    {
+      "id": "1b81cf77-996a-4da1-a28d-18a3d2976675",
+      "name": "菱·肴 Le Manoir Ling·Dining",
+      "aliases": []
+    },
+    {
+      "id": "82af0fe9-1823-4bf5-9d38-1d0ae7807a07",
+      "name": "成隆行·蟹王府",
+      "aliases": []
+    },
+    {
+      "id": "33728239-8682-40a4-8a94-c0c42e44b13b",
+      "name": "東發道茶冰廰·醉香江",
+      "aliases": []
+    },
+    {
+      "id": "b2827170-93c4-4182-a5ba-e09226f0a426",
+      "name": "Yan Ting 宴庭中餐厅",
+      "aliases": []
+    },
+    {
+      "id": "6076a4b8-62d4-4401-9b6c-71f46cf7f51c",
+      "name": "红辣椒·川菜·火锅",
+      "aliases": []
+    },
+    {
+      "id": "c68d68a8-7165-4a1a-83be-a9bd8928c93b",
+      "name": "鮨割烹·遊OMAKASE",
+      "aliases": []
+    },
+    {
+      "id": "7f01837c-63ab-489a-a2a6-98e88af38065",
+      "name": "蟹黄鱼·海派餐面馆",
+      "aliases": []
+    },
+    {
+      "id": "d0e4e5f0-33d2-40b9-bd08-4805d45ffcc2",
+      "name": "modern farmer摩登農夫",
+      "aliases": []
+    },
+    {
+      "id": "86fcfe71-66c6-4ab7-bb89-7b0318c6a4ee",
+      "name": "Ocean's Table 欧舍",
+      "aliases": []
+    },
+    {
+      "id": "546068e4-470c-43e5-b190-623fe7c5bb1f",
+      "name": "岳GAKU日本料理",
+      "aliases": []
+    },
+    {
+      "id": "3e0e5e86-2153-4c85-86f4-66b530f987ed",
+      "name": "Bar à Vin",
+      "aliases": []
+    },
+    {
+      "id": "83c557fa-6509-4b0e-bd18-e8b945733aa4",
+      "name": "皖宴",
+      "aliases": []
+    },
+    {
+      "id": "374adfa1-970c-4aa1-bde1-95c47edae62b",
+      "name": "新疆兄弟烤肉店",
+      "aliases": []
+    },
+    {
+      "id": "1d2ddb7c-8e49-44c7-b78f-912786a1a6b2",
+      "name": "顺风臻品菜",
+      "aliases": []
+    },
+    {
+      "id": "c97e5749-f81b-4d6a-be43-c485ef993eec",
+      "name": "新Q烤吧",
+      "aliases": []
+    },
+    {
+      "id": "45c857d1-0698-48d7-b731-0eca0689a39f",
+      "name": "木叔小面",
+      "aliases": []
+    },
+    {
+      "id": "ba677e7d-af8e-4a99-8a7d-7f8e5dc99f6b",
+      "name": "要要吃·崇明特色农家菜",
+      "aliases": []
+    },
+    {
+      "id": "321f80c5-1db8-42af-8240-6a07789e3574",
+      "name": "Tequila Espresso",
+      "aliases": []
+    },
+    {
+      "id": "3515cf79-45ce-419f-a02e-d22f2a5733d0",
+      "name": "柒月粉",
+      "aliases": []
+    },
+    {
+      "id": "41e82937-6153-453f-be61-4f8a53c27477",
+      "name": "鲜满楼本帮菜",
+      "aliases": []
+    },
+    {
+      "id": "f86f6235-ef51-42a1-948a-8b53ae745e87",
+      "name": "客觀民間菜",
+      "aliases": []
+    },
+    {
+      "id": "c53c3b92-dfa2-44bd-ac36-97662c321f2d",
+      "name": "橼舍鮨青木",
+      "aliases": []
+    },
+    {
+      "id": "1433e393-3fdb-4765-b67d-4c934645ef6e",
+      "name": "The MEAT 扒餐厅",
+      "aliases": []
+    },
+    {
+      "id": "45ec9926-42d7-403a-9eb3-69d9bab7a542",
+      "name": "la Boulangerie 面包房",
+      "aliases": []
+    },
+    {
+      "id": "f777520b-69ef-4b71-84f7-533bac450fac",
+      "name": "首尔朴宝·炭火烤肉",
+      "aliases": []
+    },
+    {
+      "id": "510f738e-9b8a-4a9e-b422-18f599267998",
+      "name": "沪碟·摩登时代",
+      "aliases": []
+    },
+    {
+      "id": "be5f211b-adc1-44df-8f3f-bd5506e579bf",
+      "name": "THE PRESS",
+      "aliases": []
+    },
+    {
+      "id": "21a07893-ec56-4163-9c4b-5a9463e9ac83",
+      "name": "SISTERS BAR RESTAURANT川意酒馆",
+      "aliases": []
+    },
+    {
+      "id": "1d9a7649-58cc-4afb-9747-17b518798cec",
+      "name": "Lumiere's Kitchen 卢米亚厨房",
+      "aliases": []
+    },
+    {
+      "id": "eb03223b-6315-4494-8efc-9a1d9d02eec8",
+      "name": "The Fellas Terrace",
+      "aliases": []
+    },
+    {
+      "id": "43bf8e27-68ec-4de4-a96b-345076ee3361",
+      "name": "长征刨冰",
+      "aliases": []
+    },
+    {
+      "id": "f42f5bbe-2ef8-4610-8f41-cb7e5e187d05",
+      "name": "非常时髦悦府VUE Dining",
+      "aliases": []
+    },
+    {
+      "id": "3182ecb7-9621-4f84-aed0-06a33657494b",
+      "name": "大馥·烧肉丼饭",
+      "aliases": []
+    },
+    {
+      "id": "68b19e61-1ae4-4392-8eae-8d774e857f9c",
+      "name": "杨府霸道私房火锅",
+      "aliases": []
+    },
+    {
+      "id": "ee014508-6432-43c6-82b1-498932be5ec2",
+      "name": "上海和平饭店茉·莉酒廊 Jasmine Lounge",
+      "aliases": []
+    },
+    {
+      "id": "a0122ebd-260b-4b35-9152-3f8f76faa1b4",
+      "name": "晶采轩",
+      "aliases": []
+    },
+    {
+      "id": "5d7409e7-c133-4975-8fa3-944384c9bac2",
+      "name": "尚越SH·YUE 新本帮餐厅",
+      "aliases": []
+    },
+    {
+      "id": "cd086e28-e648-49b7-be85-33f585027d36",
+      "name": "客缘·初见江浙菜海鲜",
+      "aliases": []
+    },
+    {
+      "id": "7bba76a0-517f-4ebb-af36-169fc9f8213f",
+      "name": "石物恋·烧肉",
+      "aliases": []
+    },
+    {
+      "id": "b2a638b9-80e9-4795-bc61-06d6dce5ec35",
+      "name": "君东记本帮面馆",
+      "aliases": []
+    },
+    {
+      "id": "b7ddefd4-2b45-4d68-b768-bae05c1ce3bd",
+      "name": "富淳饭店",
+      "aliases": []
+    },
+    {
+      "id": "cf0be412-e54b-4616-8503-67dbb6839c7c",
+      "name": "紫料亭Murasaki",
+      "aliases": []
+    },
+    {
+      "id": "adfe3790-cdf3-4565-81dd-e5757cf3d82a",
+      "name": "PS.Cafe",
+      "aliases": []
+    },
+    {
+      "id": "417372d7-3f70-4c58-8dd8-a6ddb5699ead",
+      "name": "WS Cafe&Lounge",
+      "aliases": []
+    },
+    {
+      "id": "e928f43c-9e14-492b-afac-9d34463e2bc1",
+      "name": "鲜筵·静安昆仑·中餐厅",
+      "aliases": []
+    },
+    {
+      "id": "302af5f0-1319-45db-99ed-c685e1a65325",
+      "name": "YO-CAKE蛋糕订制",
+      "aliases": []
+    },
+    {
+      "id": "4a4784a7-6aef-4838-9c1d-2578dde3b0d8",
+      "name": "金孔雀",
+      "aliases": []
+    },
+    {
+      "id": "e63ba5c9-09e7-4a15-bc96-14d56847aaef",
+      "name": "正三熙小木屋烤肉",
+      "aliases": []
+    },
+    {
+      "id": "b45791a2-6f80-4f9b-a88e-6a78df8d4599",
+      "name": "麒麟阁",
+      "aliases": []
+    },
+    {
+      "id": "41863022-9613-446e-a75e-b24f9890a846",
+      "name": "世香全厨•日料·铁板烧",
+      "aliases": []
+    },
+    {
+      "id": "7e6d4fe8-2a8f-465c-b253-3a9cf82f7450",
+      "name": "客缘·迎山海江浙菜海鲜粤点",
+      "aliases": []
+    },
+    {
+      "id": "83a8dedc-5a31-4a3c-b85d-5c86e92292f7",
+      "name": "鮨玄日本料理",
+      "aliases": []
+    },
+    {
+      "id": "6d27c7ab-61fa-498a-956a-e097c5e0acb4",
+      "name": "丰茂烤串",
+      "aliases": []
+    },
+    {
+      "id": "177c8dec-89c5-48fb-a9e0-c559b7c60e22",
+      "name": "菩提素",
+      "aliases": []
+    },
+    {
+      "id": "fa5c7262-1a37-4223-ae8c-5cab09c371b4",
+      "name": "今日牛事潮汕鲜牛肉火锅",
+      "aliases": []
+    },
+    {
+      "id": "a05de6d0-6911-4f1e-b4da-7869d1ee9407",
+      "name": "鲐赏河豚·青岛菜",
+      "aliases": []
+    },
+    {
+      "id": "20491385-7590-455a-bbca-2f2f71007a06",
+      "name": "付小姐在成都",
+      "aliases": []
+    },
+    {
+      "id": "98f8d91e-4255-45b6-835c-d747ae6be412",
+      "name": "Magnet磁食",
+      "aliases": []
+    },
+    {
+      "id": "06ebdbbe-d668-42f0-834e-9358222291f0",
+      "name": "LiLi Time·巷子",
+      "aliases": []
+    },
+    {
+      "id": "954f2350-d412-42d2-9b48-d8596e265ca8",
+      "name": "新浦六·原浦江陆号",
+      "aliases": []
+    },
+    {
+      "id": "ed3226e7-187e-4f50-9660-cd841c8a7cb7",
+      "name": "ROOF 325 RESTAURANT&BAR",
+      "aliases": []
+    },
+    {
+      "id": "6dca3d29-bc03-4c81-8669-63563963796c",
+      "name": "龙一海鲜",
+      "aliases": []
+    },
+    {
+      "id": "7fa97b95-fe47-45d4-869a-2f8c8f563cf1",
+      "name": "浅草六丁目",
+      "aliases": []
+    },
+    {
+      "id": "b5447746-8da1-47a3-96d2-3d24fac1539d",
+      "name": "归蜀第成都串串料理",
+      "aliases": []
+    },
+    {
+      "id": "2849c1cf-a58b-442a-924f-cb74852ca301",
+      "name": "京云华·中国餐厅",
+      "aliases": []
+    },
+    {
+      "id": "bdb5f84b-cf5e-4bfd-a226-907ecbb6949f",
+      "name": "泰安门Taian Table",
+      "aliases": []
+    },
+    {
+      "id": "bf643819-34cd-4d30-8d74-2df9a8f06ea0",
+      "name": "老山东·御膳坊",
+      "aliases": []
+    },
+    {
+      "id": "076f1bb7-b76a-47a3-976a-127863e09f58",
+      "name": "牛小新烧肉·和牛放题",
+      "aliases": []
+    },
+    {
+      "id": "97921aa5-6926-471e-864b-e1cb7b9d3cb4",
+      "name": "Cafe Gray Deluxe",
+      "aliases": []
+    },
+    {
+      "id": "fe3ce4f9-1667-4c78-9f66-7e0d8a8f9007",
+      "name": "虾乐园龙虾·烧烤夜宵",
+      "aliases": []
+    },
+    {
+      "id": "f3716c12-bf9c-4c4e-80dc-a4f50e976fd2",
+      "name": "佬肥猫·浙江乡村菜",
+      "aliases": []
+    },
+    {
+      "id": "005aa302-eb36-4734-adb4-f229971c5df3",
+      "name": "隨時見",
+      "aliases": []
+    },
+    {
+      "id": "4654335a-0d4e-4d6c-afe5-8cc0d8992834",
+      "name": "COFFEE AROMA",
+      "aliases": []
+    },
+    {
+      "id": "b1797f44-fb21-4851-8b63-5b80a844d7f6",
+      "name": "盡膳口福跷脚牛肉火锅",
+      "aliases": []
+    },
+    {
+      "id": "fafbc252-0aac-473e-a8bb-7f4db3f538e5",
+      "name": "脆脆的王爱",
+      "aliases": []
+    },
+    {
+      "id": "e47f6a97-f241-447a-b5d8-88777df019ad",
+      "name": "许爷剁椒鱼头",
+      "aliases": []
+    },
+    {
+      "id": "ebd91aaa-c96d-4c81-9828-57cccfd76a12",
+      "name": "积善之家·餘慶堂自助式素食餐厅",
+      "aliases": []
+    },
+    {
+      "id": "3e701d08-e0dc-4d8c-a64b-0fe3930115aa",
+      "name": "德燊酒家",
+      "aliases": []
+    },
+    {
+      "id": "5d8fe4dd-8213-4a09-8435-d8507dd780d9",
+      "name": "LaBamba拉芭玛",
+      "aliases": []
+    },
+    {
+      "id": "8eff2e28-0dda-47de-9836-54e5b90b05c5",
+      "name": "8½ Otto e Mezzo BOMBANA",
+      "aliases": []
+    },
+    {
+      "id": "47f709db-5325-4509-8921-59b2bc0b9c21",
+      "name": "NOVA蛋糕私人订制",
+      "aliases": []
+    },
+    {
+      "id": "67a8bd60-eb0b-441c-978e-ec9def721b01",
+      "name": "霸·Yaki 烧鸟烧肉酒屋",
+      "aliases": []
+    },
+    {
+      "id": "1de57b51-cffe-48d6-bb38-af3ad54e0d17",
+      "name": "麟1929",
+      "aliases": []
+    },
+    {
+      "id": "c09bae6c-74f2-4fdd-949e-fe8e819aca24",
+      "name": "粤来记·啫啫煲·点心",
+      "aliases": []
+    },
+    {
+      "id": "454c5b50-d128-4e03-accb-65da36e2692f",
+      "name": "走神 HEAD IN THE CLOUDS",
+      "aliases": []
+    },
+    {
+      "id": "b50d1477-6f49-44b5-893e-2e4c2c5c77d1",
+      "name": "CULACCINO 印迹花园西餐厅",
+      "aliases": []
+    },
+    {
+      "id": "d1d3cb21-95d1-4874-ba91-ade1b100045c",
+      "name": "DouDouMilk蛋糕·甜品台定制",
+      "aliases": []
+    },
+    {
+      "id": "744791e9-adf8-4571-9d59-df4cfc44bf3d",
+      "name": "红盔甲",
+      "aliases": ["红盔甲·小龙虾"]
+    },
+    {
+      "id": "43470fcc-8be9-4072-9a46-980df540d67d",
+      "name": "虎丸烧肉",
+      "aliases": []
+    },
+    {
+      "id": "795932eb-a270-4e03-8af8-fa493b6749c8",
+      "name": "尚蒸燚蒸汽海鲜·福1999",
+      "aliases": []
+    },
+    {
+      "id": "7f709667-9fad-4a98-851c-dcc302db1c73",
+      "name": "鸟屋·烧鸟居酒屋",
+      "aliases": []
+    },
+    {
+      "id": "ad06e785-7370-450b-9dab-902d88f95555",
+      "name": "蚝酒量海鲜烧烤",
+      "aliases": []
+    },
+    {
+      "id": "ebdd8b86-7c43-40eb-a5a7-b34dddda3592",
+      "name": "茹·pure vegan",
+      "aliases": []
+    },
+    {
+      "id": "dfce7e9e-9b6e-4c9e-b4b7-198213eaf001",
+      "name": "阿吾罗·月咏精致日料",
+      "aliases": []
+    },
+    {
+      "id": "4338c3d6-c661-43cb-9d3e-f27262bb336a",
+      "name": "红花铁板烧",
+      "aliases": []
+    },
+    {
+      "id": "aac7cf3a-8ec8-491a-b818-00cab278db51",
+      "name": "鮨一日本料理旗舰店",
+      "aliases": []
+    },
+    {
+      "id": "693a377a-4239-433f-bfd7-ca67312feeed",
+      "name": "西郊壹号",
+      "aliases": []
+    },
+    {
+      "id": "bc4645fe-2382-43df-bb9c-a0616f925145",
+      "name": "和记小菜",
+      "aliases": []
+    },
+    {
+      "id": "1aed4a2b-ac02-4d6d-9759-1847548c83e8",
+      "name": "O'mills Sourdough Bakery&Bistro",
+      "aliases": []
+    },
+    {
+      "id": "31e3bbc5-415b-4ce6-9c48-fdc18160e2ee",
+      "name": "诚喫CHENG CHI",
+      "aliases": []
+    },
+    {
+      "id": "0de7967f-f837-4915-9633-bd07f87dbbb9",
+      "name": "韩式年糕火锅 두남자떡볶이",
+      "aliases": []
+    },
+    {
+      "id": "eaa5ac73-5eb8-451b-b9be-c9b03ef39dfe",
+      "name": "舜记餐厅",
+      "aliases": []
+    },
+    {
+      "id": "1ca5149f-15c4-41cc-8c70-3fd7a30faa78",
+      "name": "凤凰湘语",
+      "aliases": []
+    },
+    {
+      "id": "bff804d3-3d35-426f-b3dc-4144d0a307fd",
+      "name": "蜀韵·盐帮菜",
+      "aliases": []
+    },
+    {
+      "id": "aaf10c56-cdec-4a1a-81a8-4dfa908d3cfe",
+      "name": "悦江·融合粤菜·烤鸭",
+      "aliases": []
+    },
+    {
+      "id": "1a628ebe-9e9c-4c8f-90f3-1f6f4ce82fe6",
+      "name": "云庐",
+      "aliases": []
+    },
+    {
+      "id": "9ef2ee85-f9d6-49ec-a189-9716ded557bf",
+      "name": "东盛炭烤自助料理",
+      "aliases": [
+        "东盛自助",
+        "东盛自助料理",
+        "東盛炭烤自助料理",
+        "東盛自助料理"
+      ]
+    },
+    {
+      "id": "1fb1dc12-880a-4f15-b822-297d2bb847bc",
+      "name": "咕的咕的·炭烤肉店",
+      "aliases": []
+    },
+    {
+      "id": "a846d939-0bf2-40ed-8b9f-8be83a929e1b",
+      "name": "鲜味面馆·沪鲜面馆",
+      "aliases": []
+    },
+    {
+      "id": "8d4688d9-2329-4e1b-877f-1280d912b475",
+      "name": "外滩1288花园丽舍",
+      "aliases": []
+    },
+    {
+      "id": "15dddcdb-fb8d-4b3a-8ad9-00680d31eeb9",
+      "name": "N318·本帮菜",
+      "aliases": []
+    },
+    {
+      "id": "bd9402f6-c0d1-4d2f-a0d1-9f2223aa1a09",
+      "name": "宝格丽甜品店 BVLGARI DOLCI",
+      "aliases": []
+    },
+    {
+      "id": "92c51510-c8e8-4a31-8eba-01c0ca314459",
+      "name": "POETS Thai泰狮",
+      "aliases": []
+    },
+    {
+      "id": "498c231f-0944-4bdc-9b9c-22939fa9719c",
+      "name": "顺风江南宴",
+      "aliases": []
+    },
+    {
+      "id": "921120a5-1afb-46fa-a81f-701c98d5dad0",
+      "name": "尚9·一滴水江景中餐厅",
+      "aliases": []
+    },
+    {
+      "id": "6bae7ea9-7a28-41dd-be34-4d1ddd499d41",
+      "name": "庄氏隆兴·海派蟹点",
+      "aliases": []
+    },
+    {
+      "id": "2ae26909-3d4c-4ab6-9fac-19ae914337c8",
+      "name": "Rizzlemon 柠檬蛋糕",
+      "aliases": []
+    },
+    {
+      "id": "766c1582-0044-40e7-bf49-c17dcb723e09",
+      "name": "蜀谭记·盐帮川菜",
+      "aliases": []
+    },
+    {
+      "id": "a123666d-2ce2-49b1-812c-e6c4937a7d61",
+      "name": "鮨谷·日料铁板烧",
+      "aliases": []
+    },
+    {
+      "id": "3c9f8cb2-f49b-4def-b4fe-adb8396b0c8a",
+      "name": "food place",
+      "aliases": []
+    },
+    {
+      "id": "84ea5698-f90f-4b34-823c-19ff8d42e85c",
+      "name": "重庆高老九火锅",
+      "aliases": []
+    },
+    {
+      "id": "73c1e712-df9f-4dc6-8d27-b50282a19004",
+      "name": "大志和牛寿喜烧专门店",
+      "aliases": []
+    },
+    {
+      "id": "7906051c-fa3e-4eb2-a0f1-cff09dcbaaa7",
+      "name": "大董",
+      "aliases": []
+    },
+    {
+      "id": "f89340cc-a662-47d3-a1b1-1efa9fd33f99",
+      "name": "妈妈的小作坊",
+      "aliases": []
+    },
+    {
+      "id": "5f1a4ab8-fe7a-4b31-8683-7aff8959e3e4",
+      "name": "新疆阿力烧烤",
+      "aliases": []
+    },
+    {
+      "id": "9ddc0beb-1aa9-4fe0-830d-6a018aaf92ad",
+      "name": "洞天食府",
+      "aliases": []
+    },
+    {
+      "id": "b2399c31-d6bd-4db7-896f-87bcb997599e",
+      "name": "新马茶餐厅",
+      "aliases": []
+    },
+    {
+      "id": "458dfc64-75ba-499d-9ecb-e05c9d990fa8",
+      "name": "Scena di Angelo意大利餐厅",
+      "aliases": []
+    },
+    {
+      "id": "cadffb90-5b2d-47bf-8c51-206535955fa1",
+      "name": "鮨直辉·季Sushi Naoki",
+      "aliases": []
+    },
+    {
+      "id": "9a687dd0-996c-45b3-9c44-2675c107e58f",
+      "name": "星发餐室·新加坡菜",
+      "aliases": []
+    },
+    {
+      "id": "88824988-b4cf-4d15-9233-e074a152436f",
+      "name": "MEL BOURNE Brunch&Bistro猫尔本",
+      "aliases": []
+    },
+    {
+      "id": "0f40d771-75e1-4586-9ddb-e9b43294fadb",
+      "name": "王品牛排",
+      "aliases": []
+    },
+    {
+      "id": "6448e571-758c-4225-a8a3-9f0860ae7038",
+      "name": "浦江家宴·海派淮扬·江浙土菜",
+      "aliases": []
+    },
+    {
+      "id": "2b671e26-1679-4442-b68d-2655c564c322",
+      "name": "杜哈夫DOUX RÊVE·生日蛋糕",
+      "aliases": []
+    },
+    {
+      "id": "e028ed8a-27ea-474e-9bcf-2a87d953f0d8",
+      "name": "忆家一宴",
+      "aliases": []
+    },
+    {
+      "id": "92593a35-c120-4005-9e45-c66bbdcb2773",
+      "name": "星洲小馆·新加坡料理",
+      "aliases": []
+    },
+    {
+      "id": "45f3982a-b0bf-41a4-a150-f6cd29910a94",
+      "name": "炙柒Sekinana",
+      "aliases": ["Sekinana", "炙柒", "炙柒Sekinana·精致日料"]
+    },
+    {
+      "id": "a2ae267f-4e08-4a9a-8406-1d319f78421e",
+      "name": "梅亭自助寿喜锅",
+      "aliases": []
+    },
+    {
+      "id": "12a8b4e7-7e8d-4fd2-8675-a7cb8d81bc4a",
+      "name": "鱼耀海鲜肥牛火锅",
+      "aliases": []
+    },
+    {
+      "id": "76abf3ef-bf7c-4380-a4cd-816d70b115f7",
+      "name": "浦江荟·海鲜·川菜",
+      "aliases": []
+    },
+    {
+      "id": "98306ded-73d5-4f30-93be-2f6c2a8400c0",
+      "name": "海底捞大排档火锅",
+      "aliases": []
+    },
+    {
+      "id": "6d13992e-8c76-4dbf-a169-78c7a124a092",
+      "name": "讚·法式铁板烧",
+      "aliases": []
+    },
+    {
+      "id": "dc6814fc-6f32-4ff0-8bbb-459964608b39",
+      "name": "御萌牛焼肉酒場",
+      "aliases": []
+    },
+    {
+      "id": "322bf9d9-2d21-4a46-9d7a-346695930725",
+      "name": "大和屋·by喜都乃",
+      "aliases": []
+    },
+    {
+      "id": "17c2de26-6287-4e26-ae28-0fd385018b9d",
+      "name": "食六区·罗氏虾龙虾烧烤夜宵",
+      "aliases": []
+    },
+    {
+      "id": "ff208555-a08f-4208-a890-8582dff110a8",
+      "name": "h2",
+      "aliases": []
+    },
+    {
+      "id": "9a65c678-5d94-434f-aa81-848dc2788f6b",
+      "name": "上海笑鱼  SUSHI SHIZUKA  鮨 静",
+      "aliases": []
+    },
+    {
+      "id": "872030fb-5d0c-4b4d-86d3-33655c4a924d",
+      "name": "恰餐厅 CHAR Bar & Grill",
+      "aliases": []
+    },
+    {
+      "id": "d5858b03-5899-43df-a050-3bb0b9205827",
+      "name": "安东",
+      "aliases": []
+    },
+    {
+      "id": "b7e20f40-f532-4307-a0b8-945cd691cd46",
+      "name": "Mercato by Jean-Georges意大利餐厅",
+      "aliases": []
+    },
+    {
+      "id": "5c0d1bfa-4a24-40e9-b05b-c17ddf01a49b",
+      "name": "SIR ELLY’S TERRACE BAR艾利爵士露台酒吧",
+      "aliases": []
+    },
+    {
+      "id": "60969f64-bd7c-4ccb-a1f7-01e41f507dfc",
+      "name": "Maki House寿司",
+      "aliases": []
+    },
+    {
+      "id": "8d571734-2c1e-49bb-b1f6-31a67eb62630",
+      "name": "POP露台西餐厅·望江阁",
+      "aliases": []
+    },
+    {
+      "id": "d0534370-f873-4db5-9527-43a10817a188",
+      "name": "明阁",
+      "aliases": []
+    },
+    {
+      "id": "610862d4-6551-48ae-91da-35d7a53c8a73",
+      "name": "御宝轩",
+      "aliases": []
+    },
+    {
+      "id": "d188c7b1-5dfa-410a-b0e3-5a8967b588d3",
+      "name": "龙庭琇厨·粤菜",
+      "aliases": []
+    },
+    {
+      "id": "622c370b-348f-4c1c-b524-7f34dbda1502",
+      "name": "哥老官重庆美蛙鱼头",
+      "aliases": []
+    },
+    {
+      "id": "416fc87a-198c-4755-8fa0-5e8d330af56a",
+      "name": "Alimentari Grande",
+      "aliases": []
+    },
+    {
+      "id": "f2913e26-7a70-41ea-bca3-4626385a6f7f",
+      "name": "季悦海鲜",
+      "aliases": []
+    },
+    {
+      "id": "061680b0-2ea9-4ecf-9465-3dd46198939b",
+      "name": "外滩会",
+      "aliases": []
+    },
+    {
+      "id": "ce7e8ed0-893b-4f68-b950-b41e02c66f87",
+      "name": "龙华禅食",
+      "aliases": []
+    },
+    {
+      "id": "6359951c-bca0-4adc-a2fe-793dafde3756",
+      "name": "标帜餐厅 The Kitchen Table",
+      "aliases": []
+    },
+    {
+      "id": "a55d3d11-0e98-4059-a620-19dac44fe5b2",
+      "name": "丰圆轩粤式茶楼",
+      "aliases": []
+    },
+    {
+      "id": "7d6f1c6a-4caf-47f0-86ec-ebd6fe002f4f",
+      "name": "Scarpetta Trattoria食光• 意大利餐厅",
+      "aliases": []
+    },
+    {
+      "id": "f7f86d53-cfe7-4c8f-96bb-958ddbbb824e",
+      "name": "Ramen满吉·豚骨拉面",
+      "aliases": []
+    },
+    {
+      "id": "058a3fa6-0af1-48ae-a2f6-7ba3d2f374ec",
+      "name": "农家菜老大",
+      "aliases": []
+    },
+    {
+      "id": "dd2f6a35-2ced-48b0-8719-08f364a201dc",
+      "name": "临江宴",
+      "aliases": []
+    },
+    {
+      "id": "178ae9b1-1237-4a80-bdb9-722b440c37d5",
+      "name": "懿·EAST 新派淮扬",
+      "aliases": []
+    },
+    {
+      "id": "0b0e7aa0-f0a1-4d17-ae9d-1c9c8f4a7d81",
+      "name": "h-acca",
+      "aliases": []
+    },
+    {
+      "id": "1027da64-8f1a-4f9a-a800-0c1099936f5c",
+      "name": "旺泉餐饮店·清真牛肉面馆",
+      "aliases": []
+    },
+    {
+      "id": "2810b140-e3d7-478b-9104-ef3bf2764f76",
+      "name": "蟹龙億·陆鼎记大闸蟹及舟山海鲜自助",
+      "aliases": []
+    },
+    {
+      "id": "416c032d-f876-40d1-b6f1-4d9b0edfa3aa",
+      "name": "RIVIERA 松鹤楼",
+      "aliases": []
+    },
+    {
+      "id": "bd963b7e-465a-4904-a2ec-6b8dc5a2554f",
+      "name": "满来寿喜烧",
+      "aliases": []
+    },
+    {
+      "id": "4ca6cb6e-0170-4c40-a46e-66133107f874",
+      "name": "丸道烤肉",
+      "aliases": []
+    },
+    {
+      "id": "01fcdf0f-6662-4e06-bb2f-a88046bfb833",
+      "name": "夏朵餐厅",
+      "aliases": []
+    },
+    {
+      "id": "e09b1403-432e-4d68-83cd-0e55a8e4ac64",
+      "name": "蟹榭·莳鲜",
+      "aliases": []
+    },
+    {
+      "id": "a50b3f22-a6d5-4ee2-94f1-82a20068bdc9",
+      "name": "廣蓮申·海派點心",
+      "aliases": []
+    },
+    {
+      "id": "f3d5bd39-17a4-417c-b3dc-bd85b68d58a4",
+      "name": "上海和平饭店-华懋阁 The Cathay Room",
+      "aliases": []
+    },
+    {
+      "id": "63b4b406-de51-487b-ad6c-08bfcff3e5bc",
+      "name": "渔水之家·土灶柴火菜饭",
+      "aliases": []
+    },
+    {
+      "id": "50bbeedb-c44b-441c-89c2-161abee52604",
+      "name": "纪录片《人生一串》体验店",
+      "aliases": []
+    },
+    {
+      "id": "ec66e54e-1324-41d6-8831-7a898919fde9",
+      "name": "三利音·东方融宴",
+      "aliases": []
+    },
+    {
+      "id": "b5181334-49a7-4fe2-840b-3b1b53fca891",
+      "name": "高兴一锅·潮汕老字号海鲜火锅",
+      "aliases": []
+    },
+    {
+      "id": "d7e1142e-4337-483c-9587-cb4f67d634ac",
+      "name": "小芳廷餐厅",
+      "aliases": []
+    },
+    {
+      "id": "c2866d97-198b-4f55-bd0f-e332c41daec1",
+      "name": "大馥·炭火烧肉酒场",
+      "aliases": []
+    },
+    {
+      "id": "5057bc3a-b190-45cf-a515-d9b85531a5b8",
+      "name": "Jstone大爵Italian Fine Bistro",
+      "aliases": []
+    },
+    {
+      "id": "8d81c4c7-f702-4b8d-b4bf-c436bde56c18",
+      "name": "三利音·东方司宴",
+      "aliases": []
+    },
+    {
+      "id": "afa6ebc5-1b5d-41ce-8ef9-5518ed280f5c",
+      "name": "吉品小鲜Jhouse",
+      "aliases": []
+    },
+    {
+      "id": "af5bc073-277f-4ce5-81b1-997df61357c3",
+      "name": "金轩中餐厅 Jin Xuan",
+      "aliases": []
+    },
+    {
+      "id": "8841f556-e524-4209-a6e0-5fce4b8a9954",
+      "name": "LA TERRAZZA 露台酒吧",
+      "aliases": []
+    },
+    {
+      "id": "c8348c56-3981-41b3-86f9-ef8f65cd2017",
+      "name": "谷牛和牛烤肉",
+      "aliases": []
+    },
+    {
+      "id": "dd42b87c-3bd2-4ace-97cb-04fe319c2b31",
+      "name": "老滋味农家乐",
+      "aliases": []
+    },
+    {
+      "id": "2f735138-00af-439f-8724-76f4cd789a4c",
+      "name": "筱爷叔·上海传统手工菜",
+      "aliases": []
+    },
+    {
+      "id": "5a3ed8b1-06d8-41f5-aaee-432a4a5057d4",
+      "name": "LENBACH兰巴赫西餐啤酒坊",
+      "aliases": []
+    },
+    {
+      "id": "1cb03b07-78b4-41c9-9c6d-1e484a752002",
+      "name": "上房火鍋",
+      "aliases": []
+    },
+    {
+      "id": "508c3a69-791f-45d6-8203-7fea0dd47640",
+      "name": "东京屋",
+      "aliases": []
+    },
+    {
+      "id": "1cadecf2-daab-4af6-b0cb-84062feea3f3",
+      "name": "IL RISTORANTE - NIKO ROMITO",
+      "aliases": []
+    },
+    {
+      "id": "d528b0e0-e84a-4315-a739-4fa80373fa99",
+      "name": "望蓉城·古法酸菜鱼",
+      "aliases": []
+    },
+    {
+      "id": "fbe3ec5f-23b3-4629-9409-b8bb05008d4c",
+      "name": "大馥·Plus+炭火烧肉屋",
+      "aliases": []
+    },
+    {
+      "id": "a19884aa-9526-4b1d-90b2-2d0a18da5955",
+      "name": "张凯达·深海石斑鱼潮汕火锅",
+      "aliases": []
+    },
+    {
+      "id": "3ea9bb62-2201-4f14-bcc8-607a852df52c",
+      "name": "艾莱萨·新疆菜",
+      "aliases": []
+    },
+    {
+      "id": "8626881b-817a-4771-aaed-8e68b0e91ec0",
+      "name": "SIR ELLY'S艾利爵士餐厅",
+      "aliases": []
+    },
+    {
+      "id": "7e167f3f-8d70-4862-b961-ba4cd2c47d16",
+      "name": "白玉兰食品",
+      "aliases": []
+    },
+    {
+      "id": "c9cac0af-cd12-4392-b44f-30a914cb43a0",
+      "name": "全聚德",
+      "aliases": []
+    },
+    {
+      "id": "cb00a35a-8489-466b-914f-ec912dbca60b",
+      "name": "杨记齐齐哈尔烤肉",
+      "aliases": []
+    },
+    {
+      "id": "e791ba17-3397-41fc-a4cc-6eb5f7e4daf8",
+      "name": "鮨玖•刺身•烧鸟居酒屋",
+      "aliases": []
+    },
+    {
+      "id": "544a270b-558a-4e3c-b21e-8ff58a4e5831",
+      "name": "天鸿涮肉",
+      "aliases": []
+    },
+    {
+      "id": "3e570f5f-7b41-4e72-9f99-f3199b175dbd",
+      "name": "OVERDOSE",
+      "aliases": []
+    },
+    {
+      "id": "d3889da1-3b42-42db-ac7d-419bc8098e54",
+      "name": "北海道sweets",
+      "aliases": []
+    },
+    {
+      "id": "7f5ff7ff-cf59-4421-a31c-d71e0062a6fa",
+      "name": "COLCA秘鲁西班牙餐厅",
+      "aliases": []
+    },
+    {
+      "id": "dd93f929-825b-461c-8bda-50f9ceab7df3",
+      "name": "渡边料理",
+      "aliases": []
+    },
+    {
+      "id": "80b4bb09-810f-420e-b3c9-6ccc1390d202",
+      "name": "申阁中餐厅",
+      "aliases": []
+    },
+    {
+      "id": "33003ba6-186c-436c-a723-3a56a55f10af",
+      "name": "吉亨面馆",
+      "aliases": []
+    },
+    {
+      "id": "39854434-2a62-4069-a203-afaa7a6879c4",
+      "name": "COVA",
+      "aliases": []
+    },
+    {
+      "id": "80bd3fbf-ac74-4b9b-891a-a28853d7632d",
+      "name": "徐风拂面·本帮面馆",
+      "aliases": []
+    },
+    {
+      "id": "901a0a62-26c3-4b4c-9164-ae090dfa0659",
+      "name": "LA VENDEE旺代",
+      "aliases": []
+    },
+    {
+      "id": "52474142-c318-4f19-88f3-be2ddbe4dbc0",
+      "name": "布歌东京",
+      "aliases": []
+    },
+    {
+      "id": "c42cc12f-ac13-4407-96e1-9094ac1532b7",
+      "name": "阿纳迪酒店·多丽美食屋 Deli Shop",
+      "aliases": []
+    },
+    {
+      "id": "9a6982ad-0f33-4ad0-a66d-022ff710ccdf",
+      "name": "舒颐农庄",
+      "aliases": []
+    },
+    {
+      "id": "0ad647bc-2b9b-494f-b33c-d13d1597f543",
+      "name": "EAU CAFE",
+      "aliases": []
+    },
+    {
+      "id": "b02bff9a-ea84-4a89-9f11-0cbac00f24d7",
+      "name": "百诺食品公司",
+      "aliases": []
+    },
+    {
+      "id": "ca68d376-3f5a-48e0-b6bc-1e42812b741f",
+      "name": "美点美客·生日蛋糕甜品台定制",
+      "aliases": []
+    },
+    {
+      "id": "e45c316e-7aa4-49a8-be8a-f177a2f0f596",
+      "name": "俐滋蛋糕",
+      "aliases": []
+    },
+    {
+      "id": "f957de0f-1a76-4fb1-8194-b18da3ec6fda",
+      "name": "大白兔",
+      "aliases": []
+    },
+    {
+      "id": "622be925-21b4-458d-8ba3-1661dd7f135f",
+      "name": "尚品书院",
+      "aliases": []
+    },
+    {
+      "id": "50671ae1-40c7-4a76-a60b-58362b1fd717",
+      "name": "SoulSoul·蛋糕甜品",
+      "aliases": []
+    },
+    {
+      "id": "abd760d0-321a-425c-b49a-f849e58ec34d",
+      "name": "上海康桥万豪酒店The Lounge大堂酒廊",
+      "aliases": []
+    },
+    {
+      "id": "a21ba70e-6641-4d20-9673-3e0309b5f3d0",
+      "name": "阿提娜新疆羊肉串",
+      "aliases": []
+    },
+    {
+      "id": "ff2247ca-cd57-4e88-ba2d-a0207d2d20b3",
+      "name": "郑太太烘焙·生日蛋糕·宝宝宴",
+      "aliases": []
+    },
+    {
+      "id": "0b619d0f-cb77-4e42-bc80-a1afbdb70845",
+      "name": "柏尼娅PEARIA·蛋糕定制",
+      "aliases": []
+    },
+    {
+      "id": "bb3ebb7c-78a9-4c28-a86e-11ed1feffda8",
+      "name": "花婆婆芝造局·生日蛋糕·宝宝宴·商务茶歇",
+      "aliases": []
+    },
+    {
+      "id": "3fa6d817-a669-4f10-b465-f832c4afbfff",
+      "name": "新光酒家方亮蟹宴",
+      "aliases": []
+    },
+    {
+      "id": "a3a55734-5a7a-4f41-8058-6adfd48a26a3",
+      "name": "Hellas House希华馆",
+      "aliases": []
+    },
+    {
+      "id": "a6d32078-450a-44c1-a4e9-dd139d8d8e98",
+      "name": "黎娅甜品蛋糕·茶歇·DIY体验",
+      "aliases": []
+    },
+    {
+      "id": "e47df4ce-6720-4932-89d8-4172df4ecf67",
+      "name": "小何福利社·仪式感成长纪念蛋糕",
+      "aliases": []
+    },
+    {
+      "id": "c090a19f-c245-445d-b161-f14e615a717d",
+      "name": "纯味斑鱼府",
+      "aliases": []
+    },
+    {
+      "id": "d7be53fa-07c9-4787-b20e-96a05ab6fb1b",
+      "name": "光明玖壹玖",
+      "aliases": []
+    },
+    {
+      "id": "caf36bd5-da8c-45a0-9afb-52c947288995",
+      "name": "鮨空海·怀石料理",
+      "aliases": []
+    },
+    {
+      "id": "c7b05c84-6445-4f00-b183-ae14cef6d3d7",
+      "name": "黄记大闸蟹专卖店·活蟹·醉蟹",
+      "aliases": []
+    },
+    {
+      "id": "a2827496-490e-4321-a055-896e8381b57d",
+      "name": "香守·潮汕海鲜港式火锅",
+      "aliases": []
+    },
+    {
+      "id": "258ecaa8-dfa9-4ad7-8d63-d160c7089a60",
+      "name": "地球美食剧场",
+      "aliases": []
+    },
+    {
+      "id": "d6cff2ad-7520-4f1c-b69e-cebff829e881",
+      "name": "樽宴",
+      "aliases": []
+    },
+    {
+      "id": "48238f71-30a8-4e8b-835d-2d419037ba89",
+      "name": "三个蒙古大叔羊肉串",
+      "aliases": []
+    },
+    {
+      "id": "8680b4c8-6e92-46c2-a76e-251888bf55f1",
+      "name": "LUNEURS月乐诗·法式冰淇淋",
+      "aliases": []
+    },
+    {
+      "id": "f93c9b10-c92e-4c29-b865-e1567d00a105",
+      "name": "22號和牛烧肉",
+      "aliases": []
+    },
+    {
+      "id": "a331db67-d3ee-4210-871d-fc5b7f634d38",
+      "name": "壳里西餐厅Coquille Seafood Bistro",
+      "aliases": []
+    },
+    {
+      "id": "9c0eb31f-3de3-4d90-a8d8-8bc91a2908ad",
+      "name": "JW酒廊 JW Lounge",
+      "aliases": []
+    },
+    {
+      "id": "a26faaf2-9346-4777-a5a7-7c7825ab89f0",
+      "name": "楼上荟馆",
+      "aliases": []
+    },
+    {
+      "id": "2f9d03ad-032f-4a04-bb50-1a7c26f86b60",
+      "name": "鳗重",
+      "aliases": []
+    },
+    {
+      "id": "e85635ee-cb1d-4449-ae96-72e34e8f9c7e",
+      "name": "鮨青•Omakase",
+      "aliases": []
+    },
+    {
+      "id": "6ee4671d-21a3-4076-8a2e-28c5f969fc3e",
+      "name": "Le Comptoir de Pierre Gagnaire",
+      "aliases": []
+    },
+    {
+      "id": "9f04133a-b922-4905-b330-b5f1c6bf3dd6",
+      "name": "龍码头•螃蟹王",
+      "aliases": []
+    },
+    {
+      "id": "a264a71e-5f37-4243-a3b9-90f707b3f42f",
+      "name": "The Pine 松涧",
+      "aliases": []
+    },
+    {
+      "id": "bf1703bf-1cbb-4ba0-b4bf-275cbbdd9973",
+      "name": "Le Bistrot de Racine",
+      "aliases": []
+    },
+    {
+      "id": "9a905f18-1805-4e85-aa85-3d76078821df",
+      "name": "润苑·悦椿轩",
+      "aliases": []
+    },
+    {
+      "id": "78bf6ff0-d833-4ed7-9ec7-3df9e6bcc33a",
+      "name": "1886德国汽车餐厅",
+      "aliases": []
+    },
+    {
+      "id": "70a372d8-63eb-42c0-a0a2-eeeba78b7782",
+      "name": "洋房火锅",
+      "aliases": []
+    },
+    {
+      "id": "4454477a-19b5-46ec-bea3-82164b6e723e",
+      "name": "那都不是锅",
+      "aliases": []
+    },
+    {
+      "id": "8f47824c-7f6d-4bbb-a76b-c60fcc6fcc51",
+      "name": "福和慧",
+      "aliases": []
+    },
+    {
+      "id": "582dc4d4-fb94-4129-944b-95ed6b27b391",
+      "name": "Stone Sal 言盐西餐厅",
+      "aliases": []
+    },
+    {
+      "id": "e5c4ac4a-8ae4-4060-8a65-a5751103b306",
+      "name": "圈儿潮汕牛肉火锅·夜宵",
+      "aliases": []
+    },
+    {
+      "id": "01472411-0e7b-4346-91dd-cc35fe6163a7",
+      "name": "四面泰",
+      "aliases": []
+    },
+    {
+      "id": "23242767-00b7-43e7-8dfb-a200c4309817",
+      "name": "Ministry Of Crab",
+      "aliases": []
+    },
+    {
+      "id": "693a1671-86e1-4406-b0a5-b7a764ff2c2c",
+      "name": "广舟",
+      "aliases": []
+    },
+    {
+      "id": "3e2c2bfa-fc71-446d-9e63-94827a8c5125",
+      "name": "三利音·浦之舟",
+      "aliases": []
+    },
+    {
+      "id": "a093c549-d181-45dd-9263-16bde2fe95a0",
+      "name": "慕雲·熟成烧鸟&螃蟹料理",
+      "aliases": []
+    },
+    {
+      "id": "291d2062-9f23-4155-9498-fad057b8acb4",
+      "name": "临湖素食·焱格格",
+      "aliases": []
+    },
+    {
+      "id": "4e879d02-fbf7-4bcd-a715-0ab88b1f56f8",
+      "name": "汤伯府-现熬猪肚鸡火锅",
+      "aliases": []
+    },
+    {
+      "id": "30b43de7-45ac-4a43-944c-f90faf2e33e5",
+      "name": "宁国素斋",
+      "aliases": []
+    },
+    {
+      "id": "a28b7c43-9c94-4527-85ad-9a31cf9b1262",
+      "name": "甬府",
+      "aliases": []
+    },
+    {
+      "id": "d4968472-9d42-41db-ba0a-731e30ca1e50",
+      "name": "荣府宴",
+      "aliases": []
+    },
+    {
+      "id": "05b083b6-8ca4-4891-8d6e-945ac894a8ce",
+      "name": "MOTOYA别邸·寿喜锅·活蟹",
+      "aliases": []
+    },
+    {
+      "id": "6a7a9bf7-650b-4696-9762-633a04a4938c",
+      "name": "上海苏宁宝丽嘉酒店·LAGO 餐厅酒吧",
+      "aliases": []
+    },
+    {
+      "id": "e59fb376-df8e-4e22-9a7e-32e0ca64b4b6",
+      "name": "福1015",
+      "aliases": []
+    },
+    {
+      "id": "38aee91c-9a63-4941-9b32-8c62dd1d9e74",
+      "name": "黑门和牛",
+      "aliases": []
+    },
+    {
+      "id": "35107af6-21e5-4cfc-a2ab-596910cd0988",
+      "name": "香木香羊",
+      "aliases": []
+    },
+    {
+      "id": "87a7ae12-0960-4d1a-a887-627677f3107b",
+      "name": "小大董·烤鸭",
+      "aliases": []
+    },
+    {
+      "id": "4df14ba7-ef29-48b7-9bb2-0f831588ab94",
+      "name": "Dal Cuore 达可芮冰淇淋",
+      "aliases": []
+    },
+    {
+      "id": "4202c8fc-4164-461a-84a7-60be48255594",
+      "name": "夏朵花园",
+      "aliases": []
+    },
+    {
+      "id": "0b852e4e-e4c9-4bf3-a5f1-13e7ca738f36",
+      "name": "阿纳迪酒店·秘境西餐厅",
+      "aliases": []
+    },
+    {
+      "id": "acb3d63a-c8a9-441c-9cf5-9c743df94671",
+      "name": "很久以前羊肉串",
+      "aliases": ["很久以前"]
+    },
+    {
+      "id": "8466b1a4-5e29-4979-9fb6-61fad3fb46fe",
+      "name": "Da Ivo哒伊沃意大利魔镜餐厅",
+      "aliases": []
+    },
+    {
+      "id": "7da21e7c-b60d-4068-9ff3-fd6d6d182935",
+      "name": "珍宝海鲜JUMBO Seafood",
+      "aliases": []
+    },
+    {
+      "id": "2a36eb1a-dc6e-48b5-bb0a-284584a14554",
+      "name": "鮨匠·割烹料理",
+      "aliases": []
+    },
+    {
+      "id": "0004d11f-f04d-4193-908f-670924ec3c34",
+      "name": "潘小烧·云南烧烤",
+      "aliases": []
+    },
+    {
+      "id": "016622d9-1bd3-445b-b668-3ed2c09d7a6b",
+      "name": "西堤牛排",
+      "aliases": []
+    },
+    {
+      "id": "f42137a2-2503-4f02-9d43-a15ed9ced7e3",
+      "name": "荣小馆",
+      "aliases": []
+    },
+    {
+      "id": "f46575c3-df83-4c8b-8e6f-64038cde335d",
+      "name": "HIGH YAKI modern izakaya & bar 烧肉居酒屋",
+      "aliases": []
+    },
+    {
+      "id": "b9218078-0dcb-40f1-9f86-ca6d075730ab",
+      "name": "弦月窗LUNETTE BY AMANDA",
+      "aliases": []
+    },
+    {
+      "id": "ebbfcf71-067a-4b29-9024-ff0eecb6db0c",
+      "name": "厚贞日式烤肉",
+      "aliases": []
+    },
+    {
+      "id": "72b64f33-1a59-4e44-b9ad-3c1a86fb22a1",
+      "name": "上海苏宁宝丽嘉酒店·Cafe Bellagio西餐厅",
+      "aliases": []
+    },
+    {
+      "id": "f89ef38d-885a-4fa1-8735-69b56d026ea1",
+      "name": "Maison Lameloise莱美露滋",
+      "aliases": []
+    },
+    {
+      "id": "c22c12f7-2a41-4103-a36a-dbf7cb6e35c8",
+      "name": "有喜屋",
+      "aliases": ["有喜屋·鲜鸡板前烧鸟"]
+    },
+    {
+      "id": "4c32229c-54ab-456d-a5f5-d4e406f167f4",
+      "name": "季福楼 Jhouse",
+      "aliases": []
+    },
+    {
+      "id": "9183a697-85a0-4203-9d8c-ec19de238ef4",
+      "name": "鸿姐老火锅",
+      "aliases": []
+    },
+    {
+      "id": "6cd636ab-1f44-488e-bda4-5382d8f66315",
+      "name": "欧巴韩式炭烤肉·烤牛肠 오빠 숯불구이",
+      "aliases": []
+    },
+    {
+      "id": "89fa7f5b-9b4d-4b71-9773-e1b5fcb55694",
+      "name": "老乾杯",
+      "aliases": []
+    },
+    {
+      "id": "fbea174c-4241-4b6e-bbb3-6289d38cb8e3",
+      "name": "蟹榭·本帮江浙菜·蟹宴",
+      "aliases": []
+    },
+    {
+      "id": "4ac89916-eae8-4e03-926e-9ea9465fbfd1",
+      "name": "楼上火锅",
+      "aliases": []
+    },
+    {
+      "id": "f09e9b1f-0bde-41bf-b2d0-2b37b8742018",
+      "name": "晶焱上海菜",
+      "aliases": []
+    },
+    {
+      "id": "a2eb8ea4-9fdf-44ab-9296-395166d3f674",
+      "name": "天辣",
+      "aliases": []
+    },
+    {
+      "id": "f841dc87-9999-47ef-a627-64d0cc0bac5b",
+      "name": "AJIYA炭火烤肉",
+      "aliases": []
+    },
+    {
+      "id": "b9aaf062-3566-4233-8ee8-0f728d55b794",
+      "name": "宝丽轩中餐厅BAOLIXUAN",
+      "aliases": []
+    },
+    {
+      "id": "210b590a-5699-4ae4-abcd-0eb5dd1594d2",
+      "name": "潮界",
+      "aliases": []
+    },
+    {
+      "id": "e1841b2a-3126-47ab-be50-4bfcf46d2e3e",
+      "name": "米禾良日料",
+      "aliases": []
+    },
+    {
+      "id": "c168886c-6988-437c-a913-afd417e61f5a",
+      "name": "Kathleen's Waitan 凯圣琳江景西餐厅",
+      "aliases": []
+    },
+    {
+      "id": "40a885e3-bc13-4372-89b8-2b8d501638aa",
+      "name": "罗福索love&salt牛排馆",
+      "aliases": []
+    },
+    {
+      "id": "95390619-4a2e-4106-ae85-fbb93d0953b1",
+      "name": "膳道",
+      "aliases": []
+    },
+    {
+      "id": "a62fa910-46f0-47f0-9d71-512ed1032679",
+      "name": "喜鼎",
+      "aliases": []
+    },
+    {
+      "id": "49aaaf65-faf4-401e-95e9-0a35d2f4a426",
+      "name": "荟廷",
+      "aliases": []
+    },
+    {
+      "id": "1a8f40d1-e75f-46e0-8672-08bd80f38cc3",
+      "name": "阿吾罗日本料理",
+      "aliases": []
+    },
+    {
+      "id": "746d9b21-f14c-48ca-bdf6-42b6e8a7f31b",
+      "name": "细记港九早茶包房夜宵",
+      "aliases": []
+    },
+    {
+      "id": "110f8226-5e26-480c-b9b8-eb985287c8fa",
+      "name": "bananaGG",
+      "aliases": []
+    },
+    {
+      "id": "634f646e-b2a3-4cf0-a75e-4e0ee795bedd",
+      "name": "贯贯吉·清真餐厅",
+      "aliases": []
+    },
+    {
+      "id": "941b663a-770e-4095-981b-01e3fabf22b1",
+      "name": "蟹家大院",
+      "aliases": []
+    },
+    {
+      "id": "0fb8b7b5-e1a8-41e3-905b-156d95a2a21c",
+      "name": "轻蔬不用等·素食",
+      "aliases": []
+    },
+    {
+      "id": "09d782c1-3f96-43e1-b112-be590aa02609",
+      "name": "万岛日本料理铁板烧",
+      "aliases": []
+    },
+    {
+      "id": "54d10a8c-fe8d-42c4-8834-6850fa7482b9",
+      "name": "姚稷大铁锅",
+      "aliases": []
+    },
+    {
+      "id": "66ee6138-176d-4bff-a859-39a76e742086",
+      "name": "The BREW·酿餐厅",
+      "aliases": []
+    },
+    {
+      "id": "5a977470-59d0-4761-8ea3-b7dcd6bf65cd",
+      "name": "Barista Made Coffee·BMC",
+      "aliases": []
+    },
+    {
+      "id": "bddfaf2a-a702-45eb-a484-fad42d27ddbe",
+      "name": "初花·日本料理",
+      "aliases": []
+    },
+    {
+      "id": "94f745c3-53fd-4f59-9ff3-fb3ffed59867",
+      "name": "黑渡口·茶",
+      "aliases": []
+    },
+    {
+      "id": "38d7a996-f115-4f05-9935-12e137dd2b95",
+      "name": "本怡吧都韩国料理",
+      "aliases": []
+    },
+    {
+      "id": "0109b8d5-1612-424b-a457-3498bdceebf5",
+      "name": "荣先森·福建菜",
+      "aliases": []
+    },
+    {
+      "id": "87aa81c3-1f8f-4a68-8c0d-3709f5b0f875",
+      "name": "鸣龙上雅铁板烧日料",
+      "aliases": []
+    },
+    {
+      "id": "ec37499b-7a35-4aab-8c95-fad0dd21a6a4",
+      "name": "haxnbauer海森堡德国餐厅",
+      "aliases": []
+    },
+    {
+      "id": "a67a4b27-7348-442a-aa29-9facda5d8f90",
+      "name": "海逸海鲜酒家",
+      "aliases": []
+    },
+    {
+      "id": "6f57757e-5f98-4596-ba00-2962e1a72766",
+      "name": "汤记传菜",
+      "aliases": []
+    },
+    {
+      "id": "509b6e71-81dc-4a3b-9d7f-36735f97a339",
+      "name": "荣新馆",
+      "aliases": []
+    },
+    {
+      "id": "05f4a15f-26a2-4107-a788-8ad1deec2dea",
+      "name": "醉东Oriental House",
+      "aliases": []
+    },
+    {
+      "id": "52904ef8-4f8a-4210-acba-a6e685c6a156",
+      "name": "随堂里",
+      "aliases": []
+    },
+    {
+      "id": "e6b5ee38-789f-46cc-b2a1-a21607233a51",
+      "name": "Kathleen’s Bistro 凯圣琳西餐厅",
+      "aliases": []
+    },
+    {
+      "id": "744a8827-910f-4d1e-9df3-05a311e5bfad",
+      "name": "O.P.S. CAFE",
+      "aliases": []
+    },
+    {
+      "id": "ec84f5cc-6626-4eec-86d0-c6014f537075",
+      "name": "三号黄浦会Canton Table",
+      "aliases": []
+    },
+    {
+      "id": "4f910b9d-d20a-4509-a70f-56b1f934296f",
+      "name": "映水芙蓉·新川菜",
+      "aliases": []
+    },
+    {
+      "id": "8d1ae66c-a5ea-40d9-b078-b7615066ddac",
+      "name": "四季和府",
+      "aliases": []
+    },
+    {
+      "id": "cd1cfd6e-825f-48c2-badd-42c9e970f492",
+      "name": "親父的右腕",
+      "aliases": []
+    },
+    {
+      "id": "a0c14af3-5409-43e9-9ed3-de55dfd7bab9",
+      "name": "新白鹿餐厅",
+      "aliases": []
+    },
+    {
+      "id": "ac31a897-14c6-4d6f-8de0-df9ae385964d",
+      "name": "香江姳苑粥饭",
+      "aliases": []
+    },
+    {
+      "id": "ea0c9a4b-a223-4350-bad9-267d1f290c29",
+      "name": "茹丝葵经典牛排馆",
+      "aliases": []
+    },
+    {
+      "id": "89967bbb-efd7-4157-8241-ae4d68a6d1be",
+      "name": "BROWNSTONE布朗石西班牙餐厅",
+      "aliases": []
+    },
+    {
+      "id": "4d6fb9d5-fccf-487c-bfd1-c81375d594f7",
+      "name": "食廬",
+      "aliases": []
+    },
+    {
+      "id": "620c1f83-df25-4c3a-85a1-40bfd05a11c3",
+      "name": "福1088",
+      "aliases": []
+    },
+    {
+      "id": "171423b5-72f7-442b-851e-c9c4fbaed63b",
+      "name": "THE NEST 环外滩露台餐厅",
+      "aliases": []
+    },
+    {
+      "id": "86515c02-1dbf-4fb8-8997-3ba121685a14",
+      "name": "鹿园 MOOSE",
+      "aliases": []
+    },
+    {
+      "id": "ba2cb7a1-6dcc-4f51-88f6-722db4b45b73",
+      "name": "人和馆·上海菜",
+      "aliases": []
+    },
+    {
+      "id": "d95d6cbe-4500-490f-91f3-72e5c99b3b32",
+      "name": "甬府小鲜",
+      "aliases": []
+    },
+    {
+      "id": "4a887fee-b79b-4f83-a6ed-0d2359ecc014",
+      "name": "Solo",
+      "aliases": []
+    },
+    {
+      "id": "e6cbfbbb-4219-4b89-9a61-79c2dad29712",
+      "name": "Jean Georges",
+      "aliases": []
+    },
+    {
+      "id": "e14e057b-574e-42bd-acc7-b96034c057a9",
+      "name": "兴兴·海派本帮菜",
+      "aliases": []
+    },
+    {
+      "id": "a21a73de-ac59-424d-9f09-d082b091d9e7",
+      "name": "老兴鲜",
+      "aliases": []
+    },
+    {
+      "id": "84f08b34-3717-4c6d-bb5e-aeb283cc1d02",
+      "name": "沪西老弄堂面馆",
+      "aliases": []
+    },
+    {
+      "id": "bb584fed-9963-413e-be0a-fd8ee3b96b56",
+      "name": "上海和平饭店龙凤厅 Dragon Phoenix",
+      "aliases": []
+    },
+    {
+      "id": "b2a4e126-9eba-4266-b44a-0a827f96ef48",
+      "name": "MIKAKU",
+      "aliases": []
+    },
+    {
+      "id": "10e21e43-9090-459c-a6d4-59713cad92af",
+      "name": "逸品淮扬",
+      "aliases": []
+    },
+    {
+      "id": "d8e95609-3040-4efb-80e4-aca187eee3d6",
+      "name": "钟路商会·缘家",
+      "aliases": []
+    },
+    {
+      "id": "9c849eec-c39f-4b1e-9364-1cc70c9018eb",
+      "name": "酒吞",
+      "aliases": []
+    },
+    {
+      "id": "2155fb4e-0a54-4d2b-af15-89afca912bf8",
+      "name": "帕蓝·暹罗料理",
+      "aliases": []
+    },
+    {
+      "id": "ea22b119-3eab-412f-97f5-6a938a42ee11",
+      "name": "酒吞mix米野吞烤肉",
+      "aliases": []
+    },
+    {
+      "id": "42135cb3-8af8-49bc-91a4-555862d0ebda",
+      "name": "BELLOCO倍乐",
+      "aliases": []
+    },
+    {
+      "id": "c719f25f-b8de-4079-aa74-499d6a5e3609",
+      "name": "青鹤谷韩国料理",
+      "aliases": []
+    },
+    {
+      "id": "61355b4d-3d14-4743-9497-4e5904d97fb8",
+      "name": "Professor Lee",
+      "aliases": []
+    },
+    {
+      "id": "ee50ecc4-0cba-439b-be9a-b3a40645b938",
+      "name": "泰廊餐厅Thai Gallery",
+      "aliases": []
+    },
+    {
+      "id": "5b409432-a893-40e3-8483-faf20977637e",
+      "name": "蓝蛙",
+      "aliases": ["bluefrog"]
+    },
+    {
+      "id": "eb780795-38a6-4660-bdec-f980f5ba4b0d",
+      "name": "棒约翰",
+      "aliases": ["棒约翰披萨", "棒约翰比萨"]
+    },
+    {
+      "id": "4859d3d4-d371-42a4-b46f-496eecdcad74",
+      "name": "一鸣真鲜奶吧",
+      "aliases": []
+    },
+    {
+      "id": "6d6502d9-447d-45c2-99ab-64acc311fa9a",
+      "name": "正新鸡排",
+      "aliases": []
+    },
+    {
+      "id": "490cc2f9-10ea-44cc-a683-814ab4f7024f",
+      "name": "悸动烧仙草",
+      "aliases": []
+    },
+    {
+      "id": "5e829d02-daa4-47ec-b46b-92aeb94382a9",
+      "name": "真功夫",
+      "aliases": []
+    },
+    {
+      "id": "15e1c281-d7a1-443c-bd2c-066d82e73da0",
+      "name": "果呀呀",
+      "aliases": []
+    },
+    {
+      "id": "375a3cf4-29cf-466d-9067-dd6c6c711f40",
+      "name": "阿嬷手作",
+      "aliases": []
+    },
+    {
+      "id": "fd6033fc-0c9f-407f-b560-d327bae45eb9",
+      "name": "陶陶居",
+      "aliases": []
+    },
+    {
+      "id": "e3b4245c-6681-41da-9145-d0c0f49d7cbe",
+      "name": "肥汁米蘭",
+      "aliases": ["肥汁米兰"]
+    },
+    {
+      "id": "5e054149-1f3c-40c0-834b-84cc3b028448",
+      "name": "遇见小面",
+      "aliases": []
+    },
+    {
+      "id": "7d802b2d-a29a-43b9-86ae-688e3977e0fd",
+      "name": "红宝石",
+      "aliases": ["红宝石蛋糕"]
+    },
+    {
+      "id": "79d1bc2b-16d5-4076-b1d7-f920e5e3d5a9",
+      "name": "味千拉面",
+      "aliases": []
+    },
+    {
+      "id": "2bb9747b-d76e-4335-b6a6-5d5bce494d3c",
+      "name": "% Arabica",
+      "aliases": ["Arabica"]
+    },
+    {
+      "id": "5e9006c3-dcf4-454e-b7b6-5af3f7184936",
+      "name": "蓝瓶咖啡",
+      "aliases": ["Blue Bottle Coffee"]
+    },
+    {
+      "id": "682c7466-ec68-4a5c-9e8c-1d9ebf6629cd",
+      "name": "莉莲蛋挞",
+      "aliases": []
+    },
+    {
+      "id": "622308c0-e057-484b-bbe0-6b3da40c0903",
+      "name": "探鱼",
+      "aliases": ["探鱼烤鱼"]
+    },
+    {
+      "id": "1eaa1cd1-2307-4c1b-b283-b2d842855798",
+      "name": "朱光玉火锅馆",
+      "aliases": ["朱光玉"]
+    },
+    {
+      "id": "4d33dcb6-8a21-4230-99cd-3340b26e9dfc",
+      "name": "呷哺呷哺",
+      "aliases": []
+    },
+    {
+      "id": "b4f48372-e388-4614-bff5-393011ccd69f",
+      "name": "半天妖烤鱼",
+      "aliases": ["半天妖"]
+    },
+    {
+      "id": "5fe0e144-8511-4562-86ac-4e3be3947701",
+      "name": "华莱士",
+      "aliases": []
+    },
+    {
+      "id": "66efcdd9-cf8a-4586-872e-683eef0d0572",
+      "name": "德克士",
+      "aliases": ["Dicos"]
+    },
+    {
+      "id": "097db758-9baa-44ae-b20f-e11b71b9fd10",
+      "name": "塔斯汀",
+      "aliases": ["塔斯汀中国汉堡"]
+    },
+    {
+      "id": "9940aa8e-129c-42d5-8f68-583b37e97fdb",
+      "name": "杨国福麻辣烫",
+      "aliases": ["杨国福"]
+    },
+    {
+      "id": "1adfb9a1-e421-40b1-9077-d2365a4cb02a",
+      "name": "袁记云饺",
+      "aliases": []
+    },
+    {
+      "id": "e875f649-0424-4387-a7b3-e92a7543a30d",
+      "name": "湊湊",
+      "aliases": ["湊湊火锅·茶憩", "凑凑"]
+    },
+    {
+      "id": "63800855-5d76-4aa8-afeb-0d249ec1a1eb",
+      "name": "爷爷不泡茶",
+      "aliases": []
+    },
+    {
+      "id": "0c74b0fe-6d6e-41e6-8473-f19ebf47b295",
+      "name": "吉野家",
+      "aliases": []
+    },
+    {
+      "id": "9f9c1519-50a0-44f7-93bd-44d986e57a65",
+      "name": "寿司郎",
+      "aliases": []
+    },
+    {
+      "id": "bfe05098-ed3c-4354-a691-95140e1b9307",
+      "name": "捞王",
+      "aliases": ["捞王锅物料理"]
+    },
+    {
+      "id": "48e16669-d944-40ea-abf9-1056dd5ee5a1",
+      "name": "新雅粤菜馆",
+      "aliases": []
+    },
+    {
+      "id": "da640a58-4e25-4e99-9bce-77e426cfb1ae",
+      "name": "芦芳粽子王",
+      "aliases": []
+    },
+    {
+      "id": "6b25a1af-c75c-41fe-98da-57b9b69095c5",
+      "name": "张小妹粽子",
+      "aliases": []
+    },
+    {
+      "id": "f492e15e-bfd7-4f5f-8aaa-f6b856017517",
+      "name": "龙华素斋",
+      "aliases": []
+    },
+    {
+      "id": "be48d77a-eacb-4321-aa9d-1841c11c49bb",
+      "name": "功德林",
+      "aliases": []
+    },
+    {
+      "id": "34a5c781-75a8-4816-a4cc-9a6053e40099",
+      "name": "邵万生",
+      "aliases": []
+    },
+    {
+      "id": "8e79400a-c557-4061-859f-f0427159d6c8",
+      "name": "杏花楼",
+      "aliases": []
+    },
+    {
+      "id": "15f96e6b-917f-4e5e-80cc-a5fce5111fee",
+      "name": "五芳斋",
+      "aliases": []
+    },
+    {
+      "id": "3f551114-30f8-45b0-8a5c-99c2b67ac8ea",
+      "name": "四新汤团",
+      "aliases": []
+    },
+    {
+      "id": "a8895241-ca02-48a5-bc95-d71d978f4d3d",
+      "name": "高行汤团",
+      "aliases": []
+    },
+    {
+      "id": "4b4ff290-6ae8-4140-98aa-81608953829a",
+      "name": "王家沙",
+      "aliases": []
+    },
+    {
+      "id": "accaa986-cbbb-4191-98d9-89bb42fa06e3",
+      "name": "美新点心店",
+      "aliases": []
+    },
+    {
+      "id": "665e1ecb-90cc-458c-b1ab-6cb511bd7aa6",
+      "name": "七宝老街汤团",
+      "aliases": []
+    },
+    {
+      "id": "922856ed-51ac-4284-aec4-0e80382f22bd",
+      "name": "东泰祥",
+      "aliases": []
+    },
+    {
+      "id": "c93fbd30-f960-4986-ac83-27158672cef1",
+      "name": "沈大成",
+      "aliases": []
+    },
+    {
+      "id": "26ab3650-cd3f-47dc-9ddc-11b55675c4b2",
+      "name": "王宝和",
+      "aliases": []
+    },
+    {
+      "id": "25ba57cd-2d53-4b5d-8bf5-d70180d8dcd1",
+      "name": "光明邨",
+      "aliases": []
+    },
+    {
+      "id": "286677d7-0d7d-4b87-88dc-ed19f0cd0506",
+      "name": "盛兴汤团",
+      "aliases": []
+    },
+    {
+      "id": "661aa8b2-d7d5-4143-893c-e7c5412908bc",
+      "name": "宁波汤团店",
+      "aliases": []
+    },
+    {
+      "id": "e7798feb-9af8-4d89-b046-c0dee0e4ae41",
+      "name": "菰城宴",
+      "aliases": ["菰城宴·大锅红烧羊肉面"]
+    },
+    {
+      "id": "8f9f154c-e8f3-4084-bb4b-240734e87b7c",
+      "name": "张师傅广东肠粉",
+      "aliases": []
+    },
+    {
+      "id": "1fcf48ea-4e19-4621-8568-be3cff033327",
+      "name": "盈田盈粥庄",
+      "aliases": []
+    },
+    {
+      "id": "455a95db-d66d-43b0-aa4d-5dd0d6680508",
+      "name": "小辫子羊肉馆",
+      "aliases": []
+    },
+    {
+      "id": "daca558b-b4b0-4ecc-8181-cd8a0b6b3f7b",
+      "name": "张记天增面馆",
+      "aliases": []
+    },
+    {
+      "id": "f5d0ff18-9348-4149-8484-aae512dc616d",
+      "name": "宁夏印象·盐池滩羊肉体验店",
+      "aliases": []
+    },
+    {
+      "id": "23aa1972-e2b6-4ce3-801b-6ad59ee1cecb",
+      "name": "金湘隆",
+      "aliases": []
+    },
+    {
+      "id": "49d13922-e512-4f44-8e29-90fa78376cf9",
+      "name": "伊祥·敦煌楼",
+      "aliases": []
+    },
+    {
+      "id": "07d5d89d-34f3-462d-87d7-554f9783d085",
+      "name": "红子鸡凤凰楼",
+      "aliases": []
+    },
+    {
+      "id": "cb74c49e-643d-41cc-80e3-6a957892e00f",
+      "name": "韩渔面馆",
+      "aliases": []
+    },
+    {
+      "id": "04bfb7eb-34ea-4917-bf20-15d4c10388a9",
+      "name": "Wagas",
+      "aliases": ["沃歌斯"]
+    },
+    {
+      "id": "5dffc63f-39b7-42c0-afbd-c5d89ac2370e",
+      "name": "永和大王",
+      "aliases": []
+    },
+    {
+      "id": "bd36cec0-615e-4761-ba03-339a94936761",
+      "name": "新迎园",
+      "aliases": []
+    },
+    {
+      "id": "eb9502c2-8811-41ae-aff8-c222bd5957f0",
+      "name": "新里上海点心",
+      "aliases": []
+    },
+    {
+      "id": "079d69df-b7d3-47e9-8a2d-d91dd90b8f07",
+      "name": "清美味道",
+      "aliases": []
+    },
+    {
+      "id": "7952ea69-8e11-479a-b277-1f5cc23447f2",
+      "name": "觅江南",
+      "aliases": []
+    },
+    {
+      "id": "7dbfd52b-6b4e-4b75-9959-1886f743ed3f",
+      "name": "笼百味",
+      "aliases": []
+    },
+    {
+      "id": "b2e7b101-2e41-4d40-a279-2de3f388483a",
+      "name": "老盛兴",
+      "aliases": []
+    },
+    {
+      "id": "da1b904d-af99-44cf-8f38-879e3c617c10",
+      "name": "老盛昌",
+      "aliases": []
+    },
+    {
+      "id": "ff1811b3-9b37-48d0-8773-270d8bf183b5",
+      "name": "鸿瑞兴",
+      "aliases": []
+    },
+    {
+      "id": "5d0833c0-ac96-42a7-a407-cfaac77c2138",
+      "name": "大富贵",
+      "aliases": []
+    },
+    {
+      "id": "1af9bf12-4369-491e-8a93-fed33f84a9c4",
+      "name": "刃极日料自助",
+      "aliases": ["刃极日料自助·刺身和牛放题"]
+    },
+    {
+      "id": "167e70ae-a88e-44ce-bcd1-7b45406c2f4a",
+      "name": "大牛寿喜烧",
+      "aliases": ["大牛寿喜烧·和牛放题"]
+    },
+    {
+      "id": "90526e0c-22c1-4080-80f4-1c24de42197b",
+      "name": "一绪寿喜烧",
+      "aliases": ["一绪に寿喜烧放题", "一緒に寿喜烧放题", "一绪に寿喜烧"]
+    },
+    {
+      "id": "d329b334-0649-4e9f-b395-d8b1f40a0da3",
+      "name": "牛New寿喜烧",
+      "aliases": ["牛New", "牛NEW", "牛new寿喜烧"]
+    },
+    {
+      "id": "65b5148c-6e80-4c4e-a568-183ce914eff9",
+      "name": "铭门盛宴",
+      "aliases": []
+    },
+    {
+      "id": "3dcf1e06-cab2-4920-9637-1d4a0d504594",
+      "name": "陈香贵",
+      "aliases": ["陳香貴", "陈香贵兰州牛肉面"]
+    },
+    {
+      "id": "7376f066-316f-4b46-a473-aa61d3d13274",
+      "name": "哈根达斯",
+      "aliases": []
+    },
+    {
+      "id": "0be5fe1f-37b1-425a-8362-713147daea59",
+      "name": "DQ冰雪皇后",
+      "aliases": ["DQ", "Dairy Queen", "DQ冰淇淋"]
+    },
+    {
+      "id": "08bb024e-2990-44ec-82ac-5b4b987b4d94",
+      "name": "滨寿司",
+      "aliases": []
+    },
+    {
+      "id": "8f44f440-54d9-4abe-adca-a5ef081ad4f7",
+      "name": "吉祥馄饨",
+      "aliases": []
+    },
+    {
+      "id": "d4116281-7ea5-444c-9c17-ee542f869c47",
+      "name": "外婆家",
+      "aliases": []
+    },
+    {
+      "id": "d375b35d-36ce-4258-9bce-af116a42e403",
+      "name": "西贝",
+      "aliases": ["西贝莜面村"]
+    },
+    {
+      "id": "73d6c443-0f73-4e04-9430-74b64414259d",
+      "name": "唐宫茶点",
+      "aliases": []
+    },
+    {
+      "id": "a14ffec1-6804-497a-ac65-cf2e54f171f5",
+      "name": "绿茶餐厅",
+      "aliases": []
+    },
+    {
+      "id": "1d87a7ef-49d1-45f8-9db3-ea8559f5f3b4",
+      "name": "绝味鸭脖",
+      "aliases": ["绝味"]
+    },
+    {
+      "id": "378ecaa7-b2e0-4e7d-b413-3142cc39166a",
+      "name": "紫燕百味鸡",
+      "aliases": []
+    },
+    {
+      "id": "b994b424-0220-48ee-869d-17e9e1813cef",
+      "name": "马记永",
+      "aliases": ["马记永·兰州牛肉面"]
+    },
+    {
+      "id": "e40f3545-5a0f-4f0a-8169-fa0e22ef5406",
+      "name": "和府捞面",
+      "aliases": ["和府"]
+    },
+    {
+      "id": "2d7f8d79-f3ab-4423-bc50-169944248256",
+      "name": "泸溪河",
+      "aliases": ["泸溪河桃酥"]
+    },
+    {
+      "id": "6e99425f-6e16-4247-9e22-4e0a62fbbb66",
+      "name": "巴奴毛肚火锅",
+      "aliases": ["巴奴"]
+    },
+    {
+      "id": "bfa68a08-8be4-4ca0-97a1-d40665fe6383",
+      "name": "Tims天好咖啡",
+      "aliases": ["Tims", "天好咖啡"]
+    },
+    {
+      "id": "e857e961-95eb-49c8-b1b7-e965feaab4ff",
+      "name": "库迪咖啡",
+      "aliases": ["COTTI COFFEE"]
+    },
+    {
+      "id": "639a8756-49b8-4b14-8a2f-a6452163b4d6",
+      "name": "太二酸菜鱼",
+      "aliases": ["太二"]
+    },
+    {
+      "id": "065f11cc-38d2-4f13-858f-6ce3f0331426",
+      "name": "皮爷咖啡",
+      "aliases": ["Peet’s Coffee", "Peet's Coffee"]
+    },
+    {
+      "id": "1b82f1f8-71d5-4e83-9866-9bc5a692dc2d",
+      "name": "85度C",
+      "aliases": []
+    },
+    {
+      "id": "487fb767-1539-4c4b-9061-94e84bdbadb1",
+      "name": "多乐之日",
+      "aliases": []
+    },
+    {
+      "id": "3f3758bd-4409-4e42-b88a-6505856add3b",
+      "name": "面包新语",
+      "aliases": ["BreadTalk"]
+    },
+    {
+      "id": "00652899-aee0-4e0c-a79e-f903ddc5a618",
+      "name": "小杨生煎",
+      "aliases": []
+    },
+    {
+      "id": "a93c37c9-65eb-4787-97c9-9eb20817f471",
+      "name": "老乡鸡",
+      "aliases": []
+    },
+    {
+      "id": "b2abfb8a-50d3-4e57-b059-83cf41f23eb3",
+      "name": "老娘舅",
+      "aliases": []
+    },
+    {
+      "id": "c035f144-1261-488b-bd2c-f570b13a158e",
+      "name": "老香斋",
+      "aliases": ["老香齋"]
+    },
+    {
+      "id": "a350cae5-ba89-4e39-acce-0b63d9f2f179",
+      "name": "詹记桃酥",
+      "aliases": []
+    },
+    {
+      "id": "cb68f3bc-d129-44fe-b038-ceb157e5d33b",
+      "name": "鲍师傅糕点",
+      "aliases": ["鲍师傅"]
+    },
+    {
+      "id": "75907def-bd95-46da-8778-679c2ff0c539",
+      "name": "塔可钟",
+      "aliases": ["Taco Bell"]
+    },
+    {
+      "id": "9b091b0c-5d6e-4743-b4c8-c0decc99c71b",
+      "name": "Shake Shack",
+      "aliases": []
+    },
+    {
+      "id": "417f8d63-4f12-4d7f-8240-34b90f29b320",
+      "name": "1点点",
+      "aliases": ["一点点"]
+    },
+    {
+      "id": "45c82494-3252-4fde-84c1-e43fc9fd541e",
+      "name": "7分甜",
+      "aliases": ["七分甜"]
+    },
+    {
+      "id": "7399442b-801f-41f4-adf0-3d2cad0d8891",
+      "name": "肯德基",
+      "aliases": ["KFC"]
+    },
+    {
+      "id": "184c80d2-949b-4977-b5f9-d2bd46f8d10f",
+      "name": "茶百道",
+      "aliases": []
+    },
+    {
+      "id": "598ee414-7100-4951-aed2-06c8b2bb6288",
+      "name": "蜜雪冰城",
+      "aliases": []
+    },
+    {
+      "id": "96c66fba-84d1-4669-b994-d79d725a72a5",
+      "name": "奈雪的茶",
+      "aliases": []
+    },
+    {
+      "id": "eef3891d-8979-40db-a97e-56a1760765aa",
+      "name": "达美乐比萨",
+      "aliases": ["达美乐", "Domino’s Pizza"]
+    },
+    {
+      "id": "dfd14655-7f0b-4b9e-92d9-d7c578315951",
+      "name": "必胜客",
+      "aliases": ["Pizza Hut"]
+    },
+    {
+      "id": "a40af26c-2248-4fd7-832f-dd02a56fefc2",
+      "name": "茉莉奶白",
+      "aliases": []
+    },
+    {
+      "id": "a7900d69-baa0-45d7-93f6-47d6588d4e26",
+      "name": "沪上阿姨",
+      "aliases": ["沪上阿姨·精选茶饮"]
+    },
+    {
+      "id": "13973c5f-432d-48cd-9b98-538acb439fe5",
+      "name": "巴黎贝甜",
+      "aliases": []
+    },
+    {
+      "id": "ad7272b6-ccfc-464d-a441-dbd0bd6280ff",
+      "name": "椿风",
+      "aliases": ["椿风·养身茶饮"]
+    },
+    {
+      "id": "5d1b80f2-495f-4917-860b-7814e0d1c6c7",
+      "name": "黔香阁",
+      "aliases": []
+    },
+    {
+      "id": "0d40693c-e9f1-422c-a218-97fb91536bc3",
+      "name": "鮨世",
+      "aliases": []
+    },
+    {
+      "id": "b94d36a0-e1dd-4009-a91f-bd46f03d5db5",
+      "name": "高桌牛排馆",
+      "aliases": []
+    },
+    {
+      "id": "3355b65c-855d-4539-82d6-9bc33cf0b756",
+      "name": "隐溪茶馆",
+      "aliases": ["隐溪茶馆Tea House"]
+    },
+    {
+      "id": "21c25947-d456-4842-aa67-79a2c93e9158",
+      "name": "遇外滩",
+      "aliases": []
+    },
+    {
+      "id": "904fba0b-ce2d-48dd-9144-ff988f5729b6",
+      "name": "西贡妈妈",
+      "aliases": []
+    },
+    {
+      "id": "6f1a3182-a10d-42bc-9ce6-c7fbebc0fa16",
+      "name": "蝶园海鲜酒馆",
+      "aliases": []
+    },
+    {
+      "id": "3c36f524-3709-492a-9b23-58999a29d93c",
+      "name": "菁禧荟",
+      "aliases": []
+    },
+    {
+      "id": "a5666c15-463f-4d96-9409-15ad380b3995",
+      "name": "莆田餐厅",
+      "aliases": []
+    },
+    {
+      "id": "7a900148-ce07-476e-836b-90d2cb6db8a1",
+      "name": "老吉堂",
+      "aliases": []
+    },
+    {
+      "id": "7b2e4f8c-e031-4e4f-b8fc-5bdee4bb7359",
+      "name": "翰林轩",
+      "aliases": []
+    },
+    {
+      "id": "10fa72df-0126-4abd-a4a8-ff052b101b82",
+      "name": "翠蝶",
+      "aliases": []
+    },
+    {
+      "id": "cbed8c96-b4b3-495c-afca-9380d78ef682",
+      "name": "笼溏面馆",
+      "aliases": []
+    },
+    {
+      "id": "9f6d3b4d-ce6d-424f-9c26-8d793cfe0419",
+      "name": "竹屋川菜",
+      "aliases": []
+    },
+    {
+      "id": "bb5a4d8c-735c-4d40-b60a-d6b9f811f6e2",
+      "name": "白茸",
+      "aliases": []
+    },
+    {
+      "id": "1fa95257-a225-4a2b-a910-7dddb9389118",
+      "name": "熹誉海鲜火锅",
+      "aliases": ["熹誉 · 海鲜火锅"]
+    },
+    {
+      "id": "7067325f-0d85-4e05-ac66-8c24d8e1473f",
+      "name": "炭一",
+      "aliases": []
+    },
+    {
+      "id": "6a4338e0-de13-4f9c-b28d-4c15bf760430",
+      "name": "满堂by Bar Choice",
+      "aliases": []
+    },
+    {
+      "id": "f881176c-c67f-4d3b-8c16-e0ac5c526299",
+      "name": "泰珍荟",
+      "aliases": []
+    },
+    {
+      "id": "fc72a1b9-e9a5-4acf-bcc1-5f786740a314",
+      "name": "橘焱胡同烧肉夜食",
+      "aliases": []
+    },
+    {
+      "id": "43563443-abb4-46dc-8aaa-cf6fd3fbc9cd",
+      "name": "松鹤楼苏式汤面",
+      "aliases": []
+    },
+    {
+      "id": "ae5fd8a4-2bb5-443d-93b0-0880f1efd745",
+      "name": "晴空",
+      "aliases": []
+    },
+    {
+      "id": "97404502-b9cd-4bb5-aa10-f5ec49fbfea8",
+      "name": "无花果与橄榄",
+      "aliases": ["Fig＆Olive无花果与橄榄"]
+    },
+    {
+      "id": "46ba6648-8b35-42c7-9eca-d37f66eaad4f",
+      "name": "新荣记",
+      "aliases": []
+    },
+    {
+      "id": "37f7c297-48d8-4faa-9e1f-315ccd25223e",
+      "name": "广屋",
+      "aliases": []
+    },
+    {
+      "id": "370ac970-6033-447a-9407-928dce9add09",
+      "name": "巴黎蜜语 La Parisienne",
+      "aliases": []
+    },
+    {
+      "id": "67dbcb1e-50f4-4214-93c2-650e08861fcb",
+      "name": "宝珠奶酪",
+      "aliases": []
+    },
+    {
+      "id": "f60a65c5-e31a-4e10-afbe-637431a62e98",
+      "name": "头灶",
+      "aliases": []
+    },
+    {
+      "id": "4359f43c-0edf-485e-a993-c5fdeb988e35",
+      "name": "嘢牛烧",
+      "aliases": ["嘢牛烧-烧肉专门店"]
+    },
+    {
+      "id": "e040db5a-3845-4e2d-9677-8639115d2e50",
+      "name": "上海滩餐厅",
+      "aliases": ["上海滩"]
+    },
+    {
+      "id": "0763a4a9-ac49-43f2-ab1c-14c44487c46f",
+      "name": "machi machi",
+      "aliases": []
+    },
+    {
+      "id": "5d71228c-e95d-47d8-925f-5128d2715a3c",
+      "name": "Whites",
+      "aliases": []
+    },
+    {
+      "id": "4044ac68-e818-46c2-a81c-8ce5c151ddda",
+      "name": "Tuna Maki寿司",
+      "aliases": ["TUNAMAKI"]
+    },
+    {
+      "id": "b2d30b52-de33-4c9e-8d3a-394116bd9526",
+      "name": "Stefanie’s Gelato",
+      "aliases": []
+    },
+    {
+      "id": "09d1de72-a826-47b4-9df5-e26dc22edbdd",
+      "name": "SONAMU",
+      "aliases": []
+    },
+    {
+      "id": "16ee1edc-0b68-4b4b-bc6d-3e9dedc35886",
+      "name": "R.MANDA",
+      "aliases": []
+    },
+    {
+      "id": "9e34c22b-55b1-421c-b344-bc5a44af21e8",
+      "name": "PORTMAN’S",
+      "aliases": []
+    },
+    {
+      "id": "66bae952-ba30-4984-8ac4-506f58b6ddc2",
+      "name": "PISTOLERA",
+      "aliases": []
+    },
+    {
+      "id": "9cae1c58-5f5d-476c-a048-861b74789960",
+      "name": "NUMATASOU沼田双",
+      "aliases": []
+    },
+    {
+      "id": "981515b8-27f1-46fa-baf0-24141f5b99dc",
+      "name": "MUF MUF",
+      "aliases": []
+    },
+    {
+      "id": "25c53ae9-19e9-41eb-afe2-bfe1139bd992",
+      "name": "M Stand",
+      "aliases": ["M STAND"]
+    },
+    {
+      "id": "1aeec258-eda1-448f-bd7b-4140a7aff73b",
+      "name": "Le Jardin de JR",
+      "aliases": []
+    },
+    {
+      "id": "64857e76-e0ff-4a87-b40c-7fef34a58fa8",
+      "name": "Latina巴西牛排馆",
+      "aliases": ["HOOK x Latina 巴西牛排馆", "拉蒂娜"]
+    },
+    {
+      "id": "3c96dbab-c1ab-451a-be18-7be96efc0968",
+      "name": "ELI FALAFEL",
+      "aliases": []
+    },
+    {
+      "id": "b5792abd-a428-4896-a164-f0bcabf3318c",
+      "name": "DA VITTORIO SHANGHAI",
+      "aliases": []
+    },
+    {
+      "id": "729ba6c4-b1a9-4ab1-a41f-e5ee7c10228b",
+      "name": "Beef & Liberty",
+      "aliases": []
+    },
+    {
+      "id": "a015c0b2-3939-40ff-9ce6-d3d5398ec32d",
+      "name": "Meraki Cafe",
+      "aliases": []
+    },
+    {
+      "id": "b65aa78f-3005-4c14-9224-0d523638098f",
+      "name": "Millions Coffee",
+      "aliases": []
+    },
+    {
+      "id": "dcde0474-e04d-4fd4-8e97-7bc13113c64a",
+      "name": "Hula",
+      "aliases": []
+    },
+    {
+      "id": "5ceab92f-226a-41a3-86d1-790e5401626a",
+      "name": "Huanxi Xiaoyuan",
+      "aliases": []
+    },
+    {
+      "id": "59e20f33-7937-497f-816b-b3302b61a1ab",
+      "name": "Keran Danqing",
+      "aliases": []
+    },
+    {
+      "id": "ecbf036f-ea0e-4e1f-8e13-2242460861f1",
+      "name": "Ennook Coffee",
+      "aliases": []
+    },
+    {
+      "id": "44d45a5c-36de-4bc1-8cf6-9e8d72f85246",
+      "name": "Yes Coffee",
+      "aliases": []
+    },
+    {
+      "id": "efb68ec9-c24e-42a5-8552-c27ac70eeab0",
+      "name": "Neighborhood Coffee & Dessert Bar",
+      "aliases": []
+    },
+    {
+      "id": "52117486-bab0-4b43-be4e-e07cd62809d6",
+      "name": "O_S Cafe",
+      "aliases": []
+    },
+    {
+      "id": "7d6b1150-d761-4ddf-80fe-75a9f0f9e674",
+      "name": "Yuan Dang Cafe",
+      "aliases": []
+    },
+    {
+      "id": "fc5e920c-e49f-4fa4-88ce-b6a6ef6be108",
+      "name": "One Step Garden",
+      "aliases": []
+    },
+    {
+      "id": "0dd3a92d-5921-40bf-a335-b87f215e4b6e",
+      "name": "Cafe Le Bon Temps",
+      "aliases": []
+    },
+    {
+      "id": "48734998-be5c-431e-a322-1fc710da9ed6",
+      "name": "Xiao Ban Coffee",
+      "aliases": []
+    },
+    {
+      "id": "c8e357ce-f79f-49b7-9e0c-fef640311880",
+      "name": "Bird Water Tower",
+      "aliases": []
+    },
+    {
+      "id": "1eba625b-d48b-4026-9ebc-9220570fb81a",
+      "name": "The Second Coffee Brewers",
+      "aliases": []
+    },
+    {
+      "id": "c046e55a-01a7-430f-8680-2636631b9752",
+      "name": "Liu Coffee",
+      "aliases": []
+    },
+    {
+      "id": "87c54ee7-ad36-49be-9b6e-0793e71d2ed9",
+      "name": "Tuan bakery+cafe",
+      "aliases": []
+    },
+    {
+      "id": "3281cdcb-9c05-40e8-9f7f-7a0da134acbc",
+      "name": "Nod Cafe",
+      "aliases": []
+    },
+    {
+      "id": "0e0acfe1-9862-4895-9e98-f687687d2028",
+      "name": "Coffee Date",
+      "aliases": []
+    },
+    {
+      "id": "b8342030-1c39-4010-a417-d28fdf4ccf67",
+      "name": "OR.SO Coffee Lab & Bar",
+      "aliases": []
+    },
+    {
+      "id": "060cb74b-ffae-461c-b078-12394fa2554e",
+      "name": "Davenport Cafe",
+      "aliases": []
+    },
+    {
+      "id": "e5236c75-adb1-4e07-968c-d81fa4718e31",
+      "name": "Another Mountain",
+      "aliases": []
+    },
+    {
+      "id": "97a67dad-a605-463a-ad76-d46df648443f",
+      "name": "漠漠家",
+      "aliases": []
+    },
+    {
+      "id": "52d427f4-033f-43c6-b665-c067478bfb0c",
+      "name": "南粤点心专门店",
+      "aliases": []
+    },
+    {
+      "id": "2271b0ae-1793-49ef-80bd-856f016fb4ae",
+      "name": "海鲜阁",
+      "aliases": []
+    },
+    {
+      "id": "8b9e64b4-1ab6-4fc4-97c1-71406ceacb1a",
+      "name": "颜无界",
+      "aliases": []
+    },
+    {
+      "id": "9b37f363-d160-4769-ad83-7e1b5706a1ca",
+      "name": "白茶金库",
+      "aliases": []
+    },
+    {
+      "id": "9db0e84c-142a-453c-a639-25780adc132f",
+      "name": "赛百味",
+      "aliases": []
+    },
+    {
+      "id": "a850ec1d-6bc8-4f60-8cf7-58f100990597",
+      "name": "比星咖啡",
+      "aliases": []
+    },
+    {
+      "id": "1603b4f9-a100-4c31-8f1f-535457ca0996",
+      "name": "小莳煮物",
+      "aliases": []
+    },
+    {
+      "id": "2a18d092-090b-44dd-8808-29cdaefa0f51",
+      "name": "食其家",
+      "aliases": []
+    },
+    {
+      "id": "194139c6-6d40-401b-9c3c-1884bfc1a0f5",
+      "name": "邵氏茶铺",
+      "aliases": []
+    },
+    {
+      "id": "7e00f1d1-94b6-484c-b250-85548150ef3d",
+      "name": "有方一杯",
+      "aliases": []
+    },
+    {
+      "id": "7ec7ac7c-494c-4403-b7e4-40e08442289e",
+      "name": "南粤小厨",
+      "aliases": []
+    },
+    {
+      "id": "79be906a-dda9-4f70-a32f-ae3f725e9770",
+      "name": "智面局",
+      "aliases": []
+    },
+    {
+      "id": "bfe9bc1a-3f9e-43b3-a10e-1e5857942941",
+      "name": "小Q饭堂",
+      "aliases": []
+    },
+    {
+      "id": "6e9f5cb9-ffab-4c45-a5fd-9653f2c4b1b8",
+      "name": "赫生活咖啡店",
+      "aliases": []
+    },
+    {
+      "id": "7a1fd64f-bef3-48c6-8b4f-01f85035cd73",
+      "name": "花博食堂",
+      "aliases": []
+    },
+    {
+      "id": "ebc1e279-7206-46e9-82e4-7012b879984e",
+      "name": "本尼黄金烤鸡",
+      "aliases": []
+    },
+    {
+      "id": "f256b7fe-42f0-45c5-a3fa-035838129ea4",
+      "name": "林里柠檬茶",
+      "aliases": ["LINLEE"]
+    },
+    {
+      "id": "ec19a088-8b38-48f3-87f2-3527b967e453",
+      "name": "乐乐茶",
+      "aliases": []
+    },
+    {
+      "id": "11e9e8fe-ac30-404b-8f73-38b64734deff",
+      "name": "申什一杯",
+      "aliases": []
+    },
+    {
+      "id": "227e410f-3c98-486f-8193-8bc521f22cd6",
+      "name": "梧桐姥姥",
+      "aliases": []
+    },
+    {
+      "id": "0423fb8e-9264-46fc-8f2b-a9474038b1f1",
+      "name": "精悦蓉",
+      "aliases": []
+    },
+    {
+      "id": "22b56d17-c474-4c5f-8d13-fd6292b92c00",
+      "name": "鹅匠",
+      "aliases": []
+    },
+    {
+      "id": "03a2cbca-5a0f-4a90-b415-e969920ba3d8",
+      "name": "读酥世家",
+      "aliases": []
+    },
+    {
+      "id": "3ab46555-2a55-40b1-a898-f7f71109cabf",
+      "name": "罗宋千礼",
+      "aliases": []
+    },
+    {
+      "id": "d0c7fbc6-76b1-4b88-a475-a1d4c1118f27",
+      "name": "大壶春",
+      "aliases": []
+    },
+    {
+      "id": "cdb0fc18-918a-42ce-9d8d-8743dc645a72",
+      "name": "大米先生",
+      "aliases": []
+    },
+    {
+      "id": "b8448d0c-1357-4b40-8a1c-2e3202295ac2",
+      "name": "野云雀",
+      "aliases": []
+    },
+    {
+      "id": "8bab3c99-b7c1-4c8f-88c1-466b7849b43f",
+      "name": "山苗苗",
+      "aliases": []
+    },
+    {
+      "id": "a1fb86ed-1fc1-4b7d-9837-d95570d5f6c8",
+      "name": "井梅",
+      "aliases": []
+    },
+    {
+      "id": "3a5de055-b3cd-45c9-a837-fcdf61c83e08",
+      "name": "新秀",
+      "aliases": []
+    },
+    {
+      "id": "0a2139db-f54b-4c74-aa2f-2b7b0f574325",
+      "name": "町田商店",
+      "aliases": []
+    },
+    {
+      "id": "7b608f78-e2c5-42ae-a083-f2ebea37d1a1",
+      "name": "汕心",
+      "aliases": []
+    },
+    {
+      "id": "d930dae5-2e7d-4a3e-8aec-d492e413489a",
+      "name": "七八冷面",
+      "aliases": []
+    },
+    {
+      "id": "dc248eaf-f052-407d-bd05-0330b54a5e8c",
+      "name": "鱼鳍食堂",
+      "aliases": []
+    },
+    {
+      "id": "3e3f46f5-5e21-4b14-96a9-a319824b94a2",
+      "name": "茶米有言",
+      "aliases": []
+    },
+    {
+      "id": "f65a7859-3b12-40a2-b845-2e1185ba3859",
+      "name": "阿亮宁波菜",
+      "aliases": []
+    },
+    {
+      "id": "a7238eee-9e5e-46ce-928e-8e8e68b81eb6",
+      "name": "顾二叔",
+      "aliases": []
+    },
+    {
+      "id": "0ab23a24-a452-4a3a-bfe0-dbb6cfe03d34",
+      "name": "孤独得寿喜烧",
+      "aliases": []
+    },
+    {
+      "id": "6b097cfc-c4db-4448-b4c3-e6bdec1d650a",
+      "name": "糕阿叔",
+      "aliases": []
+    },
+    {
+      "id": "60d86f86-854b-432c-bbfd-a3b334c5e51a",
+      "name": "舒味老友",
+      "aliases": []
+    },
+    {
+      "id": "55eecb61-68cd-4b3b-9e6d-0e6dc931bbb3",
+      "name": "沪食光",
+      "aliases": []
+    },
+    {
+      "id": "1d6a1796-82d0-4ee2-a0e0-eda316abbab5",
+      "name": "卤山川",
+      "aliases": []
+    },
+    {
+      "id": "f76a16a1-9ee6-408a-9780-b3ca1ea2e2af",
+      "name": "古陕情",
+      "aliases": []
+    },
+    {
+      "id": "594331a1-fb63-4516-8bb6-680e46a530cd",
+      "name": "一人烧肉",
+      "aliases": []
+    },
+    {
+      "id": "311bd6f7-6435-417f-8f31-c3e20ac55ab0",
+      "name": "鲜得来",
+      "aliases": []
+    },
+    {
+      "id": "82ad569a-9d0f-43ec-9081-c64db0626102",
+      "name": "加个面",
+      "aliases": []
+    },
+    {
+      "id": "4a34f7f7-b10e-4eb2-a55a-e8445d4f3073",
+      "name": "望丘山",
+      "aliases": []
+    },
+    {
+      "id": "b3495810-057e-4674-9c2e-cc1ddd019d11",
+      "name": "隔壁妈妈",
+      "aliases": []
+    },
+    {
+      "id": "3bc287e2-fbee-4d03-803d-456c3c09517a",
+      "name": "福和面馆",
+      "aliases": []
+    },
+    {
+      "id": "e3025014-a88b-4058-a569-56185291c510",
+      "name": "佳家汤包",
+      "aliases": []
+    },
+    {
+      "id": "12c3ac2f-b2f7-45a3-90fd-684759ca0728",
+      "name": "黄阿饼",
+      "aliases": ["黄阿饼瞎炒面"]
+    },
+    {
+      "id": "69e47852-fe61-450b-bb3b-489da3fd8d17",
+      "name": "周黑鸭",
+      "aliases": []
+    },
+    {
+      "id": "af355aa9-68f5-4ccd-8541-48b342eae3be",
+      "name": "古早万丹",
+      "aliases": []
+    },
+    {
+      "id": "b7bcf901-6a03-4fe6-b93d-b70cafd2bd3d",
+      "name": "朴下隆九",
+      "aliases": []
+    },
+    {
+      "id": "81004c3d-7f30-40b8-8252-4c64af4489c1",
+      "name": "唐饼家",
+      "aliases": []
+    },
+    {
+      "id": "5db692f3-cf7e-46c4-bc54-5bd6b18bb84f",
+      "name": "茉酸奶",
+      "aliases": []
+    },
+    {
+      "id": "2fef6548-0181-447b-a92e-771b925c0394",
+      "name": "金饭碗",
+      "aliases": []
+    },
+    {
+      "id": "02bff3f6-02a0-4277-9041-4962ab406538",
+      "name": "匡朵",
+      "aliases": []
+    },
+    {
+      "id": "f89695a5-747e-48eb-8b87-288f6d17011a",
+      "name": "花花卷卷",
+      "aliases": []
+    },
+    {
+      "id": "aef9adef-7518-479b-9010-f5e4a6b3c04d",
+      "name": "山崎面包",
+      "aliases": []
+    },
+    {
+      "id": "cb41c6d8-eee8-4fd0-927e-7a371530e0bf",
+      "name": "CoCo都可",
+      "aliases": ["COCO"]
+    },
+    {
+      "id": "4851ef6c-4fda-4d3c-b2a9-69dab4509750",
+      "name": "鱼粉王",
+      "aliases": []
+    },
+    {
+      "id": "e63ac1c6-8ac1-4d92-9188-5d67d2be96de",
+      "name": "老滇山寨",
+      "aliases": []
+    },
+    {
+      "id": "cba5a3eb-14da-4b80-9a93-1a00c0b46482",
+      "name": "海底捞",
+      "aliases": ["海底捞火锅"]
+    },
+    {
+      "id": "1a10c172-6565-4a87-828d-8d4885f8cf45",
+      "name": "七欣天",
+      "aliases": []
+    },
+    {
+      "id": "c7534d8d-27be-4b53-8438-205197657e78",
+      "name": "南京大牌档",
+      "aliases": []
+    },
+    {
+      "id": "a8ab5417-b1c7-4d4c-b413-4ecf5f4c5899",
+      "name": "太琼",
+      "aliases": ["太琼糟粕醋"]
+    },
+    {
+      "id": "72d2a583-4fe4-4c1d-a2a1-97680df0bfa5",
+      "name": "八合里",
+      "aliases": ["八合里牛肉火锅"]
+    },
+    {
+      "id": "f6b6c973-08b0-4d28-9e29-42190c1fc496",
+      "name": "顺风港湾",
+      "aliases": []
+    },
+    {
+      "id": "36ff1d79-4025-4130-b6b6-e321c4c691a1",
+      "name": "上海人家",
+      "aliases": []
+    },
+    {
+      "id": "b29e948a-4a83-40a9-be98-d089a95d5393",
+      "name": "蛙来哒",
+      "aliases": []
+    },
+    {
+      "id": "66d3c859-6b05-4d98-8f29-76d6c623f8ff",
+      "name": "桂满陇",
+      "aliases": []
+    },
+    {
+      "id": "6caf148a-4e70-4d2f-aa1d-96e96bfa2198",
+      "name": "旺顺融",
+      "aliases": []
+    },
+    {
+      "id": "669cacad-5c6c-42ba-97ce-5c2147132d0e",
+      "name": "塔哈尔",
+      "aliases": []
+    },
+    {
+      "id": "e413012a-44cb-4be4-a6f7-248dac57070e",
+      "name": "另茶",
+      "aliases": []
+    },
+    {
+      "id": "90e8698d-3b61-4e20-85c3-95e007de248b",
+      "name": "俄士厨房",
+      "aliases": []
+    },
+    {
+      "id": "82cbb9b7-c0d5-4ea9-ac04-7fba67191004",
+      "name": "披头士",
+      "aliases": []
+    },
+    {
+      "id": "3ab7f391-1b63-4542-8f0b-61f7fefd0eb7",
+      "name": "菌彩",
+      "aliases": []
+    },
+    {
+      "id": "b3bdc343-0592-4dd6-98d8-971e0e3024bb",
+      "name": "立方铁",
+      "aliases": ["立方铁@铁板烧"]
+    },
+    {
+      "id": "bdd9b5dc-9707-4ffa-9baf-8f7f74b9959c",
+      "name": "王奋斗",
+      "aliases": []
+    },
+    {
+      "id": "15741665-be6f-4719-b1ef-2a09f8d9dad9",
+      "name": "杨有喜",
+      "aliases": []
+    },
+    {
+      "id": "cd094e1e-8ec4-4b7e-bd5e-4b1a53a78de0",
+      "name": "新发现",
+      "aliases": []
+    },
+    {
+      "id": "ad40fdb8-ce3d-42d9-a3f4-e3db4bcc1191",
+      "name": "山野板札",
+      "aliases": []
+    },
+    {
+      "id": "97cecf1f-0f6b-4826-817e-6d8784cfc0f4",
+      "name": "江边城外烤全鱼",
+      "aliases": ["江边城外"]
+    },
+    {
+      "id": "51ac1b7e-14d9-4581-b241-7488990ebe1e",
+      "name": "胖哥俩",
+      "aliases": []
+    },
+    {
+      "id": "dd34ae0f-d28f-4651-95d4-977e54c383c7",
+      "name": "尚乐泰食",
+      "aliases": []
+    },
+    {
+      "id": "49b0a2cd-9945-435b-95f5-357a97138ea7",
+      "name": "云潇潇",
+      "aliases": []
+    },
+    {
+      "id": "ec331d23-95e3-4183-8daa-f214e3d4ce14",
+      "name": "芭蕉扇",
+      "aliases": []
+    },
+    {
+      "id": "49cf995f-038d-4e1e-adcb-97bc3d0d82b6",
+      "name": "兴烨汇",
+      "aliases": []
+    },
+    {
+      "id": "97d83b5c-147f-4a40-960b-e70e439cdac2",
+      "name": "满记甜品",
+      "aliases": []
+    },
+    {
+      "id": "3d80e00f-9653-4d9c-a7eb-75a5b845d3f3",
+      "name": "阿狗手作",
+      "aliases": ["阿狗手作柠檬茶"]
+    },
+    {
+      "id": "d6ac5afc-5b1b-4e0e-86e6-1a7c084178d5",
+      "name": "野人先生",
+      "aliases": ["野人先生冰淇淋"]
+    },
+    {
+      "id": "98fd0073-40d2-4d20-9b5c-e10a238853ad",
+      "name": "糖纸",
+      "aliases": []
+    },
+    {
+      "id": "6bf83e6e-cfb4-44d5-a78a-8a8998046355",
+      "name": "鲜芋仙",
+      "aliases": []
+    },
+    {
+      "id": "f9543ceb-b725-4c5c-b8e3-041be32b99e8",
+      "name": "麦记牛奶公司",
+      "aliases": ["麦记牛奶"]
+    },
+    {
+      "id": "2865f7ff-70bc-4816-bf6e-1d9062c3159d",
+      "name": "派悦坊",
+      "aliases": []
+    },
+    {
+      "id": "526f7a89-af7d-422c-8248-fb4b4f24cd51",
+      "name": "幻师",
+      "aliases": ["幻师臻选", "COMMUNE"]
+    },
+    {
+      "id": "fe1efd80-6cae-4984-ac76-9dc7450c0af6",
+      "name": "喜家德",
+      "aliases": ["喜家德虾仁水饺"]
+    },
+    {
+      "id": "b198f764-3638-4313-97cd-32840a063c00",
+      "name": "馍都",
+      "aliases": []
+    },
+    {
+      "id": "705e7c14-341d-445e-9c12-af2512fe7946",
+      "name": "屯京拉面",
+      "aliases": []
+    },
+    {
+      "id": "edb30cbb-e004-4451-bedf-4aea33645c04",
+      "name": "MANNER",
+      "aliases": ["慢勒咖啡", "Manner咖啡", "Manner Coffee", "MANNER COFFEE"]
+    },
+    {
+      "id": "8c3e472d-8fed-4a8a-9658-545357640b19",
+      "name": "哒优乃",
+      "aliases": []
+    },
+    {
+      "id": "8cc60560-5332-4756-8477-be0f342fd9ec",
+      "name": "大发越南粉",
+      "aliases": ["大发越南"]
+    },
+    {
+      "id": "910c95a1-f461-44af-9eb9-10b443ed668d",
+      "name": "大肥羅",
+      "aliases": []
+    },
+    {
+      "id": "4e9615c3-ca0c-45d3-944c-f834fa1b7205",
+      "name": "纹兵卫",
+      "aliases": []
+    },
+    {
+      "id": "f6ab0a0b-650f-4e69-980d-6cb6ee0e7829",
+      "name": "藕巷·藕汤饭",
+      "aliases": []
+    },
+    {
+      "id": "2873b8a5-a558-457c-b235-146a22272360",
+      "name": "初唤",
+      "aliases": []
+    },
+    {
+      "id": "e939aff4-abec-4bd5-a11a-fa4d443b570a",
+      "name": "胡子大厨",
+      "aliases": []
+    },
+    {
+      "id": "b64e03e3-900b-4687-a740-6d72fe972eea",
+      "name": "裕莲茶楼",
+      "aliases": []
+    },
+    {
+      "id": "d3b70762-aac4-440b-83ec-191531d87f76",
+      "name": "gaga",
+      "aliases": []
+    },
+    {
+      "id": "643267ac-e31a-410d-80f1-5bf1c1fe76f1",
+      "name": "香溢焙客",
+      "aliases": ["Baker & Spice", "BAKER & SPICE", "Baker&Spice"]
+    },
+    {
+      "id": "d8e87861-882f-4302-844b-c222011a638b",
+      "name": "娜娜 打抛小馆",
+      "aliases": []
+    },
+    {
+      "id": "a0bcc3b5-e35f-43b3-b500-8235488f4020",
+      "name": "东莱馋房",
+      "aliases": []
+    },
+    {
+      "id": "568d4e48-e5eb-4b1e-9fe6-de2234c487f5",
+      "name": "白安其",
+      "aliases": []
+    },
+    {
+      "id": "35ea4170-5508-4192-8836-15e243f1f7c9",
+      "name": "银平",
+      "aliases": []
+    },
+    {
+      "id": "8d7f9a0e-5d03-4cbc-a85b-fdfac487ae55",
+      "name": "鮨麗・笑鱼&鳥龍・笑鱼",
+      "aliases": []
+    },
+    {
+      "id": "b5cb7c63-d7df-4100-9c60-dd1b223f1256",
+      "name": "富罟",
+      "aliases": []
+    },
+    {
+      "id": "0e56b356-51be-41ba-ac48-ce385259b170",
+      "name": "粵玺荟",
+      "aliases": []
+    },
+    {
+      "id": "979abb12-ecd9-4187-8ecb-504584feba15",
+      "name": "阿里疆",
+      "aliases": []
+    },
+    {
+      "id": "40367f61-5576-46bf-a793-89ba64b6b8a5",
+      "name": "本就茶饮",
+      "aliases": ["BonJour本就茶饮"]
+    },
+    {
+      "id": "b6f1d62d-71d7-48bf-b943-6ceefeec042d",
+      "name": "LOKAL By Wagas",
+      "aliases": ["LOKAL"]
+    },
+    {
+      "id": "3104e3b9-d1d7-4fda-bf9f-cbe55cf6103a",
+      "name": "麦当劳",
+      "aliases": ["McDonald's"]
+    },
+    {
+      "id": "0958f4c2-33a1-4473-a24e-04a5c90857f3",
+      "name": "失重餐厅",
+      "aliases": ["SPACELAB失重餐厅"]
+    },
+    {
+      "id": "46d859d9-f797-428d-8b61-3215d99d1df1",
+      "name": "Yes 啫啫",
+      "aliases": []
+    },
+    {
+      "id": "5d7d9dcf-2c21-4e0b-b3da-96e3d13f3ba1",
+      "name": "安又胖",
+      "aliases": []
+    },
+    {
+      "id": "7429be9b-ff2f-4f1d-b533-b7a9c29aa107",
+      "name": "霸王茶姬",
+      "aliases": []
+    },
+    {
+      "id": "528f12ad-26a2-48da-9074-b3f669423c33",
+      "name": "不二君",
+      "aliases": []
+    },
+    {
+      "id": "749a78f7-f5ea-428d-b51e-5b4b71b65d96",
+      "name": "点都德",
+      "aliases": []
+    },
+    {
+      "id": "b4c8c633-e71d-492b-bbb5-ea351813ac9d",
+      "name": "俄式厨房",
+      "aliases": ["俄士厨房"]
+    },
+    {
+      "id": "1bd56a37-5735-4528-88cf-914149865a2d",
+      "name": "港丽餐厅",
+      "aliases": []
+    },
+    {
+      "id": "88152ede-d5d6-42fb-9e38-5ad8d6cf496d",
+      "name": "哥哥深夜食堂",
+      "aliases": ["哥哥の深夜食堂"]
+    },
+    {
+      "id": "d8cf92b7-c614-4de7-94ee-b95daf9e0c35",
+      "name": "汉堡王",
+      "aliases": []
+    },
+    {
+      "id": "3cbedf85-9551-46b0-a139-3f30b2be3113",
+      "name": "好利来",
+      "aliases": ["好利来Holiland"]
+    },
+    {
+      "id": "0231a892-027c-4c0f-a002-20d4a5c69997",
+      "name": "金匠寿司",
+      "aliases": []
+    },
+    {
+      "id": "5c73c3e2-536a-402d-a78e-489f8b25a313",
+      "name": "锦之楼",
+      "aliases": []
+    },
+    {
+      "id": "6ee99366-ca01-451d-aefc-b9a1d3980ac1",
+      "name": "辣堂赣",
+      "aliases": []
+    },
+    {
+      "id": "f3895cec-605c-4b14-a7ab-1be340ec245d",
+      "name": "临家",
+      "aliases": []
+    },
+    {
+      "id": "64881565-2295-4205-b685-7124a2378967",
+      "name": "麻六记",
+      "aliases": []
+    },
+    {
+      "id": "b0044842-52f7-4efc-b3c2-e743a3945918",
+      "name": "米村拌饭",
+      "aliases": []
+    },
+    {
+      "id": "befa3682-f66e-471d-af69-5056fa3da90a",
+      "name": "柠季手打柠檬茶",
+      "aliases": ["柠季·手打柠檬", "柠季"]
+    },
+    {
+      "id": "0640781f-562c-45c7-997c-007ca43f07ca",
+      "name": "璞徽",
+      "aliases": []
+    },
+    {
+      "id": "ba3bd686-f9db-4f9d-94ce-035387c7ae77",
+      "name": "浦江晓月",
+      "aliases": []
+    },
+    {
+      "id": "96781b61-8706-4dcf-85e7-bc486e370499",
+      "name": "青川",
+      "aliases": []
+    },
+    {
+      "id": "722aff01-cdfe-41e6-bf55-b2a5fd76f189",
+      "name": "萨莉亚",
+      "aliases": ["萨莉亚意式餐厅"]
+    },
+    {
+      "id": "32f76eb4-2575-4cdc-8262-ad4e2f747ccb",
+      "name": "喜顶上品",
+      "aliases": []
+    },
+    {
+      "id": "996b33ac-0b19-46f4-a808-ba2e8c6a7f78",
+      "name": "湘辣辣",
+      "aliases": []
+    },
+    {
+      "id": "926db11d-22a7-4365-8483-ffcc0457ec85",
+      "name": "小菜园",
+      "aliases": ["小菜园新徽菜"]
+    },
+    {
+      "id": "72103797-0e55-4d8f-901f-3b2bcfa25160",
+      "name": "巡湘记",
+      "aliases": []
+    },
+    {
+      "id": "f2270503-85ef-42c1-bdd1-356bf75dee7a",
+      "name": "耶里夏丽",
+      "aliases": []
+    },
+    {
+      "id": "137bd90d-7c79-41fe-8496-7aa74b7abc80",
+      "name": "鱼酷",
+      "aliases": []
+    },
+    {
+      "id": "f488191c-a3d3-40e3-92a1-8b8b45ef5b59",
+      "name": "雨松",
+      "aliases": []
+    },
+    {
+      "id": "f15c07d7-8850-45c5-ab14-a58b53525c5e",
+      "name": "圆苑",
+      "aliases": []
+    },
+    {
+      "id": "86807bde-c1d5-482d-aa5c-5ca24e9c4184",
+      "name": "缘味先",
+      "aliases": []
+    },
+    {
+      "id": "28167cc8-78d2-4db8-b440-da9e2c693ece",
+      "name": "樾鲜食馆",
+      "aliases": []
+    },
+    {
+      "id": "c2228103-0fc4-4365-ba66-715bafb0daf1",
+      "name": "哲平鳗满",
+      "aliases": []
+    },
+    {
+      "id": "1432aa1e-8d8e-4976-9c87-58e9eb2a0b17",
+      "name": "左庭右院",
+      "aliases": []
+    },
+    {
+      "id": "55c4bd4c-6f15-428c-8e76-ef0b54e8d0c0",
+      "name": "毕真烤肉店",
+      "aliases": []
+    },
+    {
+      "id": "5f1bb5d7-97a9-4c94-bbe0-8bb524eb7b62",
+      "name": "兴蜀府",
+      "aliases": ["兴蜀府·臻宴"]
+    },
+    {
+      "id": "433facea-23b0-4500-aa64-e372960a8efc",
+      "name": "富天添牛腩煲火锅",
+      "aliases": []
+    },
+    {
+      "id": "e62b09a7-146c-452f-aa3b-3ef96f5a8c93",
+      "name": "UP矢量咖啡",
+      "aliases": ["UP矢量咖啡COFFEE"]
+    },
+    {
+      "id": "7dfd3138-64b5-42a5-929f-de5ec823948a",
+      "name": "星巴克",
+      "aliases": ["Starbucks", "星巴克咖啡", "Starbucks咖啡"]
+    },
+    {
+      "id": "93900ea9-fa8d-4f9d-a650-19b399bb10a8",
+      "name": "阳坊涮肉",
+      "aliases": ["阳坊 涮肉"]
+    },
+    {
+      "id": "54eb47fe-af62-4029-b05e-d296cc03a62a",
+      "name": "3号仓库",
+      "aliases": []
+    },
+    {
+      "id": "bc4229ca-4f94-4340-bb3d-a1510b7307d6",
+      "name": "费大厨",
+      "aliases": []
+    },
+    {
+      "id": "31af484e-6d39-42c2-9e40-ad1c689b9479",
+      "name": "喜茶",
+      "aliases": ["喜茶/HEYTEA"]
+    },
+    {
+      "id": "a355f773-162c-4f69-b90d-790beb1fa451",
+      "name": "啊撒啊撒",
+      "aliases": []
+    },
+    {
+      "id": "bf8ca506-edb4-40fb-980b-9de90088f3e1",
+      "name": "eat n work",
+      "aliases": []
+    },
+    {
+      "id": "9eef911f-3fa5-409e-9ea0-429d9f9b24ce",
+      "name": "南里山房",
+      "aliases": []
+    },
+    {
+      "id": "be4a658d-f2e7-47bb-a601-55ad216a4e63",
+      "name": "翠华",
+      "aliases": ["翠华餐厅"]
+    },
+    {
+      "id": "414b454f-3645-46f6-bbee-242d1bc983e0",
+      "name": "呛头家",
+      "aliases": []
+    },
+    {
+      "id": "73b01d94-f6cc-4366-86e9-47a137c35cfb",
+      "name": "云阿蛮米线",
+      "aliases": ["云阿蛮"]
+    },
+    {
+      "id": "8c564e75-d28a-4b5a-a181-496607a409fc",
+      "name": "苏小柳",
+      "aliases": []
+    },
+    {
+      "id": "7b425888-9061-44ba-8af2-a803ab4cd22a",
+      "name": "张亮麻辣烫",
+      "aliases": ["张亮麻辣烫 我们不一样!"]
+    },
+    {
+      "id": "2a42c292-6216-4a0e-938a-749ea3124ff8",
+      "name": "新良记卤粉王",
+      "aliases": []
+    },
+    {
+      "id": "bb8ef578-2aac-4326-8480-d53e12fc4d18",
+      "name": "满巍明",
+      "aliases": []
+    },
+    {
+      "id": "ab9f548d-8388-4d75-903a-e08e05a70751",
+      "name": "金洪兴",
+      "aliases": ["金洪兴蟹黄面"]
+    },
+    {
+      "id": "88358de7-4458-4ed6-a644-e0dea745b51d",
+      "name": "沪上蒸嗨",
+      "aliases": []
+    },
+    {
+      "id": "10e473bf-7ddb-407a-ab07-826f2bcecff5",
+      "name": "赵记羊肉馆",
+      "aliases": []
+    },
+    {
+      "id": "fd65f369-3d13-400a-a758-a3cead4c1af7",
+      "name": "知鱼之味",
+      "aliases": []
+    },
+    {
+      "id": "ba2c9244-cac8-4143-a5bd-0dddbe8e36b8",
+      "name": "間道面",
+      "aliases": []
+    },
+    {
+      "id": "5de0b05b-fc45-4467-871a-1771a9532a8b",
+      "name": "楚汉传奇",
+      "aliases": []
+    },
+    {
+      "id": "6222dc76-8350-4ae9-99f1-7d5989672716",
+      "name": "粤状元",
+      "aliases": []
+    },
+    {
+      "id": "e33241cf-ee01-46dc-9e99-fccac4314136",
+      "name": "Gavo巧克力",
+      "aliases": []
+    },
+    {
+      "id": "ec0b3e54-14c0-4256-ad68-c1e4a3bf3f63",
+      "name": "Lavazza",
+      "aliases": ["拉瓦萨咖啡"]
+    },
+    {
+      "id": "2a9088f3-5dc0-464b-a5fc-4d1aaf3dbc31",
+      "name": "黄油&渔",
+      "aliases": []
+    },
+    {
+      "id": "d2b059f3-825e-420e-8d9f-1e36ca7a1c6c",
+      "name": "瑞幸咖啡",
+      "aliases": ["瑞幸咖啡 LUCKIN COFFEE"]
+    },
+    {
+      "id": "8b85a77c-e6fe-448e-adf8-8dbef593361e",
+      "name": "贴芯贴忆",
+      "aliases": []
+    },
+    {
+      "id": "b20a8703-7b62-4e4a-9932-fbdb678295d4",
+      "name": "火辣关爷",
+      "aliases": []
+    },
+    {
+      "id": "3ac85655-2b07-4e28-98bf-ad52a1e96a42",
+      "name": "悦湘遇",
+      "aliases": []
+    },
+    {
+      "id": "5760d87e-9c84-45d0-be06-9d8de58807c4",
+      "name": "平成屋",
+      "aliases": []
+    },
+    {
+      "id": "5d1b79b6-66b6-4c46-a5ad-b1f4ef68a849",
+      "name": "蔡澜点心",
+      "aliases": []
+    },
+    {
+      "id": "2efe662c-2e09-4238-8735-fb2c40c788e1",
+      "name": "佬鲜纪",
+      "aliases": []
+    },
+    {
+      "id": "2d71193b-cc69-40da-88ed-826d710fa25b",
+      "name": "北海宴",
+      "aliases": ["北海宴.渔哥"]
+    }
+  ]
+}

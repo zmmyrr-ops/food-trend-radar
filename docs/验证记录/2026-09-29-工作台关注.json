@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-09-29T06:08:59.214Z",
+  "tests": 145,
+  "browser_verified": ["热度券关注", "已关注筛选", "刷新后保留", "取消关注"],
+  "test_watch_removed": true,
+  "worker_active": true,
+  "pause_reason": null
+}

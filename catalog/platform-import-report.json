@@ -1,0 +1,223 @@
+{
+  "created": 43,
+  "existing": 0,
+  "reviewed": 0,
+  "evidence": 43,
+  "records": [
+    {
+      "name": "椿风",
+      "id": "ad7272b6-ccfc-464d-a441-dbd0bd6280ff",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "巴黎贝甜",
+      "id": "13973c5f-432d-48cd-9b98-538acb439fe5",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "沪上阿姨",
+      "id": "a7900d69-baa0-45d7-93f6-47d6588d4e26",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "茉莉奶白",
+      "id": "a40af26c-2248-4fd7-832f-dd02a56fefc2",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "必胜客",
+      "id": "dfd14655-7f0b-4b9e-92d9-d7c578315951",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "达美乐比萨",
+      "id": "eef3891d-8979-40db-a97e-56a1760765aa",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "奈雪的茶",
+      "id": "96c66fba-84d1-4669-b994-d79d725a72a5",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "蜜雪冰城",
+      "id": "598ee414-7100-4951-aed2-06c8b2bb6288",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "茶百道",
+      "id": "184c80d2-949b-4977-b5f9-d2bd46f8d10f",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "肯德基",
+      "id": "7399442b-801f-41f4-adf0-3d2cad0d8891",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "7分甜",
+      "id": "45c82494-3252-4fde-84c1-e43fc9fd541e",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "1点点",
+      "id": "417f8d63-4f12-4d7f-8240-34b90f29b320",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Shake Shack",
+      "id": "9b091b0c-5d6e-4743-b4c8-c0decc99c71b",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "塔可钟",
+      "id": "75907def-bd95-46da-8778-679c2ff0c539",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "鲍师傅糕点",
+      "id": "cb68f3bc-d129-44fe-b038-ceb157e5d33b",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "詹记桃酥",
+      "id": "a350cae5-ba89-4e39-acce-0b63d9f2f179",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "老香斋",
+      "id": "c035f144-1261-488b-bd2c-f570b13a158e",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "老娘舅",
+      "id": "b2abfb8a-50d3-4e57-b059-83cf41f23eb3",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "老乡鸡",
+      "id": "a93c37c9-65eb-4787-97c9-9eb20817f471",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "小杨生煎",
+      "id": "00652899-aee0-4e0c-a79e-f903ddc5a618",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "面包新语",
+      "id": "3f3758bd-4409-4e42-b88a-6505856add3b",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "多乐之日",
+      "id": "487fb767-1539-4c4b-9061-94e84bdbadb1",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "85度C",
+      "id": "1b82f1f8-71d5-4e83-9866-9bc5a692dc2d",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "皮爷咖啡",
+      "id": "065f11cc-38d2-4f13-858f-6ce3f0331426",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "太二酸菜鱼",
+      "id": "639a8756-49b8-4b14-8a2f-a6452163b4d6",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "库迪咖啡",
+      "id": "e857e961-95eb-49c8-b1b7-e965feaab4ff",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "Tims天好咖啡",
+      "id": "bfa68a08-8be4-4ca0-97a1-d40665fe6383",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "巴奴毛肚火锅",
+      "id": "6e99425f-6e16-4247-9e22-4e0a62fbbb66",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "泸溪河",
+      "id": "2d7f8d79-f3ab-4423-bc50-169944248256",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "和府捞面",
+      "id": "e40f3545-5a0f-4f0a-8169-fa0e22ef5406",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "马记永",
+      "id": "b994b424-0220-48ee-869d-17e9e1813cef",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "紫燕百味鸡",
+      "id": "378ecaa7-b2e0-4e7d-b413-3142cc39166a",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "绝味鸭脖",
+      "id": "1d87a7ef-49d1-45f8-9db3-ea8559f5f3b4",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "绿茶餐厅",
+      "id": "a14ffec1-6804-497a-ac65-cf2e54f171f5",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "唐宫茶点",
+      "id": "73d6c443-0f73-4e04-9430-74b64414259d",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "西贝莜面村",
+      "id": "d375b35d-36ce-4258-9bce-af116a42e403",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "外婆家",
+      "id": "d4116281-7ea5-444c-9c17-ee542f869c47",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "吉祥馄饨",
+      "id": "8f44f440-54d9-4abe-adca-a5ef081ad4f7",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "滨寿司",
+      "id": "08bb024e-2990-44ec-82ac-5b4b987b4d94",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "DQ冰雪皇后",
+      "id": "0be5fe1f-37b1-425a-8362-713147daea59",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "哈根达斯",
+      "id": "7376f066-316f-4b46-a473-aa61d3d13274",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "陈香贵",
+      "id": "3dcf1e06-cab2-4920-9637-1d4a0d504594",
+      "research_status": "historical_evidence_only"
+    },
+    {
+      "name": "铭门盛宴",
+      "id": "65b5148c-6e80-4c4e-a568-183ce914eff9",
+      "research_status": "historical_evidence_only"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "checked_at": "2026-09-29T06:01:35.293Z",
+  "tests": 144,
+  "runs": [
+    {
+      "id": "84ad115e-834c-4ffd-a85b-0cff24b85ff6",
+      "slot": "2026-09-29T12:00:00+08:00",
+      "status": "running",
+      "started_at": "2026-09-29T04:07:11.390Z",
+      "finished_at": null,
+      "total": 308,
+      "completed": 9
+    },
+    {
+      "id": "09f20b9b-390d-4077-8e2d-f05f83d4389c",
+      "slot": "2026-09-29T00:00:00+08:00",
+      "status": "partial",
+      "started_at": "2026-09-28T16:00:20.024Z",
+      "finished_at": "2026-09-29T06:01:16.312Z",
+      "total": 308,
+      "completed": 307
+    }
+  ],
+  "status": {
+    "pause_reason": null,
+    "worker_active": true,
+    "concurrency": 1
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "verified_at": "2026-09-29T08:40:20.920154+00:00",
+  "active_pool_matches_qualified_manifest": true,
+  "qualified_brands": 492,
+  "qualification_evidence_checked": 515,
+  "history_total": 1290,
+  "disabled_records": 798,
+  "collection_complete": false,
+  "pending_categories": 35,
+  "external_requests_during_verification": 0
+}

@@ -1,0 +1,143 @@
+{
+  "brands": [
+    {
+      "name": "牛New寿喜烧",
+      "aliases": ["牛New", "牛NEW", "牛new寿喜烧"],
+      "category": "火锅烧烤",
+      "keywords": [
+        "牛New寿喜烧",
+        "牛New",
+        "牛NEW",
+        "牛new寿喜烧",
+        "牛New寿喜烧 上海",
+        "牛New寿喜烧 新品"
+      ],
+      "region_code": "310000",
+      "shanghai_evidence_url": "https://www.amap.com/place/B0HURS3HZF",
+      "research_status": "historical_evidence_only",
+      "category_note": "寿喜烧/自助餐品类补漏",
+      "review_note": "公开检索中的上海门店资料；索引可能滞后，当前营业、团购与热度未实时核验。",
+      "evidence": [
+        {
+          "source_id": "sukiyaki_public_index",
+          "source_name": "牛New寿喜烧(闵行龙湖天街店)",
+          "url": "https://www.amap.com/place/B0HURS3HZF",
+          "mall_or_address": "上海市闵行区剑川路1000号龙湖上海闵行天街5楼17号商铺",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:28:33.032795+00:00",
+          "access_method": "public_search_index"
+        },
+        {
+          "source_id": "sukiyaki_public_index",
+          "source_name": "牛New寿喜烧(人民广场店)",
+          "url": "https://gs.ctrip.com/html5/you/foods/fooddetail/2/131511398.html",
+          "mall_or_address": "上海市；人民广场店",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:28:33.032795+00:00",
+          "access_method": "public_search_index"
+        }
+      ]
+    },
+    {
+      "name": "一绪寿喜烧",
+      "aliases": ["一绪に寿喜烧放题", "一緒に寿喜烧放题"],
+      "category": "火锅烧烤",
+      "keywords": [
+        "一绪寿喜烧",
+        "一绪に寿喜烧放题",
+        "一緒に寿喜烧放题",
+        "一绪寿喜烧 上海",
+        "一绪寿喜烧 新品"
+      ],
+      "region_code": "310000",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l2FDkarWLcqOj9bK/photos",
+      "research_status": "historical_evidence_only",
+      "category_note": "寿喜烧/自助餐品类补漏",
+      "review_note": "公开检索中的上海门店资料；索引可能滞后，当前营业、团购与热度未实时核验。",
+      "evidence": [
+        {
+          "source_id": "sukiyaki_public_index",
+          "source_name": "一绪に寿喜烧放题(长泰广场店)",
+          "url": "https://www.dianping.com/shop/l2FDkarWLcqOj9bK/photos",
+          "mall_or_address": "上海市；长泰广场店",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:28:33.032795+00:00",
+          "access_method": "public_search_index"
+        }
+      ]
+    },
+    {
+      "name": "大牛寿喜烧",
+      "aliases": ["大牛寿喜烧·和牛放题"],
+      "category": "火锅烧烤",
+      "keywords": [
+        "大牛寿喜烧",
+        "大牛寿喜烧·和牛放题",
+        "大牛寿喜烧 上海",
+        "大牛寿喜烧 新品"
+      ],
+      "region_code": "310000",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k1Z6hriAJYpO98cW/photos",
+      "research_status": "historical_evidence_only",
+      "category_note": "寿喜烧/自助餐品类补漏",
+      "review_note": "公开检索中的上海门店资料；索引可能滞后，当前营业、团购与热度未实时核验。",
+      "evidence": [
+        {
+          "source_id": "sukiyaki_public_index",
+          "source_name": "大牛寿喜烧·和牛放题(嘉定宝龙店)",
+          "url": "https://www.dianping.com/shop/k1Z6hriAJYpO98cW/photos",
+          "mall_or_address": "上海市嘉定区；嘉定宝龙店",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:28:33.032795+00:00",
+          "access_method": "public_search_index"
+        }
+      ]
+    },
+    {
+      "name": "刃极日料自助",
+      "aliases": ["刃极日料自助·刺身和牛放题"],
+      "category": "其他餐饮",
+      "keywords": [
+        "刃极日料自助",
+        "刃极日料自助·刺身和牛放题",
+        "刃极日料自助 上海",
+        "刃极日料自助 新品"
+      ],
+      "region_code": "310000",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H9lAK5VS4KIoufi4/photos",
+      "research_status": "historical_evidence_only",
+      "category_note": "寿喜烧/自助餐品类补漏",
+      "review_note": "公开检索中的上海门店资料；索引可能滞后，当前营业、团购与热度未实时核验。",
+      "evidence": [
+        {
+          "source_id": "sukiyaki_public_index",
+          "source_name": "刃极日料自助·刺身和牛放题(近铁广场店)",
+          "url": "https://www.dianping.com/shop/H9lAK5VS4KIoufi4/photos",
+          "mall_or_address": "上海市；近铁广场店",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:28:33.032795+00:00",
+          "access_method": "public_search_index"
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "sukiyaki_public_index": {
+      "url": "https://www.amap.com/place/B0HURS3HZF",
+      "title": "上海寿喜烧与自助餐公开门店资料补漏",
+      "kind": "historical_guide",
+      "retrieved_at": "2026-09-20T12:28:33.032795+00:00",
+      "published_at": null
+    }
+  }
+}

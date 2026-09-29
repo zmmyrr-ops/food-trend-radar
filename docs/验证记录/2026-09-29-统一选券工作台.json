@@ -1,0 +1,157 @@
+[
+  {
+    "view": "all",
+    "total": 3141,
+    "ms": 1087,
+    "counts": {
+      "all": 3141,
+      "value_rising": 0,
+      "price_drop": 0,
+      "accelerating": 18,
+      "new": 0
+    },
+    "examples": [
+      {
+        "brand_id": "7399442b-801f-41f4-adf0-3d2cad0d8891",
+        "brand_name": "肯德基",
+        "product_id": "1877195769221124",
+        "title": "海岛菠菠烤鸡帕尼尼2件套· 肯德基早餐",
+        "observed_at": "2026-09-29T12:50:41.032+08:00",
+        "price_fen": 1690,
+        "previous_price_fen": null,
+        "saving_fen": null,
+        "reduction_rate": null,
+        "kind": "no_verified_change",
+        "change_reason": "当前没有可关联的优惠变化证据",
+        "speed": 289.12245235076983,
+        "acceleration": null,
+        "net_change": 5666,
+        "hours": 19.597232777777776,
+        "reason": "按平台整数展示计算月售净变化，不等于期间新增订单。",
+        "acceleration_reason": "至少需要三次连续可比快照。",
+        "content_comparison": "unknown",
+        "latest_sales": "月售 7182",
+        "previous_sales": "月售 1516"
+      },
+      {
+        "brand_id": "7399442b-801f-41f4-adf0-3d2cad0d8891",
+        "brand_name": "肯德基",
+        "product_id": "1744119082048551",
+        "title": "好长一串酥脆虾滑串(2串)",
+        "observed_at": "2026-09-29T12:50:45.844+08:00",
+        "price_fen": 1980,
+        "previous_price_fen": null,
+        "saving_fen": null,
+        "reduction_rate": null,
+        "kind": "no_verified_change",
+        "change_reason": "当前没有可关联的优惠变化证据",
+        "speed": 268.10063786729876,
+        "acceleration": null,
+        "net_change": 5254,
+        "hours": 19.59711861111111,
+        "reason": "按平台整数展示计算月售净变化，不等于期间新增订单。",
+        "acceleration_reason": "至少需要三次连续可比快照。",
+        "content_comparison": "same_returned_content",
+        "latest_sales": "月售 7428",
+        "previous_sales": "月售 2174"
+      }
+    ]
+  },
+  {
+    "view": "value_rising",
+    "total": 0,
+    "ms": 1047,
+    "counts": {
+      "all": 3141,
+      "value_rising": 0,
+      "price_drop": 0,
+      "accelerating": 18,
+      "new": 0
+    },
+    "examples": []
+  },
+  {
+    "view": "price_drop",
+    "total": 0,
+    "ms": 1162,
+    "counts": {
+      "all": 3141,
+      "value_rising": 0,
+      "price_drop": 0,
+      "accelerating": 18,
+      "new": 0
+    },
+    "examples": []
+  },
+  {
+    "view": "accelerating",
+    "total": 18,
+    "ms": 1030,
+    "counts": {
+      "all": 3141,
+      "value_rising": 0,
+      "price_drop": 0,
+      "accelerating": 18,
+      "new": 0
+    },
+    "examples": [
+      {
+        "brand_id": "526f7a89-af7d-422c-8248-fb4b4f24cd51",
+        "brand_name": "幻师",
+        "product_id": "1876269658643512",
+        "title": "焕新经典2-3人餐",
+        "observed_at": "2026-09-29T11:27:09.628+08:00",
+        "price_fen": 29800,
+        "previous_price_fen": null,
+        "saving_fen": null,
+        "reduction_rate": null,
+        "kind": "no_verified_change",
+        "change_reason": "当前没有可关联的优惠变化证据",
+        "speed": 10.429593569706217,
+        "acceleration": 0.15089508212559916,
+        "net_change": 196,
+        "hours": 18.79267861111111,
+        "reason": "按平台整数展示计算月售净变化，不等于期间新增订单。",
+        "acceleration_reason": "两段连续窗口可比较。",
+        "content_comparison": "unknown",
+        "latest_sales": "月售 6323",
+        "previous_sales": "月售 6127"
+      },
+      {
+        "brand_id": "526f7a89-af7d-422c-8248-fb4b4f24cd51",
+        "brand_name": "幻师",
+        "product_id": "1827858207679514",
+        "title": "【畅饮】经典酒单单人3小时畅饮",
+        "observed_at": "2026-09-29T11:26:33.736+08:00",
+        "price_fen": 9800,
+        "previous_price_fen": null,
+        "saving_fen": null,
+        "reduction_rate": null,
+        "kind": "no_verified_change",
+        "change_reason": "当前没有可关联的优惠变化证据",
+        "speed": 7.027485661755343,
+        "acceleration": 0.6098356293280951,
+        "net_change": 132,
+        "hours": 18.783389444444445,
+        "reason": "按平台整数展示计算月售净变化，不等于期间新增订单。",
+        "acceleration_reason": "两段连续窗口可比较。",
+        "content_comparison": "unknown",
+        "latest_sales": "月售 984",
+        "previous_sales": "月售 852"
+      }
+    ]
+  },
+  {
+    "view": "new",
+    "total": 0,
+    "ms": 1248,
+    "counts": {
+      "all": 3141,
+      "value_rising": 0,
+      "price_drop": 0,
+      "accelerating": 18,
+      "new": 0
+    },
+    "examples": []
+  }
+]

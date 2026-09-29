@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-09-29T02:58:48.497Z",
+  "tests": {
+    "passed": 113,
+    "failed": 0
+  },
+  "coverage": {
+    "total": 3100,
+    "measured": 787,
+    "rising": 294,
+    "accelerating": 0,
+    "baseline_ready": 0,
+    "unknown_reasons": {
+      "券名或套餐描述已变化，月售统计对象连续性待核验。": 297,
+      "采样间隔须为 1—36 小时；过密、倒序或断档不比较。": 1332,
+      "中间完整扫描未见此券，不能跨缺失窗口比较。": 541,
+      "销量为万、加号等模糊展示或缺失，无法计算精确净增速度。": 143
+    }
+  },
+  "heat_api_ms": 331,
+  "rank_versions": ["V4.1.sales-evidence"],
+  "concurrency": 1,
+  "interval_ms": [1000, 2000],
+  "enabled": true,
+  "pause_reason": null
+}

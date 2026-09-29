@@ -1,0 +1,2199 @@
+{
+  "batch": "2026-09-29-multi-channel",
+  "observed_at": "2026-09-29T07:41:02.838+00:00",
+  "baseline_total": 309,
+  "baseline_active": 308,
+  "policy": "当前目录与2026年具体门店报道可作采集候选；只有旧资料暂不启用。资料核验不等于实时营业或团购可用。",
+  "sources": {
+    "breakfast": {
+      "title": "2024年上海市早餐工程示范点名单",
+      "url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+      "channel": "上海市政府/市商务委",
+      "published_at": "2024-11-06"
+    },
+    "putuo26": {
+      "title": "普陀2026大众点评必吃榜上榜餐厅",
+      "url": "https://www.shanghai.gov.cn/nw17239/20260707/091547dc74674cce8b7c7d185594dffe.html",
+      "channel": "上海市政府/普陀区",
+      "published_at": "2026-07-07"
+    },
+    "pudong25": {
+      "title": "浦东25家餐厅上榜2025大众点评必吃榜",
+      "url": "https://www.shanghai.gov.cn/nw17239/20250701/faf0059476f643b3acc7862eaf7c3019.html",
+      "channel": "上海市政府/浦东新区",
+      "published_at": "2025-06-27"
+    },
+    "xuhui25": {
+      "title": "徐汇28家餐厅上榜2025大众点评必吃榜",
+      "url": "https://www.shanghai.gov.cn/nw17239/20250710/5d7019a9f8b74eecb74d7a1e0ef5d6ca.html",
+      "channel": "上海市政府/徐汇区",
+      "published_at": "2025-07-10"
+    },
+    "tangyuan26": {
+      "title": "黄浦元宵美食指南",
+      "url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+      "channel": "上海市政府英文网",
+      "published_at": "2026-03-03"
+    },
+    "tangyuan25": {
+      "title": "上海汤圆美食指南",
+      "url": "https://english.shanghai.gov.cn/en-WhattoEat/20250211/9d2c0fe07f904c6c9f94f8320c501f88.html",
+      "channel": "上海市政府英文网",
+      "published_at": "2025-02-11"
+    },
+    "zongzi24": {
+      "title": "上海粽子品牌指南",
+      "url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+      "channel": "上海市政府英文网",
+      "published_at": "2024-05-29"
+    },
+    "directory_1": {
+      "title": "捞王官网上海门店",
+      "url": "https://www.wanthotpot.com/product/7/",
+      "channel": "品牌官网",
+      "published_at": null
+    },
+    "directory_2": {
+      "title": "寿司郎上海南翔印象城MEGA店",
+      "url": "https://ditu.amap.com/place/B0LKSMHN4C",
+      "channel": "高德地图",
+      "published_at": null
+    },
+    "directory_3": {
+      "title": "吉野家集团门店目录",
+      "url": "https://stores.yoshinoya-holdings.com/yoshinoya-holdings/spot/lists?vw=eNpLzsjMSwQABgwCBA%3D%3D",
+      "channel": "品牌官网",
+      "published_at": null
+    },
+    "directory_4": {
+      "title": "爷爷不泡茶浦东机场店",
+      "url": "https://www.shanghaiairport.com/pudong/List/info_itemid_8220.html",
+      "channel": "上海机场官网",
+      "published_at": null
+    },
+    "directory_5": {
+      "title": "湊湊火锅·茶憩",
+      "url": "https://www.shanghaidisneyresort.com/zh-cn/experience/restaurant/coucou",
+      "channel": "上海迪士尼官网",
+      "published_at": null
+    },
+    "directory_6": {
+      "title": "袁记云饺飞虹路店",
+      "url": "https://www.amap.com/place/B0KGBKXF4K",
+      "channel": "高德地图",
+      "published_at": null
+    },
+    "directory_7": {
+      "title": "杨国福麻辣烫南六公路店",
+      "url": "https://maps.apple.com/place?auid=1118678843544821&lsp=57879",
+      "channel": "Apple地图/大众点评",
+      "published_at": null
+    },
+    "directory_8": {
+      "title": "塔斯汀上海长宁番禺路店",
+      "url": "https://maps.apple.com/place?_provider=57879&place-id=H2710I3F97753A224A1",
+      "channel": "Apple地图/大众点评",
+      "published_at": null
+    },
+    "directory_9": {
+      "title": "德克士东建路店",
+      "url": "https://maps.apple.com/place?auid=1118708955052599&lsp=57879",
+      "channel": "Apple地图",
+      "published_at": null
+    },
+    "directory_10": {
+      "title": "华莱士上南路门店",
+      "url": "https://sh.bendibao.com/wangdian/dian/4796857.shtm",
+      "channel": "上海本地宝",
+      "published_at": null
+    },
+    "directory_11": {
+      "title": "半天妖烤鱼宝山天街店",
+      "url": "https://maps.apple.com/place?auid=1118756631843523&lsp=57879",
+      "channel": "Apple地图/大众点评",
+      "published_at": null
+    },
+    "directory_12": {
+      "title": "呷哺呷哺百联世纪购物中心店",
+      "url": "https://www.amap.com/place/B0KGMHR7IF",
+      "channel": "高德地图",
+      "published_at": null
+    },
+    "directory_13": {
+      "title": "朱光玉火锅馆长寿路店",
+      "url": "https://ditu.amap.com/place/B0JRDU3W2Y",
+      "channel": "高德地图",
+      "published_at": null
+    },
+    "directory_14": {
+      "title": "探鱼官网上海空间展示",
+      "url": "https://www.tanyuchina.com/",
+      "channel": "品牌官网",
+      "published_at": null
+    },
+    "directory_15": {
+      "title": "莉莲蛋挞人民广场站店",
+      "url": "https://www.amap.com/place/B0FFF4WBBD",
+      "channel": "高德地图",
+      "published_at": null
+    },
+    "directory_16": {
+      "title": "蓝瓶咖啡中国门店目录",
+      "url": "https://www.bluebottlecoffee.com.cn/model/stores.html",
+      "channel": "品牌官网",
+      "published_at": null
+    },
+    "directory_17": {
+      "title": "Arabica上海门店目录",
+      "url": "https://arabicacoffee.hk/locations/locations%26loc%3Dmainland",
+      "channel": "品牌官网",
+      "published_at": null
+    },
+    "directory_18": {
+      "title": "味千拉面又一城店",
+      "url": "https://maps.apple.com/place?_provider=57879&place-id=H2710I3F80D8CDB2216",
+      "channel": "Apple地图/大众点评",
+      "published_at": null
+    },
+    "directory_19": {
+      "title": "红宝石望园南路店",
+      "url": "https://maps.apple.com/place?_provider=57879&place-id=H2710I3F9452215A592",
+      "channel": "Apple地图/大众点评",
+      "published_at": null
+    },
+    "directory_20": {
+      "title": "遇见小面湟普汇店",
+      "url": "https://www.amap.com/place/B0J3A7RVT1",
+      "channel": "高德地图",
+      "published_at": null
+    },
+    "directory_21": {
+      "title": "肥汁米兰浦东机场店",
+      "url": "https://www.avinex.com/pudong/List/info_itemid_7755.html",
+      "channel": "上海机场官网",
+      "published_at": null
+    },
+    "directory_22": {
+      "title": "陶陶居上海门店目录",
+      "url": "https://www.taotaoju1880.com/zoujintaotaoju/taotaojumendian?diyname=taotaojumendian&filter=&id=24&orderby=weigh&orderway=desc&page=5",
+      "channel": "品牌官网",
+      "published_at": null
+    },
+    "directory_23": {
+      "title": "阿嬷手作迪士尼小镇店",
+      "url": "https://www.shanghaidisneyresort.com/zh-cn/experience/restaurant/ah-ma",
+      "channel": "上海迪士尼官网",
+      "published_at": null
+    },
+    "directory_24": {
+      "title": "果呀呀静安大悦城店",
+      "url": "https://ditu.amap.com/place/B0KKXD4Z3J",
+      "channel": "高德地图",
+      "published_at": null
+    },
+    "directory_25": {
+      "title": "真功夫/满小西浦东机场店",
+      "url": "https://www.avinex.com/pudong/List/info_itemid_7781.html",
+      "channel": "上海机场官网",
+      "published_at": null
+    },
+    "directory_26": {
+      "title": "悸动烧仙草四新街店",
+      "url": "https://www.amap.com/place/B0FFIGA36J",
+      "channel": "高德地图",
+      "published_at": null
+    },
+    "directory_27": {
+      "title": "正新鸡排包头路店",
+      "url": "https://maps.apple.com/place?auid=1118748731443600&lsp=57879",
+      "channel": "Apple地图/大众点评",
+      "published_at": null
+    },
+    "directory_28": {
+      "title": "一鸣真鲜奶吧上海适用门店",
+      "url": "https://m.dongfangfuli.com/birthday/goods/detail/273?city=145",
+      "channel": "东方福利网券商户目录",
+      "published_at": null
+    },
+    "directory_29": {
+      "title": "棒约翰上海外高桥店",
+      "url": "https://www.amap.com/place/B0FFGL0R9W",
+      "channel": "高德地图",
+      "published_at": null
+    },
+    "directory_30": {
+      "title": "蓝蛙官网上海迪士尼小镇门店介绍",
+      "url": "https://www.bluefrog.com.cn/about/",
+      "channel": "品牌官网",
+      "published_at": null
+    },
+    "lsc_bank": {
+      "title": "活动门店目录：老盛昌",
+      "url": "https://ccc.spdb.com.cn/miniSite/2248/358d22a/list.shtml",
+      "channel": "浦发银行商户目录",
+      "published_at": null
+    }
+  },
+  "brands": [
+    {
+      "name": "大富贵",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["大富贵", "大富贵 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "breakfast",
+          "source_title": "2024年上海市早餐工程示范点名单",
+          "source_name": "上海市政府/市商务委",
+          "url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+          "location": "上海市徐汇区漕东支路1号-8临、-9临",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-11-06",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "鸿瑞兴",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["鸿瑞兴", "鸿瑞兴 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "breakfast",
+          "source_title": "2024年上海市早餐工程示范点名单",
+          "source_name": "上海市政府/市商务委",
+          "url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+          "location": "上海市徐汇区中山南二路1800号地下1层110",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-11-06",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "老盛昌",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["老盛昌", "老盛昌 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://ccc.spdb.com.cn/miniSite/2248/358d22a/list.shtml",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "政府历史资料与银行公开商户目录交叉确认上海线索；银行页面未注明更新时间，不代表优惠仍有效。",
+      "evidence": [
+        {
+          "source_id": "breakfast",
+          "source_title": "2024年上海市早餐工程示范点名单",
+          "source_name": "上海市政府/市商务委",
+          "url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+          "location": "上海市宝山区电台路580号、582号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-11-06",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        },
+        {
+          "source_id": "lsc_bank",
+          "source_title": "活动门店目录：老盛昌",
+          "source_name": "浦发银行商户目录",
+          "url": "https://ccc.spdb.com.cn/miniSite/2248/358d22a/list.shtml",
+          "location": "上海市宝山区场联路228号（环镇店）",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "政府历史资料与银行公开商户目录交叉确认上海线索；银行页面未注明更新时间，不代表优惠仍有效。"
+        }
+      ]
+    },
+    {
+      "name": "老盛兴",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["老盛兴", "老盛兴 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "breakfast",
+          "source_title": "2024年上海市早餐工程示范点名单",
+          "source_name": "上海市政府/市商务委",
+          "url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+          "location": "上海市松江区仓华路623号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-11-06",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "笼百味",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["笼百味", "笼百味 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "breakfast",
+          "source_title": "2024年上海市早餐工程示范点名单",
+          "source_name": "上海市政府/市商务委",
+          "url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+          "location": "上海市普陀区同普路428号2幢111-112",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-11-06",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "觅江南",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["觅江南", "觅江南 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "breakfast",
+          "source_title": "2024年上海市早餐工程示范点名单",
+          "source_name": "上海市政府/市商务委",
+          "url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+          "location": "上海市浦东新区华丰路6号101-1",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-11-06",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "清美味道",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["清美味道", "清美味道 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "breakfast",
+          "source_title": "2024年上海市早餐工程示范点名单",
+          "source_name": "上海市政府/市商务委",
+          "url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+          "location": "上海市奉贤区八字村303号2室",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-11-06",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "新里上海点心",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["新里上海点心", "新里上海点心 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "breakfast",
+          "source_title": "2024年上海市早餐工程示范点名单",
+          "source_name": "上海市政府/市商务委",
+          "url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+          "location": "上海市宝山区杨泰路99弄440号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-11-06",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "新迎园",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["新迎园", "新迎园 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "breakfast",
+          "source_title": "2024年上海市早餐工程示范点名单",
+          "source_name": "上海市政府/市商务委",
+          "url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+          "location": "上海市嘉定区洪德路111号1层C/D",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-11-06",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "永和大王",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["永和大王", "永和大王 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "breakfast",
+          "source_title": "2024年上海市早餐工程示范点名单",
+          "source_name": "上海市政府/市商务委",
+          "url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+          "location": "上海市浦东新区川沙路5087号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-11-06",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "Wagas",
+      "category": "其他餐饮",
+      "aliases": ["沃歌斯"],
+      "keywords": ["Wagas", "沃歌斯", "Wagas 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "breakfast",
+          "source_title": "2024年上海市早餐工程示范点名单",
+          "source_name": "上海市政府/市商务委",
+          "url": "https://www.shanghai.gov.cn/gwk/search/content/122b0c3ef31d47d698531a7fb342129d",
+          "location": "上海市浦东新区永泰路1058弄1-26号1F110-1-2",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-11-06",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "韩渔面馆",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["韩渔面馆", "韩渔面馆 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw17239/20260707/091547dc74674cce8b7c7d185594dffe.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "2026年上海官方转载榜单有具体门店；作为检索候选启用，当前营业与团购待采集核验。",
+      "evidence": [
+        {
+          "source_id": "putuo26",
+          "source_title": "普陀2026大众点评必吃榜上榜餐厅",
+          "source_name": "上海市政府/普陀区",
+          "url": "https://www.shanghai.gov.cn/nw17239/20260707/091547dc74674cce8b7c7d185594dffe.html",
+          "location": "上海市普陀区真北路1058号红星美凯龙南馆1楼A8005",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-07-07",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "红子鸡凤凰楼",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["红子鸡凤凰楼", "红子鸡凤凰楼 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw17239/20260707/091547dc74674cce8b7c7d185594dffe.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "2026年上海官方转载榜单有具体门店；作为检索候选启用，当前营业与团购待采集核验。",
+      "evidence": [
+        {
+          "source_id": "putuo26",
+          "source_title": "普陀2026大众点评必吃榜上榜餐厅",
+          "source_name": "上海市政府/普陀区",
+          "url": "https://www.shanghai.gov.cn/nw17239/20260707/091547dc74674cce8b7c7d185594dffe.html",
+          "location": "上海市普陀区澳门路188号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-07-07",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "伊祥·敦煌楼",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["伊祥·敦煌楼", "伊祥·敦煌楼 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw17239/20260707/091547dc74674cce8b7c7d185594dffe.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "2026年上海官方转载榜单有具体门店；作为检索候选启用，当前营业与团购待采集核验。",
+      "evidence": [
+        {
+          "source_id": "putuo26",
+          "source_title": "普陀2026大众点评必吃榜上榜餐厅",
+          "source_name": "上海市政府/普陀区",
+          "url": "https://www.shanghai.gov.cn/nw17239/20260707/091547dc74674cce8b7c7d185594dffe.html",
+          "location": "上海市普陀区中山北路2150号-8",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-07-07",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "金湘隆",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["金湘隆", "金湘隆 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw17239/20260707/091547dc74674cce8b7c7d185594dffe.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "2026年上海官方转载榜单有具体门店；作为检索候选启用，当前营业与团购待采集核验。",
+      "evidence": [
+        {
+          "source_id": "putuo26",
+          "source_title": "普陀2026大众点评必吃榜上榜餐厅",
+          "source_name": "上海市政府/普陀区",
+          "url": "https://www.shanghai.gov.cn/nw17239/20260707/091547dc74674cce8b7c7d185594dffe.html",
+          "location": "上海市普陀区金沙江路1830号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-07-07",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "宁夏印象·盐池滩羊肉体验店",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": [
+        "宁夏印象·盐池滩羊肉体验店",
+        "宁夏印象·盐池滩羊肉体验店 上海"
+      ],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw17239/20260707/091547dc74674cce8b7c7d185594dffe.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "2026年上海官方转载榜单有具体门店；作为检索候选启用，当前营业与团购待采集核验。",
+      "evidence": [
+        {
+          "source_id": "putuo26",
+          "source_title": "普陀2026大众点评必吃榜上榜餐厅",
+          "source_name": "上海市政府/普陀区",
+          "url": "https://www.shanghai.gov.cn/nw17239/20260707/091547dc74674cce8b7c7d185594dffe.html",
+          "location": "上海市普陀区江宁路1580号恺悦大厦1层102",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-07-07",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "张记天增面馆",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["张记天增面馆", "张记天增面馆 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw17239/20250701/faf0059476f643b3acc7862eaf7c3019.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "pudong25",
+          "source_title": "浦东25家餐厅上榜2025大众点评必吃榜",
+          "source_name": "上海市政府/浦东新区",
+          "url": "https://www.shanghai.gov.cn/nw17239/20250701/faf0059476f643b3acc7862eaf7c3019.html",
+          "location": "上海市浦东新区三林",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2025-06-27",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "小辫子羊肉馆",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["小辫子羊肉馆", "小辫子羊肉馆 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw17239/20250701/faf0059476f643b3acc7862eaf7c3019.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "pudong25",
+          "source_title": "浦东25家餐厅上榜2025大众点评必吃榜",
+          "source_name": "上海市政府/浦东新区",
+          "url": "https://www.shanghai.gov.cn/nw17239/20250701/faf0059476f643b3acc7862eaf7c3019.html",
+          "location": "上海市浦东新区周东路",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2025-06-27",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "盈田盈粥庄",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["盈田盈粥庄", "盈田盈粥庄 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw17239/20250701/faf0059476f643b3acc7862eaf7c3019.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "pudong25",
+          "source_title": "浦东25家餐厅上榜2025大众点评必吃榜",
+          "source_name": "上海市政府/浦东新区",
+          "url": "https://www.shanghai.gov.cn/nw17239/20250701/faf0059476f643b3acc7862eaf7c3019.html",
+          "location": "上海市浦东新区上南路",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2025-06-27",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "张师傅广东肠粉",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["张师傅广东肠粉", "张师傅广东肠粉 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw17239/20250701/faf0059476f643b3acc7862eaf7c3019.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "pudong25",
+          "source_title": "浦东25家餐厅上榜2025大众点评必吃榜",
+          "source_name": "上海市政府/浦东新区",
+          "url": "https://www.shanghai.gov.cn/nw17239/20250701/faf0059476f643b3acc7862eaf7c3019.html",
+          "location": "上海市浦东新区福山路",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2025-06-27",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "菰城宴",
+      "category": "中式快餐小吃",
+      "aliases": ["菰城宴·大锅红烧羊肉面"],
+      "keywords": ["菰城宴", "菰城宴·大锅红烧羊肉面", "菰城宴 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw17239/20250710/5d7019a9f8b74eecb74d7a1e0ef5d6ca.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "xuhui25",
+          "source_title": "徐汇28家餐厅上榜2025大众点评必吃榜",
+          "source_name": "上海市政府/徐汇区",
+          "url": "https://www.shanghai.gov.cn/nw17239/20250710/5d7019a9f8b74eecb74d7a1e0ef5d6ca.html",
+          "location": "上海市徐汇区斜土路",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2025-07-10",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "宁波汤团店",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["宁波汤团店", "宁波汤团店 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "2026年政府文旅指南列有上海门店；仅作为品牌检索候选，不表示已取得在售券。",
+      "evidence": [
+        {
+          "source_id": "tangyuan26",
+          "source_title": "黄浦元宵美食指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+          "location": "上海市黄浦区旧校场路122号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-03-03",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "盛兴汤团",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["盛兴汤团", "盛兴汤团 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "2026年政府文旅指南列有上海门店；仅作为品牌检索候选，不表示已取得在售券。",
+      "evidence": [
+        {
+          "source_id": "tangyuan26",
+          "source_title": "黄浦元宵美食指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+          "location": "上海市黄浦区思南路8号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-03-03",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "光明邨",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["光明邨", "光明邨 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "2026年政府文旅指南列有上海门店；仅作为品牌检索候选，不表示已取得在售券。",
+      "evidence": [
+        {
+          "source_id": "tangyuan26",
+          "source_title": "黄浦元宵美食指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+          "location": "上海市黄浦区淮海中路588号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-03-03",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "王宝和",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["王宝和", "王宝和 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "2026年政府文旅指南列有上海门店；仅作为品牌检索候选，不表示已取得在售券。",
+      "evidence": [
+        {
+          "source_id": "tangyuan26",
+          "source_title": "黄浦元宵美食指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+          "location": "上海市黄浦区福州路603号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-03-03",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "沈大成",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["沈大成", "沈大成 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "2026年政府文旅指南列有上海门店；仅作为品牌检索候选，不表示已取得在售券。",
+      "evidence": [
+        {
+          "source_id": "tangyuan26",
+          "source_title": "黄浦元宵美食指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+          "location": "上海市黄浦区南京东路636号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-03-03",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "东泰祥",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["东泰祥", "东泰祥 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "2026年政府文旅指南列有上海门店；仅作为品牌检索候选，不表示已取得在售券。",
+      "evidence": [
+        {
+          "source_id": "tangyuan26",
+          "source_title": "黄浦元宵美食指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-SpecialtyFood/20260303/86881661dc8c47dcbd397ac3c24a1a1f.html",
+          "location": "上海市黄浦区重庆北路188号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2026-03-03",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "七宝老街汤团",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["七宝老街汤团", "七宝老街汤团 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-WhattoEat/20250211/9d2c0fe07f904c6c9f94f8320c501f88.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "tangyuan25",
+          "source_title": "上海汤圆美食指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-WhattoEat/20250211/9d2c0fe07f904c6c9f94f8320c501f88.html",
+          "location": "上海市闵行区七宝古镇南大街26号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2025-02-11",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "美新点心店",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["美新点心店", "美新点心店 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-WhattoEat/20250211/9d2c0fe07f904c6c9f94f8320c501f88.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "tangyuan25",
+          "source_title": "上海汤圆美食指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-WhattoEat/20250211/9d2c0fe07f904c6c9f94f8320c501f88.html",
+          "location": "上海市静安区陕西北路105号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2025-02-11",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "王家沙",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["王家沙", "王家沙 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-WhattoEat/20250211/9d2c0fe07f904c6c9f94f8320c501f88.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "tangyuan25",
+          "source_title": "上海汤圆美食指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-WhattoEat/20250211/9d2c0fe07f904c6c9f94f8320c501f88.html",
+          "location": "上海市静安区南京西路805号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2025-02-11",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "高行汤团",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["高行汤团", "高行汤团 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-WhattoEat/20250211/9d2c0fe07f904c6c9f94f8320c501f88.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "tangyuan25",
+          "source_title": "上海汤圆美食指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-WhattoEat/20250211/9d2c0fe07f904c6c9f94f8320c501f88.html",
+          "location": "上海市浦东新区金高路63号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2025-02-11",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "四新汤团",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["四新汤团", "四新汤团 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-WhattoEat/20250211/9d2c0fe07f904c6c9f94f8320c501f88.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "tangyuan25",
+          "source_title": "上海汤圆美食指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-WhattoEat/20250211/9d2c0fe07f904c6c9f94f8320c501f88.html",
+          "location": "上海市虹口区四川北路1908号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2025-02-11",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "五芳斋",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["五芳斋", "五芳斋 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "zongzi24",
+          "source_title": "上海粽子品牌指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+          "location": "上海市黄浦区陆家浜路1100号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-05-29",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "杏花楼",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["杏花楼", "杏花楼 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "zongzi24",
+          "source_title": "上海粽子品牌指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+          "location": "上海市长宁区长宁路1596号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-05-29",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "邵万生",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["邵万生", "邵万生 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "zongzi24",
+          "source_title": "上海粽子品牌指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+          "location": "上海市浦东新区长岛路1321号1楼",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-05-29",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "功德林",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["功德林", "功德林 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "zongzi24",
+          "source_title": "上海粽子品牌指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+          "location": "上海市徐汇区五原路303号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-05-29",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "龙华素斋",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["龙华素斋", "龙华素斋 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "zongzi24",
+          "source_title": "上海粽子品牌指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+          "location": "上海市徐汇区龙华路2787号然香楼",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-05-29",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "张小妹粽子",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["张小妹粽子", "张小妹粽子 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "zongzi24",
+          "source_title": "上海粽子品牌指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+          "location": "上海市松江区江川北路151号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-05-29",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "芦芳粽子王",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["芦芳粽子王", "芦芳粽子王 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "zongzi24",
+          "source_title": "上海粽子品牌指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+          "location": "上海市黄浦区复兴中路488号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-05-29",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "新雅粤菜馆",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["新雅粤菜馆", "新雅粤菜馆 上海"],
+      "region_code": "310000",
+      "active": false,
+      "shanghai_evidence_url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+      "research_status": "historical_evidence_only",
+      "coupon_status": "not_queried",
+      "note": "仅有历史上海经营资料；保留候选，暂不加入定时采集。",
+      "evidence": [
+        {
+          "source_id": "zongzi24",
+          "source_title": "上海粽子品牌指南",
+          "source_name": "上海市政府英文网",
+          "url": "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/20240529/c72a8144738d43e2a9bc3aaf3f0352d4.html",
+          "location": "上海市黄浦区南京东路719号",
+          "position": "",
+          "evidence_type": "historical_notice",
+          "published_at": "2024-05-29",
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "捞王",
+      "category": "火锅烧烤",
+      "aliases": ["捞王锅物料理"],
+      "keywords": ["捞王", "捞王锅物料理", "捞王 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.wanthotpot.com/product/7/",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_1",
+          "source_title": "捞王官网上海门店",
+          "source_name": "品牌官网",
+          "url": "https://www.wanthotpot.com/product/7/",
+          "location": "上海市闵行区吴中路1599号万象城L344",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "寿司郎",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["寿司郎", "寿司郎 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://ditu.amap.com/place/B0LKSMHN4C",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_2",
+          "source_title": "寿司郎上海南翔印象城MEGA店",
+          "source_name": "高德地图",
+          "url": "https://ditu.amap.com/place/B0LKSMHN4C",
+          "location": "上海市嘉定区南翔印象城MEGA六层",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "吉野家",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["吉野家", "吉野家 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://stores.yoshinoya-holdings.com/yoshinoya-holdings/spot/lists?vw=eNpLzsjMSwQABgwCBA%3D%3D",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_3",
+          "source_title": "吉野家集团门店目录",
+          "source_name": "品牌官网",
+          "url": "https://stores.yoshinoya-holdings.com/yoshinoya-holdings/spot/lists?vw=eNpLzsjMSwQABgwCBA%3D%3D",
+          "location": "上海市松江区沪松公路1501号商场JT114-2",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "爷爷不泡茶",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["爷爷不泡茶", "爷爷不泡茶 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.shanghaiairport.com/pudong/List/info_itemid_8220.html",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_4",
+          "source_title": "爷爷不泡茶浦东机场店",
+          "source_name": "上海机场官网",
+          "url": "https://www.shanghaiairport.com/pudong/List/info_itemid_8220.html",
+          "location": "上海市浦东机场T1到达公众区8号门附近1D-10",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "湊湊",
+      "category": "火锅烧烤",
+      "aliases": ["湊湊火锅·茶憩", "凑凑"],
+      "keywords": ["湊湊", "湊湊火锅·茶憩", "凑凑", "湊湊 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.shanghaidisneyresort.com/zh-cn/experience/restaurant/coucou",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_5",
+          "source_title": "湊湊火锅·茶憩",
+          "source_name": "上海迪士尼官网",
+          "url": "https://www.shanghaidisneyresort.com/zh-cn/experience/restaurant/coucou",
+          "location": "上海市浦东新区迪士尼小镇",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "袁记云饺",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["袁记云饺", "袁记云饺 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.amap.com/place/B0KGBKXF4K",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_6",
+          "source_title": "袁记云饺飞虹路店",
+          "source_name": "高德地图",
+          "url": "https://www.amap.com/place/B0KGBKXF4K",
+          "location": "上海市虹口区飞虹路366号申工公寓2号",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "杨国福麻辣烫",
+      "category": "中式快餐小吃",
+      "aliases": ["杨国福"],
+      "keywords": ["杨国福麻辣烫", "杨国福", "杨国福麻辣烫 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://maps.apple.com/place?auid=1118678843544821&lsp=57879",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_7",
+          "source_title": "杨国福麻辣烫南六公路店",
+          "source_name": "Apple地图/大众点评",
+          "url": "https://maps.apple.com/place?auid=1118678843544821&lsp=57879",
+          "location": "上海市浦东新区宣桥镇南六公路419号",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "塔斯汀",
+      "category": "西式快餐",
+      "aliases": ["塔斯汀中国汉堡"],
+      "keywords": ["塔斯汀", "塔斯汀中国汉堡", "塔斯汀 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://maps.apple.com/place?_provider=57879&place-id=H2710I3F97753A224A1",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_8",
+          "source_title": "塔斯汀上海长宁番禺路店",
+          "source_name": "Apple地图/大众点评",
+          "url": "https://maps.apple.com/place?_provider=57879&place-id=H2710I3F97753A224A1",
+          "location": "上海市长宁区番禺路220-1号",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "德克士",
+      "category": "西式快餐",
+      "aliases": ["Dicos"],
+      "keywords": ["德克士", "Dicos", "德克士 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://maps.apple.com/place?auid=1118708955052599&lsp=57879",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_9",
+          "source_title": "德克士东建路店",
+          "source_name": "Apple地图",
+          "url": "https://maps.apple.com/place?auid=1118708955052599&lsp=57879",
+          "location": "上海市浦东新区东建路297号",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "华莱士",
+      "category": "西式快餐",
+      "aliases": [],
+      "keywords": ["华莱士", "华莱士 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://sh.bendibao.com/wangdian/dian/4796857.shtm",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_10",
+          "source_title": "华莱士上南路门店",
+          "source_name": "上海本地宝",
+          "url": "https://sh.bendibao.com/wangdian/dian/4796857.shtm",
+          "location": "上海市浦东新区上南路1567号",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "半天妖烤鱼",
+      "category": "中餐及本地特色",
+      "aliases": ["半天妖"],
+      "keywords": ["半天妖烤鱼", "半天妖", "半天妖烤鱼 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://maps.apple.com/place?auid=1118756631843523&lsp=57879",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_11",
+          "source_title": "半天妖烤鱼宝山天街店",
+          "source_name": "Apple地图/大众点评",
+          "url": "https://maps.apple.com/place?auid=1118756631843523&lsp=57879",
+          "location": "上海市宝山区丹霞山路50弄1号4F-26b",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "呷哺呷哺",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["呷哺呷哺", "呷哺呷哺 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.amap.com/place/B0KGMHR7IF",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_12",
+          "source_title": "呷哺呷哺百联世纪购物中心店",
+          "source_name": "高德地图",
+          "url": "https://www.amap.com/place/B0KGMHR7IF",
+          "location": "上海市浦东新区世纪大道1217号百联世纪B2",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "朱光玉火锅馆",
+      "category": "火锅烧烤",
+      "aliases": ["朱光玉"],
+      "keywords": ["朱光玉火锅馆", "朱光玉", "朱光玉火锅馆 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://ditu.amap.com/place/B0JRDU3W2Y",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_13",
+          "source_title": "朱光玉火锅馆长寿路店",
+          "source_name": "高德地图",
+          "url": "https://ditu.amap.com/place/B0JRDU3W2Y",
+          "location": "上海市普陀区长寿路155号巴黎春天1F",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "探鱼",
+      "category": "中餐及本地特色",
+      "aliases": ["探鱼烤鱼"],
+      "keywords": ["探鱼", "探鱼烤鱼", "探鱼 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.tanyuchina.com/",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_14",
+          "source_title": "探鱼官网上海空间展示",
+          "source_name": "品牌官网",
+          "url": "https://www.tanyuchina.com/",
+          "location": "上海市上海门店空间展示；未公布具体街道",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "莉莲蛋挞",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["莉莲蛋挞", "莉莲蛋挞 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.amap.com/place/B0FFF4WBBD",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_15",
+          "source_title": "莉莲蛋挞人民广场站店",
+          "source_name": "高德地图",
+          "url": "https://www.amap.com/place/B0FFF4WBBD",
+          "location": "上海市黄浦区南京西路2-68号新世界城B1F-17",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "蓝瓶咖啡",
+      "category": "咖啡",
+      "aliases": ["Blue Bottle Coffee"],
+      "keywords": ["蓝瓶咖啡", "Blue Bottle Coffee", "蓝瓶咖啡 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.bluebottlecoffee.com.cn/model/stores.html",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_16",
+          "source_title": "蓝瓶咖啡中国门店目录",
+          "source_name": "品牌官网",
+          "url": "https://www.bluebottlecoffee.com.cn/model/stores.html",
+          "location": "上海市静安区长安路908号",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "% Arabica",
+      "category": "咖啡",
+      "aliases": ["Arabica"],
+      "keywords": ["% Arabica", "Arabica", "% Arabica 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://arabicacoffee.hk/locations/locations%26loc%3Dmainland",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_17",
+          "source_title": "Arabica上海门店目录",
+          "source_name": "品牌官网",
+          "url": "https://arabicacoffee.hk/locations/locations%26loc%3Dmainland",
+          "location": "上海市徐汇区武康路374号1楼112",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "味千拉面",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["味千拉面", "味千拉面 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://maps.apple.com/place?_provider=57879&place-id=H2710I3F80D8CDB2216",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_18",
+          "source_title": "味千拉面又一城店",
+          "source_name": "Apple地图/大众点评",
+          "url": "https://maps.apple.com/place?_provider=57879&place-id=H2710I3F80D8CDB2216",
+          "location": "上海市杨浦区淞沪路8号百联又一城7F14-16",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "红宝石",
+      "category": "烘焙甜品",
+      "aliases": ["红宝石蛋糕"],
+      "keywords": ["红宝石", "红宝石蛋糕", "红宝石 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://maps.apple.com/place?_provider=57879&place-id=H2710I3F9452215A592",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_19",
+          "source_title": "红宝石望园南路店",
+          "source_name": "Apple地图/大众点评",
+          "url": "https://maps.apple.com/place?_provider=57879&place-id=H2710I3F9452215A592",
+          "location": "上海市奉贤区望园南路；搜索索引未完整显示门牌",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "遇见小面",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["遇见小面", "遇见小面 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.amap.com/place/B0J3A7RVT1",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_20",
+          "source_title": "遇见小面湟普汇店",
+          "source_name": "高德地图",
+          "url": "https://www.amap.com/place/B0J3A7RVT1",
+          "location": "上海市静安区吴江路269号湟普汇一楼",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "肥汁米蘭",
+      "category": "中式快餐小吃",
+      "aliases": ["肥汁米兰"],
+      "keywords": ["肥汁米蘭", "肥汁米兰", "肥汁米蘭 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.avinex.com/pudong/List/info_itemid_7755.html",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_21",
+          "source_title": "肥汁米兰浦东机场店",
+          "source_name": "上海机场官网",
+          "url": "https://www.avinex.com/pudong/List/info_itemid_7755.html",
+          "location": "上海市浦东机场三纵三横欧洲街L1-6-1",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "陶陶居",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["陶陶居", "陶陶居 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.taotaoju1880.com/zoujintaotaoju/taotaojumendian?diyname=taotaojumendian&filter=&id=24&orderby=weigh&orderway=desc&page=5",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_22",
+          "source_title": "陶陶居上海门店目录",
+          "source_name": "品牌官网",
+          "url": "https://www.taotaoju1880.com/zoujintaotaoju/taotaojumendian?diyname=taotaojumendian&filter=&id=24&orderby=weigh&orderway=desc&page=5",
+          "location": "上海市黄浦区太仓路181弄新天地北里F1层17号",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "阿嬷手作",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["阿嬷手作", "阿嬷手作 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.shanghaidisneyresort.com/zh-cn/experience/restaurant/ah-ma",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_23",
+          "source_title": "阿嬷手作迪士尼小镇店",
+          "source_name": "上海迪士尼官网",
+          "url": "https://www.shanghaidisneyresort.com/zh-cn/experience/restaurant/ah-ma",
+          "location": "上海市浦东新区迪士尼小镇",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "果呀呀",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["果呀呀", "果呀呀 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://ditu.amap.com/place/B0KKXD4Z3J",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_24",
+          "source_title": "果呀呀静安大悦城店",
+          "source_name": "高德地图",
+          "url": "https://ditu.amap.com/place/B0KKXD4Z3J",
+          "location": "上海市静安区西藏北路166号大悦城南座三楼",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "真功夫",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["真功夫", "真功夫 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.avinex.com/pudong/List/info_itemid_7781.html",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_25",
+          "source_title": "真功夫/满小西浦东机场店",
+          "source_name": "上海机场官网",
+          "url": "https://www.avinex.com/pudong/List/info_itemid_7781.html",
+          "location": "上海市浦东机场三纵三横欧洲街L1-4-2",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "悸动烧仙草",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["悸动烧仙草", "悸动烧仙草 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.amap.com/place/B0FFIGA36J",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_26",
+          "source_title": "悸动烧仙草四新街店",
+          "source_name": "高德地图",
+          "url": "https://www.amap.com/place/B0FFIGA36J",
+          "location": "上海市奉贤区四团镇四新街62号",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "正新鸡排",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["正新鸡排", "正新鸡排 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://maps.apple.com/place?auid=1118748731443600&lsp=57879",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_27",
+          "source_title": "正新鸡排包头路店",
+          "source_name": "Apple地图/大众点评",
+          "url": "https://maps.apple.com/place?auid=1118748731443600&lsp=57879",
+          "location": "上海市杨浦区包头路872号",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "一鸣真鲜奶吧",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["一鸣真鲜奶吧", "一鸣真鲜奶吧 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://m.dongfangfuli.com/birthday/goods/detail/273?city=145",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_28",
+          "source_title": "一鸣真鲜奶吧上海适用门店",
+          "source_name": "东方福利网券商户目录",
+          "url": "https://m.dongfangfuli.com/birthday/goods/detail/273?city=145",
+          "location": "上海市黄浦区人民广场华盛街A160",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "棒约翰",
+      "category": "西式快餐",
+      "aliases": ["棒约翰披萨", "棒约翰比萨"],
+      "keywords": ["棒约翰", "棒约翰披萨", "棒约翰比萨", "棒约翰 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.amap.com/place/B0FFGL0R9W",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_29",
+          "source_title": "棒约翰上海外高桥店",
+          "source_name": "高德地图",
+          "url": "https://www.amap.com/place/B0FFGL0R9W",
+          "location": "上海市浦东新区保税区华京路8号三连大厦底层",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    },
+    {
+      "name": "蓝蛙",
+      "category": "其他餐饮",
+      "aliases": ["bluefrog"],
+      "keywords": ["蓝蛙", "bluefrog", "蓝蛙 上海"],
+      "region_code": "310000",
+      "active": true,
+      "shanghai_evidence_url": "https://www.bluefrog.com.cn/about/",
+      "research_status": "directory_checked",
+      "coupon_status": "not_queried",
+      "note": "公开上海门店目录线索；页面可能滞后，未实地核验；抖音在售券及上海适用范围待采集。",
+      "evidence": [
+        {
+          "source_id": "directory_30",
+          "source_title": "蓝蛙官网上海迪士尼小镇门店介绍",
+          "source_name": "品牌官网",
+          "url": "https://www.bluefrog.com.cn/about/",
+          "location": "上海市浦东新区迪士尼小镇",
+          "position": "",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-29T07:41:02.838+00:00",
+          "research_status": "directory_checked",
+          "note": "仅记录品牌与上海位置事实；非当前优惠、销量或热度证据。"
+        }
+      ]
+    }
+  ],
+  "duplicates": [
+    {
+      "candidate": "BAKER & SPICE",
+      "existing": ["香溢焙客"],
+      "reason": "标准名或别名命中；不重复入库"
+    }
+  ],
+  "unresolved": [
+    {
+      "name": "古茗",
+      "reason": "2026-09-24报道引述品牌称上海尚无正式门店；崇明首店为待开业线索。",
+      "url": "https://www.yilantop.com/article/27150"
+    },
+    {
+      "name": "Seesaw",
+      "reason": "破产清算及上海余店租期存在风险，须查当前营业。",
+      "url": "https://www.nbd.com.cn/rss/zaker/articles/4436972.html"
+    },
+    {
+      "name": "茶话弄",
+      "reason": "官网本次未取得可核对的上海门店地址。",
+      "url": "https://www.chahuanong.com/"
+    },
+    {
+      "name": "小龙坎",
+      "reason": "总部目录已找到，本次未取得上海具体门店条目，不把全国存在当作上海营业。",
+      "url": "https://www.xiaolongkan.com/en/store"
+    },
+    {
+      "name": "争鲜",
+      "reason": "官网检索仅明确上海公司地址，不能把办公室当作门店。",
+      "url": "https://www.sushiexpress.com.cn/index.html"
+    },
+    {
+      "name": "比格比萨",
+      "reason": "找到上海宝山万达媒体线索，需地图或官方目录交叉核验。",
+      "url": "https://www.sina.cn/gc/article/nipywer9040251.html"
+    },
+    {
+      "name": "黄记煌",
+      "reason": "百度地图上海门店列表可见，具体门牌及品牌子系列需进一步核验。",
+      "url": "https://map.baidu.com/mobile/webapp/search/search/qt%3Dcon%26wd%3D%E4%B8%8A%E6%B5%B7%E9%BB%84%E8%AE%B0%E7%85%8C%26c%3D289/"
+    },
+    {
+      "name": "COSTA",
+      "reason": "本次明确地址来自过旧银行活动，需查当前目录。",
+      "url": "https://creditcard.ecitic.com/source/zh/userpage/youhui/120401/sh/shanghai.pdf"
+    },
+    {
+      "name": "太平洋咖啡",
+      "reason": "上海资料存在，但本次主要为旧商户名单，当前营业待核验。",
+      "url": "https://m.mxj.com.cn/map/shanghai/shanghai-3966.html"
+    }
+  ]
+}

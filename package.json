@@ -1,0 +1,28 @@
+{
+  "name": "food-trend-radar",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web \"npm run dev -w @radar/api\" \"npm run dev -w @radar/web\"",
+    "build": "npm run build -w @radar/contracts && npm run build -w @radar/api && npm run build -w @radar/web",
+    "typecheck": "npm run build -w @radar/contracts && npm run typecheck --workspaces",
+    "start": "npm run start -w @radar/api",
+    "predev": "npm run build -w @radar/contracts",
+    "test": "npm run build -w @radar/contracts && npm run test -w @radar/api",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.14",
+    "concurrently": "^10.0.5",
+    "typescript": "^7.0.2"
+  }
+}

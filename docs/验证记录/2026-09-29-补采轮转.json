@@ -1,0 +1,130 @@
+{
+  "checked_at": "2026-09-29T03:12:46.531Z",
+  "tests": {
+    "passed": 118,
+    "failed": 0
+  },
+  "sales": {
+    "coupons": 3108,
+    "provenance_captured": 16,
+    "missing_display": 0,
+    "fields": [
+      {
+        "field": "sold_count_display",
+        "coupons": 16
+      }
+    ],
+    "source_field": "product_info.sold_count_display",
+    "verification": {
+      "window": "unknown",
+      "geography": "unknown",
+      "refresh_frequency": "unknown",
+      "refunds_and_resets": "unknown",
+      "exact_count_field": "unverified"
+    },
+    "caveat": "字段出现不代表统计口径已确认。旧快照未保存字段清单，不据此断言接口没有精确销量；新证据随正常采集积累。"
+  },
+  "queue": [
+    {
+      "kind": "rules",
+      "state": "complete",
+      "error_code": null,
+      "count": 1971,
+      "waiting_backoff": 0,
+      "retrying": 0,
+      "max_retries": 2,
+      "oldest_baseline_at": "2026-09-28T08:31:17.703Z"
+    },
+    {
+      "kind": "rules",
+      "state": "failed",
+      "error_code": "NETWORK_ERROR",
+      "count": 3,
+      "waiting_backoff": 0,
+      "retrying": 0,
+      "max_retries": 2,
+      "oldest_baseline_at": "2026-09-28T08:52:48.901Z"
+    },
+    {
+      "kind": "rules",
+      "state": "incomplete",
+      "error_code": null,
+      "count": 193,
+      "waiting_backoff": 0,
+      "retrying": 0,
+      "max_retries": 0,
+      "oldest_baseline_at": "2026-09-28T08:31:17.703Z"
+    },
+    {
+      "kind": "rules",
+      "state": "queued",
+      "error_code": null,
+      "count": 941,
+      "waiting_backoff": 0,
+      "retrying": 0,
+      "max_retries": 0,
+      "oldest_baseline_at": "2026-09-28T16:00:30.178Z"
+    },
+    {
+      "kind": "stores",
+      "state": "complete",
+      "error_code": null,
+      "count": 333,
+      "waiting_backoff": 0,
+      "retrying": 0,
+      "max_retries": 0,
+      "oldest_baseline_at": "2026-09-28T08:36:28.700Z"
+    },
+    {
+      "kind": "stores",
+      "state": "failed",
+      "error_code": "NETWORK_ERROR",
+      "count": 2,
+      "waiting_backoff": 0,
+      "retrying": 0,
+      "max_retries": 2,
+      "oldest_baseline_at": "2026-09-28T08:38:38.291Z"
+    },
+    {
+      "kind": "stores",
+      "state": "incomplete",
+      "error_code": "STORE_COUNT_MISMATCH",
+      "count": 378,
+      "waiting_backoff": 0,
+      "retrying": 0,
+      "max_retries": 0,
+      "oldest_baseline_at": "2026-09-28T08:37:30.718Z"
+    },
+    {
+      "kind": "stores",
+      "state": "queued",
+      "error_code": "STORE_COUNT_MISMATCH",
+      "count": 3,
+      "waiting_backoff": 0,
+      "retrying": 0,
+      "max_retries": 0,
+      "oldest_baseline_at": "2026-09-28T08:53:34.815Z"
+    },
+    {
+      "kind": "stores",
+      "state": "queued",
+      "error_code": null,
+      "count": 2392,
+      "waiting_backoff": 0,
+      "retrying": 0,
+      "max_retries": 0,
+      "oldest_baseline_at": "2026-09-28T08:31:17.703Z"
+    }
+  ],
+  "requests": {
+    "requests": 12356,
+    "short_gaps": 0,
+    "non_success": 41
+  },
+  "service": {
+    "enabled": true,
+    "pause_reason": null,
+    "concurrency": 1,
+    "interval_ms": [1000, 2000]
+  }
+}

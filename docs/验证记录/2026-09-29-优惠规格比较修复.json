@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-09-29T05:50:42.916Z",
+  "cross_total": 0,
+  "size_mismatch_removed": true,
+  "condition_version": "condition-comparison-v3",
+  "pause_reason": "BUSINESS_OR_SCHEMA_ERROR",
+  "tests": 143
+}

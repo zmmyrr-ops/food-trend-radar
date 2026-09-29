@@ -1,0 +1,29 @@
+{
+  "checked_at": "2026-09-29T02:51:45.639Z",
+  "tests": {
+    "passed": 112,
+    "failed": 0
+  },
+  "sales_summary": {
+    "total": 3100,
+    "measured": 791,
+    "rising": 304
+  },
+  "top_count": 10,
+  "top_speed": 164.31805102256337,
+  "heat_top_speed": 164.31805102256337,
+  "rank_count": 100,
+  "versions": ["V4.sales-evidence"],
+  "missing_sources": [
+    "月售统计窗口、地域口径及长期历史待核验",
+    "品牌指数及可比历史序列未接通",
+    "完整品牌身份、店域与自然语言权益尚未核验"
+  ],
+  "markdown_has_heat": true,
+  "service": {
+    "enabled": true,
+    "pause_reason": null,
+    "concurrency": 1,
+    "interval_ms": [1000, 2000]
+  }
+}

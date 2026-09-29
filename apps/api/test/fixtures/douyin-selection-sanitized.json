@@ -1,0 +1,25 @@
+{
+  "product_id": "1869773837782042",
+  "product_info": {
+    "product_name": "【乐品上海】329元和牛关西寿喜烧套餐",
+    "price_range": {
+      "max": 32900,
+      "min": 32900
+    },
+    "origin_price": 62500,
+    "status": 1,
+    "sold_count_display": "月售 12",
+    "product_sold_end_time": "2037.12.31 23:59",
+    "sold_start_time": 1783157677
+  },
+  "nearest_poi_info": {
+    "poi_id": "7045103834271582238",
+    "poi_name": "好酔·和牛牧场·关西寿喜烧",
+    "address": "莘庄七莘路顾戴路维璟广场1507号4楼04-039",
+    "poi_display_info": {
+      "poi_distance_display": {
+        "value": "上海市"
+      }
+    }
+  }
+}

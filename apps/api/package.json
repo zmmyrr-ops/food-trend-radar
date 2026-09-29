@@ -1,0 +1,25 @@
+{
+  "name": "@radar/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/server.js",
+    "test": "tsx --test test/*.test.ts"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "csv-parse": "^7.0.2",
+    "express": "^5.2.1",
+    "zod": "^4.6.5",
+    "@radar/contracts": "*"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.2",
+    "tsx": "^4.23.15"
+  }
+}

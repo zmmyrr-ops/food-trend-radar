@@ -1,0 +1,1094 @@
+{
+  "version": "shanghai-platform-expansion-2026-09-20",
+  "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+  "scope": "上海品牌发现；公开检索线索，非实时营业或销量核验",
+  "sources": {
+    "dianping_public_index": {
+      "url": "https://m.dianping.com/shanghai",
+      "title": "大众点评上海门店公开检索资料（非实时经营核验）",
+      "address": "上海市，跨商圈、街道与社区",
+      "kind": "historical_guide",
+      "published_at": null,
+      "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+      "access_method": "public_search_index",
+      "limitation": "总目录实测要求登录；本轮使用公开索引中的门店基础事实，索引可能滞后，非批量API接入。"
+    }
+  },
+  "brands": [
+    {
+      "name": "椿风",
+      "category": "茶饮果饮",
+      "aliases": ["椿风·养身茶饮"],
+      "keywords": ["椿风", "椿风 上海", "椿风 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "椿风·养身茶饮(人民广场店)",
+          "url": "https://www.dianping.com/shop/H8jvLCTlulaLwHg8/photos",
+          "mall_or_address": "上海市；椿风·养身茶饮(人民广场店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H8jvLCTlulaLwHg8/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "巴黎贝甜",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["巴黎贝甜", "巴黎贝甜 上海", "巴黎贝甜 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "巴黎贝甜(新达汇三林店)",
+          "url": "https://www.dianping.com/shop/121835556/photos",
+          "mall_or_address": "上海市；巴黎贝甜(新达汇三林店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/121835556/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "沪上阿姨",
+      "category": "茶饮果饮",
+      "aliases": ["沪上阿姨·精选茶饮"],
+      "keywords": ["沪上阿姨", "沪上阿姨 上海", "沪上阿姨 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "沪上阿姨·精选茶饮(西藏南路lab店)",
+          "url": "https://www.dianping.com/shop/13660177/photos/album/p5",
+          "mall_or_address": "上海市；沪上阿姨·精选茶饮(西藏南路lab店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/13660177/photos/album/p5",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "茉莉奶白",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["茉莉奶白", "茉莉奶白 上海", "茉莉奶白 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "茉莉奶白(上海华泾龙湖店)",
+          "url": "https://www.dianping.com/shop/l9L5zqrMCz6FvP2o/photos",
+          "mall_or_address": "上海市；茉莉奶白(上海华泾龙湖店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l9L5zqrMCz6FvP2o/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "必胜客",
+      "category": "西式快餐",
+      "aliases": ["Pizza Hut"],
+      "keywords": ["必胜客", "必胜客 上海", "必胜客 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "必胜客(金高店)",
+          "url": "https://www.dianping.com/shop/1901611/photos?pg=25",
+          "mall_or_address": "上海市；必胜客(金高店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/1901611/photos?pg=25",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "达美乐比萨",
+      "category": "西式快餐",
+      "aliases": ["达美乐", "Domino’s Pizza"],
+      "keywords": ["达美乐比萨", "达美乐比萨 上海", "达美乐比萨 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "达美乐比萨(大宁店)",
+          "url": "https://www.dianping.com/shop/G9NYfIvzCodCkipf/photos?pg=16",
+          "mall_or_address": "上海市；达美乐比萨(大宁店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G9NYfIvzCodCkipf/photos?pg=16",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "奈雪的茶",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["奈雪的茶", "奈雪的茶 上海", "奈雪的茶 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "奈雪的茶(上海松江九亭中泰广场店)",
+          "url": "https://m.dianping.com/shop/836526795?msource=applemaps",
+          "mall_or_address": "上海市；奈雪的茶(上海松江九亭中泰广场店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/836526795?msource=applemaps",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "蜜雪冰城",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["蜜雪冰城", "蜜雪冰城 上海", "蜜雪冰城 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "蜜雪冰城(东靖路地铁站店)",
+          "url": "https://www.dianping.com/shop/k6ZwJEbvTKEiQ2T1/photos?pg=1",
+          "mall_or_address": "上海市；蜜雪冰城(东靖路地铁站店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k6ZwJEbvTKEiQ2T1/photos?pg=1",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "茶百道",
+      "category": "茶饮果饮",
+      "aliases": [],
+      "keywords": ["茶百道", "茶百道 上海", "茶百道 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "茶百道(旭辉广场店)",
+          "url": "https://www.dianping.com/shop/H3hEamtKnQLrDXLM/photos",
+          "mall_or_address": "上海市；茶百道(旭辉广场店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H3hEamtKnQLrDXLM/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "肯德基",
+      "category": "西式快餐",
+      "aliases": ["KFC"],
+      "keywords": ["肯德基", "肯德基 上海", "肯德基 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "肯德基(聚丰店)",
+          "url": "https://m.dianping.com/shop/2614378",
+          "mall_or_address": "上海市；肯德基(聚丰店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/2614378",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "7分甜",
+      "category": "茶饮果饮",
+      "aliases": ["七分甜"],
+      "keywords": ["7分甜", "7分甜 上海", "7分甜 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "7分甜(上海浦东金桥太茂店)",
+          "url": "https://www.dianping.com/shop/l95bQCQg0c2nLvEn/photos",
+          "mall_or_address": "上海市；7分甜(上海浦东金桥太茂店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l95bQCQg0c2nLvEn/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "1点点",
+      "category": "茶饮果饮",
+      "aliases": ["一点点"],
+      "keywords": ["1点点", "1点点 上海", "1点点 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "1点点(佘山宝乐汇店)",
+          "url": "https://www.dianping.com/shop/G27y3E6Pxt7HA8wd/photos",
+          "mall_or_address": "上海市；1点点(佘山宝乐汇店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G27y3E6Pxt7HA8wd/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "Shake Shack",
+      "category": "西式快餐",
+      "aliases": [],
+      "keywords": ["Shake Shack", "Shake Shack 上海", "Shake Shack 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "Shake Shack(上海新天地店)",
+          "url": "https://m.dianping.com/shop/113989989",
+          "mall_or_address": "上海市；Shake Shack(上海新天地店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/113989989",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "塔可钟",
+      "category": "西式快餐",
+      "aliases": ["Taco Bell"],
+      "keywords": ["塔可钟", "塔可钟 上海", "塔可钟 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "Taco Bell 塔可钟(五角场店)",
+          "url": "https://www.dianping.com/shop/H7X00oIxYVJxpNj3/photos",
+          "mall_or_address": "上海市；Taco Bell 塔可钟(五角场店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H7X00oIxYVJxpNj3/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "鲍师傅糕点",
+      "category": "烘焙甜品",
+      "aliases": ["鲍师傅"],
+      "keywords": ["鲍师傅糕点", "鲍师傅糕点 上海", "鲍师傅糕点 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "鲍师傅糕点(江苏路店)",
+          "url": "https://www.dianping.com/shop/G6kXI9dKA3zRZ9SO/photos",
+          "mall_or_address": "上海市；鲍师傅糕点(江苏路店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G6kXI9dKA3zRZ9SO/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "詹记桃酥",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["詹记桃酥", "詹记桃酥 上海", "詹记桃酥 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "詹记桃酥(上海文峰广场店)",
+          "url": "https://www.dianping.com/shop/EWqpct4Hf23DxI2w/photos",
+          "mall_or_address": "上海市；詹记桃酥(上海文峰广场店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/EWqpct4Hf23DxI2w/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "老香斋",
+      "category": "烘焙甜品",
+      "aliases": ["老香齋"],
+      "keywords": ["老香斋", "老香斋 上海", "老香斋 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "老香齋(五角场店)",
+          "url": "https://www.dianping.com/shop/35925900/photos?pg=13",
+          "mall_or_address": "上海市；老香齋(五角场店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/35925900/photos?pg=13",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "老娘舅",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["老娘舅", "老娘舅 上海", "老娘舅 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "老娘舅(上海漕溪路地铁站店)",
+          "url": "https://www.dianping.com/shop/k1KHnVBZxIVD0orN/photos",
+          "mall_or_address": "上海市；老娘舅(上海漕溪路地铁站店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k1KHnVBZxIVD0orN/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "老乡鸡",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["老乡鸡", "老乡鸡 上海", "老乡鸡 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "老乡鸡(上海苏杭时代广场店)",
+          "url": "https://m.dianping.com/shop/1292812897?msource=applemaps",
+          "mall_or_address": "上海市；老乡鸡(上海苏杭时代广场店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/1292812897?msource=applemaps",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "小杨生煎",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["小杨生煎", "小杨生煎 上海", "小杨生煎 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "小杨生煎(白玉兰广场店)",
+          "url": "https://www.dianping.com/shop/G9H4oY5dgnAADPGF/photos/tag-%E8%8F%9C-%E5%B0%8F%E6%9D%A8%E7%94%9F%E7%85%8E?pg=1",
+          "mall_or_address": "上海市；小杨生煎(白玉兰广场店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G9H4oY5dgnAADPGF/photos/tag-%E8%8F%9C-%E5%B0%8F%E6%9D%A8%E7%94%9F%E7%85%8E?pg=1",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "面包新语",
+      "category": "烘焙甜品",
+      "aliases": ["BreadTalk"],
+      "keywords": ["面包新语", "面包新语 上海", "面包新语 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "面包新语(万航渡路889号)",
+          "url": "https://www.dianping.com/shop/3888448/photos/album",
+          "mall_or_address": "上海市；面包新语(万航渡路889号)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/3888448/photos/album",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "多乐之日",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["多乐之日", "多乐之日 上海", "多乐之日 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "多乐之日(虹泉路店)",
+          "url": "https://www.dianping.com/shop/8019217/photos",
+          "mall_or_address": "上海市；多乐之日(虹泉路店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/8019217/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "85度C",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["85度C", "85度C 上海", "85度C 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "85度C(上海法华店)",
+          "url": "https://m.dianping.com/shop/3150100",
+          "mall_or_address": "上海市；85度C(上海法华店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/3150100",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "皮爷咖啡",
+      "category": "咖啡",
+      "aliases": ["Peet’s Coffee", "Peet's Coffee"],
+      "keywords": ["皮爷咖啡", "皮爷咖啡 上海", "皮爷咖啡 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "Peet's 皮爷咖啡(东湖路手作店)",
+          "url": "https://www.dianping.com/shop/93519167/photos/album",
+          "mall_or_address": "上海市；Peet's 皮爷咖啡(东湖路手作店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/93519167/photos/album",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "太二酸菜鱼",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["太二酸菜鱼", "太二酸菜鱼 上海", "太二酸菜鱼 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "太二酸菜鱼(静安大融城店)",
+          "url": "https://m.dianping.com/shop/1050549667",
+          "mall_or_address": "上海市；太二酸菜鱼(静安大融城店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/1050549667",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "库迪咖啡",
+      "category": "咖啡",
+      "aliases": ["COTTI COFFEE"],
+      "keywords": ["库迪咖啡", "库迪咖啡 上海", "库迪咖啡 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "库迪咖啡(燎申智城店)",
+          "url": "https://m.dianping.com/shop/904905447?msource=applemaps",
+          "mall_or_address": "上海市；库迪咖啡(燎申智城店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/904905447?msource=applemaps",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "Tims天好咖啡",
+      "category": "咖啡",
+      "aliases": ["Tims", "天好咖啡"],
+      "keywords": ["Tims天好咖啡", "Tims天好咖啡 上海", "Tims天好咖啡 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "Tims天好咖啡·贝果(拉斐尔云廊店)",
+          "url": "https://www.dianping.com/shop/Ha6pWvrqQOhXLE2o/photos",
+          "mall_or_address": "上海市；Tims天好咖啡·贝果(拉斐尔云廊店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/Ha6pWvrqQOhXLE2o/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "巴奴毛肚火锅",
+      "category": "火锅烧烤",
+      "aliases": [],
+      "keywords": ["巴奴毛肚火锅", "巴奴毛肚火锅 上海", "巴奴毛肚火锅 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "巴奴毛肚火锅(上海荟聚店)",
+          "url": "https://www.dianping.com/shop/H1gPcZL2ynnlX6AV/photos",
+          "mall_or_address": "上海市；巴奴毛肚火锅(上海荟聚店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H1gPcZL2ynnlX6AV/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "泸溪河",
+      "category": "烘焙甜品",
+      "aliases": ["泸溪河桃酥"],
+      "keywords": ["泸溪河", "泸溪河 上海", "泸溪河 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "泸溪河桃酥(静安寺店)",
+          "url": "https://m.dianping.com/shop/1588655693",
+          "mall_or_address": "上海市；泸溪河桃酥(静安寺店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/1588655693",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "和府捞面",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["和府捞面", "和府捞面 上海", "和府捞面 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "和府捞面(金桥购物中心店)",
+          "url": "https://www.dianping.com/shop/32883608/photos/album",
+          "mall_or_address": "上海市；和府捞面(金桥购物中心店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/32883608/photos/album",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "马记永",
+      "category": "中式快餐小吃",
+      "aliases": ["马记永·兰州牛肉面"],
+      "keywords": ["马记永", "马记永 上海", "马记永 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "马记永·兰州牛肉面(上海南翔印象城店)",
+          "url": "https://m.dianping.com/shop/554065424?msource=applemaps",
+          "mall_or_address": "上海市；马记永·兰州牛肉面(上海南翔印象城店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/554065424?msource=applemaps",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "紫燕百味鸡",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["紫燕百味鸡", "紫燕百味鸡 上海", "紫燕百味鸡 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "紫燕百味鸡(七宝店)",
+          "url": "https://www.dianping.com/shop/507278/photos",
+          "mall_or_address": "上海市；紫燕百味鸡(七宝店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/507278/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "绝味鸭脖",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["绝味鸭脖", "绝味鸭脖 上海", "绝味鸭脖 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "绝味鸭脖(塘桥新路店)",
+          "url": "https://m.dianping.com/shop/651926054?msource=applemaps",
+          "mall_or_address": "上海市；绝味鸭脖(塘桥新路店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/651926054?msource=applemaps",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "绿茶餐厅",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["绿茶餐厅", "绿茶餐厅 上海", "绿茶餐厅 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "绿茶餐厅(上海七宝领展广场店)",
+          "url": "https://m.dianping.com/shop/69937234",
+          "mall_or_address": "上海市；绿茶餐厅(上海七宝领展广场店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/69937234",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "唐宫茶点",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["唐宫茶点", "唐宫茶点 上海", "唐宫茶点 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "唐宫茶点(天钥桥路店)",
+          "url": "https://www.dianping.com/shop/H5RCPAzX40liWzfl/photos/tag-%E4%BB%B7%E7%9B%AE%E8%A1%A8?pg=24",
+          "mall_or_address": "上海市；唐宫茶点(天钥桥路店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H5RCPAzX40liWzfl/photos/tag-%E4%BB%B7%E7%9B%AE%E8%A1%A8?pg=24",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "西贝莜面村",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["西贝莜面村", "西贝莜面村 上海", "西贝莜面村 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "西贝莜面村(上海百联西郊店)",
+          "url": "https://www.dianping.com/shop/5449042/photos/album",
+          "mall_or_address": "上海市；西贝莜面村(上海百联西郊店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/5449042/photos/album",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "外婆家",
+      "category": "中餐及本地特色",
+      "aliases": [],
+      "keywords": ["外婆家", "外婆家 上海", "外婆家 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "外婆家(世博店)",
+          "url": "https://www.dianping.com/shop/17887018/photos",
+          "mall_or_address": "上海市；外婆家(世博店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/17887018/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "吉祥馄饨",
+      "category": "中式快餐小吃",
+      "aliases": [],
+      "keywords": ["吉祥馄饨", "吉祥馄饨 上海", "吉祥馄饨 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "吉祥馄饨(上海十方店)",
+          "url": "https://m.dianping.com/shop/8729157?msource=applemaps",
+          "mall_or_address": "上海市；吉祥馄饨(上海十方店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/8729157?msource=applemaps",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "滨寿司",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["滨寿司", "滨寿司 上海", "滨寿司 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "滨寿司(汇金店)",
+          "url": "https://www.dianping.com/shop/G3lvUAkUvMsIrLGC/photos",
+          "mall_or_address": "上海市；滨寿司(汇金店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G3lvUAkUvMsIrLGC/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "DQ冰雪皇后",
+      "category": "烘焙甜品",
+      "aliases": ["DQ", "Dairy Queen"],
+      "keywords": ["DQ冰雪皇后", "DQ冰雪皇后 上海", "DQ冰雪皇后 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "DQ·蛋糕·冰淇淋(上海美兰湖店)",
+          "url": "https://m.dianping.com/shop/1488579664?msource=applemaps",
+          "mall_or_address": "上海市；DQ·蛋糕·冰淇淋(上海美兰湖店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://m.dianping.com/shop/1488579664?msource=applemaps",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "哈根达斯",
+      "category": "烘焙甜品",
+      "aliases": [],
+      "keywords": ["哈根达斯", "哈根达斯 上海", "哈根达斯 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "哈根达斯(七宝万科店)",
+          "url": "https://www.dianping.com/shop/H2fCH8dBMmqCSoQH/photos",
+          "mall_or_address": "上海市；哈根达斯(七宝万科店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H2fCH8dBMmqCSoQH/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "陈香贵",
+      "category": "中式快餐小吃",
+      "aliases": ["陳香貴", "陈香贵兰州牛肉面"],
+      "keywords": ["陈香贵", "陈香贵 上海", "陈香贵 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "陳香貴·兰州牛肉面(陆家嘴环路店)",
+          "url": "https://www.dianping.com/shop/l3lAzHQQZrGqAldZ/photos",
+          "mall_or_address": "上海市；陳香貴·兰州牛肉面(陆家嘴环路店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l3lAzHQQZrGqAldZ/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    },
+    {
+      "name": "铭门盛宴",
+      "category": "其他餐饮",
+      "aliases": [],
+      "keywords": ["铭门盛宴", "铭门盛宴 上海", "铭门盛宴 新品"],
+      "region_code": "310000",
+      "evidence": [
+        {
+          "source_id": "dianping_public_index",
+          "source_name": "铭门盛宴·海鲜艺术姿造(上海首店)",
+          "url": "https://www.dianping.com/shop/k8gjO2TFyY2qt7uy/photos",
+          "mall_or_address": "上海市；铭门盛宴·海鲜艺术姿造(上海首店)",
+          "position": "",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "retrieved_at": "2026-09-20T12:16:31.045215+00:00",
+          "access_method": "public_search_index",
+          "operating_status": "not_live_verified"
+        }
+      ],
+      "category_note": "按门店业态初分",
+      "research_status": "historical_evidence_only",
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8gjO2TFyY2qt7uy/photos",
+      "review_note": "大众点评公开检索资料中的上海门店线索；标题/门店信息已核对，网页索引可能滞后，未确认当前营业；不代表团购有效、销量已取得或动态监测已接入。"
+    }
+  ]
+}

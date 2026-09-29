@@ -1,0 +1,72 @@
+{
+  "run_id": "369567a7-1263-4281-b2c4-f664b27d919f",
+  "exported_at": "2026-09-20T16:47:31.218Z",
+  "run": {
+    "id": "369567a7-1263-4281-b2c4-f664b27d919f",
+    "slot": null,
+    "status": "complete",
+    "started_at": "2026-09-20T16:47:01.656Z",
+    "finished_at": "2026-09-20T16:47:22.039Z",
+    "total": 3,
+    "completed": 3
+  },
+  "pause_reason": null,
+  "audit": {
+    "total": 11,
+    "min_gap_ms": 1068,
+    "short_gaps": 0,
+    "non_success": 0
+  },
+  "totals": {
+    "brands": 3,
+    "complete": 3,
+    "pages": 11,
+    "recalled": 97,
+    "name_matched": 73
+  },
+  "tasks": [
+    {
+      "brand_id": "a7900d69-baa0-45d7-93f6-47d6588d4e26",
+      "name": "沪上阿姨",
+      "state": "complete",
+      "pages": 3,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "QUERY_CHANGED",
+      "completed_at": "2026-09-20T16:47:06.366Z",
+      "previous_run_id": "2183f85b-85cc-457e-8268-1fb84b8e7400",
+      "recalled": 27,
+      "matched": 27
+    },
+    {
+      "brand_id": "d329b334-0649-4e9f-b395-d8b1f40a0da3",
+      "name": "牛New寿喜烧",
+      "state": "complete",
+      "pages": 1,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "QUERY_CHANGED",
+      "completed_at": "2026-09-20T16:47:08.212Z",
+      "previous_run_id": "2183f85b-85cc-457e-8268-1fb84b8e7400",
+      "recalled": 9,
+      "matched": 9
+    },
+    {
+      "brand_id": "7399442b-801f-41f4-adf0-3d2cad0d8891",
+      "name": "肯德基",
+      "state": "complete",
+      "pages": 7,
+      "error_code": null,
+      "retries": 0,
+      "retry_at": null,
+      "comparison_status": "QUERY_CHANGED",
+      "completed_at": "2026-09-20T16:47:22.018Z",
+      "previous_run_id": "2183f85b-85cc-457e-8268-1fb84b8e7400",
+      "recalled": 61,
+      "matched": 37
+    }
+  ],
+  "caveat": "分页完成不等于品牌全量覆盖；名称匹配不等于身份及权益核验。"
+}
