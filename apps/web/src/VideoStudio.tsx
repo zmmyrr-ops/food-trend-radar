@@ -117,7 +117,9 @@ export function VideoStudio() {
         ]);
         if (cancelled) return;
         setResources(m.job?.resources || []);
-        setSelected((m.job?.resources || []).map((r: Resource) => r.id));
+        setSelected(
+          (m.job?.resources || []).slice(-40).map((r: Resource) => r.id),
+        );
         setHistory(h.items);
         setConfigured(c.configured);
         const id = new URLSearchParams(location.search).get("project");
@@ -291,7 +293,8 @@ export function VideoStudio() {
           </div>
           <p>
             已选择 {selected.length + uploads.length}{" "}
-            个素材；AI自动筛选、截取并生成预览。配乐：{music?.name || "无"}。
+            个素材（单次最多40个，默认选最近获取的40个）；AI自动筛选、截取并生成预览。配乐：
+            {music?.name || "无"}。
           </p>
           {uploads.map((u) => (
             <p key={u.id}>

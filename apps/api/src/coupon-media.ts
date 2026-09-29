@@ -100,6 +100,11 @@ export async function createCouponMedia(
     CREATE TABLE IF NOT EXISTS coupon_media_jobs(id uuid PRIMARY KEY,brand_id uuid NOT NULL,product_id text NOT NULL,keyword text NOT NULL,names jsonb NOT NULL,state text NOT NULL,resources jsonb NOT NULL DEFAULT '[]',searched int NOT NULL DEFAULT 0,inspected int NOT NULL DEFAULT 0,error_code text,created_at timestamptz NOT NULL DEFAULT now(),updated_at timestamptz NOT NULL DEFAULT now(),UNIQUE(brand_id,product_id));
     CREATE TABLE IF NOT EXISTS coupon_media_cache(note_id text PRIMARY KEY,resources jsonb NOT NULL,observed_at timestamptz NOT NULL DEFAULT now());
     CREATE TABLE IF NOT EXISTS coupon_media_gate(id int PRIMARY KEY,finished_at timestamptz,blocked_until timestamptz,credential_hash text,block_code text);
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS next_page int NOT NULL DEFAULT 1;
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS seen_notes jsonb NOT NULL DEFAULT '[]';
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS target_count int NOT NULL DEFAULT 40;
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS exhausted boolean NOT NULL DEFAULT false;
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS search_id text;
     INSERT INTO coupon_media_gate(id) VALUES(1) ON CONFLICT DO NOTHING;
     UPDATE coupon_media_jobs SET state='interrupted',error_code='INTERRUPTED',updated_at=now() WHERE state IN ('queued','running');
   `);
@@ -238,13 +243,25 @@ export async function createCouponMedia(
     const searchTemplate = c.records.find((r) => r.url === SEARCH);
     const detailTemplate = c.records.find((r) => r.url === DETAIL);
     if (!searchTemplate || !detailTemplate) throw Error("AUTH_MISSING");
-    const resources: LiveResource[] = [];
-    const seenNotes = new Set<string>();
-    const seenAssets = new Set<string>();
+    const resources: LiveResource[] = [...job.resources];
+    const seenNotes = new Set<string>(job.seen_notes);
+    const seenAssets = new Set<string>(
+      resources.map((a) => new URL(a.video_url).pathname),
+    );
     let searched = 0,
       inspected = 0;
-    const searchId = randomUUID().replaceAll("-", "");
-    for (let page = 1; page <= 2 && resources.length < 40; page++) {
+    const searchId = job.search_id || randomUUID().replaceAll("-", "");
+    await db.query("UPDATE coupon_media_jobs SET search_id=$2 WHERE id=$1", [
+      job.id,
+      searchId,
+    ]);
+    const target = job.target_count;
+    const startPage = job.next_page;
+    for (
+      let page = startPage;
+      page < startPage + 3 && resources.length < target;
+      page++
+    ) {
       if (await cancelled(job.id)) return;
       const data = await request(
         SEARCH,
@@ -260,7 +277,7 @@ export async function createCouponMedia(
       const notes = Array.isArray(data.data?.items) ? data.data.items : [];
       for (const note of notes) {
         if (
-          resources.length >= 40 ||
+          resources.length >= target ||
           inspected >= 20 ||
           (await cancelled(job.id))
         )
@@ -272,7 +289,6 @@ export async function createCouponMedia(
           seenNotes.has(note.id)
         )
           continue;
-        seenNotes.add(note.id);
         searched++;
         let found: LiveResource[];
         const cache = (
@@ -320,14 +336,43 @@ export async function createCouponMedia(
           if (seenAssets.has(key)) continue;
           seenAssets.add(key);
           resources.push(item);
-          if (resources.length === 40) break;
+          if (resources.length === target) break;
         }
+        // Keep a partially consumed note available for the next batch.
+        if (
+          found.every((item) =>
+            seenAssets.has(new URL(item.video_url).pathname),
+          )
+        )
+          seenNotes.add(note.id);
         await db.query(
-          "UPDATE coupon_media_jobs SET resources=$2,searched=$3,inspected=$4,updated_at=now() WHERE id=$1",
-          [job.id, JSON.stringify(resources), searched, inspected],
+          "UPDATE coupon_media_jobs SET resources=$2,searched=$3,inspected=$4,seen_notes=$5,updated_at=now() WHERE id=$1",
+          [
+            job.id,
+            JSON.stringify(resources),
+            searched,
+            inspected,
+            JSON.stringify([...seenNotes]),
+          ],
         );
       }
-      if (!data.data?.has_more || inspected >= 20) break;
+      // Do not advance past unconsumed notes when reaching the batch limit.
+      const completePage = notes.every(
+        (n: any) =>
+          n.model_type !== "note" ||
+          typeof n.id !== "string" ||
+          typeof n.xsec_token !== "string" ||
+          seenNotes.has(n.id),
+      );
+      await db.query(
+        "UPDATE coupon_media_jobs SET next_page=$2,exhausted=$3 WHERE id=$1",
+        [
+          job.id,
+          completePage ? page + 1 : page,
+          completePage && !data.data?.has_more,
+        ],
+      );
+      if (!completePage || !data.data?.has_more || inspected >= 20) break;
     }
     if (!(await cancelled(job.id)))
       await db.query(
@@ -374,7 +419,7 @@ export async function createCouponMedia(
   }
   function publicJob(job: any) {
     if (!job) return null;
-    const { names, ...safe } = job;
+    const { names, seen_notes, search_id, ...safe } = job;
     return {
       ...safe,
       expires_at: new Date(
@@ -382,7 +427,7 @@ export async function createCouponMedia(
       ).toISOString(),
     };
   }
-  async function start(brand: string, product: string) {
+  async function start(brand: string, product: string, more = false) {
     await credentials();
     const coupon = (
       await db.query<any>(
@@ -406,15 +451,25 @@ export async function createCouponMedia(
       if (
         old &&
         (["queued", "running"].includes(old.state) ||
-          (old.state === "complete" &&
+          (!more &&
+            old.state === "complete" &&
             Date.now() - new Date(old.updated_at).getTime() < TTL) ||
           (old.state === "failed" &&
             Date.now() - new Date(old.updated_at).getTime() < 60_000))
       )
         return old;
+      if (more && old) {
+        if (old.exhausted || old.resources.length >= 200) return old;
+        return (
+          await tx.query<any>(
+            "UPDATE coupon_media_jobs SET state='queued',target_count=$2,searched=0,inspected=0,error_code=NULL,updated_at=now() WHERE id=$1 RETURNING *",
+            [old.id, Math.min(200, old.resources.length + 20)],
+          )
+        ).rows[0];
+      }
       return (
         await tx.query<any>(
-          "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state) VALUES($1,$2,$3,$4,$5,'queued') ON CONFLICT(brand_id,product_id) DO UPDATE SET id=excluded.id,keyword=excluded.keyword,names=excluded.names,state='queued',resources='[]',searched=0,inspected=0,error_code=NULL,created_at=now(),updated_at=now() RETURNING *",
+          "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state) VALUES($1,$2,$3,$4,$5,'queued') ON CONFLICT(brand_id,product_id) DO UPDATE SET id=excluded.id,keyword=excluded.keyword,names=excluded.names,state='queued',resources='[]',next_page=1,seen_notes='[]',target_count=40,exhausted=false,search_id=NULL,searched=0,inspected=0,error_code=NULL,created_at=now(),updated_at=now() RETURNING *",
           [
             randomUUID(),
             brand,
@@ -444,9 +499,14 @@ export async function createCouponMedia(
       res.json({ job: publicJob(job) });
     });
     app.post("/api/v3/coupon-media", async (req, res) => {
-      const v = input.strict().parse(req.body);
+      const v = input
+        .extend({ more: z.boolean().default(false) })
+        .strict()
+        .parse(req.body);
       try {
-        res.status(202).json({ job: await start(v.brand_id, v.product_id) });
+        res
+          .status(202)
+          .json({ job: await start(v.brand_id, v.product_id, v.more) });
       } catch (e) {
         const code = e instanceof Error ? e.message : "INTERNAL_ERROR";
         res.status(code === "COUPON_NOT_FOUND" ? 404 : 503).json({

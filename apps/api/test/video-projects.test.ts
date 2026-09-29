@@ -199,7 +199,11 @@ test("真实FFmpeg渲染：18秒、竖屏、字幕、无素材音轨，生成可
     ]);
     const a = assets()
       .slice(0, 6)
-      .map((x) => ({ ...x, path: source }));
+      .map((x, i) => ({
+        ...x,
+        path: source,
+        ...(i % 2 === 0 ? { width: 320, height: 568 } : {}),
+      }));
     const plan = automaticPlan(a, 18);
     plan[0].caption = "Render test";
     await writeFile(
@@ -258,4 +262,13 @@ test("素材不足目标时长时自动缩短，12秒可生成，不足12秒拒�
     .map((a) => ({ ...a, best_end: 2.7, duration: 2.7 }));
   assert.equal(adaptivePlan(five, 20).seconds, 13);
   assert.throws(() => adaptivePlan(a.slice(0, 3), 18), /不足12秒/);
+});
+
+test("最终剪辑保留AI镜头顺序，不再被分数和标签重新排序", () => {
+  const a = assets().reverse();
+  const plan = automaticPlan(a, 18, true);
+  assert.deepEqual(
+    plan.map((c) => c.asset_id),
+    a.slice(0, 6).map((a) => a.id),
+  );
 });

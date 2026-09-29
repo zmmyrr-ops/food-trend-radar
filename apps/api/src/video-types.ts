@@ -60,7 +60,11 @@ export function validatePlan(plan: Clip[], assets: Asset[], seconds: number) {
   }
   return plan;
 }
-export function automaticPlan(assets: Asset[], seconds: number): Clip[] {
+export function automaticPlan(
+  assets: Asset[],
+  seconds: number,
+  preserveOrder = false,
+): Clip[] {
   const usable = assets.filter(
     (a) =>
       a.accepted &&
@@ -71,7 +75,7 @@ export function automaticPlan(assets: Asset[], seconds: number): Clip[] {
   // One use per asset; varied tags win ties. Never loop a short clip to fill time.
   const selected: Asset[] = [];
   while (usable.length && selected.length < 10) {
-    usable.sort((a, b) => value(b) - value(a));
+    if (!preserveOrder) usable.sort((a, b) => value(b) - value(a));
     selected.push(usable.shift()!);
   }
   function value(a: Asset) {

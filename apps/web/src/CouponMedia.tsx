@@ -18,6 +18,8 @@ type Job = {
   inspected: number;
   error_code: string | null;
   expires_at: string;
+  exhausted?: boolean;
+  target_count?: number;
 };
 const errors: Record<string, string> = {
   AUTH_MISSING: "尚未配置小红书登录请求",
@@ -134,14 +136,18 @@ export function CouponMedia({
       clearInterval(t);
     };
   }, [open, read]);
-  async function acquire() {
+  async function acquire(more = false) {
     setBusy(true);
     setError("");
     try {
       const r = await appFetch("/api/v3/coupon-media", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ brand_id: brandId, product_id: productId }),
+        body: JSON.stringify({
+          brand_id: brandId,
+          product_id: productId,
+          more,
+        }),
       });
       const data = await r.json();
       if (!r.ok) throw Error(data.error?.message || "创建任务失败");
@@ -190,7 +196,9 @@ export function CouponMedia({
           <div className="coupon-media-toolbar">
             <div>
               <strong>相关探店 · 实况片段</strong>
-              <p>按品牌与券名搜索，最多 40 个；同品牌内容不代表同一张券。</p>
+              <p>
+                首次最多40个；“再找一些”每次追加约20个，自动去重。同品牌内容不代表同一张券。
+              </p>
             </div>
             <button
               disabled={busy || !!running || !!fresh}
@@ -204,11 +212,28 @@ export function CouponMedia({
                     ? "已获取 · 缓存中"
                     : "获取资源"}
             </button>
+            {!!job?.resources.length && (
+              <button
+                disabled={
+                  busy ||
+                  !!running ||
+                  !!job.exhausted ||
+                  job.resources.length >= 200
+                }
+                onClick={() => void acquire(true)}
+              >
+                {job.exhausted
+                  ? "暂无更多素材"
+                  : job.resources.length >= 200
+                    ? "已达200个上限"
+                    : "再找一些 · +20"}
+              </button>
+            )}
             {running && <button onClick={() => void cancel()}>停止</button>}
           </div>
           <p className="coupon-media-status" aria-live="polite">
             {running
-              ? `${job.state === "queued" ? "排队等待" : "串行获取"} · 已检查 ${job.inspected} 篇 · 已找到 ${job.resources.length}/40 个`
+              ? `${job.state === "queued" ? "排队等待" : "串行获取"} · 已检查 ${job.inspected} 篇 · 已找到 ${job.resources.length}/${job.target_count || 40} 个`
               : job?.state === "complete"
                 ? `已找到 ${job.resources.length} 个${job.resources.length < 30 ? "，本次结果不足 30 个，不补入无关素材" : ""}`
                 : job?.state === "cancelled"

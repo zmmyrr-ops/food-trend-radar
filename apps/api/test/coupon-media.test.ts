@@ -155,6 +155,21 @@ test("重复点击复用任务，串行获取到40即停止，成功缓存不再
     await service.start(f.brand, "coupon");
     await service.drain();
     assert.equal(requests, 5);
+    await service.start(f.brand, "coupon", true);
+    await service.drain();
+    const more = (await f.db.query<any>("SELECT * FROM coupon_media_jobs"))
+      .rows[0];
+    assert.equal(more.resources.length, 60);
+    assert.deepEqual(more.resources.slice(0, 40), job.resources);
+    assert.equal(new Set(more.resources.map((x: any) => x.id)).size, 60);
+    assert.equal(more.next_page, 1); // Consume the remaining items of this page first.
+    assert.equal(peak, 1);
+    await service.start(f.brand, "coupon", true);
+    await service.drain();
+    const third = (await f.db.query<any>("SELECT * FROM coupon_media_jobs"))
+      .rows[0];
+    assert.equal(third.resources.length, 80);
+    assert.equal(new Set(third.resources.map((x: any) => x.id)).size, 80);
   } finally {
     await service.stop();
     await f.cleanup();
