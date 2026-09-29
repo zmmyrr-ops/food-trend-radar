@@ -1002,3 +1002,13 @@ footer {
     max-height: 65vh;
   }
 }
+.coupon-media-toggle {
+  color: inherit;
+}
+.live-media-tile figcaption > span a {
+  font-size: inherit;
+  font-weight: 500;
+}
+.picks-panel .coupon-grid {
+  align-items: start;
+}
