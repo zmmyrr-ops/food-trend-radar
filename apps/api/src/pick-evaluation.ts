@@ -128,7 +128,7 @@ export async function createPickEvaluation(
       // Empty startup results must not consume this half-day's observation.
       if (ranked.length)
         await db.query(
-          "INSERT INTO coupon_pick_evaluations(slot,captured_at,version,payload) VALUES($1,$2,'priority-v2',$3) ON CONFLICT DO NOTHING",
+          "INSERT INTO coupon_pick_evaluations(slot,captured_at,version,payload) VALUES($1,$2,'priority-v3',$3) ON CONFLICT DO NOTHING",
           [
             slot,
             new Date(capturedAt).toISOString(),

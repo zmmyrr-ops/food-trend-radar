@@ -59,6 +59,8 @@ export function aiCandidates(picks: Pick[], now = Date.now()) {
       product_id: p.product_id,
       observed_at: p.observed_at,
       price_fen: p.price_fen,
+      origin_price_fen: p.origin_price_fen,
+      reference_discount: p.discount,
       previous_price_fen: p.previous_price_fen,
       saving_fen: p.saving_fen,
       change_kind: p.kind,

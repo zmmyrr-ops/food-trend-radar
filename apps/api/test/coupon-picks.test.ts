@@ -14,7 +14,7 @@ import { salesTrend } from "../src/sales-heat.js";
 
 const now = Date.now(),
   at = new Date(now - 3600000).toISOString();
-function heat(id = "1", sales = "120") {
+function heat(id = "1", sales = "120", original?: number) {
   const points = [
     {
       run_id: "run",
@@ -23,6 +23,7 @@ function heat(id = "1", sales = "120") {
         monthly_sales: sales,
         platform_brand_id: "platform",
         identity: "name_match",
+        origin_price_fen: original,
         price_min_fen: 800,
         price_max_fen: 800,
         name: "券",
@@ -145,7 +146,7 @@ test("选券API先全量筛选排序再分页，CSV包含当前筛选全部记�
     assert.equal(all.items[0].product_id, "2");
     const ranked = await (await fetch(base + "?limit=1")).json();
     assert.equal(ranked.items[0].product_id, "1");
-    assert.equal(ranked.model.version, "priority-v2");
+    assert.equal(ranked.model.version, "priority-v3");
     assert.equal(ranked.context, null);
     const filtered = await (
       await fetch(base + "?view=value_rising&limit=1")
@@ -289,4 +290,16 @@ test("优先券排除72小时全部禁用；部分禁用保留原文，缺失与
     selectPicks(zero, { ...query, view: "recommended" }).filtered.length,
     0,
   );
+});
+
+test("已有快照原价传入评分和CSV，不依赖历史降价事件", () => {
+  const pick = combinePicks([heat("1", "120", 1600)], [], now)[0];
+  assert.equal(pick.origin_price_fen, 1600);
+  assert.equal(pick.discount.rate, 0.5);
+  assert.equal(
+    pick.priority.parts.find((p) => p.name === "原价折扣")?.value,
+    25,
+  );
+  const lines = picksCsv([pick]).split("\r\n");
+  assert.equal(lines[0].split(",").length, lines[1].split(",").length);
 });

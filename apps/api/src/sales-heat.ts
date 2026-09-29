@@ -1,6 +1,7 @@
 import type { PGlite } from "@electric-sql/pglite";
 import type { Express } from "express";
 import { z } from "zod";
+import { couponDiscount } from "./pick-priority.js";
 export function parseSales(raw: string) {
   const s = raw
     .normalize("NFKC")
@@ -28,6 +29,7 @@ export type SalesPoint = {
     monthly_sales: string;
     platform_brand_id: string;
     identity: string;
+    origin_price_fen?: number | null;
     price_min_fen: number | null;
     price_max_fen: number | null;
     name: string;
@@ -58,7 +60,14 @@ export function salesTrend(points: SalesPoint[], now = Date.now()) {
   const samples = points
     .slice(0, 16)
     .map((p) => ({ ...p, sales: parseSales(p.payload.monthly_sales ?? "") }));
+  const latestPrice = points[0]?.payload;
   const base = {
+    origin_price_fen: latestPrice?.origin_price_fen ?? null,
+    discount: couponDiscount(
+      latestPrice?.price_min_fen,
+      latestPrice?.price_max_fen,
+      latestPrice?.origin_price_fen,
+    ),
     samples: samples.map((p) => ({
       run_id: p.run_id,
       observed_at: p.observed_at,

@@ -37,6 +37,8 @@ type Pick = {
   watching: boolean;
   observed_at: string;
   price_fen: number | null;
+  origin_price_fen: number | null;
+  discount: { rate: number | null; reason: string };
   previous_price_fen: number | null;
   saving_fen: number | null;
   reduction_rate: number | null;
@@ -306,10 +308,15 @@ export function CouponPicks({ brandId }: { brandId: string }) {
                     </strong>
                   </div>
                 </div>
+                <p className="availability-note">
+                  {x.discount.rate === null
+                    ? `原价折扣暂缺：${x.discount.reason}`
+                    : `平台原价 ${money(x.origin_price_fen)} · ${(10 * (1 - x.discount.rate)).toFixed(1)}折 · 比原价省 ${(100 * x.discount.rate).toFixed(1)}%`}
+                </p>
                 <div className="signal-tags">
                   {x.kind === "price_drop" && (
                     <span>
-                      票面降 {money(x.saving_fen)} · 原价{" "}
+                      票面降 {money(x.saving_fen)} · 上次售价{" "}
                       {money(x.previous_price_fen)}
                     </span>
                   )}

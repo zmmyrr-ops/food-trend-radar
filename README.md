@@ -128,3 +128,7 @@ node scripts/configure-deepseek.mjs
 后端凭据文件为私有 `data/secrets/xiaohongshu-requests.json`，内容为两个请求模板的数组，每项包含 `url`、`headers`、原始 JSON 字符串 `body`。只支持 `https://so.xiaohongshu.com/api/sns/web/v2/search/notes` 和 `https://edith.xiaohongshu.com/api/sns/web/v1/feed`。Cookie、签名仅在服务端使用，不发送前端、不提交 Git；请求签名与登录态的长期有效性不作保证，失效时需更新请求模板。媒体请求不携带接口 Cookie。
 
 接口：`GET /api/v3/coupon-media?brand_id=...&product_id=...` 读取任务；`POST /api/v3/coupon-media` 提交相同字段；`POST /api/v3/coupon-media/:id/cancel` 停止。GET 和轮询仅访问本项目数据库，不触发小红书采集。
+
+### 优先分 v3：原价折扣
+
+权重：销量升温30、加速度15、原价折扣25、较上次降价10、品牌指数10、环境适配10（尚未计分）。原价折扣 = 1 − 当前售价 / 平台原价；优惠比例50%及以上得25分，线性封顶。仅使用同一快照内明确的单一售价；原价缺失、低于售价、多规格或范围不完整时不计该项。平台原价是参考口径，不代表历史成交价或已核验的实际价值。缺失项不重新分配权重。已有快照包含原价即可参与，无需重新采集。
