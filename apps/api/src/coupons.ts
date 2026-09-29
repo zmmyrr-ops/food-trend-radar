@@ -275,6 +275,7 @@ export function createCoupons(
     fetchRules?: (productId: string) => Promise<unknown>;
     gate?: SerialGate;
     maxPages?: number;
+    unmatchedPageLimit?: number;
     retryDelayMs?: number;
     policyVersion?: string;
     maxBaselineAgeMs?: number;
@@ -592,7 +593,7 @@ export function createCoupons(
           retry_at: string | null;
           query_signature: string | null;
         }>(
-          "SELECT t.* FROM coupon_tasks t JOIN coupon_runs r ON r.id=t.run_id WHERE t.state='queued' AND r.status='running' ORDER BY r.started_at,r.id,t.name LIMIT 1",
+          "SELECT t.* FROM coupon_tasks t JOIN coupon_runs r ON r.id=t.run_id WHERE t.state='queued' AND r.status='running' ORDER BY r.started_at,r.id,(t.pages>0) DESC,EXISTS(SELECT 1 FROM coupon_baselines b JOIN coupon_items i ON i.run_id=b.run_id AND i.brand_id=b.brand_id WHERE b.brand_id=t.brand_id AND i.payload->>'identity'='name_match') DESC,t.name LIMIT 1",
         )
       ).rows[0];
       if (!t) {
@@ -613,6 +614,22 @@ export function createCoupons(
         if (final) {
           await commitBrand(t.run_id, t.brand_id);
           continue;
+        }
+        // A low-yield discovery query is incomplete, never an empty/full snapshot.
+        // Previously matched brands retain full pagination even if early pages are noisy.
+        const unmatchedLimit = opts.unmatchedPageLimit ?? 3;
+        if (unmatchedLimit > 0 && t.pages >= unmatchedLimit) {
+          const matched = await db.query(
+            "SELECT 1 FROM coupon_items i WHERE i.brand_id=$2 AND (i.run_id=$1 OR i.run_id=(SELECT run_id FROM coupon_baselines WHERE brand_id=$2)) AND i.payload->>'identity'='name_match' LIMIT 1",
+            [t.run_id, t.brand_id],
+          );
+          if (!matched.rows.length) {
+            await db.query(
+              "UPDATE coupon_tasks SET state='partial',error_code='NO_BRAND_MATCH',comparison_status='INCOMPLETE' WHERE run_id=$1 AND brand_id=$2",
+              [t.run_id, t.brand_id],
+            );
+            continue;
+          }
         }
         if (t.pages >= (opts.maxPages ?? 100)) throw new Error("PAGE_LIMIT");
         const raw = await gate.run(
@@ -1036,7 +1053,7 @@ export function createCoupons(
       res.json({
         items: (
           await db.query(
-            "SELECT r.*, (SELECT count(*)::int FROM coupon_tasks t WHERE t.run_id=r.id) AS total,(SELECT count(*)::int FROM coupon_tasks t WHERE t.run_id=r.id AND t.state='complete') AS completed FROM coupon_runs r ORDER BY started_at DESC LIMIT 30",
+            "SELECT r.*, (SELECT count(*)::int FROM coupon_tasks t WHERE t.run_id=r.id) AS total,(SELECT count(*)::int FROM coupon_tasks t WHERE t.run_id=r.id AND t.state='complete') AS completed,(SELECT count(*)::int FROM coupon_tasks t WHERE t.run_id=r.id AND t.state='partial') AS partial,(SELECT coalesce(sum(t.pages),0)::int FROM coupon_tasks t WHERE t.run_id=r.id) AS pages,(SELECT json_build_object('name',t.name,'pages',t.pages) FROM coupon_tasks t WHERE t.run_id=r.id AND t.state='queued' AND t.pages>0 ORDER BY t.name LIMIT 1) AS current_brand FROM coupon_runs r ORDER BY started_at DESC LIMIT 30",
           )
         ).rows,
       }),

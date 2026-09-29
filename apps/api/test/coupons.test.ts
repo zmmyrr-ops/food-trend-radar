@@ -772,3 +772,116 @@ test("failed previous slot closes as partial before the next slot starts", async
     await db.close();
   }
 });
+
+test("低匹配查询三页止损，保留历史基线且不产生下架结论", async () => {
+  const db = await openDatabase();
+  const id = randomUUID();
+  await db.query(
+    "INSERT INTO brands(id,name,name_key,category,shanghai_evidence_url) VALUES($1,'品牌甲','low-yield','火锅','https://example.com')",
+    [id],
+  );
+  let baseline = true;
+  let calls = 0;
+  const service = createCoupons(db, {
+    gate: gate(),
+    fetchPage: async (_name, cursor) => {
+      calls++;
+      return {
+        status_code: 0,
+        cursor: Number(cursor) + 12,
+        has_more: !baseline,
+        product_list: [product(1200, `item-${cursor}`, "其他品牌")],
+      };
+    },
+  });
+  try {
+    const first = await service.start([id]);
+    await service.drain();
+    baseline = false;
+    calls = 0;
+    const second = await service.start([id]);
+    await service.drain();
+    assert.equal(calls, 3);
+    const task = (
+      await db.query(
+        "SELECT state,pages,error_code,comparison_status FROM coupon_tasks WHERE run_id=$1",
+        [second],
+      )
+    ).rows[0];
+    assert.deepEqual(task, {
+      state: "partial",
+      pages: 3,
+      error_code: "NO_BRAND_MATCH",
+      comparison_status: "INCOMPLETE",
+    });
+    assert.equal(
+      (
+        await db.query(
+          "SELECT run_id FROM coupon_baselines WHERE brand_id=$1",
+          [id],
+        )
+      ).rows[0].run_id,
+      first,
+    );
+    assert.equal(
+      (
+        await db.query(
+          "SELECT count(*)::int AS n FROM coupon_diffs WHERE run_id=$1",
+          [second],
+        )
+      ).rows[0].n,
+      0,
+    );
+  } finally {
+    await service.stop();
+    await db.close();
+  }
+});
+
+test("第三页命中继续翻页；有历史匹配的品牌不触发低匹配止损", async () => {
+  const db = await openDatabase();
+  const id = randomUUID();
+  await db.query(
+    "INSERT INTO brands(id,name,name_key,category,shanghai_evidence_url) VALUES($1,'品牌甲','matched-pagination','火锅','https://example.com')",
+    [id],
+  );
+  let historical = false;
+  let calls = 0;
+  const service = createCoupons(db, {
+    gate: gate(),
+    fetchPage: async (_name, cursor) => {
+      calls++;
+      const page = Number(cursor) / 12;
+      return {
+        status_code: 0,
+        cursor: Number(cursor) + 12,
+        has_more: page < 4,
+        product_list: [
+          product(
+            1200,
+            `item-${page}`,
+            !historical && page === 2 ? "品牌甲" : "其他品牌",
+          ),
+        ],
+      };
+    },
+  });
+  try {
+    await service.start([id]);
+    await service.drain();
+    assert.equal(calls, 5);
+    historical = true;
+    calls = 0;
+    const run = await service.start([id]);
+    await service.drain();
+    assert.equal(calls, 5);
+    assert.equal(
+      (await db.query("SELECT state FROM coupon_tasks WHERE run_id=$1", [run]))
+        .rows[0].state,
+      "complete",
+    );
+  } finally {
+    await service.stop();
+    await db.close();
+  }
+});

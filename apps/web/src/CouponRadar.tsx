@@ -53,6 +53,9 @@ type Run = {
   status: string;
   total: number;
   completed: number;
+  partial: number;
+  pages: number;
+  current_brand: { name: string; pages: number } | null;
   started_at: string;
 };
 type Status = {
@@ -269,13 +272,28 @@ export function CouponRadar() {
         <article>
           <span>本轮采集进度</span>
           <strong>
-            {runs[0] ? `${runs[0].completed} / ${runs[0].total}` : "—"}
+            {runs[0]
+              ? `${runs[0].completed + runs[0].partial} / ${runs[0].total} 已处理`
+              : "—"}
           </strong>
           <progress
-            aria-label="本轮品牌采集进度"
+            aria-label="本轮品牌处理进度"
             max={runs[0]?.total || 1}
-            value={runs[0]?.completed || 0}
+            value={(runs[0]?.completed || 0) + (runs[0]?.partial || 0)}
           />
+          {runs[0] && (
+            <small>
+              完整采集 {runs[0].completed} · 待核验/未完整 {runs[0].partial} ·
+              已查 {runs[0].pages} 页
+              {runs[0].current_brand && (
+                <>
+                  <br />
+                  当前：{runs[0].current_brand.name} · 已查{" "}
+                  {runs[0].current_brand.pages} 页
+                </>
+              )}
+            </small>
+          )}
         </article>
         <article>
           <span>采集状态</span>
@@ -469,7 +487,10 @@ export function CouponRadar() {
                         : "分页完成，有名称匹配线索"
                     : t.state}{" "}
                   · {t.pages} 页 · 召回 {t.recalled} 条 · 名称匹配 {t.matched}{" "}
-                  条 · 当前页重试 {t.retries} 次 {t.error_code ?? ""}
+                  条 · 当前页重试 {t.retries} 次{" "}
+                  {t.error_code === "NO_BRAND_MATCH"
+                    ? "前三页未匹配品牌，已停止无效翻页；待核验，不代表无券或完整采集"
+                    : (t.error_code ?? "")}
                 </p>
               ))}
             </details>
