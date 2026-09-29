@@ -74,8 +74,25 @@ export function VideoStudio() {
     [dirty, setDirty] = useState(false),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
+    [copyStatus, setCopyStatus] = useState(""),
     [configured, setConfigured] = useState(true);
   const prefix = "/api/v3/video-projects";
+  const captionText = plan
+    .map((clip) => clip.caption.trim())
+    .filter(Boolean)
+    .join("\n");
+  useEffect(() => {
+    setCopyStatus("");
+  }, [captionText]);
+  async function copyCaptions() {
+    try {
+      await navigator.clipboard.writeText(captionText);
+      setCopyStatus("已复制全部字幕");
+    } catch {
+      setCopyStatus("复制失败，请允许浏览器访问剪贴板后重试");
+    }
+  }
+
   function load(p: Project) {
     setProject(p);
     setHistory((h) => [p, ...h.filter((x) => x.id !== p.id)]);
@@ -422,6 +439,22 @@ export function VideoStudio() {
             </section>
             <section className="studio-timeline">
               <h2>镜头与字幕</h2>
+              <div className="studio-actions">
+                <button
+                  type="button"
+                  disabled={!captionText}
+                  title="按镜头顺序复制当前字幕，包含尚未保存的修改"
+                  onClick={() => void copyCaptions()}
+                >
+                  一键复制字幕
+                </button>
+                <span role="status" className="studio-hint">
+                  {copyStatus ||
+                    (!captionText
+                      ? "填写字幕后即可复制"
+                      : "按镜头顺序复制，每条字幕一行")}
+                </span>
+              </div>
               <p>
                 目标{project.seconds}秒 · 当前
                 {plan.reduce((n, c) => n + c.duration, 0).toFixed(1)}
