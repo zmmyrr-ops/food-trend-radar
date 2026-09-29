@@ -21,6 +21,7 @@ import { Admission } from "./Admission";
 import { appFetch, appUrl } from "./app-url";
 import { CouponRadar } from "./CouponRadar";
 import { Sources } from "./Sources";
+import { VideoStudio } from "./VideoStudio";
 import "./style.css";
 
 async function api<T>(
@@ -1057,6 +1058,10 @@ const root = document.getElementById("root");
 if (root)
   createRoot(root).render(
     <StrictMode>
-      <App />
+      {new URLSearchParams(location.search).get("studio") === "1" ? (
+        <VideoStudio />
+      ) : (
+        <App />
+      )}
     </StrictMode>,
   );

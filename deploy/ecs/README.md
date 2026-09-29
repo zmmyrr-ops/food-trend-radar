@@ -29,3 +29,9 @@ nginx -t
 每日备份由应用生成，保留最近 7 份，目录 `data/backups`。异地备份需另外配置。迁移时先暂停并正常停止原实例，确认进程退出后复制整个数据库目录；禁止热复制 PGlite 文件。恢复历史备份前先停止服务，并用 `scripts/verify-backup.mjs` 验证备份。新实例验收失败时停止新实例、恢复原代码与数据库副本，确认只有一个采集实例再恢复旧服务。
 
 访问密码保存在运维端私有文件，服务端只保存 htpasswd 哈希；不得加入仓库。凭据失效、平台风控时保持暂停，人工重新登录后更新凭据，不能绕过校验。串行请求间隔保持 1–2 秒。
+
+## 视频工作室运行时
+
+生产机已安装Noto CJK字体。渲染工具使用 `/opt/food-trend-radar/ffmpeg-linux`（ffmpeg-static b6.1.1对应Linux二进制，含libass）与 `/opt/food-trend-radar/ffprobe-linux`（ffprobe-static 3.1.0）。systemd drop-in `video.conf` 设置 `FFMPEG_PATH` 和 `FFPROBE_PATH`。新机器可通过锁定的npm依赖安装对应平台文件后配置这两个变量，不得复制macOS二进制到Linux。
+
+百炼密钥文件 `/opt/food-trend-radar/data/secrets/bailian.json`，格式为含api_key的JSON，仅food-radar可读。Nginx本项目location的client_max_body_size为51m，后端单文件上限50MB；不要扩大其他站点上传限制。视频子进程仅通过IPC回传数据库变更，不直接打开PGlite。视频目录可独立备份，发布时不把大体积视频目录反复打进代码备份。

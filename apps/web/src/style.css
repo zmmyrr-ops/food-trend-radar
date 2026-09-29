@@ -1012,3 +1012,238 @@ footer {
 .picks-panel .coupon-grid {
   align-items: start;
 }
+
+.studio-entry {
+  display: block;
+  margin: 8px 0;
+  font-size: 13px !important;
+  color: #315e50;
+}
+.video-studio {
+  max-width: 1250px;
+  margin: auto;
+  padding: 28px;
+  display: block;
+}
+.studio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.video-studio h1 {
+  font-size: 26px;
+  margin: 12px 0;
+}
+.video-studio h2 {
+  font-size: 19px;
+  margin: 0 0 14px;
+}
+.video-studio a {
+  font-size: 14px;
+}
+.video-studio p {
+  line-height: 1.7;
+}
+.studio-setup,
+.studio-preview,
+.studio-timeline {
+  background: white;
+  border: 1px solid #dde4df;
+  border-radius: 14px;
+  padding: 22px;
+}
+.studio-settings {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr;
+  gap: 20px;
+}
+.studio-settings label {
+  display: grid;
+  gap: 8px;
+}
+.studio-rights {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 18px 0;
+}
+.studio-rights input,
+.studio-resource-grid input {
+  width: auto;
+}
+.studio-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.studio-preview {
+  position: sticky;
+  top: 20px;
+}
+.studio-preview video,
+.studio-preview-placeholder {
+  display: block;
+  width: min(100%, 360px);
+  aspect-ratio: 9 / 16;
+  margin: auto;
+  background: #17221e;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.studio-preview-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d5dfda;
+  padding: 20px;
+  text-align: center;
+}
+.studio-status,
+.studio-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.studio-status {
+  min-height: 48px;
+  justify-content: space-between;
+}
+.studio-hint {
+  font-size: 12px;
+  color: #697970;
+}
+.studio-error {
+  background: #fff0eb;
+  color: #973d25;
+  padding: 12px;
+  border-radius: 8px;
+}
+.studio-shot {
+  border-top: 1px solid #e2e8e3;
+  padding: 14px 0;
+  display: grid;
+  gap: 10px;
+}
+.studio-shot-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.studio-shot-title strong {
+  margin-right: auto;
+}
+.studio-shot select,
+.studio-shot input {
+  width: 100%;
+  box-sizing: border-box;
+}
+.studio-shot-times {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.studio-shot-times label {
+  font-size: 12px;
+}
+.studio-resource-grid,
+.studio-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+.studio-resource-grid img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+.studio-resource-grid label {
+  font-size: 12px;
+}
+.studio-analysis,
+.studio-history {
+  margin: 20px 0;
+  padding: 16px;
+  background: white;
+  border: 1px solid #dde4df;
+  border-radius: 10px;
+}
+.studio-analysis-grid video,
+.studio-analysis-grid img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  background: #17221e;
+}
+.studio-analysis-grid p {
+  font-size: 12px;
+}
+.studio-history button {
+  margin: 6px;
+}
+.studio-download {
+  padding: 10px 16px;
+  background: #e6f0e9;
+  border-radius: 8px;
+}
+@media (max-width: 760px) {
+  .video-studio {
+    padding: 16px;
+  }
+  .studio-workspace,
+  .studio-settings {
+    grid-template-columns: 1fr;
+  }
+  .studio-preview {
+    position: static;
+  }
+  .studio-header {
+    display: block;
+  }
+  .studio-resource-grid,
+  .studio-analysis-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.video-studio .studio-header {
+  position: static;
+  inset: auto;
+  height: auto;
+  min-height: 0;
+  width: auto;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  z-index: auto;
+  display: flex;
+}
+.video-studio .studio-header a {
+  display: inline;
+  color: #315e50;
+}
+.video-studio .studio-header h1 {
+  margin: 12px 0;
+}
+
+@media (max-width: 760px) {
+  .video-studio .studio-header {
+    display: block;
+  }
+}
+
+.studio-preview video,
+.studio-preview-placeholder {
+  height: min(52vh, 620px);
+  width: auto;
+  max-width: 100%;
+  margin: auto;
+}
+.studio-preview-placeholder {
+  width: 100%;
+}

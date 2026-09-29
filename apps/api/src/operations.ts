@@ -19,6 +19,7 @@ import { createScoreHistory } from "./score-history.js";
 import { briefMarkdown, createSelectionBrief } from "./selection-brief.js";
 import { sourceDiagnostics } from "./source-diagnostics.js";
 import { readStability } from "./stability.js";
+import { createVideoProjects } from "./video-projects.js";
 export async function createOperations(
   db: PGlite,
   backupDir: string,
@@ -56,6 +57,7 @@ export async function createOperations(
     db,
     join(backupDir, "..", "secrets", "xiaohongshu-requests.json"),
   );
+  const videos = await createVideoProjects(db, join(backupDir, "..", "videos"));
   let busy = false;
   let backupError: string | null = null;
   async function backup() {
@@ -212,6 +214,7 @@ export async function createOperations(
     brandIndex.register(app);
     ai.register(app);
     media.register(app);
+    videos.register(app);
     evaluation.register(app);
     alerts.register(app);
     scores.register(app);
@@ -288,6 +291,7 @@ export async function createOperations(
       await Promise.all([
         active ?? Promise.resolve(),
         ai.drain(),
+        videos.stop(),
         media.stop(),
       ]);
     },

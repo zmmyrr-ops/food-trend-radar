@@ -223,7 +223,18 @@ export function createApp(
         ].includes(origin)
       )
         return next(new HttpError(403, "ORIGIN_DENIED", "请求来源不允许"));
-      if (!req.is("application/json"))
+      if (
+        !req.is("application/json") &&
+        !(
+          req.path === "/api/v3/video-assets" &&
+          req.method === "POST" &&
+          (req.is("video/*") ||
+            req.is("audio/*") ||
+            req.is("image/jpeg") ||
+            req.is("image/png") ||
+            req.is("image/webp"))
+        )
+      )
         return next(new HttpError(415, "CONTENT_TYPE", "请使用JSON请求"));
     }
     next();
