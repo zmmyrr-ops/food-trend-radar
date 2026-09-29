@@ -848,3 +848,24 @@ footer {
     flex: 1 1 150px;
   }
 }
+
+/* Keep polling updates from moving the dashboard, including long brand names. */
+.collection-progress-detail {
+  display: block;
+  margin-top: 8px;
+}
+.overview-metrics .collection-progress-summary {
+  height: 36px;
+  line-height: 18px;
+  overflow: hidden;
+}
+.overview-metrics .collection-current-brand {
+  height: 18px;
+  line-height: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.overview-metrics article {
+  min-width: 0;
+}

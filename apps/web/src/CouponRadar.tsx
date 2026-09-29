@@ -281,19 +281,20 @@ export function CouponRadar() {
             max={runs[0]?.total || 1}
             value={(runs[0]?.completed || 0) + (runs[0]?.partial || 0)}
           />
-          {runs[0] && (
-            <small>
-              完整采集 {runs[0].completed} · 待核验/未完整 {runs[0].partial} ·
-              已查 {runs[0].pages} 页
-              {runs[0].current_brand && (
-                <>
-                  <br />
-                  当前：{runs[0].current_brand.name} · 已查{" "}
-                  {runs[0].current_brand.pages} 页
-                </>
-              )}
-            </small>
-          )}
+          <small className="collection-progress-detail">
+            <span className="collection-progress-summary">
+              完整采集 {runs[0]?.completed ?? 0} · 待核验/未完整{" "}
+              {runs[0]?.partial ?? 0} · 已查 {runs[0]?.pages ?? 0} 页
+            </span>
+            <span
+              className="collection-current-brand"
+              title={runs[0]?.current_brand?.name}
+            >
+              {runs[0]?.current_brand
+                ? `当前：${runs[0].current_brand.name} · 已查 ${runs[0].current_brand.pages} 页`
+                : "当前：等待下一品牌"}
+            </span>
+          </small>
         </article>
         <article>
           <span>采集状态</span>
@@ -363,13 +364,16 @@ export function CouponRadar() {
                 setOffset(0);
               }}
             >
-              <option value="">全部品牌（{brands.length}）</option>
-              {brands.map((b) => (
-                <option key={b.id} value={b.id}>
-                  {b.name} · {b.category}
-                  {b.active ? "" : "（已停用）"}
-                </option>
-              ))}
+              <option value="">
+                全部启用品牌（{brands.filter((b) => b.active).length}）
+              </option>
+              {brands
+                .filter((b) => b.active)
+                .map((b) => (
+                  <option key={b.id} value={b.id}>
+                    {b.name} · {b.category}
+                  </option>
+                ))}
             </select>
           </label>
         </div>
