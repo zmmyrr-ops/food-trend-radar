@@ -16,6 +16,7 @@ import { z } from "zod";
 import { bailianError } from "./bailian-error.js";
 import {
   type Asset,
+  adaptivePlan,
   automaticPlan,
   type VideoProject,
   validatePlan,
@@ -327,7 +328,9 @@ async function analyze() {
     );
     report({ assets: project.assets });
   }
-  const preliminary = automaticPlan(project.assets, project.seconds);
+  const fitted = adaptivePlan(project.assets, project.seconds);
+  const preliminary = fitted.plan;
+  report({ seconds: fitted.seconds });
   report({ state: "planning", progress: "精选镜头并检查顺序" });
   const candidates = project.assets
     .filter((a) => a.accepted)

@@ -114,6 +114,18 @@ export function automaticPlan(assets: Asset[], seconds: number): Clip[] {
     remaining -= duration;
   }
   if (remaining > 0.02 || out.length < 4)
-    throw Error("优质素材时长不足，请补充素材或改为15秒");
+    throw Error("优质素材不足以达到目标时长");
   return validatePlan(out, assets, seconds);
+}
+
+/** Keep the preferred duration when possible, otherwise fit down to 12 seconds. */
+export function adaptivePlan(assets: Asset[], preferredSeconds: number) {
+  for (let seconds = Math.floor(preferredSeconds); seconds >= 12; seconds--) {
+    try {
+      return { seconds, plan: automaticPlan(assets, seconds) };
+    } catch {
+      // A shorter complete edit is preferable to looping or extending poor footage.
+    }
+  }
+  throw Error("优质素材不足12秒，请补充素材后重试");
 }

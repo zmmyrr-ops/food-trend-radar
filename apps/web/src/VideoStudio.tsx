@@ -226,7 +226,7 @@ export function VideoStudio() {
             {project ? ` · ${project.title}` : ""}
           </p>
         </div>
-        <span>15–20秒 · 竖屏 · 实况混剪</span>
+        <span>12–20秒 · 竖屏 · 实况混剪 · 素材不足时自动缩短，最低12秒</span>
       </header>
       {!configured && <p role="alert">百炼密钥尚未配置，请联系管理员。</p>}
       {error && (
@@ -244,7 +244,7 @@ export function VideoStudio() {
                 value={seconds}
                 onChange={(e) => setSeconds(Number(e.target.value))}
               >
-                {[15, 18, 20].map((n) => (
+                {[12, 15, 18, 20].map((n) => (
                   <option key={n} value={n}>
                     {n}秒
                   </option>

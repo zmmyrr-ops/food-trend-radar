@@ -7,7 +7,12 @@ import test from "node:test";
 import express from "express";
 import { openDatabase } from "../src/db.js";
 import { createVideoProjects } from "../src/video-projects.js";
-import { type Asset, automaticPlan, validatePlan } from "../src/video-types.js";
+import {
+  type Asset,
+  adaptivePlan,
+  automaticPlan,
+  validatePlan,
+} from "../src/video-types.js";
 
 const assets = () =>
   Array.from({ length: 8 }, (_, i) => ({
@@ -27,7 +32,7 @@ const assets = () =>
   }));
 test("自动编排达到目标时长，不循环素材，不接受未知资源和越界时间", () => {
   const a = assets();
-  for (const seconds of [15, 18, 20]) {
+  for (const seconds of [12, 15, 18, 20]) {
     const plan = automaticPlan(a, seconds);
     assert.equal(
       plan.reduce((n, c) => n + c.duration, 0),
@@ -230,4 +235,19 @@ test("真实FFmpeg渲染：18秒、竖屏、字幕、无素材音轨，生成可
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
+});
+
+test("素材不足目标时长时自动缩短，12秒可生成，不足12秒拒绝", () => {
+  const a = assets();
+  assert.equal(adaptivePlan(a, 18).seconds, 18);
+  const four = a.slice(0, 4);
+  const fitted = adaptivePlan(four, 18);
+  assert.equal(fitted.seconds, 12);
+  assert.equal(validatePlan(fitted.plan, four, 12), fitted.plan);
+  assert.equal(new Set(fitted.plan.map((c) => c.asset_id)).size, 4);
+  const five = a
+    .slice(0, 5)
+    .map((a) => ({ ...a, best_end: 2.7, duration: 2.7 }));
+  assert.equal(adaptivePlan(five, 20).seconds, 13);
+  assert.throws(() => adaptivePlan(a.slice(0, 3), 18), /不足12秒/);
 });

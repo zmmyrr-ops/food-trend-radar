@@ -222,7 +222,12 @@ export async function createVideoProjects(db: PGlite, root: string) {
             await readFile(join(root, "..", "secrets", "bailian.json"), "utf8"),
           ).api_key;
         } catch {}
-        res.json({ configured, max_assets: 40, max_seconds: 20 });
+        res.json({
+          configured,
+          max_assets: 40,
+          min_seconds: 12,
+          max_seconds: 20,
+        });
       }),
     );
     app.post(
@@ -284,7 +289,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
           .object({
             brand_id: uuid,
             product_id: z.string().min(1).max(80),
-            seconds: z.union([z.literal(15), z.literal(18), z.literal(20)]),
+            seconds: z.number().int().min(12).max(20),
             resource_ids: z.array(z.string().max(200)).max(40),
             upload_ids: z.array(uuid).max(40).default([]),
             music_id: uuid.optional(),

@@ -183,7 +183,7 @@ export function CouponMedia({
         </span>
       </button>
       <a className="studio-entry" href={appUrl(`/?studio=1&${query}`)}>
-        制作15–20秒短视频 →
+        制作12–20秒短视频 →
       </a>
       {open && (
         <div className="coupon-media-body">
