@@ -5,7 +5,11 @@ import { leisureCategories } from "@radar/contracts";
 import type { Express } from "express";
 import { z } from "zod";
 import { brandCoverage } from "./brand-coverage.js";
-import { cacheBrandIcon, platformImage } from "./brand-icons.js";
+import {
+  cacheBrandIcon,
+  platformImage,
+  seedOfficialBrandIcons,
+} from "./brand-icons.js";
 import { readConditionComparison } from "./coupon-condition-comparison.js";
 import { assessCoupon } from "./coupon-evidence.js";
 import { createRuleWorker, initRules, RULES_ENDPOINT } from "./coupon-rules.js";
@@ -288,6 +292,7 @@ export async function initCoupons(db: PGlite) {
       GROUP BY i.brand_id,i.payload->>'platform_brand_id';
     CREATE INDEX IF NOT EXISTS coupon_diffs_time ON coupon_diffs(observed_at DESC);
   `);
+  await seedOfficialBrandIcons(db);
   await initRules(db);
   await initStores(db);
 }
@@ -765,7 +770,7 @@ export function createCoupons(
           Date.now() - (iconAttempts.get(t.brand_id) || 0) > 86400000
         ) {
           const cached = await db.query(
-            "SELECT 1 FROM brand_icons WHERE brand_id=$1 AND updated_at>now()-interval '7 days'",
+            "SELECT 1 FROM brand_icons WHERE brand_id=$1 AND (kind='official_logo' OR updated_at>now()-interval '7 days')",
             [t.brand_id],
           );
           if (!cached.rows.length) {

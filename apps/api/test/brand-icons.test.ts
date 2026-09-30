@@ -95,3 +95,57 @@ test("券摘要关联正确品牌，图标以字节入库并从系统提供", as
     await db.close();
   }
 });
+
+test("官方 Logo 精确入库，重复导入不变，店家图不能覆盖", async () => {
+  const { seedOfficialBrandIcons } = await import("../src/brand-icons.js");
+  const db = await openDatabase();
+  const id = randomUUID(),
+    unrelated = randomUUID();
+  const originalFetch = globalThis.fetch;
+  try {
+    await db.query(
+      "INSERT INTO brands(id,name,name_key,category,shanghai_evidence_url) VALUES($1,'肯德基','kfc','其他餐饮','https://www.kfc.com.cn/'),($2,'肯德基附近餐厅','other','其他餐饮','https://example.com')",
+      [id, unrelated],
+    );
+    await seedOfficialBrandIcons(db);
+    const before = (
+      await db.query<any>("SELECT * FROM brand_icons WHERE brand_id=$1", [id])
+    ).rows[0];
+    assert.equal(before.kind, "official_logo");
+    assert.match(before.source_url, /www\.kfc\.com\.cn/);
+    assert.equal(
+      (
+        await db.query("SELECT 1 FROM brand_icons WHERE brand_id=$1", [
+          unrelated,
+        ])
+      ).rows.length,
+      0,
+    );
+    await seedOfficialBrandIcons(db);
+    assert.deepEqual(
+      (await db.query<any>("SELECT * FROM brand_icons WHERE brand_id=$1", [id]))
+        .rows[0],
+      before,
+    );
+    globalThis.fetch = async () =>
+      new Response(Buffer.from([255, 216, 255, 224, 1]));
+    await cacheBrandIcon(db, id, "https://p3.douyinpic.com/shop", "shop_icon");
+    assert.deepEqual(
+      (await db.query<any>("SELECT * FROM brand_icons WHERE brand_id=$1", [id]))
+        .rows[0],
+      before,
+    );
+    assert.match(
+      (
+        await db.query<{ icon_url: string }>(
+          "SELECT icon_url FROM brands WHERE id=$1",
+          [id],
+        )
+      ).rows[0].icon_url,
+      /\?v=/,
+    );
+  } finally {
+    globalThis.fetch = originalFetch;
+    await db.close();
+  }
+});

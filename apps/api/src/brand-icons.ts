@@ -1,4 +1,6 @@
+import { createHash } from "node:crypto";
 import type { PGlite } from "@electric-sql/pglite";
+import officialLogos from "./official-brand-logos.json" with { type: "json" };
 
 export function platformImage(value: unknown): string | null {
   const raw =
@@ -54,12 +56,41 @@ export async function cacheBrandIcon(
   await db.transaction(async (tx) => {
     await tx.query(
       `INSERT INTO brand_icons(brand_id,source_url,kind,mime,content) VALUES($1,$2,$3,$4,$5)
-      ON CONFLICT(brand_id) DO UPDATE SET source_url=excluded.source_url,kind=excluded.kind,mime=excluded.mime,content=excluded.content,updated_at=now()`,
+      ON CONFLICT(brand_id) DO UPDATE SET source_url=excluded.source_url,kind=excluded.kind,mime=excluded.mime,content=excluded.content,updated_at=now() WHERE brand_icons.kind<>'official_logo'`,
       [brand, url, kind, mime, bytes.toString("base64")],
     );
-    await tx.query("UPDATE brands SET icon_url=$2 WHERE id=$1", [
-      brand,
-      `/api/v3/brands/${brand}/icon`,
-    ]);
+    await tx.query(
+      "UPDATE brands SET icon_url=$2 WHERE id=$1 AND NOT EXISTS(SELECT 1 FROM brand_icons WHERE brand_id=$1 AND kind='official_logo')",
+      [brand, `/api/v3/brands/${brand}/icon`],
+    );
   });
+}
+
+/** Exact-name/alias matches only; curated official logos outrank shop photos. */
+export async function seedOfficialBrandIcons(db: PGlite) {
+  for (const logo of officialLogos) {
+    const matches = await db.query<{ id: string }>(
+      "SELECT id FROM brands WHERE name=ANY($1::text[]) OR aliases ?| $1::text[]",
+      [logo.names],
+    );
+    const revision = createHash("sha256")
+      .update(logo.content)
+      .digest("hex")
+      .slice(0, 12);
+    for (const { id } of matches.rows) {
+      await db.transaction(async (tx) => {
+        await tx.query(
+          `INSERT INTO brand_icons(brand_id,source_url,kind,mime,content)
+          VALUES($1,$2,'official_logo',$3,$4) ON CONFLICT(brand_id) DO UPDATE
+          SET source_url=excluded.source_url,kind=excluded.kind,mime=excluded.mime,content=excluded.content,updated_at=now()
+          WHERE brand_icons.kind<>'official_logo' OR brand_icons.content<>excluded.content`,
+          [id, logo.source_url, logo.mime, logo.content],
+        );
+        await tx.query(
+          "UPDATE brands SET icon_url=$2 WHERE id=$1 AND icon_url IS DISTINCT FROM $2",
+          [id, `/api/v3/brands/${id}/icon?v=${revision}`],
+        );
+      });
+    }
+  }
 }
