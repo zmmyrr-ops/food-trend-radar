@@ -88,6 +88,8 @@ export async function enableReadModels(db: PGlite) {
   for (const table of [
     "brands",
     "coupon_baselines",
+    "coupon_tasks",
+    "coupon_diffs",
     "coupon_items",
     "coupon_rule_snapshots",
     "coupon_store_snapshots",

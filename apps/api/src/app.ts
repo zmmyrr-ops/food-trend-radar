@@ -564,9 +564,26 @@ export function createApp(
   );
   const webDist = fileURLToPath(new URL("../../web/dist/", import.meta.url));
   if (existsSync(webDist)) {
-    app.use(express.static(webDist));
+    app.use(
+      "/assets",
+      express.static(path.join(webDist, "assets"), {
+        maxAge: "1y",
+        immutable: true,
+        fallthrough: false,
+      }),
+    );
+    app.use(
+      express.static(webDist, {
+        setHeaders: (res, filename) => {
+          if (filename.endsWith("index.html"))
+            res.setHeader("Cache-Control", "no-cache");
+        },
+      }),
+    );
     app.get("/{*path}", (_req, res) =>
-      res.sendFile(path.join(webDist, "index.html")),
+      res
+        .setHeader("Cache-Control", "no-cache")
+        .sendFile(path.join(webDist, "index.html")),
     );
   }
   const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {

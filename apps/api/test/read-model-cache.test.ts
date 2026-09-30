@@ -49,3 +49,31 @@ test("结果缓存持久化、并发合并、源数据变更失效、时钟过�
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+test("数据库重开后复用有效持久结果，修改任务会使结果失效", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "radar-persist-"));
+  let db = await openDatabase(join(dir, "db"));
+  let ops = await createOperations(db, join(dir, "backups"));
+  try {
+    const first = readModel(db, "persist", async () => ({ value: 42 }));
+    await first();
+    await ops.drain();
+    await db.close();
+    db = await openDatabase(join(dir, "db"));
+    ops = await createOperations(db, join(dir, "backups"));
+    let built = 0;
+    const restored = readModel(db, "persist", async () => {
+      built++;
+      return { value: 43 };
+    });
+    assert.deepEqual(await restored(), { value: 42 });
+    assert.equal(built, 0);
+    await db.exec("UPDATE coupon_tasks SET state='complete'");
+    assert.deepEqual(await restored(), { value: 43 });
+    assert.equal(built, 1);
+  } finally {
+    await ops.drain();
+    await db.close();
+    await rm(dir, { recursive: true, force: true });
+  }
+});
