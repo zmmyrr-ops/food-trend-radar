@@ -52,7 +52,7 @@ test("循环密集快照使用真实的至少一小时锚点，不跨缺失或�
   broken[1] = { ...broken[1], missing: true } as (typeof broken)[number];
   assert.equal(salesTrend(spacedSalesSamples(broken, now), now).speed, null);
 });
-test("品牌增量更新原子替换、失败保留旧池、到期移出、禁用隐藏且最多500张", async () => {
+test("品牌增量更新原子替换、失败保留旧池、到期移出、禁用隐藏；只有优先券限制500张", async () => {
   const db = await openDatabase();
   const brand = randomUUID(),
     run = randomUUID();
@@ -75,8 +75,8 @@ test("品牌增量更新原子替换、失败保留旧池、到期移出、禁�
   });
   try {
     await pool.refreshBrand(brand);
-    assert.equal((await pool.read()).length, 500);
-    const selected = selectPicks(current, {
+    assert.equal((await pool.read()).length, 510);
+    const selected = selectPicks(await pool.read(), {
       view: "recommended",
       order: "priority",
       search: "",
@@ -84,9 +84,47 @@ test("品牌增量更新原子替换、失败保留旧池、到期移出、禁�
       limit: 20,
     });
     assert.equal(selected.filtered.length, 500);
+    assert.equal(selected.counts.all, 510);
+    const outside = current.find(
+      (x) => !selected.filtered.some((y) => y.product_id === x.product_id),
+    )!;
+    outside.title = "上限外的券";
+    outside.watching = true;
+    outside.kind = "price_drop";
+    outside.usage_inputs = undefined;
+    outside.priority = {
+      ...outside.priority,
+      score: 0,
+      value_gate: { ...outside.priority.value_gate, eligible: false },
+    };
+    outside.use_outlook = { ...outside.use_outlook, fully_excluded: true };
+    await pool.refreshBrand(brand);
+    const complete = await pool.read();
+    for (const view of ["all", "watching", "price_drop"] as const) {
+      const result = selectPicks(complete, {
+        view,
+        order: "priority",
+        search: "上限外的券",
+        offset: 0,
+        limit: 20,
+      });
+      assert.equal(result.filtered.length, 1, view);
+      assert.equal(result.filtered[0].product_id, outside.product_id);
+      assert.equal(result.counts.recommended, 0);
+    }
+    const all = selectPicks(complete, {
+      view: "all",
+      order: "priority",
+      search: "",
+      offset: 500,
+      limit: 20,
+    });
+    assert.equal(all.filtered.length, 510);
+    assert.equal(all.filtered.slice(500, 520).length, 10);
+
     fail = true;
     await assert.rejects(pool.refreshBrand(brand), /source failed/);
-    assert.equal((await pool.read()).length, 500);
+    assert.equal((await pool.read()).length, 510);
     fail = false;
     current = picks(brand, run, 1);
     await pool.refreshBrand(brand);

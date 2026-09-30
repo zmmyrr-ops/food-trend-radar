@@ -187,9 +187,9 @@ export function CouponPicks({ brandId }: { brandId: string }) {
   }
   return (
     <section className="picks-panel" aria-label="选券工作台">
-      <h2>优先券池 · 最多500张</h2>
+      <h2>优惠券</h2>
       <p className="muted">
-        每个品牌完整采集后更新，过期或不再符合条件的券自动移出；历史记录保留在原始快照。
+        每个品牌完整采集后更新，过期券自动移出。仅优先券最多500张，全部券及其他筛选不受此上限限制。
       </p>
       <p>
         按优惠变化与销量升温排序。分数不是爆款概率，完整权益与适用性请展开核验。

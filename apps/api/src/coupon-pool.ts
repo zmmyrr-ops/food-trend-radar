@@ -207,14 +207,14 @@ export async function createCouponPool(
       });
     return pumping;
   }
+  // Keep the complete current set; only selectPicks limits the recommended view.
   async function read() {
     const rows = (
       await db.query<{
         payload: Pick;
       }>(`SELECT c.payload FROM coupon_pool_candidates c JOIN brands b ON b.id=c.brand_id AND b.active JOIN coupon_baselines cb ON cb.brand_id=c.brand_id AND cb.run_id=c.run_id
       WHERE c.observed_at BETWEEN now()-interval '36 hours' AND now() AND (c.sale_end IS NULL OR c.sale_end>now())
-      AND (c.payload#>>'{priority,value_gate,eligible}')::boolean AND (c.payload#>>'{priority,score}')::numeric>0 AND NOT (c.payload#>>'{use_outlook,fully_excluded}')::boolean
-      ORDER BY (c.payload#>>'{priority,score}')::numeric DESC,c.brand_id,c.product_id LIMIT 500`)
+      ORDER BY (c.payload#>>'{priority,score}')::numeric DESC,c.brand_id,c.product_id`)
     ).rows;
     return rows
       .filter(({ payload }) => {
@@ -222,7 +222,6 @@ export async function createCouponPool(
         return !end || Date.parse(end) > Date.now();
       })
       .map((x) => updatePoolClock(x.payload))
-      .filter((x) => !x.use_outlook.fully_excluded && x.priority.score > 0)
       .sort((a, b) => b.priority.score - a.priority.score);
   }
   return {
