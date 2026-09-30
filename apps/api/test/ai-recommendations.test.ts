@@ -122,13 +122,26 @@ test("AI request stays backend-only, deduplicates work and persists validated ev
         assert.equal(options?.redirect, "error");
         const body = JSON.parse(String(options?.body));
         assert.equal(body.response_format.type, "json_object");
+        const input = JSON.parse(body.messages[1].content);
+        assert.equal(input.candidates[0].id, "C01");
         assert.equal(String(options?.body).includes("private-test-key"), false);
         return new Response(
           JSON.stringify({
             choices: [
               {
                 finish_reason: "stop",
-                message: { content: JSON.stringify(reply) },
+                message: {
+                  content: JSON.stringify({
+                    ...reply,
+                    recommendations: [
+                      {
+                        ...reply.recommendations[0],
+                        id: "C01",
+                        extra: "discard",
+                      },
+                    ],
+                  }),
+                },
               },
             ],
           }),
@@ -192,4 +205,54 @@ test("provider failures and malformed content never replace a successful report 
   } finally {
     await db.close();
   }
+});
+
+test("short references resolve to stored IDs; extra model fields never override evidence", () => {
+  const candidates = aiCandidates([pick()]);
+  const result = validateAiOutput(
+    {
+      ...reply,
+      score: 99,
+      recommendations: [
+        {
+          ...reply.recommendations[0],
+          id: " C01 ",
+          price_fen: 1,
+          evidence: { price_fen: 1 },
+          score: 100,
+        },
+      ],
+    },
+    candidates,
+  );
+  assert.equal(result.recommendations[0].id, "b:1");
+  assert.equal(result.recommendations[0].evidence.price_fen, 100);
+  assert.equal("score" in result, false);
+  assert.equal("price_fen" in result.recommendations[0], false);
+  for (const id of ["C02", "1", "invented"]) {
+    assert.throws(() =>
+      validateAiOutput(
+        { ...reply, recommendations: [{ ...reply.recommendations[0], id }] },
+        candidates,
+      ),
+    );
+  }
+  assert.throws(() =>
+    validateAiOutput(
+      {
+        ...reply,
+        recommendations: [
+          reply.recommendations[0],
+          { ...reply.recommendations[0], id: "C01" },
+        ],
+      },
+      candidates,
+    ),
+  );
+  assert.throws(() =>
+    validateAiOutput(
+      { ...reply, recommendations: [{ id: "C01", reason: "缺少角度和风险" }] },
+      candidates,
+    ),
+  );
 });
