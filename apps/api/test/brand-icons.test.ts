@@ -66,6 +66,12 @@ test("券摘要关联正确品牌，图标以字节入库并从系统提供", as
     server = app.listen(0, "127.0.0.1");
     await new Promise<void>((resolve) => server!.once("listening", resolve));
     const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
+    const brandsResponse = await fetch(`${base}/api/v3/brands`);
+    const list = await brandsResponse.json();
+    assert.equal(
+      list.items.find((b: { id: string }) => b.id === brand).icon_url,
+      `/api/v3/brands/${brand}/icon`,
+    );
     const response = await fetch(
       `${base}/api/v3/coupons/123/summary?brand_id=${brand}`,
     );

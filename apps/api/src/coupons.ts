@@ -1165,7 +1165,7 @@ export function createCoupons(
       res.json({
         items: (
           await db.query(
-            "SELECT br.id,br.name,br.category,br.active,t.completed_at AS last_collected_at FROM brands br LEFT JOIN coupon_baselines b ON b.brand_id=br.id LEFT JOIN coupon_tasks t ON t.run_id=b.run_id AND t.brand_id=br.id ORDER BY br.name,br.id",
+            "SELECT br.id,br.name,br.category,br.active,br.icon_url,t.completed_at AS last_collected_at FROM brands br LEFT JOIN coupon_baselines b ON b.brand_id=br.id LEFT JOIN coupon_tasks t ON t.run_id=b.run_id AND t.brand_id=br.id ORDER BY br.name,br.id",
           )
         ).rows,
       }),

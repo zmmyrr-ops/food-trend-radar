@@ -126,6 +126,7 @@ export function CouponRadar({ channel }: { channel: Channel }) {
       category: string;
       active: boolean;
       last_collected_at?: string | null;
+      icon_url?: string | null;
     }[]
   >([]);
   const [brandId, setBrandId] = useState("");
