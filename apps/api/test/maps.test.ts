@@ -14,6 +14,10 @@ test("地图仅公开Web Key，安全密钥由固定目标代理注入", async (
     JSON.stringify({ key: "test-web-key", secret: "test-server-secret" }),
   );
   const app = express();
+  app.use((_req, res, next) => {
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    next();
+  });
   registerMaps(app, path);
   const server = app.listen(0, "127.0.0.1");
   await new Promise<void>((r) => server.once("listening", r));
@@ -42,6 +46,27 @@ test("地图仅公开Web Key，安全密钥由固定目标代理注入", async (
       200,
     );
     const u = new URL(forwarded);
+    const jsonp = await original(
+      base + "/_AMapService/v3/place/text?keywords=test&callback=AMap._test123",
+    );
+    assert.equal(jsonp.status, 200);
+    assert.match(
+      jsonp.headers.get("content-type")!,
+      /^application\/javascript/,
+    );
+    assert.equal(jsonp.headers.get("x-content-type-options"), "nosniff");
+    assert.equal(await jsonp.text(), '/**/AMap._test123({"status":"1"});');
+    assert.equal(new URL(forwarded).searchParams.has("callback"), false);
+    assert.equal(
+      (
+        await original(
+          base +
+            "/_AMapService/v3/place/text?callback=" +
+            encodeURIComponent("alert(1)//"),
+        )
+      ).status,
+      400,
+    );
     assert.equal(u.hostname, "restapi.amap.com");
     assert.equal(u.searchParams.get("key"), "test-web-key");
     assert.equal(u.searchParams.get("jscode"), "test-server-secret");

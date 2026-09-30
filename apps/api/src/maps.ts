@@ -60,6 +60,18 @@ export function registerMaps(
       );
       const incoming = new URL(req.originalUrl, "https://tanhaodian.cn");
       u.search = incoming.search;
+      const callback = u.searchParams.get("callback");
+      if (
+        callback !== null &&
+        (callback.length > 200 ||
+          !/^[$A-Z_a-z][$\w]*(?:\.[$A-Z_a-z][$\w]*)*$/.test(callback))
+      ) {
+        res.status(400).json({ error: { message: "地图回调参数无效" } });
+        return;
+      }
+      // Fetch JSON and construct a validated JSONP response ourselves. AMap sends
+      // JSONP with application/json, which browsers reject under nosniff.
+      u.searchParams.delete("callback");
       u.searchParams.set("key", c.key);
       u.searchParams.set("jscode", c.secret);
       const response = await fetch(u, {
@@ -71,11 +83,19 @@ export function registerMaps(
       res
         .status(response.status)
         .setHeader("Cache-Control", "private, max-age=60");
-      res.setHeader(
-        "Content-Type",
-        response.headers.get("content-type") || "application/json",
-      );
-      res.send(body);
+      if (callback) {
+        const json = JSON.stringify(JSON.parse(body))
+          .replace(/\u2028/g, "\\u2028")
+          .replace(/\u2029/g, "\\u2029");
+        res.setHeader("Content-Type", "application/javascript; charset=utf-8");
+        res.send(`/**/${callback}(${json});`);
+      } else {
+        res.setHeader(
+          "Content-Type",
+          response.headers.get("content-type") || "application/json",
+        );
+        res.send(body);
+      }
     } catch {
       res
         .status(502)
