@@ -209,11 +209,12 @@ export function CouponMedia({
       </button>
       <a
         className="studio-entry"
+        title="制作12–20秒短视频"
         href={appUrl(
           `/?studio=1&channel=${new URLSearchParams(location.search).get("channel") === "leisure" ? "leisure" : "food"}&${query}`,
         )}
       >
-        制作12–20秒短视频 →
+        制作短视频 →
       </a>
       {open && (
         <div className="coupon-media-body">

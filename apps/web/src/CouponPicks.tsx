@@ -397,11 +397,6 @@ export function CouponPicks({
                     </strong>
                   </div>
                 </div>
-                {!isAdmin && (
-                  <p className="muted">
-                    热度增速指数由销量升温得分换算为0–100，非销售数量。
-                  </p>
-                )}
                 <p className="availability-note">
                   {x.discount.rate === null
                     ? `原价折扣暂缺：${x.discount.reason}`
@@ -472,7 +467,12 @@ export function CouponPicks({
                   </button>
                 </div>
                 <details className="card-evidence">
-                  <summary>查看完整数据与使用条件</summary>
+                  <summary>数据与使用条件</summary>
+                  {!isAdmin && (
+                    <p className="muted">
+                      热度增速指数由销量升温得分换算为0–100，非销售数量。
+                    </p>
+                  )}
                   {x.brand_index && (
                     <p>
                       百度上海搜索指数 · 关键词「{x.brand_index.keyword}」 ·{" "}

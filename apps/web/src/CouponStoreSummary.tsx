@@ -70,14 +70,19 @@ export function CouponStoreSummary({
         </p>
       ) : (
         <>
-          <p>
-            <span className="coupon-store-label">采集关联店家：</span>
+          <p
+            title={
+              data?.source_shop
+                ? `${data.source_shop.address || "地址未返回"} · 平台就近门店信息，不代表全部适用门店`
+                : undefined
+            }
+          >
+            <span className="coupon-store-label">关联店家：</span>
             {data ? data.source_shop?.name || "平台未返回店名" : "读取中…"}
           </p>
           {data?.source_shop && (
             <p className="coupon-store-note">
-              {data.source_shop.address || "地址未返回"} ·
-              平台就近门店信息，不代表全部适用门店
+              非全部适用门店
               {data.context.status === "stale" ? "（采集记录已过期）" : ""}
             </p>
           )}
