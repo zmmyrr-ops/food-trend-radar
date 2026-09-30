@@ -3,18 +3,17 @@ import { createApp } from "./app.js";
 import { loadConfig, projectRoot } from "./config.js";
 import { createCoupons } from "./coupons.js";
 import { acquireDatabaseLease } from "./database-lease.js";
-import { openDatabase } from "./db.js";
 import { createOperations } from "./operations.js";
 import { recoverInterruptedRequests } from "./request-recovery.js";
-
 import {
   RuntimeDiagnostics,
   startRuntimeReporting,
 } from "./runtime-diagnostics.js";
+import { openWorkerDatabase } from "./worker-database.js";
 
 const config = loadConfig();
 const releaseLease = await acquireDatabaseLease(config.DATA_DIR);
-const db = await openDatabase(config.DATA_DIR).catch(async (error) => {
+const db = await openWorkerDatabase(config.DATA_DIR).catch(async (error) => {
   await releaseLease();
   throw error;
 });

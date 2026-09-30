@@ -83,6 +83,7 @@ type Result = {
   total: number;
   counts: Record<string, number>;
   generated_at: string;
+  calculated_at?: string | null;
 };
 const views = [
   ["recommended", "优先券"],
@@ -151,7 +152,9 @@ export function CouponPicks({ brandId }: { brandId: string }) {
       }
     }
     void load();
-    const timer = setInterval(() => void load(), 60000);
+    const timer = setInterval(() => {
+      if (document.visibilityState === "visible") void load();
+    }, 60000);
     return () => {
       controller.abort();
       clearInterval(timer);
@@ -272,8 +275,10 @@ export function CouponPicks({ brandId }: { brandId: string }) {
           </details>
           <p className="result-meta">
             共 {data.total} 张 ·{" "}
-            {new Date(data.generated_at).toLocaleTimeString("zh-CN")} 更新 ·
-            仅展示36小时内快照
+            {new Date(
+              data.calculated_at ?? data.generated_at,
+            ).toLocaleTimeString("zh-CN")}{" "}
+            更新 · 仅展示36小时内快照
           </p>
           {!data.total && (
             <p>

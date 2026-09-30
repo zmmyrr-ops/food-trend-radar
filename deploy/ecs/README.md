@@ -35,3 +35,13 @@ nginx -t
 生产机已安装Noto CJK字体。渲染工具使用 `/opt/food-trend-radar/ffmpeg-linux`（ffmpeg-static b6.1.1对应Linux二进制，含libass）与 `/opt/food-trend-radar/ffprobe-linux`（ffprobe-static 3.1.0）。systemd drop-in `video.conf` 设置 `FFMPEG_PATH` 和 `FFPROBE_PATH`。新机器可通过锁定的npm依赖安装对应平台文件后配置这两个变量，不得复制macOS二进制到Linux。
 
 百炼密钥文件 `/opt/food-trend-radar/data/secrets/bailian.json`，格式为含api_key的JSON，仅food-radar可读。Nginx本项目location的client_max_body_size为51m，后端单文件上限50MB；不要扩大其他站点上传限制。视频子进程仅通过IPC回传数据库变更，不直接打开PGlite。视频目录可独立备份，发布时不把大体积视频目录反复打进代码备份。
+
+## 2026-09-30 性能修复
+
+数据库仍为单实例 PGlite，但唯一数据库实例现在运行在 Node 工作线程中；HTTP 主线程通过串行 RPC 访问。事务独占队列，失败回滚，备份也在数据库线程执行。不要额外开启服务实例或直接打开线上数据库目录。
+
+销量、机会列表和优先分复用 `radar_read_models` 持久化结果；源表变更通过事务内触发器更新版本，下一次读取失效重建。即使数据不变也最多缓存60秒，保障节日边界和证据时效。后台每分钟预热优先分；证据历史批处理每5分钟，诊断和报表每15分钟。页面只查询可见模块，隐藏页面暂停轮询。平台采集限速和现有风控暂停状态保持不变。
+
+发布必须执行 `npm run build:ecs`，该命令验证 HTML 中的 JS/CSS 路径及文件存在。先复制新静态资源，再原子替换 index.html，保留上一版散列资源供旧页面使用。更新数据库执行方式前应在服务正常停止后复制数据目录作为回滚点。恢复时不要覆盖切换后新增数据，应先判断是否只需回退代码。
+
+验证：健康接口不能被长 SQL 阻塞；检查首次及重复查询、规则/品牌修改后的缓存失效、事务回滚、冷启动持久结果恢复、品牌和视频数量。性能记录的 SQL 耗时包含队列等待，不能当作纯 SQL 执行耗时。

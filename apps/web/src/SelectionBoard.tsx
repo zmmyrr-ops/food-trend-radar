@@ -84,7 +84,10 @@ export function SelectionBoard({ brandId }: { brandId: string }) {
   }, [brandId, search, minSaving, minDrop, order, usage]);
   useEffect(() => {
     let cancelled = false;
+    let loading = false;
     const load = async () => {
+      if (loading) return;
+      loading = true;
       try {
         const response = await appFetch(
           `/api/v3/selection-board?${new URLSearchParams({ filter, offset: String(offset), limit: "20", search, min_saving_fen: String(Math.round(Number(minSaving || 0) * 100)), min_drop_percent: minDrop || "0", order, usage, ...(brandId ? { brand_id: brandId } : {}) })}`,
@@ -98,10 +101,14 @@ export function SelectionBoard({ brandId }: { brandId: string }) {
         }
       } catch {
         if (!cancelled) setError("机会榜暂时无法更新，已有内容可能过期。");
+      } finally {
+        loading = false;
       }
     };
     void load();
-    const timer = setInterval(() => void load(), 60000);
+    const timer = setInterval(() => {
+      if (document.visibilityState === "visible") void load();
+    }, 60000);
     return () => {
       cancelled = true;
       clearInterval(timer);
@@ -133,7 +140,9 @@ export function SelectionBoard({ brandId }: { brandId: string }) {
   }, []);
   useEffect(() => {
     void loadAlerts();
-    const timer = setInterval(() => void loadAlerts(), 60000);
+    const timer = setInterval(() => {
+      if (document.visibilityState === "visible") void loadAlerts();
+    }, 60000);
     return () => clearInterval(timer);
   }, [loadAlerts]);
   async function disposition(item: Candidate, state: string) {

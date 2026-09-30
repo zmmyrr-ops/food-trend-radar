@@ -6,6 +6,7 @@ import { couponUseOutlook } from "./coupon-use-outlook.js";
 import type { createEnvironment } from "./environment.js";
 import type { BoardCandidate } from "./opportunity-board.js";
 import { pickPriority } from "./pick-priority.js";
+import { readModel } from "./read-model-cache.js";
 import type { RuleText } from "./rule-structure.js";
 import type { createSalesHeat } from "./sales-heat.js";
 import { applyUsePenalty } from "./use-priority.js";
@@ -321,7 +322,6 @@ export function createPickReader(
     brand_id: string;
     price_observed_at: string;
   })[];
-  let cached: { at: number; rows: Historical } | undefined;
   let pending: Promise<Historical> | undefined;
   async function queryHistorical(): Promise<Historical> {
     return db
@@ -340,19 +340,13 @@ export function createPickReader(
       : [];
   }
   async function readHistoricalRules() {
-    if (cached && Date.now() - cached.at < 30000) return cached.rows;
     if (!pending)
-      pending = queryHistorical()
-        .then((rows) => {
-          cached = { at: Date.now(), rows };
-          return rows;
-        })
-        .finally(() => {
-          pending = undefined;
-        });
+      pending = queryHistorical().finally(() => {
+        pending = undefined;
+      });
     return pending;
   }
-  return async () => {
+  const build = async () => {
     const heat = await readHeat();
     const signals = await readSignals();
     const watched = db
@@ -381,6 +375,7 @@ export function createPickReader(
       historicalRules,
     );
   };
+  return db ? readModel(db, "coupon-picks-v5", build) : build;
 }
 
 export function registerCouponPicks(
@@ -446,6 +441,7 @@ export function registerCouponPicks(
         counts,
         total: filtered.length,
         items: filtered.slice(q.offset, q.offset + q.limit),
+        calculated_at: filtered[0]?.use_outlook.generated_at ?? null,
         generated_at: new Date().toISOString(),
       });
     },

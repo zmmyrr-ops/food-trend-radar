@@ -5,6 +5,7 @@ import { z } from "zod";
 import { assessCoupon } from "./coupon-evidence.js";
 import { couponUseOutlook } from "./coupon-use-outlook.js";
 import type { Coupon } from "./coupons.js";
+import { readModel } from "./read-model-cache.js";
 import type { RuleText } from "./rule-structure.js";
 import {
   scoreEvidenceJoins,
@@ -218,10 +219,11 @@ export async function createOpportunityBoard(
   }
   // Share only concurrent reads; completed reads are never cached, so evidence
   // and disposition changes are visible to the next request immediately.
+  const loadCached = readModel(db, "opportunity-board-v1", loadCandidates);
   let activeCandidates: ReturnType<typeof loadCandidates> | undefined;
   function candidates() {
     if (!activeCandidates)
-      activeCandidates = loadCandidates().finally(() => {
+      activeCandidates = loadCached().finally(() => {
         activeCandidates = undefined;
       });
     return activeCandidates;

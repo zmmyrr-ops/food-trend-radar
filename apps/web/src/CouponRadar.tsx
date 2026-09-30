@@ -148,7 +148,9 @@ export function CouponRadar() {
         .then(setEnvironment)
         .catch(() => setEnvironment(null));
     refresh();
-    const timer = setInterval(refresh, 60000);
+    const timer = setInterval(() => {
+      if (document.visibilityState === "visible") refresh();
+    }, 60000);
     return () => clearInterval(timer);
   }, []);
 
@@ -227,26 +229,42 @@ export function CouponRadar() {
       const [s, r, i] = await Promise.all([
         request<Status>("/status"),
         request<{ items: Run[] }>("/runs"),
-        request<{ items: Item[]; total: number }>(
-          `/opportunities?view=${view}&offset=${offset}&limit=50${brandId ? `&brand_id=${brandId}` : ""}`,
-        ),
+        pane === "snapshots"
+          ? request<{ items: Item[]; total: number }>(
+              `/opportunities?view=${view}&offset=${offset}&limit=50${brandId ? `&brand_id=${brandId}` : ""}`,
+            )
+          : Promise.resolve(null),
       ]);
       if (sequence !== refreshSequence.current) return;
       setStatus(s);
       setRuns(r.items);
-      setItems(i.items);
-      setTotal(i.total);
+      if (i) {
+        setItems(i.items);
+        setTotal(i.total);
+      }
       setError("");
     } catch (e) {
       if (sequence === refreshSequence.current) setError(String(e));
     }
-  }, [view, offset, brandId]);
+  }, [view, offset, brandId, pane]);
   useEffect(() => {
-    void refresh();
-    // Avoid repeatedly scanning coupon history while the page is hidden.
-    const t = setInterval(() => {
-      if (document.visibilityState === "visible") void refresh();
-    }, 30000);
+    let loading = false;
+    const poll = async () => {
+      if (loading) return;
+      loading = true;
+      try {
+        await refresh();
+      } finally {
+        loading = false;
+      }
+    };
+    void poll();
+    const t = setInterval(
+      () => {
+        if (document.visibilityState === "visible") void poll();
+      },
+      pane === "snapshots" ? 30000 : 10000,
+    );
     return () => {
       clearInterval(t);
       refreshSequence.current++;

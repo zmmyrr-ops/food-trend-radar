@@ -13,6 +13,7 @@ import { createPickReader, registerCouponPicks } from "./coupon-picks.js";
 import { createEnvironment } from "./environment.js";
 import { createOpportunityBoard } from "./opportunity-board.js";
 import { createPickEvaluation } from "./pick-evaluation.js";
+import { enableReadModels } from "./read-model-cache.js";
 import { createSalesHeat, salesHeatCsv } from "./sales-heat.js";
 import { auditSalesHeat } from "./sales-heat-audit.js";
 import { createScoreHistory } from "./score-history.js";
@@ -58,6 +59,13 @@ export async function createOperations(
     join(backupDir, "..", "secrets", "xiaohongshu-requests.json"),
   );
   const videos = await createVideoProjects(db, join(backupDir, "..", "videos"));
+  await enableReadModels(db);
+  const readPicks = createPickReader(
+    db,
+    salesHeat.read,
+    board.candidates,
+    brandIndex.read,
+  );
   let busy = false;
   let backupError: string | null = null;
   async function backup() {
@@ -96,13 +104,21 @@ export async function createOperations(
       });
     return active;
   }
+  let lastReports = 0;
+  let lastScores = 0;
   async function performTick() {
     await observe("alerts.health", () => alerts.health());
-    await observe("scores.refresh", () => scores.refresh());
+    if (Date.now() - lastScores >= 5 * 60000) {
+      await observe("scores.refresh", () => scores.refresh());
+      lastScores = Date.now();
+    }
     await observe("board.digest", () => board.digest());
+    await observe("picks.precompute", () => readPicks());
     await observe("picks.evaluate", () => evaluation.refresh());
     await observe("backup", () => backup());
     await observe("environment.refresh", () => environment.refresh());
+    if (Date.now() - lastReports < 15 * 60000) return;
+    lastReports = Date.now();
     // Automatically maintain a credential-free progress report, including final coverage.
     const run = (
       await db.query<{ id: string }>(

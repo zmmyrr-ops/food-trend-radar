@@ -88,7 +88,9 @@ export function SalesHeatPanel({ brandId }: { brandId: string }) {
       }
     }
     void load();
-    const timer = setInterval(() => void load(), 60000);
+    const timer = setInterval(() => {
+      if (document.visibilityState === "visible") void load();
+    }, 60000);
     return () => {
       cancelled = true;
       clearInterval(timer);

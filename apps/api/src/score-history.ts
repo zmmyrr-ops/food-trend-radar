@@ -34,6 +34,7 @@ export async function createScoreHistory(
         [limit],
       )
     ).rows;
+    if (!candidates.length) return { checked: 0, inserted: 0 };
     const heatByCoupon = new Map(
       (await createSalesHeat(db).read()).map((x) => [
         `${x.brand_id}:${x.product_id}`,

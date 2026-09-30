@@ -2,6 +2,7 @@ import type { PGlite } from "@electric-sql/pglite";
 import type { Express } from "express";
 import { z } from "zod";
 import { couponDiscount } from "./pick-priority.js";
+import { readModel } from "./read-model-cache.js";
 export function parseSales(raw: string) {
   const s = raw
     .normalize("NFKC")
@@ -314,11 +315,12 @@ export function createSalesHeat(db: PGlite) {
       ...salesTrend(r.points, now),
     }));
   }
+  const loadCached = readModel(db, "sales-heat-v1", load);
   // Share overlapping requests without retaining stale sales or brand state.
   let pending: ReturnType<typeof load> | undefined;
   function read() {
     if (!pending)
-      pending = load().finally(() => {
+      pending = loadCached().finally(() => {
         pending = undefined;
       });
     return pending;
