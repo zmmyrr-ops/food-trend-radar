@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { FACE_SCREEN_VERSION } from "./video-face-policy.js";
 export const clipSchema = z.object({
   asset_id: z.string().regex(/^[a-f0-9-]{36}$/),
   start: z.number().min(0).max(120),
@@ -71,7 +72,7 @@ export function networkAsset(a: Asset) {
 export function permittedAsset(a: Asset) {
   return (
     !networkAsset(a) ||
-    (a.face_screen === "clear" && a.face_screen_version === 1)
+    (a.face_screen === "clear" && a.face_screen_version === FACE_SCREEN_VERSION)
   );
 }
 export function requiresFaceScreen(p: Pick<VideoProject, "plan" | "assets">) {
@@ -89,7 +90,7 @@ export function validatePlan(plan: Clip[], assets: Asset[], seconds: number) {
   for (const c of plan) {
     const a = assets.find((a) => a.id === c.asset_id);
     if (a && !permittedAsset(a))
-      throw Error("网络素材尚未通过真人正面出镜检查，请重新分析素材");
+      throw Error("网络素材需按新版人物主体规则重新检查，请重新分析素材");
     if (!a || !a.accepted || !a.path) throw Error("镜头素材不可用");
     if (a.kind === "video" && c.start + c.duration > (a.duration ?? 0) + 0.02)
       throw Error("片段超出素材时长");

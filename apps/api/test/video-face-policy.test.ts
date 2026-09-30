@@ -27,7 +27,7 @@ test("网络素材必须通过新版本正面人脸检查，用户上传豁免",
         ...asset,
         origin: "network",
         face_screen: status,
-        face_screen_version: 1,
+        face_screen_version: 2,
       }),
       false,
     );
@@ -36,7 +36,7 @@ test("网络素材必须通过新版本正面人脸检查，用户上传豁免",
       ...asset,
       origin: "network",
       face_screen: "clear",
-      face_screen_version: 1,
+      face_screen_version: 2,
     }),
     true,
   );
@@ -55,6 +55,16 @@ test("网络素材必须通过新版本正面人脸检查，用户上传豁免",
     permittedAsset({ ...asset, origin: "network", face_screen: "clear" }),
     false,
   );
+  assert.equal(
+    permittedAsset({
+      ...asset,
+      origin: "network",
+      face_screen: "clear",
+      face_screen_version: 1,
+    }),
+    false,
+    "旧版放行结果不能绕过人物主体筛选",
+  );
   const plan = Array.from({ length: 4 }, () => ({
     asset_id: id,
     start: 0,
@@ -63,7 +73,7 @@ test("网络素材必须通过新版本正面人脸检查，用户上传豁免",
   }));
   assert.throws(
     () => validatePlan(plan, [{ ...asset, origin: "network" }], 12),
-    /真人正面/,
+    /人物主体/,
   );
   assert.doesNotThrow(() =>
     validatePlan(plan, [{ ...asset, origin: "upload" }], 12),
@@ -76,7 +86,7 @@ test("拒绝的网络素材不会阻挡只使用自有素材的成片", () => {
     id: "22222222-2222-4222-8222-222222222222",
     origin: "network" as const,
     face_screen: "present" as const,
-    face_screen_version: 1,
+    face_screen_version: 2,
     accepted: false,
   };
   const plan = Array.from({ length: 4 }, () => ({

@@ -333,7 +333,7 @@ export function VideoStudio() {
 
       {project?.requires_face_screen && (
         <p role="status">
-          此项目的网络素材需要重新检查真人出镜，请点击重新分析，再生成预览或导出。
+          此项目需按新版人物主体规则检查素材，请点击“重新分析素材”后再预览或导出。
         </p>
       )}
       {!configured && <p role="alert">百炼密钥尚未配置，请联系管理员。</p>}

@@ -18,7 +18,7 @@ import { z } from "zod";
 import { bailianError } from "./bailian-error.js";
 import { createObjectStorage } from "./object-storage.js";
 import { contentPolicy } from "./video-content-policy.js";
-import { faceScreenPrompt } from "./video-face-policy.js";
+import { FACE_SCREEN_VERSION, faceScreenPrompt } from "./video-face-policy.js";
 import {
   type Asset,
   adaptivePlan,
@@ -247,7 +247,7 @@ async function frames(a: Asset) {
 // from aesthetic scoring. Ambiguous output fails closed; uploads are exempt.
 async function screenNetworkFaces(a: Asset) {
   a.face_screen = "uncertain";
-  a.face_screen_version = 1;
+  a.face_screen_version = FACE_SCREEN_VERSION;
   const duration = a.kind === "image" ? 0 : (a.duration ?? 0);
   const times =
     a.kind === "image"
@@ -296,14 +296,14 @@ async function screenNetworkFaces(a: Asset) {
     }
     const result = z
       .object({ status: z.enum(["clear", "present", "uncertain"]) })
-      .safeParse(await ask("qwen3-vl-flash-2026-01-22", content));
+      .safeParse(await ask("qwen3-vl-plus-2025-12-19", content));
     if (!result.success || result.data.status !== "clear") {
       a.face_screen = result.success ? result.data.status : "uncertain";
       a.accepted = false;
       a.reason =
         a.face_screen === "present"
-          ? "素材以真人正脸近景或特写为主体，未选用"
-          : "无法确认是否为真人正脸特写，未入选";
+          ? "素材以特定真人为主要拍摄主体，未选用"
+          : "无法确认人物是否为主要拍摄主体，未入选";
       return;
     }
   }
@@ -373,7 +373,7 @@ async function analyze() {
     const cache = join(
       root,
       "analysis",
-      `${a.hash}-flash-v6-${project.channel || "unknown"}.json`,
+      `${a.hash}-flash-v7-${project.channel || "unknown"}.json`,
     );
     let cached: any;
     try {

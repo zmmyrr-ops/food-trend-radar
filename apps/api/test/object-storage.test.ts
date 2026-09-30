@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { mkdtemp, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { Readable } from "node:stream";
 import { test } from "node:test";
 import { createObjectStorage } from "../src/object-storage.js";
 
@@ -40,6 +41,16 @@ test("verified eviction, restoration, signed access and deletion; failures prese
     get: async (key: string, path: string) => {
       await writeFile(path, objects.get(key)!.body);
     },
+    getStream: async (key: string, opts: any) => {
+      assert.equal(opts.headers.Range, "bytes=0-3");
+      return {
+        stream: Readable.from([objects.get(key)!.body.subarray(0, 4)]),
+        res: {
+          status: 206,
+          headers: { "content-range": "bytes 0-3/13", "content-length": "4" },
+        },
+      };
+    },
     signatureUrl: (key: string, opts: any) => {
       assert.equal(opts.expires, 300);
       return "https://private.invalid/" + key + "?signed";
@@ -60,6 +71,16 @@ test("verified eviction, restoration, signed access and deletion; failures prese
     await store.archive(path);
     await assert.rejects(stat(path));
     assert.match((await store.signedUrl(path))!, /signed/);
+    const streamed = await store.mediaStream(path, "bytes=0-3");
+    assert.equal(streamed!.res.status, 206);
+    const chunks: Buffer[] = [];
+    for await (const chunk of streamed!.stream) chunks.push(Buffer.from(chunk));
+    assert.equal(Buffer.concat(chunks).toString(), "vide");
+    assert.equal(await store.mediaStream(join(root, "missing.mp4")), null);
+    await assert.rejects(
+      store.mediaStream(join(root, "..", "outside")),
+      /不合法/,
+    );
     await Promise.all([store.restore(path), store.restore(path)]);
     assert.equal(await readFile(path, "utf8"), "video fixture");
     await store.archive(path);
@@ -111,10 +132,7 @@ test("internal transfer configuration never leaks an internal playback endpoint"
       playback.searchParams.get("response-content-disposition"),
       'inline; filename="material-test.mp4"',
     );
-    assert.equal(
-      playback.searchParams.get("response-content-type"),
-      "video/mp4",
-    );
+    assert.equal(playback.searchParams.get("response-content-type"), null);
     const download = new URL((await storage.signedUrl(path, "finished.mp4"))!);
     assert.equal(
       download.searchParams.get("response-content-disposition"),
