@@ -116,7 +116,9 @@ export function CouponMedia({
   brandId,
   productId,
   onResources,
+  controlsOnly = false,
 }: {
+  controlsOnly?: boolean;
   brandId: string;
   productId: string;
   onResources?: (resources: Resource[]) => void;
@@ -238,7 +240,7 @@ export function CouponMedia({
                     ? "已获取 · 缓存中"
                     : "获取资源"}
             </button>
-            {!!job?.resources.length && (
+            {!controlsOnly && !!job?.resources.length && (
               <button
                 disabled={
                   busy ||
@@ -292,7 +294,7 @@ export function CouponMedia({
             </p>
           )}
           {error && <p role="alert">{error}</p>}
-          {!!job?.resources.length && (
+          {!controlsOnly && !!job?.resources.length && (
             <div className="live-media-grid">
               {job.resources.map((item) => (
                 <MediaTile

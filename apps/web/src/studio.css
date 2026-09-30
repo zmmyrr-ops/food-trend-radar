@@ -689,3 +689,75 @@ main.video-studio.creator-workbench {
   border: 1px solid #dce4f0;
   border-radius: 6px;
 }
+
+.creator-workbench .studio-material-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+.creator-workbench .studio-material-tabs button[aria-selected="true"] {
+  background: #eaf1ff;
+  color: #2865cc;
+  border-color: #93b6ff;
+}
+.creator-workbench .studio-resource-grid {
+  max-height: 440px;
+  overflow: auto;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+.creator-workbench .studio-resource-grid img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+}
+.creator-workbench .studio-resource-grid small {
+  font-size: 11px;
+  color: #63738b;
+}
+.creator-workbench .studio-cached-material {
+  height: 130px;
+  display: grid;
+  place-items: center;
+  background: #eef2f8;
+  font-size: 12px;
+}
+.creator-workbench .studio-upload-panel {
+  padding: 16px;
+  background: #f7f9fc;
+  border-radius: 12px;
+}
+.creator-workbench .studio-upload-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  font-size: 13px;
+  padding: 8px 0;
+}
+.creator-workbench .studio-duration {
+  padding: 16px;
+  background: #f5f8ff;
+  border-radius: 12px;
+  margin: 16px 0;
+}
+.creator-workbench .studio-duration label,
+.creator-workbench .studio-duration div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #66758c;
+}
+.creator-workbench .studio-duration input {
+  width: 100%;
+  margin: 14px 0;
+  accent-color: #3979ef;
+}
+
+.creator-workbench .studio-resource-grid video {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  background: #18202d;
+  border-radius: 8px;
+}

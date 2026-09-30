@@ -7,18 +7,36 @@ import { z } from "zod";
 import { bailianError } from "./bailian-error.js";
 export const narrationModel = "qwen3-tts-instruct-flash";
 export const scriptSchema = z.object({
-  sentences: z.array(z.string().trim().min(4).max(120)).min(1).max(5),
+  sentences: z.array(z.string().trim().min(4).max(1000)).min(1).max(20),
 });
 export function validateScript(raw: unknown, seconds: number) {
-  const { sentences } = scriptSchema.parse(raw);
-  const text = sentences.join("");
-  if (
-    text.length > Math.floor(seconds * 5.8) ||
-    text.length < 15 ||
-    /[{}<>\[\]【】\\]|全网最低|闭眼冲|百分百|天花板/.test(text)
-  )
-    throw Error("视频稿长度或内容不合适，请重新制作");
-  return sentences;
+  const parsed = scriptSchema.safeParse(raw);
+  if (!parsed.success) throw Error("视频稿格式不完整，需要重新整理");
+  const text = parsed.data.sentences
+    .join("")
+    .replace(/[【】「」“”]/g, "")
+    .trim();
+  if (/[{}<>\[\]\\]|全网最低|闭眼冲|百分百/.test(text))
+    throw Error("视频稿包含占位符或夸张承诺，需要改为真实画面描述");
+  const limit = Math.floor(seconds * 5.8);
+  const parts = (text.match(/[^。！？；，]+[。！？；，]?/gu) || []).filter(
+    (part) =>
+      !/(?:[0-9一二三四五六七八九十]+(?:到|至|—|-)?)\s*(?:岁|元|折|小时)|免费|每日消毒|保证安全|(?:体验票|门票|通票).*(?:可入|包含)|所有场景/.test(
+        part,
+      ),
+  );
+  const result: string[] = [];
+  let length = 0;
+  for (const part of parts) {
+    if (length + part.length > limit) break;
+    result.push(part);
+    length += part.length;
+  }
+  if (length < 15) throw Error("视频稿有效内容不足，需要补充画面细节");
+  // Trim only at a natural clause boundary; preserve words and punctuation.
+  if (result.length && /[，；]$/.test(result[result.length - 1]))
+    result[result.length - 1] = result[result.length - 1].slice(0, -1) + "。";
+  return [result.join("")];
 }
 export type Cue = { text: string; start: number; end: number };
 export function subtitleCues(

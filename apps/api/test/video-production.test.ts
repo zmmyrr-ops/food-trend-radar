@@ -48,7 +48,7 @@ test("scripts and subtitles use the same words, ordered cue timings and safe ASS
     },
     12,
   );
-  const cues = subtitleCues(s, [5, 6]);
+  const cues = subtitleCues(s, [11]);
   assert.equal(cues.map((x) => x.text).join(""), s.join(""));
   assert.equal(cues[0].start, 0.25);
   assert.ok(Math.abs(cues.at(-1)!.end - 11.25) < 0.001);
@@ -62,14 +62,12 @@ test("scripts and subtitles use the same words, ordered cue timings and safe ASS
       12,
     ),
   );
-  assert.throws(() =>
-    validateScript(
-      {
-        sentences: Array(5).fill("这段太长的文案完全不应该被读到视频外面去。"),
-      },
-      12,
-    ),
-  );
+  const bounded = validateScript(
+    { sentences: Array(5).fill("这段太长的文案完全不应该被读到视频外面去。") },
+    12,
+  ).join("");
+  assert.ok(bounded.length <= Math.floor(12 * 5.8));
+  assert.ok(bounded.endsWith("。"));
 });
 test("music is finite PCM with correct duration and different channel arrangements", () => {
   const food = musicBed(12, false),
@@ -162,4 +160,34 @@ test("natural paragraph output need not fail because model returned a single sen
   const paragraph =
     "先看彩色球池和滑梯，再看看沙池里的小挖掘机。几种不同的场景连在一起，想换个室内去处可以先看看这里。";
   assert.deepEqual(validateScript({ sentences: [paragraph] }, 12), [paragraph]);
+});
+
+test("decorative brackets and visible ceilings are legitimate narration", () => {
+  const result = validateScript(
+    {
+      sentences: ["【主题乐园】天花板上有星空装饰，镜头再转向彩色滑梯和沙池。"],
+    },
+    15,
+  ).join("");
+  assert.ok(result.includes("天花板"));
+  assert.ok(!result.includes("【"));
+});
+test("forty second scripts retain factual clauses within the duration budget", () => {
+  const text = "这里有彩色滑梯和沙池，还能看到主题场景与灯光。".repeat(10);
+  const result = validateScript({ sentences: [text] }, 40).join("");
+  assert.ok(result.length > 150 && result.length <= 232);
+});
+
+test("length repair does not preserve invented age eligibility or coupon entitlements", () => {
+  const result = validateScript(
+    {
+      sentences: [
+        "这里有彩色滑梯和沙池，墙上是森林主题布景。适合3到10岁，亲子体验票可入园。",
+      ],
+    },
+    30,
+  ).join("");
+  assert.ok(!result.includes("岁"));
+  assert.ok(!result.includes("可入园"));
+  assert.ok(result.includes("沙池"));
 });

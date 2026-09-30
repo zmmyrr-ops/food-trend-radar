@@ -6,7 +6,7 @@ export const clipSchema = z.object({
   duration: z.number().min(1).max(5),
   caption: z.string().max(40),
 });
-export const planSchema = z.array(clipSchema).min(4).max(12);
+export const planSchema = z.array(clipSchema).min(4).max(24);
 export type Clip = z.infer<typeof clipSchema>;
 export type Asset = {
   id: string;
@@ -55,6 +55,7 @@ export type VideoProject = {
   brand_name: string;
   title: string;
   seconds: number;
+  target_seconds?: number;
   assets: Asset[];
   plan: Clip[];
   state: string;
@@ -122,7 +123,7 @@ export function automaticPlan(
   );
   // One use per asset; varied tags win ties. Never loop a short clip to fill time.
   const selected: Asset[] = [];
-  while (usable.length && selected.length < 12) {
+  while (usable.length && selected.length < 24) {
     if (!preserveOrder) usable.sort((a, b) => value(b) - value(a));
     selected.push(usable.shift()!);
   }
@@ -193,12 +194,29 @@ export function automaticPlan(
 
 /** Keep the preferred duration when possible, otherwise fit down to 12 seconds. */
 export function adaptivePlan(assets: Asset[], preferredSeconds: number) {
-  for (let seconds = Math.floor(preferredSeconds); seconds >= 12; seconds--) {
+  for (
+    let seconds = Math.floor(preferredSeconds);
+    seconds >= Math.max(12, Math.floor(preferredSeconds * 0.8));
+    seconds--
+  ) {
     try {
       return { seconds, plan: automaticPlan(assets, seconds) };
     } catch {
       // A shorter complete edit is preferable to looping or extending poor footage.
     }
   }
-  throw Error("优质素材不足12秒，请补充素材后重试");
+  throw Error(
+    `优质素材不足以制作约${preferredSeconds}秒的视频，请补充素材或降低目标时长`,
+  );
+}
+
+export function reusableAssessment(a: Asset) {
+  return (
+    !!a.hash &&
+    typeof a.accepted === "boolean" &&
+    a.reason !== "重复素材" &&
+    (!networkAsset(a) ||
+      (a.face_screen_version === FACE_SCREEN_VERSION &&
+        (a.face_screen === "clear" || a.face_screen === "present")))
+  );
 }

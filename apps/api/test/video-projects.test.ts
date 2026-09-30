@@ -12,6 +12,7 @@ import {
   adaptivePlan,
   automaticPlan,
   productionOptionsSchema,
+  reusableAssessment,
   validatePlan,
 } from "../src/video-types.js";
 
@@ -349,15 +350,15 @@ test("素材不足目标时长时自动缩短，12秒可生成，不足12秒拒�
   const a = assets();
   assert.equal(adaptivePlan(a, 18).seconds, 18);
   const four = a.slice(0, 4);
-  const fitted = adaptivePlan(four, 18);
+  const fitted = adaptivePlan(four, 15);
   assert.equal(fitted.seconds, 12);
   assert.equal(validatePlan(fitted.plan, four, 12), fitted.plan);
   assert.equal(new Set(fitted.plan.map((c) => c.asset_id)).size, 4);
   const five = a
     .slice(0, 5)
     .map((a) => ({ ...a, best_end: 2.7, duration: 2.7 }));
-  assert.equal(adaptivePlan(five, 20).seconds, 13);
-  assert.throws(() => adaptivePlan(a.slice(0, 3), 18), /不足12秒/);
+  assert.equal(adaptivePlan(five, 16).seconds, 13);
+  assert.throws(() => adaptivePlan(a.slice(0, 3), 18), /补充素材/);
 });
 
 test("最终剪辑保留AI镜头顺序，不再被分数和标签重新排序", () => {
@@ -367,4 +368,123 @@ test("最终剪辑保留AI镜头顺序，不再被分数和标签重新排序", 
     plan.map((c) => c.asset_id),
     a.slice(0, plan.length).map((a) => a.id),
   );
+});
+
+test("15–40 second targets use more distinct clips and reject wildly shorter edits", () => {
+  const pool = [...assets(), ...assets(), ...assets()];
+  for (const seconds of [15, 25, 30, 40]) {
+    const result = adaptivePlan(pool, seconds);
+    assert.ok(Math.abs(result.seconds - seconds) <= 1);
+    assert.equal(
+      new Set(result.plan.map((c) => c.asset_id)).size,
+      result.plan.length,
+    );
+    validatePlan(result.plan, pool, result.seconds);
+  }
+  assert.throws(() => adaptivePlan(assets(), 40), /降低目标时长/);
+});
+test("remake atomically adopts current material selection and target duration, retaining reviewed assets", async () => {
+  const db = await openDatabase();
+  const dir = await mkdtemp(join(tmpdir(), "video-selection-"));
+  const service = await createVideoProjects(db, dir);
+  await service.stop();
+  await db.exec(
+    "CREATE TABLE IF NOT EXISTS coupon_media_jobs(brand_id uuid,product_id text,owner_id uuid,resources jsonb)",
+  );
+  const app = express();
+  app.use(express.json());
+  service.register(app);
+  const server = app.listen(0);
+  const brand = randomUUID(),
+    id = randomUUID(),
+    source = randomUUID();
+  const old = assets()
+    .slice(0, 4)
+    .map((a) => ({
+      ...a,
+      origin: "network",
+      face_screen: "clear",
+      face_screen_version: 2,
+      hash: a.id,
+    }));
+  const p = {
+    id,
+    brand_id: brand,
+    product_id: "test",
+    brand_name: "测试",
+    title: "体验",
+    seconds: 18,
+    target_seconds: 18,
+    assets: old,
+    plan: automaticPlan(old as any, 12),
+    state: "failed",
+    revision: 1,
+    cost: 0,
+    rights_confirmed: true,
+  };
+  await db.query("INSERT INTO video_projects(id,payload) VALUES($1,$2)", [
+    id,
+    JSON.stringify(p),
+  ]);
+  await db.query("INSERT INTO coupon_media_jobs VALUES($1,$2,$3,$4)", [
+    brand,
+    "test",
+    "00000000-0000-0000-0000-000000000000",
+    JSON.stringify([
+      {
+        id: source,
+        title: "新素材",
+        author: "",
+        note_url: "",
+        video_url: "https://sns-video-v6.xhscdn.com/test.mp4",
+      },
+    ]),
+  ]);
+  try {
+    const url = `http://127.0.0.1:${(server.address() as any).port}/api/v3/video-projects/${id}/remake`;
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        revision: 1,
+        seconds: 35,
+        resource_ids: [...old.map((a) => a.source_id), source],
+        upload_ids: [],
+        production_options: {},
+      }),
+    });
+    const result = await response.json();
+    assert.equal(response.status, 200, JSON.stringify(result));
+    assert.equal(result.project.target_seconds, 35);
+    assert.equal(result.project.assets.length, 5);
+    assert.equal(result.project.assets[0].accepted, true);
+    assert.equal(result.project.assets[0].hash, old[0].hash);
+    assert.equal(result.project.assets[4].accepted, undefined);
+  } finally {
+    await new Promise<void>((r) => server.close(() => r()));
+    await service.stop();
+    await db.close();
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("review reuse skips completed checks but rechecks uncertain or outdated rules", () => {
+  const asset: Asset = {
+    ...assets()[0],
+    origin: "network",
+    hash: "a".repeat(64),
+    face_screen: "clear",
+    face_screen_version: 2,
+  };
+  assert.equal(reusableAssessment(asset), true);
+  assert.equal(
+    reusableAssessment({ ...asset, accepted: false, face_screen: "present" }),
+    true,
+  );
+  assert.equal(
+    reusableAssessment({ ...asset, face_screen: "uncertain" }),
+    false,
+  );
+  assert.equal(reusableAssessment({ ...asset, face_screen_version: 1 }), false);
+  assert.equal(reusableAssessment({ ...asset, hash: undefined }), false);
 });

@@ -14,6 +14,8 @@ import { videoProgress } from "./video-progress";
 
 type Asset = {
   id: string;
+  source_id: string;
+  origin?: "network" | "upload";
   title: string;
   author: string;
   kind: string;
@@ -31,6 +33,8 @@ type Clip = {
 type ProductionOptions = VideoProductionOptions;
 const defaultOptions = defaultVideoProductionOptions;
 type Project = {
+  brand_id: string;
+  product_id: string;
   production_options?: ProductionOptions;
   script?: string;
   id: string;
@@ -38,6 +42,7 @@ type Project = {
   brand_name: string;
   title: string;
   seconds: number;
+  target_seconds?: number;
   assets: Asset[];
   plan: Clip[];
   revision: number;
@@ -49,7 +54,12 @@ type Project = {
   cost: number;
   created_at: string;
 };
-type Resource = { id: string; title: string; poster: string };
+type Resource = {
+  id: string;
+  title: string;
+  poster: string;
+  video_url?: string;
+};
 const active = (p: Project | null) =>
   !!p &&
   [
@@ -93,6 +103,9 @@ export function VideoStudio() {
         .then((d) => setVisit(d.item))
         .catch(() => setVisit(null));
   }, [visitStore]);
+  const [materialTab, setMaterialTab] = useState<"network" | "upload">(
+    "network",
+  );
   const [resources, setResources] = useState<Resource[]>([]),
     [selected, setSelected] = useState<string[]>([]),
     [uploads, setUploads] = useState<{ id: string; name: string }[]>([]),
@@ -106,19 +119,30 @@ export function VideoStudio() {
     [copyStatus, setCopyStatus] = useState(""),
     [configured, setConfigured] = useState(true);
   const resourceSignature = useRef("");
-  const receiveResources = useCallback((next: Resource[]) => {
-    const signature = JSON.stringify(next);
-    if (signature === resourceSignature.current) return;
-    resourceSignature.current = signature;
-    setResources((previous) => {
-      if (JSON.stringify(previous) === JSON.stringify(next)) return previous;
-      return next;
-    });
-    setSelected((previous) => {
-      const valid = previous.filter((id) => next.some((r) => r.id === id));
-      return valid.length ? valid : next.slice(-40).map((r) => r.id);
-    });
-  }, []);
+  const receiveResources = useCallback(
+    (next: Resource[]) => {
+      const signature = JSON.stringify(next);
+      if (signature === resourceSignature.current) return;
+      const oldIds = new Set<string>(
+        resourceSignature.current
+          ? JSON.parse(resourceSignature.current).map((r: Resource) => r.id)
+          : [],
+      );
+      resourceSignature.current = signature;
+      setResources((previous) => {
+        if (JSON.stringify(previous) === JSON.stringify(next)) return previous;
+        return next;
+      });
+      setSelected((previous) => {
+        const fresh = next.filter((r) => !oldIds.has(r.id)).map((r) => r.id);
+        return Array.from(new Set([...fresh, ...previous])).slice(
+          0,
+          Math.max(0, 40 - uploads.length),
+        );
+      });
+    },
+    [uploads.length],
+  );
   const prefix = "/api/v3/video-projects";
   const captionText = project?.script || "";
   useEffect(() => {
@@ -137,6 +161,15 @@ export function VideoStudio() {
     setProject(p);
     setHistory((h) => [p, ...h.filter((x) => x.id !== p.id)]);
     setOptions({ ...defaultOptions, ...p.production_options });
+    setSeconds(Math.max(15, Math.min(40, p.target_seconds || p.seconds)));
+    setSelected(
+      p.assets.filter((a) => a.origin !== "upload").map((a) => a.source_id),
+    );
+    setUploads(
+      p.assets
+        .filter((a) => a.origin === "upload")
+        .map((a) => ({ id: a.source_id, name: a.title })),
+    );
     const u = new URL(location.href);
     u.searchParams.set("project", p.id);
     window.history.replaceState({}, "", u);
@@ -248,7 +281,13 @@ export function VideoStudio() {
         `${prefix}/${project.id}/${name}`,
         "POST",
         name === "remake"
-          ? { revision: project.revision, production_options: options }
+          ? {
+              revision: project.revision,
+              production_options: options,
+              seconds,
+              resource_ids: selected,
+              upload_ids: uploads.map((u) => u.id),
+            }
           : {},
       );
       load(d.project);
@@ -256,8 +295,24 @@ export function VideoStudio() {
   }
   const optionsChanged =
     !!project &&
-    JSON.stringify(options) !==
-      JSON.stringify({ ...defaultOptions, ...project.production_options });
+    (seconds !==
+      Math.max(15, Math.min(40, project.target_seconds || project.seconds)) ||
+      JSON.stringify(selected.slice().sort()) !==
+        JSON.stringify(
+          project.assets
+            .filter((a) => a.origin !== "upload")
+            .map((a) => a.source_id)
+            .sort(),
+        ) ||
+      JSON.stringify(uploads.map((u) => u.id).sort()) !==
+        JSON.stringify(
+          project.assets
+            .filter((a) => a.origin === "upload")
+            .map((a) => a.source_id)
+            .sort(),
+        ) ||
+      JSON.stringify(options) !==
+        JSON.stringify({ ...defaultOptions, ...project.production_options }));
   const production = project ? videoProgress(project) : null;
   const locked = busy || active(project),
     preview =
@@ -342,27 +397,77 @@ export function VideoStudio() {
               {selected.length + uploads.length} / 40 已选 · 展开/收起
             </span>
           </summary>
-          {brand && product && (
-            <CouponMedia
-              brandId={brand}
-              productId={product}
-              onResources={receiveResources}
-            />
-          )}
-          <details className="studio-source-picker">
-            <summary>查看或调整来源素材（{resources.length}）</summary>
+          <div
+            className="studio-material-tabs"
+            role="tablist"
+            aria-label="素材来源"
+          >
+            <button
+              role="tab"
+              aria-selected={materialTab === "network"}
+              onClick={() => setMaterialTab("network")}
+            >
+              网络素材 · {resources.length}
+            </button>
+            <button
+              role="tab"
+              aria-selected={materialTab === "upload"}
+              onClick={() => setMaterialTab("upload")}
+            >
+              我的上传 · {uploads.length}
+            </button>
+          </div>
+          <div hidden={materialTab !== "network"}>
+            {(brand || project?.brand_id) &&
+              (product || project?.product_id) && (
+                <CouponMedia
+                  controlsOnly
+                  brandId={brand || project!.brand_id}
+                  productId={product || project!.product_id}
+                  onResources={receiveResources}
+                />
+              )}
             <div className="studio-resource-grid">
-              {resources.map((r) => (
+              {Array.from(
+                new Map(
+                  [
+                    ...(
+                      project?.assets.filter((a) => a.origin !== "upload") || []
+                    ).map((a) => ({
+                      id: a.source_id,
+                      title: a.title,
+                      poster: "",
+                      video_url: appUrl(
+                        `${prefix}/${project!.id}/media/${a.id}`,
+                      ),
+                    })),
+                    ...resources,
+                  ].map((r) => [r.id, r]),
+                ).values(),
+              ).map((r, index) => (
                 <label key={r.id}>
-                  <img
-                    src={r.poster}
-                    alt=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                  />
+                  {r.video_url ? (
+                    <video
+                      src={r.video_url}
+                      poster={r.poster || undefined}
+                      controls
+                      preload="none"
+                      playsInline
+                    />
+                  ) : r.poster ? (
+                    <img
+                      src={r.poster}
+                      alt=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <span className="studio-cached-material">已缓存素材</span>
+                  )}
                   <span>
                     <input
                       type="checkbox"
+                      disabled={locked}
                       checked={selected.includes(r.id)}
                       onChange={(e) =>
                         setSelected((v) =>
@@ -372,13 +477,50 @@ export function VideoStudio() {
                         )
                       }
                     />
-                    {isAdmin ? r.title : `素材 ${resources.indexOf(r) + 1}`}
+                    {isAdmin ? r.title : `素材 ${index + 1}`}
                   </span>
+                  <small>
+                    {project?.assets.find((a) => a.source_id === r.id)
+                      ?.accepted === true
+                      ? "已通过"
+                      : project?.assets.find((a) => a.source_id === r.id)
+                            ?.accepted === false
+                        ? "未通过"
+                        : "待分析"}
+                  </small>
                 </label>
               ))}
             </div>
-            {!resources.length && <p>获取参考素材，或上传自己的图片与视频。</p>}
-          </details>
+          </div>
+          <div
+            hidden={materialTab !== "upload"}
+            className="studio-upload-panel"
+          >
+            <label>
+              上传图片或视频
+              <input
+                type="file"
+                multiple
+                accept="video/mp4,video/quicktime,image/jpeg,image/png,image/webp"
+                disabled={locked}
+                onChange={(e) => void upload(e.target.files)}
+              />
+            </label>
+            {uploads.map((u) => (
+              <div className="studio-upload-item" key={u.id}>
+                <span>{u.name}</span>
+                <button
+                  disabled={locked}
+                  onClick={() =>
+                    setUploads((v) => v.filter((x) => x.id !== u.id))
+                  }
+                >
+                  移出本次制作
+                </button>
+              </div>
+            ))}
+            {!uploads.length && <p>上传自己的拍摄素材，与网络素材一起制作。</p>}
+          </div>
         </details>
         {!project ? (
           <section className="studio-setup">
@@ -386,53 +528,17 @@ export function VideoStudio() {
               <h2>成片设置</h2>
               <span>自动混剪</span>
             </div>
-            <div className="studio-settings">
-              <label>
-                成片时长
-                <select
-                  value={seconds}
-                  onChange={(e) => setSeconds(Number(e.target.value))}
-                >
-                  {[12, 15, 18, 20].map((n) => (
-                    <option key={n} value={n}>
-                      {n}秒
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                上传自有图片/视频
-                <input
-                  type="file"
-                  multiple
-                  accept="video/mp4,video/quicktime,image/jpeg,image/png,image/webp"
-                  disabled={busy}
-                  onChange={(e) => void upload(e.target.files)}
-                />
-              </label>
-            </div>
+            <DurationSetting
+              seconds={seconds}
+              setSeconds={setSeconds}
+              disabled={locked}
+            />
             <ProductionSettings
               options={options}
               setOptions={setOptions}
               disabled={locked}
             />
             <p className="studio-hint">至少选择4个素材，最多40个。</p>
-            {uploads.map((u) => (
-              <p key={u.id}>
-                {u.name}{" "}
-                <button
-                  className="quiet-button"
-                  onClick={() =>
-                    void perform(async () => {
-                      await request(`/api/v3/video-assets/${u.id}`, "DELETE");
-                      setUploads((v) => v.filter((x) => x.id !== u.id));
-                    })
-                  }
-                >
-                  移除
-                </button>
-              </p>
-            ))}
             <label className="studio-rights">
               <input
                 type="checkbox"
@@ -454,7 +560,9 @@ export function VideoStudio() {
             >
               {busy ? "提交中…" : "开始制作"}
             </button>
-            <p className="studio-hint">素材不足时自动缩短，成片不少于12秒。</p>
+            <p className="studio-hint">
+              成片时长会根据可用素材在目标附近调整。
+            </p>
           </section>
         ) : (
           <>
@@ -546,8 +654,15 @@ export function VideoStudio() {
               <section className="studio-script-panel">
                 <div className="studio-section-heading">
                   <h2>制作选项</h2>
-                  <span>{project.seconds}秒 · 自动剪辑</span>
+                  <span>
+                    {preview ? `当前成片 ${project.seconds} 秒` : "自动剪辑"}
+                  </span>
                 </div>
+                <DurationSetting
+                  seconds={seconds}
+                  setSeconds={setSeconds}
+                  disabled={locked}
+                />
                 <ProductionSettings
                   options={options}
                   setOptions={setOptions}
@@ -867,6 +982,39 @@ function ProductionSettings({
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+function DurationSetting({
+  seconds,
+  setSeconds,
+  disabled,
+}: {
+  seconds: number;
+  setSeconds: (n: number) => void;
+  disabled: boolean;
+}) {
+  return (
+    <div className="studio-duration">
+      <label htmlFor="video-duration">
+        目标时长 <strong>约 {seconds} 秒</strong>
+      </label>
+      <input
+        id="video-duration"
+        aria-label="目标时长"
+        type="range"
+        min="15"
+        max="40"
+        step="1"
+        value={seconds}
+        disabled={disabled}
+        onChange={(e) => setSeconds(+e.target.value)}
+      />
+      <div>
+        <span>15秒 · 精简</span>
+        <span>40秒 · 丰富</span>
+      </div>
     </div>
   );
 }

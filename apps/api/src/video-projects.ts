@@ -162,11 +162,86 @@ export async function createVideoProjects(db: PGlite, root: string) {
     mode: string,
     options?: VideoProject["production_options"],
     revision?: number,
+    selection?: {
+      seconds?: number;
+      resource_ids?: string[];
+      upload_ids?: string[];
+    },
   ) {
     const p = await get(id);
     if (running(p.state)) return p;
     if (revision !== undefined && revision !== p.revision)
       throw Error("项目已更新，请刷新");
+    if (selection?.resource_ids || selection?.upload_ids) {
+      const resources = !p.brand_id
+        ? []
+        : (
+            await db.query<{ resources: any[] }>(
+              "SELECT resources FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2 AND owner_id=(SELECT owner_id FROM video_projects WHERE id=$3)",
+              [p.brand_id, p.product_id, p.id],
+            )
+          ).rows[0]?.resources || [];
+      const assets: Asset[] = [];
+      for (const source of new Set(selection.resource_ids || [])) {
+        const old = p.assets.find(
+          (a) => a.source_id === source && a.origin !== "upload",
+        );
+        if (old) {
+          assets.push(old);
+          continue;
+        }
+        const resource = resources.find((r) => r.id === source);
+        if (!resource || !mediaUrl(resource.video_url))
+          throw Error("所选网络素材已失效，请重新获取");
+        assets.push({
+          id: randomUUID(),
+          source_id: source,
+          origin: "network",
+          url: mediaUrl(resource.video_url),
+          title: resource.title,
+          author: resource.author,
+          note_url: resource.note_url,
+          kind: "video",
+        });
+      }
+      for (const source of new Set(selection.upload_ids || [])) {
+        const old = p.assets.find(
+          (a) =>
+            a.source_id === source &&
+            (a.origin === "upload" || a.path?.includes("/uploads/")),
+        );
+        if (old) {
+          assets.push(old);
+          continue;
+        }
+        const upload = (
+          await db.query<{ kind: string }>(
+            "SELECT kind FROM video_uploads WHERE id=$1 AND owner_id=(SELECT owner_id FROM video_projects WHERE id=$2)",
+            [source, p.id],
+          )
+        ).rows[0];
+        if (!upload || upload.kind === "audio") throw Error("上传素材不存在");
+        assets.push({
+          id: randomUUID(),
+          source_id: source,
+          origin: "upload",
+          path: join(root, "uploads", `${source}.source`),
+          title: "用户上传素材",
+          author: "用户提供",
+          note_url: "",
+          kind: upload.kind as "image" | "video",
+        });
+      }
+      if (assets.length < 4 || assets.length > 40)
+        throw Error("请选择4至40个素材");
+      p.assets = assets;
+      p.plan = [];
+    }
+    if (selection?.seconds !== undefined) {
+      p.target_seconds = selection.seconds;
+      p.seconds = selection.seconds;
+      p.plan = [];
+    }
     if (options) p.production_options = options;
     if (mode === "remake" && (!p.plan.length || requiresFaceScreen(p)))
       mode = "analyze";
@@ -362,8 +437,8 @@ export async function createVideoProjects(db: PGlite, root: string) {
         res.json({
           configured,
           max_assets: 40,
-          min_seconds: 12,
-          max_seconds: 20,
+          min_seconds: 15,
+          max_seconds: 40,
         });
       }),
     );
@@ -489,7 +564,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
             brand_id: z.union([uuid, z.literal("")]),
             visit_store_id: uuid,
             product_id: z.string().max(80),
-            seconds: z.number().int().min(12).max(20),
+            seconds: z.number().int().min(15).max(40),
             resource_ids: z.array(z.string().max(200)).max(40),
             upload_ids: z.array(uuid).max(40).default([]),
             music_id: uuid.optional(),
@@ -596,6 +671,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
             brand_name: coupon.name,
             title: coupon.payload.name,
             seconds: v.seconds,
+            target_seconds: v.seconds,
             assets,
             plan: [],
             state: "draft",
@@ -634,6 +710,9 @@ export async function createVideoProjects(db: PGlite, root: string) {
         const v = z
           .object({
             revision: z.number().int(),
+            seconds: z.number().int().min(15).max(40).optional(),
+            resource_ids: z.array(z.string().max(200)).max(40).optional(),
+            upload_ids: z.array(uuid).max(40).optional(),
             production_options: productionOptionsSchema,
           })
           .parse(req.body);
@@ -644,6 +723,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
               "remake",
               v.production_options,
               v.revision,
+              v,
             ),
           ),
         });
