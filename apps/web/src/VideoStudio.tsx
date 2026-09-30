@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
 import { CouponMedia } from "./CouponMedia";
 import { StudioCoupon } from "./StudioCoupon";
@@ -63,6 +64,7 @@ async function request(path: string, method = "GET", body?: unknown) {
   return data;
 }
 export function VideoStudio() {
+  const isAdmin = useAccount().role === "admin";
   const query = new URLSearchParams(location.search),
     brand = query.get("brand_id") || "",
     product = query.get("product_id") || "",
@@ -271,7 +273,9 @@ export function VideoStudio() {
       project?.export_revision === project?.revision &&
       project?.export_revision !== undefined;
   return (
-    <main className="video-studio">
+    <main
+      className={`video-studio creator-workbench ${project ? "has-project" : "is-new"}`}
+    >
       <header className="studio-header">
         <div>
           <nav className="studio-navigation" aria-label="视频制作导航">
@@ -290,31 +294,41 @@ export function VideoStudio() {
               我的视频 →
             </a>
           </nav>
-          <h1>制作探店视频</h1>
+          <h1>
+            制作探店视频<span className="studio-format">9:16 竖屏</span>
+          </h1>
           <p>
             {project?.brand_name || "挑好素材，自动剪成一条短片"}
             {project ? ` · ${project.title}` : ""}
           </p>
         </div>
-        <span>12–20秒 · 竖屏 · 实况混剪 · 素材不足时自动缩短，最低12秒</span>
+        <ol className="studio-steps" aria-label="制作进度">
+          <li className={!project ? "current" : ""}>01 选择素材</li>
+          <li className={project && !exported ? "current" : ""}>02 编辑预览</li>
+          <li className={exported ? "current" : ""}>03 导出成片</li>
+        </ol>
       </header>
-      {visit && (
-        <section className="studio-coupon">
-          <strong>
-            {visit.plan_name} · {visit.date}
-          </strong>
-          <h2>{visit.name}</h2>
-          <p>{visit.address}</p>
-          <a href={appUrl(`/?tab=plans&plan=${visit.plan_id}`)}>返回探店计划</a>
-        </section>
-      )}
-      {!visitStore && !project && (
-        <p role="alert">请先在探店计划中添加店铺，再开始制作。</p>
-      )}
-      {brand && product && <StudioCoupon brandId={brand} productId={product} />}
-      <p className="muted">
-        网络参考素材会排除真人正面出镜；无法确认时不入选。自己上传的素材不受此限制。旧项目需重新分析后生成。
-      </p>
+      <div className="studio-context">
+        {visit && (
+          <section className="studio-visit">
+            <strong>
+              {visit.plan_name} · {visit.date}
+            </strong>
+            <h2>{visit.name}</h2>
+            <p>{visit.address}</p>
+            <a href={appUrl(`/?tab=plans&plan=${visit.plan_id}`)}>
+              返回探店计划
+            </a>
+          </section>
+        )}
+        {!visitStore && !project && (
+          <p role="alert">请先在探店计划中添加店铺，再开始制作。</p>
+        )}
+        {brand && product && (
+          <StudioCoupon brandId={brand} productId={product} />
+        )}
+      </div>
+
       {project?.requires_face_screen && (
         <p role="status">
           此项目的网络素材需要重新检查真人出镜，请点击重新分析，再生成预览或导出。
@@ -326,96 +340,22 @@ export function VideoStudio() {
           {error}
         </p>
       )}
-      {brand && product && (
-        <CouponMedia
-          brandId={brand}
-          productId={product}
-          onResources={receiveResources}
-        />
-      )}
-      {!project ? (
-        <section className="studio-setup">
-          <h2>制作设置</h2>
-          <div className="studio-settings">
-            <label>
-              成片时长
-              <select
-                value={seconds}
-                onChange={(e) => setSeconds(Number(e.target.value))}
-              >
-                {[12, 15, 18, 20].map((n) => (
-                  <option key={n} value={n}>
-                    {n}秒
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label>
-              上传自有图片/视频
-              <input
-                type="file"
-                multiple
-                accept="video/mp4,video/quicktime,image/jpeg,image/png,image/webp"
-                disabled={busy}
-                onChange={(e) => void upload(e.target.files)}
-              />
-            </label>
-            <label>
-              配乐（可选，默认静音）
-              <input
-                type="file"
-                accept="audio/*"
-                disabled={busy}
-                onChange={(e) => void upload(e.target.files, true)}
-              />
-            </label>
-          </div>
-          <p>
-            已选择 {selected.length + uploads.length}{" "}
-            个素材（单次最多40个，默认选最近获取的40个）；AI自动筛选、截取并生成预览。配乐：
-            {music?.name || "无"}。
-          </p>
-          {uploads.map((u) => (
-            <p key={u.id}>
-              {u.name}{" "}
-              <button
-                className="quiet-button"
-                onClick={() =>
-                  void perform(async () => {
-                    await request(`/api/v3/video-assets/${u.id}`, "DELETE");
-                    setUploads((v) => v.filter((x) => x.id !== u.id));
-                  })
-                }
-              >
-                移除
-              </button>
-            </p>
-          ))}
-          <label className="studio-rights">
-            <input
-              type="checkbox"
-              checked={rights}
-              onChange={(e) => setRights(e.target.checked)}
+      <div className="studio-composer">
+        <details className="studio-materials" open={!project}>
+          <summary className="studio-section-heading">
+            <h2>素材工作区</h2>
+            <span>
+              {selected.length + uploads.length} / 40 已选 · 展开/收起
+            </span>
+          </summary>
+          {brand && product && (
+            <CouponMedia
+              brandId={brand}
+              productId={product}
+              onResources={receiveResources}
             />
-            我确认所选素材和配乐已获得制作、导出的使用权限
-          </label>
-          <button
-            disabled={
-              busy ||
-              !configured ||
-              !visitStore ||
-              !rights ||
-              selected.length + uploads.length < 4 ||
-              selected.length + uploads.length > 40
-            }
-            onClick={() => void create()}
-          >
-            {busy ? "提交中…" : "智能筛片并生成预览"}
-          </button>
-          <p className="studio-hint">
-            品牌展示版：不自动声称画面中的菜品属于这张券。模型费用按保守费率估算，任务上限1元。
-          </p>
-          <details>
+          )}
+          <details className="studio-source-picker">
             <summary>查看或调整来源素材（{resources.length}）</summary>
             <div className="studio-resource-grid">
               {resources.map((r) => (
@@ -438,250 +378,346 @@ export function VideoStudio() {
                         )
                       }
                     />
-                    {r.title}
+                    {isAdmin ? r.title : `素材 ${resources.indexOf(r) + 1}`}
                   </span>
                 </label>
               ))}
             </div>
-            {!resources.length && (
-              <p>可以上传自己的素材，或返回券下先获取小红书资源。</p>
-            )}
+            {!resources.length && <p>获取参考素材，或上传自己的图片与视频。</p>}
           </details>
-        </section>
-      ) : (
-        <>
-          <div className="studio-status" aria-live="polite">
-            <strong>{project.progress}</strong>
-            <span>模型费用估算 ¥{project.cost.toFixed(3)}</span>
-            {active(project) && (
-              <button disabled={busy} onClick={() => void action("cancel")}>
-                停止任务
-              </button>
-            )}
-          </div>
-          {project.error && (
-            <p role="alert" className="studio-error">
-              {project.error}{" "}
-              <button
-                disabled={locked}
-                onClick={() =>
-                  void action(project.plan.length ? "preview" : "analyze")
-                }
-              >
-                {project.error.includes("Arrearage")
-                  ? "账户恢复后重试"
-                  : "重试"}
-              </button>
-            </p>
-          )}
-          <div className="studio-workspace">
-            <section className="studio-preview">
-              <h2>成片预览</h2>
-              {(exported || preview) && !dirty ? (
-                <video
-                  key={`${project.id}-${project.revision}-${exported}`}
-                  controls
-                  playsInline
-                  src={appUrl(
-                    `${prefix}/${project.id}/download?kind=${exported ? "export" : "preview"}&inline=1`,
-                  )}
-                />
-              ) : (
-                <div className="studio-preview-placeholder">
-                  {active(project)
-                    ? "正在准备你的短片…"
-                    : dirty
-                      ? "时间线已修改，请重新生成预览"
-                      : "预览完成后在这里播放"}
-                </div>
-              )}
-              <div className="studio-actions">
-                <button
-                  disabled={locked || !plan.length}
-                  onClick={() => void action("preview")}
-                >
-                  {dirty ? "保存并更新预览" : "生成720p预览"}
-                </button>
-                <button
-                  disabled={locked || !plan.length}
-                  onClick={() => void action("export")}
-                >
-                  导出1080p MP4
-                </button>
-                {exported && !dirty && (
-                  <a
-                    className="studio-download"
-                    href={appUrl(`${prefix}/${project.id}/download`)}
-                  >
-                    下载成片
-                  </a>
-                )}
-              </div>
-              <p className="studio-hint">
-                保留原画面比例；低分辨率素材不会因导出1080p获得真实细节。原素材声音默认静音。
-              </p>
-            </section>
-            <section className="studio-timeline">
-              <h2>镜头与字幕</h2>
-              <div className="studio-actions">
-                <button
-                  type="button"
-                  disabled={!captionText}
-                  title="按镜头顺序复制当前字幕，包含尚未保存的修改"
-                  onClick={() => void copyCaptions()}
-                >
-                  一键复制字幕
-                </button>
-                <button
-                  type="button"
-                  disabled={locked || !captionText}
-                  onClick={() => {
-                    setPlan((v) => v.map((c) => ({ ...c, caption: "" })));
-                    setDirty(true);
-                  }}
-                >
-                  清空全部字幕
-                </button>
-                <span role="status" className="studio-hint">
-                  {copyStatus ||
-                    (!captionText
-                      ? "填写字幕后即可复制"
-                      : "按镜头顺序复制，每条字幕一行")}
-                </span>
-              </div>
-              <p>
-                目标{project.seconds}秒 · 当前
-                {plan.reduce((n, c) => n + c.duration, 0).toFixed(1)}
-                秒。调序、换片或修改字幕后更新预览。
-              </p>
-              {plan.map((c, i) => (
-                <article key={`${i}-${c.asset_id}`} className="studio-shot">
-                  <div className="studio-shot-title">
-                    <strong>镜头 {i + 1}</strong>
-                    <button
-                      className="quiet-button"
-                      disabled={locked || i === 0}
-                      onClick={() => move(i, -1)}
-                    >
-                      上移
-                    </button>
-                    <button
-                      className="quiet-button"
-                      disabled={locked || i === plan.length - 1}
-                      onClick={() => move(i, 1)}
-                    >
-                      下移
-                    </button>
-                  </div>
-                  <select
-                    aria-label={`镜头${i + 1}素材`}
-                    disabled={locked}
-                    value={c.asset_id}
-                    onChange={(e) =>
-                      edit(i, { asset_id: e.target.value, start: 0 })
-                    }
-                  >
-                    {project.assets
-                      .filter((a) => a.accepted)
-                      .map((a) => (
-                        <option key={a.id} value={a.id}>
-                          {a.score}分 · {a.title.slice(0, 20)} ·{" "}
-                          {a.reason?.slice(0, 35)}
-                        </option>
-                      ))}
-                  </select>
-                  <div className="studio-shot-times">
-                    <label>
-                      起点（秒）
-                      <input
-                        type="number"
-                        min="0"
-                        max="120"
-                        step="0.1"
-                        disabled={locked}
-                        value={Number(c.start.toFixed(2))}
-                        onChange={(e) =>
-                          edit(i, { start: Number(e.target.value) })
-                        }
-                      />
-                    </label>
-                    <label>
-                      长度（秒）
-                      <input
-                        type="number"
-                        min="1"
-                        max="5"
-                        step="0.1"
-                        disabled={locked}
-                        value={Number(c.duration.toFixed(2))}
-                        onChange={(e) =>
-                          edit(i, { duration: Number(e.target.value) })
-                        }
-                      />
-                    </label>
-                  </div>
-                  <input
-                    aria-label={`镜头${i + 1}字幕`}
-                    placeholder="可选短字幕，价格和权益请核实后填写"
-                    maxLength={40}
-                    value={c.caption}
-                    disabled={locked}
-                    onChange={(e) => edit(i, { caption: e.target.value })}
-                  />
-                </article>
-              ))}
-              {!plan.length && (
-                <p>AI正在挑选镜头；结果会自动保留，离开页面不影响任务。</p>
-              )}
-            </section>
-          </div>
-          <details className="studio-analysis">
-            <summary>
-              素材筛选结果（{project.assets.filter((a) => a.accepted).length}/
-              {project.assets.length}通过）
-            </summary>
-            <div className="studio-analysis-grid">
-              {project.assets.map((a) => (
-                <article key={a.id}>
-                  {a.duration || a.kind === "image" ? (
-                    a.kind === "image" ? (
-                      <img
-                        src={appUrl(`${prefix}/${project.id}/media/${a.id}`)}
-                        alt={a.title}
-                      />
-                    ) : (
-                      <video
-                        src={appUrl(`${prefix}/${project.id}/media/${a.id}`)}
-                        controls
-                        preload="none"
-                      />
-                    )
-                  ) : null}
-                  <strong>
-                    {a.accepted ? "入围" : a.reason ? "未选用" : "等待分析"}{" "}
-                    {a.score ?? ""}
-                  </strong>
-                  <p>{a.reason || a.title}</p>
-                  <small>{a.author}</small>
-                </article>
-              ))}
+        </details>
+        {!project ? (
+          <section className="studio-setup">
+            <div className="studio-section-heading">
+              <h2>成片设置</h2>
+              <span>自动混剪</span>
             </div>
-          </details>
-          <button
-            className="quiet-button"
-            disabled={locked}
-            onClick={() => {
-              setProject(null);
-              setDirty(false);
-              const u = new URL(location.href);
-              u.searchParams.delete("project");
-              window.history.replaceState({}, "", u);
-            }}
-          >
-            新建另一个版本
-          </button>
-        </>
-      )}
+            <div className="studio-settings">
+              <label>
+                成片时长
+                <select
+                  value={seconds}
+                  onChange={(e) => setSeconds(Number(e.target.value))}
+                >
+                  {[12, 15, 18, 20].map((n) => (
+                    <option key={n} value={n}>
+                      {n}秒
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                上传自有图片/视频
+                <input
+                  type="file"
+                  multiple
+                  accept="video/mp4,video/quicktime,image/jpeg,image/png,image/webp"
+                  disabled={busy}
+                  onChange={(e) => void upload(e.target.files)}
+                />
+              </label>
+              <label>
+                配乐（可选，默认静音）
+                <input
+                  type="file"
+                  accept="audio/*"
+                  disabled={busy}
+                  onChange={(e) => void upload(e.target.files, true)}
+                />
+              </label>
+            </div>
+            <p className="studio-hint">
+              至少选择4个素材，最多40个。配乐：{music?.name || "无 · 默认静音"}
+            </p>
+            {uploads.map((u) => (
+              <p key={u.id}>
+                {u.name}{" "}
+                <button
+                  className="quiet-button"
+                  onClick={() =>
+                    void perform(async () => {
+                      await request(`/api/v3/video-assets/${u.id}`, "DELETE");
+                      setUploads((v) => v.filter((x) => x.id !== u.id));
+                    })
+                  }
+                >
+                  移除
+                </button>
+              </p>
+            ))}
+            <label className="studio-rights">
+              <input
+                type="checkbox"
+                checked={rights}
+                onChange={(e) => setRights(e.target.checked)}
+              />
+              我确认所选素材和配乐已获得制作、导出的使用权限
+            </label>
+            <button
+              disabled={
+                busy ||
+                !configured ||
+                !visitStore ||
+                !rights ||
+                selected.length + uploads.length < 4 ||
+                selected.length + uploads.length > 40
+              }
+              onClick={() => void create()}
+            >
+              {busy ? "提交中…" : "智能筛片并生成预览"}
+            </button>
+            <p className="studio-hint">素材不足时自动缩短，成片不少于12秒。</p>
+          </section>
+        ) : (
+          <>
+            <div className="studio-status" aria-live="polite">
+              <strong>{project.progress}</strong>
+              {isAdmin && <span>模型费用估算 ¥{project.cost.toFixed(3)}</span>}
+              {active(project) && (
+                <button disabled={busy} onClick={() => void action("cancel")}>
+                  停止任务
+                </button>
+              )}
+            </div>
+            {project.error && (
+              <p role="alert" className="studio-error">
+                {project.error}{" "}
+                <button
+                  disabled={locked}
+                  onClick={() =>
+                    void action(project.plan.length ? "preview" : "analyze")
+                  }
+                >
+                  {project.error.includes("Arrearage")
+                    ? "账户恢复后重试"
+                    : "重试"}
+                </button>
+              </p>
+            )}
+            <div className="studio-workspace">
+              <section className="studio-preview">
+                <h2>成片预览</h2>
+                {(exported || preview) && !dirty ? (
+                  <video
+                    key={`${project.id}-${project.revision}-${exported}`}
+                    controls
+                    playsInline
+                    src={appUrl(
+                      `${prefix}/${project.id}/download?kind=${exported ? "export" : "preview"}&inline=1`,
+                    )}
+                  />
+                ) : (
+                  <div className="studio-preview-placeholder">
+                    {active(project)
+                      ? "正在准备你的短片…"
+                      : dirty
+                        ? "时间线已修改，请重新生成预览"
+                        : "预览完成后在这里播放"}
+                  </div>
+                )}
+                <div className="studio-actions">
+                  <button
+                    disabled={locked || !plan.length}
+                    onClick={() => void action("preview")}
+                  >
+                    {dirty ? "保存并更新预览" : "生成720p预览"}
+                  </button>
+                  <button
+                    disabled={locked || !plan.length}
+                    onClick={() => void action("export")}
+                  >
+                    导出1080p MP4
+                  </button>
+                  {exported && !dirty && (
+                    <a
+                      className="studio-download"
+                      href={appUrl(`${prefix}/${project.id}/download`)}
+                    >
+                      下载成片
+                    </a>
+                  )}
+                </div>
+                <p className="studio-hint">
+                  保留原画面比例；低分辨率素材不会因导出1080p获得真实细节。原素材声音默认静音。
+                </p>
+              </section>
+              <section className="studio-timeline">
+                <h2>镜头编排</h2>
+                <button
+                  disabled={locked}
+                  onClick={() => void action("analyze")}
+                >
+                  重新分析素材
+                </button>
+                <div className="studio-actions">
+                  <button
+                    type="button"
+                    disabled={!captionText}
+                    title="按镜头顺序复制当前字幕，包含尚未保存的修改"
+                    onClick={() => void copyCaptions()}
+                  >
+                    一键复制字幕
+                  </button>
+                  <button
+                    type="button"
+                    disabled={locked || !captionText}
+                    onClick={() => {
+                      setPlan((v) => v.map((c) => ({ ...c, caption: "" })));
+                      setDirty(true);
+                    }}
+                  >
+                    清空全部字幕
+                  </button>
+                  <span role="status" className="studio-hint">
+                    {copyStatus ||
+                      (!captionText
+                        ? "填写字幕后即可复制"
+                        : "按镜头顺序复制，每条字幕一行")}
+                  </span>
+                </div>
+                <p>
+                  目标{project.seconds}秒 · 当前
+                  {plan.reduce((n, c) => n + c.duration, 0).toFixed(1)}
+                  秒。调序、换片或修改字幕后更新预览。
+                </p>
+                {plan.map((c, i) => (
+                  <article key={`${i}-${c.asset_id}`} className="studio-shot">
+                    <div className="studio-shot-title">
+                      <strong>镜头 {i + 1}</strong>
+                      <button
+                        className="quiet-button"
+                        disabled={locked || i === 0}
+                        onClick={() => move(i, -1)}
+                      >
+                        上移
+                      </button>
+                      <button
+                        className="quiet-button"
+                        disabled={locked || i === plan.length - 1}
+                        onClick={() => move(i, 1)}
+                      >
+                        下移
+                      </button>
+                    </div>
+                    <select
+                      aria-label={`镜头${i + 1}素材`}
+                      disabled={locked}
+                      value={c.asset_id}
+                      onChange={(e) =>
+                        edit(i, { asset_id: e.target.value, start: 0 })
+                      }
+                    >
+                      {project.assets
+                        .filter((a) => a.accepted)
+                        .map((a) => (
+                          <option key={a.id} value={a.id}>
+                            {isAdmin
+                              ? `${a.score}分 · ${a.title.slice(0, 20)} · ${a.reason?.slice(0, 35) || ""}`
+                              : `素材 ${project.assets.indexOf(a) + 1}`}
+                          </option>
+                        ))}
+                    </select>
+                    <div className="studio-shot-times">
+                      <label>
+                        起点（秒）
+                        <input
+                          type="number"
+                          min="0"
+                          max="120"
+                          step="0.1"
+                          disabled={locked}
+                          value={Number(c.start.toFixed(2))}
+                          onChange={(e) =>
+                            edit(i, { start: Number(e.target.value) })
+                          }
+                        />
+                      </label>
+                      <label>
+                        长度（秒）
+                        <input
+                          type="number"
+                          min="1"
+                          max="5"
+                          step="0.1"
+                          disabled={locked}
+                          value={Number(c.duration.toFixed(2))}
+                          onChange={(e) =>
+                            edit(i, { duration: Number(e.target.value) })
+                          }
+                        />
+                      </label>
+                    </div>
+                    <input
+                      aria-label={`镜头${i + 1}字幕`}
+                      placeholder="可选短字幕，价格和权益请核实后填写"
+                      maxLength={40}
+                      value={c.caption}
+                      disabled={locked}
+                      onChange={(e) => edit(i, { caption: e.target.value })}
+                    />
+                  </article>
+                ))}
+                {!plan.length && (
+                  <p>AI正在挑选镜头；结果会自动保留，离开页面不影响任务。</p>
+                )}
+              </section>
+            </div>
+            <details className="studio-analysis">
+              <summary>
+                素材筛选结果（{project.assets.filter((a) => a.accepted).length}/
+                {project.assets.length}通过）
+              </summary>
+              <div className="studio-analysis-grid">
+                {project.assets.map((a) => (
+                  <article key={a.id}>
+                    {a.duration || a.kind === "image" ? (
+                      a.kind === "image" ? (
+                        <img
+                          src={appUrl(`${prefix}/${project.id}/media/${a.id}`)}
+                          alt="素材预览"
+                        />
+                      ) : (
+                        <video
+                          src={appUrl(`${prefix}/${project.id}/media/${a.id}`)}
+                          controls
+                          preload="none"
+                        />
+                      )
+                    ) : null}
+                    {isAdmin && (
+                      <>
+                        <strong>
+                          {a.accepted
+                            ? "入围"
+                            : a.reason
+                              ? "未选用"
+                              : "等待分析"}{" "}
+                          {a.score ?? ""}
+                        </strong>
+                        <p>{a.reason || a.title}</p>
+                        <small>{a.author}</small>
+                      </>
+                    )}
+                  </article>
+                ))}
+              </div>
+            </details>
+            <button
+              className="quiet-button studio-new-version"
+              disabled={locked}
+              onClick={() => {
+                setProject(null);
+                setDirty(false);
+                const u = new URL(location.href);
+                u.searchParams.delete("project");
+                window.history.replaceState({}, "", u);
+              }}
+            >
+              新建另一个版本
+            </button>
+          </>
+        )}
+      </div>
       {!!history.length && (
         <details className="studio-history">
           <summary>制作记录</summary>

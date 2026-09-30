@@ -31,6 +31,8 @@ export type Asset = {
   hash?: string;
 };
 export type VideoProject = {
+  channel?: "food" | "leisure";
+  category?: string;
   visit_store_id?: string;
   visit_plan_id?: string;
   visit_store_name?: string;

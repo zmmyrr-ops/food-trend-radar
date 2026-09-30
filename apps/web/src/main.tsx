@@ -30,6 +30,7 @@ import { VideoStudio } from "./VideoStudio";
 import { VisitPlans } from "./VisitPlans";
 import "./style.css";
 import "./design.css";
+import "./studio.css";
 
 async function api<T>(
   path: string,

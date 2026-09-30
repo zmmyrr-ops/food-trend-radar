@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useAccount } from "./AccountGate";
 import { appFetch } from "./app-url";
 
 type Resource = {
@@ -33,6 +34,7 @@ const errors: Record<string, string> = {
   INTERNAL_ERROR: "获取失败，请稍后重试",
 };
 function MediaTile({ item }: { item: Resource }) {
+  const isAdmin = useAccount().role === "admin";
   const [play, setPlay] = useState(false),
     [failed, setFailed] = useState("");
   return (
@@ -63,14 +65,14 @@ function MediaTile({ item }: { item: Resource }) {
               setFailed("");
               setPlay(true);
             }}
-            aria-label={`播放实况：${item.title}`}
+            aria-label={isAdmin ? `播放实况：${item.title}` : "播放素材"}
           >
             {item.poster ? (
               <img
                 src={item.poster}
                 loading="lazy"
                 referrerPolicy="no-referrer"
-                alt={item.title}
+                alt={isAdmin ? item.title : "素材预览"}
               />
             ) : (
               <span>实况预览</span>
@@ -79,32 +81,34 @@ function MediaTile({ item }: { item: Resource }) {
           </button>
         )}
       </div>
-      <figcaption>
-        <span
-          className={`media-relevance ${item.relevance || "brand"}`}
-          title={item.match}
-        >
-          {item.relevance === "coupon"
-            ? "券相关线索"
-            : item.relevance === "brand"
-              ? "品牌通用素材"
-              : "同品牌素材 · 待匹配"}
-        </span>
-        <a
-          href={item.note_url}
-          target="_blank"
-          rel="noreferrer"
-          title={item.title}
-        >
-          {item.title}
-        </a>
-        <span>
-          {item.author} ·{" "}
-          <a href={item.note_url} target="_blank" rel="noreferrer">
-            查看原文
+      {isAdmin && (
+        <figcaption>
+          <span
+            className={`media-relevance ${item.relevance || "brand"}`}
+            title={item.match}
+          >
+            {item.relevance === "coupon"
+              ? "券相关线索"
+              : item.relevance === "brand"
+                ? "品牌通用素材"
+                : "同品牌素材 · 待匹配"}
+          </span>
+          <a
+            href={item.note_url}
+            target="_blank"
+            rel="noreferrer"
+            title={item.title}
+          >
+            {item.title}
           </a>
-        </span>
-      </figcaption>
+          <span>
+            {item.author} ·{" "}
+            <a href={item.note_url} target="_blank" rel="noreferrer">
+              查看原文
+            </a>
+          </span>
+        </figcaption>
+      )}
     </figure>
   );
 }
@@ -117,6 +121,7 @@ export function CouponMedia({
   productId: string;
   onResources?: (resources: Resource[]) => void;
 }) {
+  const isAdmin = useAccount().role === "admin";
   const [open, setOpen] = useState(true),
     [job, setJob] = useState<Job | null>(null),
     [busy, setBusy] = useState(false),
@@ -270,15 +275,15 @@ export function CouponMedia({
                   ? "已停止，已获取素材保留"
                   : job
                     ? errors[job.error_code || ""] || "任务未完成"
-                    : "点击后开始获取；请求间隔 3–5 秒，不影响优惠券采集。"}
+                    : "选择获取资源，开始准备素材。"}
           </p>
-          {job && (
+          {isAdmin && job && (
             <small className="coupon-media-query">
               搜索：{job.keyword} ·
               每轮最多3页、20篇详情，保持3–5秒间隔。结果缓存4小时，链接可能提前失效。
             </small>
           )}
-          {!!job?.resources.some((r) => r.relevance) && (
+          {isAdmin && !!job?.resources.some((r) => r.relevance) && (
             <p className="coupon-media-query">
               券相关线索{" "}
               {job.resources.filter((r) => r.relevance === "coupon").length} 个

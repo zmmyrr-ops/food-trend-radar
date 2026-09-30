@@ -12,6 +12,7 @@ import {
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { PGlite } from "@electric-sql/pglite";
+import { inChannel } from "@radar/contracts";
 import express, { type Express, type Request, type Response } from "express";
 import { z } from "zod";
 import { ownerOf } from "./accounts.js";
@@ -158,6 +159,20 @@ export async function createVideoProjects(db: PGlite, root: string) {
     if (!p.rights_confirmed) throw Error("请先确认素材使用权限");
     if (mode !== "analyze") validatePlan(p.plan, p.assets, p.seconds);
     if (mode === "analyze") {
+      const brand = p.brand_id
+        ? (
+            await db.query<{ category: string }>(
+              "SELECT category FROM brands WHERE id=$1",
+              [p.brand_id],
+            )
+          ).rows[0]
+        : undefined;
+      p.category = brand?.category;
+      p.channel = brand
+        ? inChannel(brand.category, "leisure")
+          ? "leisure"
+          : "food"
+        : undefined;
       p.revision++;
       delete p.preview_revision;
       delete p.export_revision;
