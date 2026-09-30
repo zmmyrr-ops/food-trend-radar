@@ -317,6 +317,41 @@ export function createPickReader(
   readSignals: () => Promise<Signal[]>,
   readIndices?: () => Promise<BrandIndex[]>,
 ) {
+  type Historical = (PickRules & {
+    brand_id: string;
+    price_observed_at: string;
+  })[];
+  let cached: { at: number; rows: Historical } | undefined;
+  let pending: Promise<Historical> | undefined;
+  async function queryHistorical(): Promise<Historical> {
+    return db
+      ? (
+          await db.query<
+            PickRules & { brand_id: string; price_observed_at: string }
+          >(
+            `WITH latest AS (SELECT DISTINCT ON(product_id) * FROM coupon_rule_snapshots WHERE observed_at > now()-interval '36 hours' ORDER BY product_id,observed_at DESC)
+       SELECT DISTINCT ON(i.brand_id,r.product_id) i.brand_id,r.run_id,r.product_id,r.observed_at,i.observed_at AS price_observed_at,r.payload->'rules' AS rules
+       FROM latest r JOIN coupon_items i ON i.run_id=r.run_id AND i.product_id=r.product_id
+       JOIN brands b ON b.id=i.brand_id AND b.active
+       WHERE r.observed_at > now()-interval '36 hours' AND i.payload->>'identity'='name_match'
+       ORDER BY i.brand_id,r.product_id,r.observed_at DESC`,
+          )
+        ).rows
+      : [];
+  }
+  async function readHistoricalRules() {
+    if (cached && Date.now() - cached.at < 30000) return cached.rows;
+    if (!pending)
+      pending = queryHistorical()
+        .then((rows) => {
+          cached = { at: Date.now(), rows };
+          return rows;
+        })
+        .finally(() => {
+          pending = undefined;
+        });
+    return pending;
+  }
   return async () => {
     const heat = await readHeat();
     const signals = await readSignals();
@@ -334,19 +369,7 @@ export function createPickReader(
           )
         ).rows
       : [];
-    const historicalRules = db
-      ? (
-          await db.query<
-            PickRules & { brand_id: string; price_observed_at: string }
-          >(
-            `SELECT DISTINCT ON(i.brand_id,r.product_id) i.brand_id,r.run_id,r.product_id,r.observed_at,i.observed_at AS price_observed_at,r.payload->'rules' AS rules
-       FROM coupon_rule_snapshots r JOIN coupon_items i ON i.run_id=r.run_id AND i.product_id=r.product_id
-       JOIN brands b ON b.id=i.brand_id AND b.active
-       WHERE r.observed_at > now()-interval '36 hours' AND i.payload->>'identity'='name_match'
-       ORDER BY i.brand_id,r.product_id,r.observed_at DESC`,
-          )
-        ).rows
-      : [];
+    const historicalRules = await readHistoricalRules();
     const indices = readIndices ? await readIndices() : [];
     return combinePicks(
       heat,
