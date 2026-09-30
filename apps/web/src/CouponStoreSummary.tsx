@@ -80,12 +80,6 @@ export function CouponStoreSummary({
             <span className="coupon-store-label">关联店家：</span>
             {data ? data.source_shop?.name || "平台未返回店名" : "读取中…"}
           </p>
-          {data?.source_shop && (
-            <p className="coupon-store-note">
-              非全部适用门店
-              {data.context.status === "stale" ? "（采集记录已过期）" : ""}
-            </p>
-          )}
         </>
       )}
     </div>

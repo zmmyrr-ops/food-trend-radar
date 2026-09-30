@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { appFetch } from "./app-url";
+import { appFetch, appUrl } from "./app-url";
 
 const AccountContext = createContext<{ role: string }>({ role: "user" });
 export const useAccount = () => useContext(AccountContext);
@@ -71,7 +71,11 @@ export function AccountGate({ children }: { children: ReactNode }) {
             }
           }}
         >
-          <div className="account-logo">探好店</div>
+          <div className="account-logo">
+            <img src={appUrl("/branding/tanhaodian-icon.png")} alt="" />
+            探好店
+          </div>
+          <p className="account-slogan">帮你探好每一家店</p>
           <h1>登录你的创作空间</h1>
           <p>素材与制作的视频，按账号独立保存。</p>
           {testMode ? (

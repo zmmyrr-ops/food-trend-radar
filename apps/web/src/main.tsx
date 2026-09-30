@@ -22,11 +22,13 @@ import { createRoot } from "react-dom/client";
 import { AccountGate, useAccount } from "./AccountGate";
 import { Admission } from "./Admission";
 import { appFetch, appUrl } from "./app-url";
+import { BrandIcon } from "./BrandIcon";
 import { CouponRadar } from "./CouponRadar";
 import { Sources } from "./Sources";
 import { VideoLibrary } from "./VideoLibrary";
 import { VideoStudio } from "./VideoStudio";
 import "./style.css";
+import "./design.css";
 
 async function api<T>(
   path: string,
@@ -117,6 +119,12 @@ function App() {
     [search, setSearch] = useState(""),
     [category, setCategory] = useState("");
   const [brandScope, setBrandScope] = useState("active");
+  const [brandPage, setBrandPage] = useState(1);
+  const [brandPageSize, setBrandPageSize] = useState(12);
+  const [showBrandEditor, setShowBrandEditor] = useState(false);
+  useEffect(() => {
+    setBrandPage(1);
+  }, [search, category, brandScope, channel, brandPageSize]);
   const [preview, setPreview] = useState<ImportPreview | null>(null);
   const [importHistory, setImportHistory] = useState<
     { id: string; result: ImportResult; created_at: string }[]
@@ -234,6 +242,12 @@ function App() {
         .toLowerCase()
         .includes(search.toLowerCase()),
   );
+  const brandPages = Math.max(1, Math.ceil(shown.length / brandPageSize));
+  const currentBrandPage = Math.min(brandPage, brandPages);
+  const pageBrands = shown.slice(
+    (currentBrandPage - 1) * brandPageSize,
+    currentBrandPage * brandPageSize,
+  );
   const template =
     "brand_id,title,type,starts_at,ends_at,source_url,evidence_note,effective_price,eligibility,status,source_id,original_price,promotion_terms,collaboration,store_scope,applicable_stores\n";
   function downloadErrors(errors: ImportResult["errors"]) {
@@ -265,12 +279,16 @@ function App() {
     <main className={`app-shell channel-${channel}`}>
       <aside className="app-sidebar">
         <a className="app-logo" href={appUrl("/")}>
-          <span className="logo-mark">探</span>
+          <img
+            className="logo-mark"
+            src={appUrl("/branding/tanhaodian-icon.png")}
+            alt="探好店"
+          />
           <span>
-            探好店<small>让好选题，先一步被发现</small>
+            探好店<small>帮你探好每一家店</small>
           </span>
         </a>
-        <div className="sidebar-label">发现值得拍的好店</div>
+        <div className="sidebar-label">探店达人的创作助手</div>
         <nav className="primary-nav" aria-label="主导航">
           <button
             aria-pressed={tab === "radar" && channel === "food"}
@@ -329,7 +347,7 @@ function App() {
         </details>
         <div className="sidebar-foot">
           <span className="location-dot" />
-          上海限定<small>优惠、热度与创作，在这里连接</small>
+          上海限定<small>选好店 · 拍好片</small>
         </div>
       </aside>
       <div className="app-content">
@@ -424,85 +442,89 @@ function App() {
           <VideoLibrary key={channel} channel={channel} brands={brands} />
         )}
         {tab === "brands" && (
-          <div className="workspace">
-            <section className="panel">
-              <h2>{brandEdit ? "编辑品牌" : "新增品牌"}</h2>
-              <form key={brandEdit?.id ?? "new"} onSubmit={submitBrand}>
-                <label>
-                  品牌名称
-                  <input
-                    name="name"
-                    required
-                    maxLength={80}
-                    defaultValue={brandEdit?.name}
-                  />
-                </label>
-                <label>
-                  品类
-                  <select
-                    name="category"
-                    defaultValue={
-                      brandEdit?.category ??
-                      categories.find((c) => inChannel(c, channel))
-                    }
-                  >
-                    {categories
-                      .filter((c) => inChannel(c, channel))
-                      .map((c) => (
-                        <option key={c}>{c}</option>
-                      ))}
-                  </select>
-                </label>
-                <label>
-                  别名（逗号分隔）
-                  <input
-                    name="aliases"
-                    defaultValue={brandEdit?.aliases.join("，")}
-                  />
-                </label>
-                <label>
-                  监测关键词（逗号分隔）
-                  <input
-                    name="keywords"
-                    defaultValue={brandEdit?.keywords.join("，")}
-                    placeholder="品牌名、新品名；最多30项"
-                  />
-                </label>
-                <label>
-                  上海经营或购买证据链接
-                  <input
-                    type="url"
-                    name="url"
-                    required
-                    defaultValue={brandEdit?.shanghai_evidence_url}
-                    placeholder="https://…"
-                  />
-                </label>
-                <label>
-                  监测状态
-                  <select
-                    name="active"
-                    defaultValue={String(brandEdit?.active ?? true)}
-                  >
-                    <option value="true">启用</option>
-                    <option value="false">停用</option>
-                  </select>
-                </label>
-                <button disabled={busy} type="submit">
-                  {busy ? "保存中…" : "保存品牌"}
-                </button>
-                {brandEdit && (
-                  <button
-                    className="secondary"
-                    type="button"
-                    onClick={() => setBrandEdit(null)}
-                  >
-                    取消编辑
+          <div
+            className={`brand-workspace ${showBrandEditor ? "with-editor" : ""}`}
+          >
+            {showBrandEditor && (
+              <section className="panel brand-editor">
+                <h2>{brandEdit ? "编辑品牌" : "新增品牌"}</h2>
+                <form key={brandEdit?.id ?? "new"} onSubmit={submitBrand}>
+                  <label>
+                    品牌名称
+                    <input
+                      name="name"
+                      required
+                      maxLength={80}
+                      defaultValue={brandEdit?.name}
+                    />
+                  </label>
+                  <label>
+                    品类
+                    <select
+                      name="category"
+                      defaultValue={
+                        brandEdit?.category ??
+                        categories.find((c) => inChannel(c, channel))
+                      }
+                    >
+                      {categories
+                        .filter((c) => inChannel(c, channel))
+                        .map((c) => (
+                          <option key={c}>{c}</option>
+                        ))}
+                    </select>
+                  </label>
+                  <label>
+                    别名（逗号分隔）
+                    <input
+                      name="aliases"
+                      defaultValue={brandEdit?.aliases.join("，")}
+                    />
+                  </label>
+                  <label>
+                    监测关键词（逗号分隔）
+                    <input
+                      name="keywords"
+                      defaultValue={brandEdit?.keywords.join("，")}
+                      placeholder="品牌名、新品名；最多30项"
+                    />
+                  </label>
+                  <label>
+                    上海经营或购买证据链接
+                    <input
+                      type="url"
+                      name="url"
+                      required
+                      defaultValue={brandEdit?.shanghai_evidence_url}
+                      placeholder="https://…"
+                    />
+                  </label>
+                  <label>
+                    监测状态
+                    <select
+                      name="active"
+                      defaultValue={String(brandEdit?.active ?? true)}
+                    >
+                      <option value="true">启用</option>
+                      <option value="false">停用</option>
+                    </select>
+                  </label>
+                  <button disabled={busy} type="submit">
+                    {busy ? "保存中…" : "保存品牌"}
                   </button>
-                )}
-              </form>
-            </section>
-            <section className="panel">
+                  {brandEdit && (
+                    <button
+                      className="secondary"
+                      type="button"
+                      onClick={() => setBrandEdit(null)}
+                    >
+                      取消编辑
+                    </button>
+                  )}
+                </form>
+              </section>
+            )}
+            <section className="panel brand-directory">
               {reviewBrand && (
                 <form
                   key={reviewBrand.id}
@@ -601,7 +623,18 @@ function App() {
               )}
               <div className="section-title">
                 <h2>上海品牌库</h2>
-                <span>{shown.length}个</span>
+                <span>
+                  {shown.length} 个品牌 ·{" "}
+                  {shown.filter((b) => b.icon_url).length} 个头像
+                </span>
+                <button
+                  onClick={() => {
+                    setBrandEdit(null);
+                    setShowBrandEditor(!showBrandEditor);
+                  }}
+                >
+                  {showBrandEditor ? "收起编辑" : "+ 新增品牌"}
+                </button>
               </div>
               <div className="filters">
                 <input
@@ -637,100 +670,168 @@ function App() {
                   尚无匹配品牌。添加第一条有来源的品牌记录。
                 </p>
               ) : (
-                shown.map((b) => (
-                  <article className="record" key={b.id}>
-                    <div>
-                      <h3>{b.name}</h3>
-                      <small>
-                        {b.category} · {b.active ? "启用" : "已停用"}
-                      </small>
-                    </div>
-                    <button
-                      type="button"
-                      className="secondary"
-                      disabled={busy}
-                      onClick={() =>
-                        action(async () =>
-                          setBrandEvidence({
-                            name: b.name,
-                            items: (
-                              await api<{
-                                items: { evidence: ResearchEvidence }[];
-                              }>(`/brands/${b.id}/evidence`)
-                            ).items,
-                          }),
-                        )
-                      }
-                    >
-                      查看采集证据
-                    </button>
-                    <p>别名：{b.aliases.join("、") || "—"}</p>
-                    <p>关键词：{b.keywords.join("、") || "未配置"}</p>
-                    <p>
-                      核验：
-                      {
-                        {
-                          pending: "待核验",
-                          verified: "已资料核验",
-                          rejected: "未通过",
-                        }[b.review_status]
-                      }{" "}
-                      · 版本 {b.revision}
-                    </p>
-                    {b.review_note && (
-                      <p>
-                        {b.reviewed_by}：{b.review_note}
+                <div className="brand-directory-grid">
+                  {pageBrands.map((b) => (
+                    <article className="brand-record" key={b.id}>
+                      <div className="brand-record-heading">
+                        <BrandIcon name={b.name} url={b.icon_url} />
+                        <div>
+                          <h3>{b.name}</h3>
+                          <small>
+                            {b.category} · {b.active ? "启用" : "已停用"}
+                          </small>
+                        </div>
+                      </div>
+                      <p className="brand-alias" title={b.aliases.join("、")}>
+                        {b.aliases.join(" · ") || "—"}
                       </p>
-                    )}
-                    <button
-                      type="button"
-                      className="secondary"
-                      onClick={() => setReviewBrand(b)}
-                    >
-                      核验上海经营证据
-                    </button>
-                    <button
-                      type="button"
-                      className="secondary"
-                      onClick={() =>
-                        action(async () =>
-                          setHistory(
-                            JSON.stringify(
-                              (
-                                await api<{ items: unknown[] }>(
-                                  `/brands/${b.id}/history`,
-                                )
-                              ).items,
-                              null,
-                              2,
-                            ),
-                          ),
-                        )
-                      }
-                    >
-                      品牌更正历史
-                    </button>
-                    <a
-                      target="_blank"
-                      rel="noreferrer"
-                      href={b.shanghai_evidence_url}
-                    >
-                      查看上海证据 ↗
-                    </a>
-                    <details>
-                      <summary>导入使用的品牌ID</summary>
-                      <code>{b.id}</code>
-                    </details>
-                    <button
-                      type="button"
-                      className="secondary"
-                      onClick={() => setBrandEdit(b)}
-                    >
-                      编辑品牌
-                    </button>
-                  </article>
-                ))
+                      <div className="brand-record-actions">
+                        <button
+                          className="secondary"
+                          onClick={() => {
+                            setBrandEdit(b);
+                            setShowBrandEditor(true);
+                          }}
+                        >
+                          编辑品牌
+                        </button>
+                      </div>
+                      <details className="brand-record-details">
+                        <summary>资料与管理</summary>
+                        <button
+                          type="button"
+                          className="secondary"
+                          disabled={busy}
+                          onClick={() =>
+                            action(async () =>
+                              setBrandEvidence({
+                                name: b.name,
+                                items: (
+                                  await api<{
+                                    items: { evidence: ResearchEvidence }[];
+                                  }>(`/brands/${b.id}/evidence`)
+                                ).items,
+                              }),
+                            )
+                          }
+                        >
+                          查看采集证据
+                        </button>
+                        <p>别名：{b.aliases.join("、") || "—"}</p>
+                        <p>关键词：{b.keywords.join("、") || "未配置"}</p>
+                        <p>
+                          核验：
+                          {
+                            {
+                              pending: "待核验",
+                              verified: "已资料核验",
+                              rejected: "未通过",
+                            }[b.review_status]
+                          }{" "}
+                          · 版本 {b.revision}
+                        </p>
+                        {b.review_note && (
+                          <p>
+                            {b.reviewed_by}：{b.review_note}
+                          </p>
+                        )}
+                        <button
+                          type="button"
+                          className="secondary"
+                          onClick={() => setReviewBrand(b)}
+                        >
+                          核验上海经营证据
+                        </button>
+                        <button
+                          type="button"
+                          className="secondary"
+                          onClick={() =>
+                            action(async () =>
+                              setHistory(
+                                JSON.stringify(
+                                  (
+                                    await api<{ items: unknown[] }>(
+                                      `/brands/${b.id}/history`,
+                                    )
+                                  ).items,
+                                  null,
+                                  2,
+                                ),
+                              ),
+                            )
+                          }
+                        >
+                          品牌更正历史
+                        </button>
+                        <a
+                          target="_blank"
+                          rel="noreferrer"
+                          href={b.shanghai_evidence_url}
+                        >
+                          查看上海证据 ↗
+                        </a>
+                        <details>
+                          <summary>导入使用的品牌ID</summary>
+                          <code>{b.id}</code>
+                        </details>
+                        <button
+                          type="button"
+                          className="secondary"
+                          onClick={() => {
+                            setBrandEdit(b);
+                            setShowBrandEditor(true);
+                          }}
+                        >
+                          编辑品牌
+                        </button>
+                      </details>
+                    </article>
+                  ))}
+                </div>
               )}
+              <nav className="brand-pagination" aria-label="品牌名录分页">
+                <span>
+                  共 {shown.length} 个 · 第 {currentBrandPage} / {brandPages} 页
+                </span>
+                <label>
+                  每页
+                  <select
+                    aria-label="每页品牌数"
+                    value={brandPageSize}
+                    onChange={(e) => setBrandPageSize(Number(e.target.value))}
+                  >
+                    {[12, 24, 48].map((n) => (
+                      <option value={n} key={n}>
+                        {n} 个
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <button
+                  disabled={currentBrandPage === 1}
+                  onClick={() => setBrandPage(1)}
+                >
+                  首页
+                </button>
+                <button
+                  disabled={currentBrandPage === 1}
+                  onClick={() => setBrandPage(currentBrandPage - 1)}
+                >
+                  上一页
+                </button>
+                <button
+                  disabled={currentBrandPage === brandPages}
+                  onClick={() => setBrandPage(currentBrandPage + 1)}
+                >
+                  下一页
+                </button>
+                <button
+                  disabled={currentBrandPage === brandPages}
+                  onClick={() => setBrandPage(brandPages)}
+                >
+                  末页
+                </button>
+              </nav>
             </section>
           </div>
         )}

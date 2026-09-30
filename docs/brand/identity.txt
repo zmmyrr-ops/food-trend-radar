@@ -1,0 +1,9 @@
+探好店品牌设计
+定位：探店达人的创作助手。
+双重含义：探好·店（帮助达人完成探店创作）；探·好店（发现值得探访的店）。
+Slogan：帮你探好每一家店。
+平台图标：使用内置 image_gen 图片模型生成 PNG，非 SVG。主图形为取景框、完成勾及门的负形。
+原图：tanhaodian-icon-master.png；页面资源：apps/web/public/branding/tanhaodian-icon.png。
+界面：墨绿导航、暖白背景、橙色操作按钮；桌面四列券卡；品牌名录分页。
+最终生成提示词：
+Use case: logo-brand. Create a single exquisite production app icon, square raster PNG with true transparency outside the icon, for 探好店, a Chinese platform that helps local-review video creators prepare, choose offers, and create shop-visit videos. The name has two equally important readings: 探好·店 (help creators do shop visits well) and 探·好店 (discover good shops). Brand promise: 帮你探好每一家店. Visually combine an open camera viewfinder and a bold check-shaped discovery path into ONE clever memorable monogram, with a subtle storefront doorway in the negative space. Creator tool first, discovery second. Warm editorial premium design, iconic compact silhouette, rounded bold forms, confident smart friendly energy, NOT a generic location pin and NOT only a storefront. Persimmon orange #F06442 rounded-square tile, creamy white #FFF9EF main symbol, a single deep ink green #183F36 accent only if needed. Flat polished graphic rendered as a raster image, precise optical balance, legible at 32px, no text, no letters, no words, no slogan inside the image, no photography, no 3D, no presentation mockup, no gradients, no shadows, no sheet of variations. One centered finished mark, fills 90% of square with equal margins. Actual high quality brand identity asset to be used as a favicon, app icon and beside the Chinese wordmark.

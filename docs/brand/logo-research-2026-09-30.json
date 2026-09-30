@@ -1,0 +1,234 @@
+[
+  {
+    "name": "星巴克",
+    "source_page": "https://www.starbucks.com.cn/",
+    "result": "approved",
+    "sources": [
+      "https://www-static.chinacdn.starbucks.com.cn/prod/assets/favicons/apple-touch-icon.png"
+    ]
+  },
+  {
+    "name": "喜茶",
+    "source_page": "https://www.heytea.com/",
+    "result": "approved",
+    "sources": ["https://www-cos-cdn.heytea.com/static/images/logo.webp"]
+  },
+  {
+    "name": "蜜雪冰城",
+    "source_page": "https://www.mxbc.com/",
+    "result": "unavailable",
+    "sources": []
+  },
+  {
+    "name": "奈雪的茶",
+    "source_page": "https://www.naixue.com/",
+    "result": "approved",
+    "sources": ["https://www.naixue.com/ic_logo.png"]
+  },
+  {
+    "name": "沪上阿姨",
+    "source_page": "https://www.hsay.com/",
+    "result": "approved",
+    "sources": ["https://dy.shpr.top/SSO/favicon.ico"]
+  },
+  {
+    "name": "古茗",
+    "source_page": "https://www.gumingnc.com/",
+    "result": "approved",
+    "sources": [
+      "https://web-oss.gumingnc.com/static/gm-org/prod/misc/muc3vrj6/_next/static/media/beian-icon.e7483e52.png"
+    ]
+  },
+  {
+    "name": "霸王茶姬",
+    "source_page": "https://chagee.com.sg/zh-sg",
+    "result": "approved",
+    "sources": ["https://chagee.com.sg/favicon.ico"]
+  },
+  {
+    "name": "茶百道",
+    "source_page": "https://www.chabaidao.com/m/index/index.html",
+    "result": "unavailable",
+    "sources": []
+  },
+  {
+    "name": "海底捞",
+    "source_page": "https://www.haidilao.com/",
+    "result": "approved",
+    "sources": ["https://www.haidilao.com/favicon.ico"]
+  },
+  {
+    "name": "九毛九",
+    "source_page": "https://www.jiumaojiu.com/",
+    "result": "approved",
+    "sources": ["https://www.jiumaojiu.com/template/images/logo.png"]
+  },
+  {
+    "name": "呷哺呷哺",
+    "source_page": "https://www.xiabu.com/",
+    "result": "rejected_wrong_or_invalid_image",
+    "sources": ["https://www.xiabu.com/uploadfiles/image/icon.png?aWNvbi5wbmc="]
+  },
+  {
+    "name": "西贝莜面村",
+    "source_page": "https://www.xibei.com.cn/",
+    "result": "approved",
+    "sources": ["https://www.xibei.com.cn/favicon.ico"]
+  },
+  {
+    "name": "外婆家",
+    "source_page": "https://www.waipojia.com/",
+    "result": "unavailable",
+    "sources": []
+  },
+  {
+    "name": "老乡鸡",
+    "source_page": "https://www.lxjchina.com/",
+    "result": "rejected_wrong_or_invalid_image",
+    "sources": ["https://www.lxjchina.com/favicon.ico"]
+  },
+  {
+    "name": "乡村基",
+    "source_page": "https://www.csc100.com/",
+    "result": "unavailable",
+    "sources": []
+  },
+  {
+    "name": "德克士",
+    "source_page": "https://www.dicos.com.cn/",
+    "result": "unavailable",
+    "sources": []
+  },
+  {
+    "name": "达美乐",
+    "source_page": "https://www.dominos.com.cn/",
+    "result": "approved",
+    "sources": ["https://www.dominos.com.cn/favicon.ico"]
+  },
+  {
+    "name": "棒约翰",
+    "source_page": "https://www.papajohnschina.com/",
+    "result": "approved",
+    "sources": ["https://www.papajohnschina.com/favicon.ico"]
+  },
+  {
+    "name": "赛百味",
+    "source_page": "https://www.subway.com.cn/",
+    "result": "approved",
+    "sources": ["https://www.subway.com.cn/img/logo.png?1790051225"]
+  },
+  {
+    "name": "必胜客",
+    "source_page": "https://www.pizzahut.com.cn/",
+    "result": "approved",
+    "sources": ["https://static.pizzahut.com.cn/PC/Content/images/logo.png"]
+  },
+  {
+    "name": "吉野家",
+    "source_page": "https://www.yoshinoya.com.cn/",
+    "result": "unavailable",
+    "sources": []
+  },
+  {
+    "name": "乐乐茶",
+    "source_page": "https://www.leletea.com/",
+    "result": "unavailable",
+    "sources": []
+  },
+  {
+    "name": "CoCo都可",
+    "source_page": "https://www.coco-tea.com/",
+    "result": "approved",
+    "sources": ["https://www.coco-tea.com/images/logo-header-2x.png?ver=07311"]
+  },
+  {
+    "name": "85度C",
+    "source_page": "https://www.85cafe.com/",
+    "result": "existing",
+    "sources": ["https://www.85cafe.com/img/favicon.png"]
+  },
+  {
+    "name": "MELAND",
+    "source_page": "https://meland.me/zh/brand-zh/",
+    "result": "approved",
+    "sources": [
+      "https://meland.me/wp-content/uploads/2025/09/cropped-%E5%B0%8F%E7%A8%8B%E5%BA%8Fme%E5%A4%B4%E5%83%8F-06-061-scaled-1-32x32.jpg"
+    ]
+  },
+  {
+    "name": "上海海昌海洋公园",
+    "source_page": "https://www.haichangoceanpark.com/shanghai/",
+    "result": "unavailable",
+    "sources": []
+  },
+  {
+    "name": "上海野生动物园",
+    "source_page": "https://www.swap-shendi.com/?one=zh",
+    "result": "approved",
+    "sources": ["https://www.swap-shendi.com/favicon.ico"]
+  },
+  {
+    "name": "上海迪士尼度假区",
+    "source_page": "https://www.shanghaidisneyresort.com/",
+    "result": "approved",
+    "sources": [
+      "https://static.shanghaidisneyresort.com/pep/media/pep/live/media/site/img/content/970cb2-favicon.ico"
+    ]
+  },
+  {
+    "name": "上海欢乐谷",
+    "source_page": "https://sh.happyvalley.cn/",
+    "result": "unavailable",
+    "sources": []
+  },
+  {
+    "name": "上海海洋水族馆",
+    "source_page": "https://www.sh-aquarium.com/",
+    "result": "approved",
+    "sources": [
+      "https://www.sh-aquarium.com/uploadfiles/logo/logo.png?bG9nby5wbmc="
+    ]
+  },
+  {
+    "name": "上海科技馆",
+    "source_page": "https://www.sstm.org.cn/",
+    "result": "approved",
+    "sources": ["https://www.sstm.org.cn/favicon.ico"]
+  },
+  {
+    "name": "南京大牌档",
+    "source_page": "https://www.njdapaidang.com/",
+    "result": "unavailable",
+    "sources": []
+  },
+  {
+    "name": "王品牛排",
+    "source_page": "https://www.wangsteak.com.cn/",
+    "result": "unavailable",
+    "sources": []
+  },
+  {
+    "name": "哈根达斯",
+    "source_page": "https://www.haagen-dazs.com.cn/",
+    "result": "unavailable",
+    "sources": []
+  },
+  {
+    "name": "萨莉亚",
+    "source_page": "https://www.saizeriya.com.cn/",
+    "result": "approved",
+    "sources": ["https://www.saizeriya.com.cn/favicon.ico"]
+  },
+  {
+    "name": "木屋烧烤",
+    "source_page": "https://www.muwubbq.com/",
+    "result": "approved",
+    "sources": ["https://www.muwubbq.com/favicon.ico"]
+  },
+  {
+    "name": "奈尔宝",
+    "source_page": "https://www.neobio.cn/",
+    "result": "unavailable",
+    "sources": []
+  }
+]

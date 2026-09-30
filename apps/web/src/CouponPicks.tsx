@@ -353,22 +353,26 @@ export function CouponPicks({
                 className="coupon-card"
                 key={`${x.brand_id}:${x.product_id}`}
               >
-                <small className="brand-line">
+                <div className="brand-line">
                   <BrandIcon
                     name={x.brand_name}
                     url={brands.find((b) => b.id === x.brand_id)?.icon_url}
                   />
-                  {x.brand_name} ·{" "}
-                  {x.kind === "price_drop"
-                    ? "票面降价"
-                    : x.kind === "first_observed"
-                      ? "首次发现"
-                      : x.kind === "quantity_increase"
-                        ? "同价列示增量"
-                        : x.kind === "terms_changed"
-                          ? "规则变化"
-                          : "热度观察"}
-                </small>
+                  <span className="brand-name" title={x.brand_name}>
+                    {x.brand_name}
+                  </span>
+                  <span className="coupon-kind">
+                    {x.kind === "price_drop"
+                      ? "票面降价"
+                      : x.kind === "first_observed"
+                        ? "首次发现"
+                        : x.kind === "quantity_increase"
+                          ? "同价列示增量"
+                          : x.kind === "terms_changed"
+                            ? "规则变化"
+                            : "热度观察"}
+                  </span>
+                </div>
                 <h3 title={x.title}>{x.title}</h3>
                 <CouponStoreSummary
                   brandId={x.brand_id}
@@ -427,20 +431,16 @@ export function CouponPicks({
                       {money(x.previous_price_fen)}
                     </span>
                   )}
-                  <span>
-                    {!isAdmin
-                      ? x.acceleration == null
-                        ? "升温趋势待观察"
-                        : x.acceleration > 0
-                          ? "升温加快"
-                          : x.acceleration < 0
-                            ? "升温放缓"
-                            : "趋势平稳"
-                      : x.acceleration === null
-                        ? "加速度暂缺"
-                        : `加速度 ${x.acceleration.toFixed(2)}/小时²`}
-                  </span>
-                  <span>{x.priority.coverage}% 指标已具备</span>
+                  {isAdmin && (
+                    <>
+                      <span>
+                        {x.acceleration === null
+                          ? "加速度暂缺"
+                          : `加速度 ${x.acceleration.toFixed(2)}/小时²`}
+                      </span>
+                      <span>{x.priority.coverage}% 指标已具备</span>
+                    </>
+                  )}
                 </div>
                 {!x.priority.value_gate.eligible && (
                   <p className="availability-note">

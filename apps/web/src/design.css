@@ -1,0 +1,694 @@
+/* 探好店 — an editorial workspace for local creators. */
+:root {
+  color-scheme: light;
+  --brand-ink: #183f36;
+  --brand-orange: #ee6543;
+  --brand-paper: #f6f5f0;
+}
+body {
+  background: var(--brand-paper);
+  color: #233c35;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button,
+input,
+select,
+textarea,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button,
+a {
+  transition:
+    background-color 0.16s ease,
+    color 0.16s ease,
+    border-color 0.16s ease;
+}
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #ed9d69;
+  outline-offset: 3px;
+}
+.app-shell {
+  --ink: #243b34;
+  --muted: #7b837d;
+  --accent: #d95b3a;
+  --accent-soft: #fff0e8;
+  --line: #e4e6df;
+  background: var(--brand-paper);
+}
+.app-shell.channel-leisure {
+  --accent: #257d72;
+  --accent-soft: #e6f3ef;
+}
+.app-sidebar {
+  background: #183f36;
+  border: 0;
+  color: #ecf2e9;
+  width: 220px;
+  padding: 32px 16px 22px;
+}
+.app-logo {
+  gap: 9px;
+  color: #fff9ee;
+  margin: 0 4px 44px;
+}
+.app-logo > span {
+  font-size: 26px;
+  letter-spacing: -0.8px;
+}
+.app-logo .logo-mark {
+  background: transparent;
+  border-radius: 0;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.app-logo small {
+  color: #bbcbc0;
+  font-size: 10px;
+  letter-spacing: 0.3px;
+  margin-top: 5px;
+}
+.sidebar-label {
+  color: #88a99d;
+  font-size: 10px;
+  letter-spacing: 0.8px;
+}
+.primary-nav {
+  gap: 7px;
+}
+.primary-nav button {
+  color: #c1d2c7;
+  border-radius: 10px;
+  padding: 12px 11px;
+}
+.primary-nav button:hover {
+  background: #244c41;
+}
+.primary-nav button > span {
+  border: 1px solid #517164;
+  background: transparent;
+  color: #e2ece0;
+  width: 29px;
+  height: 29px;
+  border-radius: 8px;
+}
+.primary-nav button div {
+  font-size: 13px;
+  font-weight: 550;
+}
+.primary-nav button small {
+  font-size: 10px;
+  opacity: 0.72;
+  margin-top: 4px;
+}
+.primary-nav button[aria-pressed="true"] {
+  background: #edf1e5;
+  color: #193e35;
+}
+.primary-nav button[aria-pressed="true"] > span {
+  background: #f06442;
+  color: white;
+  border-color: #f06442;
+}
+.sidebar-tools {
+  color: #b7cbbd;
+  border-color: #3e5f50;
+}
+.sidebar-tools button {
+  color: #b7cbbd;
+}
+.sidebar-foot {
+  color: #c9d6ca;
+  font-size: 11px;
+}
+.sidebar-foot small {
+  color: #93ad9f;
+  font-size: 10px;
+}
+.location-dot {
+  background: #ed9169;
+}
+.app-content {
+  margin-left: 220px;
+  padding: 0 28px 28px;
+}
+.account-bar {
+  background: #f6f5f0;
+  border-bottom: 1px solid #e4e6df;
+  min-height: 42px;
+  font-size: 11px;
+  gap: 12px;
+  padding: 7px 28px;
+}
+.account-bar button {
+  background: transparent;
+  color: #52685b;
+  border: 1px solid #d8ded4;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 11px;
+}
+.account-bar small {
+  color: #8a958a;
+  font-size: 10px;
+}
+.app-shell .app-topbar {
+  min-height: 64px;
+  border-bottom: 0;
+}
+.app-topbar > span {
+  color: #435c4f;
+  font-size: 13px;
+  font-weight: 600;
+}
+.app-shell .channel-switch {
+  background: #e9ece3;
+  border-radius: 8px;
+  padding: 3px;
+}
+.app-shell .channel-switch button {
+  border-radius: 6px;
+  font-size: 11px;
+  padding: 5px 16px;
+}
+.channel-context {
+  border-bottom: 1px solid #e0e4da;
+  padding-bottom: 10px;
+}
+.app-shell .workspace-tabs {
+  gap: 20px;
+  border-bottom: 1px solid #dfe3d9;
+  margin: 8px 0 18px;
+}
+.app-shell .workspace-tabs button {
+  padding: 10px 1px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 0;
+}
+.app-shell .category-rail {
+  gap: 6px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+.app-shell .category-rail button {
+  border-radius: 7px;
+  font-size: 11px;
+  padding: 7px 11px;
+  background: #fff;
+  border-color: #e3e5dd;
+}
+.app-shell .category-rail button[aria-pressed="true"] {
+  background: var(--brand-ink);
+  color: #fff;
+  border-color: var(--brand-ink);
+}
+.app-shell .filter-chips {
+  margin: 8px 0 12px;
+  gap: 4px;
+}
+.app-shell .filter-chips button {
+  font-size: 11px;
+  padding: 6px 9px;
+}
+.app-shell .filter-chips button[aria-pressed="true"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.app-shell .picks-panel > .actions:not(.filter-chips) {
+  padding: 12px 14px;
+  gap: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px #273c2403;
+}
+.app-shell .picks-panel > .actions label {
+  gap: 6px;
+  font-size: 10px;
+}
+.app-shell input,
+.app-shell select,
+.app-shell textarea {
+  border-color: #dfe4db;
+  border-radius: 7px;
+  font-size: 12px;
+}
+.app-shell .picks-panel input,
+.app-shell .picks-panel select {
+  padding: 9px 10px;
+  min-height: 36px;
+}
+.app-shell .picks-panel .coupon-grid {
+  gap: 14px;
+}
+.app-shell .coupon-card {
+  border-color: #e0e5dc;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 3px 12px #183f3604;
+}
+.app-shell .coupon-card:hover {
+  border-color: #b4c4b6;
+  box-shadow: 0 6px 18px #183f360a;
+}
+.app-shell .coupon-card .brand-line {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  margin: 0 0 11px;
+  overflow: hidden;
+}
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  margin: 0;
+  border-radius: 9px;
+  background: #eff1e9;
+  border: 1px solid #edf0e9;
+  color: #708270;
+  font-size: 10px;
+}
+.brand-icon img {
+  padding: 2px;
+  box-sizing: border-box;
+  border-radius: inherit;
+}
+.brand-name {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 11px;
+  color: #24483b;
+  font-weight: 650;
+}
+.coupon-kind {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 9px;
+  color: #849083;
+  padding: 3px 5px;
+  background: #f2f5ed;
+  border-radius: 4px;
+}
+.app-shell .coupon-card h3 {
+  font-size: 13px;
+  line-height: 20px;
+  min-height: 40px;
+  height: 40px;
+  color: #253a31;
+  font-weight: 650;
+  margin: 0 0 7px;
+}
+.app-shell .coupon-card .coupon-store-summary {
+  height: 19px;
+  min-height: 19px;
+  margin: 0 0 10px;
+  color: #7b897c;
+}
+.app-shell .coupon-card .coupon-store-summary p {
+  font-size: 10px;
+  line-height: 18px;
+}
+.app-shell .coupon-card .coupon-stats {
+  background: #f5f6f0;
+  border: 1px solid #edf0e6;
+  border-radius: 8px;
+  padding: 10px 8px;
+  gap: 7px;
+  margin-bottom: 8px;
+}
+.app-shell .coupon-card .coupon-stats span {
+  font-size: 9px;
+  color: #879182;
+}
+.app-shell .coupon-card .coupon-stats strong {
+  font-size: clamp(12px, 5.8cqi, 18px);
+  color: #21483d;
+  letter-spacing: -0.5px;
+}
+.app-shell .coupon-card .coupon-stats > div:first-child strong {
+  font-size: clamp(12px, 5.8cqi, 18px);
+  color: var(--accent);
+}
+.app-shell .coupon-card .coupon-stats em {
+  font-size: 8px;
+  color: #8e998c;
+}
+.app-shell .coupon-card .availability-note {
+  font-size: 10px;
+  color: #927257;
+  line-height: 17px;
+  margin: 5px 0;
+}
+.app-shell .coupon-card .signal-tags {
+  min-height: 0;
+  margin: 0;
+  gap: 4px;
+}
+.app-shell .coupon-card .signal-tags:empty {
+  display: none;
+}
+.app-shell .coupon-card .signal-tags span {
+  font-size: 9px;
+  padding: 3px 5px;
+}
+.app-shell .coupon-card .card-footer {
+  padding-top: 4px;
+}
+.app-shell .coupon-card .card-evidence {
+  padding: 9px 0;
+  margin-top: 5px;
+  border-top: 1px dashed #e0e6dc;
+  font-size: 11px;
+}
+.app-shell .coupon-card .card-evidence summary {
+  color: #6f7f70;
+  font-size: 10px;
+}
+.app-shell .coupon-card > .studio-entry {
+  background: #edf2e7;
+  color: #254a3b;
+  border: 1px solid #e3eadc;
+  border-radius: 7px;
+  font-size: 11px;
+  text-align: center;
+  padding: 9px 6px;
+  margin-top: 2px;
+  font-weight: 650;
+}
+.app-shell .coupon-card > .studio-entry:hover {
+  background: #1d4539;
+  border-color: #1d4539;
+  color: #fff;
+}
+.brand-workspace {
+  display: block;
+}
+.brand-workspace.with-editor {
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+.brand-directory.panel {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e0e5db;
+  border-radius: 14px;
+}
+.brand-directory .section-title {
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.brand-directory .section-title h2 {
+  font-size: 20px;
+  margin: 0;
+}
+.brand-directory .section-title span {
+  font-size: 11px;
+  color: #84907f;
+  margin-right: auto;
+}
+.brand-directory .section-title button {
+  background: #1e4539;
+  padding: 8px 12px;
+  font-size: 11px;
+  border-radius: 7px;
+}
+.brand-directory .filters {
+  display: grid;
+  grid-template-columns: minmax(140px, 2fr) 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.brand-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+.brand-record {
+  border: 1px solid #e4e8df;
+  border-radius: 10px;
+  background: #fcfdf9;
+  padding: 14px;
+  min-width: 0;
+}
+.brand-record-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-record-heading > div {
+  min-width: 0;
+}
+.brand-record-heading .brand-icon {
+  width: 40px;
+  height: 40px;
+  flex-basis: 40px;
+  border-radius: 10px;
+}
+.brand-record-heading h3 {
+  font-size: 13px;
+  margin: 0 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.brand-record-heading small {
+  font-size: 10px;
+  color: #87937f;
+}
+.brand-alias {
+  font-size: 10px;
+  color: #9aa292;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 16px;
+  margin: 10px 0;
+}
+.brand-record-actions button {
+  padding: 5px 9px;
+  font-size: 10px;
+  background: #edf2e7;
+  color: #3e614b;
+  border: 0;
+  border-radius: 5px;
+}
+.brand-record-details {
+  font-size: 11px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #e6eadd;
+  color: #76886e;
+}
+.brand-record-details summary {
+  font-size: 10px;
+  cursor: pointer;
+}
+.brand-record-details p {
+  overflow-wrap: anywhere;
+}
+.brand-record-details button,
+.brand-record-details a {
+  font-size: 10px;
+  margin: 6px 4px 4px 0;
+}
+.brand-pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e9ece3;
+}
+.brand-pagination > span {
+  font-size: 11px;
+  color: #81917a;
+  margin-right: auto;
+}
+.brand-pagination label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  margin: 0;
+}
+.brand-pagination select {
+  width: 75px;
+  padding: 5px;
+}
+.brand-pagination button {
+  font-size: 10px;
+  padding: 7px 10px;
+  background: #eff3e9;
+  color: #3d5f49;
+  border-radius: 6px;
+}
+.brand-pagination button:disabled {
+  opacity: 0.35;
+}
+.account-login {
+  background: #183f36;
+}
+.account-login form {
+  background: #fcfbf6;
+  border: 1px solid #f6efdd;
+  border-radius: 20px;
+  box-shadow: 0 20px 70px #061d1450;
+}
+.account-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 26px;
+  color: #183f36;
+}
+.account-logo img {
+  width: 45px;
+  height: 45px;
+}
+.account-slogan {
+  color: #81917a;
+  font-size: 12px;
+}
+.account-login h1 {
+  font-size: 23px;
+  letter-spacing: -0.6px;
+}
+.account-login button {
+  background: #ed6745;
+  border-radius: 8px;
+}
+.video-studio {
+  max-width: 1280px;
+  padding: 24px;
+}
+.video-studio .studio-header {
+  padding: 0 0 20px;
+  border-bottom: 1px solid #dde4d7;
+}
+.video-studio .studio-header h1 {
+  font-size: 27px;
+  color: #193f33;
+}
+.video-studio .studio-setup,
+.video-studio .studio-panel,
+.studio-coupon,
+.video-studio > .coupon-media {
+  border-color: #e0e6d9;
+  border-radius: 12px;
+  background: #fff;
+}
+@media (min-width: 1600px) {
+  .brand-directory-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 1150px) {
+  .brand-directory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .brand-workspace.with-editor {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 900px) {
+  .app-sidebar {
+    position: relative;
+    width: auto;
+    padding: 16px;
+  }
+  .app-logo {
+    margin-bottom: 16px;
+  }
+  .app-content {
+    margin-left: 0;
+    padding: 0 16px 20px;
+  }
+  .primary-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .primary-nav button {
+    width: auto;
+    flex: 1 1 130px;
+  }
+  .sidebar-label,
+  .sidebar-foot {
+    display: none;
+  }
+  .app-shell .picks-panel .coupon-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .brand-directory .filters {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .app-shell .picks-panel .coupon-grid,
+  .brand-directory-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .app-shell .coupon-card .coupon-stats strong,
+  .app-shell .coupon-card .coupon-stats > div:first-child strong {
+    font-size: 20px;
+  }
+  .brand-pagination > span {
+    width: 100%;
+  }
+  .app-logo > span {
+    font-size: 24px;
+  }
+  .account-bar {
+    padding: 7px 16px;
+  }
+  .brand-directory.panel {
+    padding: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+.app-shell .page-heading {
+  padding: 14px 0 20px;
+  gap: 16px;
+}
+.app-shell .page-heading .eyebrow {
+  display: none;
+}
+.app-shell .page-heading h1 {
+  font-size: 24px;
+  letter-spacing: -0.6px;
+  margin-bottom: 5px;
+}
+.app-shell .page-heading p:last-child {
+  font-size: 11px;
+}
+.app-shell .heading-index {
+  flex-basis: auto;
+  padding: 0 0 0 18px;
+}
+.app-shell .heading-index strong {
+  display: inline;
+  font-size: 23px;
+  margin-right: 6px;
+}
+.app-shell .heading-index span {
+  display: none;
+}

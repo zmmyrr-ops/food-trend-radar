@@ -121,6 +121,7 @@ export const brandReviewInput = z
   })
   .strict();
 export type Brand = BrandInput & {
+  icon_url?: string | null;
   revision: number;
   review_status: "pending" | "verified" | "rejected";
   review_note: string | null;
