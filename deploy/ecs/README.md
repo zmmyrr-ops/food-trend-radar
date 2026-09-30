@@ -12,7 +12,7 @@
 
 ## 构建与更新
 
-使用 Node >=22.12，执行 `npm ci`、`npm run check`，再执行 `VITE_BASE_PATH=/food-trend-radar/ npm run build`。Linux 必须安装 Linux 平台依赖，不可复制 macOS node_modules。
+使用 Node >=22.12，执行 `npm ci`、`npm run check`，再执行 `npm run build:ecs`（固定子目录构建参数，勿用普通 build 产物发布）。Linux 必须安装 Linux 平台依赖，不可复制 macOS node_modules。
 
 更新前备份数据库和当前发布目录，暂停采集、停止服务后切换代码。保留独立 data 目录及凭据，启动后验证健康接口、品牌数、采集状态和页面资源。验证通过再恢复采集。禁止本机和 ECS 同时运行采集任务。
 

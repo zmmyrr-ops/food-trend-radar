@@ -18,7 +18,8 @@
     "test": "npm run build -w @radar/contracts && npm run test -w @radar/api",
     "lint": "biome check .",
     "format": "biome check --write .",
-    "check": "npm run lint && npm run typecheck && npm test && npm run build"
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "build:ecs": "VITE_BASE_PATH=/food-trend-radar/ npm run build"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.14",
