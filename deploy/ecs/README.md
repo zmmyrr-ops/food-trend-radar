@@ -61,3 +61,7 @@ nginx -t
 生产前端根路径为 `/`，API、素材、视频下载均通过同源根路径访问。`WEB_ORIGIN=https://tanhaodian.cn`，原域名不再允许跨站写请求。原 `ruming.top/food-trend-radar/` 返回410，独立账号文件 `/etc/nginx/tanhaodian.htpasswd` 继承原有登录账号密码。数据库、采集进度、视频及密钥沿用当前独立服务，不启动第二套采集进程。
 
 证书使用 Certbot webroot 验证，目录 `/var/www/tanhaodian-acme`，证书位于 `/etc/letsencrypt/live/tanhaodian.cn/`。系统定时运行 `certbot renew`，成功续期后检查并 reload Nginx。部署前 `nginx -t`，验证新域名首页、静态资源、认证API，以及旧路径410和原站首页未受影响。
+
+上线核验：HTTPS首页、JS/CSS、认证后的券列表和视频接口均为200，未认证API为401，旧路径410，原站首页200，采集继续运行。独立 htpasswd 必须为 `root:nginx`、权限640。
+
+待外部处理：2026-09-30公网HTTP返回阿里云 `Non-compliance ICP Filing`（Server: Beaver），但服务器本机访问挑战路径200。已签发证书有效期至2026-12-29；续期定时器已启用，但HTTP挑战续期演练因公网备案拦截403失败。需域名持有人确认ICP备案/阿里云接入状态，解除后重新执行 `certbot renew --dry-run --cert-name tanhaodian.cn`，不能将当前定时器视为续期成功保证。
