@@ -1,0 +1,39 @@
+{
+  "batch": "leisure-user-omission-2026-09-30",
+  "brands": [
+    {
+      "name": "木星动物岛",
+      "category": "动物海洋馆",
+      "aliases": ["木星动物岛·室内萌宠互动乐园"],
+      "active": true,
+      "keywords": ["木星动物岛"],
+      "shanghai_evidence_url": "https://www.meet-in-shanghai.net/cn/news/cultural-tourism-in-various-districts-is-enlarged-the-opening-of-the-travel-super-league-who-is-more-favored-240875/",
+      "evidence": [
+        {
+          "source_title": "上海文旅游玩线路收录木星动物岛",
+          "source_name": "上海市文旅推广网",
+          "url": "https://www.meet-in-shanghai.net/cn/news/cultural-tourism-in-various-districts-is-enlarged-the-opening-of-the-travel-super-league-who-is-more-favored-240875/",
+          "location": "上海",
+          "position": "游玩线路中的木星动物岛",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:43:22.555465+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "用户明确指出遗漏；文旅线路确认上海品牌线索，补入监测。上一轮仅ch30八分类，未覆盖亲子及景点频道；本记录不声称通过点评人气前100/团购标记筛选，也不证明当前抖音在售或适用条件。"
+        },
+        {
+          "source_title": "学分实践活动——木星动物岛",
+          "source_name": "易班博雅网",
+          "url": "https://www.ja.21boya.cn/dianping/main/activedetail?id=15079",
+          "location": "翔殷路1099号上海五角场合生汇L2-17",
+          "position": "主办机构与活动地址",
+          "evidence_type": "historical_notice",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:43:22.555591+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "2026年5月亲子实践活动记录，证明上海场馆线索；不把历史活动报名当作当前团购券。"
+        }
+      ]
+    }
+  ]
+}
