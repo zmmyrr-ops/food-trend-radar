@@ -1,0 +1,1343 @@
+{
+  "url": "https://www.dianping.com/shanghai/ch30",
+  "status": 200,
+  "title": "上海休闲娱乐-大众点评网",
+  "redirect_host": null,
+  "redirect_path": "",
+  "shop_count": 19,
+  "categories": [
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g141",
+      "label": "足疗按摩"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g140",
+      "label": "洗浴/汗蒸"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g141",
+      "label": "足疗按摩"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g140",
+      "label": "洗浴/汗蒸"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch15/g135",
+      "label": "KTV"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g133",
+      "label": "酒吧"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g2754",
+      "label": "密室逃脱"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g20040",
+      "label": "轰趴馆"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g20041",
+      "label": "私人影院"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g137",
+      "label": "游乐游艺"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch15/g135",
+      "label": "KTV"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g133",
+      "label": "酒吧"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g2754",
+      "label": "密室逃脱"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g20040",
+      "label": "轰趴馆"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g20041",
+      "label": "私人影院"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g137",
+      "label": "游乐游艺"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g134",
+      "label": "茶馆"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g20042",
+      "label": "网吧网咖"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g144",
+      "label": "DIY手工坊"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g20038",
+      "label": "采摘/农家乐"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g142",
+      "label": "文化艺术"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g6694",
+      "label": "桌游"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g134",
+      "label": "茶馆"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g20042",
+      "label": "网吧网咖"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g144",
+      "label": "DIY手工坊"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g20038",
+      "label": "采摘/农家乐"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g142",
+      "label": "文化艺术"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g6694",
+      "label": "桌游"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g33857",
+      "label": "VR"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g34089",
+      "label": "团建拓展"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g32732",
+      "label": "棋牌室"
+    },
+    {
+      "url": "//www.dianping.com/shanghai/ch30/g156",
+      "label": "桌球馆"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g156",
+      "label": "更多"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g33857",
+      "label": "VR"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g20039",
+      "label": "真人CS"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g32732",
+      "label": "棋牌室"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g156",
+      "label": "桌球馆"
+    },
+    {
+      "url": "http://www.dianping.com/shanghai/ch30/g156",
+      "label": "更多休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g141",
+      "label": "按摩/足疗"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g135",
+      "label": "KTV"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g140",
+      "label": "洗浴/汗蒸"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g133",
+      "label": "酒吧"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g2636",
+      "label": "运动健身"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g134",
+      "label": "茶馆"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g2754",
+      "label": "密室/沉浸互动剧"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g34089",
+      "label": "团建拓展"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g20038",
+      "label": "休闲园区"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g137",
+      "label": "游戏厅"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g144",
+      "label": "DIY手工坊"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g20041",
+      "label": "私人影院"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g20040",
+      "label": "轰趴馆"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g20042",
+      "label": "网吧/电竞"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g6694",
+      "label": "桌面游戏"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g32732",
+      "label": "棋牌室"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g142",
+      "label": "文化艺术"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g50035",
+      "label": "剧本杀"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g34090",
+      "label": "新奇体验"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g50447",
+      "label": "文体中心"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g50274",
+      "label": "休闲露营"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g50423",
+      "label": "潮玩综合馆"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r8445",
+      "label": "上海鞍山新村休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22992",
+      "label": "上海安亭新源路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r24022",
+      "label": "上海安亭黄渡镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91194",
+      "label": "上海安亭嘉亭荟休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r104941",
+      "label": "上海安亭商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r802",
+      "label": "上海八佰伴休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r825",
+      "label": "上海北外滩/外白渡桥休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r845",
+      "label": "上海北新泾/淞虹路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r2864",
+      "label": "上海北区汽车站休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r2868",
+      "label": "上海碧云社区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r8440",
+      "label": "上海宝山城区/吴淞休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r12029",
+      "label": "上海北蔡商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22990",
+      "label": "上海博乐广场/州桥老街休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r89650",
+      "label": "上海北翟路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r90897",
+      "label": "上海宝山万达广场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91034",
+      "label": "上海百联金山购物中心休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r810",
+      "label": "上海川沙休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r813",
+      "label": "上海曹家渡商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r815",
+      "label": "上海长寿路商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r816",
+      "label": "上海长风公园/华师大休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r817",
+      "label": "上海曹杨地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r851",
+      "label": "上海春申地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r862",
+      "label": "上海城隍庙/豫园休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r872",
+      "label": "上海漕河泾/田林休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22946",
+      "label": "上海赤峰路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22948",
+      "label": "上海曹路商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r88599",
+      "label": "上海车墩影视城休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r101011",
+      "label": "上海岑卜村休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r828",
+      "label": "上海大宁地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r831",
+      "label": "上海大华地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r838",
+      "label": "上海打浦桥/田子坊休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r864",
+      "label": "上海董家渡/南浦大桥休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r70265",
+      "label": "上海迪士尼休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r85128",
+      "label": "上海大连路地铁站休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r88598",
+      "label": "上海洞泾商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r89405",
+      "label": "上海滴水湖临港地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r92874",
+      "label": "上海大柏树休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r868",
+      "label": "上海复兴西路/丁香花园休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22974",
+      "label": "上海枫泾镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22985",
+      "label": "上海飞航广场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22988",
+      "label": "上海丰庄休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r88594",
+      "label": "上海封浜镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r89649",
+      "label": "上海凤溪休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r92161",
+      "label": "上海奉浦商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r66320",
+      "label": "上海奉城镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r8442",
+      "label": "上海顾村公园休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r9170",
+      "label": "上海高境商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r24031",
+      "label": "上海光启城休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r24141",
+      "label": "上海高行商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r88591",
+      "label": "上海高东/杨园休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r90731",
+      "label": "上海古北/仙霞新村休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91046",
+      "label": "上海共富新村休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r70209",
+      "label": "上海国家会展中心休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r821",
+      "label": "上海虹口足球场/鲁迅公园休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r823",
+      "label": "上海海宁路/七浦路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r835",
+      "label": "上海淮海路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r839",
+      "label": "上海虹桥/古北休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r844",
+      "label": "上海虹桥火车站/机场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r846",
+      "label": "上海虹桥镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r847",
+      "label": "上海虹梅路商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r857",
+      "label": "上海黄兴公园休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r867",
+      "label": "上海衡山路/复兴西路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r5948",
+      "label": "上海惠南镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22952",
+      "label": "上海华漕商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22959",
+      "label": "上海环城东路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22962",
+      "label": "上海环城南路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r24023",
+      "label": "上海华新镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r24024",
+      "label": "上海航头商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r24025",
+      "label": "上海海湾旅游区商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r70507",
+      "label": "上海虹桥枢纽休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r88590",
+      "label": "上海华亭镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r88593",
+      "label": "上海合庆商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r90690",
+      "label": "上海黄楼休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r90730",
+      "label": "上海虹桥路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r90901",
+      "label": "上海虹口龙之梦休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r92716",
+      "label": "上海虹桥火车站/国展中心休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r92880",
+      "label": "上海合川路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r93206",
+      "label": "上海虹桥枢纽周边区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r94247",
+      "label": "上海花木商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r102304",
+      "label": "上海华泾镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r806",
+      "label": "上海金桥商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r812",
+      "label": "上海静安寺商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r2869",
+      "label": "上海金杨地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r5943",
+      "label": "上海九亭商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r5946",
+      "label": "上海嘉定镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r5962",
+      "label": "上海江桥休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r9174",
+      "label": "上海金山卫商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22956",
+      "label": "上海交大闵行校区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22958",
+      "label": "上海金平路步行街休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22969",
+      "label": "上海金山嘴休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22972",
+      "label": "上海金山新城休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22981",
+      "label": "上海江学路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r24021",
+      "label": "上海戬浜镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r27830",
+      "label": "上海嘉定新城休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r65207",
+      "label": "上海金山万达休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r88592",
+      "label": "上海嘉定西/悠活城休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r89803",
+      "label": "上海江镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91033",
+      "label": "上海江桥万达广场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91195",
+      "label": "上海家乐福/富绅国际休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91197",
+      "label": "上海嘉定镇仓场路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r103663",
+      "label": "上海金海街道商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r66319",
+      "label": "上海金汇镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r67354",
+      "label": "上海嘉和广场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r855",
+      "label": "上海控江地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r5947",
+      "label": "上海康桥/周浦休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22979",
+      "label": "上海开元地中海休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r801",
+      "label": "上海陆家嘴商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r824",
+      "label": "上海临平路/和平公园休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r826",
+      "label": "上海凉城/江湾镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r850",
+      "label": "上海莲花路/南方商城休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r852",
+      "label": "上海老闵行/交大师大休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r863",
+      "label": "上海老西门/陆家浜路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r871",
+      "label": "上海龙华/西岸休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r2528",
+      "label": "上海龙柏地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r8446",
+      "label": "上海临沂/南码头休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r24019",
+      "label": "上海鹿都国际商业广场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r89646",
+      "label": "上海联洋休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r89877",
+      "label": "上海老码头休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r90995",
+      "label": "上海绿地风尚/万达广场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r92334",
+      "label": "上海乐购商业中心休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r93536",
+      "label": "上海娄山关路/威宁路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r66226",
+      "label": "上海廊下商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r818",
+      "label": "上海梅川路步行街休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r834",
+      "label": "上海庙行/共康休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r8443",
+      "label": "上海美兰湖休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22991",
+      "label": "上海马陆镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r89936",
+      "label": "上海闵浦休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91035",
+      "label": "上海蒙山路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91196",
+      "label": "上海闵行开发区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r811",
+      "label": "上海南京西路商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r861",
+      "label": "上海南京东路商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r5944",
+      "label": "上海南翔商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r9172",
+      "label": "上海南桥商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22964",
+      "label": "上海南桥新都汇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r24018",
+      "label": "上海泥城休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r24020",
+      "label": "上海南汇新城休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r90700",
+      "label": "上海南桥百联购物中心休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91716",
+      "label": "上海欧尚商业中心休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r829",
+      "label": "上海彭浦新村商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r858",
+      "label": "上海平凉路/东外滩休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r8928",
+      "label": "上海浦江镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r9179",
+      "label": "上海浦东机场/机场镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22951",
+      "label": "上海彭浦镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r90764",
+      "label": "上海浦东国际旅游度假区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r820",
+      "label": "上海曲阳地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r848",
+      "label": "上海七宝商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22993",
+      "label": "上海青浦城区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r94246",
+      "label": "上海前滩休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r100293",
+      "label": "上海青村休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r837",
+      "label": "上海瑞金宾馆区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r860",
+      "label": "上海人民广场/南京路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22982",
+      "label": "上海荣乐中路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22984",
+      "label": "上海人民北路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r90915",
+      "label": "上海日月光中心广场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r803",
+      "label": "上海世纪公园/科技馆休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r804",
+      "label": "上海上南地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r822",
+      "label": "上海四川北路/海伦路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r827",
+      "label": "上海上海火车站/客运汽车总站休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r833",
+      "label": "上海淞滨地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r843",
+      "label": "上海上海影城/新华路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r849",
+      "label": "上海莘庄商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r873",
+      "label": "上海上海南站休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r2527",
+      "label": "上海上海大学休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r2867",
+      "label": "上海三林地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r5940",
+      "label": "上海松江镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r5941",
+      "label": "上海松江大学城休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r5942",
+      "label": "上海佘山商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r9171",
+      "label": "上海淞南商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r9178",
+      "label": "上海泗泾镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r12026",
+      "label": "上海苏河湾休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22950",
+      "label": "上海市北工业园/汶水路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22971",
+      "label": "上海石化商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22980",
+      "label": "上海松东路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r26146",
+      "label": "上海松江万达广场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r70602",
+      "label": "上海世纪大道休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r90241",
+      "label": "上海上海动物园休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91027",
+      "label": "上海盛源生活广场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91028",
+      "label": "上海上海大学休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r92596",
+      "label": "上海世博园休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r93007",
+      "label": "上海上海长途汽车站休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r93008",
+      "label": "上海莘庄工业区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r94258",
+      "label": "上海市台路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r67275",
+      "label": "上海世博源休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r809",
+      "label": "上海塘桥商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r814",
+      "label": "上海同乐坊/江宁路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r840",
+      "label": "上海天山休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r8441",
+      "label": "上海通河/泗塘休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r12038",
+      "label": "上海桃浦商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22975",
+      "label": "上海亭林镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22986",
+      "label": "上海泰晤士小镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r81213",
+      "label": "上海唐镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r88597",
+      "label": "上海唐湾镇/曹行镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91171",
+      "label": "上海通阳路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r805",
+      "label": "上海外高桥休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r853",
+      "label": "上海万源城/东兰路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r854",
+      "label": "上海五角场/大学路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r859",
+      "label": "上海外滩商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r866",
+      "label": "上海万体馆休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r2866",
+      "label": "上海武宁地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22955",
+      "label": "上海吴泾镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22966",
+      "label": "上海卫零路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22968",
+      "label": "上海卫清路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r65166",
+      "label": "上海外冈镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91707",
+      "label": "上海万达广场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r92183",
+      "label": "上海五福商业广场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r836",
+      "label": "上海新天地/马当路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r865",
+      "label": "上海徐家汇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r9173",
+      "label": "上海西渡街道商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r11374",
+      "label": "上海新桥商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22949",
+      "label": "上海西藏北路/中兴路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22987",
+      "label": "上海新松江路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r24017",
+      "label": "上海新场商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r30340",
+      "label": "上海徐泾商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r70277",
+      "label": "上海新理想广场休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r70531",
+      "label": "上海新国际博览中心休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r85102",
+      "label": "上海新江湾城商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r88601",
+      "label": "上海西藏南路/世博会馆休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91355",
+      "label": "上海新乐坊休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r102303",
+      "label": "上海西站大华休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r807",
+      "label": "上海源深体育中心休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r870",
+      "label": "上海音乐学院/五官科医院休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r8444",
+      "label": "上海月浦镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r9169",
+      "label": "上海杨行镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r9177",
+      "label": "上海月星环球港休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22960",
+      "label": "上海易买得休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r88600",
+      "label": "上海叶榭镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r89476",
+      "label": "上海御桥休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r89794",
+      "label": "上海洋泾商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r91218",
+      "label": "上海易家商业中心休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r92586",
+      "label": "上海野生动物园休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r808",
+      "label": "上海张江商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r819",
+      "label": "上海中山北路/甘泉地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r830",
+      "label": "上海闸北公园休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r842",
+      "label": "上海中山公园/江苏路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r856",
+      "label": "上海中原地区休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r869",
+      "label": "上海肇嘉浜路/中山医院休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r2865",
+      "label": "上海真如商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r5949",
+      "label": "上海朱家角/东方绿舟休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22953",
+      "label": "上海颛桥/北桥休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22963",
+      "label": "上海正阳世纪星城休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22970",
+      "label": "上海朱泾镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22973",
+      "label": "上海朱行镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22983",
+      "label": "上海中山中路休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22994",
+      "label": "上海重固镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r22995",
+      "label": "上海赵巷镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r70326",
+      "label": "上海祝桥商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r88595",
+      "label": "上海庄行镇商圈休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r88596",
+      "label": "上海柘林镇休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30r94522",
+      "label": "上海真北中环休闲娱乐"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30",
+      "label": "上海休闲娱乐"
+    },
+    {
+      "url": "/shanghai/ch30/g141",
+      "label": "上海按摩/足疗"
+    },
+    {
+      "url": "/shanghai/ch30/g135",
+      "label": "上海KTV"
+    },
+    {
+      "url": "/shanghai/ch30/g140",
+      "label": "上海洗浴/汗蒸"
+    },
+    {
+      "url": "/shanghai/ch30/g133",
+      "label": "上海酒吧"
+    },
+    {
+      "url": "/shanghai/ch30/g2636",
+      "label": "上海运动健身"
+    },
+    {
+      "url": "/shanghai/ch30/g134",
+      "label": "上海茶馆"
+    },
+    {
+      "url": "/shanghai/ch30/g2754",
+      "label": "上海密室/沉浸互动剧"
+    },
+    {
+      "url": "/shanghai/ch30/g34089",
+      "label": "上海团建拓展"
+    },
+    {
+      "url": "/shanghai/ch30/g20038",
+      "label": "上海休闲园区"
+    },
+    {
+      "url": "/shanghai/ch30/g137",
+      "label": "上海游戏厅"
+    },
+    {
+      "url": "/shanghai/ch30/g144",
+      "label": "上海DIY手工坊"
+    },
+    {
+      "url": "/shanghai/ch30/g20041",
+      "label": "上海私人影院"
+    },
+    {
+      "url": "/shanghai/ch30/g20040",
+      "label": "上海轰趴馆"
+    },
+    {
+      "url": "/shanghai/ch30/g20042",
+      "label": "上海网吧/电竞"
+    },
+    {
+      "url": "/shanghai/ch30/g6694",
+      "label": "上海桌面游戏"
+    },
+    {
+      "url": "/shanghai/ch30/g32732",
+      "label": "上海棋牌室"
+    },
+    {
+      "url": "/shanghai/ch30/g142",
+      "label": "上海文化艺术"
+    },
+    {
+      "url": "/shanghai/ch30/g50035",
+      "label": "上海剧本杀"
+    },
+    {
+      "url": "/shanghai/ch30/g34090",
+      "label": "上海新奇体验"
+    },
+    {
+      "url": "/shanghai/ch30/g50447",
+      "label": "上海文体中心"
+    },
+    {
+      "url": "/shanghai/ch30/g50274",
+      "label": "上海休闲露营"
+    },
+    {
+      "url": "/shanghai/ch30/g50423",
+      "label": "上海潮玩综合馆"
+    },
+    {
+      "url": "https://www.dianping.com/shanghai/ch30/g30",
+      "label": "上海休闲娱乐"
+    }
+  ],
+  "observed_at": "2026-09-30T05:26:18.380332+00:00"
+}

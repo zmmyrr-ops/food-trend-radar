@@ -1,0 +1,221 @@
+{
+  "policy": "上海游玩分分类人气前100个去重品牌，且页面有团购标记；仅候选发现，不覆盖既有品牌库；间隔3–5秒，异常即停",
+  "top_n": 100,
+  "known_brands": [
+    {
+      "name": "上海海昌海洋公园",
+      "aliases": ["海昌海洋公园"]
+    },
+    {
+      "name": "上海动物园",
+      "aliases": []
+    },
+    {
+      "name": "上海海洋水族馆",
+      "aliases": []
+    },
+    {
+      "name": "长风海洋世界",
+      "aliases": ["上海长风海洋世界"]
+    },
+    {
+      "name": "上海欢乐谷",
+      "aliases": []
+    },
+    {
+      "name": "上海蓝精灵乐园",
+      "aliases": ["蓝精灵乐园"]
+    },
+    {
+      "name": "上海影视乐园",
+      "aliases": []
+    },
+    {
+      "name": "上海杜莎夫人蜡像馆",
+      "aliases": ["杜莎夫人蜡像馆"]
+    },
+    {
+      "name": "上海玻璃博物馆",
+      "aliases": []
+    },
+    {
+      "name": "中国航海博物馆",
+      "aliases": ["上海中国航海博物馆"]
+    },
+    {
+      "name": "上海之巅观光厅",
+      "aliases": ["上海中心上海之巅观光厅"]
+    },
+    {
+      "name": "金茂大厦88层观光厅",
+      "aliases": ["金茂大厦观光厅"]
+    },
+    {
+      "name": "上海豫园",
+      "aliases": ["豫园"]
+    },
+    {
+      "name": "上海大观园",
+      "aliases": []
+    },
+    {
+      "name": "东方绿舟",
+      "aliases": ["上海东方绿舟"]
+    },
+    {
+      "name": "金山城市沙滩",
+      "aliases": ["金山城市沙滩景区"]
+    },
+    {
+      "name": "碧海金沙",
+      "aliases": ["碧海金沙景区"]
+    },
+    {
+      "name": "上海鲜花港",
+      "aliases": []
+    },
+    {
+      "name": "月湖雕塑公园",
+      "aliases": ["上海月湖雕塑公园"]
+    },
+    {
+      "name": "上海海湾国家森林公园",
+      "aliases": ["海湾国家森林公园"]
+    },
+    {
+      "name": "上海辰山植物园",
+      "aliases": ["辰山植物园"]
+    },
+    {
+      "name": "上海东滩湿地公园",
+      "aliases": ["东滩湿地公园"]
+    },
+    {
+      "name": "长兴岛郊野公园",
+      "aliases": ["上海长兴岛郊野公园"]
+    },
+    {
+      "name": "上海薰衣草公园",
+      "aliases": []
+    },
+    {
+      "name": "花开海上生态园",
+      "aliases": ["上海花开海上生态园"]
+    },
+    {
+      "name": "上海古猗园",
+      "aliases": ["古猗园"]
+    },
+    {
+      "name": "上海醉白池公园",
+      "aliases": ["醉白池公园"]
+    },
+    {
+      "name": "上海高家庄生态园",
+      "aliases": ["高家庄生态园"]
+    },
+    {
+      "name": "上海野生动物园",
+      "aliases": []
+    },
+    {
+      "name": "东方明珠",
+      "aliases": ["东方明珠广播电视塔", "上海东方明珠广播电视塔"]
+    },
+    {
+      "name": "MELAND",
+      "aliases": ["MELAND CLUB"]
+    },
+    {
+      "name": "奈尔宝",
+      "aliases": ["奈尔宝家庭中心", "NEOBIO"]
+    },
+    {
+      "name": "奈尔宝科技馆",
+      "aliases": []
+    },
+    {
+      "name": "MINI MARS",
+      "aliases": ["MINI MARS亲子家庭中心", "MINI MARS KIDS CLUB"]
+    },
+    {
+      "name": "上美影泡泡米益智乐园",
+      "aliases": ["上美影泡泡米", "泡泡米益智乐园"]
+    },
+    {
+      "name": "上海乐高探索中心",
+      "aliases": ["乐高探索中心"]
+    },
+    {
+      "name": "上海乐高乐园",
+      "aliases": ["上海乐高乐园度假区"]
+    },
+    {
+      "name": "上海迪士尼度假区",
+      "aliases": ["上海迪士尼乐园", "上海迪士尼"]
+    },
+    {
+      "name": "上海玛雅海滩水公园",
+      "aliases": ["玛雅海滩水公园"]
+    },
+    {
+      "name": "耀雪冰雪世界",
+      "aliases": ["上海耀雪冰雪世界", "交通银行耀雪冰雪世界"]
+    },
+    {
+      "name": "上海千古情",
+      "aliases": ["上海千古情景区"]
+    },
+    {
+      "name": "上海天文馆",
+      "aliases": []
+    },
+    {
+      "name": "上海自然博物馆",
+      "aliases": []
+    }
+  ],
+  "renames": {},
+  "categories": [
+    {
+      "id": "137",
+      "name": "游乐游艺",
+      "url": "https://www.dianping.com/shanghai/ch30/g137"
+    },
+    {
+      "id": "20038",
+      "name": "休闲园区",
+      "url": "https://www.dianping.com/shanghai/ch30/g20038"
+    },
+    {
+      "id": "50423",
+      "name": "潮玩综合馆",
+      "url": "https://www.dianping.com/shanghai/ch30/g50423"
+    },
+    {
+      "id": "34090",
+      "name": "新奇体验",
+      "url": "https://www.dianping.com/shanghai/ch30/g34090"
+    },
+    {
+      "id": "50274",
+      "name": "休闲露营",
+      "url": "https://www.dianping.com/shanghai/ch30/g50274"
+    },
+    {
+      "id": "144",
+      "name": "DIY手工坊",
+      "url": "https://www.dianping.com/shanghai/ch30/g144"
+    },
+    {
+      "id": "2754",
+      "name": "密室/沉浸互动剧",
+      "url": "https://www.dianping.com/shanghai/ch30/g2754"
+    },
+    {
+      "id": "34089",
+      "name": "团建拓展",
+      "url": "https://www.dianping.com/shanghai/ch30/g34089"
+    }
+  ]
+}

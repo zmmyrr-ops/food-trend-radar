@@ -9,6 +9,7 @@ import html
 import http.client
 import json
 import re
+import random
 import sys
 import time
 import unicodedata
@@ -52,7 +53,7 @@ def parse_page(body):
                  and re.match(r'https?://t\.dianping\.com/deal/\d+', a.get('href', ''))]
         rows.append({'name': name, 'url': shop['href'], 'has_group_deal': bool(deals), 'deals': deals})
     page_links = [a.get('href', '') for a, _ in anchors
-                  if re.search(r'/shanghai/ch10/g\d+o2p\d+$', a.get('href', ''))]
+                  if re.search(r'/shanghai/ch\d+/g\d+o2p\d+$', a.get('href', ''))]
     return {'sort_verified': sort_verified, 'blocked': blocked, 'title': title,
             'shops': rows, 'page_links': page_links}
 
@@ -84,7 +85,7 @@ def main():
     def fetch(url):
         nonlocal last_request
         for attempt in range(2):
-            time.sleep(max(0, 2 - (time.monotonic() - last_request)))
+            time.sleep(max(0, random.uniform(3, 5) - (time.monotonic() - last_request)))
             try:
                 with opener.open(urllib.request.Request(url, headers=headers), timeout=30) as response:
                     body = response.read().decode('utf-8', 'replace')

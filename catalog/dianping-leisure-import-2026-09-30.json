@@ -1,0 +1,286 @@
+{
+  "batch": "dianping-leisure-reviewed-2026-09-30",
+  "applied": true,
+  "before_total": 1333,
+  "before_active": 825,
+  "created": 39,
+  "existing": 0,
+  "records": [
+    {
+      "id": "6f148f76-a249-4c49-b430-1b8b2f302707",
+      "name": "PARTYDAY 超星嘉年华",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "63ccc51e-1a88-49ae-bac8-aebe7def52ec",
+      "name": "上海环游嘉年华Funloop land主题乐园",
+      "category": "主题乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "8ee40d2a-5d93-46ad-b437-450b0cba1d01",
+      "name": "星际传奇",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "d009d418-b6d8-4e3b-a4b4-383da37f079c",
+      "name": "乐客灵境未来科技乐园",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "8888d935-ac24-4eec-b647-82d2f11c357d",
+      "name": "牛玩牛叫",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "4f12ba60-0e4a-4972-9bf9-d4f8bfaeff73",
+      "name": "未来站小小海洋馆",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "5c753592-c716-43b5-9495-22884f0dcc67",
+      "name": "第一回合",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a8178bca-0788-4a48-8807-12f0f2b16d7f",
+      "name": "汤姆熊欢乐世界",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0132394c-978e-4d52-880c-5ef05a587188",
+      "name": "X-META机遇时空全感乐园",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "4ab3836c-b869-4518-83f4-082e836d0543",
+      "name": "风云再起游乐汇",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "2f012bdf-620b-45df-b19c-bef7ed8c5fdb",
+      "name": "JOYMARK",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "2e825645-421f-41cf-8508-10f620cedafc",
+      "name": "一工元运动空间",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "1fcc81a7-3644-48d4-a1e6-19baeb98916f",
+      "name": "WUNPARK超体运动中心",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "b709facd-0beb-4735-a9ac-96a7a0706560",
+      "name": "极限PLAY",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "802b3a74-d20a-4a7c-913b-50b4643c0435",
+      "name": "超时空Time Park",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "47d9fac1-3a01-4df0-905e-74ae7a2220ab",
+      "name": "BIGX超级运动玩乐场",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "22233cfe-082f-4961-8f0b-71df2aa04257",
+      "name": "弹力猩球",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "d4b71cea-3720-4b48-832d-5264dd070060",
+      "name": "PARTY KING",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "5f51aef6-58f3-4317-b4b6-d61a72984ef8",
+      "name": "博纳仕运动",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "3e1d7023-5187-4339-a533-ecdf9c0e81b9",
+      "name": "ARK运动方舟",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0917b4a9-7a2e-4515-ae97-5df9073bd04e",
+      "name": "LOFIL潮玩运动能量场",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "c4bb3ad2-0c0c-459b-86dc-d8427602c24c",
+      "name": "城超农场",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "b4a268be-4e83-4270-b054-95d04faad966",
+      "name": "奥土农场",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "194197c3-ed3f-49a5-aac4-6c217e3b163a",
+      "name": "八十八亩田",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a92ecc69-3172-40c5-8bcc-18cd57243787",
+      "name": "粉红农场",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "931a9966-4e72-453f-b23a-1373a2ff90e0",
+      "name": "小灶村体验农场",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "ac437642-192f-4706-b96e-24bc57084876",
+      "name": "绿色蘑方",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "5c0939c0-cca0-4ccf-bbcc-902332172574",
+      "name": "蘑幻森林",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "acdc9075-fbff-4a75-a131-262df770b060",
+      "name": "璞叶小镇",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "2cf92ea1-b416-41d5-b7b0-6e54ed1e10f2",
+      "name": "乐田农场",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "7f4a7135-748e-40e7-89f8-44dc531b7119",
+      "name": "吾舍农场",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "cc94d7db-fb7a-47dd-a177-9f98d261571e",
+      "name": "超级渔夫",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0bdb14f5-0b0e-44fa-b72c-1dab5a67a85c",
+      "name": "集合石",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "ecd22ee0-dbad-4280-ad14-a1a6b1ae5285",
+      "name": "动感坐标",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "899b2683-df5a-43c7-b032-723316861e71",
+      "name": "光合怪兽",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0fe23ffb-0c61-4015-b414-8c4e32e134e4",
+      "name": "Jump360蹦床中心",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "b6884fd5-8af0-477c-a182-30d9f6a335e0",
+      "name": "CityFlight上海飞行体验馆",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "f54c3669-aab9-4a60-9323-81158ebc4227",
+      "name": "珍得巧克力剧院",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "68254f16-c250-4bb3-ad04-f6e5d23453b2",
+      "name": "莱特飞行者",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    }
+  ],
+  "after_total": 1372,
+  "after_active": 864,
+  "finished_at": "2026-09-30T05:33:40.646Z"
+}

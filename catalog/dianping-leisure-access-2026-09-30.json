@@ -1,0 +1,17 @@
+{
+  "url": "https://www.dianping.com/shanghai/ch30",
+  "observed_at": "2026-09-30T05:21:11.671393+00:00",
+  "requests": 2,
+  "status": 302,
+  "title": "",
+  "shop_count": 0,
+  "categories": [],
+  "shops": [],
+  "blocked": true,
+  "redirect_check": {
+    "status": 302,
+    "redirect_host": "account.dianping.com",
+    "redirect_path": "/pclogin"
+  },
+  "stop_reason": "redirect_instead_of_directory"
+}
