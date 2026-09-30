@@ -644,7 +644,6 @@ export async function createVideoProjects(db: PGlite, root: string) {
         const filename = `material-${a.id}.${format.extension}`;
         const remote = await storage?.signedUrl(a.path, filename, {
           inline: true,
-          contentType: format.type,
         });
         res.setHeader("Cache-Control", "private, no-store");
         if (remote) {
@@ -668,7 +667,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
         const remote = await storage?.signedUrl(
           file,
           `food-${p.seconds}s-${kind}.mp4`,
-          { inline: req.query.inline === "1", contentType: "video/mp4" },
+          { inline: req.query.inline === "1" },
         );
         res.setHeader("Cache-Control", "private, no-store");
         if (remote) {

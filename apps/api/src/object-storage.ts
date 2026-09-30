@@ -12,6 +12,7 @@ import {
 import { basename, dirname, join, relative, resolve } from "node:path";
 import OSS from "ali-oss";
 import { z } from "zod";
+import { mediaFormat } from "./media-format.js";
 
 const configSchema = z.object({
   bucket: z.string().min(3),
@@ -167,7 +168,7 @@ export async function createObjectStorage(
   async function signedUrl(
     path: string,
     filename?: string,
-    options?: { inline?: boolean; contentType?: string },
+    options?: { inline?: boolean },
   ) {
     const r = await receipt(path);
     if (!r) return null;
@@ -176,9 +177,7 @@ export async function createObjectStorage(
       expires: 300,
       response: {
         "cache-control": "private, no-store",
-        ...(options?.contentType
-          ? { "content-type": options.contentType }
-          : {}),
+
         ...(filename
           ? {
               "content-disposition": `${options?.inline ? "inline" : "attachment"}; filename="${filename.replace(/[^a-zA-Z0-9._-]/g, "_")}"`,
@@ -193,7 +192,22 @@ export async function createObjectStorage(
     const result = await client.get(r.key, {
       headers: { Range: "bytes=0-63" },
     });
-    return Buffer.from(result.content).subarray(0, 64);
+    const bytes = Buffer.from(result.content).subarray(0, 64);
+    const format = mediaFormat(bytes);
+    if (
+      (result.res.headers as Record<string, string>)["content-type"] !==
+      format.type
+    ) {
+      await client.copy(r.key, r.key, {
+        headers: {
+          "x-oss-metadata-directive": "REPLACE",
+          "Content-Type": format.type,
+          "x-oss-meta-sha256": r.sha256,
+          "Cache-Control": "private, no-store",
+        },
+      });
+    }
+    return bytes;
   }
   async function remove(path: string) {
     const r = await receipt(path);

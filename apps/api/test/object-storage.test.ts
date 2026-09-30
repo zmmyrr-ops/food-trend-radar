@@ -105,7 +105,6 @@ test("internal transfer configuration never leaks an internal playback endpoint"
     const playback = new URL(
       (await storage.signedUrl(path, "material-test.mp4", {
         inline: true,
-        contentType: "video/mp4",
       }))!,
     );
     assert.equal(
