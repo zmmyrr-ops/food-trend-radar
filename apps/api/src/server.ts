@@ -25,20 +25,25 @@ const stopRuntimeReporting = await startRuntimeReporting(
   resolve(projectRoot, "data/reports/runtime-diagnostics-current.json"),
 );
 await recoverInterruptedRequests(db);
-const radar = createCoupons(db, {
-  credentialPath: resolve(projectRoot, "data/secrets/douyin-headers.json"),
-});
 const operations = await createOperations(
   db,
   resolve(projectRoot, "data/backups"),
   (label, work) => runtime.track(label, work),
 );
+const radar = createCoupons(db, {
+  onBrandComplete: operations.refreshBrand,
+  credentialPath: resolve(projectRoot, "data/secrets/douyin-headers.json"),
+});
 void operations.tick().catch(console.error);
 radar.kick();
 const timer = setInterval(() => {
   void operations.tick().catch(console.error);
-  void radar.schedule().catch(console.error);
 }, 60000);
+const collectionTimer = setInterval(() => {
+  void radar.schedule().catch(console.error);
+  void operations.poolTick().catch(console.error);
+}, 5000);
+void operations.poolTick().catch(console.error);
 void radar.schedule().catch(console.error);
 const server = createApp(
   db,
@@ -53,6 +58,7 @@ const server = createApp(
 for (const signal of ["SIGINT", "SIGTERM"] as const) {
   process.once(signal, () => {
     clearInterval(timer);
+    clearInterval(collectionTimer);
     stopHeartbeat();
     const stopped = radar.stop();
     server.close(async () => {

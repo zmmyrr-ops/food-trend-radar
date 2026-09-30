@@ -193,9 +193,10 @@ export async function createOpportunityBoard(
     `CREATE TABLE IF NOT EXISTS coupon_dispositions(brand_id uuid NOT NULL,product_id text NOT NULL,revision text NOT NULL,state text NOT NULL CHECK(state IN ('watching','dismissed')),updated_at timestamptz NOT NULL DEFAULT now(),PRIMARY KEY(brand_id,product_id));
     CREATE INDEX IF NOT EXISTS coupon_items_brand_product_observed ON coupon_items(brand_id,product_id,observed_at);`,
   );
-  async function loadCandidates() {
+  async function loadCandidates(brand?: string) {
     const rows = (
-      await db.query<Row>(`WITH platform_brands AS MATERIALIZED (
+      await db.query<Row>(
+        `WITH platform_brands AS MATERIALIZED (
         SELECT DISTINCT other.brand_id,other.payload->>'platform_brand_id' AS platform_id
         FROM coupon_items other JOIN coupon_baselines ob ON ob.run_id=other.run_id AND ob.brand_id=other.brand_id
         JOIN brands obr ON obr.id=other.brand_id AND obr.active
@@ -211,7 +212,9 @@ export async function createOpportunityBoard(
       LEFT JOIN coupon_dispositions a ON a.brand_id=i.brand_id AND a.product_id=i.product_id
       ${scoreEvidenceJoins}
       LEFT JOIN LATERAL(SELECT h.payload FROM (SELECT * FROM coupon_score_history WHERE brand_id=i.brand_id AND product_id=i.product_id AND run_id=i.run_id ORDER BY scored_at DESC,id DESC LIMIT 1) h WHERE ${scoreEvidenceMatches}) s ON true
-      WHERE i.observed_at<=now() AND i.observed_at>now()-interval '36 hours' AND t.comparison_status='COMPARABLE' AND i.payload->>'identity'='name_match' AND (d.kind IN ('PRICE_CHANGED_UNVERIFIED','NEW_OBSERVED','TERMS_CHANGED_UNVERIFIED') OR s.payload->'evidence'->'rules'->>'status'='changed' OR a.state='watching')`)
+      WHERE ($1::uuid IS NULL OR i.brand_id=$1) AND i.observed_at<=now() AND i.observed_at>now()-interval '36 hours' AND t.comparison_status='COMPARABLE' AND i.payload->>'identity'='name_match' AND (d.kind IN ('PRICE_CHANGED_UNVERIFIED','NEW_OBSERVED','TERMS_CHANGED_UNVERIFIED') OR s.payload->'evidence'->'rules'->>'status'='changed' OR a.state='watching')`,
+        [brand ?? null],
+      )
     ).rows;
     return sortCandidates(
       rows.map(boardCandidate).filter((x): x is BoardCandidate => x !== null),
@@ -219,7 +222,9 @@ export async function createOpportunityBoard(
   }
   // Share only concurrent reads; completed reads are never cached, so evidence
   // and disposition changes are visible to the next request immediately.
-  const loadCached = readModel(db, "opportunity-board-v1", loadCandidates);
+  const loadCached = readModel(db, "opportunity-board-v1", () =>
+    loadCandidates(),
+  );
   let activeCandidates: ReturnType<typeof loadCandidates> | undefined;
   function candidates() {
     if (!activeCandidates)
@@ -425,5 +430,10 @@ export async function createOpportunityBoard(
       },
     );
   }
-  return { register, digest, candidates };
+  return {
+    register,
+    digest,
+    candidates,
+    candidatesBrand: (brand: string) => loadCandidates(brand),
+  };
 }

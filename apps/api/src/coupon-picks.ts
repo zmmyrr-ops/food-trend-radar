@@ -11,9 +11,10 @@ import type { RuleText } from "./rule-structure.js";
 import type { createSalesHeat } from "./sales-heat.js";
 import { applyUsePenalty } from "./use-priority.js";
 
-type Heat = Awaited<
+type HeatRow = Awaited<
   ReturnType<ReturnType<typeof createSalesHeat>["read"]>
 >[number];
+type Heat = Omit<HeatRow, "sale_end"> & { sale_end?: unknown };
 type Signal = Pick<
   BoardCandidate,
   | "brand_id"
@@ -93,6 +94,22 @@ export function combinePicks(
         : null;
     return [
       {
+        run_id: latest.run_id,
+        sale_end: x.sale_end ?? null,
+        usage_inputs: {
+          current: {
+            price_observed_at: latest.observed_at,
+            rules_observed_at: evidence?.observed_at ?? null,
+            rules: evidence?.rules ?? null,
+          },
+          historical: previousRule
+            ? {
+                price_observed_at: previousRule.price_observed_at,
+                rules_observed_at: previousRule.observed_at,
+                rules: previousRule.rules,
+              }
+            : null,
+        },
         use_outlook: outlook,
         brand_index: brandIndex ? { ...brandIndex, usable: usableIndex } : null,
         priority: applyUsePenalty(
@@ -160,6 +177,22 @@ export function selectPicks(
   items: ReturnType<typeof combinePicks>,
   q: z.infer<typeof inputSchema>,
 ) {
+  const ranked = items
+    .filter(
+      (x) =>
+        !x.use_outlook.fully_excluded &&
+        x.priority.value_gate.eligible &&
+        x.priority.score > 0,
+    )
+    .sort(
+      (a, b) =>
+        b.priority.score - a.priority.score ||
+        `${a.brand_id}:${a.product_id}`.localeCompare(
+          `${b.brand_id}:${b.product_id}`,
+        ),
+    )
+    .slice(0, 500);
+  const top = new Set(ranked.map((x) => `${x.brand_id}:${x.product_id}`));
   const scoped = items.filter(
     (x) =>
       (!q.brand_id || x.brand_id === q.brand_id) &&
@@ -169,9 +202,7 @@ export function selectPicks(
   );
   const matches = (x: (typeof items)[number], v: string) =>
     v === "recommended"
-      ? !x.use_outlook.fully_excluded &&
-        x.priority.value_gate.eligible &&
-        x.priority.score > 0
+      ? top.has(`${x.brand_id}:${x.product_id}`)
       : v === "watching"
         ? x.watching
         : v === "value_rising"
@@ -317,6 +348,7 @@ export function createPickReader(
   readHeat: () => Promise<Heat[]>,
   readSignals: () => Promise<Signal[]>,
   readIndices?: () => Promise<BrandIndex[]>,
+  brand?: string,
 ) {
   type Historical = (PickRules & {
     brand_id: string;
@@ -329,12 +361,13 @@ export function createPickReader(
           await db.query<
             PickRules & { brand_id: string; price_observed_at: string }
           >(
-            `WITH latest AS (SELECT DISTINCT ON(product_id) * FROM coupon_rule_snapshots WHERE observed_at > now()-interval '36 hours' ORDER BY product_id,observed_at DESC)
+            `WITH latest AS (SELECT DISTINCT ON(r.product_id) r.* FROM coupon_rule_snapshots r WHERE r.observed_at > now()-interval '36 hours' AND ($1::uuid IS NULL OR EXISTS(SELECT 1 FROM coupon_items ci WHERE ci.brand_id=$1 AND ci.run_id=r.run_id AND ci.product_id=r.product_id)) ORDER BY r.product_id,r.observed_at DESC)
        SELECT DISTINCT ON(i.brand_id,r.product_id) i.brand_id,r.run_id,r.product_id,r.observed_at,i.observed_at AS price_observed_at,r.payload->'rules' AS rules
        FROM latest r JOIN coupon_items i ON i.run_id=r.run_id AND i.product_id=r.product_id
        JOIN brands b ON b.id=i.brand_id AND b.active
-       WHERE r.observed_at > now()-interval '36 hours' AND i.payload->>'identity'='name_match'
+       WHERE ($1::uuid IS NULL OR i.brand_id=$1) AND r.observed_at > now()-interval '36 hours' AND i.payload->>'identity'='name_match'
        ORDER BY i.brand_id,r.product_id,r.observed_at DESC`,
+            [brand ?? null],
           )
         ).rows
       : [];
@@ -359,7 +392,8 @@ export function createPickReader(
     const rules = db
       ? (
           await db.query<PickRules>(
-            `SELECT r.run_id,r.product_id,r.observed_at,r.payload->'rules' AS rules FROM coupon_rule_snapshots r WHERE EXISTS (SELECT 1 FROM coupon_baselines b WHERE b.run_id=r.run_id)`,
+            `SELECT r.run_id,r.product_id,r.observed_at,r.payload->'rules' AS rules FROM coupon_rule_snapshots r WHERE EXISTS (SELECT 1 FROM coupon_baselines b JOIN coupon_items i ON i.brand_id=b.brand_id AND i.run_id=b.run_id WHERE b.run_id=r.run_id AND i.product_id=r.product_id AND ($1::uuid IS NULL OR b.brand_id=$1))`,
+            [brand ?? null],
           )
         ).rows
       : [];
@@ -375,7 +409,7 @@ export function createPickReader(
       historicalRules,
     );
   };
-  return db ? readModel(db, "coupon-picks-v5", build) : build;
+  return db && !brand ? readModel(db, "coupon-picks-v5", build) : build;
 }
 
 export function registerCouponPicks(
@@ -385,8 +419,10 @@ export function registerCouponPicks(
   db?: PGlite,
   readEnvironment?: Awaited<ReturnType<typeof createEnvironment>>["status"],
   readIndices?: () => Promise<BrandIndex[]>,
+  readPool?: () => Promise<ReturnType<typeof combinePicks>>,
 ) {
-  const readPicks = createPickReader(db, readHeat, readSignals, readIndices);
+  const readPicks =
+    readPool ?? createPickReader(db, readHeat, readSignals, readIndices);
   if (db)
     app.put("/api/v3/coupon-picks/:product/watch", async (req, res) => {
       const product = z.string().regex(/^\d+$/).parse(req.params.product);
@@ -440,6 +476,7 @@ export function registerCouponPicks(
         },
         counts,
         total: filtered.length,
+        pool_limit: 500,
         items: filtered.slice(q.offset, q.offset + q.limit),
         calculated_at: filtered[0]?.use_outlook.generated_at ?? null,
         generated_at: new Date().toISOString(),

@@ -58,7 +58,7 @@ test("保留大整数、未知原价；牛New不匹配其他寿喜烧商家", ()
     "2026-09-21T12:00:00+08:00",
   );
 });
-test("并发调用和失败重试都按完成时间间隔至少1秒串行", async () => {
+test("并发调用和失败重试都按完成时间间隔3—5秒串行", async () => {
   let clock = 0,
     active = 0,
     peak = 0;
@@ -86,8 +86,8 @@ test("并发调用和失败重试都按完成时间间隔至少1秒串行", asyn
     ),
   );
   assert.equal(peak, 1);
-  assert.equal(starts[1] - ends[0], 1500);
-  assert.equal(starts[2] - ends[1], 1500);
+  assert.equal(starts[1] - ends[0], 4000);
+  assert.equal(starts[2] - ends[1], 4000);
 });
 test("完整基线、价格变化、部分失败不覆盖基线、暂停与恢复", async () => {
   const db = await openDatabase();
@@ -558,7 +558,7 @@ test("new scheduled slots queue independently during an unfinished scan, dedupli
   }
 });
 
-test("scheduler resumes persisted current-slot work without creating a duplicate run", async () => {
+test("continuous scheduler resumes the current round, then starts a new round", async () => {
   const db = await openDatabase(),
     id = randomUUID();
   let calls = 0;
@@ -593,7 +593,12 @@ test("scheduler resumes persisted current-slot work without creating a duplicate
     assert.equal((await db.query("SELECT * FROM coupon_runs")).rows.length, 1);
     await resumed.schedule();
     await resumed.drain();
-    assert.equal(calls, 1);
+    assert.equal(calls, 2);
+    assert.equal((await db.query("SELECT * FROM coupon_runs")).rows.length, 2);
+    await db.exec("UPDATE coupon_settings SET enabled=false");
+    await resumed.schedule();
+    await resumed.drain();
+    assert.equal(calls, 2);
   } finally {
     await first.stop();
     await resumed?.stop();
@@ -882,6 +887,49 @@ test("第三页命中继续翻页；有历史匹配的品牌不触发低匹配�
     );
   } finally {
     await service.stop();
+    await db.close();
+  }
+});
+
+test("循环公平轮询：长品牌每三页让出一次，完整提交后逐品牌通知", async () => {
+  const db = await openDatabase();
+  const ids = [randomUUID(), randomUUID()];
+  for (const [i, id] of ids.entries())
+    await db.query(
+      "INSERT INTO brands(id,name,name_key,category,shanghai_evidence_url) VALUES($1,$2,$3,'火锅','https://example.com')",
+      [id, i === 0 ? "A品牌" : "B品牌", `fair-${i}`],
+    );
+  const seen: string[] = [];
+  const completed: string[] = [];
+  const collector = createCoupons(db, {
+    gate: gate(),
+    fetchPage: async (name, cursor) => {
+      seen.push(name);
+      const page = Number(cursor);
+      return {
+        status_code: 0,
+        cursor: String(page + 1),
+        has_more: name === "A品牌" && page < 3,
+        product_list: [product(1000, String(100 + page), name)],
+      };
+    },
+    onBrandComplete: async (brand) => {
+      const rows = (
+        await db.query("SELECT * FROM coupon_baselines WHERE brand_id=$1", [
+          brand,
+        ])
+      ).rows;
+      assert.equal(rows.length, 1);
+      completed.push(brand);
+    },
+  });
+  try {
+    await collector.start();
+    await collector.drain();
+    assert.deepEqual(seen, ["A品牌", "A品牌", "A品牌", "B品牌", "A品牌"]);
+    assert.deepEqual(completed, [ids[1], ids[0]]);
+  } finally {
+    await collector.stop();
     await db.close();
   }
 });

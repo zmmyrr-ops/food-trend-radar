@@ -10,6 +10,7 @@ import { createBrandIndex } from "./brand-index.js";
 import { couponAcceptance } from "./coupon-acceptance.js";
 import { createCouponMedia } from "./coupon-media.js";
 import { createPickReader, registerCouponPicks } from "./coupon-picks.js";
+import { createCouponPool } from "./coupon-pool.js";
 import { createEnvironment } from "./environment.js";
 import { createOpportunityBoard } from "./opportunity-board.js";
 import { createPickEvaluation } from "./pick-evaluation.js";
@@ -36,18 +37,23 @@ export async function createOperations(
   const board = await createOpportunityBoard(db, alerts.emit);
   const brief = createSelectionBrief(db, board.candidates);
   const salesHeat = createSalesHeat(db);
+  await enableReadModels(db);
+  const pool = await createCouponPool(db, (brand) =>
+    createPickReader(
+      db,
+      () => salesHeat.readBrand(brand),
+      () => board.candidatesBrand(brand),
+      brandIndex.read,
+      brand,
+    )(),
+  );
   const evaluation = await createPickEvaluation(
     db,
-    createPickReader(db, salesHeat.read, board.candidates, brandIndex.read),
+    pool.read,
     createPickReader(undefined, salesHeat.read, async () => []),
   );
   const ai = await createAiRecommendations(db, {
-    readPicks: createPickReader(
-      db,
-      salesHeat.read,
-      board.candidates,
-      brandIndex.read,
-    ),
+    readPicks: pool.read,
     readContext: async () => {
       const v = await environment.status();
       return { outlook: v.outlook, attribution: v.attribution };
@@ -59,13 +65,7 @@ export async function createOperations(
     join(backupDir, "..", "secrets", "xiaohongshu-requests.json"),
   );
   const videos = await createVideoProjects(db, join(backupDir, "..", "videos"));
-  await enableReadModels(db);
-  const readPicks = createPickReader(
-    db,
-    salesHeat.read,
-    board.candidates,
-    brandIndex.read,
-  );
+  const readPicks = pool.read;
   let busy = false;
   let backupError: string | null = null;
   async function backup() {
@@ -226,6 +226,7 @@ export async function createOperations(
       db,
       environment.status,
       brandIndex.read,
+      pool.read,
     );
     brandIndex.register(app);
     ai.register(app);
@@ -301,11 +302,14 @@ export async function createOperations(
   }
   return {
     tick,
+    poolTick: pool.tick,
+    refreshBrand: pool.refreshBrand,
     backup,
     register,
     drain: async () => {
       await Promise.all([
         active ?? Promise.resolve(),
+        pool.stop(),
         ai.drain(),
         videos.stop(),
         media.stop(),

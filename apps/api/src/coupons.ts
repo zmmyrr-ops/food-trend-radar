@@ -216,7 +216,7 @@ export class SerialGate {
     private clock = Date.now,
     private random = Math.random,
   ) {
-    this.next = this.clock() + 2000;
+    this.next = this.clock() + 5000;
   }
   run<T>(call: () => Promise<T>, notBefore = 0): Promise<T> {
     const job = this.tail.then(async () => {
@@ -226,7 +226,7 @@ export class SerialGate {
       try {
         return await call();
       } finally {
-        this.next = this.clock() + 1000 + Math.floor(this.random() * 1001);
+        this.next = this.clock() + 3000 + Math.floor(this.random() * 2001);
       }
     });
     this.tail = job.catch(() => {});
@@ -239,6 +239,7 @@ export async function initCoupons(db: PGlite) {
     INSERT INTO coupon_settings(id) VALUES(1) ON CONFLICT DO NOTHING;
     CREATE TABLE IF NOT EXISTS coupon_runs(id uuid PRIMARY KEY, slot text UNIQUE, status text NOT NULL, started_at timestamptz DEFAULT now(), finished_at timestamptz);
     CREATE TABLE IF NOT EXISTS coupon_tasks(run_id uuid REFERENCES coupon_runs(id), brand_id uuid REFERENCES brands(id), name text NOT NULL, aliases jsonb NOT NULL, state text NOT NULL DEFAULT 'queued', cursor text NOT NULL DEFAULT '0', pages int NOT NULL DEFAULT 0, error_code text, PRIMARY KEY(run_id,brand_id));
+    ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS position int NOT NULL DEFAULT 0;
     CREATE TABLE IF NOT EXISTS coupon_pages(run_id uuid, brand_id uuid, cursor text, next_cursor text, has_more boolean, digest text, observed_at timestamptz DEFAULT now(), PRIMARY KEY(run_id,brand_id,cursor));
     CREATE TABLE IF NOT EXISTS coupon_items(run_id uuid, brand_id uuid, product_id text, payload jsonb NOT NULL, observed_at timestamptz DEFAULT now(), PRIMARY KEY(run_id,brand_id,product_id));
     CREATE TABLE IF NOT EXISTS coupon_identity_refreshes(brand_id uuid,query_signature text,run_id uuid NOT NULL,created_at timestamptz NOT NULL DEFAULT now(),PRIMARY KEY(brand_id,query_signature));
@@ -278,6 +279,7 @@ export function createCoupons(
     unmatchedPageLimit?: number;
     retryDelayMs?: number;
     policyVersion?: string;
+    onBrandComplete?: (brand: string) => Promise<unknown>;
     maxBaselineAgeMs?: number;
   } = {},
 ) {
@@ -494,6 +496,9 @@ export function createCoupons(
         [run, brand, comparisonStatus, base?.run_id ?? null],
       );
     });
+    await opts
+      .onBrandComplete?.(brand)
+      .catch(() => console.error("COUPON_POOL_REFRESH_FAILED"));
     if (rulesEnabled) await ruleWorker.enqueue(brand);
     if (storesEnabled) await storeWorker.enqueue(brand);
   }
@@ -577,6 +582,9 @@ export function createCoupons(
   async function process() {
     while (!stopping) {
       if ((await settings()).pause_reason) return;
+      await db.exec(
+        "UPDATE coupon_tasks t SET state='partial',error_code='BRAND_DISABLED' FROM brands b WHERE b.id=t.brand_id AND NOT b.active AND t.state='queued'",
+      );
       // Close each drained run before moving to another scheduled observation.
       await db.exec(
         "UPDATE coupon_runs r SET status=CASE WHEN EXISTS(SELECT 1 FROM coupon_tasks t WHERE t.run_id=r.id AND t.state<>'complete') THEN 'partial' ELSE 'complete' END,finished_at=now() WHERE status='running' AND NOT EXISTS(SELECT 1 FROM coupon_tasks pending WHERE pending.run_id=r.id AND pending.state='queued')",
@@ -593,7 +601,7 @@ export function createCoupons(
           retry_at: string | null;
           query_signature: string | null;
         }>(
-          "SELECT t.* FROM coupon_tasks t JOIN coupon_runs r ON r.id=t.run_id WHERE t.state='queued' AND r.status='running' ORDER BY r.started_at,r.id,(t.pages>0) DESC,EXISTS(SELECT 1 FROM coupon_baselines b JOIN coupon_items i ON i.run_id=b.run_id AND i.brand_id=b.brand_id WHERE b.brand_id=t.brand_id AND i.payload->>'identity'='name_match') DESC,t.name LIMIT 1",
+          "SELECT t.* FROM coupon_tasks t JOIN coupon_runs r ON r.id=t.run_id JOIN brands br ON br.id=t.brand_id AND br.active WHERE t.state='queued' AND r.status='running' AND (t.retry_at IS NULL OR t.retry_at<=now()) ORDER BY r.started_at,r.id,(t.pages/3),t.position,t.name,t.brand_id LIMIT 1",
         )
       ).rows[0];
       if (!t) {
@@ -838,7 +846,7 @@ export function createCoupons(
       if (slot && existing?.slot !== slot) existing = undefined;
       const brands = (
         await db.query<{ id: string; name: string; aliases: string[] }>(
-          `SELECT id,name,aliases FROM brands WHERE active=true ${ids ? "AND id=ANY($1::uuid[])" : ""} ORDER BY name`,
+          `SELECT id,name,aliases FROM brands WHERE active=true ${ids ? "AND id=ANY($1::uuid[])" : ""} ORDER BY name,id`,
           ids ? [ids] : [],
         )
       ).rows;
@@ -855,15 +863,16 @@ export function createCoupons(
             "INSERT INTO coupon_runs(id,slot,status) VALUES($1,$2,'running')",
             [id, slot ?? null],
           );
-        for (const b of brands)
+        for (const [position, b] of brands.entries())
           await tx.query(
-            "INSERT INTO coupon_tasks(run_id,brand_id,name,aliases,query_signature) VALUES($1,$2,$3,$4,$5) ON CONFLICT(run_id,brand_id) DO NOTHING",
+            "INSERT INTO coupon_tasks(run_id,brand_id,name,aliases,query_signature,position) VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(run_id,brand_id) DO NOTHING",
             [
               id,
               b.id,
               b.name,
               JSON.stringify(b.aliases),
               querySignature(b.name, b.aliases),
+              position,
             ],
           );
       });
@@ -875,9 +884,21 @@ export function createCoupons(
   }
   async function schedule() {
     const s = await settings();
-    if (s.enabled && !s.pause_reason) {
-      await start(undefined, slotAt(new Date()));
-      // Deduplication must not prevent existing queued work from resuming.
+    if (s.enabled && !s.pause_reason && !stopping && !creating) {
+      // One round at a time. A new round begins only after the previous one drains.
+      const running = (
+        await db.query(
+          "SELECT 1 FROM coupon_runs WHERE status='running' LIMIT 1",
+        )
+      ).rows.length;
+      if (!running) {
+        if (
+          !(await db.query("SELECT 1 FROM brands WHERE active LIMIT 1")).rows
+            .length
+        )
+          return;
+        await start();
+      }
       kick();
     }
   }
@@ -1020,7 +1041,7 @@ export function createCoupons(
       res.json({
         items: (
           await db.query(
-            "SELECT id,name,category,active FROM brands ORDER BY name,id",
+            "SELECT br.id,br.name,br.category,br.active,t.completed_at AS last_collected_at FROM brands br LEFT JOIN coupon_baselines b ON b.brand_id=br.id LEFT JOIN coupon_tasks t ON t.run_id=b.run_id AND t.brand_id=br.id ORDER BY br.name,br.id",
           )
         ).rows,
       }),
@@ -1036,9 +1057,10 @@ export function createCoupons(
               () => false,
             )
           : false,
-        schedule: "每日 00:00 / 12:00（上海）",
+        schedule: "全天串行循环，每轮覆盖所有启用品牌",
+        mode: "continuous",
         concurrency: 1,
-        interval_ms: [1000, 2000],
+        interval_ms: [3000, 5000],
         missing_sources: [
           "月售速度历史与统计口径",
           "平台指数",
@@ -1053,7 +1075,7 @@ export function createCoupons(
       res.json({
         items: (
           await db.query(
-            "SELECT r.*, (SELECT count(*)::int FROM coupon_tasks t WHERE t.run_id=r.id) AS total,(SELECT count(*)::int FROM coupon_tasks t WHERE t.run_id=r.id AND t.state='complete') AS completed,(SELECT count(*)::int FROM coupon_tasks t WHERE t.run_id=r.id AND t.state='partial') AS partial,(SELECT coalesce(sum(t.pages),0)::int FROM coupon_tasks t WHERE t.run_id=r.id) AS pages,(SELECT json_build_object('name',t.name,'pages',t.pages) FROM coupon_tasks t WHERE t.run_id=r.id AND t.state='queued' AND t.pages>0 ORDER BY t.name LIMIT 1) AS current_brand FROM coupon_runs r ORDER BY started_at DESC LIMIT 30",
+            "SELECT r.*,extract(epoch from(coalesce(r.finished_at,now())-r.started_at))::int AS duration_seconds,(SELECT count(*)::int FROM coupon_runs prev WHERE prev.started_at<=r.started_at) AS round_number, (SELECT count(*)::int FROM coupon_tasks t WHERE t.run_id=r.id) AS total,(SELECT count(*)::int FROM coupon_tasks t WHERE t.run_id=r.id AND t.state='complete') AS completed,(SELECT count(*)::int FROM coupon_tasks t WHERE t.run_id=r.id AND t.state='partial') AS partial,(SELECT coalesce(sum(t.pages),0)::int FROM coupon_tasks t WHERE t.run_id=r.id) AS pages,(SELECT json_build_object('name',t.name,'pages',t.pages) FROM coupon_tasks t WHERE t.run_id=r.id AND t.state='queued' AND (t.retry_at IS NULL OR t.retry_at<=now()) ORDER BY (t.pages/3),t.position,t.name,t.brand_id LIMIT 1) AS current_brand FROM coupon_runs r ORDER BY started_at DESC LIMIT 30",
           )
         ).rows,
       }),
@@ -1120,7 +1142,10 @@ export function createCoupons(
         );
       // A pause prevents the next request; the current request may still drain.
       // Never tie the HTTP response to a potentially stalled transport.
-      if (v.paused === false) kick();
+      if (v.paused === false || v.enabled === true) {
+        await schedule();
+        kick();
+      }
       res.json({
         ...(await settings()),
         worker_active: !!worker,

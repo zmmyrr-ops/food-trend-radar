@@ -57,6 +57,9 @@ type Run = {
   completed: number;
   partial: number;
   pages: number;
+  round_number?: number;
+  duration_seconds?: number;
+  finished_at?: string | null;
   current_brand: { name: string; pages: number } | null;
   started_at: string;
 };
@@ -114,7 +117,13 @@ export function CouponRadar() {
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
   const [brands, setBrands] = useState<
-    { id: string; name: string; category: string; active: boolean }[]
+    {
+      id: string;
+      name: string;
+      category: string;
+      active: boolean;
+      last_collected_at?: string | null;
+    }[]
   >([]);
   const [brandId, setBrandId] = useState("");
   const [environment, setEnvironment] = useState<{
@@ -293,7 +302,7 @@ export function CouponRadar() {
           </strong>
         </article>
         <article>
-          <span>本轮采集进度</span>
+          <span>第 {runs[0]?.round_number ?? "—"} 轮采集进度</span>
           <strong>
             {runs[0]
               ? `${runs[0].completed + runs[0].partial} / ${runs[0].total} 已处理`
@@ -329,10 +338,16 @@ export function CouponRadar() {
                 : status.worker_active
                   ? "正在采集"
                   : status.enabled
-                    ? "等待定时"
-                    : "未开启定时"}
+                    ? "等待下一轮"
+                    : "循环未开启"}
           </strong>
-          <small>每日 00:00 / 12:00 · 间隔 1–2 秒</small>
+          <small>全天自动循环 · 请求间隔 3–5 秒</small>
+          <small>
+            最近一轮用时：
+            {runs.find((r) => r.finished_at)?.duration_seconds != null
+              ? `${Math.round(runs.find((r) => r.finished_at)!.duration_seconds! / 60)} 分钟`
+              : "待首轮完成"}
+          </small>
         </article>
         <article>
           <span>上海 · 未来72小时</span>
@@ -399,6 +414,16 @@ export function CouponRadar() {
                 ))}
             </select>
           </label>
+          {brandId && (
+            <small>
+              上次完整采集：
+              {brands.find((b) => b.id === brandId)?.last_collected_at
+                ? new Date(
+                    brands.find((b) => b.id === brandId)!.last_collected_at!,
+                  ).toLocaleString("zh-CN")
+                : "暂无完整快照"}
+            </small>
+          )}
         </div>
       )}
       {pane === "picks" && <CouponPicks brandId={brandId} />}
@@ -437,7 +462,7 @@ export function CouponRadar() {
                 void action("/settings", { enabled: !status?.enabled }, "PATCH")
               }
             >
-              {status?.enabled ? "关闭定时" : "开启每日两次定时"}
+              {status?.enabled ? "关闭自动循环" : "开启全天自动循环"}
             </button>
             <button
               disabled={busy}

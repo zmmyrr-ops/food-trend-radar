@@ -28,6 +28,7 @@ export type SalesPoint = {
   } | null;
   payload: {
     monthly_sales: string;
+    sale_end?: string;
     platform_brand_id: string;
     identity: string;
     origin_price_fen?: number | null;
@@ -56,6 +57,38 @@ export function contentContinuity(a: SalesPoint, b: SalesPoint, now: number) {
     a.rules!.rule_fingerprint === b.rules!.rule_fingerprint
     ? ("same_returned_content" as const)
     : ("changed" as const);
+}
+/** Preserve real timestamps; skip dense samples only while every intervening observation remains comparable. */
+export function spacedSalesSamples(points: SalesPoint[], now = Date.now()) {
+  if (!points.length) return points;
+  const selected = [points[0]];
+  for (let i = 1; i < points.length; i++) {
+    const a = points[i - 1],
+      b = points[i];
+    const av = parseSales(a.payload.monthly_sales ?? "").value,
+      bv = parseSales(b.payload.monthly_sales ?? "").value;
+    const barrier =
+      a.missing ||
+      b.missing ||
+      a.query_signature !== b.query_signature ||
+      a.payload.name !== b.payload.name ||
+      a.payload.platform_brand_id !== b.payload.platform_brand_id ||
+      a.payload.price_min_fen !== b.payload.price_min_fen ||
+      a.payload.price_max_fen !== b.payload.price_max_fen ||
+      av === null ||
+      bv === null ||
+      av < bv ||
+      contentContinuity(a, b, now) === "changed" ||
+      !(Date.parse(a.observed_at) > Date.parse(b.observed_at));
+    if (barrier) return [...selected, ...points.slice(i)].slice(0, 16);
+    if (
+      Date.parse(selected[selected.length - 1].observed_at) -
+        Date.parse(b.observed_at) >=
+      3600000
+    )
+      selected.push(b);
+  }
+  return selected.slice(0, 16);
 }
 export function salesTrend(points: SalesPoint[], now = Date.now()) {
   const samples = points
@@ -278,14 +311,15 @@ export function salesHeatCsv(items: ExportRow[]) {
   );
 }
 export function createSalesHeat(db: PGlite) {
-  async function load() {
+  async function load(brand?: string) {
     const rows = (
       await db.query<{
         brand_id: string;
         brand_name: string;
         product_id: string;
         points: SalesPoint[];
-      }>(`
+      }>(
+        `
  WITH current AS MATERIALIZED (
  SELECT i.*,br.name AS brand_name,coalesce(t.completed_at,i.observed_at) AS task_at FROM coupon_items i JOIN coupon_baselines b ON b.brand_id=i.brand_id AND b.run_id=i.run_id JOIN brands br ON br.id=i.brand_id AND br.active JOIN coupon_tasks t ON t.run_id=i.run_id AND t.brand_id=i.brand_id AND t.state='complete'
  WHERE i.payload->>'identity'='name_match'
@@ -302,8 +336,10 @@ export function createSalesHeat(db: PGlite) {
  AND (t.run_id=c.run_id OR coalesce(t.completed_at,i.observed_at)<c.task_at)
  AND coalesce(t.completed_at,i.observed_at)>=c.task_at-interval '7 days'
  ORDER BY (t.run_id=c.run_id) DESC,coalesce(t.completed_at,i.observed_at) DESC,t.run_id DESC LIMIT 16) h ON true
- WHERE NOT EXISTS(SELECT 1 FROM conflicts x WHERE x.id=c.payload->>'platform_brand_id')
- GROUP BY c.brand_id,c.brand_name,c.product_id`)
+ WHERE ($1::uuid IS NULL OR c.brand_id=$1) AND NOT EXISTS(SELECT 1 FROM conflicts x WHERE x.id=c.payload->>'platform_brand_id')
+ GROUP BY c.brand_id,c.brand_name,c.product_id`,
+        [brand ?? null],
+      )
     ).rows;
     const now = Date.now();
     return rows.map((r) => ({
@@ -312,10 +348,11 @@ export function createSalesHeat(db: PGlite) {
       product_id: r.product_id,
       title: r.points[0].payload.name,
       price_fen: r.points[0].payload.price_min_fen,
-      ...salesTrend(r.points, now),
+      sale_end: r.points[0].payload.sale_end ?? null,
+      ...salesTrend(spacedSalesSamples(r.points, now), now),
     }));
   }
-  const loadCached = readModel(db, "sales-heat-v1", load);
+  const loadCached = readModel(db, "sales-heat-v1", () => load());
   // Share overlapping requests without retaining stale sales or brand state.
   let pending: ReturnType<typeof load> | undefined;
   function read() {
@@ -422,5 +459,5 @@ export function createSalesHeat(db: PGlite) {
       },
     );
   }
-  return { read, register };
+  return { read, readBrand: (brand: string) => load(brand), register };
 }
