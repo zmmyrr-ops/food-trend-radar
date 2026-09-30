@@ -277,7 +277,7 @@ export function salesHeatCsv(items: ExportRow[]) {
   );
 }
 export function createSalesHeat(db: PGlite) {
-  async function read() {
+  async function load() {
     const rows = (
       await db.query<{
         brand_id: string;
@@ -313,6 +313,15 @@ export function createSalesHeat(db: PGlite) {
       price_fen: r.points[0].payload.price_min_fen,
       ...salesTrend(r.points, now),
     }));
+  }
+  // Share overlapping requests without retaining stale sales or brand state.
+  let pending: ReturnType<typeof load> | undefined;
+  function read() {
+    if (!pending)
+      pending = load().finally(() => {
+        pending = undefined;
+      });
+    return pending;
   }
   function register(app: Express) {
     app.get(

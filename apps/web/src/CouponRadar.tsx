@@ -243,7 +243,10 @@ export function CouponRadar() {
   }, [view, offset, brandId]);
   useEffect(() => {
     void refresh();
-    const t = setInterval(() => void refresh(), 5000);
+    // Avoid repeatedly scanning coupon history while the page is hidden.
+    const t = setInterval(() => {
+      if (document.visibilityState === "visible") void refresh();
+    }, 30000);
     return () => {
       clearInterval(t);
       refreshSequence.current++;

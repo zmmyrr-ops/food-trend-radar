@@ -391,6 +391,7 @@ export function registerCouponPicks(
   readEnvironment?: Awaited<ReturnType<typeof createEnvironment>>["status"],
   readIndices?: () => Promise<BrandIndex[]>,
 ) {
+  const readPicks = createPickReader(db, readHeat, readSignals, readIndices);
   if (db)
     app.put("/api/v3/coupon-picks/:product/watch", async (req, res) => {
       const product = z.string().regex(/^\d+$/).parse(req.params.product);
@@ -422,10 +423,7 @@ export function registerCouponPicks(
     ["/api/v3/coupon-picks", "/api/v3/coupon-picks.csv"],
     async (req, res) => {
       const q = inputSchema.parse(req.query);
-      const { counts, filtered } = selectPicks(
-        await createPickReader(db, readHeat, readSignals, readIndices)(),
-        q,
-      );
+      const { counts, filtered } = selectPicks(await readPicks(), q);
       if (req.path.endsWith(".csv")) {
         res.setHeader(
           "Content-Disposition",
