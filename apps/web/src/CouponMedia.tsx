@@ -33,7 +33,7 @@ const errors: Record<string, string> = {
 };
 function MediaTile({ item }: { item: Resource }) {
   const [play, setPlay] = useState(false),
-    [failed, setFailed] = useState(false);
+    [failed, setFailed] = useState("");
   return (
     <figure className="live-media-tile">
       <div className="live-media-visual">
@@ -46,13 +46,22 @@ function MediaTile({ item }: { item: Resource }) {
             muted
             autoPlay
             preload="none"
-            onError={() => setFailed(true)}
+            onError={(event) => {
+              const code = event.currentTarget.error?.code;
+              setFailed(
+                code === 3 || code === 4
+                  ? "播放失败或格式不兼容，点击重试"
+                  : "视频加载失败，点击重试",
+              );
+            }}
           />
         ) : (
           <button
             className="live-media-preview"
-            onClick={() => setPlay(true)}
-            disabled={failed}
+            onClick={() => {
+              setFailed("");
+              setPlay(true);
+            }}
             aria-label={`播放实况：${item.title}`}
           >
             {item.poster ? (
@@ -65,9 +74,7 @@ function MediaTile({ item }: { item: Resource }) {
             ) : (
               <span>实况预览</span>
             )}
-            <span className="live-media-play">
-              {failed ? "链接无法播放，可重置重新获取" : "▶ 实况"}
-            </span>
+            <span className="live-media-play">{failed || "▶ 实况"}</span>
           </button>
         )}
       </div>

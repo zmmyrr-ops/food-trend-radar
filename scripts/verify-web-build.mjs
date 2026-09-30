@@ -3,6 +3,8 @@ import { basename, resolve } from "node:path";
 
 const dir = resolve("apps/web/dist");
 const html = await readFile(resolve(dir, "index.html"), "utf8");
+if (!/<meta\s+name="referrer"\s+content="no-referrer"\s*\/?\s*>/.test(html))
+  throw new Error("Missing no-referrer policy required for embedded media");
 const assets = [...html.matchAll(/(?:src|href)="([^" ]+\.(?:js|css))"/g)].map(
   (x) => x[1],
 );
