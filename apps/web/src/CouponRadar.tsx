@@ -253,8 +253,12 @@ export function CouponRadar({ channel }: { channel: Channel }) {
     const sequence = ++refreshSequence.current;
     try {
       const [s, r, i] = await Promise.all([
-        request<Status>("/status"),
-        request<{ items: Run[] }>("/runs"),
+        account.role === "admin"
+          ? request<Status>("/status")
+          : Promise.resolve(null),
+        account.role === "admin"
+          ? request<{ items: Run[] }>("/runs")
+          : Promise.resolve({ items: [] }),
         pane === "snapshots"
           ? request<{ items: Item[]; total: number }>(
               `/opportunities?view=${view}&offset=${offset}&limit=50${brandId ? `&brand_id=${brandId}` : ""}`,
@@ -272,7 +276,7 @@ export function CouponRadar({ channel }: { channel: Channel }) {
     } catch (e) {
       if (sequence === refreshSequence.current) setError(String(e));
     }
-  }, [view, offset, brandId, pane]);
+  }, [view, offset, brandId, pane, account.role]);
   useEffect(() => {
     let loading = false;
     const poll = async () => {
@@ -321,54 +325,58 @@ export function CouponRadar({ channel }: { channel: Channel }) {
             <small> 个启用品牌</small>
           </strong>
         </article>
-        <article>
-          <span>全站采集 · 第 {runs[0]?.round_number ?? "—"} 轮</span>
-          <strong>
-            {runs[0]
-              ? `${runs[0].completed + runs[0].partial} / ${runs[0].total} 已处理`
-              : "—"}
-          </strong>
-          <progress
-            aria-label="本轮品牌处理进度"
-            max={runs[0]?.total || 1}
-            value={(runs[0]?.completed || 0) + (runs[0]?.partial || 0)}
-          />
-          <small className="collection-progress-detail">
-            <span className="collection-progress-summary">
-              完整采集 {runs[0]?.completed ?? 0} · 待核验/未完整{" "}
-              {runs[0]?.partial ?? 0} · 已查 {runs[0]?.pages ?? 0} 页
-            </span>
-            <span
-              className="collection-current-brand"
-              title={runs[0]?.current_brand?.name}
-            >
-              {runs[0]?.current_brand
-                ? `当前：${runs[0].current_brand.name} · 已查 ${runs[0].current_brand.pages} 页`
-                : "当前：等待下一品牌"}
-            </span>
-          </small>
-        </article>
-        <article>
-          <span>采集状态</span>
-          <strong className="status-value">
-            {!status
-              ? "读取中"
-              : status.pause_reason
-                ? "已暂停"
-                : status.worker_active
-                  ? "正在采集"
-                  : status.enabled
-                    ? "等待下一轮"
-                    : "循环未开启"}
-          </strong>
-          <small>全天自动循环 · 请求间隔 3–5 秒</small>
-          <small>
-            最近一轮用时：
-            {runs.find((r) => r.finished_at)?.duration_seconds != null
-              ? `${Math.round(runs.find((r) => r.finished_at)!.duration_seconds! / 60)} 分钟`
-              : "待首轮完成"}
-          </small>
-        </article>
+        {account.role === "admin" && (
+          <article>
+            <span>全站采集 · 第 {runs[0]?.round_number ?? "—"} 轮</span>
+            <strong>
+              {runs[0]
+                ? `${runs[0].completed + runs[0].partial} / ${runs[0].total} 已处理`
+                : "—"}
+            </strong>
+            <progress
+              aria-label="本轮品牌处理进度"
+              max={runs[0]?.total || 1}
+              value={(runs[0]?.completed || 0) + (runs[0]?.partial || 0)}
+            />
+            <small className="collection-progress-detail">
+              <span className="collection-progress-summary">
+                完整采集 {runs[0]?.completed ?? 0} · 待核验/未完整{" "}
+                {runs[0]?.partial ?? 0} · 已查 {runs[0]?.pages ?? 0} 页
+              </span>
+              <span
+                className="collection-current-brand"
+                title={runs[0]?.current_brand?.name}
+              >
+                {runs[0]?.current_brand
+                  ? `当前：${runs[0].current_brand.name} · 已查 ${runs[0].current_brand.pages} 页`
+                  : "当前：等待下一品牌"}
+              </span>
+            </small>
+          </article>
+        )}
+        {account.role === "admin" && (
+          <article>
+            <span>采集状态</span>
+            <strong className="status-value">
+              {!status
+                ? "读取中"
+                : status.pause_reason
+                  ? "已暂停"
+                  : status.worker_active
+                    ? "正在采集"
+                    : status.enabled
+                      ? "等待下一轮"
+                      : "循环未开启"}
+            </strong>
+            <small>全天自动循环 · 请求间隔 3–5 秒</small>
+            <small>
+              最近一轮用时：
+              {runs.find((r) => r.finished_at)?.duration_seconds != null
+                ? `${Math.round(runs.find((r) => r.finished_at)!.duration_seconds! / 60)} 分钟`
+                : "待首轮完成"}
+            </small>
+          </article>
+        )}
         <article>
           <span>上海 · 未来72小时</span>
           <strong className="status-value">
@@ -388,7 +396,7 @@ export function CouponRadar({ channel }: { channel: Channel }) {
           </small>
         </article>
       </section>
-      {status?.pause_reason && (
+      {account.role === "admin" && status?.pause_reason && (
         <p className="message" role="status">
           采集已暂停：{status.pause_reason}
           。已有结果仍可查看，请在采集管理中检查来源。

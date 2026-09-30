@@ -151,7 +151,7 @@ export async function createAccounts(
       const readOnly =
         ["GET", "HEAD"].includes(req.method) &&
         (route === "/v1/brands" ||
-          /^\/api\/v3\/(coupon-picks(?:\.csv)?|coupons|brands|environment|sales-heat|ai-recommendations|status|runs|snapshots)(\/|$)/.test(
+          /^\/api\/v3\/(coupon-picks(?:\.csv)?|coupons|brands|environment|sales-heat|ai-recommendations)(\/|$)/.test(
             route,
           ));
       if (personal || readOnly) return next();

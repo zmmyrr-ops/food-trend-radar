@@ -1,5 +1,6 @@
 import { type Channel, categories, inChannel } from "@radar/contracts";
 import { useEffect, useState } from "react";
+import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
 import { CouponConditionComparison } from "./CouponConditionComparison";
 import { CouponMedia } from "./CouponMedia";
@@ -108,6 +109,7 @@ export function CouponPicks({
   brands: { id: string; name: string; category: string }[];
   onBrandChange: (id: string) => void;
 }) {
+  const isAdmin = useAccount().role === "admin";
   const [view, setView] = useState("recommended"),
     [order, setOrder] = useState("priority"),
     [category, setCategory] = useState(""),
@@ -281,13 +283,17 @@ export function CouponPicks({
             }}
           >
             <option value="priority">综合优先分</option>
-            <option value="speed">销量升温速度</option>
-            <option value="acceleration">销量增长加速度</option>
+            <option value="speed">热度增速</option>
+            <option value="acceleration">升温加速度</option>
             <option value="saving">票面降价金额</option>
             <option value="newest">最新采集</option>
           </select>
         </label>
-        <a href={appUrl(`/api/v3/coupon-picks.csv?${query}`)} download>
+        <a
+          className="admin-only"
+          href={appUrl(`/api/v3/coupon-picks.csv?${query}`)}
+          download
+        >
           导出结果
         </a>
       </div>
@@ -296,7 +302,7 @@ export function CouponPicks({
       {!data && !error && <p>正在汇总优惠与热度…</p>}
       {data && (
         <>
-          <details className="method-note">
+          <details className="method-note admin-only">
             <summary>查看全站历史选券效果</summary>
             <PickEvaluation />
           </details>
@@ -361,7 +367,7 @@ export function CouponPicks({
                         ? "同价列示增量"
                         : x.kind === "terms_changed"
                           ? "规则变化"
-                          : "销量观察"}
+                          : "热度观察"}
                 </small>
                 <h3>{x.title}</h3>
                 <CouponStoreSummary
@@ -374,9 +380,20 @@ export function CouponPicks({
                     <strong>{money(x.price_fen)}</strong>
                   </div>
                   <div>
-                    <span>月售净增 / 小时</span>
+                    <span>{isAdmin ? "月售净增 / 小时" : "热度增速指数"}</span>
                     <strong>
-                      {x.speed === null ? "—" : x.speed.toFixed(1)}
+                      {isAdmin
+                        ? x.speed === null
+                          ? "—"
+                          : x.speed.toFixed(1)
+                        : (() => {
+                            const part = x.priority.parts.find(
+                              (p) => p.name === "销量升温",
+                            );
+                            return part?.value == null
+                              ? "—"
+                              : `${Math.round((part.value / part.weight) * 100)}/100`;
+                          })()}
                     </strong>
                   </div>
                   <div>
@@ -387,6 +404,11 @@ export function CouponPicks({
                     </strong>
                   </div>
                 </div>
+                {!isAdmin && (
+                  <p className="muted">
+                    热度增速指数由销量升温得分换算为0–100，非销售数量。
+                  </p>
+                )}
                 <p className="availability-note">
                   {x.discount.rate === null
                     ? `原价折扣暂缺：${x.discount.reason}`
@@ -400,9 +422,17 @@ export function CouponPicks({
                     </span>
                   )}
                   <span>
-                    {x.acceleration === null
-                      ? "加速度暂缺"
-                      : `加速度 ${x.acceleration.toFixed(2)}/小时²`}
+                    {!isAdmin
+                      ? x.acceleration == null
+                        ? "升温趋势待观察"
+                        : x.acceleration > 0
+                          ? "升温加快"
+                          : x.acceleration < 0
+                            ? "升温放缓"
+                            : "趋势平稳"
+                      : x.acceleration === null
+                        ? "加速度暂缺"
+                        : `加速度 ${x.acceleration.toFixed(2)}/小时²`}
                   </span>
                   <span>{x.priority.coverage}% 指标已具备</span>
                 </div>
@@ -515,18 +545,25 @@ export function CouponPicks({
                     缺失：{x.priority.missing.join("、") || "无"}
                     ；缺失不代表表现差。
                   </p>
-                  <p>
-                    月售展示：{x.previous_sales ?? "未知"} → {x.latest_sales}
-                    ；净变化 {x.net_change ?? "未知"}，间隔{" "}
-                    {x.hours?.toFixed(1) ?? "未知"} 小时。不等于新增订单。
-                  </p>
-                  <p>{x.change_reason}</p>
-                  <p>{x.reason}</p>
-                  <p>{x.acceleration_reason}</p>
-                  <CouponConditionComparison
-                    productId={x.product_id}
-                    brandId={x.brand_id}
-                  />
+                  {isAdmin && (
+                    <>
+                      <p>
+                        月售展示：{x.previous_sales ?? "未知"} →{" "}
+                        {x.latest_sales}
+                        ；净变化 {x.net_change ?? "未知"}，间隔{" "}
+                        {x.hours?.toFixed(1) ?? "未知"} 小时。不等于新增订单。
+                      </p>
+                      <p>{x.change_reason}</p>
+                      <p>{x.reason}</p>
+                      <p>{x.acceleration_reason}</p>
+                    </>
+                  )}
+                  {isAdmin && (
+                    <CouponConditionComparison
+                      productId={x.product_id}
+                      brandId={x.brand_id}
+                    />
+                  )}
                   <CouponRules productId={x.product_id} brandId={x.brand_id} />
                   <CouponStores productId={x.product_id} brandId={x.brand_id} />
                 </details>

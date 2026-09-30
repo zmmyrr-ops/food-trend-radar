@@ -201,7 +201,7 @@ export function CouponMedia({
         aria-expanded={open}
         onClick={() => setOpen(!open)}
       >
-        <span>小红书实况素材</span>
+        <span>获取网络参考素材</span>
         <span>
           {job?.resources.length ? `${job.resources.length} 个 · ` : ""}
           {open ? "收起 −" : "展开 +"}

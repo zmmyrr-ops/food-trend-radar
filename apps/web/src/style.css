@@ -2163,3 +2163,19 @@ footer {
 .role-user .admin-only {
   display: none !important;
 }
+
+.video-studio .studio-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+  margin-bottom: 16px;
+}
+.video-studio .studio-navigation a {
+  display: inline-flex;
+  padding: 8px 0;
+  white-space: nowrap;
+}
+.role-user .overview-metrics {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}

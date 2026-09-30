@@ -19,6 +19,7 @@ type Clip = {
 };
 type Project = {
   id: string;
+  requires_face_screen?: boolean;
   brand_name: string;
   title: string;
   seconds: number;
@@ -238,21 +239,23 @@ export function VideoStudio() {
     <main className="video-studio">
       <header className="studio-header">
         <div>
-          <a
-            href={appUrl(
-              `/?channel=${new URLSearchParams(location.search).get("channel") === "leisure" ? "leisure" : "food"}`,
-            )}
-          >
-            ← 返回选券工作台
-          </a>
-          <a
-            href={appUrl(
-              `/?tab=videos&channel=${new URLSearchParams(location.search).get("channel") === "leisure" ? "leisure" : "food"}`,
-            )}
-          >
-            我的视频 →
-          </a>
-          <h1>美食短视频工作室</h1>
+          <nav className="studio-navigation" aria-label="视频制作导航">
+            <a
+              href={appUrl(
+                `/?channel=${new URLSearchParams(location.search).get("channel") === "leisure" ? "leisure" : "food"}`,
+              )}
+            >
+              ← 返回选券工作台
+            </a>
+            <a
+              href={appUrl(
+                `/?tab=videos&channel=${new URLSearchParams(location.search).get("channel") === "leisure" ? "leisure" : "food"}`,
+              )}
+            >
+              我的视频 →
+            </a>
+          </nav>
+          <h1>短视频工作室</h1>
           <p>
             {project?.brand_name || "挑好素材，自动剪成一条短片"}
             {project ? ` · ${project.title}` : ""}
@@ -260,6 +263,14 @@ export function VideoStudio() {
         </div>
         <span>12–20秒 · 竖屏 · 实况混剪 · 素材不足时自动缩短，最低12秒</span>
       </header>
+      <p className="muted">
+        网络参考素材会排除真人正面出镜；无法确认时不入选。自己上传的素材不受此限制。旧项目需重新分析后生成。
+      </p>
+      {project?.requires_face_screen && (
+        <p role="status">
+          此项目的网络素材需要重新检查真人出镜，请点击重新分析，再生成预览或导出。
+        </p>
+      )}
       {!configured && <p role="alert">百炼密钥尚未配置，请联系管理员。</p>}
       {error && (
         <p role="alert" className="studio-error">

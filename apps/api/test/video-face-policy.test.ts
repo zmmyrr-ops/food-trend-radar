@@ -1,0 +1,70 @@
+import assert from "node:assert/strict";
+import { test } from "node:test";
+import {
+  type Asset,
+  permittedAsset,
+  validatePlan,
+} from "../src/video-types.js";
+
+const id = "11111111-1111-4111-8111-111111111111";
+const asset: Asset = {
+  id,
+  source_id: id,
+  title: "test",
+  author: "",
+  note_url: "",
+  kind: "video",
+  path: "/tmp/clip.mp4",
+  accepted: true,
+  duration: 12,
+};
+test("网络素材必须通过新版本正面人脸检查，用户上传豁免", () => {
+  assert.equal(permittedAsset({ ...asset, origin: "upload" }), true);
+  for (const status of [undefined, "present", "uncertain"] as const)
+    assert.equal(
+      permittedAsset({
+        ...asset,
+        origin: "network",
+        face_screen: status,
+        face_screen_version: 1,
+      }),
+      false,
+    );
+  assert.equal(
+    permittedAsset({
+      ...asset,
+      origin: "network",
+      face_screen: "clear",
+      face_screen_version: 1,
+    }),
+    true,
+  );
+  assert.equal(
+    permittedAsset({ ...asset, url: "https://sns-video.xhscdn.com/a.mp4" }),
+    false,
+  );
+  assert.equal(
+    permittedAsset({
+      ...asset,
+      note_url: "https://www.xiaohongshu.com/explore/abc",
+    }),
+    false,
+  );
+  assert.equal(
+    permittedAsset({ ...asset, origin: "network", face_screen: "clear" }),
+    false,
+  );
+  const plan = Array.from({ length: 4 }, () => ({
+    asset_id: id,
+    start: 0,
+    duration: 3,
+    caption: "",
+  }));
+  assert.throws(
+    () => validatePlan(plan, [{ ...asset, origin: "network" }], 12),
+    /真人正面/,
+  );
+  assert.doesNotThrow(() =>
+    validatePlan(plan, [{ ...asset, origin: "upload" }], 12),
+  );
+});

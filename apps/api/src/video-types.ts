@@ -10,6 +10,9 @@ export type Clip = z.infer<typeof clipSchema>;
 export type Asset = {
   id: string;
   source_id: string;
+  origin?: "network" | "upload";
+  face_screen?: "clear" | "present" | "uncertain";
+  face_screen_version?: number;
   url?: string;
   path?: string;
   title: string;
@@ -55,12 +58,23 @@ export type VideoProject = {
     observed_at: string;
   };
 };
+export function networkAsset(a: Asset) {
+  return a.origin === "network" || !!a.url || !!a.note_url;
+}
+export function permittedAsset(a: Asset) {
+  return (
+    !networkAsset(a) ||
+    (a.face_screen === "clear" && a.face_screen_version === 1)
+  );
+}
 export function validatePlan(plan: Clip[], assets: Asset[], seconds: number) {
   planSchema.parse(plan);
   if (Math.abs(plan.reduce((n, c) => n + c.duration, 0) - seconds) > 1 / 30)
     throw Error("镜头总时长必须等于目标时长");
   for (const c of plan) {
     const a = assets.find((a) => a.id === c.asset_id);
+    if (a && !permittedAsset(a))
+      throw Error("网络素材尚未通过真人正面出镜检查，请重新分析素材");
     if (!a || !a.accepted || !a.path) throw Error("镜头素材不可用");
     if (a.kind === "video" && c.start + c.duration > (a.duration ?? 0) + 0.02)
       throw Error("片段超出素材时长");
@@ -74,6 +88,7 @@ export function automaticPlan(
 ): Clip[] {
   const usable = assets.filter(
     (a) =>
+      permittedAsset(a) &&
       a.accepted &&
       a.path &&
       (a.kind === "image" ||

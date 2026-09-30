@@ -18,6 +18,7 @@ import { ownerOf } from "./accounts.js";
 import { mediaUrl } from "./coupon-media.js";
 import {
   type Asset,
+  permittedAsset,
   planSchema,
   type VideoProject,
   validatePlan,
@@ -72,6 +73,13 @@ export async function createVideoProjects(db: PGlite, root: string) {
   };
   const visible = (p: VideoProject) => ({
     ...p,
+    requires_face_screen: p.assets.some((a) => !permittedAsset(a)),
+    preview_revision: p.assets.some((a) => !permittedAsset(a))
+      ? undefined
+      : p.preview_revision,
+    export_revision: p.assets.some((a) => !permittedAsset(a))
+      ? undefined
+      : p.export_revision,
     assets: p.assets.map(({ path, url, ...a }) => a),
   });
   async function pump() {
@@ -317,8 +325,12 @@ export async function createVideoProjects(db: PGlite, root: string) {
               progress: p.progress,
               error: p.error,
               revision: p.revision,
-              preview_revision: p.preview_revision,
-              export_revision: p.export_revision,
+              preview_revision: p.assets.some((a) => !permittedAsset(a))
+                ? undefined
+                : p.preview_revision,
+              export_revision: p.assets.some((a) => !permittedAsset(a))
+                ? undefined
+                : p.export_revision,
               updated_at: p.updated_at,
             })),
           });
@@ -388,6 +400,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
           assets.push({
             id: randomUUID(),
             source_id: id,
+            origin: "network",
             url: mediaUrl(r.video_url),
             title: r.title,
             author: r.author,
@@ -406,6 +419,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
           assets.push({
             id: randomUUID(),
             source_id: id,
+            origin: "upload",
             path: join(root, "uploads", `${id}.source`),
             title: "用户上传素材",
             author: "用户提供",
@@ -485,6 +499,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
         wrap(async (req, res) => {
           const id = String(req.params.id),
             p = await get(id);
+          if (action !== "analyze") validatePlan(p.plan, p.assets, p.seconds);
           if (
             !p.captions_pending &&
             ((action === "preview" && p.preview_revision === p.revision) ||
@@ -531,6 +546,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
       wrap(async (req, res) => {
         const p = await get(String(req.params.id)),
           kind = req.query.kind === "preview" ? "preview" : "export";
+        validatePlan(p.plan, p.assets, p.seconds);
         const rev = kind === "preview" ? p.preview_revision : p.export_revision;
         if (rev !== p.revision) throw Error("请先生成当前版本");
         const file = join(root, p.id, `${kind}-${rev}.mp4`);
