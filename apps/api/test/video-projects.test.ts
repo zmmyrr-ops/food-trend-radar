@@ -11,6 +11,7 @@ import {
   type Asset,
   adaptivePlan,
   automaticPlan,
+  productionOptionsSchema,
   validatePlan,
 } from "../src/video-types.js";
 
@@ -175,11 +176,14 @@ test("编辑时间线采用修订号，过期版本不能覆盖；重启标记�
     assert.equal(made.project.revision, 3);
     assert.equal(made.project.state, "queued");
     assert.equal(made.project.plan.length, p.plan.length);
-    assert.deepEqual(made.project.production_options, {
-      subtitles: true,
-      narration: false,
-      music: true,
-    });
+    assert.deepEqual(
+      made.project.production_options,
+      productionOptionsSchema.parse({
+        subtitles: true,
+        narration: false,
+        music: true,
+      }),
+    );
     assert.equal((await (await remake(2)).json()).project.revision, 3);
   } finally {
     await service.stop();
@@ -283,7 +287,15 @@ test("真实FFmpeg渲染：18秒、竖屏、字幕、无素材音轨，生成可
     await writeFile(join(job, "narration-1.wav"), musicBed(18, false));
     for (const options of [
       { subtitles: false, narration: false, music: false },
-      { subtitles: true, narration: true, music: true },
+      {
+        subtitles: true,
+        narration: true,
+        music: true,
+        subtitleFont: "serif",
+        subtitleSize: 76,
+        subtitleOutline: 5,
+        subtitlePosition: 68,
+      },
     ]) {
       const fixture = JSON.parse(
         await readFile(join(job, "input.json"), "utf8"),
@@ -353,6 +365,6 @@ test("最终剪辑保留AI镜头顺序，不再被分数和标签重新排序", 
   const plan = automaticPlan(a, 18, true);
   assert.deepEqual(
     plan.map((c) => c.asset_id),
-    a.slice(0, 6).map((a) => a.id),
+    a.slice(0, plan.length).map((a) => a.id),
   );
 });

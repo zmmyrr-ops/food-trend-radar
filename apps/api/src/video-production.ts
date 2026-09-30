@@ -1,14 +1,19 @@
+import {
+  productionOptionsSchema,
+  subtitleFonts,
+  type VideoProductionOptions,
+} from "@radar/contracts";
 import { z } from "zod";
 import { bailianError } from "./bailian-error.js";
 export const narrationModel = "qwen3-tts-instruct-flash";
 export const scriptSchema = z.object({
-  sentences: z.array(z.string().trim().min(4).max(36)).min(2).max(5),
+  sentences: z.array(z.string().trim().min(4).max(120)).min(1).max(5),
 });
 export function validateScript(raw: unknown, seconds: number) {
   const { sentences } = scriptSchema.parse(raw);
   const text = sentences.join("");
   if (
-    text.length > Math.floor(seconds * 4) ||
+    text.length > Math.floor(seconds * 5.8) ||
     text.length < 15 ||
     /[{}<>\[\]【】\\]|全网最低|闭眼冲|百分百|天花板/.test(text)
   )
@@ -27,7 +32,15 @@ export function subtitleCues(
     if (!Number.isFinite(duration) || duration <= 0)
       throw Error("字幕时长无效");
     // Phrase-level subtitles keep punctuation; no second, independently generated text.
-    const parts = s.match(/[^，。！？；、]{1,14}[，。！？；、]?/gu) || [s];
+    const phrases = s.match(/[^，。！？；、]+[，。！？；、]?/gu) || [s];
+    const parts = phrases.flatMap((phrase) => {
+      const chars = Array.from(phrase);
+      const count = Math.ceil(chars.length / 10);
+      const size = Math.ceil(chars.length / count);
+      return Array.from({ length: count }, (_, index) =>
+        chars.slice(index * size, (index + 1) * size).join(""),
+      ).filter(Boolean);
+    });
     const total = parts.join("").length;
     const out = parts.map((text) => {
       const start = at;
@@ -37,13 +50,23 @@ export function subtitleCues(
     return out;
   });
 }
-export function assDocument(cues: Cue[], w: number, h: number) {
+export function assDocument(
+  cues: Cue[],
+  w: number,
+  h: number,
+  raw: Partial<VideoProductionOptions> = {},
+) {
+  const options = productionOptionsSchema.parse(raw);
+  const font = subtitleFonts.find((f) => f.id === options.subtitleFont)!;
+  const color = (hex: string) =>
+    "&H00" + hex.slice(5, 7) + hex.slice(3, 5) + hex.slice(1, 3);
+
   const time = (n: number) => {
     const t = Math.round(n * 100);
     return `${Math.floor(t / 360000)}:${String(Math.floor(t / 6000) % 60).padStart(2, "0")}:${String(Math.floor(t / 100) % 60).padStart(2, "0")}.${String(t % 100).padStart(2, "0")}`;
   };
   return (
-    `[Script Info]\nScriptType: v4.00+\nPlayResX: ${w}\nPlayResY: ${h}\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, OutlineColour, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV\nStyle: Default,Noto Sans CJK SC,${Math.round(w * 0.047)},&H00FFFFFF,&H00202020,1,2,0,2,45,45,${Math.round(h * 0.15)}\n[Events]\nFormat: Layer, Start, End, Style, Text\n` +
+    `[Script Info]\nScriptType: v4.00+\nPlayResX: ${w}\nPlayResY: ${h}\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, OutlineColour, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV\nStyle: Default,${font.family},${Math.round((options.subtitleSize * w) / 1080)},${color(options.subtitleColor)},${color(options.subtitleOutlineColor)},1,${(options.subtitleOutline * w) / 1080},0,2,45,45,${Math.round(h * (1 - options.subtitlePosition / 100))}\n[Events]\nFormat: Layer, Start, End, Style, Text\n` +
     cues
       .map(
         (c) =>
@@ -57,7 +80,9 @@ export async function synthesizeSpeech(
   key: string,
   text: string,
   fetcher: typeof fetch = fetch,
+  voice = "Cherry",
 ): Promise<Buffer> {
+  voice = productionOptionsSchema.parse({ voice }).voice;
   const res = await fetcher(
     "https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation",
     {
@@ -71,10 +96,10 @@ export async function synthesizeSpeech(
         model: narrationModel,
         input: {
           text,
-          voice: "Cherry",
+          voice,
           language_type: "Chinese",
           instructions:
-            "自然中文探店分享，亲切清楚，有轻微起伏，适中偏快的语速，不叫卖，不夸张，不加词。",
+            "自然中文探店分享，亲切清楚，有轻微起伏，明快流畅的语速，约每秒五个汉字，句间停顿短而自然，不叫卖，不夸张，不加词。",
           optimize_instructions: true,
         },
       }),

@@ -31,12 +31,10 @@ export type Asset = {
   best_end?: number;
   hash?: string;
 };
-export const productionOptionsSchema = z.object({
-  subtitles: z.boolean().default(false),
-  narration: z.boolean().default(false),
-  music: z.boolean().default(false),
-});
-export type ProductionOptions = z.infer<typeof productionOptionsSchema>;
+export { productionOptionsSchema } from "@radar/contracts";
+export type ProductionOptions = Partial<
+  import("@radar/contracts").VideoProductionOptions
+> & { subtitles: boolean; narration: boolean; music: boolean };
 export type VideoProject = {
   production_options?: ProductionOptions;
   script?: string;
@@ -124,7 +122,7 @@ export function automaticPlan(
   );
   // One use per asset; varied tags win ties. Never loop a short clip to fill time.
   const selected: Asset[] = [];
-  while (usable.length && selected.length < 10) {
+  while (usable.length && selected.length < 12) {
     if (!preserveOrder) usable.sort((a, b) => value(b) - value(a));
     selected.push(usable.shift()!);
   }
@@ -136,13 +134,34 @@ export function automaticPlan(
   }
   let remaining = seconds;
   const out: Clip[] = [];
-  for (const a of selected) {
+  for (const [index, a] of selected.entries()) {
     if (remaining <= 0) break;
     const capacity =
       a.kind === "image"
         ? 3
         : Math.min(3, (a.best_end ?? a.duration ?? 0) - (a.best_start ?? 0));
-    const duration = Math.min(capacity, remaining);
+    const later = selected
+      .slice(index + 1)
+      .reduce(
+        (sum, next) =>
+          sum +
+          (next.kind === "image"
+            ? 3
+            : Math.min(
+                3,
+                (next.best_end ?? next.duration ?? 0) - (next.best_start ?? 0),
+              )),
+        0,
+      );
+    const beat = [1.7, 1.4, 2, 1.6, 1.8][index % 5];
+    let duration = Math.min(
+      capacity,
+      remaining,
+      Math.max(beat, remaining - later),
+    );
+    if (remaining - duration > 0 && remaining - duration < 1)
+      duration = Math.min(capacity, remaining);
+    duration = Math.round(duration * 30) / 30;
     if (duration < 1) {
       if (out.length) {
         const last = out[out.length - 1];

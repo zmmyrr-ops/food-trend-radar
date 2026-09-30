@@ -32,7 +32,9 @@ test("option combinations remain independent and reject string booleans", () => 
       narration: !!(mask & 2),
       music: !!(mask & 4),
     };
-    assert.deepEqual(productionOptionsSchema.parse(value), value);
+    const parsed = productionOptionsSchema.parse(value);
+    for (const key of ["music", "narration", "subtitles"] as const)
+      assert.equal(parsed[key], value[key]);
   }
   assert.equal(
     productionOptionsSchema.safeParse({ music: "false" }).success,
@@ -105,4 +107,59 @@ test("TTS limits download host and never forwards key to audio storage", async (
       })) as typeof fetch),
     /地址/,
   );
+});
+
+test("subtitle controls scale identically for preview and export and reject injections", () => {
+  const options = {
+    subtitleFont: "serif" as const,
+    subtitleSize: 72,
+    subtitlePosition: 70,
+    subtitleOutline: 6,
+    subtitleColor: "#FFCC00",
+    subtitleOutlineColor: "#112233",
+  };
+  const preview = assDocument([], 720, 1280, options);
+  assert.match(
+    preview,
+    /Noto Serif SC,48,&H0000CCFF,&H00332211,1,4,0,2,45,45,384/,
+  );
+  assert.match(
+    assDocument([], 1080, 1920, options),
+    /Noto Serif SC,72,.*1,6,0,2,45,45,576/,
+  );
+  assert.throws(() =>
+    assDocument([], 720, 1280, { subtitleColor: "white,evil" }),
+  );
+  assert.equal(
+    productionOptionsSchema.safeParse({ voice: "arbitrary" }).success,
+    false,
+  );
+  assert.equal(
+    productionOptionsSchema.safeParse({ subtitleSize: 200 }).success,
+    false,
+  );
+});
+test("selected voice is sent to provider", async () => {
+  let sent = "";
+  const mock = (async (_url: unknown, init: any) => {
+    if (init?.method === "POST") {
+      sent = JSON.parse(init.body).input.voice;
+      return Response.json({
+        output: {
+          audio: {
+            url: "https://dashscope-result-bj.oss-cn-beijing.aliyuncs.com/sample.wav",
+          },
+        },
+      });
+    }
+    return new Response(Buffer.alloc(100));
+  }) as typeof fetch;
+  await synthesizeSpeech("test", "你好", mock, "Ethan");
+  assert.equal(sent, "Ethan");
+});
+
+test("natural paragraph output need not fail because model returned a single sentence entry", () => {
+  const paragraph =
+    "先看彩色球池和滑梯，再看看沙池里的小挖掘机。几种不同的场景连在一起，想换个室内去处可以先看看这里。";
+  assert.deepEqual(validateScript({ sentences: [paragraph] }, 12), [paragraph]);
 });

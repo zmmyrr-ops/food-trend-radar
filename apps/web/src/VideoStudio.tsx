@@ -1,3 +1,9 @@
+import {
+  defaultVideoProductionOptions,
+  subtitleFonts,
+  type VideoProductionOptions,
+  videoVoices,
+} from "@radar/contracts";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
@@ -22,16 +28,8 @@ type Clip = {
   duration: number;
   caption: string;
 };
-type ProductionOptions = {
-  subtitles: boolean;
-  narration: boolean;
-  music: boolean;
-};
-const defaultOptions: ProductionOptions = {
-  subtitles: false,
-  narration: false,
-  music: false,
-};
+type ProductionOptions = VideoProductionOptions;
+const defaultOptions = defaultVideoProductionOptions;
 type Project = {
   production_options?: ProductionOptions;
   script?: string;
@@ -138,7 +136,7 @@ export function VideoStudio() {
   function load(p: Project) {
     setProject(p);
     setHistory((h) => [p, ...h.filter((x) => x.id !== p.id)]);
-    setOptions(p.production_options || defaultOptions);
+    setOptions({ ...defaultOptions, ...p.production_options });
     const u = new URL(location.href);
     u.searchParams.set("project", p.id);
     window.history.replaceState({}, "", u);
@@ -259,7 +257,7 @@ export function VideoStudio() {
   const optionsChanged =
     !!project &&
     JSON.stringify(options) !==
-      JSON.stringify(project.production_options || defaultOptions);
+      JSON.stringify({ ...defaultOptions, ...project.production_options });
   const production = project ? videoProgress(project) : null;
   const locked = busy || active(project),
     preview =
@@ -693,6 +691,41 @@ function ProductionSettings({
   setOptions: (v: ProductionOptions) => void;
   disabled: boolean;
 }) {
+  const [playing, setPlaying] = useState(false);
+  const [audioError, setAudioError] = useState("");
+  const audio = useRef<HTMLAudioElement | null>(null);
+  useEffect(
+    () => () => {
+      audio.current?.pause();
+    },
+    [],
+  );
+  useEffect(() => {
+    audio.current?.pause();
+    setPlaying(false);
+  }, [options.voice, options.narration]);
+  const update = (key: keyof ProductionOptions, value: string | number) =>
+    setOptions({ ...options, [key]: value });
+  const preview = () => {
+    if (playing) {
+      audio.current?.pause();
+      setPlaying(false);
+      return;
+    }
+    setAudioError("");
+    const player = new Audio(appUrl(`/voice-previews/${options.voice}.wav`));
+    audio.current = player;
+    player.onended = () => setPlaying(false);
+    player.onerror = () => {
+      setPlaying(false);
+      setAudioError("试听暂不可用，请稍后重试");
+    };
+    setPlaying(true);
+    void player.play().catch(() => {
+      setPlaying(false);
+      setAudioError("试听暂不可用，请稍后重试");
+    });
+  };
   return (
     <div className="studio-production-options">
       {(
@@ -717,6 +750,123 @@ function ProductionSettings({
           </span>
         </label>
       ))}
+      {options.narration && (
+        <div className="studio-style-panel">
+          <span className="studio-setting-title">口播音色</span>
+          <div className="studio-voice-row">
+            <select
+              aria-label="口播音色"
+              disabled={disabled}
+              value={options.voice}
+              onChange={(e) => update("voice", e.target.value)}
+            >
+              {videoVoices.map((v) => (
+                <option key={v.id} value={v.id}>
+                  {v.name}
+                </option>
+              ))}
+            </select>
+            <button type="button" onClick={preview}>
+              {playing ? "停止试听" : "▶ 试听"}
+            </button>
+          </div>
+          {audioError && <small role="alert">{audioError}</small>}
+        </div>
+      )}
+      {options.subtitles && (
+        <div className="studio-style-panel">
+          <span className="studio-setting-title">字幕样式</span>
+          <div className="studio-caption-sample" aria-label="字幕样式预览">
+            <span
+              style={{
+                fontFamily: subtitleFonts.find(
+                  (f) => f.id === options.subtitleFont,
+                )?.family,
+                fontSize: options.subtitleSize / 6,
+                bottom: `${100 - options.subtitlePosition}%`,
+                color: options.subtitleColor,
+                WebkitTextStroke: `${options.subtitleOutline / 6}px ${options.subtitleOutlineColor}`,
+                paintOrder: "stroke fill",
+              }}
+            >
+              发现下一家好店
+            </span>
+          </div>
+          <label>
+            字体
+            <select
+              disabled={disabled}
+              value={options.subtitleFont}
+              onChange={(e) => update("subtitleFont", e.target.value)}
+            >
+              {subtitleFonts.map((f) => (
+                <option key={f.id} value={f.id}>
+                  {f.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            字号 · {options.subtitleSize}
+            <input
+              aria-label="字幕字号"
+              disabled={disabled}
+              type="range"
+              min="36"
+              max="88"
+              value={options.subtitleSize}
+              onChange={(e) => update("subtitleSize", +e.target.value)}
+            />
+          </label>
+          <label>
+            垂直位置 · {options.subtitlePosition}%
+            <input
+              aria-label="字幕位置"
+              disabled={disabled}
+              type="range"
+              min="20"
+              max="88"
+              value={options.subtitlePosition}
+              onChange={(e) => update("subtitlePosition", +e.target.value)}
+            />
+          </label>
+          <label>
+            描边 · {options.subtitleOutline}
+            <input
+              aria-label="字幕描边"
+              disabled={disabled}
+              type="range"
+              min="0"
+              max="8"
+              step="0.5"
+              value={options.subtitleOutline}
+              onChange={(e) => update("subtitleOutline", +e.target.value)}
+            />
+          </label>
+          <div className="studio-voice-row">
+            <label>
+              文字
+              <input
+                aria-label="文字颜色"
+                disabled={disabled}
+                type="color"
+                value={options.subtitleColor}
+                onChange={(e) => update("subtitleColor", e.target.value)}
+              />
+            </label>
+            <label>
+              描边
+              <input
+                aria-label="描边颜色"
+                disabled={disabled}
+                type="color"
+                value={options.subtitleOutlineColor}
+                onChange={(e) => update("subtitleOutlineColor", e.target.value)}
+              />
+            </label>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
