@@ -105,6 +105,7 @@ export async function createCouponMedia(
     ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS target_count int NOT NULL DEFAULT 40;
     ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS exhausted boolean NOT NULL DEFAULT false;
     ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS search_id text;
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS refresh_details boolean NOT NULL DEFAULT false;
     INSERT INTO coupon_media_gate(id) VALUES(1) ON CONFLICT DO NOTHING;
     UPDATE coupon_media_jobs SET state='interrupted',error_code='INTERRUPTED',updated_at=now() WHERE state IN ('queued','running');
   `);
@@ -293,8 +294,8 @@ export async function createCouponMedia(
         let found: LiveResource[];
         const cache = (
           await db.query<any>(
-            "SELECT resources FROM coupon_media_cache WHERE note_id=$1 AND observed_at>now()-interval '4 hours'",
-            [note.id],
+            "SELECT resources FROM coupon_media_cache WHERE note_id=$1 AND observed_at>now()-interval '4 hours' AND (NOT $2::boolean OR observed_at >= $3::timestamptz)",
+            [note.id, job.refresh_details, job.created_at],
           )
         ).rows[0];
         if (cache) found = cache.resources;
@@ -309,6 +310,7 @@ export async function createCouponMedia(
             },
             job.id,
           );
+          if (await cancelled(job.id)) return;
           found = extractLiveResources(
             detail,
             note.id,
@@ -427,20 +429,21 @@ export async function createCouponMedia(
       ).toISOString(),
     };
   }
-  async function start(brand: string, product: string, more = false) {
+  async function start(
+    brand: string,
+    product: string,
+    more = false,
+    reset = false,
+  ) {
     await credentials();
     const coupon = (
       await db.query<any>(
-        "SELECT b.name,b.aliases,i.payload->>'name' AS title FROM coupon_items i JOIN brands b ON b.id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 AND b.active AND i.payload->>'identity'='name_match' ORDER BY i.observed_at DESC LIMIT 1",
+        "SELECT b.name,b.aliases FROM coupon_items i JOIN brands b ON b.id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 AND b.active AND i.payload->>'identity'='name_match' ORDER BY i.observed_at DESC LIMIT 1",
         [brand, product],
       )
     ).rows[0];
     if (!coupon) throw Error("COUPON_NOT_FOUND");
-    const words = String(coupon.title)
-      .replace(/【[^】]*】|\[[^\]]*\]/g, "")
-      .replace(/\s+/g, " ")
-      .slice(0, 45);
-    const keyword = `${coupon.name} ${words}`.slice(0, 80);
+    const keyword = coupon.name;
     const result = await db.transaction(async (tx) => {
       const old = (
         await tx.query<any>(
@@ -448,17 +451,21 @@ export async function createCouponMedia(
           [brand, product],
         )
       ).rows[0];
+      if (reset && old && ["queued", "running"].includes(old.state))
+        throw Error("JOB_RUNNING");
       if (
+        !reset &&
         old &&
         (["queued", "running"].includes(old.state) ||
           (!more &&
+            old.keyword === keyword &&
             old.state === "complete" &&
             Date.now() - new Date(old.updated_at).getTime() < TTL) ||
           (old.state === "failed" &&
             Date.now() - new Date(old.updated_at).getTime() < 60_000))
       )
         return old;
-      if (more && old) {
+      if (more && old && !reset && old.keyword === keyword) {
         if (old.exhausted || old.resources.length >= 200) return old;
         return (
           await tx.query<any>(
@@ -469,13 +476,14 @@ export async function createCouponMedia(
       }
       return (
         await tx.query<any>(
-          "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state) VALUES($1,$2,$3,$4,$5,'queued') ON CONFLICT(brand_id,product_id) DO UPDATE SET id=excluded.id,keyword=excluded.keyword,names=excluded.names,state='queued',resources='[]',next_page=1,seen_notes='[]',target_count=40,exhausted=false,search_id=NULL,searched=0,inspected=0,error_code=NULL,created_at=now(),updated_at=now() RETURNING *",
+          "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,refresh_details) VALUES($1,$2,$3,$4,$5,'queued',$6) ON CONFLICT(brand_id,product_id) DO UPDATE SET id=excluded.id,keyword=excluded.keyword,names=excluded.names,state='queued',resources='[]',next_page=1,seen_notes='[]',target_count=40,exhausted=false,search_id=NULL,refresh_details=excluded.refresh_details,searched=0,inspected=0,error_code=NULL,created_at=now(),updated_at=now() RETURNING *",
           [
             randomUUID(),
             brand,
             product,
             keyword,
             JSON.stringify([coupon.name, ...coupon.aliases]),
+            reset,
           ],
         )
       ).rows[0];
@@ -500,26 +508,44 @@ export async function createCouponMedia(
     });
     app.post("/api/v3/coupon-media", async (req, res) => {
       const v = input
-        .extend({ more: z.boolean().default(false) })
+        .extend({
+          more: z.boolean().default(false),
+          reset: z.boolean().default(false),
+        })
         .strict()
+        .refine((v) => !(v.more && v.reset), "不能同时追加和重置")
         .parse(req.body);
       try {
-        res
-          .status(202)
-          .json({ job: await start(v.brand_id, v.product_id, v.more) });
+        res.status(202).json({
+          job: await start(v.brand_id, v.product_id, v.more, v.reset),
+        });
       } catch (e) {
         const code = e instanceof Error ? e.message : "INTERNAL_ERROR";
-        res.status(code === "COUPON_NOT_FOUND" ? 404 : 503).json({
-          error: {
-            code: ["COUPON_NOT_FOUND", "AUTH_MISSING"].includes(code)
-              ? code
-              : "INTERNAL_ERROR",
-            message:
-              code === "AUTH_MISSING"
-                ? "小红书请求凭据未配置"
-                : "无法创建素材任务",
-          },
-        });
+        res
+          .status(
+            code === "JOB_RUNNING"
+              ? 409
+              : code === "COUPON_NOT_FOUND"
+                ? 404
+                : 503,
+          )
+          .json({
+            error: {
+              code: [
+                "COUPON_NOT_FOUND",
+                "AUTH_MISSING",
+                "JOB_RUNNING",
+              ].includes(code)
+                ? code
+                : "INTERNAL_ERROR",
+              message:
+                code === "JOB_RUNNING"
+                  ? "请先停止当前素材获取，再重置"
+                  : code === "AUTH_MISSING"
+                    ? "小红书请求凭据未配置"
+                    : "无法创建素材任务",
+            },
+          });
       }
     });
     app.post("/api/v3/coupon-media/:id/cancel", async (req, res) => {

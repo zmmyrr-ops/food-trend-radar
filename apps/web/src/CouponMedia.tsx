@@ -66,7 +66,7 @@ function MediaTile({ item }: { item: Resource }) {
               <span>实况预览</span>
             )}
             <span className="live-media-play">
-              {failed ? "链接已失效，请查看原文" : "▶ 实况"}
+              {failed ? "链接无法播放，可重置重新获取" : "▶ 实况"}
             </span>
           </button>
         )}
@@ -136,7 +136,7 @@ export function CouponMedia({
       clearInterval(t);
     };
   }, [open, read]);
-  async function acquire(more = false) {
+  async function acquire(more = false, reset = false) {
     setBusy(true);
     setError("");
     try {
@@ -147,6 +147,7 @@ export function CouponMedia({
           brand_id: brandId,
           product_id: productId,
           more,
+          reset,
         }),
       });
       const data = await r.json();
@@ -229,6 +230,15 @@ export function CouponMedia({
                     : "再找一些 · +20"}
               </button>
             )}
+            {job && (
+              <button
+                disabled={busy || !!running}
+                onClick={() => void acquire(false, true)}
+                title="清空本券素材和搜索进度，重新获取最新链接；已制作的视频保留"
+              >
+                重置并重新获取
+              </button>
+            )}
             {running && <button onClick={() => void cancel()}>停止</button>}
           </div>
           <p className="coupon-media-status" aria-live="polite">
@@ -251,7 +261,10 @@ export function CouponMedia({
           {!!job?.resources.length && (
             <div className="live-media-grid">
               {job.resources.map((item) => (
-                <MediaTile key={item.id} item={item} />
+                <MediaTile
+                  key={`${job.id}:${item.id}:${item.video_url}`}
+                  item={item}
+                />
               ))}
             </div>
           )}

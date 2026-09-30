@@ -198,6 +198,9 @@ test("授权失败后不反复请求，不把错误当作无素材", async () =>
     await service.start(f.brand, "coupon");
     await service.drain();
     assert.equal(requests, 1);
+    await service.start(f.brand, "coupon", false, true);
+    await service.drain();
+    assert.equal(requests, 1); // 重置不解除账号失效或风控闸门。
   } finally {
     await service.stop();
     await f.cleanup();
@@ -235,6 +238,86 @@ test("等待间隔时取消，不再发下一次详情请求", async () => {
       (await f.db.query<any>("SELECT state FROM coupon_media_jobs")).rows[0]
         .state,
       "cancelled",
+    );
+  } finally {
+    await service.stop();
+    await f.cleanup();
+  }
+});
+
+test("仅搜索品牌；重置绕过失效详情缓存与耗尽状态，保持其他券素材", async () => {
+  const f = await fixture();
+  const queries: any[] = [];
+  let details = 0;
+  const service = await createCouponMedia(f.db, f.path, {
+    wait: async () => {},
+    transport: async (url, _headers, body) => {
+      if (url === search) {
+        queries.push(JSON.parse(body));
+        return {
+          success: true,
+          code: 0,
+          data: {
+            has_more: false,
+            items: [{ model_type: "note", id: "same", xsec_token: "token" }],
+          },
+        };
+      }
+      const raw = response("same", 2);
+      for (const image of raw.data.items[0].note_card.image_list)
+        image.stream.EF4[0].master_url += `&generation=${++details}`;
+      return raw;
+    },
+  });
+  try {
+    const first = await service.start(f.brand, "coupon");
+    await service.drain();
+    const before = (await f.db.query<any>("SELECT * FROM coupon_media_jobs"))
+      .rows[0];
+    assert.equal(before.exhausted, true);
+    await f.db.query(
+      "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,resources) VALUES($1,$2,'other','品牌甲','[]','complete',$3)",
+      [randomUUID(), f.brand, JSON.stringify(before.resources)],
+    );
+    const reset = await service.start(f.brand, "coupon", false, true);
+    assert.notEqual(reset.id, first.id);
+    assert.equal(reset.resources.length, 0);
+    assert.equal(reset.next_page, 1);
+    assert.equal(reset.exhausted, false);
+    await service.drain();
+    const after = (
+      await f.db.query<any>(
+        "SELECT * FROM coupon_media_jobs WHERE product_id='coupon'",
+      )
+    ).rows[0];
+    assert.equal(details, 4);
+    assert.notEqual(
+      after.resources[0].video_url,
+      before.resources[0].video_url,
+    );
+    assert.deepEqual(
+      queries.map((q) => q.keyword),
+      ["品牌甲", "品牌甲"],
+    );
+    assert.deepEqual(
+      queries.map((q) => q.page),
+      [1, 1],
+    );
+    assert.notEqual(queries[0].search_id, queries[1].search_id);
+    assert.deepEqual(
+      (
+        await f.db.query<any>(
+          "SELECT resources FROM coupon_media_jobs WHERE product_id='other'",
+        )
+      ).rows[0].resources,
+      before.resources,
+    );
+    await f.db.exec(
+      "UPDATE coupon_media_jobs SET state='running' WHERE product_id='coupon'",
+    );
+    await assert.rejects(
+      service.start(f.brand, "coupon", false, true),
+      /JOB_RUNNING/,
     );
   } finally {
     await service.stop();

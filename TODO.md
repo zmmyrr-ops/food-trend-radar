@@ -65,3 +65,9 @@
 - [x] 本批148条加入现有单并发抖音队列；沿用3–5秒间隔，不新增并发采集器。入库不代表已取得抖音票券。
 
 证据与续采文件：`catalog/dianping-extra-channels-access-2026-09-30.json`、`catalog/dianping-extra-channels-policy-2026-09-30.json`、`catalog/dianping-extra-channels-popularity-2026-09-30.json`、`catalog/dianping-extra-channels-reviewed-2026-09-30.json`、`catalog/dianping-extra-channels-import-2026-09-30.json`。
+
+## 素材搜索与失效重置（2026-09-30）
+
+- [x] 小红书素材仅用品牌名称搜索；旧关键词任务追加时重新开始品牌搜索。
+- [x] 每张券增加“重置并重新获取”：清空本券素材、翻页和去重状态，从第一页重新搜索，绕过重置前的详情缓存。其他券素材与已制作视频保留；运行任务需先停止。
+- [x] 保持全局单并发、3–5秒间隔及凭据失效/风控暂停；重置不能修复失效账号凭据。覆盖品牌关键词、签名链接更新、耗尽重置、其他券保留及风控闸门回归。
