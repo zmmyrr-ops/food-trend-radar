@@ -684,16 +684,20 @@ export function VideoStudio() {
                         />
                       )
                     ) : null}
+                    <div className="studio-asset-result">
+                      <span
+                        className={`studio-asset-status ${a.accepted === true ? "passed" : a.accepted === false || a.reason ? "rejected" : "pending"}`}
+                      >
+                        {a.accepted === true
+                          ? "✓ 已通过"
+                          : a.accepted === false || a.reason
+                            ? "未通过"
+                            : "待分析"}
+                      </span>
+                      {isAdmin && a.score != null && <span>{a.score}分</span>}
+                    </div>
                     {isAdmin && (
                       <>
-                        <strong>
-                          {a.accepted
-                            ? "入围"
-                            : a.reason
-                              ? "未选用"
-                              : "等待分析"}{" "}
-                          {a.score ?? ""}
-                        </strong>
                         <p>{a.reason || a.title}</p>
                         <small>{a.author}</small>
                       </>

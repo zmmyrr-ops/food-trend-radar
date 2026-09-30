@@ -447,3 +447,33 @@ main.video-studio.creator-workbench {
 .creator-workbench .studio-preview-placeholder {
   box-sizing: border-box;
 }
+
+.creator-workbench .studio-asset-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 2px;
+  font-size: 11px;
+  color: #8190a4;
+}
+.creator-workbench .studio-asset-status {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.creator-workbench .studio-asset-status.passed {
+  color: #187451;
+  background: #eaf7f0;
+}
+.creator-workbench .studio-asset-status.rejected {
+  color: #aa4e4e;
+  background: #fff0f0;
+}
+.creator-workbench .studio-asset-status.pending {
+  color: #64748b;
+  background: #eef2f7;
+}
