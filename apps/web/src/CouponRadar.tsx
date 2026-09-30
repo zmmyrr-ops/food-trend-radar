@@ -7,6 +7,7 @@ import { CouponMedia } from "./CouponMedia";
 import { CouponPicks } from "./CouponPicks";
 import { CouponRules } from "./CouponRules";
 import { CouponScoreHistory } from "./CouponScoreHistory";
+import { CouponStoreSummary } from "./CouponStoreSummary";
 import { CouponStores } from "./CouponStores";
 import { OperationsPanel } from "./OperationsPanel";
 import { SalesHeatPanel } from "./SalesHeatPanel";
@@ -687,6 +688,10 @@ export function CouponRadar() {
                   {x.brand_name} · {labels[x.kind] ?? x.kind}
                 </small>
                 <h3>{x.payload.name}</h3>
+                <CouponStoreSummary
+                  brandId={x.brand_id}
+                  productId={x.payload.product_id}
+                />
                 {x.opportunity && (
                   <p>
                     可在销量热度榜查看月售变化；完整价值与综合评分仍待核验。

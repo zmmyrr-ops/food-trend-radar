@@ -60,7 +60,13 @@ export function couponUseOutlook(
       const parsed: typeof exclusions = [];
       let recognized = true;
       for (const raw of match[1].split(/[、,;；]/)) {
-        const token = raw.trim();
+        const token = raw
+          .trim()
+          .replace(/(\d{4})\.(\d{2})\.(\d{2})/g, "$1-$2-$3")
+          .replace(
+            /^(国庆节|中秋节|劳动节|春节|元旦|清明节|端午节)\(\d{2}\.\d{2}-\d{2}\.\d{2}\)$/,
+            "$1",
+          );
         if (weekdays.includes(token))
           parsed.push({ kind: "weekday", values: [token], evidence: content });
         else if (holidayNames.includes(token))

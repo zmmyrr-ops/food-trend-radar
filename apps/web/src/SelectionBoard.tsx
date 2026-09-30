@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { appFetch } from "./app-url";
 import { CouponConditionComparison } from "./CouponConditionComparison";
 import { CouponRules } from "./CouponRules";
+import { CouponStoreSummary } from "./CouponStoreSummary";
 import { CouponStores } from "./CouponStores";
 import { CouponUseOutlook, type UseOutlook } from "./CouponUseOutlook";
 
@@ -271,6 +272,7 @@ export function SelectionBoard({ brandId }: { brandId: string }) {
               {x.disposition === "watching" ? " · 已关注" : ""}
             </small>
             <h3>{x.title}</h3>
+            <CouponStoreSummary brandId={x.brand_id} productId={x.product_id} />
             <p>
               {x.kind === "first_observed" || x.previous_price_fen === null ? (
                 "当前价格 "

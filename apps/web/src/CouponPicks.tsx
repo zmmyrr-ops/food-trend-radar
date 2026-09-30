@@ -3,6 +3,7 @@ import { appFetch, appUrl } from "./app-url";
 import { CouponConditionComparison } from "./CouponConditionComparison";
 import { CouponMedia } from "./CouponMedia";
 import { CouponRules } from "./CouponRules";
+import { CouponStoreSummary } from "./CouponStoreSummary";
 import { CouponStores } from "./CouponStores";
 import { PickEvaluation } from "./PickEvaluation";
 
@@ -25,6 +26,13 @@ type Pick = {
     days: { date: string; status: string; reasons: string[] }[];
   };
   priority: {
+    availability_gate?: {
+      before_score: number;
+      penalty: number;
+      reason: string;
+      historical: boolean;
+      evidence: string[];
+    };
     raw_score: number;
     value_gate: { factor: number; eligible: boolean; reason: string };
     score: number;
@@ -291,6 +299,10 @@ export function CouponPicks({ brandId }: { brandId: string }) {
                           : "销量观察"}
                 </small>
                 <h3>{x.title}</h3>
+                <CouponStoreSummary
+                  brandId={x.brand_id}
+                  productId={x.product_id}
+                />
                 <div className="coupon-stats">
                   <div>
                     <span>票面起价</span>
@@ -341,6 +353,24 @@ export function CouponPicks({ brandId }: { brandId: string }) {
                       ? "部分日期不可用，请查看条件"
                       : "适用性待核验"}
                 </p>
+                {x.priority.availability_gate &&
+                  (x.priority.availability_gate.penalty > 0 ||
+                    x.priority.availability_gate.evidence.length > 0) && (
+                    <div className="coupon-use-warning">
+                      <strong>{x.priority.availability_gate.reason}</strong>
+                      <p>
+                        使用限制调整：
+                        {x.priority.availability_gate.before_score.toFixed(1)} →{" "}
+                        {x.priority.score.toFixed(1)} 分
+                      </p>
+                      <details>
+                        <summary>查看限制原文</summary>
+                        {x.priority.availability_gate.evidence.map((t) => (
+                          <p key={t}>{t}</p>
+                        ))}
+                      </details>
+                    </div>
+                  )}
                 <div className="card-footer">
                   <small>
                     {new Date(x.observed_at).toLocaleString("zh-CN")}
@@ -401,7 +431,11 @@ export function CouponPicks({ brandId }: { brandId: string }) {
                   <p>
                     基础分 {x.priority.raw_score.toFixed(1)} × 优惠系数{" "}
                     {x.priority.value_gate.factor.toFixed(2)} ={" "}
-                    {x.priority.score.toFixed(1)} 分。
+                    {(
+                      x.priority.availability_gate?.before_score ??
+                      x.priority.score
+                    ).toFixed(1)}{" "}
+                    分（使用限制调整前）。
                     {x.priority.value_gate.reason}
                   </p>
                   <p>

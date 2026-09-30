@@ -8,6 +8,7 @@ import type { BoardCandidate } from "./opportunity-board.js";
 import { pickPriority } from "./pick-priority.js";
 import type { RuleText } from "./rule-structure.js";
 import type { createSalesHeat } from "./sales-heat.js";
+import { applyUsePenalty } from "./use-priority.js";
 
 type Heat = Awaited<
   ReturnType<ReturnType<typeof createSalesHeat>["read"]>
@@ -38,7 +39,14 @@ export function combinePicks(
   watched: { brand_id: string; product_id: string }[] = [],
   rules: PickRules[] = [],
   indices: BrandIndex[] = [],
+  historicalRules: (PickRules & {
+    brand_id: string;
+    price_observed_at: string;
+  })[] = [],
 ) {
+  const historical = new Map(
+    historicalRules.map((r) => [`${r.brand_id}:${r.product_id}`, r]),
+  );
   const byIndex = new Map(indices.map((x) => [x.brand_id, x]));
   const byRules = new Map(rules.map((x) => [`${x.run_id}:${x.product_id}`, x]));
   const watching = new Set(watched.map((x) => `${x.brand_id}:${x.product_id}`));
@@ -60,24 +68,43 @@ export function combinePicks(
         : undefined;
     if (signal?.disposition === "dismissed") return [];
     const evidence = byRules.get(`${latest.run_id}:${x.product_id}`);
+    const outlook = couponUseOutlook(
+      {
+        price_observed_at: latest.observed_at,
+        rules_observed_at: evidence?.observed_at ?? null,
+        rules: evidence?.rules ?? null,
+      },
+      now,
+    );
+    const previousRule = historical.get(`${x.brand_id}:${x.product_id}`);
+    const previousOutlook =
+      outlook.evidence_status !== "current" &&
+      previousRule &&
+      previousRule.run_id !== latest.run_id
+        ? couponUseOutlook(
+            {
+              price_observed_at: previousRule.price_observed_at,
+              rules_observed_at: previousRule.observed_at,
+              rules: previousRule.rules,
+            },
+            now,
+          )
+        : null;
     return [
       {
-        use_outlook: couponUseOutlook(
-          {
-            price_observed_at: latest.observed_at,
-            rules_observed_at: evidence?.observed_at ?? null,
-            rules: evidence?.rules ?? null,
-          },
-          now,
-        ),
+        use_outlook: outlook,
         brand_index: brandIndex ? { ...brandIndex, usable: usableIndex } : null,
-        priority: pickPriority({
-          discount_rate: x.discount.rate,
-          brand_growth: usableIndex ? brandIndex!.mom : null,
-          speed: x.speed,
-          acceleration: x.acceleration,
-          reduction_rate: signal?.reduction_rate ?? null,
-        }),
+        priority: applyUsePenalty(
+          pickPriority({
+            discount_rate: x.discount.rate,
+            brand_growth: usableIndex ? brandIndex!.mom : null,
+            speed: x.speed,
+            acceleration: x.acceleration,
+            reduction_rate: signal?.reduction_rate ?? null,
+          }),
+          outlook,
+          previousOutlook,
+        ),
         query_signature: latest.query_signature,
         brand_id: x.brand_id,
         brand_name: x.brand_name,
@@ -207,6 +234,7 @@ export function picksCsv(items: ReturnType<typeof combinePicks>) {
         "基础分",
         "优惠系数",
         "优惠门槛依据",
+        "使用限制降分依据",
         "已具备指标权重",
         "缺失指标",
         "72小时可用判断",
@@ -238,6 +266,7 @@ export function picksCsv(items: ReturnType<typeof combinePicks>) {
         x.priority.raw_score,
         x.priority.value_gate.factor,
         x.priority.value_gate.reason,
+        x.priority.availability_gate.reason,
         x.priority.coverage,
         x.priority.missing.join("、"),
         x.use_outlook.fully_excluded
@@ -305,8 +334,29 @@ export function createPickReader(
           )
         ).rows
       : [];
+    const historicalRules = db
+      ? (
+          await db.query<
+            PickRules & { brand_id: string; price_observed_at: string }
+          >(
+            `SELECT DISTINCT ON(i.brand_id,r.product_id) i.brand_id,r.run_id,r.product_id,r.observed_at,i.observed_at AS price_observed_at,r.payload->'rules' AS rules
+       FROM coupon_rule_snapshots r JOIN coupon_items i ON i.run_id=r.run_id AND i.product_id=r.product_id
+       JOIN brands b ON b.id=i.brand_id AND b.active
+       WHERE r.observed_at > now()-interval '36 hours' AND i.payload->>'identity'='name_match'
+       ORDER BY i.brand_id,r.product_id,r.observed_at DESC`,
+          )
+        ).rows
+      : [];
     const indices = readIndices ? await readIndices() : [];
-    return combinePicks(heat, signals, Date.now(), watched, rules, indices);
+    return combinePicks(
+      heat,
+      signals,
+      Date.now(),
+      watched,
+      rules,
+      indices,
+      historicalRules,
+    );
   };
 }
 
@@ -369,8 +419,8 @@ export function registerCouponPicks(
           ? { outlook: environment.outlook, source: environment.attribution }
           : null,
         model: {
-          version: "priority-v4",
-          note: "初始规则排序，非爆款概率。先计算基础分，再乘优惠系数min(1,优惠比例/20%)；优惠不足10%或证据不足不进入优先券。优先使用原价折扣，缺失时用历史降价替代，已知低折扣不能被历史降价抵消。销量速度30、加速度15、原价折扣25、较上次降价10、品牌指数10、环境适配10。原价折扣以平台原价为参考，优惠比例达到50%得25分，线性封顶；仅在单一明确售价且原价不低于售价时计算，平台原价不等于历史成交价；缺失项不计分、不重新分配权重。品牌指数使用上海7日搜索指数环比，-25%计0分、持平5分、+25%计10分，线性封顶，超过72小时不计分。天气与节假日目前仅作背景，不推断销量增益。",
+          version: "priority-v5",
+          note: "初始规则排序，非爆款概率。先计算基础分，再乘优惠系数min(1,优惠比例/20%)；优惠不足10%或证据不足不进入优先券。优先使用原价折扣，缺失时用历史降价替代，已知低折扣不能被历史降价抵消。销量速度30、加速度15、原价折扣25、较上次降价10、品牌指数10、环境适配10。原价折扣以平台原价为参考，优惠比例达到50%得25分，线性封顶；仅在单一明确售价且原价不低于售价时计算，平台原价不等于历史成交价；缺失项不计分、不重新分配权重。品牌指数使用上海7日搜索指数环比，-25%计0分、持平5分、+25%计10分，线性封顶，超过72小时不计分。天气仅作背景，不推断销量增益。明确禁用日期按未来72小时受限时长降低优先分，节假日禁用最高20分，全窗口禁用为0分。近36小时历史禁用证据在本轮缺失时仅作待复核提醒并暂限20分，不当作当前确认。",
         },
         counts,
         total: filtered.length,

@@ -37,6 +37,17 @@ test("current details never borrow older rules/stores or another brand baseline,
         [r, b, at],
       );
     }
+    await db.query(
+      "UPDATE coupon_items SET payload=$3 WHERE brand_id=$1 AND run_id=$2",
+      [
+        brand,
+        run,
+        JSON.stringify({ poi_name: "采集关联门店", address: "上海市测试路" }),
+      ],
+    );
+    const source = await currentCouponDetail(db, brand, "1", "stores", now);
+    assert.equal(source.source_shop?.name, "采集关联门店");
+    assert.equal(source.items.length, 0); // Source shop is never fabricated as applicable stores.
     for (const table of ["coupon_rule_snapshots", "coupon_store_snapshots"])
       await db.query(
         `INSERT INTO ${table}(run_id,product_id,payload,observed_at) VALUES($1,'1','{}',$2)`,

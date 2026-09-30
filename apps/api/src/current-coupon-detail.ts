@@ -9,8 +9,12 @@ export async function currentCouponDetail(
   now = Date.now(),
 ) {
   const row = (
-    await db.query<{ run_id: string; observed_at: string | null }>(
-      `SELECT b.run_id,i.observed_at FROM coupon_baselines b JOIN coupon_tasks t ON t.run_id=b.run_id AND t.brand_id=b.brand_id AND t.state='complete' LEFT JOIN coupon_items i ON i.run_id=b.run_id AND i.brand_id=b.brand_id AND i.product_id=$2 WHERE b.brand_id=$1`,
+    await db.query<{
+      run_id: string;
+      observed_at: string | null;
+      payload: { poi_name?: string; address?: string } | null;
+    }>(
+      `SELECT b.run_id,i.observed_at,i.payload FROM coupon_baselines b JOIN coupon_tasks t ON t.run_id=b.run_id AND t.brand_id=b.brand_id AND t.state='complete' LEFT JOIN coupon_items i ON i.run_id=b.run_id AND i.brand_id=b.brand_id AND i.product_id=$2 WHERE b.brand_id=$1`,
       [brand, product],
     )
   ).rows[0];
@@ -29,7 +33,17 @@ export async function currentCouponDetail(
     price_observed_at: row?.observed_at ?? null,
     status,
   };
-  if (status !== "current") return { context, items: [], tasks: [] };
+  const source_shop =
+    kind === "stores" && row?.payload?.poi_name
+      ? {
+          name: row.payload.poi_name,
+          address: row.payload.address || "",
+          observed_at: row.observed_at,
+          semantics: "platform_nearest_poi",
+        }
+      : null;
+  if (status !== "current")
+    return { context, source_shop, items: [], tasks: [] };
   const snapshots =
     kind === "rules" ? "coupon_rule_snapshots" : "coupon_store_snapshots";
   const taskTable =
@@ -50,5 +64,5 @@ export async function currentCouponDetail(
       [row!.run_id, product],
     )
   ).rows;
-  return { context, items, tasks };
+  return { context, source_shop, items, tasks };
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { appFetch, appUrl } from "./app-url";
 import { CouponRules } from "./CouponRules";
+import { CouponStoreSummary } from "./CouponStoreSummary";
 import { CouponStores } from "./CouponStores";
 
 type Item = {
@@ -194,6 +195,10 @@ export function SalesHeatPanel({ brandId }: { brandId: string }) {
               >
                 <small>{x.brand_name}</small>
                 <h3>{x.title}</h3>
+                <CouponStoreSummary
+                  brandId={x.brand_id}
+                  productId={x.product_id}
+                />
                 <p>
                   当前票面起价：
                   {x.price_fen === null
