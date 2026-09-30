@@ -317,85 +317,104 @@ export function CouponRadar({ channel }: { channel: Channel }) {
   return (
     <section className="coupon-radar">
       {error && <p role="alert">{error}</p>}
-      <section className="overview-metrics" aria-label="工作台概览">
-        <article>
-          <span>{channel === "food" ? "美食" : "游玩"}品牌监测</span>
-          <strong>
-            {brands.length ? scopedBrands.length : "—"}
-            <small> 个启用品牌</small>
-          </strong>
-        </article>
-        {account.role === "admin" && (
-          <article>
-            <span>全站采集 · 第 {runs[0]?.round_number ?? "—"} 轮</span>
-            <strong>
-              {runs[0]
-                ? `${runs[0].completed + runs[0].partial} / ${runs[0].total} 已处理`
-                : "—"}
-            </strong>
-            <progress
-              aria-label="本轮品牌处理进度"
-              max={runs[0]?.total || 1}
-              value={(runs[0]?.completed || 0) + (runs[0]?.partial || 0)}
-            />
-            <small className="collection-progress-detail">
-              <span className="collection-progress-summary">
-                完整采集 {runs[0]?.completed ?? 0} · 待核验/未完整{" "}
-                {runs[0]?.partial ?? 0} · 已查 {runs[0]?.pages ?? 0} 页
-              </span>
-              <span
-                className="collection-current-brand"
-                title={runs[0]?.current_brand?.name}
-              >
-                {runs[0]?.current_brand
-                  ? `当前：${runs[0].current_brand.name} · 已查 ${runs[0].current_brand.pages} 页`
-                  : "当前：等待下一品牌"}
-              </span>
-            </small>
-          </article>
-        )}
-        {account.role === "admin" && (
-          <article>
-            <span>采集状态</span>
-            <strong className="status-value">
-              {!status
-                ? "读取中"
-                : status.pause_reason
-                  ? "已暂停"
-                  : status.worker_active
-                    ? "正在采集"
-                    : status.enabled
-                      ? "等待下一轮"
-                      : "循环未开启"}
-            </strong>
-            <small>全天自动循环 · 请求间隔 3–5 秒</small>
-            <small>
-              最近一轮用时：
-              {runs.find((r) => r.finished_at)?.duration_seconds != null
-                ? `${Math.round(runs.find((r) => r.finished_at)!.duration_seconds! / 60)} 分钟`
-                : "待首轮完成"}
-            </small>
-          </article>
-        )}
-        <article>
-          <span>上海 · 未来72小时</span>
-          <strong className="status-value">
+      {account.role !== "admin" && (
+        <div className="radar-context-line" aria-label="频道概况">
+          <span>
+            {scopedBrands.length} 个{channel === "food" ? "美食" : "游玩"}品牌
+          </span>
+          <span>
+            上海 ·{" "}
             {environment?.calendar.name ||
               (environment?.calendar.kind === "weekend"
                 ? "周末"
                 : environment?.calendar.kind === "workday"
                   ? "工作日"
-                  : "天气与日历")}
-          </strong>
-          <small>
-            {environment?.forecast
-              ? environment.stale
-                ? "天气记录已过期"
-                : "天气背景已更新"
-              : "等待天气数据"}
-          </small>
-        </article>
-      </section>
+                  : "日历待更新")}
+          </span>
+          {environment?.stale && <span>天气待更新</span>}
+        </div>
+      )}
+      {account.role === "admin" && (
+        <section className="overview-metrics" aria-label="工作台概览">
+          <article>
+            <span>{channel === "food" ? "美食" : "游玩"}品牌监测</span>
+            <strong>
+              {brands.length ? scopedBrands.length : "—"}
+              <small> 个启用品牌</small>
+            </strong>
+          </article>
+          {account.role === "admin" && (
+            <article>
+              <span>全站采集 · 第 {runs[0]?.round_number ?? "—"} 轮</span>
+              <strong>
+                {runs[0]
+                  ? `${runs[0].completed + runs[0].partial} / ${runs[0].total} 已处理`
+                  : "—"}
+              </strong>
+              <progress
+                aria-label="本轮品牌处理进度"
+                max={runs[0]?.total || 1}
+                value={(runs[0]?.completed || 0) + (runs[0]?.partial || 0)}
+              />
+              <small className="collection-progress-detail">
+                <span className="collection-progress-summary">
+                  完整采集 {runs[0]?.completed ?? 0} · 待核验/未完整{" "}
+                  {runs[0]?.partial ?? 0} · 已查 {runs[0]?.pages ?? 0} 页
+                </span>
+                <span
+                  className="collection-current-brand"
+                  title={runs[0]?.current_brand?.name}
+                >
+                  {runs[0]?.current_brand
+                    ? `当前：${runs[0].current_brand.name} · 已查 ${runs[0].current_brand.pages} 页`
+                    : "当前：等待下一品牌"}
+                </span>
+              </small>
+            </article>
+          )}
+          {account.role === "admin" && (
+            <article>
+              <span>采集状态</span>
+              <strong className="status-value">
+                {!status
+                  ? "读取中"
+                  : status.pause_reason
+                    ? "已暂停"
+                    : status.worker_active
+                      ? "正在采集"
+                      : status.enabled
+                        ? "等待下一轮"
+                        : "循环未开启"}
+              </strong>
+              <small>全天自动循环 · 请求间隔 3–5 秒</small>
+              <small>
+                最近一轮用时：
+                {runs.find((r) => r.finished_at)?.duration_seconds != null
+                  ? `${Math.round(runs.find((r) => r.finished_at)!.duration_seconds! / 60)} 分钟`
+                  : "待首轮完成"}
+              </small>
+            </article>
+          )}
+          <article>
+            <span>上海 · 未来72小时</span>
+            <strong className="status-value">
+              {environment?.calendar.name ||
+                (environment?.calendar.kind === "weekend"
+                  ? "周末"
+                  : environment?.calendar.kind === "workday"
+                    ? "工作日"
+                    : "天气与日历")}
+            </strong>
+            <small>
+              {environment?.forecast
+                ? environment.stale
+                  ? "天气记录已过期"
+                  : "天气背景已更新"
+                : "等待天气数据"}
+            </small>
+          </article>
+        </section>
+      )}
       {account.role === "admin" && status?.pause_reason && (
         <p className="message" role="status">
           采集已暂停：{status.pause_reason}

@@ -203,13 +203,6 @@ export function CouponPicks({
   }
   return (
     <section className="picks-panel" aria-label="选券工作台">
-      <div className="section-heading">
-        <div>
-          <p className="eyebrow">CURATED OFFERS</p>
-          <h2>{channel === "food" ? "值得尝鲜的优惠" : "值得出发的体验"}</h2>
-        </div>
-        <span>先看优惠，再看热度</span>
-      </div>
       <div className="category-rail" role="group" aria-label="业态分类">
         {["", ...categories.filter((c) => inChannel(c, channel))].map((c) => (
           <button

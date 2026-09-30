@@ -362,43 +362,45 @@ function App() {
             })}
           </small>
         </header>
-        <section className="page-heading">
-          <div>
-            <p className="eyebrow">
-              {channel === "food" ? "FOOD & FLAVOUR" : "PLAY & EXPLORE"} /
-              SHANGHAI
-            </p>
-            <h1>
-              {tab === "radar"
-                ? channel === "food"
-                  ? "下一站，去吃点好的。"
-                  : "把周末，交给新鲜感。"
-                : tab === "videos"
-                  ? "灵感，已经成为作品。"
-                  : tab === "brands"
-                    ? `${channelLabel}品牌名录`
-                    : "把数据整理得井井有条。"}
-            </h1>
-            <p>
-              {tab === "radar"
-                ? channel === "food"
-                  ? "从一张好券开始，发现值得探的餐厅与正在升温的美味。"
-                  : "发现亲子乐园、城市展馆与户外体验，让下一条内容有新去处。"
-                : `当前查看${channelLabel}频道，随时切换另一种灵感。`}
-            </p>
-          </div>
-          <div className="heading-index">
-            <span>{channelLabel}频道</span>
-            <strong>
-              {loaded
-                ? brands.filter(
-                    (b) => b.active && inChannel(b.category, channel),
-                  ).length
-                : "—"}
-            </strong>
-            <small>启用品牌 / 上海</small>
-          </div>
-        </section>
+        {tab !== "radar" && (
+          <section className="page-heading">
+            <div>
+              <p className="eyebrow">
+                {channel === "food" ? "FOOD & FLAVOUR" : "PLAY & EXPLORE"} /
+                SHANGHAI
+              </p>
+              <h1>
+                {tab === "radar"
+                  ? channel === "food"
+                    ? "下一站，去吃点好的。"
+                    : "把周末，交给新鲜感。"
+                  : tab === "videos"
+                    ? "灵感，已经成为作品。"
+                    : tab === "brands"
+                      ? `${channelLabel}品牌名录`
+                      : "把数据整理得井井有条。"}
+              </h1>
+              <p>
+                {tab === "radar"
+                  ? channel === "food"
+                    ? "从一张好券开始，发现值得探的餐厅与正在升温的美味。"
+                    : "发现亲子乐园、城市展馆与户外体验，让下一条内容有新去处。"
+                  : `当前查看${channelLabel}频道，随时切换另一种灵感。`}
+              </p>
+            </div>
+            <div className="heading-index">
+              <span>{channelLabel}频道</span>
+              <strong>
+                {loaded
+                  ? brands.filter(
+                      (b) => b.active && inChannel(b.category, channel),
+                    ).length
+                  : "—"}
+              </strong>
+              <small>启用品牌 / 上海</small>
+            </div>
+          </section>
+        )}
         {error && (
           <div role="alert" className="message error">
             {error}
