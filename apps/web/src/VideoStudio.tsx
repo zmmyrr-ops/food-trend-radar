@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { appFetch, appUrl } from "./app-url";
+import { CouponMedia } from "./CouponMedia";
 
 type Asset = {
   id: string;
@@ -77,6 +78,20 @@ export function VideoStudio() {
     [error, setError] = useState(""),
     [copyStatus, setCopyStatus] = useState(""),
     [configured, setConfigured] = useState(true);
+  const resourceSignature = useRef("");
+  const receiveResources = useCallback((next: Resource[]) => {
+    const signature = JSON.stringify(next);
+    if (signature === resourceSignature.current) return;
+    resourceSignature.current = signature;
+    setResources((previous) => {
+      if (JSON.stringify(previous) === JSON.stringify(next)) return previous;
+      return next;
+    });
+    setSelected((previous) => {
+      const valid = previous.filter((id) => next.some((r) => r.id === id));
+      return valid.length ? valid : next.slice(-40).map((r) => r.id);
+    });
+  }, []);
   const prefix = "/api/v3/video-projects";
   const captionText = plan
     .map((clip) => clip.caption.trim())
@@ -255,7 +270,7 @@ export function VideoStudio() {
               我的视频 →
             </a>
           </nav>
-          <h1>短视频工作室</h1>
+          <h1>制作探店视频</h1>
           <p>
             {project?.brand_name || "挑好素材，自动剪成一条短片"}
             {project ? ` · ${project.title}` : ""}
@@ -276,6 +291,13 @@ export function VideoStudio() {
         <p role="alert" className="studio-error">
           {error}
         </p>
+      )}
+      {brand && product && (
+        <CouponMedia
+          brandId={brand}
+          productId={product}
+          onResources={receiveResources}
+        />
       )}
       {!project ? (
         <section className="studio-setup">

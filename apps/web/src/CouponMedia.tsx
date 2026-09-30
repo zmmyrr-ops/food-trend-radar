@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { appFetch, appUrl } from "./app-url";
+import { appFetch } from "./app-url";
 
 type Resource = {
   id: string;
@@ -111,14 +111,19 @@ function MediaTile({ item }: { item: Resource }) {
 export function CouponMedia({
   brandId,
   productId,
+  onResources,
 }: {
   brandId: string;
   productId: string;
+  onResources?: (resources: Resource[]) => void;
 }) {
-  const [open, setOpen] = useState(false),
+  const [open, setOpen] = useState(true),
     [job, setJob] = useState<Job | null>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
+  useEffect(() => {
+    if (job) onResources?.(job.resources);
+  }, [job, onResources]);
   const query = new URLSearchParams({
     brand_id: brandId,
     product_id: productId,
@@ -207,22 +212,13 @@ export function CouponMedia({
           {open ? "收起 −" : "展开 +"}
         </span>
       </button>
-      <a
-        className="studio-entry"
-        title="制作12–20秒短视频"
-        href={appUrl(
-          `/?studio=1&channel=${new URLSearchParams(location.search).get("channel") === "leisure" ? "leisure" : "food"}&${query}`,
-        )}
-      >
-        制作短视频 →
-      </a>
       {open && (
         <div className="coupon-media-body">
           <div className="coupon-media-toolbar">
             <div>
-              <strong>相关探店 · 实况片段</strong>
+              <strong>网络参考素材</strong>
               <p>
-                优先选券相关素材，不足再补同品牌通用素材。首次最多40个，每次追加约20个；相关性来自笔记文字线索，不代表已核实同券。
+                网络视频仅供参考，未经授权不得用于创作或传播，不得侵权使用。
               </p>
             </div>
             <button

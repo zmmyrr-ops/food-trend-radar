@@ -417,3 +417,59 @@ test("泛品牌素材先出现也不抢满名额；正文券线索优先，不�
     await f.cleanup();
   }
 });
+
+test("同券跨账号复用公开素材并续期，任务与私人作品仍隔离", async () => {
+  const f = await fixture();
+  let requests = 0;
+  const service = await createCouponMedia(f.db, f.path, {
+    wait: async () => {},
+    transport: async () => {
+      requests++;
+      throw Error("不应请求外部平台");
+    },
+  });
+  const source = randomUUID(),
+    ownerA = randomUUID(),
+    ownerB = randomUUID();
+  try {
+    await f.db.query(
+      `INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,resources,coupon_title,owner_id,updated_at) VALUES($1,$2,'coupon','品牌甲','["品牌甲"]','complete',$3,'双人套餐',$4,now()-interval '2 hours')`,
+      [
+        source,
+        f.brand,
+        JSON.stringify([
+          {
+            id: "public-network-clip",
+            note_id: "note",
+            title: "品牌甲",
+            video_url: "https://sns-video.xhscdn.com/test.mp4",
+            note_url: "https://www.xiaohongshu.com/explore/note",
+            poster: "",
+            author: "public",
+            match: "brand",
+          },
+        ]),
+        ownerA,
+      ],
+    );
+    const b = await service.start(f.brand, "coupon", false, false, ownerB);
+    await service.drain();
+    assert.equal(requests, 0);
+    assert.notEqual(b.id, source);
+    assert.equal(b.owner_id, ownerB);
+    assert.equal(b.resources[0].id, "public-network-clip");
+    const renewed = (
+      await f.db.query<{ updated_at: string }>(
+        "SELECT updated_at FROM coupon_media_jobs WHERE id=$1",
+        [source],
+      )
+    ).rows[0];
+    assert.ok(Date.now() - new Date(renewed.updated_at).getTime() < 5000);
+    const again = await service.start(f.brand, "coupon", false, false, ownerB);
+    assert.equal(again.id, b.id);
+    assert.equal(requests, 0);
+  } finally {
+    await service.drain();
+    await f.cleanup();
+  }
+});

@@ -2464,3 +2464,26 @@ footer {
 .app-shell .coupon-card .coupon-media {
   flex-shrink: 0;
 }
+
+.app-shell .coupon-card > .studio-entry {
+  margin-top: 10px;
+  display: block;
+}
+.video-studio > .coupon-media {
+  background: white;
+  border: 1px solid #e1e6e1;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+.video-studio > .coupon-media .coupon-media-toolbar p {
+  margin: 5px 0;
+  font-size: 12px;
+  color: #77827c;
+}
+
+.video-studio > .coupon-media .live-media-grid {
+  max-height: 360px;
+  overflow-y: auto;
+  padding-right: 4px;
+}

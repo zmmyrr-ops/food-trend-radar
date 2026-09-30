@@ -635,7 +635,6 @@ export async function createCouponMedia(
     reset = false,
     owner = legacyOwner,
   ) {
-    await credentials();
     const coupon = (
       await db.query<any>(
         "SELECT b.name,b.aliases,i.payload->>'name' AS title FROM coupon_items i JOIN brands b ON b.id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 AND b.active AND i.payload->>'identity'='name_match' ORDER BY i.observed_at DESC LIMIT 1",
@@ -657,14 +656,64 @@ export async function createCouponMedia(
         !reset &&
         old &&
         (["queued", "running"].includes(old.state) ||
-          (!more &&
-            old.keyword === keyword &&
-            old.state === "complete" &&
-            Date.now() - new Date(old.updated_at).getTime() < TTL) ||
           (old.state === "failed" &&
             Date.now() - new Date(old.updated_at).getTime() < 60_000))
       )
         return old;
+      // Only reuse public network resources; every account gets its own job ID.
+      if (!reset && !more) {
+        const shared = (
+          await tx.query<any>(
+            "SELECT * FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2 AND keyword=$3 AND coupon_title=$4 AND state='complete' AND jsonb_array_length(resources)>0 AND updated_at>now()-interval '4 hours' ORDER BY updated_at DESC LIMIT 1",
+            [brand, product, keyword, coupon.title || ""],
+          )
+        ).rows[0];
+        const signedUrlsValid = shared?.resources.every((r: LiveResource) => {
+          try {
+            const t = new URL(r.video_url).searchParams.get("t");
+            if (!t) return true;
+            const expiry = /^\d{10}$/.test(t)
+              ? Number(t)
+              : /^[a-f0-9]{8}$/i.test(t)
+                ? Number.parseInt(t, 16)
+                : NaN;
+            return (
+              !Number.isFinite(expiry) || expiry * 1000 > Date.now() + 300000
+            );
+          } catch {
+            return false;
+          }
+        });
+        if (shared && signedUrlsValid) {
+          await tx.query(
+            "UPDATE coupon_media_jobs SET updated_at=now() WHERE id=$1",
+            [shared.id],
+          );
+          return (
+            await tx.query<any>(
+              `INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,resources,coupon_title,owner_id,next_page,seen_notes,target_count,exhausted,search_id)
+            VALUES($1,$2,$3,$4,$5,'complete',$6,$7,$8,$9,$10,$11,$12,$13)
+            ON CONFLICT(owner_id,brand_id,product_id) DO UPDATE SET resources=excluded.resources,state='complete',keyword=excluded.keyword,names=excluded.names,coupon_title=excluded.coupon_title,next_page=excluded.next_page,seen_notes=excluded.seen_notes,target_count=excluded.target_count,exhausted=excluded.exhausted,search_id=excluded.search_id,error_code=NULL,updated_at=now() RETURNING *`,
+              [
+                randomUUID(),
+                brand,
+                product,
+                keyword,
+                JSON.stringify([coupon.name, ...coupon.aliases]),
+                JSON.stringify(shared.resources),
+                coupon.title || "",
+                owner,
+                shared.next_page,
+                JSON.stringify(shared.seen_notes),
+                shared.target_count,
+                shared.exhausted,
+                shared.search_id,
+              ],
+            )
+          ).rows[0];
+        }
+      }
+      await credentials();
       if (more && old && !reset && old.keyword === keyword) {
         if (old.exhausted || old.resources.length >= 200) return old;
         return (

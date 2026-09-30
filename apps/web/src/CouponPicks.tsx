@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
 import { CouponConditionComparison } from "./CouponConditionComparison";
-import { CouponMedia } from "./CouponMedia";
 import { CouponRules } from "./CouponRules";
 import { CouponStoreSummary } from "./CouponStoreSummary";
 import { CouponStores } from "./CouponStores";
@@ -574,7 +573,14 @@ export function CouponPicks({
                   <CouponRules productId={x.product_id} brandId={x.brand_id} />
                   <CouponStores productId={x.product_id} brandId={x.brand_id} />
                 </details>
-                <CouponMedia brandId={x.brand_id} productId={x.product_id} />
+                <a
+                  className="studio-entry"
+                  href={appUrl(
+                    `/?studio=1&channel=${channel}&brand_id=${encodeURIComponent(x.brand_id)}&product_id=${encodeURIComponent(x.product_id)}`,
+                  )}
+                >
+                  制作探店视频 →
+                </a>
               </article>
             ))}
           </div>
