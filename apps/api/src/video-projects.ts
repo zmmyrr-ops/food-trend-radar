@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import { existsSync } from "node:fs";
 import {
   mkdir,
+  open,
   readdir,
   readFile,
   rm,
@@ -17,6 +18,7 @@ import express, { type Express, type Request, type Response } from "express";
 import { z } from "zod";
 import { ownerOf } from "./accounts.js";
 import { mediaUrl } from "./coupon-media.js";
+import { mediaFormat } from "./media-format.js";
 import { createObjectStorage } from "./object-storage.js";
 import {
   type Asset,
@@ -624,14 +626,34 @@ export async function createVideoProjects(db: PGlite, root: string) {
         const p = await get(String(req.params.id));
         const a = p.assets.find((x) => x.id === req.params.asset);
         if (!a?.path) throw Error("素材尚未准备完成");
-        const remote = await storage?.signedUrl(a.path);
+        let bytes: Buffer;
+        try {
+          const file = await open(a.path, "r");
+          try {
+            const buffer = Buffer.alloc(64);
+            const { bytesRead } = await file.read(buffer, 0, 64, 0);
+            bytes = buffer.subarray(0, bytesRead);
+          } finally {
+            await file.close();
+          }
+        } catch (e: any) {
+          if (e.code !== "ENOENT" || !storage) throw e;
+          bytes = await storage.readPrefix(a.path);
+        }
+        const format = mediaFormat(bytes);
+        const filename = `material-${a.id}.${format.extension}`;
+        const remote = await storage?.signedUrl(a.path, filename, {
+          inline: true,
+          contentType: format.type,
+        });
         res.setHeader("Cache-Control", "private, no-store");
         if (remote) {
           res.redirect(302, remote);
           return;
         }
         await stat(a.path);
-        res.sendFile(a.path);
+        res.setHeader("Content-Disposition", `inline; filename="${filename}"`);
+        res.type(format.type).sendFile(a.path);
       }),
     );
     app.get(
@@ -645,9 +667,8 @@ export async function createVideoProjects(db: PGlite, root: string) {
         const file = join(root, p.id, `${kind}-${rev}.mp4`);
         const remote = await storage?.signedUrl(
           file,
-          req.query.inline === "1"
-            ? undefined
-            : `food-${p.seconds}s-${kind}.mp4`,
+          `food-${p.seconds}s-${kind}.mp4`,
+          { inline: req.query.inline === "1", contentType: "video/mp4" },
         );
         res.setHeader("Cache-Control", "private, no-store");
         if (remote) {

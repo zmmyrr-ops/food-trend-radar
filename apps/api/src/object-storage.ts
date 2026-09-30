@@ -164,7 +164,11 @@ export async function createObjectStorage(
       restores.delete(path);
     }
   }
-  async function signedUrl(path: string, filename?: string) {
+  async function signedUrl(
+    path: string,
+    filename?: string,
+    options?: { inline?: boolean; contentType?: string },
+  ) {
     const r = await receipt(path);
     if (!r) return null;
     if (r.bucket !== config.bucket) throw Error("存储桶不匹配");
@@ -172,13 +176,24 @@ export async function createObjectStorage(
       expires: 300,
       response: {
         "cache-control": "private, no-store",
+        ...(options?.contentType
+          ? { "content-type": options.contentType }
+          : {}),
         ...(filename
           ? {
-              "content-disposition": `attachment; filename="${filename.replace(/[^a-zA-Z0-9._-]/g, "_")}"`,
+              "content-disposition": `${options?.inline ? "inline" : "attachment"}; filename="${filename.replace(/[^a-zA-Z0-9._-]/g, "_")}"`,
             }
           : {}),
       },
     });
+  }
+  async function readPrefix(path: string) {
+    const r = await receipt(path);
+    if (!r || r.bucket !== config.bucket) throw Error("素材存储记录不可用");
+    const result = await client.get(r.key, {
+      headers: { Range: "bytes=0-63" },
+    });
+    return Buffer.from(result.content).subarray(0, 64);
   }
   async function remove(path: string) {
     const r = await receipt(path);
@@ -204,5 +219,13 @@ export async function createObjectStorage(
     }
     await rm(dir, { recursive: true, force: true });
   }
-  return { archive, restore, signedUrl, remove, removeDirectory, receipt };
+  return {
+    archive,
+    restore,
+    signedUrl,
+    readPrefix,
+    remove,
+    removeDirectory,
+    receipt,
+  };
 }

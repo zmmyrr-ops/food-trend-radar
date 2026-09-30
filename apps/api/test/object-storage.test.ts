@@ -102,6 +102,25 @@ test("internal transfer configuration never leaks an internal playback endpoint"
     const url = new URL((await storage.signedUrl(path))!);
     assert.equal(url.hostname, "test-private.oss-cn-wulanchabu.aliyuncs.com");
     assert.equal(url.protocol, "https:");
+    const playback = new URL(
+      (await storage.signedUrl(path, "material-test.mp4", {
+        inline: true,
+        contentType: "video/mp4",
+      }))!,
+    );
+    assert.equal(
+      playback.searchParams.get("response-content-disposition"),
+      'inline; filename="material-test.mp4"',
+    );
+    assert.equal(
+      playback.searchParams.get("response-content-type"),
+      "video/mp4",
+    );
+    const download = new URL((await storage.signedUrl(path, "finished.mp4"))!);
+    assert.equal(
+      download.searchParams.get("response-content-disposition"),
+      'attachment; filename="finished.mp4"',
+    );
   } finally {
     await rm(root, { recursive: true, force: true });
   }
