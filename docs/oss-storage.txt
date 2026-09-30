@@ -1,0 +1,27 @@
+探好店 OSS 存储与恢复
+
+配置：data/secrets/oss.json（不得提交）。字段 bucket、region、accessKeyId、accessKeySecret、prefix、internal。ECS设置internal=true，后台通过内网上传下载；浏览器签名链接仍使用公网地址。
+本次使用独立私有桶 tanhaodian-private-wulanchabu，乌兰察布区（与ECS同地域），前缀 tanhaodian/。
+视频位于 videos/，日备份位于 backups/。用户视频不走现有公开游戏 CDN。
+后端验证账号归属后生成有效期 5 分钟的 OSS 链接；不向前端下发访问密钥。
+
+视频与素材：上传云端、验证对象长度和 SHA-256 元数据、原子写入 .oss.json 回执后，才移除本地文件。
+合成时按需下载并重新计算 SHA-256。存储故障保留本地副本，成片仍可从原端点访问。
+临时镜头、抽帧、失败的临时输出在任务结束时清理。原始文件和有效输出不属于临时清理范围。
+服务端仍保留 2GB 合成保护阈值。OSS不替代CPU/内存，也不替代FFmpeg临时磁盘。
+
+日备份：每日首次执行备份后同步 OSS。保留7份云端日备份和2份近期本地副本。
+故障10分钟后重试，不执行成功同步前的保留期删除。管理状态含storage和local_copies。
+历史手工数据库副本单独归档，不混入日备份自动保留期。
+
+首次迁移：停止服务后执行 node scripts/archive-video-files.mjs /opt/food-trend-radar/data/videos --service-stopped，完成后启动服务。
+不可在视频任务运行时执行此工具。迁移不打开数据库。
+旧数据库快照可执行 scripts/archive-directory.mjs <postgres-before-*目录> --evict-verified。
+该脚本拒绝活动postgres目录，逐文件上传并完整下载校验，全部成功才删除源文件，保留回执及报告。
+
+恢复：保留应用数据库（其中含账号归属和视频项目）和视频目录的 .oss.json 回执。
+回执丢失时，可根据对象名恢复；对象路径等于 tanhaodian/videos/ 下的原相对路径；
+读取 OSS 对象 Content-Length 和 x-oss-meta-sha256，校验下载内容后可重新生成回执。
+日备份可以通过OSS管理工具下载后用 scripts/verify-backup.mjs 做隔离校验，再按既有停服恢复流程处理。
+旧数据库目录归档的逐文件清单位于 data/reports/*-oss-manifest.json，按path恢复到独立目录。
+不要把旧版（不支持OSS回执）的应用直接回滚上线；必须先还原已迁移文件或保留当前存储模块。

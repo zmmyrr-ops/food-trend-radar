@@ -16,6 +16,7 @@ import express, { type Express, type Request, type Response } from "express";
 import { z } from "zod";
 import { ownerOf } from "./accounts.js";
 import { mediaUrl } from "./coupon-media.js";
+import { createObjectStorage } from "./object-storage.js";
 import {
   type Asset,
   planSchema,
@@ -36,6 +37,7 @@ const running = (s: string) =>
     "rendering_export",
   ].includes(s);
 export async function createVideoProjects(db: PGlite, root: string) {
+  const storage = await createObjectStorage(root);
   const visits = await createVisitPlans(db);
   await mkdir(root, { recursive: true, mode: 0o700 });
   await mkdir(join(root, "uploads"), { recursive: true, mode: 0o700 });
@@ -208,14 +210,13 @@ export async function createVideoProjects(db: PGlite, root: string) {
       )
     ).rows[0];
     if (u) {
-      await rm(
-        join(
-          root,
-          "uploads",
-          `${id}.${u.kind === "audio" ? "audio" : "source"}`,
-        ),
-        { force: true },
+      const path = join(
+        root,
+        "uploads",
+        `${id}.${u.kind === "audio" ? "audio" : "source"}`,
       );
+      if (storage) await storage.remove(path);
+      else await rm(path, { force: true });
       await db.query("DELETE FROM video_uploads WHERE id=$1", [id]);
     }
     return true;
@@ -324,6 +325,19 @@ export async function createVideoProjects(db: PGlite, root: string) {
           "INSERT INTO video_uploads(id,kind,owner_id) VALUES($1,$2,$3)",
           [id, kind, ownerOf(req)],
         );
+        // Upload failures preserve the local file and the owned DB record.
+        if (storage)
+          await storage
+            .archive(
+              join(
+                root,
+                "uploads",
+                `${id}.${kind === "audio" ? "audio" : "source"}`,
+              ),
+            )
+            .catch(() =>
+              console.error("OSS upload deferred; local upload retained"),
+            );
         res.json({ id, kind });
       }),
     );
@@ -595,6 +609,12 @@ export async function createVideoProjects(db: PGlite, root: string) {
         const p = await get(String(req.params.id));
         const a = p.assets.find((x) => x.id === req.params.asset);
         if (!a?.path) throw Error("素材尚未准备完成");
+        const remote = await storage?.signedUrl(a.path);
+        res.setHeader("Cache-Control", "private, no-store");
+        if (remote) {
+          res.redirect(302, remote);
+          return;
+        }
         await stat(a.path);
         res.sendFile(a.path);
       }),
@@ -608,6 +628,17 @@ export async function createVideoProjects(db: PGlite, root: string) {
         const rev = kind === "preview" ? p.preview_revision : p.export_revision;
         if (rev !== p.revision) throw Error("请先生成当前版本");
         const file = join(root, p.id, `${kind}-${rev}.mp4`);
+        const remote = await storage?.signedUrl(
+          file,
+          req.query.inline === "1"
+            ? undefined
+            : `food-${p.seconds}s-${kind}.mp4`,
+        );
+        res.setHeader("Cache-Control", "private, no-store");
+        if (remote) {
+          res.redirect(302, remote);
+          return;
+        }
         await stat(file);
         if (req.query.inline === "1") res.type("mp4").sendFile(file);
         else res.download(file, `food-${p.seconds}s-${kind}.mp4`);
@@ -618,7 +649,8 @@ export async function createVideoProjects(db: PGlite, root: string) {
       wrap(async (req, res) => {
         const p = await get(String(req.params.id));
         if (running(p.state)) throw Error("请先停止任务");
-        await rm(join(root, p.id), { recursive: true, force: true });
+        if (storage) await storage.removeDirectory(join(root, p.id));
+        else await rm(join(root, p.id), { recursive: true, force: true });
         await db.query("DELETE FROM video_projects WHERE id=$1", [p.id]);
         for (const id of [
           ...p.assets

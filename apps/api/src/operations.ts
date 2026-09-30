@@ -12,6 +12,7 @@ import { createCouponMedia } from "./coupon-media.js";
 import { createPickReader, registerCouponPicks } from "./coupon-picks.js";
 import { createCouponPool } from "./coupon-pool.js";
 import { createEnvironment } from "./environment.js";
+import { createObjectStorage } from "./object-storage.js";
 import { createOpportunityBoard } from "./opportunity-board.js";
 import { createPickEvaluation } from "./pick-evaluation.js";
 import { enableReadModels } from "./read-model-cache.js";
@@ -65,33 +66,51 @@ export async function createOperations(
     join(backupDir, "..", "secrets", "xiaohongshu-requests.json"),
   );
   const videos = await createVideoProjects(db, join(backupDir, "..", "videos"));
+  const backupStorage = await createObjectStorage(backupDir);
   const readPicks = pool.read;
   let busy = false;
   let backupError: string | null = null;
+  let backupDoneDate = "";
+  let backupRetryAfter = 0;
   async function backup() {
-    if (busy) return;
+    const day = new Date().toISOString().slice(0, 10);
+    if (busy || backupDoneDate === day || Date.now() < backupRetryAfter) return;
     busy = true;
     try {
       await mkdir(backupDir, { recursive: true, mode: 0o700 });
       const name = `radar-${new Date().toISOString().slice(0, 10)}.tar.gz`;
       const files = await readdir(backupDir);
-      if (files.includes(name)) return;
-      const archive = await db.dumpDataDir("gzip");
-      const temp = join(backupDir, `${name}.tmp`);
-      await writeFile(temp, Buffer.from(await archive.arrayBuffer()), {
-        mode: 0o600,
-      });
-      await rename(temp, join(backupDir, name));
-      const old = [
-        ...files.filter((f) => /^radar-\d{4}-\d{2}-\d{2}\.tar\.gz$/.test(f)),
-        name,
+      if (!files.includes(name) && !files.includes(name + ".oss.json")) {
+        const archive = await db.dumpDataDir("gzip");
+        const temp = join(backupDir, `${name}.tmp`);
+        await writeFile(temp, Buffer.from(await archive.arrayBuffer()), {
+          mode: 0o600,
+        });
+        await rename(temp, join(backupDir, name));
+      }
+      const names = [
+        ...new Set([...files, name].map((f) => f.replace(/\.oss\.json$/, ""))),
       ]
-        .sort()
-        .slice(0, -7);
-      for (const f of old) await unlink(join(backupDir, f));
+        .filter((f) => /^radar-\d{4}-\d{2}-\d{2}\.tar\.gz$/.test(f))
+        .sort();
+      if (backupStorage) {
+        // Seven daily cloud backups, two recent local copies. Failed uploads
+        // abort retention so an outage never causes the only copy to be deleted.
+        for (const f of names.slice(-7))
+          await backupStorage.archive(
+            join(backupDir, f),
+            !names.slice(-2).includes(f),
+          );
+        for (const f of names.slice(0, -7))
+          await backupStorage.remove(join(backupDir, f));
+      } else {
+        for (const f of names.slice(0, -7)) await unlink(join(backupDir, f));
+      }
       backupError = null;
+      backupDoneDate = day;
     } catch {
       backupError = "BACKUP_FAILED";
+      backupRetryAfter = Date.now() + 10 * 60_000;
     } finally {
       busy = false;
     }
@@ -286,9 +305,17 @@ export async function createOperations(
         ).rows,
         backup: {
           error: backupError,
-          files: (await readdir(backupDir).catch(() => []))
+          files: [
+            ...new Set(
+              (await readdir(backupDir).catch(() => [])).map((f) =>
+                f.replace(/\.oss\.json$/, ""),
+              ),
+            ),
+          ]
             .filter((f) => f.endsWith(".tar.gz"))
             .sort(),
+          storage: backupStorage ? "oss-private" : "local",
+          local_copies: backupStorage ? 2 : 7,
           retention_days: 7,
         },
         blockers: [

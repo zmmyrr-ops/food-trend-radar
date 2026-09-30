@@ -3,8 +3,10 @@ import { createHash } from "node:crypto";
 import { lookup } from "node:dns/promises";
 import {
   mkdir,
+  readdir,
   readFile,
   rename,
+  rm,
   stat,
   statfs,
   unlink,
@@ -14,6 +16,7 @@ import { createRequire } from "node:module";
 import { join } from "node:path";
 import { z } from "zod";
 import { bailianError } from "./bailian-error.js";
+import { createObjectStorage } from "./object-storage.js";
 import {
   type Asset,
   adaptivePlan,
@@ -30,6 +33,7 @@ const project: VideoProject = JSON.parse(
   await readFile(join(base, "input.json"), "utf8"),
 );
 const root = process.argv[4];
+const storage = await createObjectStorage(root);
 const require = createRequire(import.meta.url);
 const ffmpeg = process.env.FFMPEG_PATH || require("ffmpeg-static"),
   probe = process.env.FFPROBE_PATH || require("ffprobe-static").path;
@@ -72,15 +76,18 @@ async function command(
 async function fetchMedia(a: Asset) {
   const disk = await statfs(root);
   if (disk.bavail * disk.bsize < 2 * 1024 ** 3)
-    throw Error("磁盘可用空间不足2GB，请清理旧视频项目");
+    throw Error("磁盘可用空间不足2GB，请联系管理员释放服务器临时空间");
   if (!a.path) {
     const cached = join(base, `${a.id}.source`);
     try {
+      if (storage && (await storage.receipt(cached)))
+        await storage.restore(cached);
       await stat(cached);
       a.path = cached;
     } catch {}
   }
   if (a.path) {
+    if (storage) await storage.restore(a.path);
     await stat(a.path);
     return;
   }
@@ -511,6 +518,7 @@ async function render() {
   let renderedFrames = 0;
   for (const [i, c] of project.plan.entries()) {
     const a = project.assets.find((a) => a.id === c.asset_id)!;
+    await fetchMedia(a);
     const dest = join(base, `render-${i}.mp4`);
     let filter = `split[bg][fg];[bg]scale=${w}:${h}:force_original_aspect_ratio=increase,crop=${w}:${h},boxblur=20:1[back];[fg]scale=${w}:${h}:force_original_aspect_ratio=decrease[front];[back][front]overlay=(W-w)/2:(H-h)/2,setsar=1,setpts=PTS-STARTPTS,fps=30,tpad=stop_mode=clone:stop_duration=0.2,format=yuv420p`;
     // Portrait footage needs only a small crop; keep other formats intact on a blurred background.
@@ -574,6 +582,7 @@ async function render() {
   const music = project.music_id
     ? join(root, "uploads", `${project.music_id}.audio`)
     : null;
+  if (music && storage) await storage.restore(music);
   await command(ffmpeg, [
     "-v",
     "error",
@@ -626,6 +635,21 @@ async function render() {
   ]);
   await rename(temp, output);
   for (const path of clips) await unlink(path).catch(() => {});
+  if (storage) {
+    report({ progress: "保存成片与素材到云端" });
+    // Network/storage failure must not discard a usable render or its inputs.
+    for (const path of [
+      output,
+      ...project.assets.flatMap((a) => (a.path ? [a.path] : [])),
+      ...(music ? [music] : []),
+    ]) {
+      await storage
+        .archive(path)
+        .catch(() =>
+          console.error("OSS archive deferred; local file retained"),
+        );
+    }
+  }
   report({
     state: full ? "completed" : "preview_ready",
     progress: "已完成",
@@ -641,6 +665,12 @@ try {
   await render();
   process.disconnect?.();
 } catch (e) {
+  if (storage) {
+    // Failed AI/render jobs can also leave large inputs behind. Preserve them
+    // remotely for retries, applying the same verified-eviction contract.
+    for (const a of project.assets)
+      if (a.path) await storage.archive(a.path).catch(() => {});
+  }
   report({
     state: "failed",
     error: e instanceof Error ? e.message : "制作失败",
@@ -648,4 +678,15 @@ try {
   });
   process.disconnect?.();
   process.exitCode = 1;
+} finally {
+  // Re-creatable scratch files only; retain sources and validated outputs.
+  for (const name of await readdir(base).catch(() => [])) {
+    if (
+      /^(render-\d+\.mp4|caption-\d+\.ass|concat\.txt)$/.test(name) ||
+      name.endsWith(".jpg") ||
+      name.endsWith(".tmp.mp4") ||
+      name.endsWith(".download")
+    )
+      await rm(join(base, name), { force: true }).catch(() => {});
+  }
 }
