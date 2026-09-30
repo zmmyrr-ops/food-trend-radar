@@ -1,0 +1,5623 @@
+{
+  "policy": "上海亲子与景点频道补充；分类人气顺序前100个初步去重名称，再核验团购；最终人工核对品牌别名并去重入库，不将名称数量视为真实品牌数量。非游玩的母婴医疗、培训、摄影等不采集。",
+  "top_n": 100,
+  "known_brands": [
+    {
+      "name": "木星动物岛",
+      "aliases": ["木星动物岛·室内萌宠互动乐园"]
+    },
+    {
+      "name": "莱特飞行者",
+      "aliases": []
+    },
+    {
+      "name": "珍得巧克力剧院",
+      "aliases": []
+    },
+    {
+      "name": "CityFlight上海飞行体验馆",
+      "aliases": [
+        "CityFlight上海飞行馆",
+        "CityFlight上海飞行馆· HAHA MODEL飞机模型"
+      ]
+    },
+    {
+      "name": "Jump360蹦床中心",
+      "aliases": []
+    },
+    {
+      "name": "光合怪兽",
+      "aliases": [
+        "光合怪兽·自然科普探索空间",
+        "光合怪兽·爬宠体验馆",
+        "光合怪兽·城市爬宠空间"
+      ]
+    },
+    {
+      "name": "动感坐标",
+      "aliases": [
+        "动感坐标·潮玩活力街区·团建·派对·儿童乐园",
+        "动感坐标·潮玩活力街区·拼豆·团建·派对"
+      ]
+    },
+    {
+      "name": "集合石",
+      "aliases": [
+        "集合石·运动潮玩乐园·生日派对·团建聚会",
+        "集合石•运动潮玩乐园•密室VR•生日派对•团建聚会"
+      ]
+    },
+    {
+      "name": "超级渔夫",
+      "aliases": ["超级渔夫·室内赶海公园"]
+    },
+    {
+      "name": "吾舍农场",
+      "aliases": []
+    },
+    {
+      "name": "乐田农场",
+      "aliases": ["Jollyfarm乐田农场"]
+    },
+    {
+      "name": "璞叶小镇",
+      "aliases": []
+    },
+    {
+      "name": "蘑幻森林",
+      "aliases": []
+    },
+    {
+      "name": "绿色蘑方",
+      "aliases": ["绿色蘑方·蘑菇主题农场"]
+    },
+    {
+      "name": "小灶村体验农场",
+      "aliases": []
+    },
+    {
+      "name": "粉红农场",
+      "aliases": ["粉红农场 PINK FARM"]
+    },
+    {
+      "name": "八十八亩田",
+      "aliases": ["八十八亩田·蘑法森林乐园"]
+    },
+    {
+      "name": "奥土农场",
+      "aliases": ["AOTU FARM 奥土农场"]
+    },
+    {
+      "name": "城超农场",
+      "aliases": ["城超农场CITYFarmland"]
+    },
+    {
+      "name": "LOFIL潮玩运动能量场",
+      "aliases": []
+    },
+    {
+      "name": "ARK运动方舟",
+      "aliases": ["ARK运动方舟·保龄球·桌游·拼豆"]
+    },
+    {
+      "name": "博纳仕运动",
+      "aliases": [
+        "Mr·Bonus博纳仕运动",
+        "Mr·Bonus博纳仕运动·保龄球·switch·团建生日",
+        "Mr.Bonus博纳仕运动·保龄球·潮玩娱乐·团建"
+      ]
+    },
+    {
+      "name": "PARTY KING",
+      "aliases": ["PARTY KING·PK保龄球·台球·团建"]
+    },
+    {
+      "name": "弹力猩球",
+      "aliases": ["弹力猩球家庭运动乐园", "弹力猩球家庭运动乐园·生日派对"]
+    },
+    {
+      "name": "BIGX超级运动玩乐场",
+      "aliases": ["BIGX超级运动玩乐场·生日派对·团建拓展"]
+    },
+    {
+      "name": "超时空Time Park",
+      "aliases": [
+        "超时空Time Park·生日派对·团建乐园",
+        "超时空TimePark·生日派对·团建乐园·潮玩运动馆"
+      ]
+    },
+    {
+      "name": "极限PLAY",
+      "aliases": [
+        "极限PLAY运动娱乐新世界",
+        "极限PLAY运动娱乐新世界·团建派对潮玩休闲馆·室内蹦极高空游乐园"
+      ]
+    },
+    {
+      "name": "WUNPARK超体运动中心",
+      "aliases": ["WUNPARK超体运动中心•派对•团建"]
+    },
+    {
+      "name": "一工元运动空间",
+      "aliases": ["一工元运动空间·奈尔宝旗下·团建派对·攀岩蹦床·运动探索"]
+    },
+    {
+      "name": "JOYMARK",
+      "aliases": []
+    },
+    {
+      "name": "风云再起游乐汇",
+      "aliases": []
+    },
+    {
+      "name": "X-META机遇时空全感乐园",
+      "aliases": ["X-META机遇时空全感乐园·风起洛阳·苍兰诀·魔法冰堡"]
+    },
+    {
+      "name": "汤姆熊欢乐世界",
+      "aliases": [
+        "汤姆熊欢乐世界·拼豆·DIY",
+        "汤姆熊欢乐世界·史莱姆怪兽·拼豆·敲豆DIY",
+        "汤姆熊欢乐世界·拼豆·烫印·DIY",
+        "汤姆熊欢乐世界·拼豆·敲豆·DIY",
+        "汤姆熊欢乐世界·拼豆·DIY·史莱姆"
+      ]
+    },
+    {
+      "name": "第一回合",
+      "aliases": []
+    },
+    {
+      "name": "未来站小小海洋馆",
+      "aliases": []
+    },
+    {
+      "name": "牛玩牛叫",
+      "aliases": ["牛玩牛叫COW PLAY COW MOO"]
+    },
+    {
+      "name": "乐客灵境未来科技乐园",
+      "aliases": ["乐客灵境"]
+    },
+    {
+      "name": "星际传奇",
+      "aliases": [
+        "星际传奇家庭运动中心·宝可梦·抓娃娃",
+        "星际传奇STAR LEGEND家庭运动中心·桌球·KTV·PS5"
+      ]
+    },
+    {
+      "name": "上海环游嘉年华Funloop land主题乐园",
+      "aliases": ["上海环游嘉年华Funloop"]
+    },
+    {
+      "name": "PARTYDAY 超星嘉年华",
+      "aliases": ["PARTYDAY 超星嘉年华·团建基地·生日派对·研学基地"]
+    },
+    {
+      "name": "上海自然博物馆",
+      "aliases": []
+    },
+    {
+      "name": "上海天文馆",
+      "aliases": []
+    },
+    {
+      "name": "上海千古情",
+      "aliases": ["上海千古情景区"]
+    },
+    {
+      "name": "耀雪冰雪世界",
+      "aliases": ["上海耀雪冰雪世界", "交通银行耀雪冰雪世界"]
+    },
+    {
+      "name": "上海玛雅海滩水公园",
+      "aliases": ["玛雅海滩水公园"]
+    },
+    {
+      "name": "上海迪士尼度假区",
+      "aliases": ["上海迪士尼乐园", "上海迪士尼"]
+    },
+    {
+      "name": "上海乐高乐园",
+      "aliases": ["上海乐高乐园度假区"]
+    },
+    {
+      "name": "上海乐高探索中心",
+      "aliases": ["乐高探索中心"]
+    },
+    {
+      "name": "上美影泡泡米益智乐园",
+      "aliases": ["上美影泡泡米", "泡泡米益智乐园"]
+    },
+    {
+      "name": "MINI MARS",
+      "aliases": ["MINI MARS亲子家庭中心", "MINI MARS KIDS CLUB"]
+    },
+    {
+      "name": "奈尔宝科技馆",
+      "aliases": []
+    },
+    {
+      "name": "奈尔宝",
+      "aliases": ["奈尔宝家庭中心", "NEOBIO"]
+    },
+    {
+      "name": "MELAND",
+      "aliases": ["MELAND CLUB"]
+    },
+    {
+      "name": "东方明珠",
+      "aliases": ["东方明珠广播电视塔", "上海东方明珠广播电视塔"]
+    },
+    {
+      "name": "上海野生动物园",
+      "aliases": []
+    },
+    {
+      "name": "上海高家庄生态园",
+      "aliases": ["高家庄生态园"]
+    },
+    {
+      "name": "上海醉白池公园",
+      "aliases": ["醉白池公园"]
+    },
+    {
+      "name": "上海古猗园",
+      "aliases": ["古猗园"]
+    },
+    {
+      "name": "花开海上生态园",
+      "aliases": ["上海花开海上生态园"]
+    },
+    {
+      "name": "上海薰衣草公园",
+      "aliases": []
+    },
+    {
+      "name": "长兴岛郊野公园",
+      "aliases": ["上海长兴岛郊野公园"]
+    },
+    {
+      "name": "上海东滩湿地公园",
+      "aliases": ["东滩湿地公园"]
+    },
+    {
+      "name": "上海辰山植物园",
+      "aliases": ["辰山植物园"]
+    },
+    {
+      "name": "上海海湾国家森林公园",
+      "aliases": ["海湾国家森林公园"]
+    },
+    {
+      "name": "月湖雕塑公园",
+      "aliases": ["上海月湖雕塑公园"]
+    },
+    {
+      "name": "上海鲜花港",
+      "aliases": []
+    },
+    {
+      "name": "碧海金沙",
+      "aliases": ["碧海金沙景区"]
+    },
+    {
+      "name": "金山城市沙滩",
+      "aliases": ["金山城市沙滩景区"]
+    },
+    {
+      "name": "东方绿舟",
+      "aliases": ["上海东方绿舟"]
+    },
+    {
+      "name": "上海大观园",
+      "aliases": []
+    },
+    {
+      "name": "上海豫园",
+      "aliases": ["豫园"]
+    },
+    {
+      "name": "金茂大厦88层观光厅",
+      "aliases": ["金茂大厦观光厅"]
+    },
+    {
+      "name": "上海之巅观光厅",
+      "aliases": ["上海中心上海之巅观光厅"]
+    },
+    {
+      "name": "中国航海博物馆",
+      "aliases": ["上海中国航海博物馆"]
+    },
+    {
+      "name": "上海玻璃博物馆",
+      "aliases": []
+    },
+    {
+      "name": "上海杜莎夫人蜡像馆",
+      "aliases": ["杜莎夫人蜡像馆"]
+    },
+    {
+      "name": "上海影视乐园",
+      "aliases": []
+    },
+    {
+      "name": "上海蓝精灵乐园",
+      "aliases": ["蓝精灵乐园"]
+    },
+    {
+      "name": "上海欢乐谷",
+      "aliases": []
+    },
+    {
+      "name": "长风海洋世界",
+      "aliases": ["上海长风海洋世界"]
+    },
+    {
+      "name": "上海海洋水族馆",
+      "aliases": []
+    },
+    {
+      "name": "上海动物园",
+      "aliases": []
+    },
+    {
+      "name": "上海海昌海洋公园",
+      "aliases": ["海昌海洋公园"]
+    },
+    {
+      "name": "炭言日式自助烤肉",
+      "aliases": []
+    },
+    {
+      "name": "伍棵星炭烤自助料理·烤鳗鱼",
+      "aliases": []
+    },
+    {
+      "name": "禾柚精致自助日式放题料理",
+      "aliases": []
+    },
+    {
+      "name": "金茂君悦·食在56海鲜自助餐厅ON56",
+      "aliases": []
+    },
+    {
+      "name": "中心二十二·海鲜自助",
+      "aliases": []
+    },
+    {
+      "name": "蟹宴帝王蟹自助",
+      "aliases": []
+    },
+    {
+      "name": "颐海国际海鲜自助",
+      "aliases": []
+    },
+    {
+      "name": "蚝客宴三文鱼生蚝自助",
+      "aliases": []
+    },
+    {
+      "name": "沪海盛宴海鲜·烤肉自助餐厅",
+      "aliases": []
+    },
+    {
+      "name": "阿拉有牛",
+      "aliases": []
+    },
+    {
+      "name": "烟火长安·无限烤串",
+      "aliases": []
+    },
+    {
+      "name": "牛New寿喜烧 · Master",
+      "aliases": []
+    },
+    {
+      "name": "雍容荟帝王蟹活龙虾展台自助",
+      "aliases": []
+    },
+    {
+      "name": "满晶精致日式自助放题",
+      "aliases": []
+    },
+    {
+      "name": "Minase水濑·日料放题",
+      "aliases": []
+    },
+    {
+      "name": "亚马逊海鲜自助",
+      "aliases": []
+    },
+    {
+      "name": "上隐水产·蒸汽海鲜自助",
+      "aliases": []
+    },
+    {
+      "name": "柒戒·干式熟成烤肉自助",
+      "aliases": []
+    },
+    {
+      "name": "全球岛直采海鲜自助",
+      "aliases": []
+    },
+    {
+      "name": "黑雪·和牛",
+      "aliases": []
+    },
+    {
+      "name": "1886汽车餐厅",
+      "aliases": []
+    },
+    {
+      "name": "CheeseHead·创意奶酪料理",
+      "aliases": []
+    },
+    {
+      "name": "Allo红磡",
+      "aliases": []
+    },
+    {
+      "name": "COMMUNE MAISON幻师",
+      "aliases": []
+    },
+    {
+      "name": "BOTTEGA意库",
+      "aliases": []
+    },
+    {
+      "name": "沙绿59號小市集",
+      "aliases": []
+    },
+    {
+      "name": "THE WANG王品",
+      "aliases": []
+    },
+    {
+      "name": "pêcher brunch&bistro",
+      "aliases": []
+    },
+    {
+      "name": "Mix Shakalaka鲨卡·美式融合餐吧",
+      "aliases": []
+    },
+    {
+      "name": "MUSE PENTHOUSE 云端餐厅",
+      "aliases": []
+    },
+    {
+      "name": "Avalon Dutton阿瓦隆·达顿",
+      "aliases": []
+    },
+    {
+      "name": "Rina丽娜牛排馆",
+      "aliases": []
+    },
+    {
+      "name": "Blac+Blac",
+      "aliases": []
+    },
+    {
+      "name": "Mozzarella e Vino",
+      "aliases": []
+    },
+    {
+      "name": "Pomodoro意大利餐厅",
+      "aliases": []
+    },
+    {
+      "name": "FYRE",
+      "aliases": []
+    },
+    {
+      "name": "犇板前·战斧牛排·直火碳烤",
+      "aliases": []
+    },
+    {
+      "name": "Serra",
+      "aliases": []
+    },
+    {
+      "name": "AMINO AMIGO",
+      "aliases": []
+    },
+    {
+      "name": "Sérénade乐颂 Brunch&Bistro",
+      "aliases": []
+    },
+    {
+      "name": "Grande A'moo",
+      "aliases": []
+    },
+    {
+      "name": "VASO意大利市集餐厅·拿坡里披萨",
+      "aliases": []
+    },
+    {
+      "name": "Money Shops",
+      "aliases": []
+    },
+    {
+      "name": "Amour Mets 法式花园餐酒馆",
+      "aliases": []
+    },
+    {
+      "name": "阿萨中东料理·清真",
+      "aliases": []
+    },
+    {
+      "name": "Epices & Foie Gras",
+      "aliases": []
+    },
+    {
+      "name": "Toris",
+      "aliases": []
+    },
+    {
+      "name": "壹泰Ethai Cafe·柠檬香茅·剧院",
+      "aliases": []
+    },
+    {
+      "name": "Tapa Tapa",
+      "aliases": []
+    },
+    {
+      "name": "Efes Turkish & Mediterranean Cuisine 艾菲斯餐厅",
+      "aliases": []
+    },
+    {
+      "name": "Highline Bistro·露台花园餐厅",
+      "aliases": []
+    },
+    {
+      "name": "ONIONIO·北欧松林木屋",
+      "aliases": []
+    },
+    {
+      "name": "FENOLI",
+      "aliases": []
+    },
+    {
+      "name": "SULTAN·土耳其餐厅",
+      "aliases": []
+    },
+    {
+      "name": "Amoamo",
+      "aliases": []
+    },
+    {
+      "name": "The Cheesecake Factory芝乐坊餐厅",
+      "aliases": []
+    },
+    {
+      "name": "wvolla Brunch·Bar沃乐",
+      "aliases": []
+    },
+    {
+      "name": "Flambe Bistro·奥地利餐厅",
+      "aliases": []
+    },
+    {
+      "name": "IL TEATRO 精品意大利餐厅",
+      "aliases": []
+    },
+    {
+      "name": "TOR外滩一号·露台餐厅",
+      "aliases": []
+    },
+    {
+      "name": "Monte Olive橄榄山·地中海低碳水餐厅",
+      "aliases": []
+    },
+    {
+      "name": "CASALUNA Brunch&Bistro",
+      "aliases": []
+    },
+    {
+      "name": "Ali Lando 阿丽兰朵·地中海餐厅",
+      "aliases": []
+    },
+    {
+      "name": "BIJOU",
+      "aliases": []
+    },
+    {
+      "name": "Solo Garden",
+      "aliases": []
+    },
+    {
+      "name": "Chili's 奇利斯美式小餐馆",
+      "aliases": []
+    },
+    {
+      "name": "倉野SPACE",
+      "aliases": []
+    },
+    {
+      "name": "FAT COW",
+      "aliases": []
+    },
+    {
+      "name": "BISTRO LENBACH兰巴赫",
+      "aliases": []
+    },
+    {
+      "name": "OTF Sicilia 假日餐厅",
+      "aliases": []
+    },
+    {
+      "name": "The boots泥靴",
+      "aliases": []
+    },
+    {
+      "name": "Texas Roadhouse",
+      "aliases": []
+    },
+    {
+      "name": "LENBACH WESTBUND 兰巴赫",
+      "aliases": []
+    },
+    {
+      "name": "THE CASTLE 古堡餐厅",
+      "aliases": []
+    },
+    {
+      "name": "BISTRO11",
+      "aliases": []
+    },
+    {
+      "name": "Don Quixote堂吉诃德·西班牙餐厅酒馆",
+      "aliases": []
+    },
+    {
+      "name": "Chili's Cafe&Bar奇利斯",
+      "aliases": []
+    },
+    {
+      "name": "Las Tapas",
+      "aliases": []
+    },
+    {
+      "name": "Oeat",
+      "aliases": []
+    },
+    {
+      "name": "pickchill",
+      "aliases": []
+    },
+    {
+      "name": "涮福記·现切牛羊肉火锅",
+      "aliases": []
+    },
+    {
+      "name": "芈重山老火锅",
+      "aliases": []
+    },
+    {
+      "name": "小鲭楼美蛙鱼·夜宵",
+      "aliases": []
+    },
+    {
+      "name": "淑芬串串公司·火锅串串香",
+      "aliases": []
+    },
+    {
+      "name": "不撞鲜鸡煲·海鲜排档",
+      "aliases": []
+    },
+    {
+      "name": "北步园火锅",
+      "aliases": []
+    },
+    {
+      "name": "四面泰·RESERVE",
+      "aliases": []
+    },
+    {
+      "name": "阿不就·闽台鲜鸡煲热炒·大排档",
+      "aliases": []
+    },
+    {
+      "name": "小巷罗妈串串甜品火锅自助",
+      "aliases": []
+    },
+    {
+      "name": "庄淑芬·厦门沙茶汤火锅",
+      "aliases": []
+    },
+    {
+      "name": "小牛滚滚贵州黄牛肉火锅",
+      "aliases": []
+    },
+    {
+      "name": "牛小馆·原汤牛肉·牛排火锅",
+      "aliases": []
+    },
+    {
+      "name": "朱雀打边炉·港式排档",
+      "aliases": []
+    },
+    {
+      "name": "成妈串串自助火锅馆",
+      "aliases": []
+    },
+    {
+      "name": "村边边·柴火土鸡汤",
+      "aliases": []
+    },
+    {
+      "name": "海湾荟·纵横四海·帝王蟹海鲜火锅",
+      "aliases": []
+    },
+    {
+      "name": "開縣徐妈串串火锅馆",
+      "aliases": []
+    },
+    {
+      "name": "肥仔荣海鲜牛肉火锅",
+      "aliases": []
+    },
+    {
+      "name": "谭鱼头·鲜鱼美蛙火锅",
+      "aliases": []
+    },
+    {
+      "name": "付二娘鲜鱼美蛙馆",
+      "aliases": []
+    },
+    {
+      "name": "额尔敦传统涮",
+      "aliases": []
+    },
+    {
+      "name": "椰庭·椰子鸡·创意玩家",
+      "aliases": []
+    },
+    {
+      "name": "有根葱不改良鲜货火锅",
+      "aliases": []
+    },
+    {
+      "name": "京元盛铜锅涮肉",
+      "aliases": []
+    },
+    {
+      "name": "凤添吉·醉鸡煲小海鲜·大排档",
+      "aliases": []
+    },
+    {
+      "name": "海大富集市海鲜火锅·烧烤夜宵",
+      "aliases": []
+    },
+    {
+      "name": "王和李·海鲜火锅大排档",
+      "aliases": []
+    },
+    {
+      "name": "鲜山季·野山菌火锅",
+      "aliases": []
+    },
+    {
+      "name": "吴记鲜定味",
+      "aliases": []
+    },
+    {
+      "name": "鲜鱼潭·香辣炝锅鱼",
+      "aliases": []
+    },
+    {
+      "name": "老墙根涮肉·铜锅·烧烤",
+      "aliases": []
+    },
+    {
+      "name": "尚蒸燚蒸汽海鲜",
+      "aliases": []
+    },
+    {
+      "name": "三出山火锅",
+      "aliases": []
+    },
+    {
+      "name": "周潮發·潮汕·沙茶鲜牛肉火锅",
+      "aliases": []
+    },
+    {
+      "name": "阿鼎港式沙茶打边炉·牛腩煲",
+      "aliases": []
+    },
+    {
+      "name": "Nanan嗱喃中山脆肉鲩火锅",
+      "aliases": []
+    },
+    {
+      "name": "最山城不改良重庆火锅",
+      "aliases": []
+    },
+    {
+      "name": "卿庭·鲜货火锅",
+      "aliases": []
+    },
+    {
+      "name": "쌍화점 霜花店",
+      "aliases": []
+    },
+    {
+      "name": "粤禧潮·斑鱼海鲜粥火锅",
+      "aliases": []
+    },
+    {
+      "name": "新招鲜·古法草本鸡煲",
+      "aliases": []
+    },
+    {
+      "name": "陈氏人家贵州豆米火锅",
+      "aliases": []
+    },
+    {
+      "name": "德林酸菜鱼火锅",
+      "aliases": []
+    },
+    {
+      "name": "老虎姑婆·手作火锅",
+      "aliases": []
+    },
+    {
+      "name": "新京熹·北京涮肉",
+      "aliases": []
+    },
+    {
+      "name": "季季山·云南野生菌火锅",
+      "aliases": []
+    },
+    {
+      "name": "悦季捞·斑鱼海鲜粥火锅",
+      "aliases": []
+    },
+    {
+      "name": "豆孖douzii·贵州豆米火锅",
+      "aliases": []
+    },
+    {
+      "name": "一绪に寿喜烧放题 · 聚",
+      "aliases": []
+    },
+    {
+      "name": "聚宝源",
+      "aliases": []
+    },
+    {
+      "name": "芸山季·云南野生菌火锅",
+      "aliases": []
+    },
+    {
+      "name": "玲姐·海鲜火锅",
+      "aliases": []
+    },
+    {
+      "name": "大成牛肉汤馆",
+      "aliases": []
+    },
+    {
+      "name": "福旺甲·砂锅烧甲鱼",
+      "aliases": []
+    },
+    {
+      "name": "两楼·潮汕热炒·火锅",
+      "aliases": []
+    },
+    {
+      "name": "山缓缓火锅",
+      "aliases": []
+    },
+    {
+      "name": "MISS塞北·新西北菜",
+      "aliases": []
+    },
+    {
+      "name": "吞吞鸭",
+      "aliases": []
+    },
+    {
+      "name": "五里关火锅",
+      "aliases": []
+    },
+    {
+      "name": "乜記飯店·湛江菜·宵夜",
+      "aliases": []
+    },
+    {
+      "name": "禧粵魚撈·斑魚海鮮粥火鍋",
+      "aliases": []
+    },
+    {
+      "name": "李莫颠",
+      "aliases": []
+    },
+    {
+      "name": "Fung·凤添吉·醉鸡煲小海鲜",
+      "aliases": []
+    },
+    {
+      "name": "粤来记·烧味·生蚝鸡煲",
+      "aliases": []
+    },
+    {
+      "name": "浦题·海蒸汇 蒸汽海鲜自助",
+      "aliases": []
+    },
+    {
+      "name": "二火锅",
+      "aliases": []
+    },
+    {
+      "name": "下山虎潮汕牛肉火锅",
+      "aliases": []
+    },
+    {
+      "name": "宽馬记大排档·热鲜牛肉海鲜火锅",
+      "aliases": []
+    },
+    {
+      "name": "瑭所",
+      "aliases": []
+    },
+    {
+      "name": "WheatBakery焙野",
+      "aliases": []
+    },
+    {
+      "name": "PAOPAO Mini Bakery",
+      "aliases": []
+    },
+    {
+      "name": "ŌRTENSIA Café",
+      "aliases": []
+    },
+    {
+      "name": "HU LEI LEI现烤大曲奇",
+      "aliases": []
+    },
+    {
+      "name": "Moin Keks",
+      "aliases": []
+    },
+    {
+      "name": "窑滚Maison Kamado",
+      "aliases": []
+    },
+    {
+      "name": "逸道",
+      "aliases": []
+    },
+    {
+      "name": "汕心·潮汕甜汤",
+      "aliases": []
+    },
+    {
+      "name": "罗布颂烘焙LA BOULANGERIE ROBUCHON",
+      "aliases": []
+    },
+    {
+      "name": "矿野野yeyeland",
+      "aliases": []
+    },
+    {
+      "name": "糖画",
+      "aliases": []
+    },
+    {
+      "name": "红星前进面包牛奶公司",
+      "aliases": []
+    },
+    {
+      "name": "Puffin",
+      "aliases": []
+    },
+    {
+      "name": "B&C黄油与面包·法式古堡面包坊",
+      "aliases": []
+    },
+    {
+      "name": "蔡嘉甜品",
+      "aliases": []
+    },
+    {
+      "name": "JESSY&JERRY",
+      "aliases": []
+    },
+    {
+      "name": "LELECHA WONDER",
+      "aliases": []
+    },
+    {
+      "name": "BUTTER%",
+      "aliases": []
+    },
+    {
+      "name": "OUR Bakery",
+      "aliases": []
+    },
+    {
+      "name": "嘉士利AIECHIRE·黄油手信",
+      "aliases": []
+    },
+    {
+      "name": "LI CHENG BAKING STUDIO蛋糕·下午茶",
+      "aliases": []
+    },
+    {
+      "name": "崎本的店·专业酵种吐司",
+      "aliases": []
+    },
+    {
+      "name": "花神法式面包坊·FLORA PAIN",
+      "aliases": []
+    },
+    {
+      "name": "源麦甜",
+      "aliases": []
+    },
+    {
+      "name": "B&C黄油与面包·THE GARDEN BAKERY概念店",
+      "aliases": []
+    },
+    {
+      "name": "TruffeBoulangeriebyB&C松露与面包",
+      "aliases": []
+    },
+    {
+      "name": "VERIE BAKEHOUSE",
+      "aliases": []
+    },
+    {
+      "name": "BEIGEL TREE贝果树·纽约贝果博物馆",
+      "aliases": []
+    },
+    {
+      "name": "V C·葡式手工蛋撻專門店",
+      "aliases": []
+    },
+    {
+      "name": "十米千金",
+      "aliases": []
+    },
+    {
+      "name": "AMAM LONBAKERY TOWN 伦敦市集概念店",
+      "aliases": []
+    },
+    {
+      "name": "moosugar糖果伴手礼商店",
+      "aliases": []
+    },
+    {
+      "name": "AMAM LONBAKERY TOWN 伦敦烘焙小镇",
+      "aliases": []
+    },
+    {
+      "name": "米仓POP · 舒芙蕾松饼",
+      "aliases": []
+    },
+    {
+      "name": "AMAM LONBAKERY TOWN·ROYAL CLUB",
+      "aliases": []
+    },
+    {
+      "name": "熊治面包",
+      "aliases": []
+    },
+    {
+      "name": "GANZHI 甘旨•湖边餐厅 by EVERNAKED",
+      "aliases": []
+    },
+    {
+      "name": "APOLI ITABAKERY·AP意大利料理面包坊",
+      "aliases": []
+    },
+    {
+      "name": "Trua Boo流心巴斯克",
+      "aliases": []
+    },
+    {
+      "name": "PONY neighbor",
+      "aliases": []
+    },
+    {
+      "name": "HOT CRUSH趁热集合·现烤面包",
+      "aliases": []
+    },
+    {
+      "name": "BUTTERFUL&CREAMOROUS 黄油与面包",
+      "aliases": []
+    },
+    {
+      "name": "Madre",
+      "aliases": []
+    },
+    {
+      "name": "Polux by Paul Pairet",
+      "aliases": []
+    },
+    {
+      "name": "HERERS赫芮斯·轻糖蛋糕",
+      "aliases": []
+    },
+    {
+      "name": "BegL餐厅",
+      "aliases": []
+    },
+    {
+      "name": "甜香草手工饼干SWEETISH VANILLITY",
+      "aliases": []
+    },
+    {
+      "name": "CIRCLES圈米拉·定制蛋糕·茶歇",
+      "aliases": []
+    },
+    {
+      "name": "OnForm",
+      "aliases": []
+    },
+    {
+      "name": "入口天物",
+      "aliases": []
+    },
+    {
+      "name": "ConnieHe笑屋",
+      "aliases": []
+    },
+    {
+      "name": "yeetchoco巧克力蛋糕",
+      "aliases": []
+    },
+    {
+      "name": "Files Dessert Lab·FDL",
+      "aliases": []
+    },
+    {
+      "name": "yeetlemon17柠檬云卷",
+      "aliases": []
+    },
+    {
+      "name": "炉边皮皮",
+      "aliases": []
+    },
+    {
+      "name": "bebaked",
+      "aliases": []
+    },
+    {
+      "name": "Punch Monday Bakery",
+      "aliases": []
+    },
+    {
+      "name": "yeetchoco2重巧克力蛋糕",
+      "aliases": []
+    },
+    {
+      "name": "白实·生奶油工坊",
+      "aliases": []
+    },
+    {
+      "name": "yeetlemon柠檬蛋糕",
+      "aliases": []
+    },
+    {
+      "name": "肉串汪",
+      "aliases": []
+    },
+    {
+      "name": "老高家海鲜大排档·小龙虾·烧烤",
+      "aliases": []
+    },
+    {
+      "name": "胖妹面庄",
+      "aliases": []
+    },
+    {
+      "name": "吾不晚自助泡面博物馆",
+      "aliases": []
+    },
+    {
+      "name": "超级安答",
+      "aliases": []
+    },
+    {
+      "name": "共热柴窑Au Four",
+      "aliases": []
+    },
+    {
+      "name": "肥大嘴·小龙虾·哈尔滨烧烤·锅包肉",
+      "aliases": []
+    },
+    {
+      "name": "旬福食堂·家庭料理",
+      "aliases": []
+    },
+    {
+      "name": "泮芳春煎饺",
+      "aliases": []
+    },
+    {
+      "name": "是隆潞船面",
+      "aliases": []
+    },
+    {
+      "name": "咬金·鲜牛肉锅贴面馆",
+      "aliases": []
+    },
+    {
+      "name": "梅将 · 家系拉面 · 板前料理",
+      "aliases": []
+    },
+    {
+      "name": "不籍风牛肉面BY罗福索牛排馆",
+      "aliases": []
+    },
+    {
+      "name": "孔岳冒菜",
+      "aliases": []
+    },
+    {
+      "name": "魔都潮滋味·鲜牛肉铺子",
+      "aliases": []
+    },
+    {
+      "name": "梅龙镇酒家",
+      "aliases": []
+    },
+    {
+      "name": "京羊巷·铜锅涮肉甜品烧烤自助",
+      "aliases": []
+    },
+    {
+      "name": "财神食堂·经典小炒",
+      "aliases": []
+    },
+    {
+      "name": "爱泰村·泰国船面",
+      "aliases": []
+    },
+    {
+      "name": "黃啓雲私房牛肉面工坊",
+      "aliases": []
+    },
+    {
+      "name": "刘栋梁大排档·小龙虾·江湖菜",
+      "aliases": []
+    },
+    {
+      "name": "人和馆·上海面点",
+      "aliases": []
+    },
+    {
+      "name": "草根夜档·潮汕老字号·小炒排档",
+      "aliases": []
+    },
+    {
+      "name": "乾俸盛·禾姐",
+      "aliases": []
+    },
+    {
+      "name": "阿西娅牛肉面·爆炒羊羔肉·清真",
+      "aliases": []
+    },
+    {
+      "name": "安答龙虾",
+      "aliases": []
+    },
+    {
+      "name": "郑阿公顺德鸡煲饭双皮奶",
+      "aliases": []
+    },
+    {
+      "name": "方友赤龙·牛杂",
+      "aliases": []
+    },
+    {
+      "name": "永丰面馆",
+      "aliases": []
+    },
+    {
+      "name": "粉八·云南米线·建水烧烤",
+      "aliases": []
+    },
+    {
+      "name": "文粉·江西生料炒粉",
+      "aliases": []
+    },
+    {
+      "name": "卓記牛腩·港式清湯腩",
+      "aliases": []
+    },
+    {
+      "name": "顺峰顺水顺德菜",
+      "aliases": []
+    },
+    {
+      "name": "非遗活蟹现拆体验店·庄氏隆兴",
+      "aliases": []
+    },
+    {
+      "name": "嘢yoo·广西米粉",
+      "aliases": []
+    },
+    {
+      "name": "兰真真·兰州清真包子·特色甜食",
+      "aliases": []
+    },
+    {
+      "name": "上汤·云南小馆",
+      "aliases": []
+    },
+    {
+      "name": "小邢海鲜龙虾烧烤",
+      "aliases": []
+    },
+    {
+      "name": "渔都老味面·深夜食堂·舟山海鲜面",
+      "aliases": []
+    },
+    {
+      "name": "不剪·台式超厚鸡排",
+      "aliases": []
+    },
+    {
+      "name": "山川饺子铺",
+      "aliases": []
+    },
+    {
+      "name": "崧竹香·中式传统香料家庭料理",
+      "aliases": []
+    },
+    {
+      "name": "MAMBA清漫笆泰北船面·泰料",
+      "aliases": []
+    },
+    {
+      "name": "川香煲",
+      "aliases": []
+    },
+    {
+      "name": "椿芽·鲜牛肉杭州拌川",
+      "aliases": []
+    },
+    {
+      "name": "新斋桥苏式精品面馆",
+      "aliases": []
+    },
+    {
+      "name": "德兴馆",
+      "aliases": []
+    },
+    {
+      "name": "萝春阁·生煎大王",
+      "aliases": []
+    },
+    {
+      "name": "谢记上海大排档",
+      "aliases": []
+    },
+    {
+      "name": "品回味清真西北菜",
+      "aliases": []
+    },
+    {
+      "name": "DK台湾菜馆",
+      "aliases": []
+    },
+    {
+      "name": "毒蛇面馆",
+      "aliases": []
+    },
+    {
+      "name": "味香斋·麻酱面",
+      "aliases": []
+    },
+    {
+      "name": "李百蟹",
+      "aliases": []
+    },
+    {
+      "name": "香港池仔记肠粉王",
+      "aliases": []
+    },
+    {
+      "name": "馨和·本帮面菜馆",
+      "aliases": []
+    },
+    {
+      "name": "吉翊烧鸟",
+      "aliases": []
+    },
+    {
+      "name": "ATELIER IZAKAYA 2.0",
+      "aliases": []
+    },
+    {
+      "name": "喜都乃",
+      "aliases": []
+    },
+    {
+      "name": "森田·关西风寿喜烧",
+      "aliases": []
+    },
+    {
+      "name": "SOLIS YAKI",
+      "aliases": []
+    },
+    {
+      "name": "Sushi Land 鮨·上海寿司",
+      "aliases": []
+    },
+    {
+      "name": "鸟贵族·平价烧鸟",
+      "aliases": []
+    },
+    {
+      "name": "焼肉ライク·烧肉LIKE",
+      "aliases": []
+    },
+    {
+      "name": "椿寿司·精致日料铁板烧by鮨谷",
+      "aliases": []
+    },
+    {
+      "name": "KLAZ izakaya&lounge",
+      "aliases": []
+    },
+    {
+      "name": "野中家·拉麺·深夜食堂",
+      "aliases": []
+    },
+    {
+      "name": "伊藤新苑日本料理·烧肉",
+      "aliases": []
+    },
+    {
+      "name": "鸟栖·焼鳥·江景日料",
+      "aliases": []
+    },
+    {
+      "name": "独自坐 | 一人食寿喜烧",
+      "aliases": []
+    },
+    {
+      "name": "酒町SAKEMACHI·烧鸟居酒屋",
+      "aliases": []
+    },
+    {
+      "name": "权八居酒屋Gonpachi",
+      "aliases": []
+    },
+    {
+      "name": "跳珠 Sushi＆Handroll",
+      "aliases": []
+    },
+    {
+      "name": "鮨政·Omakase",
+      "aliases": []
+    },
+    {
+      "name": "芥末Wasabi·無界",
+      "aliases": []
+    },
+    {
+      "name": "沼津港板前",
+      "aliases": []
+    },
+    {
+      "name": "牛一番·日式和牛烧肉",
+      "aliases": []
+    },
+    {
+      "name": "鱻 Xian",
+      "aliases": []
+    },
+    {
+      "name": "WanMo顽魔·铁板烧Mars Era",
+      "aliases": []
+    },
+    {
+      "name": "满板前·帝王蟹雪蟹",
+      "aliases": []
+    },
+    {
+      "name": "鮨東雲",
+      "aliases": []
+    },
+    {
+      "name": "孤独的寿喜烧",
+      "aliases": []
+    },
+    {
+      "name": "匠心•TAKUMI KOKORO",
+      "aliases": []
+    },
+    {
+      "name": "无印良品餐堂MUJI Diner",
+      "aliases": []
+    },
+    {
+      "name": "旭日屋日本料理",
+      "aliases": []
+    },
+    {
+      "name": "芥末 Wasabi•赏味",
+      "aliases": []
+    },
+    {
+      "name": "竹若荣越",
+      "aliases": []
+    },
+    {
+      "name": "万胆omakase",
+      "aliases": []
+    },
+    {
+      "name": "大馥·丼·洋食",
+      "aliases": []
+    },
+    {
+      "name": "新禾牛社·日式料理·手握",
+      "aliases": []
+    },
+    {
+      "name": "麺屋庄野·麺や庄の",
+      "aliases": []
+    },
+    {
+      "name": "とんかつ一滨·九州料理",
+      "aliases": []
+    },
+    {
+      "name": "お箸",
+      "aliases": []
+    },
+    {
+      "name": "Kokyo Sushi Bar",
+      "aliases": []
+    },
+    {
+      "name": "鸟繁YAKITORI",
+      "aliases": []
+    },
+    {
+      "name": "SUNTORY Japanese Cuisine & Whisky",
+      "aliases": []
+    },
+    {
+      "name": "鮨海月 omakase",
+      "aliases": []
+    },
+    {
+      "name": "麦MUGI·寿司omakase",
+      "aliases": []
+    },
+    {
+      "name": "鸟沢TORISAWĀ",
+      "aliases": []
+    },
+    {
+      "name": "鸟醺烧鸟居酒屋·酒场",
+      "aliases": []
+    },
+    {
+      "name": "KAKU角 关东煮釜飯Bistro",
+      "aliases": []
+    },
+    {
+      "name": "I'M牛爱牧牛·和牛烧肉&海鲜自助",
+      "aliases": []
+    },
+    {
+      "name": "山風·月見izakaya",
+      "aliases": []
+    },
+    {
+      "name": "九州料理竿屋SaoYa",
+      "aliases": []
+    },
+    {
+      "name": "喜米大师铁板烧·地标景观餐厅",
+      "aliases": []
+    },
+    {
+      "name": "千两",
+      "aliases": []
+    },
+    {
+      "name": "DAISUKI MAKI·大好运寿司",
+      "aliases": []
+    },
+    {
+      "name": "晴木千層猪排 KIMUKATSU",
+      "aliases": []
+    },
+    {
+      "name": "大江户日本料理",
+      "aliases": []
+    },
+    {
+      "name": "壹号海鲜日料放题",
+      "aliases": []
+    },
+    {
+      "name": "令谷花开·惊世料理",
+      "aliases": []
+    },
+    {
+      "name": "蟹犇前.帝王蟹雪蟹",
+      "aliases": []
+    },
+    {
+      "name": "花莺日本料理·自助放题",
+      "aliases": []
+    },
+    {
+      "name": "夯食Hunt's·摩登日料",
+      "aliases": []
+    },
+    {
+      "name": "旬藏",
+      "aliases": []
+    },
+    {
+      "name": "飛牛町·izakaya",
+      "aliases": []
+    },
+    {
+      "name": "鮨尺",
+      "aliases": []
+    },
+    {
+      "name": "芥末Wasabi",
+      "aliases": []
+    },
+    {
+      "name": "筱田の食堂·izakaya",
+      "aliases": []
+    },
+    {
+      "name": "呆板日式料理",
+      "aliases": []
+    },
+    {
+      "name": "麒麟KILIN·全江景高空自助放题",
+      "aliases": []
+    },
+    {
+      "name": "浙小醉·新宁波菜",
+      "aliases": []
+    },
+    {
+      "name": "瓯叙·温州家烧",
+      "aliases": []
+    },
+    {
+      "name": "毛头老爹饭店",
+      "aliases": []
+    },
+    {
+      "name": "老吉士",
+      "aliases": []
+    },
+    {
+      "name": "瓯巷鲜档·温州菜",
+      "aliases": []
+    },
+    {
+      "name": "东海滙·海鲜小馆",
+      "aliases": []
+    },
+    {
+      "name": "上海总会SHANGHAICLUB",
+      "aliases": []
+    },
+    {
+      "name": "席家花园",
+      "aliases": []
+    },
+    {
+      "name": "永春园.淮扬菜.扬州早茶",
+      "aliases": []
+    },
+    {
+      "name": "逸筵·台州菜景观餐厅·宴江月旗下品牌",
+      "aliases": []
+    },
+    {
+      "name": "春里·淮扬",
+      "aliases": []
+    },
+    {
+      "name": "玫瑰厅上海菜",
+      "aliases": []
+    },
+    {
+      "name": "甬耕食集",
+      "aliases": []
+    },
+    {
+      "name": "权茂·老上海本帮菜",
+      "aliases": []
+    },
+    {
+      "name": "小邢海鲜·国风雅宴",
+      "aliases": []
+    },
+    {
+      "name": "兰亭集·上海菜",
+      "aliases": []
+    },
+    {
+      "name": "老吉士上海菜·吉士海派·生日宴·商务宴",
+      "aliases": []
+    },
+    {
+      "name": "孔乙己酒家",
+      "aliases": []
+    },
+    {
+      "name": "越稽·地道绍兴菜馆",
+      "aliases": []
+    },
+    {
+      "name": "笼光满面·炭火本帮菜",
+      "aliases": []
+    },
+    {
+      "name": "柒园·竹荟",
+      "aliases": []
+    },
+    {
+      "name": "海味观",
+      "aliases": []
+    },
+    {
+      "name": "毛豆阿姨酒家",
+      "aliases": []
+    },
+    {
+      "name": "龚禧龚禧·甬菜",
+      "aliases": []
+    },
+    {
+      "name": "三玛璐酒楼",
+      "aliases": []
+    },
+    {
+      "name": "酌三旬·Shanghai Bistro",
+      "aliases": []
+    },
+    {
+      "name": "甬潮·宁波小市",
+      "aliases": []
+    },
+    {
+      "name": "華府Deluxe",
+      "aliases": []
+    },
+    {
+      "name": "華府",
+      "aliases": []
+    },
+    {
+      "name": "福道·上海菜",
+      "aliases": []
+    },
+    {
+      "name": "頭牌饭店·温州菜",
+      "aliases": []
+    },
+    {
+      "name": "甬府尊鮮",
+      "aliases": []
+    },
+    {
+      "name": "绿波廊",
+      "aliases": []
+    },
+    {
+      "name": "三十而已·宁波海鲜.盐帮川菜",
+      "aliases": []
+    },
+    {
+      "name": "南里晓宴·新淮扬菜",
+      "aliases": []
+    },
+    {
+      "name": "佬太公海鸭·宁波菜形象店",
+      "aliases": []
+    },
+    {
+      "name": "漢舍中国菜馆",
+      "aliases": []
+    },
+    {
+      "name": "时春食春·扬州慢",
+      "aliases": []
+    },
+    {
+      "name": "九卓堂·3号洋房",
+      "aliases": []
+    },
+    {
+      "name": "宝山壹號·庭院餐厅",
+      "aliases": []
+    },
+    {
+      "name": "甬江鲜·江浙菜·家宴",
+      "aliases": []
+    },
+    {
+      "name": "锦楼·臻选新杭帮",
+      "aliases": []
+    },
+    {
+      "name": "外滩林家一·南派台州菜",
+      "aliases": []
+    },
+    {
+      "name": "大宝口福",
+      "aliases": []
+    },
+    {
+      "name": "甬季",
+      "aliases": []
+    },
+    {
+      "name": "浙时码头·温州海鲜大排档",
+      "aliases": []
+    },
+    {
+      "name": "沪上馨和小馆·海派上海菜",
+      "aliases": []
+    },
+    {
+      "name": "桥边两楼浙菜小酒馆",
+      "aliases": []
+    },
+    {
+      "name": "转角·老弄堂上海菜",
+      "aliases": []
+    },
+    {
+      "name": "百富公馆·新派上海菜·江景餐厅",
+      "aliases": []
+    },
+    {
+      "name": "大炑.食四季Wine Bistro",
+      "aliases": []
+    },
+    {
+      "name": "京宸里·宁波小鲜",
+      "aliases": []
+    },
+    {
+      "name": "网头鲜 · 宁波渔家菜",
+      "aliases": []
+    },
+    {
+      "name": "瓯越·尊鲜·瓯味一品",
+      "aliases": []
+    },
+    {
+      "name": "Classique 柯莱榭 法式餐厅",
+      "aliases": []
+    },
+    {
+      "name": "润苑",
+      "aliases": []
+    },
+    {
+      "name": "松兰山海",
+      "aliases": []
+    },
+    {
+      "name": "食廬NOBLE",
+      "aliases": []
+    },
+    {
+      "name": "HOMES上海本帮菜",
+      "aliases": []
+    },
+    {
+      "name": "若鲜千岛湖鱼头馆",
+      "aliases": []
+    },
+    {
+      "name": "醉庐·新上海菜",
+      "aliases": []
+    },
+    {
+      "name": "外滩家宴",
+      "aliases": []
+    },
+    {
+      "name": "锦府园",
+      "aliases": []
+    },
+    {
+      "name": "谢大牛馆·中式卤牛排",
+      "aliases": []
+    },
+    {
+      "name": "九厨·淮粤",
+      "aliases": []
+    },
+    {
+      "name": "帥帥精致家常味",
+      "aliases": []
+    },
+    {
+      "name": "半醉山岚Bistro·宁式小酒馆",
+      "aliases": []
+    },
+    {
+      "name": "晓平饭店·上海本帮菜",
+      "aliases": []
+    },
+    {
+      "name": "安和里园林餐厅",
+      "aliases": []
+    },
+    {
+      "name": "御鲤湘",
+      "aliases": []
+    },
+    {
+      "name": "云锦荟",
+      "aliases": []
+    },
+    {
+      "name": "淘淘园",
+      "aliases": []
+    },
+    {
+      "name": "青春贝壳烤肉·韩国汤饭",
+      "aliases": []
+    },
+    {
+      "name": "海宁煲谢记",
+      "aliases": []
+    },
+    {
+      "name": "泡面男孩Ramen Boy",
+      "aliases": []
+    },
+    {
+      "name": "凤寿司",
+      "aliases": []
+    },
+    {
+      "name": "庄行曹记羊肉",
+      "aliases": []
+    },
+    {
+      "name": "百特喜·意大利餐厅",
+      "aliases": []
+    },
+    {
+      "name": "旺清进洞米肠汤",
+      "aliases": []
+    },
+    {
+      "name": "和兴港式打边炉",
+      "aliases": []
+    },
+    {
+      "name": "阿平牛杂·鲜切牛杂牛腩煲·粉面",
+      "aliases": []
+    },
+    {
+      "name": "MIXING COFFEE",
+      "aliases": []
+    },
+    {
+      "name": "大钱龙虾",
+      "aliases": []
+    },
+    {
+      "name": "2nd cup coffee",
+      "aliases": []
+    },
+    {
+      "name": "璐坊粽王",
+      "aliases": []
+    },
+    {
+      "name": "福菓子西点Patisserie FU",
+      "aliases": []
+    },
+    {
+      "name": "茶人村·前滩江景雅宴",
+      "aliases": []
+    },
+    {
+      "name": "那时新疆·乌孙",
+      "aliases": []
+    },
+    {
+      "name": "郑状元面馆",
+      "aliases": []
+    },
+    {
+      "name": "峯铁板烧",
+      "aliases": []
+    },
+    {
+      "name": "疆域时光·南疆南羊肉串",
+      "aliases": []
+    },
+    {
+      "name": "東大門·吉尼大排档·正宗韩国料理",
+      "aliases": []
+    },
+    {
+      "name": "上海笑鱼  SUSHI KAKURE  鮨 隠",
+      "aliases": []
+    },
+    {
+      "name": "上海陆家嘴禧玥酒店餐厅·沫八",
+      "aliases": []
+    },
+    {
+      "name": "LE COQ大公鸡小酒馆·摩登餐厅",
+      "aliases": []
+    },
+    {
+      "name": "緣明土菜館",
+      "aliases": []
+    },
+    {
+      "name": "老爸厨房",
+      "aliases": []
+    },
+    {
+      "name": "常赢三兄弟·清真涮肉",
+      "aliases": []
+    },
+    {
+      "name": "子福慧",
+      "aliases": []
+    },
+    {
+      "name": "Metal hands·铁手咖啡",
+      "aliases": []
+    },
+    {
+      "name": "红料理|串串有瘾·烧烤",
+      "aliases": []
+    },
+    {
+      "name": "聪菜馆",
+      "aliases": []
+    },
+    {
+      "name": "禄银肠粉·煲仔饭",
+      "aliases": []
+    },
+    {
+      "name": "销魂美蛙鱼头火锅",
+      "aliases": []
+    },
+    {
+      "name": "天比高·粤菜",
+      "aliases": []
+    },
+    {
+      "name": "桃山日本料理铁板烧",
+      "aliases": []
+    },
+    {
+      "name": "金芬食府",
+      "aliases": []
+    },
+    {
+      "name": "农家大灶台.地锅鸡",
+      "aliases": []
+    },
+    {
+      "name": "缘·烧肉酒场·和牛刺身自助双放题",
+      "aliases": []
+    },
+    {
+      "name": "蒋记海鲜姿造•洋房别墅",
+      "aliases": []
+    },
+    {
+      "name": "柒厢食事雅谈",
+      "aliases": []
+    },
+    {
+      "name": "Halley Pizza&Kebab 清真",
+      "aliases": []
+    },
+    {
+      "name": "汉巴味德自助餐厅",
+      "aliases": []
+    },
+    {
+      "name": "MARU玛露音乐餐厅",
+      "aliases": []
+    },
+    {
+      "name": "king大志烤肉黑毛牛专门店",
+      "aliases": []
+    },
+    {
+      "name": "The COOK·厨餐厅·自助餐",
+      "aliases": []
+    },
+    {
+      "name": "協樂火鍋",
+      "aliases": []
+    },
+    {
+      "name": "FAT PHO大發越南粉",
+      "aliases": []
+    },
+    {
+      "name": "芝湖参鸡汤",
+      "aliases": []
+    },
+    {
+      "name": "撸啊撸铁签小肉",
+      "aliases": []
+    },
+    {
+      "name": "JUJU炭火烤肉·干杯小酒馆",
+      "aliases": []
+    },
+    {
+      "name": "Brut Eatery悦璞食堂",
+      "aliases": []
+    },
+    {
+      "name": "鮨蓮•日本料理",
+      "aliases": []
+    },
+    {
+      "name": "鮨·谦八·寿司",
+      "aliases": []
+    },
+    {
+      "name": "ALBALUZ 西班牙餐厅",
+      "aliases": []
+    },
+    {
+      "name": "一尺花园",
+      "aliases": []
+    },
+    {
+      "name": "温暖你的猪",
+      "aliases": []
+    },
+    {
+      "name": "Mata·Mata玛塔",
+      "aliases": []
+    },
+    {
+      "name": "PhoToShop福秀越南",
+      "aliases": []
+    },
+    {
+      "name": "火地铁板烧",
+      "aliases": []
+    },
+    {
+      "name": "Little Mermaid Bakery",
+      "aliases": []
+    },
+    {
+      "name": "企鹅餐厅",
+      "aliases": []
+    },
+    {
+      "name": "桂桂茶",
+      "aliases": []
+    },
+    {
+      "name": "大脸猫私家烘焙蛋糕",
+      "aliases": []
+    },
+    {
+      "name": "新疆古城喀什烤肉饭店",
+      "aliases": []
+    },
+    {
+      "name": "傲椒鱼活鱼火锅",
+      "aliases": []
+    },
+    {
+      "name": "张奶奶海参",
+      "aliases": []
+    },
+    {
+      "name": "小满手工粉",
+      "aliases": []
+    },
+    {
+      "name": "莫尔顿扒房",
+      "aliases": []
+    },
+    {
+      "name": "岸花·神户寿喜烧",
+      "aliases": []
+    },
+    {
+      "name": "香港龙凤楼",
+      "aliases": []
+    },
+    {
+      "name": "炎韩友烤牛肉·韩料牛肠",
+      "aliases": []
+    },
+    {
+      "name": "CHAR CHAR BISTRO·恰恰好牛排酒馆",
+      "aliases": []
+    },
+    {
+      "name": "馨源楼",
+      "aliases": []
+    },
+    {
+      "name": "紫霞门韩国料理",
+      "aliases": []
+    },
+    {
+      "name": "Quay江畔餐厅",
+      "aliases": []
+    },
+    {
+      "name": "植藤",
+      "aliases": []
+    },
+    {
+      "name": "LH TEPPANYAKI铁板烧",
+      "aliases": []
+    },
+    {
+      "name": "Ginza Onodera 鮨",
+      "aliases": []
+    },
+    {
+      "name": "浩海火燒雲傣家菜",
+      "aliases": []
+    },
+    {
+      "name": "金桔香港茶餐",
+      "aliases": []
+    },
+    {
+      "name": "酷矿冰淇淋",
+      "aliases": []
+    },
+    {
+      "name": "雍颐庭",
+      "aliases": []
+    },
+    {
+      "name": "金龙·打边炉",
+      "aliases": []
+    },
+    {
+      "name": "米唐北方小厨",
+      "aliases": []
+    },
+    {
+      "name": "割烹·哲 OMAKASE",
+      "aliases": []
+    },
+    {
+      "name": "旺达WUNDER",
+      "aliases": []
+    },
+    {
+      "name": "阿勇鲁肉饭",
+      "aliases": []
+    },
+    {
+      "name": "二街坊面店",
+      "aliases": []
+    },
+    {
+      "name": "塘湾壹品",
+      "aliases": []
+    },
+    {
+      "name": "C Cafe",
+      "aliases": []
+    },
+    {
+      "name": "新兴餐厅",
+      "aliases": []
+    },
+    {
+      "name": "都恩客",
+      "aliases": []
+    },
+    {
+      "name": "新旺茶餐厅",
+      "aliases": []
+    },
+    {
+      "name": "Pierre Marcolini",
+      "aliases": []
+    },
+    {
+      "name": "昌里第一炸·香酥鸡·好吃来",
+      "aliases": []
+    },
+    {
+      "name": "阿文·潮汕食府",
+      "aliases": []
+    },
+    {
+      "name": "两季烧烤",
+      "aliases": []
+    },
+    {
+      "name": "正兴高桥松饼",
+      "aliases": []
+    },
+    {
+      "name": "昇鳗鱼家",
+      "aliases": []
+    },
+    {
+      "name": "仁义火锅城·熟食店",
+      "aliases": []
+    },
+    {
+      "name": "一阳轩",
+      "aliases": []
+    },
+    {
+      "name": "陕六哥",
+      "aliases": []
+    },
+    {
+      "name": "Totino Panino",
+      "aliases": []
+    },
+    {
+      "name": "CRAZYONES西班牙海鲜饭",
+      "aliases": []
+    },
+    {
+      "name": "山石榴·贵州菜",
+      "aliases": []
+    },
+    {
+      "name": "2NITE.BAR",
+      "aliases": []
+    },
+    {
+      "name": "香然会·园林雅宴",
+      "aliases": []
+    },
+    {
+      "name": "上海早晨",
+      "aliases": []
+    },
+    {
+      "name": "El Bodegon阿根廷秘鲁餐厅",
+      "aliases": []
+    },
+    {
+      "name": "普朗姆生蚝吧",
+      "aliases": []
+    },
+    {
+      "name": "WHITE 白餐厅",
+      "aliases": []
+    },
+    {
+      "name": "HUGO HUSKY HOUSE•全天早午餐•舒芙蕾•蛋糕",
+      "aliases": []
+    },
+    {
+      "name": "三生小馆",
+      "aliases": []
+    },
+    {
+      "name": "峯烧鸟しんやしょくどう",
+      "aliases": []
+    },
+    {
+      "name": "裕兴记·蟹黄面馆",
+      "aliases": []
+    },
+    {
+      "name": "胖胖君的新疆抓饭",
+      "aliases": []
+    },
+    {
+      "name": "Alimentari早午餐",
+      "aliases": []
+    },
+    {
+      "name": "彩丰楼中餐厅",
+      "aliases": []
+    },
+    {
+      "name": "Bites&Brews",
+      "aliases": []
+    },
+    {
+      "name": "爱蝦乃家",
+      "aliases": []
+    },
+    {
+      "name": "二雷吉林烧烤",
+      "aliases": []
+    },
+    {
+      "name": "泰煌鸡·上海白斩鸡·沪菜",
+      "aliases": []
+    },
+    {
+      "name": "诚家日本料理",
+      "aliases": []
+    },
+    {
+      "name": "小杨龙虾海鲜馆",
+      "aliases": []
+    },
+    {
+      "name": "Q太郎",
+      "aliases": []
+    },
+    {
+      "name": "闲得咖啡馆 Leisure Cafe",
+      "aliases": []
+    },
+    {
+      "name": "胡家双锅贴",
+      "aliases": []
+    },
+    {
+      "name": "咖啡伦敦",
+      "aliases": []
+    },
+    {
+      "name": "上海虹口糕团食品厂",
+      "aliases": []
+    },
+    {
+      "name": "洪福楼",
+      "aliases": []
+    },
+    {
+      "name": "Strictly Cookies",
+      "aliases": []
+    },
+    {
+      "name": "上海金陵紫金山大酒店·汇海餐厅",
+      "aliases": []
+    },
+    {
+      "name": "锋味面",
+      "aliases": []
+    },
+    {
+      "name": "远洋宾馆·江景餐厅",
+      "aliases": []
+    },
+    {
+      "name": "石屋料理",
+      "aliases": []
+    },
+    {
+      "name": "新疆亚克西餐厅",
+      "aliases": []
+    },
+    {
+      "name": "两勺子一碗口水鸡拌面",
+      "aliases": []
+    },
+    {
+      "name": "避风塘",
+      "aliases": []
+    },
+    {
+      "name": "Spread the Bagel·CinnaSwirl",
+      "aliases": []
+    },
+    {
+      "name": "榕港海鲜·江浙菜·家宴",
+      "aliases": []
+    },
+    {
+      "name": "李先生的首尔小馆",
+      "aliases": []
+    },
+    {
+      "name": "紅鯉魚港式大排檔",
+      "aliases": []
+    },
+    {
+      "name": "鳗享屋·烧鸟·日式食堂",
+      "aliases": []
+    },
+    {
+      "name": "台南担仔面·卤肉饭",
+      "aliases": []
+    },
+    {
+      "name": "福1039",
+      "aliases": []
+    },
+    {
+      "name": "Mr & Mrs Bund by Paul Pairet",
+      "aliases": []
+    },
+    {
+      "name": "威皇广福和小海鲜",
+      "aliases": []
+    },
+    {
+      "name": "Tubestation站点比萨",
+      "aliases": []
+    },
+    {
+      "name": "菱·肴 Le Manoir Ling·Dining",
+      "aliases": []
+    },
+    {
+      "name": "成隆行·蟹王府",
+      "aliases": []
+    },
+    {
+      "name": "東發道茶冰廰·醉香江",
+      "aliases": []
+    },
+    {
+      "name": "Yan Ting 宴庭中餐厅",
+      "aliases": []
+    },
+    {
+      "name": "红辣椒·川菜·火锅",
+      "aliases": []
+    },
+    {
+      "name": "鮨割烹·遊OMAKASE",
+      "aliases": []
+    },
+    {
+      "name": "蟹黄鱼·海派餐面馆",
+      "aliases": []
+    },
+    {
+      "name": "modern farmer摩登農夫",
+      "aliases": []
+    },
+    {
+      "name": "Ocean's Table 欧舍",
+      "aliases": []
+    },
+    {
+      "name": "岳GAKU日本料理",
+      "aliases": []
+    },
+    {
+      "name": "Bar à Vin",
+      "aliases": []
+    },
+    {
+      "name": "皖宴",
+      "aliases": []
+    },
+    {
+      "name": "新疆兄弟烤肉店",
+      "aliases": []
+    },
+    {
+      "name": "顺风臻品菜",
+      "aliases": []
+    },
+    {
+      "name": "新Q烤吧",
+      "aliases": []
+    },
+    {
+      "name": "木叔小面",
+      "aliases": []
+    },
+    {
+      "name": "要要吃·崇明特色农家菜",
+      "aliases": []
+    },
+    {
+      "name": "Tequila Espresso",
+      "aliases": []
+    },
+    {
+      "name": "柒月粉",
+      "aliases": []
+    },
+    {
+      "name": "鲜满楼本帮菜",
+      "aliases": []
+    },
+    {
+      "name": "客觀民間菜",
+      "aliases": []
+    },
+    {
+      "name": "橼舍鮨青木",
+      "aliases": []
+    },
+    {
+      "name": "The MEAT 扒餐厅",
+      "aliases": []
+    },
+    {
+      "name": "la Boulangerie 面包房",
+      "aliases": []
+    },
+    {
+      "name": "首尔朴宝·炭火烤肉",
+      "aliases": []
+    },
+    {
+      "name": "沪碟·摩登时代",
+      "aliases": []
+    },
+    {
+      "name": "THE PRESS",
+      "aliases": []
+    },
+    {
+      "name": "SISTERS BAR RESTAURANT川意酒馆",
+      "aliases": []
+    },
+    {
+      "name": "Lumiere's Kitchen 卢米亚厨房",
+      "aliases": []
+    },
+    {
+      "name": "The Fellas Terrace",
+      "aliases": []
+    },
+    {
+      "name": "长征刨冰",
+      "aliases": []
+    },
+    {
+      "name": "非常时髦悦府VUE Dining",
+      "aliases": []
+    },
+    {
+      "name": "大馥·烧肉丼饭",
+      "aliases": []
+    },
+    {
+      "name": "杨府霸道私房火锅",
+      "aliases": []
+    },
+    {
+      "name": "上海和平饭店茉·莉酒廊 Jasmine Lounge",
+      "aliases": []
+    },
+    {
+      "name": "晶采轩",
+      "aliases": []
+    },
+    {
+      "name": "尚越SH·YUE 新本帮餐厅",
+      "aliases": []
+    },
+    {
+      "name": "客缘·初见江浙菜海鲜",
+      "aliases": []
+    },
+    {
+      "name": "石物恋·烧肉",
+      "aliases": []
+    },
+    {
+      "name": "君东记本帮面馆",
+      "aliases": []
+    },
+    {
+      "name": "富淳饭店",
+      "aliases": []
+    },
+    {
+      "name": "紫料亭Murasaki",
+      "aliases": []
+    },
+    {
+      "name": "PS.Cafe",
+      "aliases": []
+    },
+    {
+      "name": "WS Cafe&Lounge",
+      "aliases": []
+    },
+    {
+      "name": "鲜筵·静安昆仑·中餐厅",
+      "aliases": []
+    },
+    {
+      "name": "YO-CAKE蛋糕订制",
+      "aliases": []
+    },
+    {
+      "name": "金孔雀",
+      "aliases": []
+    },
+    {
+      "name": "正三熙小木屋烤肉",
+      "aliases": []
+    },
+    {
+      "name": "麒麟阁",
+      "aliases": []
+    },
+    {
+      "name": "世香全厨•日料·铁板烧",
+      "aliases": []
+    },
+    {
+      "name": "客缘·迎山海江浙菜海鲜粤点",
+      "aliases": []
+    },
+    {
+      "name": "鮨玄日本料理",
+      "aliases": []
+    },
+    {
+      "name": "丰茂烤串",
+      "aliases": []
+    },
+    {
+      "name": "菩提素",
+      "aliases": []
+    },
+    {
+      "name": "今日牛事潮汕鲜牛肉火锅",
+      "aliases": []
+    },
+    {
+      "name": "鲐赏河豚·青岛菜",
+      "aliases": []
+    },
+    {
+      "name": "付小姐在成都",
+      "aliases": []
+    },
+    {
+      "name": "Magnet磁食",
+      "aliases": []
+    },
+    {
+      "name": "LiLi Time·巷子",
+      "aliases": []
+    },
+    {
+      "name": "新浦六·原浦江陆号",
+      "aliases": []
+    },
+    {
+      "name": "ROOF 325 RESTAURANT&BAR",
+      "aliases": []
+    },
+    {
+      "name": "龙一海鲜",
+      "aliases": []
+    },
+    {
+      "name": "浅草六丁目",
+      "aliases": []
+    },
+    {
+      "name": "归蜀第成都串串料理",
+      "aliases": []
+    },
+    {
+      "name": "京云华·中国餐厅",
+      "aliases": []
+    },
+    {
+      "name": "泰安门Taian Table",
+      "aliases": []
+    },
+    {
+      "name": "老山东·御膳坊",
+      "aliases": []
+    },
+    {
+      "name": "牛小新烧肉·和牛放题",
+      "aliases": []
+    },
+    {
+      "name": "Cafe Gray Deluxe",
+      "aliases": []
+    },
+    {
+      "name": "虾乐园龙虾·烧烤夜宵",
+      "aliases": []
+    },
+    {
+      "name": "佬肥猫·浙江乡村菜",
+      "aliases": []
+    },
+    {
+      "name": "隨時見",
+      "aliases": []
+    },
+    {
+      "name": "COFFEE AROMA",
+      "aliases": []
+    },
+    {
+      "name": "盡膳口福跷脚牛肉火锅",
+      "aliases": []
+    },
+    {
+      "name": "脆脆的王爱",
+      "aliases": []
+    },
+    {
+      "name": "许爷剁椒鱼头",
+      "aliases": []
+    },
+    {
+      "name": "积善之家·餘慶堂自助式素食餐厅",
+      "aliases": []
+    },
+    {
+      "name": "德燊酒家",
+      "aliases": []
+    },
+    {
+      "name": "LaBamba拉芭玛",
+      "aliases": []
+    },
+    {
+      "name": "8½ Otto e Mezzo BOMBANA",
+      "aliases": []
+    },
+    {
+      "name": "NOVA蛋糕私人订制",
+      "aliases": []
+    },
+    {
+      "name": "霸·Yaki 烧鸟烧肉酒屋",
+      "aliases": []
+    },
+    {
+      "name": "麟1929",
+      "aliases": []
+    },
+    {
+      "name": "粤来记·啫啫煲·点心",
+      "aliases": []
+    },
+    {
+      "name": "走神 HEAD IN THE CLOUDS",
+      "aliases": []
+    },
+    {
+      "name": "CULACCINO 印迹花园西餐厅",
+      "aliases": []
+    },
+    {
+      "name": "DouDouMilk蛋糕·甜品台定制",
+      "aliases": []
+    },
+    {
+      "name": "红盔甲",
+      "aliases": ["红盔甲·小龙虾"]
+    },
+    {
+      "name": "虎丸烧肉",
+      "aliases": []
+    },
+    {
+      "name": "尚蒸燚蒸汽海鲜·福1999",
+      "aliases": []
+    },
+    {
+      "name": "鸟屋·烧鸟居酒屋",
+      "aliases": []
+    },
+    {
+      "name": "蚝酒量海鲜烧烤",
+      "aliases": []
+    },
+    {
+      "name": "茹·pure vegan",
+      "aliases": []
+    },
+    {
+      "name": "阿吾罗·月咏精致日料",
+      "aliases": []
+    },
+    {
+      "name": "红花铁板烧",
+      "aliases": []
+    },
+    {
+      "name": "鮨一日本料理旗舰店",
+      "aliases": []
+    },
+    {
+      "name": "西郊壹号",
+      "aliases": []
+    },
+    {
+      "name": "和记小菜",
+      "aliases": []
+    },
+    {
+      "name": "O'mills Sourdough Bakery&Bistro",
+      "aliases": []
+    },
+    {
+      "name": "诚喫CHENG CHI",
+      "aliases": []
+    },
+    {
+      "name": "韩式年糕火锅 두남자떡볶이",
+      "aliases": []
+    },
+    {
+      "name": "舜记餐厅",
+      "aliases": []
+    },
+    {
+      "name": "凤凰湘语",
+      "aliases": []
+    },
+    {
+      "name": "蜀韵·盐帮菜",
+      "aliases": []
+    },
+    {
+      "name": "悦江·融合粤菜·烤鸭",
+      "aliases": []
+    },
+    {
+      "name": "云庐",
+      "aliases": []
+    },
+    {
+      "name": "东盛炭烤自助料理",
+      "aliases": [
+        "东盛自助",
+        "东盛自助料理",
+        "東盛炭烤自助料理",
+        "東盛自助料理"
+      ]
+    },
+    {
+      "name": "咕的咕的·炭烤肉店",
+      "aliases": []
+    },
+    {
+      "name": "鲜味面馆·沪鲜面馆",
+      "aliases": []
+    },
+    {
+      "name": "外滩1288花园丽舍",
+      "aliases": []
+    },
+    {
+      "name": "N318·本帮菜",
+      "aliases": []
+    },
+    {
+      "name": "宝格丽甜品店 BVLGARI DOLCI",
+      "aliases": []
+    },
+    {
+      "name": "POETS Thai泰狮",
+      "aliases": []
+    },
+    {
+      "name": "顺风江南宴",
+      "aliases": []
+    },
+    {
+      "name": "尚9·一滴水江景中餐厅",
+      "aliases": []
+    },
+    {
+      "name": "庄氏隆兴·海派蟹点",
+      "aliases": []
+    },
+    {
+      "name": "Rizzlemon 柠檬蛋糕",
+      "aliases": []
+    },
+    {
+      "name": "蜀谭记·盐帮川菜",
+      "aliases": []
+    },
+    {
+      "name": "鮨谷·日料铁板烧",
+      "aliases": []
+    },
+    {
+      "name": "food place",
+      "aliases": []
+    },
+    {
+      "name": "重庆高老九火锅",
+      "aliases": []
+    },
+    {
+      "name": "大志和牛寿喜烧专门店",
+      "aliases": []
+    },
+    {
+      "name": "大董",
+      "aliases": []
+    },
+    {
+      "name": "妈妈的小作坊",
+      "aliases": []
+    },
+    {
+      "name": "新疆阿力烧烤",
+      "aliases": []
+    },
+    {
+      "name": "洞天食府",
+      "aliases": []
+    },
+    {
+      "name": "新马茶餐厅",
+      "aliases": []
+    },
+    {
+      "name": "Scena di Angelo意大利餐厅",
+      "aliases": []
+    },
+    {
+      "name": "鮨直辉·季Sushi Naoki",
+      "aliases": []
+    },
+    {
+      "name": "星发餐室·新加坡菜",
+      "aliases": []
+    },
+    {
+      "name": "MEL BOURNE Brunch&Bistro猫尔本",
+      "aliases": []
+    },
+    {
+      "name": "王品牛排",
+      "aliases": []
+    },
+    {
+      "name": "浦江家宴·海派淮扬·江浙土菜",
+      "aliases": []
+    },
+    {
+      "name": "杜哈夫DOUX RÊVE·生日蛋糕",
+      "aliases": []
+    },
+    {
+      "name": "忆家一宴",
+      "aliases": []
+    },
+    {
+      "name": "星洲小馆·新加坡料理",
+      "aliases": []
+    },
+    {
+      "name": "炙柒Sekinana",
+      "aliases": ["Sekinana", "炙柒", "炙柒Sekinana·精致日料"]
+    },
+    {
+      "name": "梅亭自助寿喜锅",
+      "aliases": []
+    },
+    {
+      "name": "鱼耀海鲜肥牛火锅",
+      "aliases": []
+    },
+    {
+      "name": "浦江荟·海鲜·川菜",
+      "aliases": []
+    },
+    {
+      "name": "海底捞大排档火锅",
+      "aliases": []
+    },
+    {
+      "name": "讚·法式铁板烧",
+      "aliases": []
+    },
+    {
+      "name": "御萌牛焼肉酒場",
+      "aliases": []
+    },
+    {
+      "name": "大和屋·by喜都乃",
+      "aliases": []
+    },
+    {
+      "name": "食六区·罗氏虾龙虾烧烤夜宵",
+      "aliases": []
+    },
+    {
+      "name": "h2",
+      "aliases": []
+    },
+    {
+      "name": "上海笑鱼  SUSHI SHIZUKA  鮨 静",
+      "aliases": []
+    },
+    {
+      "name": "恰餐厅 CHAR Bar & Grill",
+      "aliases": []
+    },
+    {
+      "name": "安东",
+      "aliases": []
+    },
+    {
+      "name": "Mercato by Jean-Georges意大利餐厅",
+      "aliases": []
+    },
+    {
+      "name": "SIR ELLY’S TERRACE BAR艾利爵士露台酒吧",
+      "aliases": []
+    },
+    {
+      "name": "Maki House寿司",
+      "aliases": []
+    },
+    {
+      "name": "POP露台西餐厅·望江阁",
+      "aliases": []
+    },
+    {
+      "name": "明阁",
+      "aliases": []
+    },
+    {
+      "name": "御宝轩",
+      "aliases": []
+    },
+    {
+      "name": "龙庭琇厨·粤菜",
+      "aliases": []
+    },
+    {
+      "name": "哥老官重庆美蛙鱼头",
+      "aliases": []
+    },
+    {
+      "name": "Alimentari Grande",
+      "aliases": []
+    },
+    {
+      "name": "季悦海鲜",
+      "aliases": []
+    },
+    {
+      "name": "外滩会",
+      "aliases": []
+    },
+    {
+      "name": "龙华禅食",
+      "aliases": []
+    },
+    {
+      "name": "标帜餐厅 The Kitchen Table",
+      "aliases": []
+    },
+    {
+      "name": "丰圆轩粤式茶楼",
+      "aliases": []
+    },
+    {
+      "name": "Scarpetta Trattoria食光• 意大利餐厅",
+      "aliases": []
+    },
+    {
+      "name": "Ramen满吉·豚骨拉面",
+      "aliases": []
+    },
+    {
+      "name": "农家菜老大",
+      "aliases": []
+    },
+    {
+      "name": "临江宴",
+      "aliases": []
+    },
+    {
+      "name": "懿·EAST 新派淮扬",
+      "aliases": []
+    },
+    {
+      "name": "h-acca",
+      "aliases": []
+    },
+    {
+      "name": "旺泉餐饮店·清真牛肉面馆",
+      "aliases": []
+    },
+    {
+      "name": "蟹龙億·陆鼎记大闸蟹及舟山海鲜自助",
+      "aliases": []
+    },
+    {
+      "name": "RIVIERA 松鹤楼",
+      "aliases": []
+    },
+    {
+      "name": "满来寿喜烧",
+      "aliases": []
+    },
+    {
+      "name": "丸道烤肉",
+      "aliases": []
+    },
+    {
+      "name": "夏朵餐厅",
+      "aliases": []
+    },
+    {
+      "name": "蟹榭·莳鲜",
+      "aliases": []
+    },
+    {
+      "name": "廣蓮申·海派點心",
+      "aliases": []
+    },
+    {
+      "name": "上海和平饭店-华懋阁 The Cathay Room",
+      "aliases": []
+    },
+    {
+      "name": "渔水之家·土灶柴火菜饭",
+      "aliases": []
+    },
+    {
+      "name": "纪录片《人生一串》体验店",
+      "aliases": []
+    },
+    {
+      "name": "三利音·东方融宴",
+      "aliases": []
+    },
+    {
+      "name": "高兴一锅·潮汕老字号海鲜火锅",
+      "aliases": []
+    },
+    {
+      "name": "小芳廷餐厅",
+      "aliases": []
+    },
+    {
+      "name": "大馥·炭火烧肉酒场",
+      "aliases": []
+    },
+    {
+      "name": "Jstone大爵Italian Fine Bistro",
+      "aliases": []
+    },
+    {
+      "name": "三利音·东方司宴",
+      "aliases": []
+    },
+    {
+      "name": "吉品小鲜Jhouse",
+      "aliases": []
+    },
+    {
+      "name": "金轩中餐厅 Jin Xuan",
+      "aliases": []
+    },
+    {
+      "name": "LA TERRAZZA 露台酒吧",
+      "aliases": []
+    },
+    {
+      "name": "谷牛和牛烤肉",
+      "aliases": []
+    },
+    {
+      "name": "老滋味农家乐",
+      "aliases": []
+    },
+    {
+      "name": "筱爷叔·上海传统手工菜",
+      "aliases": []
+    },
+    {
+      "name": "LENBACH兰巴赫西餐啤酒坊",
+      "aliases": []
+    },
+    {
+      "name": "上房火鍋",
+      "aliases": []
+    },
+    {
+      "name": "东京屋",
+      "aliases": []
+    },
+    {
+      "name": "IL RISTORANTE - NIKO ROMITO",
+      "aliases": []
+    },
+    {
+      "name": "望蓉城·古法酸菜鱼",
+      "aliases": []
+    },
+    {
+      "name": "大馥·Plus+炭火烧肉屋",
+      "aliases": []
+    },
+    {
+      "name": "张凯达·深海石斑鱼潮汕火锅",
+      "aliases": []
+    },
+    {
+      "name": "艾莱萨·新疆菜",
+      "aliases": []
+    },
+    {
+      "name": "SIR ELLY'S艾利爵士餐厅",
+      "aliases": []
+    },
+    {
+      "name": "白玉兰食品",
+      "aliases": []
+    },
+    {
+      "name": "全聚德",
+      "aliases": []
+    },
+    {
+      "name": "杨记齐齐哈尔烤肉",
+      "aliases": []
+    },
+    {
+      "name": "鮨玖•刺身•烧鸟居酒屋",
+      "aliases": []
+    },
+    {
+      "name": "天鸿涮肉",
+      "aliases": []
+    },
+    {
+      "name": "OVERDOSE",
+      "aliases": []
+    },
+    {
+      "name": "北海道sweets",
+      "aliases": []
+    },
+    {
+      "name": "COLCA秘鲁西班牙餐厅",
+      "aliases": []
+    },
+    {
+      "name": "渡边料理",
+      "aliases": []
+    },
+    {
+      "name": "申阁中餐厅",
+      "aliases": []
+    },
+    {
+      "name": "吉亨面馆",
+      "aliases": []
+    },
+    {
+      "name": "COVA",
+      "aliases": []
+    },
+    {
+      "name": "徐风拂面·本帮面馆",
+      "aliases": []
+    },
+    {
+      "name": "LA VENDEE旺代",
+      "aliases": []
+    },
+    {
+      "name": "布歌东京",
+      "aliases": []
+    },
+    {
+      "name": "阿纳迪酒店·多丽美食屋 Deli Shop",
+      "aliases": []
+    },
+    {
+      "name": "舒颐农庄",
+      "aliases": []
+    },
+    {
+      "name": "EAU CAFE",
+      "aliases": []
+    },
+    {
+      "name": "百诺食品公司",
+      "aliases": []
+    },
+    {
+      "name": "美点美客·生日蛋糕甜品台定制",
+      "aliases": []
+    },
+    {
+      "name": "俐滋蛋糕",
+      "aliases": []
+    },
+    {
+      "name": "大白兔",
+      "aliases": []
+    },
+    {
+      "name": "尚品书院",
+      "aliases": []
+    },
+    {
+      "name": "SoulSoul·蛋糕甜品",
+      "aliases": []
+    },
+    {
+      "name": "上海康桥万豪酒店The Lounge大堂酒廊",
+      "aliases": []
+    },
+    {
+      "name": "阿提娜新疆羊肉串",
+      "aliases": []
+    },
+    {
+      "name": "郑太太烘焙·生日蛋糕·宝宝宴",
+      "aliases": []
+    },
+    {
+      "name": "柏尼娅PEARIA·蛋糕定制",
+      "aliases": []
+    },
+    {
+      "name": "花婆婆芝造局·生日蛋糕·宝宝宴·商务茶歇",
+      "aliases": []
+    },
+    {
+      "name": "新光酒家方亮蟹宴",
+      "aliases": []
+    },
+    {
+      "name": "Hellas House希华馆",
+      "aliases": []
+    },
+    {
+      "name": "黎娅甜品蛋糕·茶歇·DIY体验",
+      "aliases": []
+    },
+    {
+      "name": "小何福利社·仪式感成长纪念蛋糕",
+      "aliases": []
+    },
+    {
+      "name": "纯味斑鱼府",
+      "aliases": []
+    },
+    {
+      "name": "光明玖壹玖",
+      "aliases": []
+    },
+    {
+      "name": "鮨空海·怀石料理",
+      "aliases": []
+    },
+    {
+      "name": "黄记大闸蟹专卖店·活蟹·醉蟹",
+      "aliases": []
+    },
+    {
+      "name": "香守·潮汕海鲜港式火锅",
+      "aliases": []
+    },
+    {
+      "name": "地球美食剧场",
+      "aliases": []
+    },
+    {
+      "name": "樽宴",
+      "aliases": []
+    },
+    {
+      "name": "三个蒙古大叔羊肉串",
+      "aliases": []
+    },
+    {
+      "name": "LUNEURS月乐诗·法式冰淇淋",
+      "aliases": []
+    },
+    {
+      "name": "22號和牛烧肉",
+      "aliases": []
+    },
+    {
+      "name": "壳里西餐厅Coquille Seafood Bistro",
+      "aliases": []
+    },
+    {
+      "name": "JW酒廊 JW Lounge",
+      "aliases": []
+    },
+    {
+      "name": "楼上荟馆",
+      "aliases": []
+    },
+    {
+      "name": "鳗重",
+      "aliases": []
+    },
+    {
+      "name": "鮨青•Omakase",
+      "aliases": []
+    },
+    {
+      "name": "Le Comptoir de Pierre Gagnaire",
+      "aliases": []
+    },
+    {
+      "name": "龍码头•螃蟹王",
+      "aliases": []
+    },
+    {
+      "name": "The Pine 松涧",
+      "aliases": []
+    },
+    {
+      "name": "Le Bistrot de Racine",
+      "aliases": []
+    },
+    {
+      "name": "润苑·悦椿轩",
+      "aliases": []
+    },
+    {
+      "name": "1886德国汽车餐厅",
+      "aliases": []
+    },
+    {
+      "name": "洋房火锅",
+      "aliases": []
+    },
+    {
+      "name": "那都不是锅",
+      "aliases": []
+    },
+    {
+      "name": "福和慧",
+      "aliases": []
+    },
+    {
+      "name": "Stone Sal 言盐西餐厅",
+      "aliases": []
+    },
+    {
+      "name": "圈儿潮汕牛肉火锅·夜宵",
+      "aliases": []
+    },
+    {
+      "name": "四面泰",
+      "aliases": []
+    },
+    {
+      "name": "Ministry Of Crab",
+      "aliases": []
+    },
+    {
+      "name": "广舟",
+      "aliases": []
+    },
+    {
+      "name": "三利音·浦之舟",
+      "aliases": []
+    },
+    {
+      "name": "慕雲·熟成烧鸟&螃蟹料理",
+      "aliases": []
+    },
+    {
+      "name": "临湖素食·焱格格",
+      "aliases": []
+    },
+    {
+      "name": "汤伯府-现熬猪肚鸡火锅",
+      "aliases": []
+    },
+    {
+      "name": "宁国素斋",
+      "aliases": []
+    },
+    {
+      "name": "甬府",
+      "aliases": []
+    },
+    {
+      "name": "荣府宴",
+      "aliases": []
+    },
+    {
+      "name": "MOTOYA别邸·寿喜锅·活蟹",
+      "aliases": []
+    },
+    {
+      "name": "上海苏宁宝丽嘉酒店·LAGO 餐厅酒吧",
+      "aliases": []
+    },
+    {
+      "name": "福1015",
+      "aliases": []
+    },
+    {
+      "name": "黑门和牛",
+      "aliases": []
+    },
+    {
+      "name": "香木香羊",
+      "aliases": []
+    },
+    {
+      "name": "小大董·烤鸭",
+      "aliases": []
+    },
+    {
+      "name": "Dal Cuore 达可芮冰淇淋",
+      "aliases": []
+    },
+    {
+      "name": "夏朵花园",
+      "aliases": []
+    },
+    {
+      "name": "阿纳迪酒店·秘境西餐厅",
+      "aliases": []
+    },
+    {
+      "name": "很久以前羊肉串",
+      "aliases": ["很久以前"]
+    },
+    {
+      "name": "Da Ivo哒伊沃意大利魔镜餐厅",
+      "aliases": []
+    },
+    {
+      "name": "珍宝海鲜JUMBO Seafood",
+      "aliases": []
+    },
+    {
+      "name": "鮨匠·割烹料理",
+      "aliases": []
+    },
+    {
+      "name": "潘小烧·云南烧烤",
+      "aliases": []
+    },
+    {
+      "name": "西堤牛排",
+      "aliases": []
+    },
+    {
+      "name": "荣小馆",
+      "aliases": []
+    },
+    {
+      "name": "HIGH YAKI modern izakaya & bar 烧肉居酒屋",
+      "aliases": []
+    },
+    {
+      "name": "弦月窗LUNETTE BY AMANDA",
+      "aliases": []
+    },
+    {
+      "name": "厚贞日式烤肉",
+      "aliases": []
+    },
+    {
+      "name": "上海苏宁宝丽嘉酒店·Cafe Bellagio西餐厅",
+      "aliases": []
+    },
+    {
+      "name": "Maison Lameloise莱美露滋",
+      "aliases": []
+    },
+    {
+      "name": "有喜屋",
+      "aliases": ["有喜屋·鲜鸡板前烧鸟"]
+    },
+    {
+      "name": "季福楼 Jhouse",
+      "aliases": []
+    },
+    {
+      "name": "鸿姐老火锅",
+      "aliases": []
+    },
+    {
+      "name": "欧巴韩式炭烤肉·烤牛肠 오빠 숯불구이",
+      "aliases": []
+    },
+    {
+      "name": "老乾杯",
+      "aliases": []
+    },
+    {
+      "name": "蟹榭·本帮江浙菜·蟹宴",
+      "aliases": []
+    },
+    {
+      "name": "楼上火锅",
+      "aliases": []
+    },
+    {
+      "name": "晶焱上海菜",
+      "aliases": []
+    },
+    {
+      "name": "天辣",
+      "aliases": []
+    },
+    {
+      "name": "AJIYA炭火烤肉",
+      "aliases": []
+    },
+    {
+      "name": "宝丽轩中餐厅BAOLIXUAN",
+      "aliases": []
+    },
+    {
+      "name": "潮界",
+      "aliases": []
+    },
+    {
+      "name": "米禾良日料",
+      "aliases": []
+    },
+    {
+      "name": "Kathleen's Waitan 凯圣琳江景西餐厅",
+      "aliases": []
+    },
+    {
+      "name": "罗福索love&salt牛排馆",
+      "aliases": []
+    },
+    {
+      "name": "膳道",
+      "aliases": []
+    },
+    {
+      "name": "喜鼎",
+      "aliases": []
+    },
+    {
+      "name": "荟廷",
+      "aliases": []
+    },
+    {
+      "name": "阿吾罗日本料理",
+      "aliases": []
+    },
+    {
+      "name": "细记港九早茶包房夜宵",
+      "aliases": []
+    },
+    {
+      "name": "bananaGG",
+      "aliases": []
+    },
+    {
+      "name": "贯贯吉·清真餐厅",
+      "aliases": []
+    },
+    {
+      "name": "蟹家大院",
+      "aliases": []
+    },
+    {
+      "name": "轻蔬不用等·素食",
+      "aliases": []
+    },
+    {
+      "name": "万岛日本料理铁板烧",
+      "aliases": []
+    },
+    {
+      "name": "姚稷大铁锅",
+      "aliases": []
+    },
+    {
+      "name": "The BREW·酿餐厅",
+      "aliases": []
+    },
+    {
+      "name": "Barista Made Coffee·BMC",
+      "aliases": []
+    },
+    {
+      "name": "初花·日本料理",
+      "aliases": []
+    },
+    {
+      "name": "黑渡口·茶",
+      "aliases": []
+    },
+    {
+      "name": "本怡吧都韩国料理",
+      "aliases": []
+    },
+    {
+      "name": "荣先森·福建菜",
+      "aliases": []
+    },
+    {
+      "name": "鸣龙上雅铁板烧日料",
+      "aliases": []
+    },
+    {
+      "name": "haxnbauer海森堡德国餐厅",
+      "aliases": []
+    },
+    {
+      "name": "海逸海鲜酒家",
+      "aliases": []
+    },
+    {
+      "name": "汤记传菜",
+      "aliases": []
+    },
+    {
+      "name": "荣新馆",
+      "aliases": []
+    },
+    {
+      "name": "醉东Oriental House",
+      "aliases": []
+    },
+    {
+      "name": "随堂里",
+      "aliases": []
+    },
+    {
+      "name": "Kathleen’s Bistro 凯圣琳西餐厅",
+      "aliases": []
+    },
+    {
+      "name": "O.P.S. CAFE",
+      "aliases": []
+    },
+    {
+      "name": "三号黄浦会Canton Table",
+      "aliases": []
+    },
+    {
+      "name": "映水芙蓉·新川菜",
+      "aliases": []
+    },
+    {
+      "name": "四季和府",
+      "aliases": []
+    },
+    {
+      "name": "親父的右腕",
+      "aliases": []
+    },
+    {
+      "name": "新白鹿餐厅",
+      "aliases": []
+    },
+    {
+      "name": "香江姳苑粥饭",
+      "aliases": []
+    },
+    {
+      "name": "茹丝葵经典牛排馆",
+      "aliases": []
+    },
+    {
+      "name": "BROWNSTONE布朗石西班牙餐厅",
+      "aliases": []
+    },
+    {
+      "name": "食廬",
+      "aliases": []
+    },
+    {
+      "name": "福1088",
+      "aliases": []
+    },
+    {
+      "name": "THE NEST 环外滩露台餐厅",
+      "aliases": []
+    },
+    {
+      "name": "鹿园 MOOSE",
+      "aliases": []
+    },
+    {
+      "name": "人和馆·上海菜",
+      "aliases": []
+    },
+    {
+      "name": "甬府小鲜",
+      "aliases": []
+    },
+    {
+      "name": "Solo",
+      "aliases": []
+    },
+    {
+      "name": "Jean Georges",
+      "aliases": []
+    },
+    {
+      "name": "兴兴·海派本帮菜",
+      "aliases": []
+    },
+    {
+      "name": "老兴鲜",
+      "aliases": []
+    },
+    {
+      "name": "沪西老弄堂面馆",
+      "aliases": []
+    },
+    {
+      "name": "上海和平饭店龙凤厅 Dragon Phoenix",
+      "aliases": []
+    },
+    {
+      "name": "MIKAKU",
+      "aliases": []
+    },
+    {
+      "name": "逸品淮扬",
+      "aliases": []
+    },
+    {
+      "name": "钟路商会·缘家",
+      "aliases": []
+    },
+    {
+      "name": "酒吞",
+      "aliases": []
+    },
+    {
+      "name": "帕蓝·暹罗料理",
+      "aliases": []
+    },
+    {
+      "name": "酒吞mix米野吞烤肉",
+      "aliases": []
+    },
+    {
+      "name": "BELLOCO倍乐",
+      "aliases": []
+    },
+    {
+      "name": "青鹤谷韩国料理",
+      "aliases": []
+    },
+    {
+      "name": "Professor Lee",
+      "aliases": []
+    },
+    {
+      "name": "泰廊餐厅Thai Gallery",
+      "aliases": []
+    },
+    {
+      "name": "蓝蛙",
+      "aliases": ["bluefrog"]
+    },
+    {
+      "name": "棒约翰",
+      "aliases": ["棒约翰披萨", "棒约翰比萨"]
+    },
+    {
+      "name": "一鸣真鲜奶吧",
+      "aliases": []
+    },
+    {
+      "name": "正新鸡排",
+      "aliases": []
+    },
+    {
+      "name": "悸动烧仙草",
+      "aliases": []
+    },
+    {
+      "name": "真功夫",
+      "aliases": []
+    },
+    {
+      "name": "果呀呀",
+      "aliases": []
+    },
+    {
+      "name": "阿嬷手作",
+      "aliases": []
+    },
+    {
+      "name": "陶陶居",
+      "aliases": []
+    },
+    {
+      "name": "肥汁米蘭",
+      "aliases": ["肥汁米兰"]
+    },
+    {
+      "name": "遇见小面",
+      "aliases": []
+    },
+    {
+      "name": "红宝石",
+      "aliases": ["红宝石蛋糕"]
+    },
+    {
+      "name": "味千拉面",
+      "aliases": []
+    },
+    {
+      "name": "% Arabica",
+      "aliases": ["Arabica"]
+    },
+    {
+      "name": "蓝瓶咖啡",
+      "aliases": ["Blue Bottle Coffee"]
+    },
+    {
+      "name": "莉莲蛋挞",
+      "aliases": []
+    },
+    {
+      "name": "探鱼",
+      "aliases": ["探鱼烤鱼"]
+    },
+    {
+      "name": "朱光玉火锅馆",
+      "aliases": ["朱光玉"]
+    },
+    {
+      "name": "呷哺呷哺",
+      "aliases": []
+    },
+    {
+      "name": "半天妖烤鱼",
+      "aliases": ["半天妖"]
+    },
+    {
+      "name": "华莱士",
+      "aliases": []
+    },
+    {
+      "name": "德克士",
+      "aliases": ["Dicos"]
+    },
+    {
+      "name": "塔斯汀",
+      "aliases": ["塔斯汀中国汉堡"]
+    },
+    {
+      "name": "杨国福麻辣烫",
+      "aliases": ["杨国福"]
+    },
+    {
+      "name": "袁记云饺",
+      "aliases": []
+    },
+    {
+      "name": "湊湊",
+      "aliases": ["湊湊火锅·茶憩", "凑凑"]
+    },
+    {
+      "name": "爷爷不泡茶",
+      "aliases": []
+    },
+    {
+      "name": "吉野家",
+      "aliases": []
+    },
+    {
+      "name": "寿司郎",
+      "aliases": []
+    },
+    {
+      "name": "捞王",
+      "aliases": ["捞王锅物料理"]
+    },
+    {
+      "name": "新雅粤菜馆",
+      "aliases": []
+    },
+    {
+      "name": "芦芳粽子王",
+      "aliases": []
+    },
+    {
+      "name": "张小妹粽子",
+      "aliases": []
+    },
+    {
+      "name": "龙华素斋",
+      "aliases": []
+    },
+    {
+      "name": "功德林",
+      "aliases": []
+    },
+    {
+      "name": "邵万生",
+      "aliases": []
+    },
+    {
+      "name": "杏花楼",
+      "aliases": []
+    },
+    {
+      "name": "五芳斋",
+      "aliases": []
+    },
+    {
+      "name": "四新汤团",
+      "aliases": []
+    },
+    {
+      "name": "高行汤团",
+      "aliases": []
+    },
+    {
+      "name": "王家沙",
+      "aliases": []
+    },
+    {
+      "name": "美新点心店",
+      "aliases": []
+    },
+    {
+      "name": "七宝老街汤团",
+      "aliases": []
+    },
+    {
+      "name": "东泰祥",
+      "aliases": []
+    },
+    {
+      "name": "沈大成",
+      "aliases": []
+    },
+    {
+      "name": "王宝和",
+      "aliases": []
+    },
+    {
+      "name": "光明邨",
+      "aliases": []
+    },
+    {
+      "name": "盛兴汤团",
+      "aliases": []
+    },
+    {
+      "name": "宁波汤团店",
+      "aliases": []
+    },
+    {
+      "name": "菰城宴",
+      "aliases": ["菰城宴·大锅红烧羊肉面"]
+    },
+    {
+      "name": "张师傅广东肠粉",
+      "aliases": []
+    },
+    {
+      "name": "盈田盈粥庄",
+      "aliases": []
+    },
+    {
+      "name": "小辫子羊肉馆",
+      "aliases": []
+    },
+    {
+      "name": "张记天增面馆",
+      "aliases": []
+    },
+    {
+      "name": "宁夏印象·盐池滩羊肉体验店",
+      "aliases": []
+    },
+    {
+      "name": "金湘隆",
+      "aliases": []
+    },
+    {
+      "name": "伊祥·敦煌楼",
+      "aliases": []
+    },
+    {
+      "name": "红子鸡凤凰楼",
+      "aliases": []
+    },
+    {
+      "name": "韩渔面馆",
+      "aliases": []
+    },
+    {
+      "name": "Wagas",
+      "aliases": ["沃歌斯"]
+    },
+    {
+      "name": "永和大王",
+      "aliases": []
+    },
+    {
+      "name": "新迎园",
+      "aliases": []
+    },
+    {
+      "name": "新里上海点心",
+      "aliases": []
+    },
+    {
+      "name": "清美味道",
+      "aliases": []
+    },
+    {
+      "name": "觅江南",
+      "aliases": []
+    },
+    {
+      "name": "笼百味",
+      "aliases": []
+    },
+    {
+      "name": "老盛兴",
+      "aliases": []
+    },
+    {
+      "name": "老盛昌",
+      "aliases": []
+    },
+    {
+      "name": "鸿瑞兴",
+      "aliases": []
+    },
+    {
+      "name": "大富贵",
+      "aliases": []
+    },
+    {
+      "name": "刃极日料自助",
+      "aliases": ["刃极日料自助·刺身和牛放题"]
+    },
+    {
+      "name": "大牛寿喜烧",
+      "aliases": ["大牛寿喜烧·和牛放题"]
+    },
+    {
+      "name": "一绪寿喜烧",
+      "aliases": ["一绪に寿喜烧放题", "一緒に寿喜烧放题", "一绪に寿喜烧"]
+    },
+    {
+      "name": "牛New寿喜烧",
+      "aliases": ["牛New", "牛NEW", "牛new寿喜烧"]
+    },
+    {
+      "name": "铭门盛宴",
+      "aliases": []
+    },
+    {
+      "name": "陈香贵",
+      "aliases": ["陳香貴", "陈香贵兰州牛肉面"]
+    },
+    {
+      "name": "哈根达斯",
+      "aliases": []
+    },
+    {
+      "name": "DQ冰雪皇后",
+      "aliases": ["DQ", "Dairy Queen", "DQ冰淇淋"]
+    },
+    {
+      "name": "滨寿司",
+      "aliases": []
+    },
+    {
+      "name": "吉祥馄饨",
+      "aliases": []
+    },
+    {
+      "name": "外婆家",
+      "aliases": []
+    },
+    {
+      "name": "西贝",
+      "aliases": ["西贝莜面村"]
+    },
+    {
+      "name": "唐宫茶点",
+      "aliases": []
+    },
+    {
+      "name": "绿茶餐厅",
+      "aliases": []
+    },
+    {
+      "name": "绝味鸭脖",
+      "aliases": ["绝味"]
+    },
+    {
+      "name": "紫燕百味鸡",
+      "aliases": []
+    },
+    {
+      "name": "马记永",
+      "aliases": ["马记永·兰州牛肉面"]
+    },
+    {
+      "name": "和府捞面",
+      "aliases": ["和府"]
+    },
+    {
+      "name": "泸溪河",
+      "aliases": ["泸溪河桃酥"]
+    },
+    {
+      "name": "巴奴毛肚火锅",
+      "aliases": ["巴奴"]
+    },
+    {
+      "name": "Tims天好咖啡",
+      "aliases": ["Tims", "天好咖啡"]
+    },
+    {
+      "name": "库迪咖啡",
+      "aliases": ["COTTI COFFEE"]
+    },
+    {
+      "name": "太二酸菜鱼",
+      "aliases": ["太二"]
+    },
+    {
+      "name": "皮爷咖啡",
+      "aliases": ["Peet’s Coffee", "Peet's Coffee"]
+    },
+    {
+      "name": "85度C",
+      "aliases": []
+    },
+    {
+      "name": "多乐之日",
+      "aliases": []
+    },
+    {
+      "name": "面包新语",
+      "aliases": ["BreadTalk"]
+    },
+    {
+      "name": "小杨生煎",
+      "aliases": []
+    },
+    {
+      "name": "老乡鸡",
+      "aliases": []
+    },
+    {
+      "name": "老娘舅",
+      "aliases": []
+    },
+    {
+      "name": "老香斋",
+      "aliases": ["老香齋"]
+    },
+    {
+      "name": "詹记桃酥",
+      "aliases": []
+    },
+    {
+      "name": "鲍师傅糕点",
+      "aliases": ["鲍师傅"]
+    },
+    {
+      "name": "塔可钟",
+      "aliases": ["Taco Bell"]
+    },
+    {
+      "name": "Shake Shack",
+      "aliases": []
+    },
+    {
+      "name": "1点点",
+      "aliases": ["一点点"]
+    },
+    {
+      "name": "7分甜",
+      "aliases": ["七分甜"]
+    },
+    {
+      "name": "肯德基",
+      "aliases": ["KFC"]
+    },
+    {
+      "name": "茶百道",
+      "aliases": []
+    },
+    {
+      "name": "蜜雪冰城",
+      "aliases": []
+    },
+    {
+      "name": "奈雪的茶",
+      "aliases": []
+    },
+    {
+      "name": "达美乐比萨",
+      "aliases": ["达美乐", "Domino’s Pizza"]
+    },
+    {
+      "name": "必胜客",
+      "aliases": ["Pizza Hut"]
+    },
+    {
+      "name": "茉莉奶白",
+      "aliases": []
+    },
+    {
+      "name": "沪上阿姨",
+      "aliases": ["沪上阿姨·精选茶饮"]
+    },
+    {
+      "name": "巴黎贝甜",
+      "aliases": []
+    },
+    {
+      "name": "椿风",
+      "aliases": ["椿风·养身茶饮"]
+    },
+    {
+      "name": "黔香阁",
+      "aliases": []
+    },
+    {
+      "name": "鮨世",
+      "aliases": []
+    },
+    {
+      "name": "高桌牛排馆",
+      "aliases": []
+    },
+    {
+      "name": "隐溪茶馆",
+      "aliases": ["隐溪茶馆Tea House"]
+    },
+    {
+      "name": "遇外滩",
+      "aliases": []
+    },
+    {
+      "name": "西贡妈妈",
+      "aliases": []
+    },
+    {
+      "name": "蝶园海鲜酒馆",
+      "aliases": []
+    },
+    {
+      "name": "菁禧荟",
+      "aliases": []
+    },
+    {
+      "name": "莆田餐厅",
+      "aliases": []
+    },
+    {
+      "name": "老吉堂",
+      "aliases": []
+    },
+    {
+      "name": "翰林轩",
+      "aliases": []
+    },
+    {
+      "name": "翠蝶",
+      "aliases": []
+    },
+    {
+      "name": "笼溏面馆",
+      "aliases": []
+    },
+    {
+      "name": "竹屋川菜",
+      "aliases": []
+    },
+    {
+      "name": "白茸",
+      "aliases": []
+    },
+    {
+      "name": "熹誉海鲜火锅",
+      "aliases": ["熹誉 · 海鲜火锅"]
+    },
+    {
+      "name": "炭一",
+      "aliases": []
+    },
+    {
+      "name": "满堂by Bar Choice",
+      "aliases": []
+    },
+    {
+      "name": "泰珍荟",
+      "aliases": []
+    },
+    {
+      "name": "橘焱胡同烧肉夜食",
+      "aliases": []
+    },
+    {
+      "name": "松鹤楼苏式汤面",
+      "aliases": []
+    },
+    {
+      "name": "晴空",
+      "aliases": []
+    },
+    {
+      "name": "无花果与橄榄",
+      "aliases": ["Fig＆Olive无花果与橄榄"]
+    },
+    {
+      "name": "新荣记",
+      "aliases": []
+    },
+    {
+      "name": "广屋",
+      "aliases": []
+    },
+    {
+      "name": "巴黎蜜语 La Parisienne",
+      "aliases": []
+    },
+    {
+      "name": "宝珠奶酪",
+      "aliases": []
+    },
+    {
+      "name": "头灶",
+      "aliases": []
+    },
+    {
+      "name": "嘢牛烧",
+      "aliases": ["嘢牛烧-烧肉专门店"]
+    },
+    {
+      "name": "上海滩餐厅",
+      "aliases": ["上海滩"]
+    },
+    {
+      "name": "machi machi",
+      "aliases": []
+    },
+    {
+      "name": "Whites",
+      "aliases": []
+    },
+    {
+      "name": "Tuna Maki寿司",
+      "aliases": ["TUNAMAKI"]
+    },
+    {
+      "name": "Stefanie’s Gelato",
+      "aliases": []
+    },
+    {
+      "name": "SONAMU",
+      "aliases": []
+    },
+    {
+      "name": "R.MANDA",
+      "aliases": []
+    },
+    {
+      "name": "PORTMAN’S",
+      "aliases": []
+    },
+    {
+      "name": "PISTOLERA",
+      "aliases": []
+    },
+    {
+      "name": "NUMATASOU沼田双",
+      "aliases": []
+    },
+    {
+      "name": "MUF MUF",
+      "aliases": []
+    },
+    {
+      "name": "M Stand",
+      "aliases": ["M STAND"]
+    },
+    {
+      "name": "Le Jardin de JR",
+      "aliases": []
+    },
+    {
+      "name": "Latina巴西牛排馆",
+      "aliases": ["HOOK x Latina 巴西牛排馆", "拉蒂娜"]
+    },
+    {
+      "name": "ELI FALAFEL",
+      "aliases": []
+    },
+    {
+      "name": "DA VITTORIO SHANGHAI",
+      "aliases": []
+    },
+    {
+      "name": "Beef & Liberty",
+      "aliases": []
+    },
+    {
+      "name": "Meraki Cafe",
+      "aliases": []
+    },
+    {
+      "name": "Millions Coffee",
+      "aliases": []
+    },
+    {
+      "name": "Hula",
+      "aliases": []
+    },
+    {
+      "name": "Huanxi Xiaoyuan",
+      "aliases": []
+    },
+    {
+      "name": "Keran Danqing",
+      "aliases": []
+    },
+    {
+      "name": "Ennook Coffee",
+      "aliases": []
+    },
+    {
+      "name": "Yes Coffee",
+      "aliases": []
+    },
+    {
+      "name": "Neighborhood Coffee & Dessert Bar",
+      "aliases": []
+    },
+    {
+      "name": "O_S Cafe",
+      "aliases": []
+    },
+    {
+      "name": "Yuan Dang Cafe",
+      "aliases": []
+    },
+    {
+      "name": "One Step Garden",
+      "aliases": []
+    },
+    {
+      "name": "Cafe Le Bon Temps",
+      "aliases": []
+    },
+    {
+      "name": "Xiao Ban Coffee",
+      "aliases": []
+    },
+    {
+      "name": "Bird Water Tower",
+      "aliases": []
+    },
+    {
+      "name": "The Second Coffee Brewers",
+      "aliases": []
+    },
+    {
+      "name": "Liu Coffee",
+      "aliases": []
+    },
+    {
+      "name": "Tuan bakery+cafe",
+      "aliases": []
+    },
+    {
+      "name": "Nod Cafe",
+      "aliases": []
+    },
+    {
+      "name": "Coffee Date",
+      "aliases": []
+    },
+    {
+      "name": "OR.SO Coffee Lab & Bar",
+      "aliases": []
+    },
+    {
+      "name": "Davenport Cafe",
+      "aliases": []
+    },
+    {
+      "name": "Another Mountain",
+      "aliases": []
+    },
+    {
+      "name": "漠漠家",
+      "aliases": []
+    },
+    {
+      "name": "南粤点心专门店",
+      "aliases": []
+    },
+    {
+      "name": "海鲜阁",
+      "aliases": []
+    },
+    {
+      "name": "颜无界",
+      "aliases": []
+    },
+    {
+      "name": "白茶金库",
+      "aliases": []
+    },
+    {
+      "name": "赛百味",
+      "aliases": []
+    },
+    {
+      "name": "比星咖啡",
+      "aliases": []
+    },
+    {
+      "name": "小莳煮物",
+      "aliases": []
+    },
+    {
+      "name": "食其家",
+      "aliases": []
+    },
+    {
+      "name": "邵氏茶铺",
+      "aliases": []
+    },
+    {
+      "name": "有方一杯",
+      "aliases": []
+    },
+    {
+      "name": "南粤小厨",
+      "aliases": []
+    },
+    {
+      "name": "智面局",
+      "aliases": []
+    },
+    {
+      "name": "小Q饭堂",
+      "aliases": []
+    },
+    {
+      "name": "赫生活咖啡店",
+      "aliases": []
+    },
+    {
+      "name": "花博食堂",
+      "aliases": []
+    },
+    {
+      "name": "本尼黄金烤鸡",
+      "aliases": []
+    },
+    {
+      "name": "林里柠檬茶",
+      "aliases": ["LINLEE"]
+    },
+    {
+      "name": "乐乐茶",
+      "aliases": []
+    },
+    {
+      "name": "申什一杯",
+      "aliases": []
+    },
+    {
+      "name": "梧桐姥姥",
+      "aliases": []
+    },
+    {
+      "name": "精悦蓉",
+      "aliases": []
+    },
+    {
+      "name": "鹅匠",
+      "aliases": []
+    },
+    {
+      "name": "读酥世家",
+      "aliases": []
+    },
+    {
+      "name": "罗宋千礼",
+      "aliases": []
+    },
+    {
+      "name": "大壶春",
+      "aliases": []
+    },
+    {
+      "name": "大米先生",
+      "aliases": []
+    },
+    {
+      "name": "野云雀",
+      "aliases": []
+    },
+    {
+      "name": "山苗苗",
+      "aliases": []
+    },
+    {
+      "name": "井梅",
+      "aliases": []
+    },
+    {
+      "name": "新秀",
+      "aliases": []
+    },
+    {
+      "name": "町田商店",
+      "aliases": []
+    },
+    {
+      "name": "汕心",
+      "aliases": []
+    },
+    {
+      "name": "七八冷面",
+      "aliases": []
+    },
+    {
+      "name": "鱼鳍食堂",
+      "aliases": []
+    },
+    {
+      "name": "茶米有言",
+      "aliases": []
+    },
+    {
+      "name": "阿亮宁波菜",
+      "aliases": []
+    },
+    {
+      "name": "顾二叔",
+      "aliases": []
+    },
+    {
+      "name": "孤独得寿喜烧",
+      "aliases": []
+    },
+    {
+      "name": "糕阿叔",
+      "aliases": []
+    },
+    {
+      "name": "舒味老友",
+      "aliases": []
+    },
+    {
+      "name": "沪食光",
+      "aliases": []
+    },
+    {
+      "name": "卤山川",
+      "aliases": []
+    },
+    {
+      "name": "古陕情",
+      "aliases": []
+    },
+    {
+      "name": "一人烧肉",
+      "aliases": []
+    },
+    {
+      "name": "鲜得来",
+      "aliases": []
+    },
+    {
+      "name": "加个面",
+      "aliases": []
+    },
+    {
+      "name": "望丘山",
+      "aliases": []
+    },
+    {
+      "name": "隔壁妈妈",
+      "aliases": []
+    },
+    {
+      "name": "福和面馆",
+      "aliases": []
+    },
+    {
+      "name": "佳家汤包",
+      "aliases": []
+    },
+    {
+      "name": "黄阿饼",
+      "aliases": ["黄阿饼瞎炒面"]
+    },
+    {
+      "name": "周黑鸭",
+      "aliases": []
+    },
+    {
+      "name": "古早万丹",
+      "aliases": []
+    },
+    {
+      "name": "朴下隆九",
+      "aliases": []
+    },
+    {
+      "name": "唐饼家",
+      "aliases": []
+    },
+    {
+      "name": "茉酸奶",
+      "aliases": []
+    },
+    {
+      "name": "金饭碗",
+      "aliases": []
+    },
+    {
+      "name": "匡朵",
+      "aliases": []
+    },
+    {
+      "name": "花花卷卷",
+      "aliases": []
+    },
+    {
+      "name": "山崎面包",
+      "aliases": []
+    },
+    {
+      "name": "CoCo都可",
+      "aliases": ["COCO"]
+    },
+    {
+      "name": "鱼粉王",
+      "aliases": []
+    },
+    {
+      "name": "老滇山寨",
+      "aliases": []
+    },
+    {
+      "name": "海底捞",
+      "aliases": ["海底捞火锅"]
+    },
+    {
+      "name": "七欣天",
+      "aliases": []
+    },
+    {
+      "name": "南京大牌档",
+      "aliases": []
+    },
+    {
+      "name": "太琼",
+      "aliases": ["太琼糟粕醋"]
+    },
+    {
+      "name": "八合里",
+      "aliases": ["八合里牛肉火锅"]
+    },
+    {
+      "name": "顺风港湾",
+      "aliases": []
+    },
+    {
+      "name": "上海人家",
+      "aliases": []
+    },
+    {
+      "name": "蛙来哒",
+      "aliases": []
+    },
+    {
+      "name": "桂满陇",
+      "aliases": []
+    },
+    {
+      "name": "旺顺融",
+      "aliases": []
+    },
+    {
+      "name": "塔哈尔",
+      "aliases": []
+    },
+    {
+      "name": "另茶",
+      "aliases": []
+    },
+    {
+      "name": "俄士厨房",
+      "aliases": []
+    },
+    {
+      "name": "披头士",
+      "aliases": []
+    },
+    {
+      "name": "菌彩",
+      "aliases": []
+    },
+    {
+      "name": "立方铁",
+      "aliases": ["立方铁@铁板烧"]
+    },
+    {
+      "name": "王奋斗",
+      "aliases": []
+    },
+    {
+      "name": "杨有喜",
+      "aliases": []
+    },
+    {
+      "name": "新发现",
+      "aliases": []
+    },
+    {
+      "name": "山野板札",
+      "aliases": []
+    },
+    {
+      "name": "江边城外烤全鱼",
+      "aliases": ["江边城外"]
+    },
+    {
+      "name": "胖哥俩",
+      "aliases": []
+    },
+    {
+      "name": "尚乐泰食",
+      "aliases": []
+    },
+    {
+      "name": "云潇潇",
+      "aliases": []
+    },
+    {
+      "name": "芭蕉扇",
+      "aliases": []
+    },
+    {
+      "name": "兴烨汇",
+      "aliases": []
+    },
+    {
+      "name": "满记甜品",
+      "aliases": []
+    },
+    {
+      "name": "阿狗手作",
+      "aliases": ["阿狗手作柠檬茶"]
+    },
+    {
+      "name": "野人先生",
+      "aliases": ["野人先生冰淇淋"]
+    },
+    {
+      "name": "糖纸",
+      "aliases": []
+    },
+    {
+      "name": "鲜芋仙",
+      "aliases": []
+    },
+    {
+      "name": "麦记牛奶公司",
+      "aliases": ["麦记牛奶"]
+    },
+    {
+      "name": "派悦坊",
+      "aliases": []
+    },
+    {
+      "name": "幻师",
+      "aliases": ["幻师臻选", "COMMUNE"]
+    },
+    {
+      "name": "喜家德",
+      "aliases": ["喜家德虾仁水饺"]
+    },
+    {
+      "name": "馍都",
+      "aliases": []
+    },
+    {
+      "name": "屯京拉面",
+      "aliases": []
+    },
+    {
+      "name": "MANNER",
+      "aliases": ["慢勒咖啡", "Manner咖啡", "Manner Coffee", "MANNER COFFEE"]
+    },
+    {
+      "name": "哒优乃",
+      "aliases": []
+    },
+    {
+      "name": "大发越南粉",
+      "aliases": ["大发越南"]
+    },
+    {
+      "name": "大肥羅",
+      "aliases": []
+    },
+    {
+      "name": "纹兵卫",
+      "aliases": []
+    },
+    {
+      "name": "藕巷·藕汤饭",
+      "aliases": []
+    },
+    {
+      "name": "初唤",
+      "aliases": []
+    },
+    {
+      "name": "胡子大厨",
+      "aliases": []
+    },
+    {
+      "name": "裕莲茶楼",
+      "aliases": []
+    },
+    {
+      "name": "gaga",
+      "aliases": []
+    },
+    {
+      "name": "香溢焙客",
+      "aliases": ["Baker & Spice", "BAKER & SPICE", "Baker&Spice"]
+    },
+    {
+      "name": "娜娜 打抛小馆",
+      "aliases": []
+    },
+    {
+      "name": "东莱馋房",
+      "aliases": []
+    },
+    {
+      "name": "白安其",
+      "aliases": []
+    },
+    {
+      "name": "银平",
+      "aliases": []
+    },
+    {
+      "name": "鮨麗・笑鱼&鳥龍・笑鱼",
+      "aliases": []
+    },
+    {
+      "name": "富罟",
+      "aliases": []
+    },
+    {
+      "name": "粵玺荟",
+      "aliases": []
+    },
+    {
+      "name": "阿里疆",
+      "aliases": []
+    },
+    {
+      "name": "本就茶饮",
+      "aliases": ["BonJour本就茶饮"]
+    },
+    {
+      "name": "LOKAL By Wagas",
+      "aliases": ["LOKAL"]
+    },
+    {
+      "name": "麦当劳",
+      "aliases": ["McDonald's"]
+    },
+    {
+      "name": "失重餐厅",
+      "aliases": ["SPACELAB失重餐厅"]
+    },
+    {
+      "name": "Yes 啫啫",
+      "aliases": []
+    },
+    {
+      "name": "安又胖",
+      "aliases": []
+    },
+    {
+      "name": "霸王茶姬",
+      "aliases": []
+    },
+    {
+      "name": "不二君",
+      "aliases": []
+    },
+    {
+      "name": "点都德",
+      "aliases": []
+    },
+    {
+      "name": "俄式厨房",
+      "aliases": ["俄士厨房"]
+    },
+    {
+      "name": "港丽餐厅",
+      "aliases": []
+    },
+    {
+      "name": "哥哥深夜食堂",
+      "aliases": ["哥哥の深夜食堂"]
+    },
+    {
+      "name": "汉堡王",
+      "aliases": []
+    },
+    {
+      "name": "好利来",
+      "aliases": ["好利来Holiland"]
+    },
+    {
+      "name": "金匠寿司",
+      "aliases": []
+    },
+    {
+      "name": "锦之楼",
+      "aliases": []
+    },
+    {
+      "name": "辣堂赣",
+      "aliases": []
+    },
+    {
+      "name": "临家",
+      "aliases": []
+    },
+    {
+      "name": "麻六记",
+      "aliases": []
+    },
+    {
+      "name": "米村拌饭",
+      "aliases": []
+    },
+    {
+      "name": "柠季手打柠檬茶",
+      "aliases": ["柠季·手打柠檬", "柠季"]
+    },
+    {
+      "name": "璞徽",
+      "aliases": []
+    },
+    {
+      "name": "浦江晓月",
+      "aliases": []
+    },
+    {
+      "name": "青川",
+      "aliases": []
+    },
+    {
+      "name": "萨莉亚",
+      "aliases": ["萨莉亚意式餐厅"]
+    },
+    {
+      "name": "喜顶上品",
+      "aliases": []
+    },
+    {
+      "name": "湘辣辣",
+      "aliases": []
+    },
+    {
+      "name": "小菜园",
+      "aliases": ["小菜园新徽菜"]
+    },
+    {
+      "name": "巡湘记",
+      "aliases": []
+    },
+    {
+      "name": "耶里夏丽",
+      "aliases": []
+    },
+    {
+      "name": "鱼酷",
+      "aliases": []
+    },
+    {
+      "name": "雨松",
+      "aliases": []
+    },
+    {
+      "name": "圆苑",
+      "aliases": []
+    },
+    {
+      "name": "缘味先",
+      "aliases": []
+    },
+    {
+      "name": "樾鲜食馆",
+      "aliases": []
+    },
+    {
+      "name": "哲平鳗满",
+      "aliases": []
+    },
+    {
+      "name": "左庭右院",
+      "aliases": []
+    },
+    {
+      "name": "毕真烤肉店",
+      "aliases": []
+    },
+    {
+      "name": "兴蜀府",
+      "aliases": ["兴蜀府·臻宴"]
+    },
+    {
+      "name": "富天添牛腩煲火锅",
+      "aliases": []
+    },
+    {
+      "name": "UP矢量咖啡",
+      "aliases": ["UP矢量咖啡COFFEE"]
+    },
+    {
+      "name": "星巴克",
+      "aliases": ["Starbucks", "星巴克咖啡", "Starbucks咖啡"]
+    },
+    {
+      "name": "阳坊涮肉",
+      "aliases": ["阳坊 涮肉"]
+    },
+    {
+      "name": "3号仓库",
+      "aliases": []
+    },
+    {
+      "name": "费大厨",
+      "aliases": []
+    },
+    {
+      "name": "喜茶",
+      "aliases": ["喜茶/HEYTEA"]
+    },
+    {
+      "name": "啊撒啊撒",
+      "aliases": []
+    },
+    {
+      "name": "eat n work",
+      "aliases": []
+    },
+    {
+      "name": "南里山房",
+      "aliases": []
+    },
+    {
+      "name": "翠华",
+      "aliases": ["翠华餐厅"]
+    },
+    {
+      "name": "呛头家",
+      "aliases": []
+    },
+    {
+      "name": "云阿蛮米线",
+      "aliases": ["云阿蛮"]
+    },
+    {
+      "name": "苏小柳",
+      "aliases": []
+    },
+    {
+      "name": "张亮麻辣烫",
+      "aliases": ["张亮麻辣烫 我们不一样!"]
+    },
+    {
+      "name": "新良记卤粉王",
+      "aliases": []
+    },
+    {
+      "name": "满巍明",
+      "aliases": []
+    },
+    {
+      "name": "金洪兴",
+      "aliases": ["金洪兴蟹黄面"]
+    },
+    {
+      "name": "沪上蒸嗨",
+      "aliases": []
+    },
+    {
+      "name": "赵记羊肉馆",
+      "aliases": []
+    },
+    {
+      "name": "知鱼之味",
+      "aliases": []
+    },
+    {
+      "name": "間道面",
+      "aliases": []
+    },
+    {
+      "name": "楚汉传奇",
+      "aliases": []
+    },
+    {
+      "name": "粤状元",
+      "aliases": []
+    },
+    {
+      "name": "Gavo巧克力",
+      "aliases": []
+    },
+    {
+      "name": "Lavazza",
+      "aliases": ["拉瓦萨咖啡"]
+    },
+    {
+      "name": "黄油&渔",
+      "aliases": []
+    },
+    {
+      "name": "瑞幸咖啡",
+      "aliases": ["瑞幸咖啡 LUCKIN COFFEE"]
+    },
+    {
+      "name": "贴芯贴忆",
+      "aliases": []
+    },
+    {
+      "name": "火辣关爷",
+      "aliases": []
+    },
+    {
+      "name": "悦湘遇",
+      "aliases": []
+    },
+    {
+      "name": "平成屋",
+      "aliases": []
+    },
+    {
+      "name": "蔡澜点心",
+      "aliases": []
+    },
+    {
+      "name": "佬鲜纪",
+      "aliases": []
+    },
+    {
+      "name": "北海宴",
+      "aliases": ["北海宴.渔哥"]
+    }
+  ],
+  "renames": {},
+  "categories": [
+    {
+      "id": "ch70-33803",
+      "name": "儿童乐园",
+      "url": "https://www.dianping.com/shanghai/ch70/g33803"
+    },
+    {
+      "id": "ch70-34146",
+      "name": "亲子游乐",
+      "url": "https://www.dianping.com/shanghai/ch70/g34146"
+    },
+    {
+      "id": "ch70-34313",
+      "name": "科学探索",
+      "url": "https://www.dianping.com/shanghai/ch70/g34313"
+    },
+    {
+      "id": "ch35-2916",
+      "name": "水上娱乐",
+      "url": "https://www.dianping.com/shanghai/ch35/g2916"
+    },
+    {
+      "id": "ch35-2926",
+      "name": "展馆展览",
+      "url": "https://www.dianping.com/shanghai/ch35/g2926"
+    },
+    {
+      "id": "ch35-2834",
+      "name": "动植物园",
+      "url": "https://www.dianping.com/shanghai/ch35/g2834"
+    },
+    {
+      "id": "ch35-5672",
+      "name": "温泉",
+      "url": "https://www.dianping.com/shanghai/ch35/g5672"
+    },
+    {
+      "id": "ch35-27852",
+      "name": "滑雪",
+      "url": "https://www.dianping.com/shanghai/ch35/g27852"
+    },
+    {
+      "id": "ch35-32745",
+      "name": "自然景观",
+      "url": "https://www.dianping.com/shanghai/ch35/g32745"
+    },
+    {
+      "id": "ch35-2901",
+      "name": "人文古迹",
+      "url": "https://www.dianping.com/shanghai/ch35/g2901"
+    },
+    {
+      "id": "ch35-138",
+      "name": "公园",
+      "url": "https://www.dianping.com/shanghai/ch35/g138"
+    },
+    {
+      "id": "ch35-2958",
+      "name": "动物园",
+      "url": "https://www.dianping.com/shanghai/ch35/g2958"
+    },
+    {
+      "id": "ch35-50051",
+      "name": "地标建筑",
+      "url": "https://www.dianping.com/shanghai/ch35/g50051"
+    },
+    {
+      "id": "ch35-2896",
+      "name": "主题乐园",
+      "url": "https://www.dianping.com/shanghai/ch35/g2896"
+    },
+    {
+      "id": "ch35-50078",
+      "name": "植物园",
+      "url": "https://www.dianping.com/shanghai/ch35/g50078"
+    },
+    {
+      "id": "ch35-50284",
+      "name": "度假景区",
+      "url": "https://www.dianping.com/shanghai/ch35/g50284"
+    },
+    {
+      "id": "ch35-2840",
+      "name": "影视基地",
+      "url": "https://www.dianping.com/shanghai/ch35/g2840"
+    }
+  ]
+}

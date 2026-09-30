@@ -1,0 +1,324 @@
+[
+  {
+    "channel": "ch70",
+    "url": "https://www.dianping.com/shanghai/ch70",
+    "status": 200,
+    "title": "上海亲子-大众点评网",
+    "categories": [
+      {
+        "name": "休闲园区",
+        "url": "https://www.dianping.com/shanghai/ch70/g20038"
+      },
+      {
+        "name": "孕产服务",
+        "url": "https://www.dianping.com/shanghai/ch70/g258"
+      },
+      {
+        "name": "亲子购物",
+        "url": "https://www.dianping.com/shanghai/ch70/g125"
+      },
+      {
+        "name": "儿童乐园",
+        "url": "https://www.dianping.com/shanghai/ch70/g33803"
+      },
+      {
+        "name": "亲子游乐",
+        "url": "https://www.dianping.com/shanghai/ch70/g34146"
+      },
+      {
+        "name": "科学探索",
+        "url": "https://www.dianping.com/shanghai/ch70/g34313"
+      },
+      {
+        "name": "婴幼服务",
+        "url": "https://www.dianping.com/shanghai/ch70/g34117"
+      },
+      {
+        "name": "早教",
+        "url": "https://www.dianping.com/shanghai/ch70/g34309"
+      },
+      {
+        "name": "孕婴童摄影",
+        "url": "https://www.dianping.com/shanghai/ch70/g34333"
+      },
+      {
+        "name": "宝宝宴/纪念品",
+        "url": "https://www.dianping.com/shanghai/ch70/g50083"
+      },
+      {
+        "name": "月子服务",
+        "url": "https://www.dianping.com/shanghai/ch70/g50084"
+      },
+      {
+        "name": "医疗机构",
+        "url": "https://www.dianping.com/shanghai/ch70/g34332"
+      },
+      {
+        "name": "亲子鉴定",
+        "url": "https://www.dianping.com/shanghai/ch70/g50283"
+      },
+      {
+        "name": "更多亲子服务",
+        "url": "https://www.dianping.com/shanghai/ch70/g27769"
+      },
+      {
+        "name": "上海亲子",
+        "url": "https://www.dianping.com/shanghai/ch70/g70"
+      },
+      {
+        "name": "上海休闲园区",
+        "url": "/shanghai/ch70/g20038"
+      },
+      {
+        "name": "上海孕产服务",
+        "url": "/shanghai/ch70/g258"
+      },
+      {
+        "name": "上海亲子购物",
+        "url": "/shanghai/ch70/g125"
+      },
+      {
+        "name": "上海儿童乐园",
+        "url": "/shanghai/ch70/g33803"
+      },
+      {
+        "name": "上海亲子游乐",
+        "url": "/shanghai/ch70/g34146"
+      },
+      {
+        "name": "上海科学探索",
+        "url": "/shanghai/ch70/g34313"
+      },
+      {
+        "name": "上海婴幼服务",
+        "url": "/shanghai/ch70/g34117"
+      },
+      {
+        "name": "上海早教",
+        "url": "/shanghai/ch70/g34309"
+      },
+      {
+        "name": "上海孕婴童摄影",
+        "url": "/shanghai/ch70/g34333"
+      },
+      {
+        "name": "上海宝宝宴/纪念品",
+        "url": "/shanghai/ch70/g50083"
+      },
+      {
+        "name": "上海月子服务",
+        "url": "/shanghai/ch70/g50084"
+      },
+      {
+        "name": "上海医疗机构",
+        "url": "/shanghai/ch70/g34332"
+      },
+      {
+        "name": "上海亲子鉴定",
+        "url": "/shanghai/ch70/g50283"
+      },
+      {
+        "name": "上海更多亲子服务",
+        "url": "/shanghai/ch70/g27769"
+      }
+    ],
+    "observed_at": "2026-09-30T05:49:57.516331+00:00"
+  },
+  {
+    "channel": "ch35",
+    "url": "https://www.dianping.com/shanghai/ch35",
+    "status": 200,
+    "title": "上海景点/周边游-大众点评网",
+    "categories": [
+      {
+        "name": "景点",
+        "url": "//www.dianping.com/shanghai/ch35/g33831"
+      },
+      {
+        "name": "水上娱乐",
+        "url": "//www.dianping.com/shanghai/ch35/g2916"
+      },
+      {
+        "name": "展馆展览",
+        "url": "//www.dianping.com/shanghai/ch35/g2926"
+      },
+      {
+        "name": "动植物园",
+        "url": "//www.dianping.com/shanghai/ch35/g2834"
+      },
+      {
+        "name": "温泉",
+        "url": "//www.dianping.com/shanghai/ch35/g5672"
+      },
+      {
+        "name": "滑雪",
+        "url": "//www.dianping.com/shanghai/ch35/g27852"
+      },
+      {
+        "name": "采摘/农家乐",
+        "url": "//www.dianping.com/shanghai/ch35/g20038"
+      },
+      {
+        "name": "旅游其他",
+        "url": "//www.dianping.com/shanghai/ch35/g33832"
+      },
+      {
+        "name": "自然景观",
+        "url": "https://www.dianping.com/shanghai/ch35/g32745"
+      },
+      {
+        "name": "人文古迹",
+        "url": "https://www.dianping.com/shanghai/ch35/g2901"
+      },
+      {
+        "name": "展览馆",
+        "url": "https://www.dianping.com/shanghai/ch35/g2926"
+      },
+      {
+        "name": "滑雪景区",
+        "url": "https://www.dianping.com/shanghai/ch35/g27852"
+      },
+      {
+        "name": "休闲园区",
+        "url": "https://www.dianping.com/shanghai/ch35/g20038"
+      },
+      {
+        "name": "景区设施",
+        "url": "https://www.dianping.com/shanghai/ch35/g50377"
+      },
+      {
+        "name": "纪念地",
+        "url": "https://www.dianping.com/shanghai/ch35/g50019"
+      },
+      {
+        "name": "人文街区",
+        "url": "https://www.dianping.com/shanghai/ch35/g32744"
+      },
+      {
+        "name": "公园",
+        "url": "https://www.dianping.com/shanghai/ch35/g138"
+      },
+      {
+        "name": "公园景点售票处",
+        "url": "https://www.dianping.com/shanghai/ch35/g50378"
+      },
+      {
+        "name": "动物园",
+        "url": "https://www.dianping.com/shanghai/ch35/g2958"
+      },
+      {
+        "name": "地标建筑",
+        "url": "https://www.dianping.com/shanghai/ch35/g50051"
+      },
+      {
+        "name": "主题乐园",
+        "url": "https://www.dianping.com/shanghai/ch35/g2896"
+      },
+      {
+        "name": "植物园",
+        "url": "https://www.dianping.com/shanghai/ch35/g50078"
+      },
+      {
+        "name": "水上项目/水上体验",
+        "url": "https://www.dianping.com/shanghai/ch35/g2916"
+      },
+      {
+        "name": "度假景区",
+        "url": "https://www.dianping.com/shanghai/ch35/g50284"
+      },
+      {
+        "name": "温泉景区",
+        "url": "https://www.dianping.com/shanghai/ch35/g5672"
+      },
+      {
+        "name": "影视基地",
+        "url": "https://www.dianping.com/shanghai/ch35/g2840"
+      },
+      {
+        "name": "更多景点/周边游",
+        "url": "https://www.dianping.com/shanghai/ch35/g33832"
+      },
+      {
+        "name": "上海景点/周边游",
+        "url": "https://www.dianping.com/shanghai/ch35/g35"
+      },
+      {
+        "name": "上海自然景观",
+        "url": "/shanghai/ch35/g32745"
+      },
+      {
+        "name": "上海人文古迹",
+        "url": "/shanghai/ch35/g2901"
+      },
+      {
+        "name": "上海展览馆",
+        "url": "/shanghai/ch35/g2926"
+      },
+      {
+        "name": "上海滑雪场景区",
+        "url": "/shanghai/ch35/g27852"
+      },
+      {
+        "name": "上海休闲园区",
+        "url": "/shanghai/ch35/g20038"
+      },
+      {
+        "name": "上海景区设施",
+        "url": "/shanghai/ch35/g50377"
+      },
+      {
+        "name": "上海纪念地",
+        "url": "/shanghai/ch35/g50019"
+      },
+      {
+        "name": "上海人文街区",
+        "url": "/shanghai/ch35/g32744"
+      },
+      {
+        "name": "上海公园",
+        "url": "/shanghai/ch35/g138"
+      },
+      {
+        "name": "上海公园景点售票处",
+        "url": "/shanghai/ch35/g50378"
+      },
+      {
+        "name": "上海动物园",
+        "url": "/shanghai/ch35/g2958"
+      },
+      {
+        "name": "上海地标建筑",
+        "url": "/shanghai/ch35/g50051"
+      },
+      {
+        "name": "上海主题乐园",
+        "url": "/shanghai/ch35/g2896"
+      },
+      {
+        "name": "上海植物园",
+        "url": "/shanghai/ch35/g50078"
+      },
+      {
+        "name": "上海水上项目/水上体验",
+        "url": "/shanghai/ch35/g2916"
+      },
+      {
+        "name": "上海度假景区",
+        "url": "/shanghai/ch35/g50284"
+      },
+      {
+        "name": "上海温泉景区",
+        "url": "/shanghai/ch35/g5672"
+      },
+      {
+        "name": "上海影视基地",
+        "url": "/shanghai/ch35/g2840"
+      },
+      {
+        "name": "上海更多景点/周边游",
+        "url": "/shanghai/ch35/g33832"
+      }
+    ],
+    "observed_at": "2026-09-30T05:50:02.897494+00:00"
+  }
+]

@@ -1,0 +1,1050 @@
+{
+  "batch": "dianping-extra-channels-2026-09-30",
+  "applied": true,
+  "before_total": 1373,
+  "before_active": 865,
+  "created": 142,
+  "existing": 6,
+  "records": [
+    {
+      "id": "e0bca6dc-ea2a-448d-85bb-98824d0df1c0",
+      "name": "林间穿越森林探险乐园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "78d67b79-e3fd-4200-84a8-c7dfb636e706",
+      "name": "Bright Land耀心岛",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a8be3f7a-7d81-4386-841a-9d460f1cfcc9",
+      "name": "奈尔宝科技馆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": false
+    },
+    {
+      "id": "4cbcd2d7-1ed7-4acd-b3ed-6364c3485c32",
+      "name": "环球大冒险",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "53c48c51-8a06-42e5-98f7-cac52551a3e3",
+      "name": "丛林玩家探险乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "095f401c-7cc8-444e-88f5-f458180699f9",
+      "name": "树窝窝",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "2be93298-26bc-4e29-b3ef-50bd07730c81",
+      "name": "小黄鸭主题乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "e8fa4a48-845b-4aee-a507-19c85d33cc90",
+      "name": "可可天空农场",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "39742040-b446-41f8-8596-a32650745713",
+      "name": "魔法谷",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "fe34967d-f5d8-4f26-8cbe-a7cbe9c75d22",
+      "name": "奈尔宝",
+      "category": "亲子乐园",
+      "active": true,
+      "created": false
+    },
+    {
+      "id": "aff47ed9-66b0-4d5e-9c89-3659aed8b3b6",
+      "name": "MELAND",
+      "category": "亲子乐园",
+      "active": true,
+      "created": false
+    },
+    {
+      "id": "b1567b31-c9e6-4039-8c15-9cd2418aec99",
+      "name": "上美影泡泡米益智乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": false
+    },
+    {
+      "id": "1c6ef75d-dd5e-4806-96d9-9500aa2e38ba",
+      "name": "嗨享来亲子互动乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "f0cca2f8-01dc-4c7c-8fd7-6f9f0c6d3c79",
+      "name": "飞越丛林探险乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "110e636a-f062-4101-8bc6-1c6cad88f26a",
+      "name": "浦东嘉里儿童探险乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "02f91c9b-4155-4abb-97fe-860e5255bf7d",
+      "name": "钓虾工场",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "47c02692-04fa-44fc-b1c4-56b42eb59571",
+      "name": "木星动物岛",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": false
+    },
+    {
+      "id": "0aff444d-f508-4b6e-a87f-3e576fcb42bf",
+      "name": "Slime gogo史莱姆学院",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0291518f-18e3-4899-b31d-03ee3fc6d4e0",
+      "name": "卡通尼乐园",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0b37b8c3-c510-4d22-841e-7d962d44043c",
+      "name": "Tim嘟嘟动物园",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "9a6a5455-6a46-4921-9271-f80f91f7e2ea",
+      "name": "卡皮巴拉萌宠乐园",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "e5f68ffe-cb96-4474-a11b-a549305c1e0a",
+      "name": "仙渡森野乐园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a8db9ada-0a60-4dc4-b3ee-216fdd8b6ddd",
+      "name": "汤姆猫超能战队乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0d174649-1f6f-4a34-9a67-6973462872ea",
+      "name": "麦芽天空农场",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "208b8535-062a-4900-9440-268f9bc45777",
+      "name": "MINI MARS",
+      "category": "亲子乐园",
+      "active": true,
+      "created": false
+    },
+    {
+      "id": "f77ca94e-2ef2-491d-8a3d-a43b2d74db59",
+      "name": "土拨鼠俱乐部",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "54792469-d665-4f4b-bdbc-69eeb08192b9",
+      "name": "嗨享乐亲子互动乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "6934c7d1-e55d-44e4-a71a-dffd1e314421",
+      "name": "Merry Host 儿童互动剧游",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "b9d51a44-f3a0-4086-984f-d91e07edee64",
+      "name": "dadaland低幼龄儿童成长乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "09f20bb5-599a-48ca-8c91-3eba327eee8e",
+      "name": "Bingo Mini进击的人类幼崽",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "845d5d8a-e130-4061-b7cc-865dc43dadb1",
+      "name": "漫游行星Merry Go Land",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "478a9931-4473-4b84-8671-b31601a0647e",
+      "name": "Momoda宝宝戏剧",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "8d51c4a2-0b2b-415e-89ad-cf4aaf907b28",
+      "name": "嘻哆哆亲子乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "1e3228e9-2c10-4d84-9075-04efba191700",
+      "name": "沃野冰雪乐园",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "f0b2719f-7951-41a4-b020-5d6779dfb86a",
+      "name": "NOKAYA乃佳屋",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0a44b757-a4ba-4835-a829-17b3a6624a03",
+      "name": "ICE FAMILY",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "6b4f0311-d28e-4240-aee0-be0ba7e03c79",
+      "name": "Rusher Site运动空间",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "94b91672-127b-48e2-b947-1f63c6cc853b",
+      "name": "泡泡侦探社",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "6e569b50-3e51-488a-92fb-b47ae68c13c7",
+      "name": "反弹蹦床公园",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "bdc670b1-eb2c-4f1b-a6ad-17b7b1c68822",
+      "name": "活力街",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "1e6f318f-0e58-4b93-a891-a09870dfea59",
+      "name": "树间跳动森林探索营地",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "13ee465c-cc33-496e-bbfd-49caea981f76",
+      "name": "爸爸的工作室",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "758d0963-52f2-4497-a05b-ff55e4cf6c53",
+      "name": "藦茜花园宠物主题亲子互动体验馆",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "790d2800-5a98-4056-aa73-2948ebf8b2b2",
+      "name": "上海贝嘉葆STEAM儿童主题体验中心",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "859137cd-cfbb-4fd0-b7ae-a83053db5110",
+      "name": "奥德亲子",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a80eba7d-78fb-40d0-b318-ef112f9fa2fe",
+      "name": "PlayGrow贝林麟",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "8693ac32-8c1d-4881-9a80-c2db840ee9c3",
+      "name": "种动员农场",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "63d70022-d536-4d75-9466-f4653482cc23",
+      "name": "上海航宇科普中心",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "3d8808ac-e1e5-4d61-b47b-7c790e891f79",
+      "name": "鹿儿岛婴幼儿成长乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "d9d22315-b411-4cb5-8799-29cbf31e7427",
+      "name": "朝露菇园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "e35ee10e-06ac-4ee9-be39-ca63bbaa0990",
+      "name": "躺营",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "bd570fa2-3cf8-4272-8070-2ea95593b647",
+      "name": "amego儿童玩具体验馆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "c3ad8542-df64-45e5-b8b3-9d208d1823f5",
+      "name": "熱牛奶拼豆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "e5f5491f-f764-4590-9d5e-a78ac3a54093",
+      "name": "米谷农场",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "b847fcec-81ed-4d46-a1aa-b49f111eb1c4",
+      "name": "神奇动物撸宠馆",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "bdfc96d6-0d3f-40d0-a6ea-56438fee1c6e",
+      "name": "卡梅拉亲子营地",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "8885b75b-617d-47cc-b1ed-2f017d0613e2",
+      "name": "心芝麻开门亲子乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "b08a1d86-b8e2-4428-ac69-bf08f0108209",
+      "name": "菲菲羊乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "ba711ad3-b360-4c37-af9e-6cf2ffd7d286",
+      "name": "超级飞侠启航站",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "fce9ec13-3450-4ac8-818d-b1dd774b14b2",
+      "name": "托马斯&朋友之探索世界",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "f3e61cc0-a6de-4c95-a8ae-dce27930c621",
+      "name": "MoMo花园",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0153d804-7abe-470f-a3af-26bbf58753d1",
+      "name": "花田里",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "692ea487-4870-4e8c-b3c1-6550a82df1c5",
+      "name": "弹力小镇蹦床亲子运动中心",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "6f03cd88-013f-49c2-9243-a79bd67eb599",
+      "name": "汤姆猫亲子乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "425a854f-7928-4d29-991f-bf816612fefc",
+      "name": "巧匠木工坊DIY",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "4e229f8e-47e3-4b88-90f1-beea6b5ec5cb",
+      "name": "魔法特工",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "2315fb69-0139-4b8a-8702-fbb2305227e3",
+      "name": "月狮林下探险乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "c9c6ea61-0f0d-4243-9586-bb29f2bd5647",
+      "name": "微微田生态农场",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "960459bf-5f11-4ded-b1ed-134bc7c7092e",
+      "name": "滩玩乐园-亲子世界",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "db9f31da-cf7c-4850-ad4b-d1cd14824d01",
+      "name": "上海活体昆虫博物馆",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a5b7f159-c11a-4c23-8a7f-43a99c5f6152",
+      "name": "蘑力森林",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "de9822de-e728-481a-b35f-d6dd37478e94",
+      "name": "四季冰雪乐园",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "66d4b051-aa7d-4627-a226-dad0534ff0ba",
+      "name": "Archbell阿奇贝尔玩学乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "00f9421e-7144-49b7-9a63-281e2110a759",
+      "name": "大乐堡The L Land",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "4e83c92c-d63b-4c82-a9ca-d07dc3fe9bd4",
+      "name": "熊猫密室探索乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "1578f4e6-aee4-4707-835e-de90a92b174a",
+      "name": "玩童会主题店",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "9b7b6ce6-03ff-44c2-8abe-b628f42a3b5d",
+      "name": "卡皮巴拉城市乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "be2e1e5c-9c0b-4041-8095-65e7d05beaac",
+      "name": "露营湾",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "593359be-3e1d-40b6-bbd3-27c7a8f1fddd",
+      "name": "咕噜镇萌宠乐园",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "32b37b34-979c-4005-9535-78554183103e",
+      "name": "玩在这儿",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "cbf61798-4dec-4a9c-84b1-4cc714a3495a",
+      "name": "梦幻三喵拼豆DIY手作",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "d556d236-d905-4140-9089-a6dc1bdb14c9",
+      "name": "澎湃兄弟",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "2f43bc83-e4c3-4284-adfb-9a788613688a",
+      "name": "拾光屿你",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a735d4db-ac1e-4939-99a6-5479e7d1938a",
+      "name": "拼豆豆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "f68bb4ca-2905-4976-a55f-87bbea28f8ed",
+      "name": "SlimeLand",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "d04f3702-d60c-4af5-ab11-7448d44b4781",
+      "name": "格子大作战",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "ecd22537-05a4-48d2-929b-1086b84c0ca5",
+      "name": "拼拼鸭手作",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "3a55778b-c1ca-4232-ad9d-51024983a57b",
+      "name": "鸟瞰虫生皮划艇桨板俱乐部",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "d808d9ea-d8ba-4eda-abbe-31dc6e4b01e2",
+      "name": "BLACK冠军皮艇桨板运动中心",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "e6fa408b-e5ec-4130-b121-2b7c8dfeb6d6",
+      "name": "亚马逊皮划艇俱乐部",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0cf303a4-ba6f-43ab-a530-7be33abf16d0",
+      "name": "方格大战",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "cd86ec1f-2eba-4162-bcfc-2995ae5ee402",
+      "name": "上海林语丛林马术营地",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "3201e9ce-ed1f-4a00-8d62-49d2335a5950",
+      "name": "Solarshow 手拉手幼儿剧",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "39289902-8666-473b-b8df-e0571a33f301",
+      "name": "浪歌行皮划艇俱乐部",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "8e42004f-6952-4c3a-942a-7a2271680069",
+      "name": "放下艺术商店",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "72a9a7ac-1055-475e-a415-76bebb83fb0c",
+      "name": "四季豆手作",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "cada74f8-fd69-42df-b204-31f4617a8134",
+      "name": "布布猫Diy手作坊",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "dada74b8-fe9d-420b-bcac-35a5d8462504",
+      "name": "小木木亲子烘焙",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "92eed37c-a72c-42cd-a2df-6d5975305a3b",
+      "name": "神动体育水上运动俱乐部",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "347118c3-9098-442e-a29b-63bd3e14d999",
+      "name": "喜豆拼豆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "6d5a8ae6-b12b-43f5-acbc-6eef8db17380",
+      "name": "SeaWaves",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "3c7c4da8-e71e-4ada-8890-b5aee10dd477",
+      "name": "欢乐豆拼豆屋",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "3d814486-d2be-4462-9f81-dbf3780d782c",
+      "name": "艺歆造物社",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "cf9ea0d3-8671-49c6-8fac-dd92e3f7805e",
+      "name": "GG-Two拼豆-亲子DIY手作",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "2782f39a-d0d2-4255-9a16-7b27dc007e75",
+      "name": "纳兰豆序",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0ef992e0-7d12-4187-921c-115a6e54b9e1",
+      "name": "恒酷帝国",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "d8f16b7c-e9cd-4861-a9bb-373ab75089c7",
+      "name": "红豆手作",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "247e9c68-206a-46de-a76d-fb44303c6073",
+      "name": "桨趣亲子野营",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "99c98e88-34b9-4e08-88a4-f792ca081928",
+      "name": "壹号码头-皮划艇桨板-水上运动俱乐部",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "7caed29c-a8f2-4062-a06a-2d66033068f7",
+      "name": "盖世小神探",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "c9f78fbb-f2d8-42af-a1ee-e4f7279b3258",
+      "name": "艇动皮划艇俱乐部",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "f036c24c-e7ae-4903-ae80-90d11e61a51c",
+      "name": "远景村.野性之心小马俱乐部",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0703f479-ad0f-4f00-86ab-76df6f1cfb92",
+      "name": "探蜜营地",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "3254a9a5-5ff1-44ee-89b5-ab84fddd915f",
+      "name": "上海新实达皮划艇水上运动中心",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "9b72f88a-9a49-46e0-bfce-686755c04dec",
+      "name": "糖果拼豆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a6249547-8b1a-4011-86d9-e42b1aea6190",
+      "name": "咕lu猫diy",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "ca3bfe5a-5ae9-4773-9cc5-fd6b6439e66a",
+      "name": "豆野手作工坊",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "44c0dd86-d699-416d-a88c-8630afd7351f",
+      "name": "格子大乱斗",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "c3e55317-1da2-458f-9c95-38f1bc6aa6d8",
+      "name": "迪艇皮划艇之家",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "c3afbfe1-04d5-4145-b154-831b365affa2",
+      "name": "Galli戏剧",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0b8a06d3-4683-4785-bfcc-a1a498fb3e0d",
+      "name": "逸飞轩手作馆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "691f62a1-b7f6-4744-803b-2bd6619c3d1e",
+      "name": "我嘞个豆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "66ea9461-e51f-4331-8036-45cd3fb10c83",
+      "name": "梦想造物社",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "27b455e1-eb79-4907-a41e-33121e974cae",
+      "name": "多栖博物",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "2eb4cba6-11a3-448c-966c-bedce81ac1ea",
+      "name": "摘星手作",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "5158f5de-1c4a-4c28-8aa4-03a38a5b8888",
+      "name": "白菜家",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "41a97acc-681f-445f-ac8c-bc2326bb436d",
+      "name": "糯糯拼豆社",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "926487c6-e216-4d17-962a-1277bb1bcfdd",
+      "name": "小虎探险队",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "896f5e25-36b8-4919-ad27-c8897b862b8b",
+      "name": "TUTU农场",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "68040ae8-8015-4481-8556-cef1ded9a3d5",
+      "name": "大魔王拼豆手作diy",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "f905ba81-7e52-42a0-bf4a-25926ade66eb",
+      "name": "青云卡哇伊拼豆馆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "e8b1bfd6-e045-47b3-aede-ec88d04a37c8",
+      "name": "自然寻",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "c08712aa-c734-4aec-b636-a9bc03ee05e4",
+      "name": "洋桃艺术实验空间",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "6785c1e8-1f51-477e-8dc1-85f33b3884dd",
+      "name": "开小造",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "b661e742-10a1-47b8-b3ac-4b91251606ba",
+      "name": "豆像素拼豆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "5487fd3b-9a0e-43c3-b23d-525f67a128c1",
+      "name": "上海子兮艺术社非遗文化馆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "4f18279c-3e59-4ba4-bb17-ed028fa19e03",
+      "name": "土人陶艺/蛋糕烘焙/手工乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "d4387dc2-1008-4594-9ee3-de26a251275f",
+      "name": "鲜宠乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "6bbeaf0e-b300-4a29-afb9-0fb0374cb41f",
+      "name": "祢豆小屋",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "d22dc656-4ed8-4334-a138-4fb92e21fba7",
+      "name": "颗粒织造",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "2de0b32c-f0ac-4d34-bd34-b00aff9be99f",
+      "name": "蹦蹦乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "60780214-88d4-4f22-a866-b1b3125fd455",
+      "name": "顽固的拼豆工作室",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "fc6e5ecc-b7f0-48b4-8550-0069c166ce79",
+      "name": "千棠非遗文化体验馆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "fe9133ff-2192-4753-82a7-ea354f7ab565",
+      "name": "煋际时空局",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "db193dce-576c-4dcb-b396-0a8039f5ea94",
+      "name": "千年南翔数字艺术馆",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a260b369-6074-41de-ada8-a244ca8a6d4c",
+      "name": "Judys奇妙植物城",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "f9324c05-f904-4815-90f6-8f5ae4bbf9e6",
+      "name": "萌宠方舟",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "1122e06f-5116-4a87-90f3-054fb01d5ba3",
+      "name": "陶氣手工坊",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    }
+  ],
+  "after_total": 1515,
+  "after_active": 1007,
+  "finished_at": "2026-09-30T05:55:29.513Z",
+  "collection_run_id": "13438e0d-51f4-4f5f-88e7-d07335aa8a9c"
+}

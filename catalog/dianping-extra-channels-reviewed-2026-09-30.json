@@ -1,0 +1,3622 @@
+{
+  "batch": "dianping-extra-channels-2026-09-30",
+  "policy": "上海分类人气前100初步名称且有团购，审核游玩范围与别名，不覆盖旧品牌启用状态。",
+  "brands": [
+    {
+      "name": "林间穿越森林探险乐园",
+      "category": "户外景区",
+      "aliases": [],
+      "active": true,
+      "keywords": ["林间穿越森林探险乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k5eVFjuSaoeAc0c5",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k5eVFjuSaoeAc0c5",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置1；第1页第1条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1222098804；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：林间穿越森林探险乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "Bright Land耀心岛",
+      "category": "亲子乐园",
+      "aliases": ["Bright Land耀心岛·亲子乐园"],
+      "active": true,
+      "keywords": ["Bright Land耀心岛"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k9EmRJtlkRx6kYQx",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k9EmRJtlkRx6kYQx",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置2；第1页第2条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1665793163；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：Bright Land耀心岛·亲子乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "奈尔宝科技馆",
+      "category": "亲子乐园",
+      "aliases": ["奈尔宝儿童科技馆·探索研学·亲子餐厅"],
+      "active": true,
+      "keywords": ["奈尔宝科技馆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l4KRwrosEsEWB5Ln",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l4KRwrosEsEWB5Ln",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置3；第1页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/969880241；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：奈尔宝儿童科技馆·探索研学·亲子餐厅。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "环球大冒险",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["环球大冒险"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k6eW92HwWS9O8R3m",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k6eW92HwWS9O8R3m",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置4；第1页第4条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/0；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：环球大冒险。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "丛林玩家探险乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["丛林玩家探险乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G3rr1i9Oi5ohV4LX",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G3rr1i9Oi5ohV4LX",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置5；第1页第5条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1425575989；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：丛林玩家探险乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "树窝窝",
+      "category": "亲子乐园",
+      "aliases": ["树窝窝·丛林探秘"],
+      "active": true,
+      "keywords": ["树窝窝"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/ELp3v4RFom1qa5Cd",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/ELp3v4RFom1qa5Cd",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置6；第1页第6条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1659061065；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：树窝窝·丛林探秘。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "小黄鸭主题乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["小黄鸭主题乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l9orGHOLi9u0Cnxp",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l9orGHOLi9u0Cnxp",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置8；第1页第8条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1597581135；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：小黄鸭主题乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "可可天空农场",
+      "category": "户外景区",
+      "aliases": [],
+      "active": true,
+      "keywords": ["可可天空农场"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l1vWShlmmuLxQKfu",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l1vWShlmmuLxQKfu",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置9；第1页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1450830496；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：可可天空农场。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "魔法谷",
+      "category": "亲子乐园",
+      "aliases": ["魔法谷·探洞公园"],
+      "active": true,
+      "keywords": ["魔法谷"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/F7lZrUnNYeH2I7sx",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/F7lZrUnNYeH2I7sx",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置10；第1页第10条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1655598776；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：魔法谷·探洞公园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "奈尔宝",
+      "category": "亲子乐园",
+      "aliases": [
+        "奈尔宝·儿童乐园·亲子餐厅·丝路奇遇主题",
+        "奈尔宝·儿童乐园·亲子餐厅",
+        "奈尔宝·国风主题儿童乐园·亲子餐厅"
+      ],
+      "active": true,
+      "keywords": ["奈尔宝"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/j2MO3IXrkyJ5pwB5",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/j2MO3IXrkyJ5pwB5",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置11；第1页第11条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1198611398；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：奈尔宝·国风主题儿童乐园·亲子餐厅。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H7Jf7CZ4jTZchtTn",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置19；第2页第6条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:57.271352+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1357020128；列表：https://www.dianping.com/shanghai/ch70/g33803o2p2；页面名称：奈尔宝·儿童乐园·亲子餐厅。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H9mg9fcl90eYMgae",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置20；第2页第8条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:57.271352+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1357020128；列表：https://www.dianping.com/shanghai/ch70/g33803o2p2；页面名称：奈尔宝·儿童乐园·亲子餐厅·丝路奇遇主题。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "MELAND",
+      "category": "亲子乐园",
+      "aliases": [
+        "meland club晋商之旅玩学店",
+        "meland亲子乐园·研学",
+        "meland club亲子乐园•研学•派对",
+        "meland club亲子乐园•派对•餐厅",
+        "meland亲子乐园•派对•研学"
+      ],
+      "active": true,
+      "keywords": ["MELAND"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k5FAC3CGZ9RhH6Mr",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k5FAC3CGZ9RhH6Mr",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置12；第1页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1233330036；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：meland club亲子乐园•派对•餐厅。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k4e1gj6J6SYk9Vcf",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置36；第3页第13条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:01.764473+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1669743585；列表：https://www.dianping.com/shanghai/ch70/g33803o2p3；页面名称：meland club晋商之旅玩学店。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/FVw7HuqTaaqDtbiW",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置48；第4页第11条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1233330036；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：meland club亲子乐园•研学•派对。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k8GjSnIKri06dakn",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置49；第4页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1564979202；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：meland亲子乐园·研学。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/kaxVltNYgHbUxKPr",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置53；第5页第1条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1602761381；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：meland亲子乐园•派对•研学。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "上美影泡泡米益智乐园",
+      "category": "亲子乐园",
+      "aliases": ["上美影POPOME泡泡米益智乐园·餐厅·派对"],
+      "active": true,
+      "keywords": ["上美影泡泡米益智乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k3yi1mZPUJA5j496",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k3yi1mZPUJA5j496",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置13；第1页第13条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1413785882；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：上美影POPOME泡泡米益智乐园·餐厅·派对。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "嗨享来亲子互动乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["嗨享来亲子互动乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k5PnLpfZRrDazgEh",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k5PnLpfZRrDazgEh",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置14；第1页第14条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1334859848；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：嗨享来亲子互动乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "飞越丛林探险乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["飞越丛林探险乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G9IkGwsXaymtHBgy",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G9IkGwsXaymtHBgy",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置15；第1页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:52.160333+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1578561867；列表：https://www.dianping.com/shanghai/ch70/g33803o2；页面名称：飞越丛林探险乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "浦东嘉里儿童探险乐园",
+      "category": "亲子乐园",
+      "aliases": ["浦东嘉里大酒店", "浦东嘉里大酒店·儿童探险乐园"],
+      "active": true,
+      "keywords": ["浦东嘉里儿童探险乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/jWnEXHvfpDoYeVvx",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/jWnEXHvfpDoYeVvx",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置16；第2页第1条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:57.271352+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/710220366；列表：https://www.dianping.com/shanghai/ch70/g33803o2p2；页面名称：浦东嘉里大酒店·儿童探险乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "钓虾工场",
+      "category": "亲子乐园",
+      "aliases": ["钓虾工场·钓虾·赶海"],
+      "active": true,
+      "keywords": ["钓虾工场"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H1ggtuiZvSXUCkq3",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H1ggtuiZvSXUCkq3",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置17；第2页第2条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:57.271352+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/949137496；列表：https://www.dianping.com/shanghai/ch70/g33803o2p2；页面名称：钓虾工场·钓虾·赶海。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "木星动物岛",
+      "category": "动物海洋馆",
+      "aliases": ["木星动物岛·治愈系萌宠馆"],
+      "active": true,
+      "keywords": ["木星动物岛"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H4X7kHOO6KBRQC3C",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H4X7kHOO6KBRQC3C",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置18；第2页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:57.271352+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1158237412；列表：https://www.dianping.com/shanghai/ch70/g33803o2p2；页面名称：木星动物岛·治愈系萌宠馆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "Slime gogo史莱姆学院",
+      "category": "亲子乐园",
+      "aliases": ["Slime gogo史莱姆学院·亲子乐园"],
+      "active": true,
+      "keywords": ["Slime gogo史莱姆学院"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/Ga10k07eQTcikscS",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/Ga10k07eQTcikscS",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置21；第2页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:57.271352+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1649096872；列表：https://www.dianping.com/shanghai/ch70/g33803o2p2；页面名称：Slime gogo史莱姆学院·亲子乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "卡通尼乐园",
+      "category": "展馆观光",
+      "aliases": [
+        "卡通尼·CIRCUS奇趣马戏乐园·史莱姆·卡丁车·生日会",
+        "卡通尼·Safari非洲探索乐园·生日会",
+        "卡通尼·妖怪村",
+        "卡通尼·可以玩的博物馆·生日会"
+      ],
+      "active": true,
+      "keywords": ["卡通尼乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k7iNIebzzxOmurQT",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k7iNIebzzxOmurQT",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置22；第2页第10条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:57.271352+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1597407162；列表：https://www.dianping.com/shanghai/ch70/g33803o2p2；页面名称：卡通尼·可以玩的博物馆·生日会。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l1cqgVyjiCs1UkR7",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置24；第2页第13条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:57.271352+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1599978774；列表：https://www.dianping.com/shanghai/ch70/g33803o2p2；页面名称：卡通尼·Safari非洲探索乐园·生日会。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H3vh6g25zRHl5JKc",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置30；第3页第6条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:01.764473+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1132467508；列表：https://www.dianping.com/shanghai/ch70/g33803o2p3；页面名称：卡通尼·CIRCUS奇趣马戏乐园·史莱姆·卡丁车·生日会。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H23MQqhSaVJVdEHH",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置77；第6页第11条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1660333735；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：卡通尼·妖怪村。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k8zbIE51aqudAHfZ",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置93；第7页第14条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:22.042828+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1627928604；列表：https://www.dianping.com/shanghai/ch70/g33803o2p7；页面名称：卡通尼乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "Tim嘟嘟动物园",
+      "category": "动物海洋馆",
+      "aliases": [],
+      "active": true,
+      "keywords": ["Tim嘟嘟动物园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G81w1qfOsCfrpPTq",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G81w1qfOsCfrpPTq",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置23；第2页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:57.271352+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1306909347；列表：https://www.dianping.com/shanghai/ch70/g33803o2p2；页面名称：Tim嘟嘟动物园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "卡皮巴拉萌宠乐园",
+      "category": "动物海洋馆",
+      "aliases": ["卡皮巴拉萌宠乐园水豚", "卡皮巴拉萌宠乐园水豚·羊驼·爬宠"],
+      "active": true,
+      "keywords": ["卡皮巴拉萌宠乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k3yCHWstM8794Rx0",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k3yCHWstM8794Rx0",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置25；第2页第14条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:57.271352+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1184543284；列表：https://www.dianping.com/shanghai/ch70/g33803o2p2；页面名称：卡皮巴拉萌宠乐园水豚·羊驼·爬宠。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "仙渡森野乐园",
+      "category": "户外景区",
+      "aliases": [
+        "仙渡·Hi Baby亲子农场·采摘",
+        "仙渡森野乐园·亲子农场·团建·生日"
+      ],
+      "active": true,
+      "keywords": ["仙渡森野乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H8BYejYA92gDiuI2",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H8BYejYA92gDiuI2",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置26；第2页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:50:57.271352+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/868339516；列表：https://www.dianping.com/shanghai/ch70/g33803o2p2；页面名称：仙渡·Hi Baby亲子农场·采摘。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l2ObE5QfYlKSFxFr",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置43；第4页第6条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1322208318；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：仙渡森野乐园·亲子农场·团建·生日。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "汤姆猫超能战队乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["汤姆猫超能战队乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G5Y9N0ODsosKyUgq",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G5Y9N0ODsosKyUgq",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置27；第3页第2条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:01.764473+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1634539388；列表：https://www.dianping.com/shanghai/ch70/g33803o2p3；页面名称：汤姆猫超能战队乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "麦芽天空农场",
+      "category": "户外景区",
+      "aliases": [],
+      "active": true,
+      "keywords": ["麦芽天空农场"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H9RTUDVIeIj5jDeP",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H9RTUDVIeIj5jDeP",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置28；第3页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:01.764473+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1576783207；列表：https://www.dianping.com/shanghai/ch70/g33803o2p3；页面名称：麦芽天空农场。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "MINI MARS",
+      "category": "亲子乐园",
+      "aliases": [
+        "MINI MARS 星羽归航乐园·餐饮·派对",
+        "MINI MARS NATURE PARK",
+        "MINI MARS 移动的空间站乐园·餐饮·派对",
+        "MINI MARS 脚下的城市乐园·餐饮·派对",
+        "MINI MARS 即时屿乐园·餐饮·派对"
+      ],
+      "active": true,
+      "keywords": ["MINI MARS"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H16MPHSuCniSpqzl",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H16MPHSuCniSpqzl",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置29；第3页第4条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:01.764473+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/660261303；列表：https://www.dianping.com/shanghai/ch70/g33803o2p3；页面名称：MINI MARS 即时屿乐园·餐饮·派对。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/jb5AoXpwWUlOgUMq",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置35；第3页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:01.764473+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/809523896；列表：https://www.dianping.com/shanghai/ch70/g33803o2p3；页面名称：MINI MARS NATURE PARK。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l9QvMO7zaCPmlaOe",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置51；第4页第14条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/660261303；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：MINI MARS 脚下的城市乐园·餐饮·派对。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l83ZtHPRVlJX5kQy",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置57；第5页第5条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/809523896；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：MINI MARS 星羽归航乐园·餐饮·派对。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H1o0AUOX6GMKtzRA",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置82；第7页第1条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:22.042828+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/809523896；列表：https://www.dianping.com/shanghai/ch70/g33803o2p7；页面名称：MINI MARS 移动的空间站乐园·餐饮·派对。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "土拨鼠俱乐部",
+      "category": "亲子乐园",
+      "aliases": ["土拨鼠俱乐部·乐园·派对·研学"],
+      "active": true,
+      "keywords": ["土拨鼠俱乐部"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l3BJUkb3oDYeyRGD",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l3BJUkb3oDYeyRGD",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置31；第3页第7条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:01.764473+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1215885668；列表：https://www.dianping.com/shanghai/ch70/g33803o2p3；页面名称：土拨鼠俱乐部·乐园·派对·研学。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "嗨享乐亲子互动乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["嗨享乐亲子互动乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k6xeaWapJcurlr4x",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k6xeaWapJcurlr4x",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置32；第3页第8条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:01.764473+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1597559798；列表：https://www.dianping.com/shanghai/ch70/g33803o2p3；页面名称：嗨享乐亲子互动乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "Merry Host 儿童互动剧游",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["Merry Host 儿童互动剧游"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H478nRn1UalQjhUC",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H478nRn1UalQjhUC",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置33；第3页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:01.764473+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1128980639；列表：https://www.dianping.com/shanghai/ch70/g33803o2p3；页面名称：Merry Host 儿童互动剧游。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "dadaland低幼龄儿童成长乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["dadaland低幼龄儿童成长乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G7r62cAOUKoRUrjm",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G7r62cAOUKoRUrjm",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置34；第3页第10条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:01.764473+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1568738075；列表：https://www.dianping.com/shanghai/ch70/g33803o2p3；页面名称：dadaland低幼龄儿童成长乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "Bingo Mini进击的人类幼崽",
+      "category": "亲子乐园",
+      "aliases": ["Bingo Mini进击的人类幼崽·沉浸式亲子戏剧乐园"],
+      "active": true,
+      "keywords": ["Bingo Mini进击的人类幼崽"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H3u1btZ8ODRn1nNz",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H3u1btZ8ODRn1nNz",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置37；第3页第14条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:01.764473+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1047032900；列表：https://www.dianping.com/shanghai/ch70/g33803o2p3；页面名称：Bingo Mini进击的人类幼崽·沉浸式亲子戏剧乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "漫游行星Merry Go Land",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["漫游行星Merry Go Land"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8G7hMjP8FDebvhl",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k8G7hMjP8FDebvhl",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置38；第3页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:01.764473+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1667977155；列表：https://www.dianping.com/shanghai/ch70/g33803o2p3；页面名称：漫游行星Merry Go Land。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "Momoda宝宝戏剧",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["Momoda宝宝戏剧"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k2FldpN1rVjDMFf3",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k2FldpN1rVjDMFf3",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置39；第4页第1条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/0；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：Momoda宝宝戏剧。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "嘻哆哆亲子乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["嘻哆哆亲子乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/F5xvKBMupjz7m3fq",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/F5xvKBMupjz7m3fq",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置40；第4页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1081060265；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：嘻哆哆亲子乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "沃野冰雪乐园",
+      "category": "运动玩乐",
+      "aliases": ["沃野冰雪乐园·娱雪·滑雪"],
+      "active": true,
+      "keywords": ["沃野冰雪乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8O2GB2nOM3iwfzm",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k8O2GB2nOM3iwfzm",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置41；第4页第4条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1187767736；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：沃野冰雪乐园·娱雪·滑雪。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "NOKAYA乃佳屋",
+      "category": "亲子乐园",
+      "aliases": ["NOKAYA乃佳屋·亲子乐园"],
+      "active": true,
+      "keywords": ["NOKAYA乃佳屋"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/iSxD7CG4bKBsv99Q",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/iSxD7CG4bKBsv99Q",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置42；第4页第5条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1472601341；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：NOKAYA乃佳屋·亲子乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "ICE FAMILY",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["ICE FAMILY"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8Vp80uMMEHqQwXf",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k8Vp80uMMEHqQwXf",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置44；第4页第7条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1056423274；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：ICE FAMILY。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "Rusher Site运动空间",
+      "category": "运动玩乐",
+      "aliases": ["Rusher Site运动空间·蹦床攀岩·团建生日会"],
+      "active": true,
+      "keywords": ["Rusher Site运动空间"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l9j4COYqqiZ5T5Cl",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l9j4COYqqiZ5T5Cl",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置45；第4页第8条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/682615847；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：Rusher Site运动空间·蹦床攀岩·团建生日会。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "泡泡侦探社",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["泡泡侦探社"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H9eE6s6BLWH3V87w",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H9eE6s6BLWH3V87w",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置46；第4页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/845343922；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：泡泡侦探社。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "反弹蹦床公园",
+      "category": "运动玩乐",
+      "aliases": ["反弹蹦床公园·亲子乐园·团建·派对"],
+      "active": true,
+      "keywords": ["反弹蹦床公园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H7UD1k5N58PovCDD",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H7UD1k5N58PovCDD",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置47；第4页第10条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1280665236；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：反弹蹦床公园·亲子乐园·团建·派对。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "活力街",
+      "category": "运动玩乐",
+      "aliases": ["活力街·家庭运动中心·生日派对·公司团建·蹦床乐园"],
+      "active": true,
+      "keywords": ["活力街"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8fAxFiY8LrzyO7a",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k8fAxFiY8LrzyO7a",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置50；第4页第13条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1022366609；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：活力街·家庭运动中心·生日派对·公司团建·蹦床乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "树间跳动森林探索营地",
+      "category": "户外景区",
+      "aliases": [],
+      "active": true,
+      "keywords": ["树间跳动森林探索营地"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H6YYnAigFAuQSlE3",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H6YYnAigFAuQSlE3",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置52；第4页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:06.969484+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1314959915；列表：https://www.dianping.com/shanghai/ch70/g33803o2p4；页面名称：树间跳动森林探索营地。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "爸爸的工作室",
+      "category": "亲子乐园",
+      "aliases": ["爸爸的工作室·RC遥控模型体验馆"],
+      "active": true,
+      "keywords": ["爸爸的工作室"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G3qufaD5LJP8KTqb",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G3qufaD5LJP8KTqb",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置54；第5页第2条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1575910381；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：爸爸的工作室·RC遥控模型体验馆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "藦茜花园宠物主题亲子互动体验馆",
+      "category": "动物海洋馆",
+      "aliases": [],
+      "active": true,
+      "keywords": ["藦茜花园宠物主题亲子互动体验馆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/EGSNOrcv95ZA0eDU",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/EGSNOrcv95ZA0eDU",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置55；第5页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/627055475；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：藦茜花园宠物主题亲子互动体验馆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "上海贝嘉葆STEAM儿童主题体验中心",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海贝嘉葆STEAM儿童主题体验中心"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H1ikRumIYLa4d4vp",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H1ikRumIYLa4d4vp",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置56；第5页第4条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1651980101；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：上海贝嘉葆STEAM儿童主题体验中心。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "奥德亲子",
+      "category": "动物海洋馆",
+      "aliases": ["奥德亲子·动物农场"],
+      "active": true,
+      "keywords": ["奥德亲子"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G2vAGzHuDS6soFhc",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G2vAGzHuDS6soFhc",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置58；第5页第6条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1099493853；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：奥德亲子·动物农场。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "PlayGrow贝林麟",
+      "category": "亲子乐园",
+      "aliases": [
+        "PlayGrow贝林麟益智",
+        "PlayGrow贝林麟益智·陪玩·拼搭·桌游·蒙氏·乐园"
+      ],
+      "active": true,
+      "keywords": ["PlayGrow贝林麟"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/kapNIXOJfTRLoZV2",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/kapNIXOJfTRLoZV2",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置59；第5页第7条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1656163248；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：PlayGrow贝林麟益智·陪玩·拼搭·桌游·蒙氏·乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "种动员农场",
+      "category": "户外景区",
+      "aliases": [],
+      "active": true,
+      "keywords": ["种动员农场"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H8wXU8n5obBTnCKE",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H8wXU8n5obBTnCKE",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置60；第5页第8条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1338723410；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：种动员农场。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "上海航宇科普中心",
+      "category": "展馆观光",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海航宇科普中心"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k1O3IasvtQ0979hZ",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k1O3IasvtQ0979hZ",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置61；第5页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1655287831；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：上海航宇科普中心。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "鹿儿岛婴幼儿成长乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["鹿儿岛婴幼儿成长乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k4xFit7L8oGZ9OGa",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k4xFit7L8oGZ9OGa",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置62；第5页第10条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/697019567；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：鹿儿岛婴幼儿成长乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "朝露菇园",
+      "category": "户外景区",
+      "aliases": [],
+      "active": true,
+      "keywords": ["朝露菇园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H6cE7HtZbFw1wNjg",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H6cE7HtZbFw1wNjg",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置63；第5页第11条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/861998988；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：朝露菇园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "躺营",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["躺营"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H25KklCCH10LOatb",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H25KklCCH10LOatb",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置64；第5页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1363555937；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：躺营。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "amego儿童玩具体验馆",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["amego儿童玩具体验馆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k6cDzy1hmsSSHbIc",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k6cDzy1hmsSSHbIc",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置65；第5页第13条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1646751694；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：amego儿童玩具体验馆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "熱牛奶拼豆",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["熱牛奶拼豆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l6cQnAKZekE06diq",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l6cQnAKZekE06diq",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置66；第5页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:12.549650+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1633018741；列表：https://www.dianping.com/shanghai/ch70/g33803o2p5；页面名称：熱牛奶拼豆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H6ywaNiNH8lYPW63",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置3；第1页第4条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:32.344901+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1633030529；列表：https://www.dianping.com/shanghai/ch70/g34146o2；页面名称：熱牛奶拼豆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "米谷农场",
+      "category": "户外景区",
+      "aliases": [],
+      "active": true,
+      "keywords": ["米谷农场"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k9hXwx7ncBGieTGU",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k9hXwx7ncBGieTGU",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置67；第6页第1条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1653957279；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：米谷农场。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "神奇动物撸宠馆",
+      "category": "动物海洋馆",
+      "aliases": ["神奇动物撸宠馆·羊驼·小浣熊·异宠"],
+      "active": true,
+      "keywords": ["神奇动物撸宠馆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k3l8mYUqw0VL09rw",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k3l8mYUqw0VL09rw",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置68；第6页第2条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1022942958；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：神奇动物撸宠馆·羊驼·小浣熊·异宠。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "卡梅拉亲子营地",
+      "category": "户外景区",
+      "aliases": ["卡梅拉亲子营地·团建聚会·露营烧烤"],
+      "active": true,
+      "keywords": ["卡梅拉亲子营地"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8meSHLiOmmIs8on",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k8meSHLiOmmIs8on",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置69；第6页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/789279062；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：卡梅拉亲子营地·团建聚会·露营烧烤。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "心芝麻开门亲子乐园",
+      "category": "亲子乐园",
+      "aliases": ["心芝麻开门亲子乐园·亲子餐厅"],
+      "active": true,
+      "keywords": ["心芝麻开门亲子乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H7FqxbCgXeSkPhNF",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H7FqxbCgXeSkPhNF",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置70；第6页第4条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1642608481；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：心芝麻开门亲子乐园·亲子餐厅。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "菲菲羊乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["菲菲羊乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G4uNWZPyBiliW2Px",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G4uNWZPyBiliW2Px",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置71；第6页第5条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1655449476；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：菲菲羊乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "超级飞侠启航站",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["超级飞侠启航站"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/jTnizeQMQOLRPRZd",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/jTnizeQMQOLRPRZd",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置72；第6页第6条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1541797200；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：超级飞侠启航站。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "托马斯&朋友之探索世界",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["托马斯&朋友之探索世界"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l1b9Lo2R4pSp06Ws",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l1b9Lo2R4pSp06Ws",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置73；第6页第7条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1077204535；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：托马斯&朋友之探索世界。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "MoMo花园",
+      "category": "动物海洋馆",
+      "aliases": ["MoMo花园·撸宠·rua羊驼·猫咖互动亲子乐园"],
+      "active": true,
+      "keywords": ["MoMo花园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G1XTX3DJY560DQsI",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G1XTX3DJY560DQsI",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置74；第6页第8条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/774792292；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：MoMo花园·撸宠·rua羊驼·猫咖互动亲子乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "花田里",
+      "category": "户外景区",
+      "aliases": ["花田里·亲子·团建·露营·烧烤"],
+      "active": true,
+      "keywords": ["花田里"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/jq70PERNy8S91SaZ",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/jq70PERNy8S91SaZ",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置75；第6页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1530560507；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：花田里·亲子·团建·露营·烧烤。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "弹力小镇蹦床亲子运动中心",
+      "category": "运动玩乐",
+      "aliases": ["弹力小镇蹦床亲子运动中心·团建·生日派对"],
+      "active": true,
+      "keywords": ["弹力小镇蹦床亲子运动中心"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H6ixYycJU9Z6KixZ",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H6ixYycJU9Z6KixZ",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置76；第6页第10条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1024634312；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：弹力小镇蹦床亲子运动中心·团建·生日派对。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "汤姆猫亲子乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["汤姆猫亲子乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/EZuHp7swEgPLjKOC",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/EZuHp7swEgPLjKOC",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置78；第6页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/942361192；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：汤姆猫亲子乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "巧匠木工坊DIY",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["巧匠木工坊DIY"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H5bTklj76DNgfHtd",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H5bTklj76DNgfHtd",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置79；第6页第13条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1661608946；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：巧匠木工坊DIY。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "魔法特工",
+      "category": "亲子乐园",
+      "aliases": ["魔法特工·儿童实景密室·亲子聚会·生日派对·家庭日"],
+      "active": true,
+      "keywords": ["魔法特工"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k17PO8KROP9OaF9w",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k17PO8KROP9OaF9w",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置80；第6页第14条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1369302307；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：魔法特工·儿童实景密室·亲子聚会·生日派对·家庭日。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k4O7J1bFfbmWJgbg",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置76；第6页第7条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:59.322835+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1626299415；列表：https://www.dianping.com/shanghai/ch70/g34146o2p6；页面名称：魔法特工。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l1huNssHusRtic9U",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置95；第7页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:52:05.323267+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1365571956；列表：https://www.dianping.com/shanghai/ch70/g34146o2p7；页面名称：魔法特工·儿童实景密室·亲子聚会·生日派对·家庭日。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "月狮林下探险乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["月狮林下探险乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/ikvcuDIWXf4C3nFS",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/ikvcuDIWXf4C3nFS",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置81；第6页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:17.638671+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1151323149；列表：https://www.dianping.com/shanghai/ch70/g33803o2p6；页面名称：月狮林下探险乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "微微田生态农场",
+      "category": "户外景区",
+      "aliases": [],
+      "active": true,
+      "keywords": ["微微田生态农场"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8i97Bhi8x0uAN7p",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k8i97Bhi8x0uAN7p",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置84；第7页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:22.042828+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1240909631；列表：https://www.dianping.com/shanghai/ch70/g33803o2p7；页面名称：微微田生态农场。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "滩玩乐园-亲子世界",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["滩玩乐园-亲子世界"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/kaHe6fasKjyt1Z6P",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/kaHe6fasKjyt1Z6P",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置85；第7页第4条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:22.042828+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1339664997；列表：https://www.dianping.com/shanghai/ch70/g33803o2p7；页面名称：滩玩乐园-亲子世界。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "上海活体昆虫博物馆",
+      "category": "展馆观光",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海活体昆虫博物馆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H2WOQIqVCUu4Y7T9",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H2WOQIqVCUu4Y7T9",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置86；第7页第6条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:22.042828+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1548357677；列表：https://www.dianping.com/shanghai/ch70/g33803o2p7；页面名称：上海活体昆虫博物馆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "蘑力森林",
+      "category": "户外景区",
+      "aliases": [],
+      "active": true,
+      "keywords": ["蘑力森林"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/jyXooXXHtVupAgVe",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/jyXooXXHtVupAgVe",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置88；第7页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:22.042828+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1039868317；列表：https://www.dianping.com/shanghai/ch70/g33803o2p7；页面名称：蘑力森林。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "四季冰雪乐园",
+      "category": "运动玩乐",
+      "aliases": [],
+      "active": true,
+      "keywords": ["四季冰雪乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/FIV7n6EWL7upFbP5",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/FIV7n6EWL7upFbP5",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置89；第7页第10条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:22.042828+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/626982846；列表：https://www.dianping.com/shanghai/ch70/g33803o2p7；页面名称：四季冰雪乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "Archbell阿奇贝尔玩学乐园",
+      "category": "亲子乐园",
+      "aliases": ["Archbell阿奇贝尔玩学乐园·生日派对"],
+      "active": true,
+      "keywords": ["Archbell阿奇贝尔玩学乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H2cn2gGQQWNKhtjp",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H2cn2gGQQWNKhtjp",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置90；第7页第11条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:22.042828+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/945235149；列表：https://www.dianping.com/shanghai/ch70/g33803o2p7；页面名称：Archbell阿奇贝尔玩学乐园·生日派对。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "大乐堡The L Land",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["大乐堡The L Land"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k3qbjZnmsCUs496P",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k3qbjZnmsCUs496P",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置91；第7页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:22.042828+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1155440614；列表：https://www.dianping.com/shanghai/ch70/g33803o2p7；页面名称：大乐堡The L Land。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "熊猫密室探索乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["熊猫密室探索乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/Haxlvq17WIPuXING",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/Haxlvq17WIPuXING",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置92；第7页第13条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:22.042828+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1647625747；列表：https://www.dianping.com/shanghai/ch70/g33803o2p7；页面名称：熊猫密室探索乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "玩童会主题店",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["玩童会主题店"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G53RZfR2DpRnRMBr",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G53RZfR2DpRnRMBr",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置95；第8页第1条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:28.066705+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1642947515；列表：https://www.dianping.com/shanghai/ch70/g33803o2p8；页面名称：玩童会主题店。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "卡皮巴拉城市乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["卡皮巴拉城市乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G3et3aNjLUjwxpFe",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G3et3aNjLUjwxpFe",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置96；第8页第2条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:28.066705+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1564979740；列表：https://www.dianping.com/shanghai/ch70/g33803o2p8；页面名称：卡皮巴拉城市乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "露营湾",
+      "category": "运动玩乐",
+      "aliases": ["露营湾·浪趣水上俱乐部·皮划艇浆板"],
+      "active": true,
+      "keywords": ["露营湾"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H5EfuQhe8VItMVhp",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H5EfuQhe8VItMVhp",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置97；第8页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:28.066705+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1071776173；列表：https://www.dianping.com/shanghai/ch70/g33803o2p8；页面名称：露营湾·浪趣水上俱乐部·皮划艇浆板。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "咕噜镇萌宠乐园",
+      "category": "动物海洋馆",
+      "aliases": [],
+      "active": true,
+      "keywords": ["咕噜镇萌宠乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G4NSen7WENsPHIev",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G4NSen7WENsPHIev",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置98；第8页第4条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:28.066705+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/799038436；列表：https://www.dianping.com/shanghai/ch70/g33803o2p8；页面名称：咕噜镇萌宠乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "玩在这儿",
+      "category": "亲子乐园",
+      "aliases": ["玩在这儿·儿童乐园·亲子游乐场"],
+      "active": true,
+      "keywords": ["玩在这儿"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k7AoVni4bs1K2yZV",
+      "evidence": [
+        {
+          "source_title": "大众点评上海儿童乐园人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k7AoVni4bs1K2yZV",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置99；第8页第5条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:28.066705+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1290991985；列表：https://www.dianping.com/shanghai/ch70/g33803o2p8；页面名称：玩在这儿·儿童乐园·亲子游乐场。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "梦幻三喵拼豆DIY手作",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["梦幻三喵拼豆DIY手作"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/irePOzfGAkGhHoJo",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/irePOzfGAkGhHoJo",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置2；第1页第2条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:32.344901+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1661759013；列表：https://www.dianping.com/shanghai/ch70/g34146o2；页面名称：梦幻三喵拼豆DIY手作。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "澎湃兄弟",
+      "category": "运动玩乐",
+      "aliases": [
+        "澎湃兄弟皮划艇水上运动中心",
+        "澎湃兄弟皮划艇",
+        "澎湃兄弟皮划艇桨板水上运动森林探秘",
+        "澎湃兄弟水上营地",
+        "上海澎湃兄弟皮划艇桨板水上运动中心"
+      ],
+      "active": true,
+      "keywords": ["澎湃兄弟"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G5H6obz4o1DoaMqT",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G5H6obz4o1DoaMqT",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置4；第1页第5条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:32.344901+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/0；列表：https://www.dianping.com/shanghai/ch70/g34146o2；页面名称：澎湃兄弟水上营地。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H4QUFGjj20cEswNd",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置13；第1页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:32.344901+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1635065918；列表：https://www.dianping.com/shanghai/ch70/g34146o2；页面名称：澎湃兄弟皮划艇桨板水上运动森林探秘。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H2GjjF1xVBMtoiPW",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置22；第2页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1344309082；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：澎湃兄弟皮划艇。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k6sAzlPhC7WzMLTC",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置28；第3页第1条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:43.597666+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1344309082；列表：https://www.dianping.com/shanghai/ch70/g34146o2p3；页面名称：澎湃兄弟皮划艇水上运动中心。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k5FIasELTKEjGWH0",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置89；第7页第5条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:52:05.323267+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1455502219；列表：https://www.dianping.com/shanghai/ch70/g34146o2p7；页面名称：上海澎湃兄弟皮划艇桨板水上运动中心。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "拾光屿你",
+      "category": "亲子乐园",
+      "aliases": [
+        "拾光屿你·雨溪手作拼豆·烧玻璃·豆荚娃娃手作店",
+        "拾光屿你·拼一把也行24小时拼豆店"
+      ],
+      "active": true,
+      "keywords": ["拾光屿你"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H41i3PIjUTpDqTLS",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H41i3PIjUTpDqTLS",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置5；第1页第6条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:32.344901+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/873980648；列表：https://www.dianping.com/shanghai/ch70/g34146o2；页面名称：拾光屿你·雨溪手作拼豆·烧玻璃·豆荚娃娃手作店。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H7OpkrSPslMXca3C",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置78；第6页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:59.322835+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/0；列表：https://www.dianping.com/shanghai/ch70/g34146o2p6；页面名称：拾光屿你·拼一把也行24小时拼豆店。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "拼豆豆",
+      "category": "亲子乐园",
+      "aliases": ["拼豆豆·手工diy"],
+      "active": true,
+      "keywords": ["拼豆豆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H92Hl7mzfTkvv9AP",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H92Hl7mzfTkvv9AP",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置6；第1页第7条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:32.344901+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1636811892；列表：https://www.dianping.com/shanghai/ch70/g34146o2；页面名称：拼豆豆·手工diy。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "SlimeLand",
+      "category": "亲子乐园",
+      "aliases": ["SlimeLand·史莱姆手工DIY·拼豆", "SlimeLand·史莱姆手工DIY"],
+      "active": true,
+      "keywords": ["SlimeLand"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H3qZwesh9KDEk6Lv",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H3qZwesh9KDEk6Lv",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置7；第1页第8条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:32.344901+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1491169296；列表：https://www.dianping.com/shanghai/ch70/g34146o2；页面名称：SlimeLand·史莱姆手工DIY。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G9aE26Q8cVcYO9P5",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置16；第2页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1652328290；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：SlimeLand·史莱姆手工DIY·拼豆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "格子大作战",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["格子大作战"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G9zRtfzYDEWlaJyJ",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G9zRtfzYDEWlaJyJ",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置8；第1页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:32.344901+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/848074584；列表：https://www.dianping.com/shanghai/ch70/g34146o2；页面名称：格子大作战。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "拼拼鸭手作",
+      "category": "亲子乐园",
+      "aliases": ["拼拼鸭手作·拼豆·包间·DIY"],
+      "active": true,
+      "keywords": ["拼拼鸭手作"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H46a8YsCItL1gThD",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H46a8YsCItL1gThD",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置9；第1页第10条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:32.344901+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/0；列表：https://www.dianping.com/shanghai/ch70/g34146o2；页面名称：拼拼鸭手作·拼豆·包间·DIY。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "鸟瞰虫生皮划艇桨板俱乐部",
+      "category": "运动玩乐",
+      "aliases": [],
+      "active": true,
+      "keywords": ["鸟瞰虫生皮划艇桨板俱乐部"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/FZ4OsMIAE2Tz7rAv",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/FZ4OsMIAE2Tz7rAv",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置10；第1页第11条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:32.344901+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1333723723；列表：https://www.dianping.com/shanghai/ch70/g34146o2；页面名称：鸟瞰虫生皮划艇桨板俱乐部。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "BLACK冠军皮艇桨板运动中心",
+      "category": "运动玩乐",
+      "aliases": ["BLACK冠军皮艇桨板运动中心·团建拓展"],
+      "active": true,
+      "keywords": ["BLACK冠军皮艇桨板运动中心"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l5sIanzU7CG3HuWo",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l5sIanzU7CG3HuWo",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置11；第1页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:32.344901+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1082634914；列表：https://www.dianping.com/shanghai/ch70/g34146o2；页面名称：BLACK冠军皮艇桨板运动中心·团建拓展。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "亚马逊皮划艇俱乐部",
+      "category": "运动玩乐",
+      "aliases": ["亚马逊皮划艇俱乐部 桨板 团建", "亚马逊皮划艇桨板营地"],
+      "active": true,
+      "keywords": ["亚马逊皮划艇俱乐部"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H9CGlKNdK5uSN9ti",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H9CGlKNdK5uSN9ti",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置12；第1页第13条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:32.344901+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1171674832；列表：https://www.dianping.com/shanghai/ch70/g34146o2；页面名称：亚马逊皮划艇俱乐部 桨板 团建。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/ka03vRENcWmA7izw",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置86；第7页第2条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:52:05.323267+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1171674832；列表：https://www.dianping.com/shanghai/ch70/g34146o2p7；页面名称：亚马逊皮划艇桨板营地。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "方格大战",
+      "category": "亲子乐园",
+      "aliases": ["方格大战·跳格子"],
+      "active": true,
+      "keywords": ["方格大战"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H3XgF5LDN1DUimtW",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H3XgF5LDN1DUimtW",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置14；第2页第1条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/867407894；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：方格大战·跳格子。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "上海林语丛林马术营地",
+      "category": "运动玩乐",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海林语丛林马术营地"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G1EA8XTYtrjfKEMA",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G1EA8XTYtrjfKEMA",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置15；第2页第2条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1168305538；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：上海林语丛林马术营地。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "Solarshow 手拉手幼儿剧",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["Solarshow 手拉手幼儿剧"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H8RRbwvLIce3QXIb",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H8RRbwvLIce3QXIb",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置17；第2页第4条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1637588954；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：Solarshow 手拉手幼儿剧。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "浪歌行皮划艇俱乐部",
+      "category": "运动玩乐",
+      "aliases": ["浪歌行皮划艇团建营地"],
+      "active": true,
+      "keywords": ["浪歌行皮划艇俱乐部"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H6VCtAFp21azx6mx",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H6VCtAFp21azx6mx",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置18；第2页第5条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/834844146；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：浪歌行皮划艇俱乐部。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l87VYlEh5wxGnPD0",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置19；第2页第6条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1642186400；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：浪歌行皮划艇团建营地。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "放下艺术商店",
+      "category": "亲子乐园",
+      "aliases": ["放下艺术商店·亲子·非遗·拼豆·团建"],
+      "active": true,
+      "keywords": ["放下艺术商店"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l93eZFFxuVKzofOs",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l93eZFFxuVKzofOs",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置20；第2页第7条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1563935825；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：放下艺术商店·亲子·非遗·拼豆·团建。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "四季豆手作",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["四季豆手作"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k2vuNjrljTtUHab7",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k2vuNjrljTtUHab7",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置21；第2页第8条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1653414840；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：四季豆手作。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "布布猫Diy手作坊",
+      "category": "亲子乐园",
+      "aliases": ["布布猫Diy手作坊·拼豆"],
+      "active": true,
+      "keywords": ["布布猫Diy手作坊"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G1gBU4xsZaHaRL5W",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G1gBU4xsZaHaRL5W",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置23；第2页第10条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1639946237；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：布布猫Diy手作坊·拼豆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "小木木亲子烘焙",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["小木木亲子烘焙"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G23MnCSbUfl4Py0c",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G23MnCSbUfl4Py0c",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置24；第2页第11条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1203476762；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：小木木亲子烘焙。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "神动体育水上运动俱乐部",
+      "category": "运动玩乐",
+      "aliases": [],
+      "active": true,
+      "keywords": ["神动体育水上运动俱乐部"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l1uAlSXsJ8u5udRB",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l1uAlSXsJ8u5udRB",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置25；第2页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1639670158；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：神动体育水上运动俱乐部。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "喜豆拼豆",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["喜豆拼豆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k7kjk6CdwW0FiTem",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k7kjk6CdwW0FiTem",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置26；第2页第14条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1643016945；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：喜豆拼豆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "SeaWaves",
+      "category": "运动玩乐",
+      "aliases": ["SeaWaves冲浪", "SeaWaves冲浪•滑雪•团建派对"],
+      "active": true,
+      "keywords": ["SeaWaves"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/Gaqaex0sVx3Nmu2T",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/Gaqaex0sVx3Nmu2T",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置27；第2页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:37.991977+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1669649093；列表：https://www.dianping.com/shanghai/ch70/g34146o2p2；页面名称：SeaWaves冲浪•滑雪•团建派对。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "欢乐豆拼豆屋",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["欢乐豆拼豆屋"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k47Rtm454Jb4msa1",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k47Rtm454Jb4msa1",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置30；第3页第4条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:43.597666+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1623415334；列表：https://www.dianping.com/shanghai/ch70/g34146o2p3；页面名称：欢乐豆拼豆屋。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "艺歆造物社",
+      "category": "亲子乐园",
+      "aliases": ["艺歆造物社·亲子·非遗·拼豆"],
+      "active": true,
+      "keywords": ["艺歆造物社"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H9gwkdEg5U8BH7mA",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H9gwkdEg5U8BH7mA",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置31；第3页第5条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:43.597666+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1563935825；列表：https://www.dianping.com/shanghai/ch70/g34146o2p3；页面名称：艺歆造物社·亲子·非遗·拼豆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "GG-Two拼豆-亲子DIY手作",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["GG-Two拼豆-亲子DIY手作"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k76t1QsmWZmQu4gx",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k76t1QsmWZmQu4gx",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置32；第3页第6条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:43.597666+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/0；列表：https://www.dianping.com/shanghai/ch70/g34146o2p3；页面名称：GG-Two拼豆-亲子DIY手作。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "纳兰豆序",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["纳兰豆序"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/ik7ZAn7l3tK5FQJr",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/ik7ZAn7l3tK5FQJr",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置33；第3页第7条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:43.597666+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1668902388；列表：https://www.dianping.com/shanghai/ch70/g34146o2p3；页面名称：纳兰豆序。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "恒酷帝国",
+      "category": "亲子乐园",
+      "aliases": ["恒酷帝国·穿越剧场"],
+      "active": true,
+      "keywords": ["恒酷帝国"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k23PnnmVEGUZ97cG",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k23PnnmVEGUZ97cG",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置34；第3页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:43.597666+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1174153808；列表：https://www.dianping.com/shanghai/ch70/g34146o2p3；页面名称：恒酷帝国·穿越剧场。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "红豆手作",
+      "category": "亲子乐园",
+      "aliases": ["红豆手作·拼豆DIY"],
+      "active": true,
+      "keywords": ["红豆手作"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/kajMgJTtuh2WntQz",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/kajMgJTtuh2WntQz",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置35；第3页第10条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:43.597666+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1656796845；列表：https://www.dianping.com/shanghai/ch70/g34146o2p3；页面名称：红豆手作·拼豆DIY。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "桨趣亲子野营",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["桨趣亲子野营"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k7tEGHnFmFap2Tph",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k7tEGHnFmFap2Tph",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置36；第3页第11条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:43.597666+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1547639662；列表：https://www.dianping.com/shanghai/ch70/g34146o2p3；页面名称：桨趣亲子野营。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "壹号码头-皮划艇桨板-水上运动俱乐部",
+      "category": "运动玩乐",
+      "aliases": [],
+      "active": true,
+      "keywords": ["壹号码头-皮划艇桨板-水上运动俱乐部"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G6XeqQ4Ygnq1HkYz",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G6XeqQ4Ygnq1HkYz",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置37；第3页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:43.597666+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1070488879；列表：https://www.dianping.com/shanghai/ch70/g34146o2p3；页面名称：壹号码头-皮划艇桨板-水上运动俱乐部。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "盖世小神探",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["盖世小神探"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l6ivYTPn6zmLDeb9",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l6ivYTPn6zmLDeb9",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置39；第3页第14条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:43.597666+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1223864890；列表：https://www.dianping.com/shanghai/ch70/g34146o2p3；页面名称：盖世小神探。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "艇动皮划艇俱乐部",
+      "category": "运动玩乐",
+      "aliases": [],
+      "active": true,
+      "keywords": ["艇动皮划艇俱乐部"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G7U9121fQlqGkZew",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G7U9121fQlqGkZew",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置40；第3页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:43.597666+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1647873838；列表：https://www.dianping.com/shanghai/ch70/g34146o2p3；页面名称：艇动皮划艇俱乐部。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "远景村.野性之心小马俱乐部",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["远景村.野性之心小马俱乐部"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G94XTP1KmMdvruEa",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G94XTP1KmMdvruEa",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置41；第4页第1条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1424701565；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：远景村.野性之心小马俱乐部。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "探蜜营地",
+      "category": "户外景区",
+      "aliases": ["探蜜营地·蜜蜂科普馆"],
+      "active": true,
+      "keywords": ["探蜜营地"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l1UhCHOn3KlSso1z",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l1UhCHOn3KlSso1z",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置42；第4页第2条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/908595311；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：探蜜营地·蜜蜂科普馆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "上海新实达皮划艇水上运动中心",
+      "category": "运动玩乐",
+      "aliases": ["上海新实达皮划艇桨板水上运动旅游中心"],
+      "active": true,
+      "keywords": ["上海新实达皮划艇水上运动中心"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H7igMDMU7XVDLDd2",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H7igMDMU7XVDLDd2",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置43；第4页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1509149554；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：上海新实达皮划艇桨板水上运动旅游中心。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        },
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l2Xit07jtSZPR5r8",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置60；第5页第5条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:53.492043+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1594614591；列表：https://www.dianping.com/shanghai/ch70/g34146o2p5；页面名称：上海新实达皮划艇水上运动中心。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "糖果拼豆",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["糖果拼豆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H9dAmN8bZqSGckPV",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H9dAmN8bZqSGckPV",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置44；第4页第4条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1665792527；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：糖果拼豆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "咕lu猫diy",
+      "category": "亲子乐园",
+      "aliases": ["咕lu猫diy•拼豆•亲子手工•团建派对"],
+      "active": true,
+      "keywords": ["咕lu猫diy"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H7OpjBG1mOiGPF0h",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H7OpjBG1mOiGPF0h",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置45；第4页第5条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1497955491；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：咕lu猫diy•拼豆•亲子手工•团建派对。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "豆野手作工坊",
+      "category": "亲子乐园",
+      "aliases": ["豆野手作工坊·拼豆DIY"],
+      "active": true,
+      "keywords": ["豆野手作工坊"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/kauA5pRo0JcN1Qy8",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/kauA5pRo0JcN1Qy8",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置46；第4页第6条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1666900412；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：豆野手作工坊·拼豆DIY。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "格子大乱斗",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["格子大乱斗"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k7YvuwYjTjJZXOtp",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k7YvuwYjTjJZXOtp",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置47；第4页第7条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1224437894；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：格子大乱斗。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "迪艇皮划艇之家",
+      "category": "运动玩乐",
+      "aliases": [],
+      "active": true,
+      "keywords": ["迪艇皮划艇之家"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8zk0c61VLrEpO5p",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k8zk0c61VLrEpO5p",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置48；第4页第8条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1309123055；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：迪艇皮划艇之家。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "Galli戏剧",
+      "category": "亲子乐园",
+      "aliases": ["Galli戏剧·亲子儿童剧场"],
+      "active": true,
+      "keywords": ["Galli戏剧"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H8eODeridKZie8RY",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H8eODeridKZie8RY",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置49；第4页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1306054175；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：Galli戏剧·亲子儿童剧场。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "逸飞轩手作馆",
+      "category": "亲子乐园",
+      "aliases": ["逸飞轩手作馆·DIY亲子活动·团建定制"],
+      "active": true,
+      "keywords": ["逸飞轩手作馆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G46bEGJfWTzav5Bc",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G46bEGJfWTzav5Bc",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置50；第4页第10条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/0；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：逸飞轩手作馆·DIY亲子活动·团建定制。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "我嘞个豆",
+      "category": "亲子乐园",
+      "aliases": ["我嘞个豆·DM壹间优品"],
+      "active": true,
+      "keywords": ["我嘞个豆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G7tVleYw0C4bTOJM",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G7tVleYw0C4bTOJM",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置51；第4页第11条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/0；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：我嘞个豆·DM壹间优品。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "梦想造物社",
+      "category": "亲子乐园",
+      "aliases": ["梦想造物社·手工DIY"],
+      "active": true,
+      "keywords": ["梦想造物社"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/jcGE1mI2QV5zwEWh",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/jcGE1mI2QV5zwEWh",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置52；第4页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1646143874；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：梦想造物社·手工DIY。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "多栖博物",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["多栖博物"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k72EY0VK3Lo52ID5",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k72EY0VK3Lo52ID5",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置53；第4页第13条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1438575948；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：多栖博物。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "摘星手作",
+      "category": "亲子乐园",
+      "aliases": ["摘星手作·拼豆·拼图"],
+      "active": true,
+      "keywords": ["摘星手作"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/Hax6uFgbbBKuZE7M",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/Hax6uFgbbBKuZE7M",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置54；第4页第14条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1647246871；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：摘星手作·拼豆·拼图。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "白菜家",
+      "category": "亲子乐园",
+      "aliases": ["白菜家·拼豆·手作DIY"],
+      "active": true,
+      "keywords": ["白菜家"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k9KpAK832ceyfaod",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k9KpAK832ceyfaod",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置55；第4页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:48.023492+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1638435929；列表：https://www.dianping.com/shanghai/ch70/g34146o2p4；页面名称：白菜家·拼豆·手作DIY。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "糯糯拼豆社",
+      "category": "亲子乐园",
+      "aliases": ["糯糯拼豆社·DIY·亲子"],
+      "active": true,
+      "keywords": ["糯糯拼豆社"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k66VvyQaO1GE4uSN",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k66VvyQaO1GE4uSN",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置56；第5页第1条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:53.492043+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1653004985；列表：https://www.dianping.com/shanghai/ch70/g34146o2p5；页面名称：糯糯拼豆社·DIY·亲子。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "小虎探险队",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["小虎探险队"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k5rzplMiBCzFYb17",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k5rzplMiBCzFYb17",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置57；第5页第2条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:53.492043+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/936280799；列表：https://www.dianping.com/shanghai/ch70/g34146o2p5；页面名称：小虎探险队。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "TUTU农场",
+      "category": "户外景区",
+      "aliases": ["TUTU农场·共享菜园·露营·亲子"],
+      "active": true,
+      "keywords": ["TUTU农场"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k90DpsWGwknoh3c9",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k90DpsWGwknoh3c9",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置58；第5页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:53.492043+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1667213606；列表：https://www.dianping.com/shanghai/ch70/g34146o2p5；页面名称：TUTU农场·共享菜园·露营·亲子。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "大魔王拼豆手作diy",
+      "category": "亲子乐园",
+      "aliases": ["大魔王拼豆手作diy·亲子·情侣"],
+      "active": true,
+      "keywords": ["大魔王拼豆手作diy"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H1ixOZqNB7Yeq6rk",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H1ixOZqNB7Yeq6rk",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置59；第5页第4条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:53.492043+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1652496449；列表：https://www.dianping.com/shanghai/ch70/g34146o2p5；页面名称：大魔王拼豆手作diy·亲子·情侣。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "青云卡哇伊拼豆馆",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["青云卡哇伊拼豆馆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k9N0EwWXYRvLu56D",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k9N0EwWXYRvLu56D",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置61；第5页第7条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:53.492043+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1661427817；列表：https://www.dianping.com/shanghai/ch70/g34146o2p5；页面名称：青云卡哇伊拼豆馆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "自然寻",
+      "category": "亲子乐园",
+      "aliases": ["自然寻·自然实验室"],
+      "active": true,
+      "keywords": ["自然寻"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G5kNUlPb434tUPbG",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G5kNUlPb434tUPbG",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置62；第5页第8条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:53.492043+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1612588593；列表：https://www.dianping.com/shanghai/ch70/g34146o2p5；页面名称：自然寻·自然实验室。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "洋桃艺术实验空间",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["洋桃艺术实验空间"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/G3qy8DtHSyHNyh5k",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/G3qy8DtHSyHNyh5k",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置64；第5页第10条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:53.492043+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1654889867；列表：https://www.dianping.com/shanghai/ch70/g34146o2p5；页面名称：洋桃艺术实验空间。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "开小造",
+      "category": "亲子乐园",
+      "aliases": ["开小造·拼豆·DIY手工"],
+      "active": true,
+      "keywords": ["开小造"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/lak6Y4t3OmqgY5yZ",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/lak6Y4t3OmqgY5yZ",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置66；第5页第12条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:53.492043+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/0；列表：https://www.dianping.com/shanghai/ch70/g34146o2p5；页面名称：开小造·拼豆·DIY手工。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "豆像素拼豆",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["豆像素拼豆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k9DJ6Qb9ataqpRdH",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k9DJ6Qb9ataqpRdH",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置67；第5页第13条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:53.492043+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1668007489；列表：https://www.dianping.com/shanghai/ch70/g34146o2p5；页面名称：豆像素拼豆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "上海子兮艺术社非遗文化馆",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海子兮艺术社非遗文化馆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l3H6lnEc2fxbCNxN",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l3H6lnEc2fxbCNxN",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置68；第5页第14条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:53.492043+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/0；列表：https://www.dianping.com/shanghai/ch70/g34146o2p5；页面名称：上海子兮艺术社非遗文化馆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "土人陶艺/蛋糕烘焙/手工乐园",
+      "category": "亲子乐园",
+      "aliases": ["土人陶艺/蛋糕烘焙/手工乐园·团建"],
+      "active": true,
+      "keywords": ["土人陶艺/蛋糕烘焙/手工乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k5XxdJaG37OdGBcs",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k5XxdJaG37OdGBcs",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置69；第5页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:53.492043+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/10779133；列表：https://www.dianping.com/shanghai/ch70/g34146o2p5；页面名称：土人陶艺/蛋糕烘焙/手工乐园·团建。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "鲜宠乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["鲜宠乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k3pKeX7O5yET9CoF",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k3pKeX7O5yET9CoF",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置71；第6页第2条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:59.322835+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1653639768；列表：https://www.dianping.com/shanghai/ch70/g34146o2p6；页面名称：鲜宠乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "祢豆小屋",
+      "category": "亲子乐园",
+      "aliases": ["祢豆小屋·手工拼豆"],
+      "active": true,
+      "keywords": ["祢豆小屋"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/HaiVjOU9ycVl9fT8",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/HaiVjOU9ycVl9fT8",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置72；第6页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:59.322835+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1656746571；列表：https://www.dianping.com/shanghai/ch70/g34146o2p6；页面名称：祢豆小屋·手工拼豆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "颗粒织造",
+      "category": "亲子乐园",
+      "aliases": ["颗粒织造·拼豆·手工diy"],
+      "active": true,
+      "keywords": ["颗粒织造"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k6MOCXBmflQSvTfw",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k6MOCXBmflQSvTfw",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置74；第6页第5条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:59.322835+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1663669801；列表：https://www.dianping.com/shanghai/ch70/g34146o2p6；页面名称：颗粒织造·拼豆·手工diy。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "蹦蹦乐园",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["蹦蹦乐园"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H2HWM1AFNDfxbNXZ",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H2HWM1AFNDfxbNXZ",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置75；第6页第6条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:59.322835+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1448884094；列表：https://www.dianping.com/shanghai/ch70/g34146o2p6；页面名称：蹦蹦乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "顽固的拼豆工作室",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["顽固的拼豆工作室"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H19eSIui3rXaHoTN",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H19eSIui3rXaHoTN",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置80；第6页第11条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:59.322835+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1655464909；列表：https://www.dianping.com/shanghai/ch70/g34146o2p6；页面名称：顽固的拼豆工作室。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "千棠非遗文化体验馆",
+      "category": "亲子乐园",
+      "aliases": ["千棠非遗文化体验馆·陶艺·壁画修复·亲子团建"],
+      "active": true,
+      "keywords": ["千棠非遗文化体验馆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H9u0NgQXUS04YRjL",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H9u0NgQXUS04YRjL",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置84；第6页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:51:59.322835+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1221010114；列表：https://www.dianping.com/shanghai/ch70/g34146o2p6；页面名称：千棠非遗文化体验馆·陶艺·壁画修复·亲子团建。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "煋际时空局",
+      "category": "亲子乐园",
+      "aliases": ["煋际时空局·魔法特工世纪公园店"],
+      "active": true,
+      "keywords": ["煋际时空局"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H5EZkcLKJ7fXn8bk",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H5EZkcLKJ7fXn8bk",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置85；第7页第1条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:52:05.323267+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/0；列表：https://www.dianping.com/shanghai/ch70/g34146o2p7；页面名称：煋际时空局·魔法特工世纪公园店。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "千年南翔数字艺术馆",
+      "category": "展馆观光",
+      "aliases": [],
+      "active": true,
+      "keywords": ["千年南翔数字艺术馆"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/l76PR2c40y2djTgi",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/l76PR2c40y2djTgi",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置87；第7页第3条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:52:05.323267+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1646501500；列表：https://www.dianping.com/shanghai/ch70/g34146o2p7；页面名称：千年南翔数字艺术馆。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "Judys奇妙植物城",
+      "category": "动物海洋馆",
+      "aliases": ["Judys奇妙植物城·微景观DIY手作团建·鱼缸·萌宠"],
+      "active": true,
+      "keywords": ["Judys奇妙植物城"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8kJNPMEzT66ZYUX",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k8kJNPMEzT66ZYUX",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置92；第7页第9条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:52:05.323267+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/0；列表：https://www.dianping.com/shanghai/ch70/g34146o2p7；页面名称：Judys奇妙植物城·微景观DIY手作团建·鱼缸·萌宠。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "萌宠方舟",
+      "category": "动物海洋馆",
+      "aliases": ["萌宠方舟.撸宠.亲子互动.儿童乐园"],
+      "active": true,
+      "keywords": ["萌宠方舟"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/k8m49UaawtvsjbnP",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/k8m49UaawtvsjbnP",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置94；第7页第11条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:52:05.323267+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1654034550；列表：https://www.dianping.com/shanghai/ch70/g34146o2p7；页面名称：萌宠方舟.撸宠.亲子互动.儿童乐园。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    },
+    {
+      "name": "陶氣手工坊",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["陶氣手工坊"],
+      "shanghai_evidence_url": "https://www.dianping.com/shop/H1s2XvJcaJEwdjfX",
+      "evidence": [
+        {
+          "source_title": "大众点评上海亲子游乐人气列表（有团购标记）",
+          "source_name": "大众点评",
+          "url": "https://www.dianping.com/shop/H1s2XvJcaJEwdjfX",
+          "location": "上海频道分类列表",
+          "position": "初步去重名称位置98；第7页第15条",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:52:05.323267+00:00",
+          "research_status": "directory_checked",
+          "note": "已确认人气排序、候选位置不超过100及团购链接：http://t.dianping.com/deal/1664459363；列表：https://www.dianping.com/shanghai/ch70/g34146o2p7；页面名称：陶氣手工坊。去除营销后缀并合并已识别同品牌；不代表抖音有券或当前票种/条件已核验。"
+        }
+      ]
+    }
+  ]
+}
