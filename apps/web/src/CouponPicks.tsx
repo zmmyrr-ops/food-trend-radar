@@ -2,10 +2,8 @@ import { type Channel, categories, inChannel } from "@radar/contracts";
 import { useEffect, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
-import { CouponConditionComparison } from "./CouponConditionComparison";
-import { CouponRules } from "./CouponRules";
 import { CouponStoreSummary } from "./CouponStoreSummary";
-import { CouponStores } from "./CouponStores";
+import { CouponUsageRules } from "./CouponUsageRules";
 import { PickEvaluation } from "./PickEvaluation";
 
 type Pick = {
@@ -439,13 +437,14 @@ export function CouponPicks({
                     {x.priority.value_gate.reason}
                   </p>
                 )}
-                <p className="availability-note">
-                  {x.use_outlook.fully_excluded
-                    ? "未来72小时明确不可用"
-                    : x.use_outlook.has_explicit_exclusion
-                      ? "部分日期不可用，请查看条件"
-                      : "适用性待核验"}
-                </p>
+                {(x.use_outlook.fully_excluded ||
+                  x.use_outlook.has_explicit_exclusion) && (
+                  <p className="availability-note">
+                    {x.use_outlook.fully_excluded
+                      ? "未来72小时明确不可用"
+                      : "部分日期不可用，请查看使用规则"}
+                  </p>
+                )}
                 {x.priority.availability_gate &&
                   (x.priority.availability_gate.penalty > 0 ||
                     x.priority.availability_gate.evidence.length > 0) && (
@@ -465,9 +464,6 @@ export function CouponPicks({
                     </div>
                   )}
                 <div className="card-footer">
-                  <small>
-                    {new Date(x.observed_at).toLocaleString("zh-CN")}
-                  </small>
                   <button
                     className="quiet-button admin-only"
                     disabled={saving}
@@ -476,103 +472,10 @@ export function CouponPicks({
                     {x.watching ? "取消关注" : "关注"}
                   </button>
                 </div>
-                <details className="card-evidence">
-                  <summary>数据与使用条件</summary>
-                  <p>
-                    <strong>{x.title}</strong>
-                  </p>
-                  {!isAdmin && (
-                    <p className="muted">
-                      热度增速指数由销量升温得分换算为0–100，非销售数量。
-                    </p>
-                  )}
-                  {x.brand_index && (
-                    <p>
-                      百度上海搜索指数 · 关键词「{x.brand_index.keyword}」 ·{" "}
-                      {x.brand_index.status === "not_indexed" ? (
-                        "未收录，不按零计算"
-                      ) : (
-                        <>
-                          7日均值 {x.brand_index.daily_average} · 环比{" "}
-                          {((x.brand_index.mom ?? 0) * 100).toFixed(0)}% ·{" "}
-                          {x.brand_index.usable
-                            ? "已计入初始规则分"
-                            : "数据过期，不计分"}
-                        </>
-                      )}
-                      （{x.brand_index.period_start}—{x.brand_index.period_end}
-                      ）
-                      <a
-                        href={x.brand_index.source_url}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        查看来源
-                      </a>
-                    </p>
-                  )}
-                  <p>
-                    {x.use_outlook.fully_excluded
-                      ? "未来72小时明确不可用，已排除优先券榜单"
-                      : x.use_outlook.has_explicit_exclusion
-                        ? "未来72小时部分日期不可用"
-                        : "未来72小时可用性未确认"}
-                  </p>
-                  {x.use_outlook.days
-                    .filter((d) => d.status === "explicitly_excluded")
-                    .map((d) => (
-                      <p key={d.date}>
-                        {d.date}：{d.reasons.join("；")}
-                      </p>
-                    ))}
-                  <p>
-                    <strong>优先分 {x.priority.score.toFixed(1)} / 100</strong>{" "}
-                    · 已具备指标权重 {x.priority.coverage}%（非爆款概率）
-                  </p>
-                  <p>
-                    基础分 {x.priority.raw_score.toFixed(1)} × 优惠系数{" "}
-                    {x.priority.value_gate.factor.toFixed(2)} ={" "}
-                    {(
-                      x.priority.availability_gate?.before_score ??
-                      x.priority.score
-                    ).toFixed(1)}{" "}
-                    分（使用限制调整前）。
-                    {x.priority.value_gate.reason}
-                  </p>
-                  <p>
-                    {x.priority.parts
-                      .filter((p) => p.value !== null)
-                      .map(
-                        (p) => `${p.name} ${p.value!.toFixed(1)}/${p.weight}`,
-                      )
-                      .join(" · ") || "暂无可计分信号"}
-                  </p>
-                  <p>
-                    缺失：{x.priority.missing.join("、") || "无"}
-                    ；缺失不代表表现差。
-                  </p>
-                  {isAdmin && (
-                    <>
-                      <p>
-                        月售展示：{x.previous_sales ?? "未知"} →{" "}
-                        {x.latest_sales}
-                        ；净变化 {x.net_change ?? "未知"}，间隔{" "}
-                        {x.hours?.toFixed(1) ?? "未知"} 小时。不等于新增订单。
-                      </p>
-                      <p>{x.change_reason}</p>
-                      <p>{x.reason}</p>
-                      <p>{x.acceleration_reason}</p>
-                    </>
-                  )}
-                  {isAdmin && (
-                    <CouponConditionComparison
-                      productId={x.product_id}
-                      brandId={x.brand_id}
-                    />
-                  )}
-                  <CouponRules productId={x.product_id} brandId={x.brand_id} />
-                  <CouponStores productId={x.product_id} brandId={x.brand_id} />
-                </details>
+                <CouponUsageRules
+                  productId={x.product_id}
+                  brandId={x.brand_id}
+                />
                 <a
                   className="studio-entry"
                   href={appUrl(
