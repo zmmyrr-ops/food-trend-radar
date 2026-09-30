@@ -5,9 +5,11 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 import {
+  couponMediaTerms,
   createCouponMedia,
   extractLiveResources,
   mediaUrl,
+  rankCouponResource,
 } from "../src/coupon-media.js";
 import { openDatabase } from "../src/db.js";
 
@@ -319,6 +321,97 @@ test("仅搜索品牌；重置绕过失效详情缓存与耗尽状态，保持�
       service.start(f.brand, "coupon", false, true),
       /JOB_RUNNING/,
     );
+  } finally {
+    await service.stop();
+    await f.cleanup();
+  }
+});
+
+test("券线索过滤金额/品牌/营销词，不把代金券当具体商品", () => {
+  assert.deepEqual(
+    couponMediaTerms("品牌甲【国庆】100元代金券【买单专用】", ["品牌甲"]),
+    [],
+  );
+  assert.ok(
+    couponMediaTerms("品牌甲双拼奶昔2选1", ["品牌甲"]).includes("奶昔"),
+  );
+  assert.ok(
+    couponMediaTerms("品牌甲轮滑体验三节课", ["品牌甲"]).includes("轮滑"),
+  );
+  const item = extractLiveResources(response("a", 1), "a", "t", ["品牌甲"])[0];
+  assert.equal(
+    rankCouponResource({ ...item, note_text: "这次尝了奶昔" }, ["奶昔"])
+      .relevance,
+    "coupon",
+  );
+  assert.equal(
+    rankCouponResource({ ...item, note_text: "这次尝了奶昔" }, ["轮滑"])
+      .relevance,
+    "brand",
+  );
+});
+
+test("泛品牌素材先出现也不抢满名额；正文券线索优先，不足才补通用，追加不重复", async () => {
+  const f = await fixture();
+  let active = 0,
+    peak = 0;
+  const keywords: string[] = [];
+  await f.db.exec(
+    "UPDATE coupon_items SET payload=jsonb_set(payload,'{name}','\"品牌甲奶昔\"')",
+  );
+  const service = await createCouponMedia(f.db, f.path, {
+    wait: async () => {},
+    transport: async (url, _h, body) => {
+      active++;
+      peak = Math.max(peak, active);
+      await Promise.resolve();
+      active--;
+      const q = JSON.parse(body);
+      if (url === search) {
+        keywords.push(q.keyword);
+        return {
+          success: true,
+          code: 0,
+          data: {
+            has_more: false,
+            items: ["generic", "related"].map((id) => ({
+              id,
+              model_type: "note",
+              xsec_token: "t",
+              note_card: { display_title: "品牌甲探店" },
+            })),
+          },
+        };
+      }
+      const r = response(
+        q.source_note_id,
+        q.source_note_id === "generic" ? 45 : 12,
+      );
+      r.data.items[0].note_card.desc =
+        q.source_note_id === "related"
+          ? "招牌奶昔味道不错"
+          : "餐厅环境和座位展示";
+      return r;
+    },
+  });
+  try {
+    await service.start(f.brand, "coupon");
+    await service.drain();
+    let j = (await f.db.query<any>("SELECT * FROM coupon_media_jobs")).rows[0];
+    assert.equal(j.resources.length, 40);
+    assert.ok(
+      j.resources.slice(0, 12).every((r: any) => r.relevance === "coupon"),
+    );
+    assert.ok(j.resources.slice(12).every((r: any) => r.relevance === "brand"));
+    assert.equal(j.exhausted, false);
+    await service.start(f.brand, "coupon", true);
+    await service.drain();
+    j = (await f.db.query<any>("SELECT * FROM coupon_media_jobs")).rows[0];
+    assert.equal(j.resources.length, 57);
+    assert.equal(new Set(j.resources.map((r: any) => r.id)).size, 57);
+    assert.equal(j.exhausted, true);
+    assert.equal(peak, 1);
+    assert.ok(keywords.every((k) => k === "品牌甲"));
   } finally {
     await service.stop();
     await f.cleanup();

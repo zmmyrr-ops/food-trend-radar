@@ -9,6 +9,7 @@ type Resource = {
   poster: string;
   video_url: string;
   match: string;
+  relevance?: "coupon" | "brand";
 };
 type Job = {
   id: string;
@@ -79,6 +80,16 @@ function MediaTile({ item }: { item: Resource }) {
         )}
       </div>
       <figcaption>
+        <span
+          className={`media-relevance ${item.relevance || "brand"}`}
+          title={item.match}
+        >
+          {item.relevance === "coupon"
+            ? "券相关线索"
+            : item.relevance === "brand"
+              ? "品牌通用素材"
+              : "同品牌素材 · 待匹配"}
+        </span>
         <a
           href={item.note_url}
           target="_blank"
@@ -210,7 +221,7 @@ export function CouponMedia({
             <div>
               <strong>相关探店 · 实况片段</strong>
               <p>
-                首次最多40个；“再找一些”每次追加约20个，自动去重。同品牌内容不代表同一张券。
+                优先选券相关素材，不足再补同品牌通用素材。首次最多40个，每次追加约20个；相关性来自笔记文字线索，不代表已核实同券。
               </p>
             </div>
             <button
@@ -266,8 +277,17 @@ export function CouponMedia({
           </p>
           {job && (
             <small className="coupon-media-query">
-              搜索：{job.keyword} · 结果缓存 4 小时，媒体链接可能提前失效。
+              搜索：{job.keyword} ·
+              每轮最多3页、20篇详情，保持3–5秒间隔。结果缓存4小时，链接可能提前失效。
             </small>
+          )}
+          {!!job?.resources.some((r) => r.relevance) && (
+            <p className="coupon-media-query">
+              券相关线索{" "}
+              {job.resources.filter((r) => r.relevance === "coupon").length} 个
+              · 品牌通用补充{" "}
+              {job.resources.filter((r) => r.relevance === "brand").length} 个
+            </p>
           )}
           {error && <p role="alert">{error}</p>}
           {!!job?.resources.length && (
