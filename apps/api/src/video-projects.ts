@@ -18,8 +18,8 @@ import { ownerOf } from "./accounts.js";
 import { mediaUrl } from "./coupon-media.js";
 import {
   type Asset,
-  permittedAsset,
   planSchema,
+  requiresFaceScreen,
   type VideoProject,
   validatePlan,
 } from "./video-types.js";
@@ -73,13 +73,9 @@ export async function createVideoProjects(db: PGlite, root: string) {
   };
   const visible = (p: VideoProject) => ({
     ...p,
-    requires_face_screen: p.assets.some((a) => !permittedAsset(a)),
-    preview_revision: p.assets.some((a) => !permittedAsset(a))
-      ? undefined
-      : p.preview_revision,
-    export_revision: p.assets.some((a) => !permittedAsset(a))
-      ? undefined
-      : p.export_revision,
+    requires_face_screen: requiresFaceScreen(p),
+    preview_revision: requiresFaceScreen(p) ? undefined : p.preview_revision,
+    export_revision: requiresFaceScreen(p) ? undefined : p.export_revision,
     assets: p.assets.map(({ path, url, ...a }) => a),
   });
   async function pump() {
@@ -157,6 +153,12 @@ export async function createVideoProjects(db: PGlite, root: string) {
     if (running(p.state)) return p;
     if (!p.rights_confirmed) throw Error("请先确认素材使用权限");
     if (mode !== "analyze") validatePlan(p.plan, p.assets, p.seconds);
+    if (mode === "analyze") {
+      p.revision++;
+      delete p.preview_revision;
+      delete p.export_revision;
+      p.plan = [];
+    }
     p.state = "queued";
     p.error = null;
     p.progress = "等待视频处理";
@@ -325,10 +327,10 @@ export async function createVideoProjects(db: PGlite, root: string) {
               progress: p.progress,
               error: p.error,
               revision: p.revision,
-              preview_revision: p.assets.some((a) => !permittedAsset(a))
+              preview_revision: requiresFaceScreen(p)
                 ? undefined
                 : p.preview_revision,
-              export_revision: p.assets.some((a) => !permittedAsset(a))
+              export_revision: requiresFaceScreen(p)
                 ? undefined
                 : p.export_revision,
               updated_at: p.updated_at,

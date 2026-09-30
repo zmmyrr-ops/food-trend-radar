@@ -3,6 +3,7 @@ import { test } from "node:test";
 import {
   type Asset,
   permittedAsset,
+  requiresFaceScreen,
   validatePlan,
 } from "../src/video-types.js";
 
@@ -66,5 +67,27 @@ test("网络素材必须通过新版本正面人脸检查，用户上传豁免",
   );
   assert.doesNotThrow(() =>
     validatePlan(plan, [{ ...asset, origin: "upload" }], 12),
+  );
+});
+
+test("拒绝的网络素材不会阻挡只使用自有素材的成片", () => {
+  const rejected = {
+    ...asset,
+    id: "22222222-2222-4222-8222-222222222222",
+    origin: "network" as const,
+    face_screen: "present" as const,
+    face_screen_version: 1,
+    accepted: false,
+  };
+  const plan = Array.from({ length: 4 }, () => ({
+    asset_id: id,
+    start: 0,
+    duration: 3,
+    caption: "",
+  }));
+  assert.equal(requiresFaceScreen({ assets: [asset, rejected], plan }), false);
+  assert.equal(
+    requiresFaceScreen({ assets: [{ ...asset, origin: "network" }], plan }),
+    true,
   );
 });

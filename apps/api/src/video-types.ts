@@ -67,6 +67,14 @@ export function permittedAsset(a: Asset) {
     (a.face_screen === "clear" && a.face_screen_version === 1)
   );
 }
+export function requiresFaceScreen(p: Pick<VideoProject, "plan" | "assets">) {
+  return (
+    p.plan?.some((c) => {
+      const a = p.assets.find((a) => a.id === c.asset_id);
+      return !a || !permittedAsset(a);
+    }) ?? false
+  );
+}
 export function validatePlan(plan: Clip[], assets: Asset[], seconds: number) {
   planSchema.parse(plan);
   if (Math.abs(plan.reduce((n, c) => n + c.duration, 0) - seconds) > 1 / 30)
