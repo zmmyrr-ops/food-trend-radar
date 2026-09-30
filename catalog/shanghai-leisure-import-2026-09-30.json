@@ -1,0 +1,314 @@
+{
+  "batch": "shanghai-leisure-2026-09-30",
+  "applied": true,
+  "before_total": 1290,
+  "before_active": 782,
+  "created": 43,
+  "existing": 0,
+  "records": [
+    {
+      "id": "cf031548-cf41-4dcb-8ca8-370141b2f93e",
+      "name": "上海海昌海洋公园",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "7349b58f-0ec0-4da8-a1b4-469249b448d6",
+      "name": "上海动物园",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "f03df8d0-3c65-4da7-a0c8-5df41586bafa",
+      "name": "上海海洋水族馆",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "0f754146-fdbb-4c2b-9ffd-aad9362d1797",
+      "name": "长风海洋世界",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "8cb27700-9794-4025-b9b8-6cfacaee57c7",
+      "name": "上海欢乐谷",
+      "category": "主题乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "1dc9514f-e964-4ea0-86c0-d5f874243bdd",
+      "name": "上海蓝精灵乐园",
+      "category": "主题乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "378bce6f-6965-4169-acbe-ae8d12e76704",
+      "name": "上海影视乐园",
+      "category": "主题乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "13d554c4-8fe1-4d25-b2d0-7494db3434c6",
+      "name": "上海杜莎夫人蜡像馆",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "26ae36d7-b302-4786-9a9e-a741535d5c51",
+      "name": "上海玻璃博物馆",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "24c1c2a9-8ab5-4354-a62a-6d484d9aecdb",
+      "name": "中国航海博物馆",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "7bffaefd-75b8-4e70-8b34-e520993a0114",
+      "name": "上海之巅观光厅",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a7f2c554-f838-41a0-813d-3410cfa2a945",
+      "name": "金茂大厦88层观光厅",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "ad5d3caf-6dc8-431d-b56b-2cc219d1419c",
+      "name": "上海豫园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "38c740eb-76cd-4aea-88ef-0ca1760bb0fb",
+      "name": "上海大观园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "81e7b7da-fdf6-4847-b58f-555f2c69cc1a",
+      "name": "东方绿舟",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "bd62cd80-9aa4-488d-924d-c0818fdf6623",
+      "name": "金山城市沙滩",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "fc2c3c45-9acf-4245-96f1-bed5318306bf",
+      "name": "碧海金沙",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "87ba07d2-0570-4188-b95f-420a6be68e92",
+      "name": "上海鲜花港",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "dc0b1337-4035-4ffc-89f1-8341f52fd3e8",
+      "name": "月湖雕塑公园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "77ddb6ed-f5b2-4f90-8268-24091131824f",
+      "name": "上海海湾国家森林公园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "32ad4b4b-03c2-4d77-baff-bf2871d0a74c",
+      "name": "上海辰山植物园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "7eb71a85-4990-44ab-b5cb-7ffc7ca768c2",
+      "name": "上海东滩湿地公园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "e2f22bc6-000c-4335-b544-e12f812ac870",
+      "name": "长兴岛郊野公园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a9c6339e-a155-4ce2-a0a6-4ab8a1b3b593",
+      "name": "上海薰衣草公园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "10716dae-aad0-491f-99c6-58a97fade115",
+      "name": "花开海上生态园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "8c472f8c-511d-464a-9740-b858f34c37c2",
+      "name": "上海古猗园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "c1ff5f80-de1d-4014-8d24-4b6d42452b5b",
+      "name": "上海醉白池公园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "72339864-e3fa-4475-8a8c-16da33cf79b6",
+      "name": "上海高家庄生态园",
+      "category": "户外景区",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "dc86505a-603c-4699-9f03-b88dfb5b700a",
+      "name": "上海野生动物园",
+      "category": "动物海洋馆",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "1ff72b46-3657-4579-9617-20d3c5bfa15a",
+      "name": "东方明珠",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "aff47ed9-66b0-4d5e-9c89-3659aed8b3b6",
+      "name": "MELAND",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "fe34967d-f5d8-4f26-8cbe-a7cbe9c75d22",
+      "name": "奈尔宝",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a8be3f7a-7d81-4386-841a-9d460f1cfcc9",
+      "name": "奈尔宝科技馆",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "208b8535-062a-4900-9440-268f9bc45777",
+      "name": "MINI MARS",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "b1567b31-c9e6-4039-8c15-9cd2418aec99",
+      "name": "上美影泡泡米益智乐园",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "1490c88a-92bc-471a-baec-a2c4b0715075",
+      "name": "上海乐高探索中心",
+      "category": "亲子乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "be69d306-6d09-4112-9834-8d1c31f93f41",
+      "name": "上海乐高乐园",
+      "category": "主题乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "741e4db3-0eae-43c0-bcea-a50b06a5c063",
+      "name": "上海迪士尼度假区",
+      "category": "主题乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "38e97f02-25ad-41f3-bcd3-545081d6bdf8",
+      "name": "上海玛雅海滩水公园",
+      "category": "主题乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "aaec558c-310e-487f-ac3e-2ceb9cd09871",
+      "name": "耀雪冰雪世界",
+      "category": "运动玩乐",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "8bd43c09-4cc0-48dc-ba9f-bcf31cd9c988",
+      "name": "上海千古情",
+      "category": "主题乐园",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "d1fc72c7-220c-4816-a124-52655720cfa0",
+      "name": "上海天文馆",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    },
+    {
+      "id": "a94fa385-0d27-4e4f-88be-e7aa210b810e",
+      "name": "上海自然博物馆",
+      "category": "展馆观光",
+      "active": true,
+      "created": true
+    }
+  ],
+  "after_total": 1333,
+  "after_active": 825,
+  "finished_at": "2026-09-30T05:12:26.003Z"
+}
