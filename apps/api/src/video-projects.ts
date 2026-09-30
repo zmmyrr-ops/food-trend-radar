@@ -466,6 +466,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
         if (v.revision !== p.revision) throw Error("项目已更新，请刷新");
         validatePlan(v.plan, p.assets, p.seconds);
         p.plan = v.plan;
+        p.captions_pending = false;
         p.revision++;
         p.state = "edited";
         p.error = null;
@@ -480,8 +481,9 @@ export async function createVideoProjects(db: PGlite, root: string) {
           const id = String(req.params.id),
             p = await get(id);
           if (
-            (action === "preview" && p.preview_revision === p.revision) ||
-            (action === "export" && p.export_revision === p.revision)
+            !p.captions_pending &&
+            ((action === "preview" && p.preview_revision === p.revision) ||
+              (action === "export" && p.export_revision === p.revision))
           ) {
             res.json({ project: visible(p) });
             return;
