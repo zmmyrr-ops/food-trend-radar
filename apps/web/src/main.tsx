@@ -19,6 +19,7 @@ import {
   useState,
 } from "react";
 import { createRoot } from "react-dom/client";
+import { AccountGate, useAccount } from "./AccountGate";
 import { Admission } from "./Admission";
 import { appFetch, appUrl } from "./app-url";
 import { CouponRadar } from "./CouponRadar";
@@ -59,6 +60,7 @@ const localTime = (v: string) => {
 const timestamp = (v: string) =>
   new Date(v).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
 function App() {
+  const account = useAccount();
   const [channel, setChannel] = useState<Channel>(
     new URLSearchParams(location.search).get("channel") === "leisure"
       ? "leisure"
@@ -96,7 +98,11 @@ function App() {
         "import",
         "sources",
         "admission",
-      ].includes(value)
+      ]
+        .filter(
+          (v) => account.role === "admin" || ["radar", "videos"].includes(v),
+        )
+        .includes(value)
         ? value
         : "radar";
     }),
@@ -295,6 +301,7 @@ function App() {
           </button>
           <button
             aria-pressed={tab === "brands"}
+            className="admin-only"
             onClick={() => navigate("brands")}
           >
             <span>店</span>
@@ -303,7 +310,7 @@ function App() {
             </div>
           </button>
         </nav>
-        <details className="sidebar-tools">
+        <details className="sidebar-tools admin-only">
           <summary>数据与设置</summary>
           {[
             ["events", "事件管理"],
@@ -1226,10 +1233,12 @@ const root = document.getElementById("root");
 if (root)
   createRoot(root).render(
     <StrictMode>
-      {new URLSearchParams(location.search).get("studio") === "1" ? (
-        <VideoStudio />
-      ) : (
-        <App />
-      )}
+      <AccountGate>
+        {new URLSearchParams(location.search).get("studio") === "1" ? (
+          <VideoStudio />
+        ) : (
+          <App />
+        )}
+      </AccountGate>
     </StrictMode>,
   );

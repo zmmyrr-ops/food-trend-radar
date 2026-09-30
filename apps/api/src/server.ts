@@ -1,4 +1,5 @@
 import { resolve } from "node:path";
+import { createAccounts } from "./accounts.js";
 import { createApp } from "./app.js";
 import { loadConfig, projectRoot } from "./config.js";
 import { createCoupons } from "./coupons.js";
@@ -30,6 +31,11 @@ const operations = await createOperations(
   resolve(projectRoot, "data/backups"),
   (label, work) => runtime.track(label, work),
 );
+const accounts = await createAccounts(db, {
+  testMode: process.env.AUTH_TEST_MODE === "true",
+  secure: config.WEB_ORIGIN.startsWith("https:"),
+  adminPhone: process.env.AUTH_ADMIN_PHONE,
+});
 const radar = createCoupons(db, {
   onBrandComplete: operations.refreshBrand,
   credentialPath: resolve(projectRoot, "data/secrets/douyin-headers.json"),
@@ -52,6 +58,7 @@ const server = createApp(
   radar,
   operations,
   () => runtime.snapshot(),
+  accounts,
 ).listen(config.PORT, config.HOST, () =>
   console.log(`上海优惠券机会雷达 http://${config.HOST}:${config.PORT}`),
 );

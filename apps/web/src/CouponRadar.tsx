@@ -1,5 +1,6 @@
 import { type Channel, inChannel } from "@radar/contracts";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useAccount } from "./AccountGate";
 import { AiRecommendations } from "./AiRecommendations";
 import { appFetch } from "./app-url";
 import { BrandCoverage } from "./BrandCoverage";
@@ -111,6 +112,7 @@ const labels: Record<string, string> = {
   TERMS_CHANGED_UNVERIFIED: "商品信息变化 · 待核验",
 };
 export function CouponRadar({ channel }: { channel: Channel }) {
+  const account = useAccount();
   const [status, setStatus] = useState<Status | null>(null),
     [runs, setRuns] = useState<Run[]>([]),
     [items, setItems] = useState<Item[]>([]),
@@ -398,15 +400,20 @@ export function CouponRadar({ channel }: { channel: Channel }) {
           ["ai", "AI 精选"],
           ["manage", "全站采集管理"],
           ["snapshots", "全站原始快照"],
-        ].map(([key, label]) => (
-          <button
-            key={key}
-            aria-pressed={pane === key}
-            onClick={() => setPane(key)}
-          >
-            {label}
-          </button>
-        ))}
+        ]
+          .filter(
+            ([key]) =>
+              account.role === "admin" || ["picks", "ai"].includes(key),
+          )
+          .map(([key, label]) => (
+            <button
+              key={key}
+              aria-pressed={pane === key}
+              onClick={() => setPane(key)}
+            >
+              {label}
+            </button>
+          ))}
       </div>
       {pane !== "ai" && pane !== "picks" && (
         <div className="brand-toolbar">

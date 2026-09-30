@@ -90,11 +90,12 @@ export function AiRecommendations({ channel }: { channel: Channel }) {
     <section className="ai-panel" aria-label="AI 综合推荐">
       <h2>{channel === "food" ? "美食" : "游玩"} · AI 精选</h2>
       <p className="muted">综合优惠、销量与环境信号，为下一条内容寻找方向。</p>
-      <p className="ai-consent">
+      <p className="ai-consent admin-only">
         点击生成将向 DeepSeek 发送最多40张券的业务摘要和天气背景，并产生 API
         用量。AI 建议不等于事实核验。
       </p>
       <button
+        className="admin-only"
         type="button"
         disabled={
           !data?.configured ||

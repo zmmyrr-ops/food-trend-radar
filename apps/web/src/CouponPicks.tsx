@@ -441,7 +441,7 @@ export function CouponPicks({
                     {new Date(x.observed_at).toLocaleString("zh-CN")}
                   </small>
                   <button
-                    className="quiet-button"
+                    className="quiet-button admin-only"
                     disabled={saving}
                     onClick={() => void watch(x)}
                   >

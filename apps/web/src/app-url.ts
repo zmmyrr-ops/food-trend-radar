@@ -2,6 +2,12 @@
 export function appUrl(path: string): string {
   return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
 }
-export function appFetch(path: string, init?: RequestInit): Promise<Response> {
-  return fetch(appUrl(path), init);
+export async function appFetch(
+  path: string,
+  init?: RequestInit,
+): Promise<Response> {
+  const response = await fetch(appUrl(path), init);
+  if (response.status === 401 && !path.startsWith("/api/auth/"))
+    window.dispatchEvent(new Event("account-expired"));
+  return response;
 }

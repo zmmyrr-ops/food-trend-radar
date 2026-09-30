@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import type { PGlite } from "@electric-sql/pglite";
 import type { Express } from "express";
 import { z } from "zod";
+import { legacyOwner, ownerOf } from "./accounts.js";
 
 const SEARCH = "https://so.xiaohongshu.com/api/sns/web/v2/search/notes";
 const DETAIL = "https://edith.xiaohongshu.com/api/sns/web/v1/feed";
@@ -155,6 +156,9 @@ export async function createCouponMedia(
     ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS coupon_title text NOT NULL DEFAULT '';
     ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS refresh_details boolean NOT NULL DEFAULT false;
     INSERT INTO coupon_media_gate(id) VALUES(1) ON CONFLICT DO NOTHING;
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS owner_id uuid NOT NULL DEFAULT '00000000-0000-0000-0000-000000000000';
+    ALTER TABLE coupon_media_jobs DROP CONSTRAINT IF EXISTS coupon_media_jobs_brand_id_product_id_key;
+    CREATE UNIQUE INDEX IF NOT EXISTS coupon_media_owner_product ON coupon_media_jobs(owner_id,brand_id,product_id);
     UPDATE coupon_media_jobs SET state='interrupted',error_code='INTERRUPTED',updated_at=now() WHERE state IN ('queued','running');
   `);
   let worker: Promise<void> | undefined;
@@ -629,6 +633,7 @@ export async function createCouponMedia(
     product: string,
     more = false,
     reset = false,
+    owner = legacyOwner,
   ) {
     await credentials();
     const coupon = (
@@ -642,8 +647,8 @@ export async function createCouponMedia(
     const result = await db.transaction(async (tx) => {
       const old = (
         await tx.query<any>(
-          "SELECT * FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2",
-          [brand, product],
+          "SELECT * FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2 AND owner_id=$3",
+          [brand, product, owner],
         )
       ).rows[0];
       if (reset && old && ["queued", "running"].includes(old.state))
@@ -675,7 +680,7 @@ export async function createCouponMedia(
       }
       return (
         await tx.query<any>(
-          "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,refresh_details,coupon_title) VALUES($1,$2,$3,$4,$5,'queued',$6,$7) ON CONFLICT(brand_id,product_id) DO UPDATE SET id=excluded.id,keyword=excluded.keyword,names=excluded.names,state='queued',resources='[]',next_page=1,seen_notes='[]',target_count=40,exhausted=false,search_id=NULL,refresh_details=excluded.refresh_details,coupon_title=excluded.coupon_title,searched=0,inspected=0,error_code=NULL,created_at=now(),updated_at=now() RETURNING *",
+          "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,refresh_details,coupon_title,owner_id) VALUES($1,$2,$3,$4,$5,'queued',$6,$7,$8) ON CONFLICT(owner_id,brand_id,product_id) DO UPDATE SET id=excluded.id,keyword=excluded.keyword,names=excluded.names,state='queued',resources='[]',next_page=1,seen_notes='[]',target_count=40,exhausted=false,search_id=NULL,refresh_details=excluded.refresh_details,coupon_title=excluded.coupon_title,searched=0,inspected=0,error_code=NULL,created_at=now(),updated_at=now() RETURNING *",
           [
             randomUUID(),
             brand,
@@ -684,6 +689,7 @@ export async function createCouponMedia(
             JSON.stringify([coupon.name, ...coupon.aliases]),
             reset,
             coupon.title || "",
+            owner,
           ],
         )
       ).rows[0];
@@ -700,8 +706,8 @@ export async function createCouponMedia(
       const v = input.parse(req.query);
       const job = (
         await db.query<any>(
-          "SELECT * FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2",
-          [v.brand_id, v.product_id],
+          "SELECT * FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2 AND owner_id=$3",
+          [v.brand_id, v.product_id, ownerOf(req)],
         )
       ).rows[0];
       res.json({ job: publicJob(job) });
@@ -717,7 +723,13 @@ export async function createCouponMedia(
         .parse(req.body);
       try {
         res.status(202).json({
-          job: await start(v.brand_id, v.product_id, v.more, v.reset),
+          job: await start(
+            v.brand_id,
+            v.product_id,
+            v.more,
+            v.reset,
+            ownerOf(req),
+          ),
         });
       } catch (e) {
         const code = e instanceof Error ? e.message : "INTERNAL_ERROR";
@@ -751,8 +763,8 @@ export async function createCouponMedia(
     app.post("/api/v3/coupon-media/:id/cancel", async (req, res) => {
       const id = z.uuid().parse(req.params.id);
       await db.query(
-        "UPDATE coupon_media_jobs SET state='cancelled',updated_at=now() WHERE id=$1 AND state IN ('queued','running')",
-        [id],
+        "UPDATE coupon_media_jobs SET state='cancelled',updated_at=now() WHERE id=$1 AND owner_id=$2 AND state IN ('queued','running')",
+        [id, ownerOf(req)],
       );
       res.json({ ok: true });
     });

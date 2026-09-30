@@ -202,6 +202,7 @@ export function createApp(
   coupons?: ReturnType<typeof createCoupons>,
   operations?: Awaited<ReturnType<typeof createOperations>>,
   runtimeDiagnostics?: () => unknown,
+  accounts?: { register(app: express.Express): void },
 ) {
   const app = express();
   app.disable("x-powered-by");
@@ -240,6 +241,7 @@ export function createApp(
     next();
   });
   app.use(express.json({ limit: "1mb" }));
+  accounts?.register(app);
   if (runtimeDiagnostics)
     app.get("/api/v3/runtime-diagnostics", (_req, res) =>
       res.json(runtimeDiagnostics()),

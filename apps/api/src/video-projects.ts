@@ -14,6 +14,7 @@ import { fileURLToPath } from "node:url";
 import type { PGlite } from "@electric-sql/pglite";
 import express, { type Express, type Request, type Response } from "express";
 import { z } from "zod";
+import { ownerOf } from "./accounts.js";
 import { mediaUrl } from "./coupon-media.js";
 import {
   type Asset,
@@ -41,6 +42,9 @@ export async function createVideoProjects(db: PGlite, root: string) {
   await db.exec(
     `UPDATE video_projects SET payload=jsonb_set(jsonb_set(payload,'{state}','"interrupted"'),'{error}','"服务重启，已保留结果，请重试"') WHERE payload->>'state' IN ('queued','preparing','analyzing','planning','rendering_preview','rendering_export')`,
   );
+  await db.exec(`ALTER TABLE video_projects ADD COLUMN IF NOT EXISTS owner_id uuid NOT NULL DEFAULT '00000000-0000-0000-0000-000000000000';
+    ALTER TABLE video_uploads ADD COLUMN IF NOT EXISTS owner_id uuid NOT NULL DEFAULT '00000000-0000-0000-0000-000000000000';
+    CREATE INDEX IF NOT EXISTS video_project_owner ON video_projects(owner_id);`);
   let child: ChildProcess | undefined,
     activeId = "",
     stopped = false,
@@ -205,6 +209,29 @@ export async function createVideoProjects(db: PGlite, root: string) {
     return true;
   }
   function register(app: Express) {
+    // Apply before every detail, download, render, deletion and asset endpoint.
+    app.use(
+      ["/api/v3/video-projects/:id", "/api/v3/video-assets/:id"],
+      async (req, res, next) => {
+        if (req.params.id === "config") return next();
+        if (!uuid.safeParse(req.params.id).success) {
+          res.status(404).json({ error: { message: "项目或素材不存在" } });
+          return;
+        }
+        const table = req.originalUrl.startsWith("/api/v3/video-assets/")
+          ? "video_uploads"
+          : "video_projects";
+        const row = await db.query(
+          `SELECT id FROM ${table} WHERE id=$1 AND owner_id=$2`,
+          [req.params.id, ownerOf(req)],
+        );
+        if (!row.rows.length) {
+          res.status(404).json({ error: { message: "项目或素材不存在" } });
+          return;
+        }
+        next();
+      },
+    );
     app.delete(
       "/api/v3/video-assets/:id",
       wrap(async (req, res) => {
@@ -260,10 +287,10 @@ export async function createVideoProjects(db: PGlite, root: string) {
           req.body,
           { mode: 0o600 },
         );
-        await db.query("INSERT INTO video_uploads(id,kind) VALUES($1,$2)", [
-          id,
-          kind,
-        ]);
+        await db.query(
+          "INSERT INTO video_uploads(id,kind,owner_id) VALUES($1,$2,$3)",
+          [id, kind, ownerOf(req)],
+        );
         res.json({ id, kind });
       }),
     );
@@ -275,7 +302,8 @@ export async function createVideoProjects(db: PGlite, root: string) {
           req.query.product_id === undefined
         ) {
           const rows = await db.query<{ payload: VideoProject }>(
-            "SELECT payload FROM video_projects ORDER BY payload->>'updated_at' DESC LIMIT 50",
+            "SELECT payload FROM video_projects WHERE owner_id=$1 ORDER BY payload->>'updated_at' DESC LIMIT 50",
+            [ownerOf(req)],
           );
           res.json({
             items: rows.rows.map(({ payload: p }) => ({
@@ -301,8 +329,8 @@ export async function createVideoProjects(db: PGlite, root: string) {
         res.json({
           items: (
             await db.query<{ payload: VideoProject }>(
-              `SELECT payload FROM video_projects WHERE payload->>'brand_id'=$1 AND payload->>'product_id'=$2 ORDER BY payload->>'created_at' DESC LIMIT 20`,
-              [brand, product],
+              `SELECT payload FROM video_projects WHERE owner_id=$3 AND payload->>'brand_id'=$1 AND payload->>'product_id'=$2 ORDER BY payload->>'created_at' DESC LIMIT 20`,
+              [brand, product, ownerOf(req)],
             )
           ).rows.map((x) => visible(x.payload)),
         });
@@ -324,8 +352,8 @@ export async function createVideoProjects(db: PGlite, root: string) {
           .parse(req.body);
         const previous = (
           await db.query<{ payload: VideoProject }>(
-            `SELECT payload FROM video_projects WHERE payload->>'brand_id'=$1 AND payload->>'product_id'=$2 AND payload->>'state' IN ('queued','preparing','analyzing','planning','rendering_preview','rendering_export') LIMIT 1`,
-            [v.brand_id, v.product_id],
+            `SELECT payload FROM video_projects WHERE owner_id=$3 AND payload->>'brand_id'=$1 AND payload->>'product_id'=$2 AND payload->>'state' IN ('queued','preparing','analyzing','planning','rendering_preview','rendering_export') LIMIT 1`,
+            [v.brand_id, v.product_id, ownerOf(req)],
           )
         ).rows[0];
         if (previous) {
@@ -348,8 +376,8 @@ export async function createVideoProjects(db: PGlite, root: string) {
         const resources =
           (
             await db.query<{ resources: any[] }>(
-              `SELECT resources FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2`,
-              [v.brand_id, v.product_id],
+              `SELECT resources FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2 AND owner_id=$3`,
+              [v.brand_id, v.product_id, ownerOf(req)],
             )
           ).rows[0]?.resources ?? [];
         const assets: Asset[] = [];
@@ -370,8 +398,8 @@ export async function createVideoProjects(db: PGlite, root: string) {
         for (const id of new Set(v.upload_ids)) {
           const u = (
             await db.query<{ kind: string }>(
-              "SELECT kind FROM video_uploads WHERE id=$1",
-              [id],
+              "SELECT kind FROM video_uploads WHERE id=$1 AND owner_id=$2",
+              [id, ownerOf(req)],
             )
           ).rows[0];
           if (!u || u.kind === "audio") throw Error("上传素材不存在");
@@ -391,8 +419,8 @@ export async function createVideoProjects(db: PGlite, root: string) {
           v.music_id &&
           !(
             await db.query(
-              `SELECT id FROM video_uploads WHERE id=$1 AND kind='audio'`,
-              [v.music_id],
+              `SELECT id FROM video_uploads WHERE id=$1 AND owner_id=$2 AND kind='audio'`,
+              [v.music_id, ownerOf(req)],
             )
           ).rows.length
         )
@@ -417,10 +445,10 @@ export async function createVideoProjects(db: PGlite, root: string) {
             updated_at: now,
             music_id: v.music_id,
           };
-        await db.query("INSERT INTO video_projects(id,payload) VALUES($1,$2)", [
-          p.id,
-          JSON.stringify(p),
-        ]);
+        await db.query(
+          "INSERT INTO video_projects(id,payload,owner_id) VALUES($1,$2,$3)",
+          [p.id, JSON.stringify(p), ownerOf(req)],
+        );
         res
           .status(201)
           .json({ project: visible(await enqueue(p.id, "analyze")) });

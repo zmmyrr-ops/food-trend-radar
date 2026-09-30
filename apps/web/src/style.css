@@ -2092,3 +2092,74 @@ footer {
   background: #e3f1e9;
   color: #247453;
 }
+
+.account-login {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #f7f5f1;
+}
+.account-login form {
+  width: min(100%, 420px);
+  display: grid;
+  gap: 18px;
+  padding: 36px;
+  border: 1px solid #e6e1d8;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 16px 50px #3427160c;
+}
+.account-logo {
+  color: #c85b29;
+  font-size: 24px;
+  font-weight: 800;
+}
+.account-login h1 {
+  font-size: 24px;
+  margin: 0;
+}
+.account-login p {
+  margin: 0;
+  line-height: 1.7;
+  color: #65615b;
+}
+.account-login label {
+  display: grid;
+  gap: 8px;
+}
+.account-login input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d9d4cb;
+  border-radius: 8px;
+}
+.account-login .account-test {
+  padding: 12px;
+  background: #fff5e5;
+  font-size: 13px;
+  border-radius: 8px;
+}
+.account-login button {
+  padding: 12px;
+  background: #bf5122;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+}
+.account-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 24px;
+  border-bottom: 1px solid #e7e1d7;
+  background: #fff;
+  font-size: 13px;
+}
+.account-bar button {
+  padding: 4px 10px;
+}
+.role-user .admin-only {
+  display: none !important;
+}
