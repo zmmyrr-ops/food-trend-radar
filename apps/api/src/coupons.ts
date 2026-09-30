@@ -882,6 +882,7 @@ export function createCoupons(
       creating = false;
     }
   }
+  let joinedCurrentRound = false;
   async function schedule() {
     const s = await settings();
     if (s.enabled && !s.pause_reason && !stopping && !creating) {
@@ -898,6 +899,11 @@ export function createCoupons(
         )
           return;
         await start();
+        joinedCurrentRound = true;
+      } else if (!joinedCurrentRound) {
+        // Upgrade/resume an old partial brand list without discarding completed work.
+        await start();
+        joinedCurrentRound = true;
       }
       kick();
     }
