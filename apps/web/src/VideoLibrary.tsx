@@ -1,3 +1,4 @@
+import { type Brand, type Channel, inChannel } from "@radar/contracts";
 import { useEffect, useState } from "react";
 import { appFetch, appUrl } from "./app-url";
 
@@ -31,7 +32,13 @@ const labels: Record<string, string> = {
   interrupted: "制作中断",
   cancelled: "已取消",
 };
-export function VideoLibrary() {
+export function VideoLibrary({
+  channel,
+  brands,
+}: {
+  channel: Channel;
+  brands: Brand[];
+}) {
   const [items, setItems] = useState<Video[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState("");
@@ -65,9 +72,15 @@ export function VideoLibrary() {
       clearInterval(timer);
     };
   }, [refresh]);
+  const scoped = items.filter((p) =>
+    brands.some((b) => b.id === p.brand_id && inChannel(b.category, channel)),
+  );
   return (
     <section aria-label="我的视频">
-      <p>集中查看所有券的制作记录，按最近更新排序；制作进度自动更新。</p>
+      <p>
+        {channel === "food" ? "美食" : "游玩"}频道 · {scoped.length}{" "}
+        个视频项目，按最近更新排序。
+      </p>
       {error && (
         <p role="alert">
           {error}{" "}
@@ -77,19 +90,25 @@ export function VideoLibrary() {
         </p>
       )}
       {!loaded && !error && <p role="status">正在加载视频…</p>}
-      {loaded && !items.length && (
+      {loaded && !scoped.length && (
         <p>
           还没有制作记录。在券下方获取素材后，点击“制作12–20秒短视频”即可开始。
         </p>
       )}
       <div className="video-library-grid">
-        {items.map((p) => {
+        {scoped.map((p) => {
           const exported = p.export_revision === p.revision;
           const preview = p.preview_revision === p.revision;
           const kind = exported ? "export" : "preview";
           const endpoint = `/api/v3/video-projects/${p.id}/download?kind=${kind}`;
           const studio = appUrl(
-            `/?${new URLSearchParams({ studio: "1", brand_id: p.brand_id, product_id: p.product_id, project: p.id })}`,
+            `/?${new URLSearchParams({
+              studio: "1",
+              channel,
+              brand_id: p.brand_id,
+              product_id: p.product_id,
+              project: p.id,
+            })}`,
           );
           return (
             <article className="video-library-card" key={p.id}>

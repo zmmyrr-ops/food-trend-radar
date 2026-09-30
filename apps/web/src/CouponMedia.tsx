@@ -196,7 +196,12 @@ export function CouponMedia({
           {open ? "收起 −" : "展开 +"}
         </span>
       </button>
-      <a className="studio-entry" href={appUrl(`/?studio=1&${query}`)}>
+      <a
+        className="studio-entry"
+        href={appUrl(
+          `/?studio=1&channel=${new URLSearchParams(location.search).get("channel") === "leisure" ? "leisure" : "food"}&${query}`,
+        )}
+      >
         制作12–20秒短视频 →
       </a>
       {open && (

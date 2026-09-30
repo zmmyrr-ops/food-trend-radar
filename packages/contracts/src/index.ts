@@ -18,6 +18,17 @@ export const categories = [
   "其他餐饮",
   ...leisureCategories,
 ] as const;
+export type Channel = "food" | "leisure";
+export function inChannel(
+  category: string | undefined,
+  channel?: Channel | "all",
+) {
+  if (!channel || channel === "all") return true;
+  const leisure = (leisureCategories as readonly string[]).includes(
+    category ?? "",
+  );
+  return channel === "leisure" ? leisure : !leisure;
+}
 const url = z
   .string()
   .url()

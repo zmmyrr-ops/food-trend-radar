@@ -1,3 +1,4 @@
+import { type Channel, inChannel } from "@radar/contracts";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AiRecommendations } from "./AiRecommendations";
 import { appFetch } from "./app-url";
@@ -109,7 +110,7 @@ const labels: Record<string, string> = {
   PRICE_CHANGED_UNVERIFIED: "价格变化 · 待核验",
   TERMS_CHANGED_UNVERIFIED: "商品信息变化 · 待核验",
 };
-export function CouponRadar() {
+export function CouponRadar({ channel }: { channel: Channel }) {
   const [status, setStatus] = useState<Status | null>(null),
     [runs, setRuns] = useState<Run[]>([]),
     [items, setItems] = useState<Item[]>([]),
@@ -304,19 +305,22 @@ export function CouponRadar() {
       setBusy(false);
     }
   }
+  const scopedBrands = brands.filter(
+    (b) => b.active && inChannel(b.category, channel),
+  );
   return (
     <section className="coupon-radar">
       {error && <p role="alert">{error}</p>}
       <section className="overview-metrics" aria-label="工作台概览">
         <article>
-          <span>上海品牌池</span>
+          <span>{channel === "food" ? "美食" : "游玩"}品牌监测</span>
           <strong>
-            {brands.length ? brands.filter((b) => b.active).length : "—"}
+            {brands.length ? scopedBrands.length : "—"}
             <small> 个启用品牌</small>
           </strong>
         </article>
         <article>
-          <span>第 {runs[0]?.round_number ?? "—"} 轮采集进度</span>
+          <span>全站采集 · 第 {runs[0]?.round_number ?? "—"} 轮</span>
           <strong>
             {runs[0]
               ? `${runs[0].completed + runs[0].partial} / ${runs[0].total} 已处理`
@@ -392,8 +396,8 @@ export function CouponRadar() {
         {[
           ["picks", "优先选券"],
           ["ai", "AI 精选"],
-          ["manage", "采集管理"],
-          ["snapshots", "原始快照"],
+          ["manage", "全站采集管理"],
+          ["snapshots", "全站原始快照"],
         ].map(([key, label]) => (
           <button
             key={key}
@@ -404,7 +408,7 @@ export function CouponRadar() {
           </button>
         ))}
       </div>
-      {pane !== "ai" && (
+      {pane !== "ai" && pane !== "picks" && (
         <div className="brand-toolbar">
           {" "}
           <label>
@@ -417,15 +421,14 @@ export function CouponRadar() {
               }}
             >
               <option value="">
-                全部启用品牌（{brands.filter((b) => b.active).length}）
+                全部{channel === "food" ? "美食" : "游玩"}品牌（
+                {scopedBrands.length}）
               </option>
-              {brands
-                .filter((b) => b.active)
-                .map((b) => (
-                  <option key={b.id} value={b.id}>
-                    {b.name} · {b.category}
-                  </option>
-                ))}
+              {scopedBrands.map((b) => (
+                <option key={b.id} value={b.id}>
+                  {b.name} · {b.category}
+                </option>
+              ))}
             </select>
           </label>
           {brandId && (
@@ -440,8 +443,15 @@ export function CouponRadar() {
           )}
         </div>
       )}
-      {pane === "picks" && <CouponPicks brandId={brandId} />}
-      {pane === "ai" && <AiRecommendations />}
+      {pane === "picks" && (
+        <CouponPicks
+          brandId={brandId}
+          channel={channel}
+          brands={scopedBrands}
+          onBrandChange={setBrandId}
+        />
+      )}
+      {pane === "ai" && <AiRecommendations channel={channel} />}
       {pane === "manage" && (
         <div className="management-panel">
           <h2>采集管理</h2>

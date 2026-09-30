@@ -1,3 +1,4 @@
+import type { Channel } from "@radar/contracts";
 import { useEffect, useState } from "react";
 import { appFetch } from "./app-url";
 
@@ -13,6 +14,7 @@ type Evidence = {
 type State = {
   configured: boolean;
   running: boolean;
+  other_channel_running?: boolean;
   error: string | null;
   stale: boolean;
   model: string;
@@ -31,7 +33,7 @@ type State = {
     limitations: string[];
   };
 };
-export function AiRecommendations() {
+export function AiRecommendations({ channel }: { channel: Channel }) {
   const [data, setData] = useState<State | null>(null);
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
@@ -40,7 +42,9 @@ export function AiRecommendations() {
     let timer: ReturnType<typeof setTimeout>;
     async function read() {
       try {
-        const response = await appFetch("/api/v3/ai-recommendations");
+        const response = await appFetch(
+          `/api/v3/ai-recommendations?channel=${channel}`,
+        );
         if (!response.ok) throw new Error("AI 模块读取失败");
         const result: State = await response.json();
         if (!disposed) {
@@ -57,7 +61,7 @@ export function AiRecommendations() {
       disposed = true;
       clearTimeout(timer);
     };
-  }, []);
+  }, [channel]);
   async function generate() {
     setSending(true);
     setError("");
@@ -65,13 +69,15 @@ export function AiRecommendations() {
       const response = await appFetch("/api/v3/ai-recommendations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: "{}",
+        body: JSON.stringify({ channel }),
       });
       if (!response.ok)
         throw new Error(
-          response.status === 429
-            ? "请求太频繁，请一分钟后再试"
-            : "启动 AI 分析失败",
+          response.status === 409
+            ? "另一个频道正在分析，请完成后再试"
+            : response.status === 429
+              ? "请求太频繁，请一分钟后再试"
+              : "启动 AI 分析失败",
         );
       setData((d) => (d ? { ...d, running: true, error: null } : d));
     } catch (e) {
@@ -82,7 +88,7 @@ export function AiRecommendations() {
   }
   return (
     <section className="ai-panel" aria-label="AI 综合推荐">
-      <h2>AI 综合推荐</h2>
+      <h2>{channel === "food" ? "美食" : "游玩"} · AI 精选</h2>
       <p className="muted">综合优惠、销量与环境信号，为下一条内容寻找方向。</p>
       <p className="ai-consent">
         点击生成将向 DeepSeek 发送最多40张券的业务摘要和天气背景，并产生 API
@@ -90,7 +96,12 @@ export function AiRecommendations() {
       </p>
       <button
         type="button"
-        disabled={!data?.configured || data.running || sending}
+        disabled={
+          !data?.configured ||
+          data.running ||
+          data.other_channel_running ||
+          sending
+        }
         onClick={() => void generate()}
       >
         {sending || data?.running
@@ -99,6 +110,9 @@ export function AiRecommendations() {
             ? "根据最新数据重新推荐"
             : "生成 AI 推荐"}
       </button>
+      {data?.other_channel_running && (
+        <p role="status">另一个频道正在分析，完成后可生成本频道推荐。</p>
+      )}
       {data && !data.configured && <p>后端尚未配置 DeepSeek 密钥。</p>}
       {(error || data?.error) && (
         <p role="alert">{error || data?.error}。原有选券榜单仍可使用。</p>

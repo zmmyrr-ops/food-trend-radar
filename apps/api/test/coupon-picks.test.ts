@@ -327,3 +327,39 @@ test("业态筛选不混入其他分类，仍保留完整券列表", () => {
   assert.equal(result.filtered[0].product_id, "1");
   assert.equal(result.counts.all, 1);
 });
+
+test("美食游玩在排名、统计及筛选前隔离，不被另一频道前500挤掉", () => {
+  const [food, leisure] = combinePicks([heat("food"), heat("play")], []);
+  food.category = "其他餐饮";
+  leisure.category = "亲子乐园";
+  for (const p of [food, leisure]) {
+    p.priority.value_gate.eligible = true;
+    p.priority.score = p === food ? 80 : 20;
+    p.use_outlook.fully_excluded = false;
+  }
+  const rows = [
+    ...Array.from({ length: 510 }, (_, i) => ({
+      ...food,
+      product_id: `f${i}`,
+    })),
+    leisure,
+  ];
+  const play = selectPicks(rows, {
+    ...query,
+    channel: "leisure",
+    view: "recommended",
+  });
+  assert.equal(play.counts.all, 1);
+  assert.deepEqual(
+    play.filtered.map((p) => p.product_id),
+    ["play"],
+  );
+  const dining = selectPicks(rows, { ...query, channel: "food", view: "all" });
+  assert.equal(dining.filtered.length, 510);
+  assert.equal(dining.counts.recommended, 500);
+  assert.equal(
+    selectPicks(rows, { ...query, channel: "food", category: "亲子乐园" })
+      .filtered.length,
+    0,
+  );
+});

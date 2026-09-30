@@ -1,10 +1,13 @@
 import { readFile } from "node:fs/promises";
 import type { PGlite } from "@electric-sql/pglite";
+import { inChannel } from "@radar/contracts";
 import type { Express } from "express";
 import { z } from "zod";
 import type { combinePicks } from "./coupon-picks.js";
 
 type Pick = ReturnType<typeof combinePicks>[number];
+type Scope = "all" | "food" | "leisure";
+const scopeSchema = z.enum(["all", "food", "leisure"]).default("all");
 const MODEL = "deepseek-flash";
 const VERSION = "coupon-adviser-v3";
 const outputSchema = z
@@ -183,6 +186,9 @@ export async function createAiRecommendations(
   await db.exec(
     "CREATE TABLE IF NOT EXISTS ai_coupon_reports(id bigserial PRIMARY KEY,generated_at timestamptz NOT NULL DEFAULT now(),payload jsonb NOT NULL)",
   );
+  await db.exec(
+    "ALTER TABLE ai_coupon_reports ADD COLUMN IF NOT EXISTS channel text NOT NULL DEFAULT 'all'",
+  );
   const getKey =
     options.getKey ??
     (async () => {
@@ -196,7 +202,8 @@ export async function createAiRecommendations(
       }
     });
   let active: Promise<void> | null = null;
-  let error: string | null = null;
+  let activeChannel: Scope | null = null;
+  const errors: Partial<Record<Scope, string | null>> = {};
   let nextAllowed = 0;
   const messages: Record<string, string> = {
     AI_KEY_MISSING: "DeepSeek 密钥未配置",
@@ -210,19 +217,22 @@ export async function createAiRecommendations(
     AI_NO_DATA: "没有足够新鲜的候选券，请先完成采集",
     AI_STORAGE: "结果保存失败，请稍后重试",
   };
-  async function latest() {
+  async function latest(channel: Scope) {
     return (
       (
         await db.query<{ payload: Record<string, unknown> }>(
-          "SELECT payload FROM ai_coupon_reports ORDER BY id DESC LIMIT 1",
+          "SELECT payload FROM ai_coupon_reports WHERE channel=$1 ORDER BY id DESC LIMIT 1",
+          [channel],
         )
       ).rows[0]?.payload ?? null
     );
   }
-  async function generate() {
+  async function generate(channel: Scope) {
     const key = await getKey();
     if (!key) throw new Error("AI_KEY_MISSING");
-    const candidates = aiCandidates(await options.readPicks());
+    const candidates = aiCandidates(
+      (await options.readPicks()).filter((p) => inChannel(p.category, channel)),
+    );
     if (!candidates.length) throw new Error("AI_NO_DATA");
     const context = await options.readContext().catch(() => null);
     const inputAt = new Date().toISOString();
@@ -312,6 +322,7 @@ export async function createAiRecommendations(
     }
     const report = {
       ...result,
+      channel,
       model: MODEL,
       version: VERSION,
       input_at: inputAt,
@@ -320,33 +331,38 @@ export async function createAiRecommendations(
       context,
     };
     try {
-      await db.query("INSERT INTO ai_coupon_reports(payload) VALUES($1)", [
-        JSON.stringify(report),
-      ]);
+      await db.query(
+        "INSERT INTO ai_coupon_reports(payload,channel) VALUES($1,$2)",
+        [JSON.stringify(report), channel],
+      );
     } catch {
       throw new Error("AI_STORAGE");
     }
   }
-  async function start() {
-    if (active) return "running";
+  async function start(channel: Scope = "all") {
+    if (active) return activeChannel === channel ? "running" : "busy";
     if (Date.now() < nextAllowed) return "cooldown";
-    error = null;
+    errors[channel] = null;
+    activeChannel = channel;
     nextAllowed = Date.now() + 60000;
-    active = generate()
+    active = generate(channel)
       .catch((e) => {
-        error = messages[e instanceof Error ? e.message : ""] ?? "AI 分析失败";
+        errors[channel] =
+          messages[e instanceof Error ? e.message : ""] ?? "AI 分析失败";
       })
       .finally(() => {
         active = null;
+        activeChannel = null;
       });
     return "started";
   }
-  async function status() {
-    const report = await latest();
+  async function status(channel: Scope = "all") {
+    const report = await latest(channel);
     return {
       configured: !!(await getKey()),
-      running: !!active,
-      error,
+      running: !!active && activeChannel === channel,
+      other_channel_running: !!active && activeChannel !== channel,
+      error: errors[channel] ?? null,
       next_allowed_at: new Date(nextAllowed).toISOString(),
       report,
       stale: report
@@ -356,13 +372,18 @@ export async function createAiRecommendations(
     };
   }
   function register(app: Express) {
-    app.get("/api/v3/ai-recommendations", async (_req, res) =>
-      res.json(await status()),
+    app.get("/api/v3/ai-recommendations", async (req, res) =>
+      res.json(await status(scopeSchema.parse(req.query.channel))),
     );
     app.post("/api/v3/ai-recommendations", async (req, res) => {
-      z.object({}).strict().parse(req.body);
-      const result = await start();
-      res.status(result === "cooldown" ? 429 : 202).json({ state: result });
+      const { channel } = z
+        .object({ channel: scopeSchema })
+        .strict()
+        .parse(req.body);
+      const result = await start(channel);
+      res
+        .status(result === "busy" ? 409 : result === "cooldown" ? 429 : 202)
+        .json({ state: result });
     });
   }
   return { register, status, start, drain: () => active ?? Promise.resolve() };

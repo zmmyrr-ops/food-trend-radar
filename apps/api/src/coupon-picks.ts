@@ -1,5 +1,5 @@
 import type { PGlite } from "@electric-sql/pglite";
-import { categories } from "@radar/contracts";
+import { categories, inChannel } from "@radar/contracts";
 import type { Express } from "express";
 import { z } from "zod";
 import { type BrandIndex, indexAvailable } from "./brand-index.js";
@@ -176,6 +176,7 @@ const inputSchema = z.object({
   search: z.string().max(100).default(""),
   brand_id: z.uuid().optional(),
   category: z.enum(categories).optional(),
+  channel: z.enum(["food", "leisure", "all"]).optional(),
   offset: z.coerce.number().int().min(0).default(0),
   limit: z.coerce.number().int().min(1).max(100).default(20),
 });
@@ -183,6 +184,7 @@ export function selectPicks(
   items: ReturnType<typeof combinePicks>,
   q: z.infer<typeof inputSchema>,
 ) {
+  items = items.filter((x) => inChannel(x.category, q.channel));
   const ranked = items
     .filter(
       (x) =>

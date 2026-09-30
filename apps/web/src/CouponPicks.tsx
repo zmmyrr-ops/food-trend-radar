@@ -1,4 +1,4 @@
-import { categories } from "@radar/contracts";
+import { type Channel, categories, inChannel } from "@radar/contracts";
 import { useEffect, useState } from "react";
 import { appFetch, appUrl } from "./app-url";
 import { CouponConditionComparison } from "./CouponConditionComparison";
@@ -97,7 +97,17 @@ const views = [
 ] as const;
 const money = (n: number | null) =>
   n === null ? "未知" : `¥${(n / 100).toFixed(2)}`;
-export function CouponPicks({ brandId }: { brandId: string }) {
+export function CouponPicks({
+  brandId,
+  channel,
+  brands,
+  onBrandChange,
+}: {
+  brandId: string;
+  channel: Channel;
+  brands: { id: string; name: string; category: string }[];
+  onBrandChange: (id: string) => void;
+}) {
   const [view, setView] = useState("recommended"),
     [order, setOrder] = useState("priority"),
     [category, setCategory] = useState(""),
@@ -121,6 +131,7 @@ export function CouponPicks({ brandId }: { brandId: string }) {
   }, [brandId]);
   const query = new URLSearchParams({
     view,
+    channel,
     order,
     search,
     offset: String(offset),
@@ -190,31 +201,27 @@ export function CouponPicks({ brandId }: { brandId: string }) {
   }
   return (
     <section className="picks-panel" aria-label="选券工作台">
-      <h2>优惠券</h2>
-      <p className="muted">
-        每个品牌完整采集后更新，过期券自动移出。仅优先券最多500张，全部券及其他筛选不受此上限限制。
-      </p>
-      <p>
-        按优惠变化与销量升温排序。分数不是爆款概率，完整权益与适用性请展开核验。
-      </p>
-
-      <label>
-        业态分类{" "}
-        <select
-          value={category}
-          onChange={(e) => {
-            setCategory(e.target.value);
-            setOffset(0);
-          }}
-        >
-          <option value="">全部美食与游玩</option>
-          {categories.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </select>
-      </label>
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow">CURATED OFFERS</p>
+          <h2>{channel === "food" ? "值得尝鲜的优惠" : "值得出发的体验"}</h2>
+        </div>
+        <span>先看优惠，再看热度</span>
+      </div>
+      <div className="category-rail" role="group" aria-label="业态分类">
+        {["", ...categories.filter((c) => inChannel(c, channel))].map((c) => (
+          <button
+            key={c}
+            aria-pressed={category === c}
+            onClick={() => {
+              setCategory(c);
+              setOffset(0);
+            }}
+          >
+            {c || (channel === "food" ? "全部美食" : "全部游玩")}
+          </button>
+        ))}
+      </div>
       <div className="actions filter-chips">
         {views.map(([key, label]) => (
           <button
@@ -232,11 +239,35 @@ export function CouponPicks({ brandId }: { brandId: string }) {
       </div>
       <div className="actions">
         <label>
+          品牌
+          <select
+            aria-label="品牌筛选"
+            value={brandId}
+            onChange={(e) => {
+              onBrandChange(e.target.value);
+              setOffset(0);
+            }}
+          >
+            <option value="">
+              全部{channel === "food" ? "美食" : "游玩"}品牌（{brands.length}）
+            </option>
+            {brands.map((b) => (
+              <option key={b.id} value={b.id}>
+                {b.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
           搜索品牌或券{" "}
           <input
             value={searchInput}
             maxLength={100}
-            placeholder="例如：牛New、双人套餐"
+            placeholder={
+              channel === "food"
+                ? "搜索餐厅、茶饮或套餐…"
+                : "搜索乐园、场馆或门票…"
+            }
             onChange={(e) => setSearchInput(e.target.value)}
           />
         </label>
@@ -265,9 +296,15 @@ export function CouponPicks({ brandId }: { brandId: string }) {
       {!data && !error && <p>正在汇总优惠与热度…</p>}
       {data && (
         <>
-          <PickEvaluation />
+          <details className="method-note">
+            <summary>查看全站历史选券效果</summary>
+            <PickEvaluation />
+          </details>
           <details className="method-note">
             <summary>评分口径与天气背景</summary>
+            <p>
+              优先券最多展示当前频道500张；全部券不受此上限限制。分数为选题参考，并非爆款概率。
+            </p>
             <p>{data.model?.note}</p>
             {data.context ? (
               <>
@@ -297,7 +334,7 @@ export function CouponPicks({ brandId }: { brandId: string }) {
             )}
           </details>
           <p className="result-meta">
-            共 {data.total} 张 ·{" "}
+            {channel === "food" ? "美食" : "游玩"} · 共 {data.total} 张 ·{" "}
             {new Date(
               data.calculated_at ?? data.generated_at,
             ).toLocaleTimeString("zh-CN")}{" "}

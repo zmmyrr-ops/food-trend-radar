@@ -288,3 +288,58 @@ test("AI brief converts every money field exactly once and preserves unknown pri
   assert.equal(JSON.stringify(brief).includes("price_fen"), false);
   assert.equal(JSON.stringify(brief).includes("no_verified_change"), false);
 });
+
+test("AI频道筛选先于候选截取，报告独立保存，旧综合报告不混入", async () => {
+  const db = await openDatabase();
+  try {
+    const food = { ...pick(), category: "其他餐饮", brand_name: "美食样例" };
+    const play = {
+      ...pick(),
+      category: "亲子乐园",
+      brand_id: "play",
+      brand_name: "游玩样例",
+    };
+    let got = "";
+    const service = await createAiRecommendations(db, {
+      credentialPath: "unused",
+      getKey: async () => "test",
+      readPicks: async () => [food, play],
+      readContext: async () => null,
+      fetcher: async (_url, options) => {
+        const body = JSON.parse(String(options?.body));
+        got = body.messages[1].content;
+        return new Response(
+          JSON.stringify({
+            choices: [
+              {
+                finish_reason: "stop",
+                message: {
+                  content: JSON.stringify({
+                    ...reply,
+                    recommendations: [
+                      { ...reply.recommendations[0], id: "C01" },
+                    ],
+                  }),
+                },
+              },
+            ],
+          }),
+        );
+      },
+    });
+    await db.query("INSERT INTO ai_coupon_reports(payload) VALUES($1)", [
+      JSON.stringify({ summary: "旧综合报告" }),
+    ]);
+    assert.equal((await service.status("leisure")).report, null);
+    await service.start("leisure");
+    assert.equal(await service.start("food"), "busy");
+    await service.drain();
+    assert.ok(got.includes("游玩样例"));
+    assert.ok(!got.includes("美食样例"));
+    assert.equal((await service.status("leisure")).report?.channel, "leisure");
+    assert.equal((await service.status("food")).report, null);
+    assert.equal((await service.status()).report?.summary, "旧综合报告");
+  } finally {
+    await db.close();
+  }
+});
