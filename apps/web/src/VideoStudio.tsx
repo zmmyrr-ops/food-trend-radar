@@ -575,7 +575,7 @@ export function VideoStudio() {
                       ? `${production.percent}%`
                       : project.state === "edited"
                         ? "待更新"
-                        : "已暂停"}
+                        : "待重试"}
                   </span>
                 </div>
                 {production?.percent != null && (

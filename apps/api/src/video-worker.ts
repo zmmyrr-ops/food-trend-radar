@@ -22,6 +22,7 @@ import { createObjectStorage } from "./object-storage.js";
 import { selectBfReferences } from "./video-bf-references.js";
 import { contentPolicy } from "./video-content-policy.js";
 import { FACE_SCREEN_VERSION, faceScreenPrompt } from "./video-face-policy.js";
+import { extractVideoFrame } from "./video-frame.js";
 import {
   assDocument,
   musicBed,
@@ -235,22 +236,14 @@ async function frames(a: Asset) {
   for (let i = 0; i < 6; i++) {
     const path = join(base, `${a.id}-${i}.jpg`);
     const t = a.kind === "image" ? 0 : (a.duration ?? 1) * ((i + 0.5) / 6);
-    await command(ffmpeg, [
-      "-v",
-      "error",
-      "-threads",
-      "1",
-      "-ss",
-      String(t),
-      "-i",
+    await extractVideoFrame(
+      (args) => command(ffmpeg, args),
       a.path!,
-      "-frames:v",
-      "1",
-      "-vf",
-      "scale=640:960:force_original_aspect_ratio=decrease",
-      "-y",
       path,
-    ]);
+      t,
+      a.duration,
+      "scale=640:960:force_original_aspect_ratio=decrease",
+    );
     paths.push(path);
   }
   return paths;
@@ -318,26 +311,18 @@ async function inspectNetworkFaces(a: Asset) {
     ];
     for (const [i, t] of times.slice(offset, offset + 12).entries()) {
       const path = join(base, `${a.id}-face-${offset + i}.jpg`);
-      await command(ffmpeg, [
-        "-v",
-        "error",
-        "-threads",
-        "1",
-        "-ss",
-        String(Math.max(0, t)),
-        "-i",
+      const frame = await extractVideoFrame(
+        (args) => command(ffmpeg, args),
         a.path!,
-        "-frames:v",
-        "1",
-        "-vf",
-        "scale=960:960:force_original_aspect_ratio=decrease",
-        "-y",
         path,
-      ]);
+        t,
+        a.duration,
+        "scale=960:960:force_original_aspect_ratio=decrease",
+      );
       content.push({
         type: "image_url",
         image_url: {
-          url: `data:image/jpeg;base64,${(await readFile(path)).toString("base64")}`,
+          url: `data:image/jpeg;base64,${frame.toString("base64")}`,
         },
       });
       await unlink(path);
@@ -592,22 +577,14 @@ async function prepareProduction() {
       const a = project.assets.find((a) => a.id === c.asset_id)!;
       await fetchMedia(a);
       const image = join(base, `${a.id}-script.jpg`);
-      await command(ffmpeg, [
-        "-v",
-        "error",
-        "-threads",
-        "1",
-        "-ss",
-        String(a.kind === "image" ? 0 : c.start + c.duration / 2),
-        "-i",
+      await extractVideoFrame(
+        (args) => command(ffmpeg, args),
         a.path!,
-        "-frames:v",
-        "1",
-        "-vf",
-        "scale=640:960:force_original_aspect_ratio=decrease",
-        "-y",
         image,
-      ]);
+        a.kind === "image" ? 0 : c.start + c.duration / 2,
+        a.duration,
+        "scale=640:960:force_original_aspect_ratio=decrease",
+      );
       content.push({
         type: "image_url",
         image_url: {
