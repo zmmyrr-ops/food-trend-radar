@@ -454,17 +454,13 @@ export function VideoStudio() {
                 </button>
                 <button
                   type="button"
-                  disabled={locked || !plan.length}
+                  disabled={locked || !captionText}
                   onClick={() => {
-                    if (
-                      plan.some((c) => c.caption.trim()) &&
-                      !window.confirm("重新生成会替换当前字幕，是否继续？")
-                    )
-                      return;
-                    void action("captions");
+                    setPlan((v) => v.map((c) => ({ ...c, caption: "" })));
+                    setDirty(true);
                   }}
                 >
-                  AI生成连贯字幕
+                  清空全部字幕
                 </button>
                 <span role="status" className="studio-hint">
                   {copyStatus ||
