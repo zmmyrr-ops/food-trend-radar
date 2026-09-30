@@ -5,7 +5,15 @@ export async function openDatabase(directory?: string) {
   if (directory) await mkdir(directory, { recursive: true });
   // Avoid recycling WAL files through filesystem renames in the local WASM store.
   const db = new PGlite(directory, {
-    startParams: [...PGlite.defaultStartParams, "-c", "wal_recycle=off"],
+    startParams: [
+      ...PGlite.defaultStartParams,
+      "-c",
+      "wal_recycle=off",
+      "-c",
+      "max_wal_size=256MB",
+      "-c",
+      "min_wal_size=80MB",
+    ],
   });
   await db.exec(
     "CREATE TABLE IF NOT EXISTS schema_migrations(version int primary key, applied_at timestamptz not null default now());",

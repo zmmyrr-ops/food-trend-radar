@@ -11,6 +11,7 @@ import { couponAcceptance } from "./coupon-acceptance.js";
 import { createCouponMedia } from "./coupon-media.js";
 import { createPickReader, registerCouponPicks } from "./coupon-picks.js";
 import { createCouponPool } from "./coupon-pool.js";
+import { createDatabaseMaintenance } from "./database-maintenance.js";
 import { createEnvironment } from "./environment.js";
 import { createObjectStorage } from "./object-storage.js";
 import { createOpportunityBoard } from "./opportunity-board.js";
@@ -31,6 +32,7 @@ export async function createOperations(
     work,
   ) => work(),
 ) {
+  const maintainDatabase = createDatabaseMaintenance(db);
   const brandIndex = await createBrandIndex(db);
   const environment = await createEnvironment(db);
   const alerts = await createAlerts(db);
@@ -126,6 +128,7 @@ export async function createOperations(
   let lastReports = 0;
   let lastScores = 0;
   async function performTick() {
+    await observe("database.maintenance", maintainDatabase);
     await observe("alerts.health", () => alerts.health());
     if (Date.now() - lastScores >= 5 * 60000) {
       await observe("scores.refresh", () => scores.refresh());

@@ -76,6 +76,17 @@ test("品牌增量更新原子替换、失败保留旧池、到期移出、禁�
   try {
     await pool.refreshBrand(brand);
     assert.equal((await pool.read()).length, 510);
+    const tuples = () =>
+      db.query(
+        "SELECT product_id,ctid::text FROM coupon_pool_candidates ORDER BY product_id",
+      );
+    const beforeRefresh = (await tuples()).rows;
+    await pool.refreshBrand(brand);
+    assert.deepEqual(
+      (await tuples()).rows,
+      beforeRefresh,
+      "unchanged refresh must not rewrite PostgreSQL tuples",
+    );
     const selected = selectPicks(await pool.read(), {
       view: "recommended",
       order: "priority",

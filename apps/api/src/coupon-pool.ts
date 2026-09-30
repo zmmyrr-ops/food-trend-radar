@@ -128,13 +128,14 @@ export async function createCouponPool(
           )
         ).rows[0];
         if (current?.run_id !== baseline?.run_id) return;
-        await tx.query("DELETE FROM coupon_pool_candidates WHERE brand_id=$1", [
-          brand,
-        ]);
+        await tx.query(
+          "DELETE FROM coupon_pool_candidates WHERE brand_id=$1 AND NOT (product_id = ANY($2::text[]))",
+          [brand, baseline ? items.map((x) => x.product_id) : []],
+        );
         if (baseline)
           for (const x of items) {
             await tx.query(
-              "INSERT INTO coupon_pool_candidates(brand_id,product_id,run_id,observed_at,sale_end,payload) VALUES($1,$2,$3,$4,$5,$6)",
+              "INSERT INTO coupon_pool_candidates(brand_id,product_id,run_id,observed_at,sale_end,payload) VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(brand_id,product_id) DO UPDATE SET run_id=excluded.run_id,observed_at=excluded.observed_at,sale_end=excluded.sale_end,payload=excluded.payload,calculated_at=now() WHERE (coupon_pool_candidates.run_id,coupon_pool_candidates.observed_at,coupon_pool_candidates.sale_end,coupon_pool_candidates.payload) IS DISTINCT FROM (excluded.run_id,excluded.observed_at,excluded.sale_end,excluded.payload)",
               [
                 brand,
                 x.product_id,
