@@ -12,7 +12,6 @@ import {
 import { basename, dirname, join, relative, resolve } from "node:path";
 import OSS from "ali-oss";
 import { z } from "zod";
-import { mediaFormat } from "./media-format.js";
 
 const configSchema = z.object({
   bucket: z.string().min(3),
@@ -192,23 +191,15 @@ export async function createObjectStorage(
     const result = await client.get(r.key, {
       headers: { Range: "bytes=0-63" },
     });
-    const bytes = Buffer.from(result.content).subarray(0, 64);
-    const format = mediaFormat(bytes);
-    if (
-      (result.res.headers as Record<string, string>)["content-type"] !==
-      format.type
-    ) {
-      await client.copy(r.key, r.key, {
-        headers: {
-          "x-oss-metadata-directive": "REPLACE",
-          "Content-Type": format.type,
-          "x-oss-meta-sha256": r.sha256,
-          "Cache-Control": "private, no-store",
-        },
-      });
-    }
-    return bytes;
+    return Buffer.from(result.content).subarray(0, 64);
   }
+  async function mediaStream(path: string, range?: string) {
+    const r = await receipt(path);
+    if (!r) return null;
+    if (r.bucket !== config.bucket) throw Error("存储桶不匹配");
+    return client.getStream(r.key, { headers: range ? { Range: range } : {} });
+  }
+
   async function remove(path: string) {
     const r = await receipt(path);
     if (r) {
@@ -238,6 +229,7 @@ export async function createObjectStorage(
     restore,
     signedUrl,
     readPrefix,
+    mediaStream,
     remove,
     removeDirectory,
     receipt,

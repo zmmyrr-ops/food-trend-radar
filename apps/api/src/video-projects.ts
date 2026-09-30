@@ -11,6 +11,7 @@ import {
   writeFile,
 } from "node:fs/promises";
 import { join } from "node:path";
+import { pipeline } from "node:stream/promises";
 import { fileURLToPath } from "node:url";
 import type { PGlite } from "@electric-sql/pglite";
 import { inChannel } from "@radar/contracts";
@@ -235,6 +236,46 @@ export async function createVideoProjects(db: PGlite, root: string) {
       if (storage) await storage.remove(path);
       else await rm(path, { force: true });
       await db.query("DELETE FROM video_uploads WHERE id=$1", [id]);
+    }
+    return true;
+  }
+  async function streamStored(
+    req: Request,
+    res: Response,
+    path: string,
+    filename: string,
+    type: string,
+    inline: boolean,
+  ) {
+    if (req.headers.range && !/^bytes=\d*-\d*$/.test(req.headers.range)) {
+      res.status(416).end();
+      return true;
+    }
+    let remote;
+    try {
+      remote = await storage?.mediaStream(path, req.headers.range);
+    } catch (e: any) {
+      if (e.status === 416 || e.statusCode === 416) {
+        res.status(416).end();
+        return true;
+      }
+      throw e;
+    }
+    if (!remote) return false;
+    const headers = remote.res.headers as Record<string, string>;
+    res.status(remote.res.status === 206 ? 206 : 200);
+    res.setHeader("Content-Type", type);
+    res.setHeader(
+      "Content-Disposition",
+      `${inline ? "inline" : "attachment"}; filename="${filename}"`,
+    );
+    res.setHeader("Accept-Ranges", "bytes");
+    for (const key of ["content-length", "content-range"])
+      if (headers[key]) res.setHeader(key, headers[key]);
+    try {
+      await pipeline(remote.stream, res);
+    } catch {
+      res.destroy();
     }
     return true;
   }
@@ -642,14 +683,9 @@ export async function createVideoProjects(db: PGlite, root: string) {
         }
         const format = mediaFormat(bytes);
         const filename = `material-${a.id}.${format.extension}`;
-        const remote = await storage?.signedUrl(a.path, filename, {
-          inline: true,
-        });
         res.setHeader("Cache-Control", "private, no-store");
-        if (remote) {
-          res.redirect(302, remote);
+        if (await streamStored(req, res, a.path, filename, format.type, true))
           return;
-        }
         await stat(a.path);
         res.setHeader("Content-Disposition", `inline; filename="${filename}"`);
         res.type(format.type).sendFile(a.path);
@@ -664,16 +700,18 @@ export async function createVideoProjects(db: PGlite, root: string) {
         const rev = kind === "preview" ? p.preview_revision : p.export_revision;
         if (rev !== p.revision) throw Error("请先生成当前版本");
         const file = join(root, p.id, `${kind}-${rev}.mp4`);
-        const remote = await storage?.signedUrl(
-          file,
-          `food-${p.seconds}s-${kind}.mp4`,
-          { inline: req.query.inline === "1" },
-        );
         res.setHeader("Cache-Control", "private, no-store");
-        if (remote) {
-          res.redirect(302, remote);
+        if (
+          await streamStored(
+            req,
+            res,
+            file,
+            `food-${p.seconds}s-${kind}.mp4`,
+            "video/mp4",
+            req.query.inline === "1",
+          )
+        )
           return;
-        }
         await stat(file);
         if (req.query.inline === "1") res.type("mp4").sendFile(file);
         else res.download(file, `food-${p.seconds}s-${kind}.mp4`);
