@@ -10,9 +10,9 @@
     "preview": "vite preview --host 127.0.0.1"
   },
   "dependencies": {
+    "@radar/contracts": "*",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "@radar/contracts": "*"
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
     "@types/node": "^26.6.2",

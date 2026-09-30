@@ -27,6 +27,7 @@ import { CouponRadar } from "./CouponRadar";
 import { Sources } from "./Sources";
 import { VideoLibrary } from "./VideoLibrary";
 import { VideoStudio } from "./VideoStudio";
+import { VisitPlans } from "./VisitPlans";
 import "./style.css";
 import "./design.css";
 
@@ -95,6 +96,7 @@ function App() {
       return [
         "radar",
         "videos",
+        "plans",
         "brands",
         "events",
         "import",
@@ -102,7 +104,9 @@ function App() {
         "admission",
       ]
         .filter(
-          (v) => account.role === "admin" || ["radar", "videos"].includes(v),
+          (v) =>
+            account.role === "admin" ||
+            ["radar", "videos", "plans"].includes(v),
         )
         .includes(value)
         ? value
@@ -309,6 +313,15 @@ function App() {
             </div>
           </button>
           <button
+            aria-pressed={tab === "plans"}
+            onClick={() => navigate("plans")}
+          >
+            <span>行</span>
+            <div>
+              探店计划<small>店铺 · 路线 · 创作</small>
+            </div>
+          </button>
+          <button
             aria-pressed={tab === "videos"}
             onClick={() => navigate("videos")}
           >
@@ -356,9 +369,11 @@ function App() {
             探好店 /{" "}
             {tab === "radar"
               ? `${channelLabel}发现`
-              : tab === "videos"
-                ? "视频作品"
-                : "数据工作台"}
+              : tab === "plans"
+                ? "探店计划"
+                : tab === "videos"
+                  ? "视频作品"
+                  : "数据工作台"}
           </span>
           <div className="channel-switch" aria-label="切换业务频道">
             {(["food", "leisure"] as const).map((c) => (
@@ -380,7 +395,7 @@ function App() {
             })}
           </small>
         </header>
-        {tab !== "radar" && (
+        {tab !== "radar" && tab !== "plans" && (
           <section className="page-heading">
             <div>
               <p className="eyebrow">
@@ -438,6 +453,7 @@ function App() {
         )}
         {!loaded && !error && <p role="status">正在加载工作台…</p>}
         {tab === "radar" && <CouponRadar key={channel} channel={channel} />}
+        {tab === "plans" && <VisitPlans />}
         {tab === "videos" && (
           <VideoLibrary key={channel} channel={channel} brands={brands} />
         )}

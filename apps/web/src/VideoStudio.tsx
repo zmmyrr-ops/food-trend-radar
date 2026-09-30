@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { appFetch, appUrl } from "./app-url";
 import { CouponMedia } from "./CouponMedia";
 import { StudioCoupon } from "./StudioCoupon";
+import { visitRequest } from "./VisitPlans";
 
 type Asset = {
   id: string;
@@ -64,7 +65,21 @@ async function request(path: string, method = "GET", body?: unknown) {
 export function VideoStudio() {
   const query = new URLSearchParams(location.search),
     brand = query.get("brand_id") || "",
-    product = query.get("product_id") || "";
+    product = query.get("product_id") || "",
+    visitStore = query.get("visit_store_id") || "";
+  const [visit, setVisit] = useState<{
+    name: string;
+    plan_name: string;
+    plan_id: string;
+    date: string;
+    address: string;
+  } | null>(null);
+  useEffect(() => {
+    if (visitStore)
+      void visitRequest(`visit-stores/${visitStore}`)
+        .then((d) => setVisit(d.item))
+        .catch(() => setVisit(null));
+  }, [visitStore]);
   const [resources, setResources] = useState<Resource[]>([]),
     [selected, setSelected] = useState<string[]>([]),
     [uploads, setUploads] = useState<{ id: string; name: string }[]>([]),
@@ -124,11 +139,13 @@ export function VideoStudio() {
     void (async () => {
       try {
         const [m, h, c] = await Promise.all([
+          brand && product
+            ? request(
+                `/api/v3/coupon-media?${new URLSearchParams({ brand_id: brand, product_id: product })}`,
+              )
+            : Promise.resolve({ job: null }),
           request(
-            `/api/v3/coupon-media?${new URLSearchParams({ brand_id: brand, product_id: product })}`,
-          ),
-          request(
-            `${prefix}?${new URLSearchParams({ brand_id: brand, product_id: product })}`,
+            `${prefix}?${new URLSearchParams(visitStore ? { visit_store_id: visitStore } : brand ? { brand_id: brand, product_id: product } : {})}`,
           ),
           request(`${prefix}/config`),
         ]);
@@ -151,7 +168,7 @@ export function VideoStudio() {
     return () => {
       cancelled = true;
     };
-  }, [brand, product]);
+  }, [brand, product, visitStore]);
   useEffect(() => {
     if (!active(project)) return;
     let cancelled = false,
@@ -203,7 +220,9 @@ export function VideoStudio() {
   }
   async function create() {
     await perform(async () => {
+      if (!visitStore) throw Error("请从探店计划选择店铺制作视频");
       const d = await request(prefix, "POST", {
+        visit_store_id: visitStore,
         brand_id: brand,
         product_id: product,
         seconds,
@@ -258,10 +277,10 @@ export function VideoStudio() {
           <nav className="studio-navigation" aria-label="视频制作导航">
             <a
               href={appUrl(
-                `/?channel=${new URLSearchParams(location.search).get("channel") === "leisure" ? "leisure" : "food"}`,
+                `/?tab=plans${visit?.plan_id ? `&plan=${visit.plan_id}` : ""}`,
               )}
             >
-              ← 返回选券工作台
+              ← 返回探店计划
             </a>
             <a
               href={appUrl(
@@ -279,6 +298,19 @@ export function VideoStudio() {
         </div>
         <span>12–20秒 · 竖屏 · 实况混剪 · 素材不足时自动缩短，最低12秒</span>
       </header>
+      {visit && (
+        <section className="studio-coupon">
+          <strong>
+            {visit.plan_name} · {visit.date}
+          </strong>
+          <h2>{visit.name}</h2>
+          <p>{visit.address}</p>
+          <a href={appUrl(`/?tab=plans&plan=${visit.plan_id}`)}>返回探店计划</a>
+        </section>
+      )}
+      {!visitStore && !project && (
+        <p role="alert">请先在探店计划中添加店铺，再开始制作。</p>
+      )}
       {brand && product && <StudioCoupon brandId={brand} productId={product} />}
       <p className="muted">
         网络参考素材会排除真人正面出镜；无法确认时不入选。自己上传的素材不受此限制。旧项目需重新分析后生成。
@@ -371,6 +403,7 @@ export function VideoStudio() {
             disabled={
               busy ||
               !configured ||
+              !visitStore ||
               !rights ||
               selected.length + uploads.length < 4 ||
               selected.length + uploads.length > 40

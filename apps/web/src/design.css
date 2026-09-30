@@ -1,13 +1,13 @@
 /* 探好店 — an editorial workspace for local creators. */
 :root {
   color-scheme: light;
-  --brand-ink: #183f36;
-  --brand-orange: #ee6543;
-  --brand-paper: #f6f5f0;
+  --brand-ink: #1e293b;
+  --brand-orange: #64748b;
+  --brand-paper: #f7f9fc;
 }
 body {
   background: var(--brand-paper);
-  color: #233c35;
+  color: #1e293b;
   font-family:
     -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei",
     sans-serif;
@@ -30,31 +30,31 @@ a {
 button:focus-visible,
 a:focus-visible,
 summary:focus-visible {
-  outline: 3px solid #ed9d69;
+  outline: 3px solid #94a3b8;
   outline-offset: 3px;
 }
 .app-shell {
-  --ink: #243b34;
-  --muted: #7b837d;
-  --accent: #d95b3a;
-  --accent-soft: #fff0e8;
-  --line: #e4e6df;
+  --ink: #1e293b;
+  --muted: #64748b;
+  --accent: #64748b;
+  --accent-soft: #f7f9fc;
+  --line: #e9eef5;
   background: var(--brand-paper);
 }
 .app-shell.channel-leisure {
-  --accent: #257d72;
-  --accent-soft: #e6f3ef;
+  --accent: #334155;
+  --accent-soft: #e9eef5;
 }
 .app-sidebar {
-  background: #183f36;
+  background: #1e293b;
   border: 0;
-  color: #ecf2e9;
+  color: #e9eef5;
   width: 220px;
   padding: 32px 16px 22px;
 }
 .app-logo {
   gap: 9px;
-  color: #fff9ee;
+  color: #f7f9fc;
   margin: 0 4px 44px;
 }
 .app-logo > span {
@@ -70,13 +70,13 @@ summary:focus-visible {
   flex-shrink: 0;
 }
 .app-logo small {
-  color: #bbcbc0;
+  color: #d8e1ee;
   font-size: 10px;
   letter-spacing: 0.3px;
   margin-top: 5px;
 }
 .sidebar-label {
-  color: #88a99d;
+  color: #94a3b8;
   font-size: 10px;
   letter-spacing: 0.8px;
 }
@@ -84,17 +84,17 @@ summary:focus-visible {
   gap: 7px;
 }
 .primary-nav button {
-  color: #c1d2c7;
+  color: #d8e1ee;
   border-radius: 10px;
   padding: 12px 11px;
 }
 .primary-nav button:hover {
-  background: #244c41;
+  background: #1e293b;
 }
 .primary-nav button > span {
-  border: 1px solid #517164;
+  border: 1px solid #334155;
   background: transparent;
-  color: #e2ece0;
+  color: #e9eef5;
   width: 29px;
   height: 29px;
   border-radius: 8px;
@@ -109,39 +109,39 @@ summary:focus-visible {
   margin-top: 4px;
 }
 .primary-nav button[aria-pressed="true"] {
-  background: #edf1e5;
-  color: #193e35;
+  background: #e9eef5;
+  color: #1e293b;
 }
 .primary-nav button[aria-pressed="true"] > span {
-  background: #f06442;
+  background: #64748b;
   color: white;
-  border-color: #f06442;
+  border-color: #64748b;
 }
 .sidebar-tools {
-  color: #b7cbbd;
-  border-color: #3e5f50;
+  color: #d8e1ee;
+  border-color: #334155;
 }
 .sidebar-tools button {
-  color: #b7cbbd;
+  color: #d8e1ee;
 }
 .sidebar-foot {
-  color: #c9d6ca;
+  color: #d8e1ee;
   font-size: 11px;
 }
 .sidebar-foot small {
-  color: #93ad9f;
+  color: #94a3b8;
   font-size: 10px;
 }
 .location-dot {
-  background: #ed9169;
+  background: #94a3b8;
 }
 .app-content {
   margin-left: 220px;
   padding: 0 28px 28px;
 }
 .account-bar {
-  background: #f6f5f0;
-  border-bottom: 1px solid #e4e6df;
+  background: #f7f9fc;
+  border-bottom: 1px solid #e9eef5;
   min-height: 42px;
   font-size: 11px;
   gap: 12px;
@@ -149,14 +149,14 @@ summary:focus-visible {
 }
 .account-bar button {
   background: transparent;
-  color: #52685b;
-  border: 1px solid #d8ded4;
+  color: #334155;
+  border: 1px solid #d8e1ee;
   border-radius: 6px;
   padding: 5px 10px;
   font-size: 11px;
 }
 .account-bar small {
-  color: #8a958a;
+  color: #64748b;
   font-size: 10px;
 }
 .app-shell .app-topbar {
@@ -164,12 +164,12 @@ summary:focus-visible {
   border-bottom: 0;
 }
 .app-topbar > span {
-  color: #435c4f;
+  color: #334155;
   font-size: 13px;
   font-weight: 600;
 }
 .app-shell .channel-switch {
-  background: #e9ece3;
+  background: #e9eef5;
   border-radius: 8px;
   padding: 3px;
 }
@@ -179,12 +179,12 @@ summary:focus-visible {
   padding: 5px 16px;
 }
 .channel-context {
-  border-bottom: 1px solid #e0e4da;
+  border-bottom: 1px solid #e9eef5;
   padding-bottom: 10px;
 }
 .app-shell .workspace-tabs {
   gap: 20px;
-  border-bottom: 1px solid #dfe3d9;
+  border-bottom: 1px solid #e9eef5;
   margin: 8px 0 18px;
 }
 .app-shell .workspace-tabs button {
@@ -203,7 +203,7 @@ summary:focus-visible {
   font-size: 11px;
   padding: 7px 11px;
   background: #fff;
-  border-color: #e3e5dd;
+  border-color: #e9eef5;
 }
 .app-shell .category-rail button[aria-pressed="true"] {
   background: var(--brand-ink);
@@ -226,7 +226,7 @@ summary:focus-visible {
   padding: 12px 14px;
   gap: 12px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px #273c2403;
+  box-shadow: 0 2px 4px #1e293b03;
 }
 .app-shell .picks-panel > .actions label {
   gap: 6px;
@@ -235,7 +235,7 @@ summary:focus-visible {
 .app-shell input,
 .app-shell select,
 .app-shell textarea {
-  border-color: #dfe4db;
+  border-color: #e9eef5;
   border-radius: 7px;
   font-size: 12px;
 }
@@ -248,14 +248,14 @@ summary:focus-visible {
   gap: 14px;
 }
 .app-shell .coupon-card {
-  border-color: #e0e5dc;
+  border-color: #e9eef5;
   border-radius: 12px;
   padding: 14px;
-  box-shadow: 0 3px 12px #183f3604;
+  box-shadow: 0 3px 12px #1e293b04;
 }
 .app-shell .coupon-card:hover {
-  border-color: #b4c4b6;
-  box-shadow: 0 6px 18px #183f360a;
+  border-color: #d8e1ee;
+  box-shadow: 0 6px 18px #1e293b0a;
 }
 .app-shell .coupon-card .brand-line {
   display: flex;
@@ -271,9 +271,9 @@ summary:focus-visible {
   flex: 0 0 32px;
   margin: 0;
   border-radius: 9px;
-  background: #eff1e9;
-  border: 1px solid #edf0e9;
-  color: #708270;
+  background: #e9eef5;
+  border: 1px solid #e9eef5;
+  color: #64748b;
   font-size: 10px;
 }
 .brand-icon img {
@@ -287,16 +287,16 @@ summary:focus-visible {
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 11px;
-  color: #24483b;
+  color: #1e293b;
   font-weight: 650;
 }
 .coupon-kind {
   margin-left: auto;
   flex-shrink: 0;
   font-size: 9px;
-  color: #849083;
+  color: #64748b;
   padding: 3px 5px;
-  background: #f2f5ed;
+  background: #f7f9fc;
   border-radius: 4px;
 }
 .app-shell .coupon-card h3 {
@@ -304,7 +304,7 @@ summary:focus-visible {
   line-height: 20px;
   min-height: 40px;
   height: 40px;
-  color: #253a31;
+  color: #1e293b;
   font-weight: 650;
   margin: 0 0 7px;
 }
@@ -312,15 +312,15 @@ summary:focus-visible {
   height: 19px;
   min-height: 19px;
   margin: 0 0 10px;
-  color: #7b897c;
+  color: #64748b;
 }
 .app-shell .coupon-card .coupon-store-summary p {
   font-size: 10px;
   line-height: 18px;
 }
 .app-shell .coupon-card .coupon-stats {
-  background: #f5f6f0;
-  border: 1px solid #edf0e6;
+  background: #f7f9fc;
+  border: 1px solid #e9eef5;
   border-radius: 8px;
   padding: 10px 8px;
   gap: 7px;
@@ -328,11 +328,11 @@ summary:focus-visible {
 }
 .app-shell .coupon-card .coupon-stats span {
   font-size: 9px;
-  color: #879182;
+  color: #64748b;
 }
 .app-shell .coupon-card .coupon-stats strong {
   font-size: clamp(12px, 5.8cqi, 18px);
-  color: #21483d;
+  color: #1e293b;
   letter-spacing: -0.5px;
 }
 .app-shell .coupon-card .coupon-stats > div:first-child strong {
@@ -341,11 +341,11 @@ summary:focus-visible {
 }
 .app-shell .coupon-card .coupon-stats em {
   font-size: 8px;
-  color: #8e998c;
+  color: #94a3b8;
 }
 .app-shell .coupon-card .availability-note {
   font-size: 10px;
-  color: #927257;
+  color: #64748b;
   line-height: 17px;
   margin: 5px 0;
 }
@@ -367,17 +367,17 @@ summary:focus-visible {
 .app-shell .coupon-card .card-evidence {
   padding: 9px 0;
   margin-top: 5px;
-  border-top: 1px dashed #e0e6dc;
+  border-top: 1px dashed #e9eef5;
   font-size: 11px;
 }
 .app-shell .coupon-card .card-evidence summary {
-  color: #6f7f70;
+  color: #64748b;
   font-size: 10px;
 }
 .app-shell .coupon-card > .studio-entry {
-  background: #edf2e7;
-  color: #254a3b;
-  border: 1px solid #e3eadc;
+  background: #e9eef5;
+  color: #1e293b;
+  border: 1px solid #e9eef5;
   border-radius: 7px;
   font-size: 11px;
   text-align: center;
@@ -386,8 +386,8 @@ summary:focus-visible {
   font-weight: 650;
 }
 .app-shell .coupon-card > .studio-entry:hover {
-  background: #1d4539;
-  border-color: #1d4539;
+  background: #1e293b;
+  border-color: #1e293b;
   color: #fff;
 }
 .brand-workspace {
@@ -402,7 +402,7 @@ summary:focus-visible {
 .brand-directory.panel {
   padding: 20px;
   background: #fff;
-  border: 1px solid #e0e5db;
+  border: 1px solid #e9eef5;
   border-radius: 14px;
 }
 .brand-directory .section-title {
@@ -417,11 +417,11 @@ summary:focus-visible {
 }
 .brand-directory .section-title span {
   font-size: 11px;
-  color: #84907f;
+  color: #64748b;
   margin-right: auto;
 }
 .brand-directory .section-title button {
-  background: #1e4539;
+  background: #1e293b;
   padding: 8px 12px;
   font-size: 11px;
   border-radius: 7px;
@@ -439,9 +439,9 @@ summary:focus-visible {
   align-items: start;
 }
 .brand-record {
-  border: 1px solid #e4e8df;
+  border: 1px solid #e9eef5;
   border-radius: 10px;
-  background: #fcfdf9;
+  background: #f7f9fc;
   padding: 14px;
   min-width: 0;
 }
@@ -468,11 +468,11 @@ summary:focus-visible {
 }
 .brand-record-heading small {
   font-size: 10px;
-  color: #87937f;
+  color: #64748b;
 }
 .brand-alias {
   font-size: 10px;
-  color: #9aa292;
+  color: #94a3b8;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -482,8 +482,8 @@ summary:focus-visible {
 .brand-record-actions button {
   padding: 5px 9px;
   font-size: 10px;
-  background: #edf2e7;
-  color: #3e614b;
+  background: #e9eef5;
+  color: #334155;
   border: 0;
   border-radius: 5px;
 }
@@ -491,8 +491,8 @@ summary:focus-visible {
   font-size: 11px;
   margin-top: 10px;
   padding-top: 8px;
-  border-top: 1px solid #e6eadd;
-  color: #76886e;
+  border-top: 1px solid #e9eef5;
+  color: #64748b;
 }
 .brand-record-details summary {
   font-size: 10px;
@@ -513,11 +513,11 @@ summary:focus-visible {
   flex-wrap: wrap;
   margin-top: 20px;
   padding-top: 16px;
-  border-top: 1px solid #e9ece3;
+  border-top: 1px solid #e9eef5;
 }
 .brand-pagination > span {
   font-size: 11px;
-  color: #81917a;
+  color: #64748b;
   margin-right: auto;
 }
 .brand-pagination label {
@@ -534,35 +534,35 @@ summary:focus-visible {
 .brand-pagination button {
   font-size: 10px;
   padding: 7px 10px;
-  background: #eff3e9;
-  color: #3d5f49;
+  background: #e9eef5;
+  color: #334155;
   border-radius: 6px;
 }
 .brand-pagination button:disabled {
   opacity: 0.35;
 }
 .account-login {
-  background: #183f36;
+  background: #1e293b;
 }
 .account-login form {
-  background: #fcfbf6;
-  border: 1px solid #f6efdd;
+  background: #f7f9fc;
+  border: 1px solid #e9eef5;
   border-radius: 20px;
-  box-shadow: 0 20px 70px #061d1450;
+  box-shadow: 0 20px 70px #1e293b50;
 }
 .account-logo {
   display: flex;
   align-items: center;
   gap: 9px;
   font-size: 26px;
-  color: #183f36;
+  color: #1e293b;
 }
 .account-logo img {
   width: 45px;
   height: 45px;
 }
 .account-slogan {
-  color: #81917a;
+  color: #64748b;
   font-size: 12px;
 }
 .account-login h1 {
@@ -570,7 +570,7 @@ summary:focus-visible {
   letter-spacing: -0.6px;
 }
 .account-login button {
-  background: #ed6745;
+  background: #64748b;
   border-radius: 8px;
 }
 .video-studio {
@@ -579,17 +579,17 @@ summary:focus-visible {
 }
 .video-studio .studio-header {
   padding: 0 0 20px;
-  border-bottom: 1px solid #dde4d7;
+  border-bottom: 1px solid #e9eef5;
 }
 .video-studio .studio-header h1 {
   font-size: 27px;
-  color: #193f33;
+  color: #1e293b;
 }
 .video-studio .studio-setup,
 .video-studio .studio-panel,
 .studio-coupon,
 .video-studio > .coupon-media {
-  border-color: #e0e6d9;
+  border-color: #e9eef5;
   border-radius: 12px;
   background: #fff;
 }
@@ -691,4 +691,374 @@ summary:focus-visible {
 }
 .app-shell .heading-index span {
   display: none;
+}
+
+/* Fresh white / slate / blue theme */
+:root {
+  --brand-ink: #3478ee;
+  --brand-orange: #3478ee;
+  --brand-paper: #f7f9fc;
+}
+.app-shell,
+.app-shell.channel-leisure {
+  --ink: #1e293b;
+  --muted: #64748b;
+  --accent: #3478ee;
+  --accent-soft: #edf4ff;
+  --line: #e6ecf3;
+}
+.app-sidebar {
+  background: #fff;
+  color: #334155;
+  border-right: 1px solid #e8eef5;
+}
+.app-logo,
+.app-logo > span {
+  color: #172b4d;
+}
+.app-logo small,
+.sidebar-label,
+.sidebar-foot,
+.sidebar-foot small,
+.sidebar-tools,
+.sidebar-tools button {
+  color: #7c8b9f;
+}
+.sidebar-tools {
+  border-color: #e8eef5;
+}
+.primary-nav button {
+  color: #53657d;
+}
+.primary-nav button > span {
+  color: #7c90ab;
+  border-color: #dee6f1;
+}
+.primary-nav button:hover {
+  background: #f6f9ff;
+}
+.primary-nav button[aria-pressed="true"] {
+  background: #edf4ff;
+  color: #2b6fdf;
+}
+.primary-nav button[aria-pressed="true"] > span {
+  background: #3478ee;
+  border-color: #3478ee;
+}
+.account-bar {
+  background: #fff;
+}
+.account-login {
+  background: #f3f7fd;
+}
+.account-login form {
+  background: #fff;
+  box-shadow: 0 16px 60px #315a8510;
+}
+.account-login button,
+.brand-directory .section-title button {
+  background: #3478ee;
+  color: #fff;
+}
+.app-shell .coupon-card .coupon-stats {
+  background: #f7f9fc;
+}
+.app-shell .coupon-card .coupon-stats strong {
+  color: #283b56;
+}
+.app-shell .coupon-card > .studio-entry {
+  background: #edf4ff;
+  color: #2c70de;
+  border-color: #dce9ff;
+  width: 100%;
+}
+.app-shell .coupon-card > .studio-entry:hover {
+  background: #3478ee;
+  color: #fff;
+  border-color: #3478ee;
+}
+.coupon-store-summary a {
+  color: inherit;
+  display: inline;
+  text-decoration: none;
+}
+.coupon-store-summary a svg {
+  vertical-align: -2px;
+  color: #4388ed;
+}
+.visit-workspace h1 {
+  font-size: 25px;
+  margin: 0 0 8px;
+}
+.visit-workspace p {
+  color: #76869a;
+  font-size: 13px;
+}
+.visit-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.visit-title h2 {
+  font-size: 18px;
+  margin: 0 0 6px;
+}
+.visit-title span {
+  color: #8090a4;
+  font-size: 12px;
+}
+.visit-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.visit-actions button,
+.visit-title button,
+.visit-form button {
+  background: #edf4ff;
+  color: #3478ee;
+  padding: 7px 12px;
+  border-radius: 7px;
+  border: 0;
+  font-size: 12px;
+}
+.visit-primary,
+button.visit-primary {
+  display: inline-block;
+  background: #3478ee;
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-decoration: none;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.visit-layout {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 20px;
+}
+.visit-plan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.visit-plan-list button {
+  background: white;
+  color: #34445d;
+  border: 1px solid #e5ecf5;
+  border-radius: 10px;
+  text-align: left;
+  padding: 14px;
+}
+.visit-plan-list button[aria-pressed="true"] {
+  border-color: #7ba8f2;
+  background: #eff5ff;
+}
+.visit-plan-list strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.visit-plan-list span {
+  font-size: 11px;
+  color: #8291a6;
+}
+.visit-detail {
+  background: white;
+  border: 1px solid #e5ecf5;
+  padding: 20px;
+  border-radius: 14px;
+  min-width: 0;
+}
+.visit-map {
+  height: 330px;
+  width: 100%;
+  border-radius: 10px;
+  background: #edf2f8;
+  z-index: 0;
+}
+.visit-pin span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  color: white;
+  background: #3478ee;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px #23456840;
+  font-size: 12px;
+}
+.visit-store {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid #edf1f6;
+}
+.visit-store > div {
+  flex: 1;
+  min-width: 0;
+}
+.visit-store h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+.visit-store a:not(.visit-primary) {
+  color: #73849c;
+  font-size: 12px;
+}
+.visit-number {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #edf4ff;
+  color: #3478ee;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+.visit-empty {
+  padding: 45px;
+  text-align: center;
+  background: #fff;
+  border: 1px dashed #dbe5f2;
+  border-radius: 12px;
+  color: #8796ab;
+}
+.visit-form {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+.visit-form label,
+.visit-modal label,
+.visit-plan-choice label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 12px;
+}
+.visit-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #14284555;
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.visit-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  width: min(620px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  color: #263b55;
+  box-shadow: 0 20px 80px #15284330;
+}
+.visit-modal input,
+.visit-modal select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dde6f1;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+.visit-modal label {
+  margin-bottom: 12px;
+}
+.visit-modal .visit-map {
+  height: 270px;
+}
+.visit-modal .muted,
+.muted {
+  font-size: 11px;
+  color: #8796a8;
+}
+.place-result {
+  display: block;
+  width: 100%;
+  background: #f1f6ff;
+  color: #375c8b;
+  text-align: left;
+  margin: 6px 0;
+  padding: 8px;
+  font-size: 12px;
+}
+.visit-plan-choice {
+  background: #f7f9fc;
+  padding: 12px;
+  border-radius: 9px;
+  margin-bottom: 16px;
+}
+.visit-store svg {
+  vertical-align: middle;
+}
+@media (max-width: 800px) {
+  .visit-layout {
+    grid-template-columns: 1fr;
+  }
+  .visit-plan-list {
+    flex-direction: row;
+    overflow: auto;
+  }
+  .visit-plan-list button {
+    min-width: 160px;
+  }
+  .visit-store {
+    flex-wrap: wrap;
+  }
+  .visit-store > .visit-primary {
+    margin-left: 40px;
+  }
+  .visit-title,
+  .visit-form {
+    flex-wrap: wrap;
+  }
+  .visit-map {
+    height: 270px;
+  }
+}
+
+.shop-location-link {
+  padding: 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+  border: 0 !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  text-align: left;
+  cursor: pointer;
+  display: inline;
+}
+.shop-location-link svg {
+  color: #3478ee;
+  vertical-align: -2px;
+}
+.visit-pin {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #3478ee;
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px #23456840;
+  font-size: 12px;
 }

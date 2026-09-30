@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { appFetch } from "./app-url";
+import { ShopLocation } from "./ShopMap";
 
 type Result = {
   context: { status: string };
@@ -78,7 +79,16 @@ export function CouponStoreSummary({
             }
           >
             <span className="coupon-store-label">关联店家：</span>
-            {data ? data.source_shop?.name || "平台未返回店名" : "读取中…"}
+            {data?.source_shop ? (
+              <ShopLocation
+                name={data.source_shop.name}
+                address={data.source_shop.address}
+              />
+            ) : data ? (
+              "平台未返回店名"
+            ) : (
+              "读取中…"
+            )}
           </p>
         </>
       )}

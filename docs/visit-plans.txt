@@ -1,0 +1,28 @@
+探店计划（2026-09-30）
+
+主要流程：券 → 加入计划（具体门店，非券）→ 选择探店日期 → 确认高德位置 → 计划店铺地图 → 调整顺序/驾车路线 → 店铺视频工作室 → 我的视频。
+自定义店铺填写名称、详细地址和地图位置；无关联券的店铺可上传自己的素材制作视频。
+计划按账号隔离，所有修改、店铺详情及视频绑定均在服务端验证所有权。
+店铺按计划内规范化名称+地址去重；同一店铺可以加入不同日期的计划。
+删除计划/移除店铺采用软删除，已有视频及其归属快照保留。我的视频可重新关联当前计划中的店铺。
+新视频必须提供 visit_store_id；服务端验证品牌/券和计划店铺一致；历史视频仍可播放、编辑、导出。
+地图坐标为高德 GCJ-02。搜索结果需确认，不能将不确定的搜索结果自动视为平台券的适用门店。
+
+地图配置：data/secrets/maps.json（git 忽略，权限600），字段 provider=amap、key=Web端JS API Key、secret=securityJsCode。
+GET /api/v3/maps/config 仅返回 Web Key。安全密钥由登录态保护的 /_AMapService 代理注入，白名单固定高德服务路径，单账号每分钟40次。
+前端通过官方 JS API 2.0 按需加载地图。位置搜索由用户触发、客户端缓存，最少间隔1.5秒；不参与品牌循环采集。
+高德代理要求 /_AMapService 为一级路由。反向代理应保留该路径，交给同一后端处理。
+没有新增第三方包依赖。计划/店铺表启动时自动建表，增量兼容现有数据。
+
+接口：
+GET/POST /api/v3/visit-plans
+PATCH/DELETE /api/v3/visit-plans/:id
+POST /api/v3/visit-plans/:id/stores
+PATCH/DELETE /api/v3/visit-plans/:id/stores/:store
+PUT /api/v3/visit-plans/:id/order {ids:[全部店铺ID]}
+GET /api/v3/visit-stores/:id
+PATCH /api/v3/video-projects/:id/visit {visit_store_id}
+
+验收：计划增删改，日期与坐标校验，同店去重，全量排序校验，跨账号读写隔离，视频绑定一致性，自定义店铺上传创作，删除计划后保留视频，地图代理密钥不返回客户端。
+官方文档：https://developer.amap.com/api/javascript-api-v2/guide/abc/jscode
+https://developer.amap.com/api/javascript-api-v2/guide/services/autocomplete

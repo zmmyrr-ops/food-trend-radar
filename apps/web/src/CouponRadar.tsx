@@ -156,6 +156,7 @@ export function CouponRadar({ channel }: { channel: Channel }) {
     scoring_status: string;
   } | null>(null);
   useEffect(() => {
+    if (account.role !== "admin") return;
     const refresh = () =>
       void request<typeof environment>("/environment")
         .then(setEnvironment)
@@ -165,7 +166,7 @@ export function CouponRadar({ channel }: { channel: Channel }) {
       if (document.visibilityState === "visible") refresh();
     }, 60000);
     return () => clearInterval(timer);
-  }, []);
+  }, [account.role]);
 
   const refreshSequence = useRef(0);
   useEffect(() => {
@@ -323,16 +324,7 @@ export function CouponRadar({ channel }: { channel: Channel }) {
           <span>
             {scopedBrands.length} 个{channel === "food" ? "美食" : "游玩"}品牌
           </span>
-          <span>
-            上海 ·{" "}
-            {environment?.calendar.name ||
-              (environment?.calendar.kind === "weekend"
-                ? "周末"
-                : environment?.calendar.kind === "workday"
-                  ? "工作日"
-                  : "日历待更新")}
-          </span>
-          {environment?.stale && <span>天气待更新</span>}
+          <span>上海</span>
         </div>
       )}
       {account.role === "admin" && (

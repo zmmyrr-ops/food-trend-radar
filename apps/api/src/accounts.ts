@@ -140,12 +140,12 @@ export async function createAccounts(
       ]);
       res.clearCookie("radar_session", clearCookie).json({ ok: true });
     });
-    app.use(["/api", "/v1"], authenticate);
+    app.use(["/api", "/v1", "/_AMapService"], authenticate);
     app.use(["/api", "/v1"], (req, res, next) => {
       if (res.locals.account.role === "admin") return next();
       const route = req.originalUrl.split("?")[0];
       const personal =
-        /^\/api\/v3\/(coupon-media|video-projects|video-assets)(\/|$)/.test(
+        /^\/api\/v3\/(coupon-media|video-projects|video-assets|visit-plans|visit-stores|maps)(\/|$)/.test(
           route,
         );
       const readOnly =

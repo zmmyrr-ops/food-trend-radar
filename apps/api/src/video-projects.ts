@@ -23,6 +23,7 @@ import {
   type VideoProject,
   validatePlan,
 } from "./video-types.js";
+import { createVisitPlans, ownedVisitStore } from "./visit-plans.js";
 
 const uuid = z.string().uuid();
 const running = (s: string) =>
@@ -35,6 +36,7 @@ const running = (s: string) =>
     "rendering_export",
   ].includes(s);
 export async function createVideoProjects(db: PGlite, root: string) {
+  const visits = await createVisitPlans(db);
   await mkdir(root, { recursive: true, mode: 0o700 });
   await mkdir(join(root, "uploads"), { recursive: true, mode: 0o700 });
   await db.exec(
@@ -219,6 +221,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
     return true;
   }
   function register(app: Express) {
+    visits.register(app);
     // Apply before every detail, download, render, deletion and asset endpoint.
     app.use(
       ["/api/v3/video-projects/:id", "/api/v3/video-assets/:id"],
@@ -241,6 +244,26 @@ export async function createVideoProjects(db: PGlite, root: string) {
         }
         next();
       },
+    );
+    app.patch(
+      "/api/v3/video-projects/:id/visit",
+      wrap(async (req, res) => {
+        const visit = await ownedVisitStore(
+          db,
+          uuid.parse(req.body.visit_store_id),
+          ownerOf(req),
+        );
+        if (!visit) throw Error("计划店铺不存在");
+        const p = await get(uuid.parse(req.params.id));
+        if (running(p.state)) throw Error("请等待制作结束再关联");
+        p.visit_store_id = visit.id;
+        p.visit_plan_id = visit.plan_id;
+        p.visit_store_name = visit.name;
+        p.visit_plan_name = visit.plan_name;
+        p.visit_date = visit.date;
+        await save(p);
+        res.json({ project: visible(p) });
+      }),
     );
     app.delete(
       "/api/v3/video-assets/:id",
@@ -309,7 +332,8 @@ export async function createVideoProjects(db: PGlite, root: string) {
       wrap(async (req, res) => {
         if (
           req.query.brand_id === undefined &&
-          req.query.product_id === undefined
+          req.query.product_id === undefined &&
+          req.query.visit_store_id === undefined
         ) {
           const rows = await db.query<{ payload: VideoProject }>(
             "SELECT payload FROM video_projects WHERE owner_id=$1 ORDER BY payload->>'updated_at' DESC LIMIT 50",
@@ -318,6 +342,11 @@ export async function createVideoProjects(db: PGlite, root: string) {
           res.json({
             items: rows.rows.map(({ payload: p }) => ({
               id: p.id,
+              visit_store_id: p.visit_store_id,
+              visit_plan_id: p.visit_plan_id,
+              visit_store_name: p.visit_store_name,
+              visit_plan_name: p.visit_plan_name,
+              visit_date: p.visit_date,
               brand_id: p.brand_id,
               product_id: p.product_id,
               brand_name: p.brand_name,
@@ -338,6 +367,18 @@ export async function createVideoProjects(db: PGlite, root: string) {
           });
           return;
         }
+        if (req.query.visit_store_id) {
+          const store = uuid.parse(req.query.visit_store_id);
+          res.json({
+            items: (
+              await db.query<{ payload: VideoProject }>(
+                "SELECT payload FROM video_projects WHERE owner_id=$1 AND payload->>'visit_store_id'=$2 ORDER BY payload->>'created_at' DESC",
+                [ownerOf(req), store],
+              )
+            ).rows.map((x) => visible(x.payload)),
+          });
+          return;
+        }
         const brand = uuid.parse(req.query.brand_id),
           product = z.string().max(80).parse(req.query.product_id);
         res.json({
@@ -355,8 +396,9 @@ export async function createVideoProjects(db: PGlite, root: string) {
       wrap(async (req, res) => {
         const v = z
           .object({
-            brand_id: uuid,
-            product_id: z.string().min(1).max(80),
+            brand_id: z.union([uuid, z.literal("")]),
+            visit_store_id: uuid,
+            product_id: z.string().max(80),
             seconds: z.number().int().min(12).max(20),
             resource_ids: z.array(z.string().max(200)).max(40),
             upload_ids: z.array(uuid).max(40).default([]),
@@ -364,10 +406,17 @@ export async function createVideoProjects(db: PGlite, root: string) {
             rights_confirmed: z.literal(true),
           })
           .parse(req.body);
+        const visit = await ownedVisitStore(db, v.visit_store_id, ownerOf(req));
+        if (!visit) throw Error("请从我的探店计划选择店铺制作视频");
+        if (
+          (visit.brand_id || "") !== v.brand_id ||
+          (visit.product_id || "") !== v.product_id
+        )
+          throw Error("券与计划店铺不匹配");
         const previous = (
           await db.query<{ payload: VideoProject }>(
-            `SELECT payload FROM video_projects WHERE owner_id=$3 AND payload->>'brand_id'=$1 AND payload->>'product_id'=$2 AND payload->>'state' IN ('queued','preparing','analyzing','planning','rendering_preview','rendering_export') LIMIT 1`,
-            [v.brand_id, v.product_id, ownerOf(req)],
+            `SELECT payload FROM video_projects WHERE owner_id=$3 AND payload->>'brand_id'=$1 AND payload->>'product_id'=$2 AND payload->>'visit_store_id'=$4 AND payload->>'state' IN ('queued','preparing','analyzing','planning','rendering_preview','rendering_export') LIMIT 1`,
+            [v.brand_id, v.product_id, ownerOf(req), v.visit_store_id],
           )
         ).rows[0];
         if (previous) {
@@ -380,20 +429,22 @@ export async function createVideoProjects(db: PGlite, root: string) {
           )
         ).rows[0].n;
         if (total >= 50) throw Error("项目数量达到50，请先删除旧项目释放空间");
-        const coupon = (
-          await db.query<{ name: string; payload: any }>(
-            `SELECT b.name,i.payload FROM coupon_items i JOIN brands b ON b.id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 AND b.active AND i.payload->>'identity'='name_match' ORDER BY i.observed_at DESC LIMIT 1`,
-            [v.brand_id, v.product_id],
-          )
-        ).rows[0];
-        if (!coupon) throw Error("未找到启用品牌下的优惠券");
-        const resources =
-          (
-            await db.query<{ resources: any[] }>(
-              `SELECT resources FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2 AND owner_id=$3`,
-              [v.brand_id, v.product_id, ownerOf(req)],
-            )
-          ).rows[0]?.resources ?? [];
+        const coupon = !v.brand_id
+          ? { name: visit.name, payload: { name: visit.name } }
+          : ((
+              await db.query<{ name: string; payload: any }>(
+                `SELECT b.name,i.payload FROM coupon_items i JOIN brands b ON b.id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 AND i.payload->>'identity'='name_match' ORDER BY i.observed_at DESC LIMIT 1`,
+                [v.brand_id, v.product_id],
+              )
+            ).rows[0] ?? { name: visit.name, payload: { name: visit.name } });
+        const resources = !v.brand_id
+          ? []
+          : ((
+              await db.query<{ resources: any[] }>(
+                `SELECT resources FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2 AND owner_id=$3`,
+                [v.brand_id, v.product_id, ownerOf(req)],
+              )
+            ).rows[0]?.resources ?? []);
         const assets: Asset[] = [];
         for (const id of new Set(v.resource_ids)) {
           const r = resources.find((r) => r.id === id);
@@ -444,6 +495,11 @@ export async function createVideoProjects(db: PGlite, root: string) {
         const now = new Date().toISOString(),
           p: VideoProject = {
             id: randomUUID(),
+            visit_store_id: visit.id,
+            visit_plan_id: visit.plan_id,
+            visit_store_name: visit.name,
+            visit_plan_name: visit.plan_name,
+            visit_date: visit.date,
             brand_id: v.brand_id,
             product_id: v.product_id,
             brand_name: coupon.name,

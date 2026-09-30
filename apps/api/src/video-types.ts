@@ -31,6 +31,11 @@ export type Asset = {
   hash?: string;
 };
 export type VideoProject = {
+  visit_store_id?: string;
+  visit_plan_id?: string;
+  visit_store_name?: string;
+  visit_plan_name?: string;
+  visit_date?: string;
   id: string;
   brand_id: string;
   product_id: string;

@@ -6,6 +6,7 @@ import { BrandIcon } from "./BrandIcon";
 import { CouponStoreSummary } from "./CouponStoreSummary";
 import { CouponUsageRules } from "./CouponUsageRules";
 import { PickEvaluation } from "./PickEvaluation";
+import { AddToVisitPlan } from "./VisitPlans";
 
 type Pick = {
   brand_index: {
@@ -302,45 +303,43 @@ export function CouponPicks({
             <summary>查看全站历史选券效果</summary>
             <PickEvaluation />
           </details>
-          <details className="method-note">
-            <summary>评分口径与天气背景</summary>
-            <p>
-              优先券最多展示当前频道500张；全部券不受此上限限制。分数为选题参考，并非爆款概率。
-            </p>
-            <p>{data.model?.note}</p>
-            {data.context ? (
-              <>
-                <p>
-                  {data.context.outlook.stale
-                    ? "天气记录缺失或过期，不参与判断。"
-                    : "上海天气背景（不是销售增益预测）："}
-                </p>
-                {data.context.outlook.days.map((d) => (
-                  <p key={d.date}>
-                    {d.date} ·{" "}
-                    {d.name ??
-                      (d.kind === "weekend"
-                        ? "周末"
-                        : d.kind === "unknown"
-                          ? "日历未知"
-                          : "工作日")}{" "}
-                    · {d.temperature_min ?? "未知"}—
-                    {d.temperature_max ?? "未知"}℃ · 最高小时降雨概率{" "}
-                    {d.rain_probability_max ?? "未知"}%
+          {isAdmin && (
+            <details className="method-note">
+              <summary>评分口径与天气背景</summary>
+              <p>
+                优先券最多展示当前频道500张；全部券不受此上限限制。分数为选题参考，并非爆款概率。
+              </p>
+              <p>{data.model?.note}</p>
+              {data.context ? (
+                <>
+                  <p>
+                    {data.context.outlook.stale
+                      ? "天气记录缺失或过期，不参与判断。"
+                      : "上海天气背景（不是销售增益预测）："}
                   </p>
-                ))}
-                <p>{data.context.source}</p>
-              </>
-            ) : (
-              <p>环境数据暂不可用；不影响已有优惠和销量指标排序。</p>
-            )}
-          </details>
+                  {data.context.outlook.days.map((d) => (
+                    <p key={d.date}>
+                      {d.date} ·{" "}
+                      {d.name ??
+                        (d.kind === "weekend"
+                          ? "周末"
+                          : d.kind === "unknown"
+                            ? "日历未知"
+                            : "工作日")}{" "}
+                      · {d.temperature_min ?? "未知"}—
+                      {d.temperature_max ?? "未知"}℃ · 最高小时降雨概率{" "}
+                      {d.rain_probability_max ?? "未知"}%
+                    </p>
+                  ))}
+                  <p>{data.context.source}</p>
+                </>
+              ) : (
+                <p>环境数据暂不可用；不影响已有优惠和销量指标排序。</p>
+              )}
+            </details>
+          )}
           <p className="result-meta">
-            {channel === "food" ? "美食" : "游玩"} · 共 {data.total} 张 ·{" "}
-            {new Date(
-              data.calculated_at ?? data.generated_at,
-            ).toLocaleTimeString("zh-CN")}{" "}
-            更新 · 仅展示36小时内快照
+            {channel === "food" ? "美食" : "游玩"} · 共 {data.total} 张
           </p>
           {!data.total && (
             <p>
@@ -486,14 +485,7 @@ export function CouponPicks({
                   productId={x.product_id}
                   brandId={x.brand_id}
                 />
-                <a
-                  className="studio-entry"
-                  href={appUrl(
-                    `/?studio=1&channel=${channel}&brand_id=${encodeURIComponent(x.brand_id)}&product_id=${encodeURIComponent(x.product_id)}`,
-                  )}
-                >
-                  制作探店视频 →
-                </a>
+                <AddToVisitPlan brandId={x.brand_id} productId={x.product_id} />
               </article>
             ))}
           </div>
