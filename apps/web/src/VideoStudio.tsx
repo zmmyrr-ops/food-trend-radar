@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { appFetch, appUrl } from "./app-url";
 import { CouponMedia } from "./CouponMedia";
+import { StudioCoupon } from "./StudioCoupon";
 
 type Asset = {
   id: string;
@@ -278,6 +279,7 @@ export function VideoStudio() {
         </div>
         <span>12–20秒 · 竖屏 · 实况混剪 · 素材不足时自动缩短，最低12秒</span>
       </header>
+      {brand && product && <StudioCoupon brandId={brand} productId={product} />}
       <p className="muted">
         网络参考素材会排除真人正面出镜；无法确认时不入选。自己上传的素材不受此限制。旧项目需重新分析后生成。
       </p>

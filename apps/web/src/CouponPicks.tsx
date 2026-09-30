@@ -2,6 +2,7 @@ import { type Channel, categories, inChannel } from "@radar/contracts";
 import { useEffect, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
+import { BrandIcon } from "./BrandIcon";
 import { CouponStoreSummary } from "./CouponStoreSummary";
 import { CouponUsageRules } from "./CouponUsageRules";
 import { PickEvaluation } from "./PickEvaluation";
@@ -103,7 +104,12 @@ export function CouponPicks({
 }: {
   brandId: string;
   channel: Channel;
-  brands: { id: string; name: string; category: string }[];
+  brands: {
+    id: string;
+    name: string;
+    category: string;
+    icon_url?: string | null;
+  }[];
   onBrandChange: (id: string) => void;
 }) {
   const isAdmin = useAccount().role === "admin";
@@ -348,6 +354,10 @@ export function CouponPicks({
                 key={`${x.brand_id}:${x.product_id}`}
               >
                 <small className="brand-line">
+                  <BrandIcon
+                    name={x.brand_name}
+                    url={brands.find((b) => b.id === x.brand_id)?.icon_url}
+                  />
                   {x.brand_name} ·{" "}
                   {x.kind === "price_drop"
                     ? "票面降价"

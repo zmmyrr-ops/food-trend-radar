@@ -2487,3 +2487,82 @@ footer {
   overflow-y: auto;
   padding-right: 4px;
 }
+
+.brand-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border-radius: 7px;
+  background: #edf3f0;
+  color: #467366;
+  vertical-align: middle;
+  overflow: hidden;
+  font-size: 10px;
+  font-weight: 600;
+  margin-right: 7px;
+}
+.brand-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: white;
+}
+.studio-coupon {
+  border: 1px solid #dde6e1;
+  border-radius: 12px;
+  background: white;
+  padding: 16px 18px;
+  margin: 16px 0;
+}
+.studio-coupon-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.studio-coupon-heading .brand-icon {
+  width: 44px;
+  height: 44px;
+  flex-basis: 44px;
+  font-size: 14px;
+}
+.studio-coupon-heading h2 {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 3px 0;
+}
+.studio-coupon-heading small {
+  font-size: 12px;
+  color: #6b7b74;
+}
+.studio-coupon-price {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.studio-coupon-price strong {
+  font-size: 22px;
+  color: #d96036;
+}
+.studio-coupon-price span,
+.studio-coupon > .muted {
+  font-size: 12px;
+}
+.studio-coupon .card-evidence {
+  margin-top: 10px;
+  padding-top: 10px;
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  .studio-coupon-heading {
+    flex-wrap: wrap;
+  }
+  .studio-coupon-price {
+    margin-left: 0;
+    width: 100%;
+  }
+}

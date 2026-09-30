@@ -5,6 +5,7 @@ import { leisureCategories } from "@radar/contracts";
 import type { Express } from "express";
 import { z } from "zod";
 import { brandCoverage } from "./brand-coverage.js";
+import { cacheBrandIcon, platformImage } from "./brand-icons.js";
 import { readConditionComparison } from "./coupon-condition-comparison.js";
 import { assessCoupon } from "./coupon-evidence.js";
 import { createRuleWorker, initRules, RULES_ENDPOINT } from "./coupon-rules.js";
@@ -98,6 +99,8 @@ export type Coupon = {
   price_min_fen: number | null;
   price_max_fen: number | null;
   origin_price_fen: number | null;
+  brand_icon_url?: string | null;
+  brand_icon_kind?: string;
   platform_brand_id: string;
   platform_brand_name: string;
   poi_id: string;
@@ -130,6 +133,14 @@ export function normalizeCoupon(
     price_min_fen: money(price.min),
     price_max_fen: money(price.max),
     origin_price_fen: money(p.origin_price) || null,
+    brand_icon_url:
+      platformImage(b.brand_logo) ||
+      platformImage(b.logo_url) ||
+      platformImage(poi.poi_image),
+    brand_icon_kind:
+      platformImage(b.brand_logo) || platformImage(b.logo_url)
+        ? "brand_logo"
+        : "shop_icon",
     platform_brand_id: str(b.brand_id),
     platform_brand_name: str(b.brand_name),
     poi_id: str(poi.poi_id),
@@ -254,6 +265,8 @@ export async function initCoupons(db: PGlite) {
     CREATE TABLE IF NOT EXISTS coupon_pages(run_id uuid, brand_id uuid, cursor text, next_cursor text, has_more boolean, digest text, observed_at timestamptz DEFAULT now(), PRIMARY KEY(run_id,brand_id,cursor));
     CREATE TABLE IF NOT EXISTS coupon_items(run_id uuid, brand_id uuid, product_id text, payload jsonb NOT NULL, observed_at timestamptz DEFAULT now(), PRIMARY KEY(run_id,brand_id,product_id));
     CREATE TABLE IF NOT EXISTS coupon_identity_refreshes(brand_id uuid,query_signature text,run_id uuid NOT NULL,created_at timestamptz NOT NULL DEFAULT now(),PRIMARY KEY(brand_id,query_signature));
+    ALTER TABLE brands ADD COLUMN IF NOT EXISTS icon_url text;
+    CREATE TABLE IF NOT EXISTS brand_icons(brand_id uuid PRIMARY KEY REFERENCES brands(id),source_url text NOT NULL,kind text NOT NULL,mime text NOT NULL,content text NOT NULL,updated_at timestamptz NOT NULL DEFAULT now());
     CREATE TABLE IF NOT EXISTS coupon_baselines(brand_id uuid PRIMARY KEY, run_id uuid NOT NULL);
     CREATE TABLE IF NOT EXISTS coupon_diffs(run_id uuid, brand_id uuid, product_id text, kind text, old_payload jsonb, new_payload jsonb, observed_at timestamptz DEFAULT now(), PRIMARY KEY(run_id,brand_id,product_id));
     ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS query_signature text;
@@ -299,6 +312,7 @@ export function createCoupons(
     maxBaselineAgeMs?: number;
   } = {},
 ) {
+  const iconAttempts = new Map<string, number>();
   const querySignature = (
     name: string,
     aliases: string[],
@@ -741,6 +755,35 @@ export function createCoupons(
         const products = page.product_list.map((p) =>
           normalizeCoupon(p, [t.name, ...t.aliases]),
         );
+        const icon = products.find(
+          (p) => p.identity === "name_match" && p.brand_icon_url,
+        );
+        if (
+          icon &&
+          opts.credentialPath &&
+          !opts.fetchPage &&
+          Date.now() - (iconAttempts.get(t.brand_id) || 0) > 86400000
+        ) {
+          const cached = await db.query(
+            "SELECT 1 FROM brand_icons WHERE brand_id=$1 AND updated_at>now()-interval '7 days'",
+            [t.brand_id],
+          );
+          if (!cached.rows.length) {
+            iconAttempts.set(t.brand_id, Date.now());
+            try {
+              await gate.run(() =>
+                cacheBrandIcon(
+                  db,
+                  t.brand_id,
+                  icon.brand_icon_url!,
+                  icon.brand_icon_kind || "shop_icon",
+                ),
+              );
+            } catch {
+              /* An unavailable image must not fail coupon collection. */
+            }
+          }
+        }
         const digest = hash(products.map((p) => p.product_id).sort());
         const repeat = (
           await db.query<{ digest: string }>(
@@ -947,6 +990,38 @@ export function createCoupons(
     }
   }
   function register(app: Express) {
+    app.get("/api/v3/brands/:id/icon", async (req, res) => {
+      const id = z.uuid().parse(req.params.id);
+      const item = (
+        await db.query<{ mime: string; content: string }>(
+          "SELECT mime,content FROM brand_icons WHERE brand_id=$1",
+          [id],
+        )
+      ).rows[0];
+      if (!item) return res.sendStatus(404);
+      res.setHeader("Content-Type", item.mime);
+      res.setHeader("X-Content-Type-Options", "nosniff");
+      res.setHeader("Cache-Control", "private, max-age=86400");
+      res.send(Buffer.from(item.content, "base64"));
+    });
+    app.get("/api/v3/coupons/:id/summary", async (req, res) => {
+      const id = z.string().regex(/^\d+$/).parse(req.params.id);
+      const brand = z.uuid().parse(req.query.brand_id);
+      const item = (
+        await db.query(
+          `SELECT b.name AS brand_name,b.icon_url,i.payload->>'name' AS title,
+        i.payload->'price_min_fen' AS price_fen,i.payload->'origin_price_fen' AS origin_price_fen,
+        i.payload->>'poi_name' AS shop_name,i.payload->>'address' AS address,i.payload->>'sale_end' AS sale_end
+        FROM coupon_items i JOIN brands b ON b.id=i.brand_id
+        WHERE i.brand_id=$1 AND i.product_id=$2 AND i.payload->>'identity'='name_match'
+        ORDER BY i.observed_at DESC LIMIT 1`,
+          [brand, id],
+        )
+      ).rows[0];
+      if (!item)
+        return res.status(404).json({ error: { message: "暂无该券信息" } });
+      res.json({ item });
+    });
     app.get("/api/v3/coupons/:id/condition-comparison", async (req, res) => {
       const id = z.string().regex(/^\d+$/).parse(req.params.id);
       const brand = z.uuid().parse(req.query.brand_id);
