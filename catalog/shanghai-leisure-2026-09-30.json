@@ -1,0 +1,1000 @@
+{
+  "batch": "shanghai-leisure-2026-09-30",
+  "policy": "上海有来源的游玩品牌/独立场馆监测名单；启用只表示查询，不表示有券、热度高或验证营业。无券不进入券池；现有餐饮不删除。",
+  "brands": [
+    {
+      "name": "上海海昌海洋公园",
+      "category": "动物海洋馆",
+      "aliases": ["海昌海洋公园"],
+      "active": true,
+      "keywords": ["上海海昌海洋公园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海海昌海洋公园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "浦东新区银飞路166号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530054+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        },
+        {
+          "source_title": "抖音选品广场上海关键词首屏验证",
+          "url": "https://eos.douyin.com/livesite/commission/goods/list",
+          "source_name": "抖音生活服务选品广场",
+          "location": "上海城市筛选310000",
+          "position": "品牌关键词首屏12条，非完整扫描",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:09:03.030Z",
+          "research_status": "directory_checked",
+          "note": "请求成功，平台返回匹配的品牌名称；首屏有12个商品，不代表全部券已采集或适用条件已核实。"
+        }
+      ]
+    },
+    {
+      "name": "上海动物园",
+      "category": "动物海洋馆",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海动物园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海动物园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "长宁区虹桥路2381号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530217+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海海洋水族馆",
+      "category": "动物海洋馆",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海海洋水族馆"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海海洋水族馆上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "浦东新区陆家嘴环路1388号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530220+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "长风海洋世界",
+      "category": "动物海洋馆",
+      "aliases": ["上海长风海洋世界"],
+      "active": true,
+      "keywords": ["长风海洋世界"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "长风海洋世界上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "普陀区大渡河路189号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530222+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海欢乐谷",
+      "category": "主题乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海欢乐谷"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海欢乐谷上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "松江区佘山林湖路888号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530224+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海蓝精灵乐园",
+      "category": "主题乐园",
+      "aliases": ["蓝精灵乐园"],
+      "active": true,
+      "keywords": ["上海蓝精灵乐园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海蓝精灵乐园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "松江区辰花路5088号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530225+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海影视乐园",
+      "category": "主题乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海影视乐园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海影视乐园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "松江区北松公路4915号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530227+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海杜莎夫人蜡像馆",
+      "category": "展馆观光",
+      "aliases": ["杜莎夫人蜡像馆"],
+      "active": true,
+      "keywords": ["上海杜莎夫人蜡像馆"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海杜莎夫人蜡像馆上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "黄浦区南京西路2-68号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530229+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海玻璃博物馆",
+      "category": "展馆观光",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海玻璃博物馆"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海玻璃博物馆上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "宝山区长江西路685号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530231+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "中国航海博物馆",
+      "category": "展馆观光",
+      "aliases": ["上海中国航海博物馆"],
+      "active": true,
+      "keywords": ["中国航海博物馆"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "中国航海博物馆上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "浦东新区申港大道197号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530236+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海之巅观光厅",
+      "category": "展馆观光",
+      "aliases": ["上海中心上海之巅观光厅"],
+      "active": true,
+      "keywords": ["上海之巅观光厅"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海之巅观光厅上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "浦东新区银城中路501号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530238+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "金茂大厦88层观光厅",
+      "category": "展馆观光",
+      "aliases": ["金茂大厦观光厅"],
+      "active": true,
+      "keywords": ["金茂大厦88层观光厅"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "金茂大厦88层观光厅上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "浦东新区世纪大道88号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530239+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海豫园",
+      "category": "户外景区",
+      "aliases": ["豫园"],
+      "active": true,
+      "keywords": ["上海豫园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海豫园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "黄浦区豫园老街279号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530241+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海大观园",
+      "category": "户外景区",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海大观园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海大观园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "青浦区青商路701号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530243+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "东方绿舟",
+      "category": "户外景区",
+      "aliases": ["上海东方绿舟"],
+      "active": true,
+      "keywords": ["东方绿舟"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "东方绿舟上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "青浦区沪青平公路6888号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530244+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "金山城市沙滩",
+      "category": "户外景区",
+      "aliases": ["金山城市沙滩景区"],
+      "active": true,
+      "keywords": ["金山城市沙滩"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "金山城市沙滩上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "金山区沪杭公路7555号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530246+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "碧海金沙",
+      "category": "户外景区",
+      "aliases": ["碧海金沙景区"],
+      "active": true,
+      "keywords": ["碧海金沙"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "碧海金沙上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "奉贤区海涵路6号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530247+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海鲜花港",
+      "category": "户外景区",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海鲜花港"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海鲜花港上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "浦东新区振东路2号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530249+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "月湖雕塑公园",
+      "category": "户外景区",
+      "aliases": ["上海月湖雕塑公园"],
+      "active": true,
+      "keywords": ["月湖雕塑公园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "月湖雕塑公园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "松江区林荫新路1158号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530250+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海海湾国家森林公园",
+      "category": "户外景区",
+      "aliases": ["海湾国家森林公园"],
+      "active": true,
+      "keywords": ["上海海湾国家森林公园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海海湾国家森林公园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "奉贤区随塘河路1677号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530256+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海辰山植物园",
+      "category": "户外景区",
+      "aliases": ["辰山植物园"],
+      "active": true,
+      "keywords": ["上海辰山植物园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海辰山植物园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "松江区辰花公路3888号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530258+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海东滩湿地公园",
+      "category": "户外景区",
+      "aliases": ["东滩湿地公园"],
+      "active": true,
+      "keywords": ["上海东滩湿地公园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海东滩湿地公园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "崇明区东旺路",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530261+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "长兴岛郊野公园",
+      "category": "户外景区",
+      "aliases": ["上海长兴岛郊野公园"],
+      "active": true,
+      "keywords": ["长兴岛郊野公园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "长兴岛郊野公园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "崇明区秋柑路666号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530262+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海薰衣草公园",
+      "category": "户外景区",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海薰衣草公园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海薰衣草公园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "浦东新区申迪东路399弄187号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530264+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "花开海上生态园",
+      "category": "户外景区",
+      "aliases": ["上海花开海上生态园"],
+      "active": true,
+      "keywords": ["花开海上生态园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "花开海上生态园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "金山区朱泾镇待泾村秀泾6060号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530266+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海古猗园",
+      "category": "户外景区",
+      "aliases": ["古猗园"],
+      "active": true,
+      "keywords": ["上海古猗园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海古猗园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "嘉定区沪宜公路218号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530267+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海醉白池公园",
+      "category": "户外景区",
+      "aliases": ["醉白池公园"],
+      "active": true,
+      "keywords": ["上海醉白池公园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海醉白池公园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "松江区人民南路64号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530269+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海高家庄生态园",
+      "category": "户外景区",
+      "aliases": ["高家庄生态园"],
+      "active": true,
+      "keywords": ["上海高家庄生态园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+      "evidence": [
+        {
+          "source_title": "上海高家庄生态园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/4ajjq/20191008/0022-28627.html",
+          "location": "崇明区港东公路999号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530274+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海野生动物园",
+      "category": "动物海洋馆",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海野生动物园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/5ajjq/20191008/0022-29706.html",
+      "evidence": [
+        {
+          "source_title": "上海野生动物园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/5ajjq/20191008/0022-29706.html",
+          "location": "浦东新区南六公路178号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530277+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        },
+        {
+          "source_title": "抖音选品广场上海关键词首屏验证",
+          "url": "https://eos.douyin.com/livesite/commission/goods/list",
+          "source_name": "抖音生活服务选品广场",
+          "location": "上海城市筛选310000",
+          "position": "品牌关键词首屏12条，非完整扫描",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:09:03.030Z",
+          "research_status": "directory_checked",
+          "note": "请求成功但首屏没有平台品牌标识，出现景区与其他行程组合产品；身份待核验，不据标题认定为官方门票。"
+        }
+      ]
+    },
+    {
+      "name": "东方明珠",
+      "category": "展馆观光",
+      "aliases": ["东方明珠广播电视塔", "上海东方明珠广播电视塔"],
+      "active": true,
+      "keywords": ["东方明珠"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/5ajjq/20191008/0022-29706.html",
+      "evidence": [
+        {
+          "source_title": "东方明珠上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/5ajjq/20191008/0022-29706.html",
+          "location": "上海浦东陆家嘴",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530278+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "MELAND",
+      "category": "亲子乐园",
+      "aliases": ["MELAND CLUB"],
+      "active": true,
+      "keywords": ["MELAND"],
+      "shanghai_evidence_url": "https://www.shcn.gov.cn/col7344/20231218/1250534.html",
+      "evidence": [
+        {
+          "source_title": "MELAND上海经营线索",
+          "source_name": "上海市长宁区人民政府",
+          "url": "https://www.shcn.gov.cn/col7344/20231218/1250534.html",
+          "location": "上海百联西郊",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "historical_notice",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530280+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        },
+        {
+          "source_title": "抖音选品广场上海关键词首屏验证",
+          "url": "https://eos.douyin.com/livesite/commission/goods/list",
+          "source_name": "抖音生活服务选品广场",
+          "location": "上海城市筛选310000",
+          "position": "品牌关键词首屏12条，非完整扫描",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:09:03.030Z",
+          "research_status": "directory_checked",
+          "note": "请求成功，平台返回匹配的品牌名称；首屏有12个商品，不代表全部券已采集或适用条件已核实。"
+        }
+      ]
+    },
+    {
+      "name": "奈尔宝",
+      "category": "亲子乐园",
+      "aliases": ["奈尔宝家庭中心", "NEOBIO"],
+      "active": true,
+      "keywords": ["奈尔宝"],
+      "shanghai_evidence_url": "https://www.neobiochina.com/",
+      "evidence": [
+        {
+          "source_title": "奈尔宝上海经营线索",
+          "source_name": "奈尔宝官网",
+          "url": "https://www.neobiochina.com/",
+          "location": "上海",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530282+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        },
+        {
+          "source_title": "抖音选品广场上海关键词首屏验证",
+          "url": "https://eos.douyin.com/livesite/commission/goods/list",
+          "source_name": "抖音生活服务选品广场",
+          "location": "上海城市筛选310000",
+          "position": "品牌关键词首屏12条，非完整扫描",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:09:03.030Z",
+          "research_status": "directory_checked",
+          "note": "请求成功，平台返回匹配的品牌名称；首屏有12个商品，不代表全部券已采集或适用条件已核实。"
+        }
+      ]
+    },
+    {
+      "name": "奈尔宝科技馆",
+      "category": "亲子乐园",
+      "aliases": [],
+      "active": true,
+      "keywords": ["奈尔宝科技馆"],
+      "shanghai_evidence_url": "https://www.neobiochina.com/",
+      "evidence": [
+        {
+          "source_title": "奈尔宝科技馆上海经营线索",
+          "source_name": "奈尔宝官网",
+          "url": "https://www.neobiochina.com/",
+          "location": "上海科技馆产品线",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530284+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "MINI MARS",
+      "category": "亲子乐园",
+      "aliases": ["MINI MARS亲子家庭中心", "MINI MARS KIDS CLUB"],
+      "active": true,
+      "keywords": ["MINI MARS"],
+      "shanghai_evidence_url": "https://m.shhqcbd.gov.cn/ywdt/mtjj/11527.html",
+      "evidence": [
+        {
+          "source_title": "MINI MARS上海经营线索",
+          "source_name": "上海虹桥国际中央商务区管理委员会",
+          "url": "https://m.shhqcbd.gov.cn/ywdt/mtjj/11527.html",
+          "location": "上海蟠龙天地",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "historical_notice",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530285+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上美影泡泡米益智乐园",
+      "category": "亲子乐园",
+      "aliases": ["上美影泡泡米", "泡泡米益智乐园"],
+      "active": true,
+      "keywords": ["上美影泡泡米益智乐园"],
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw4411/20250602/0914ab240a6a4cc8be7c6c2f34b13ffc.html",
+      "evidence": [
+        {
+          "source_title": "上美影泡泡米益智乐园上海经营线索",
+          "source_name": "上海市人民政府",
+          "url": "https://www.shanghai.gov.cn/nw4411/20250602/0914ab240a6a4cc8be7c6c2f34b13ffc.html",
+          "location": "上海环球港",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "historical_notice",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530287+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海乐高探索中心",
+      "category": "亲子乐园",
+      "aliases": ["乐高探索中心"],
+      "active": true,
+      "keywords": ["上海乐高探索中心"],
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw17239/20260225/0b8cd36bc8b042c1bbfbd24684defbab.html",
+      "evidence": [
+        {
+          "source_title": "上海乐高探索中心上海经营线索",
+          "source_name": "上海市人民政府",
+          "url": "https://www.shanghai.gov.cn/nw17239/20260225/0b8cd36bc8b042c1bbfbd24684defbab.html",
+          "location": "上海普陀区",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530292+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海乐高乐园",
+      "category": "主题乐园",
+      "aliases": ["上海乐高乐园度假区"],
+      "active": true,
+      "keywords": ["上海乐高乐园"],
+      "shanghai_evidence_url": "https://www.legolandshanghai.cn/",
+      "evidence": [
+        {
+          "source_title": "上海乐高乐园上海经营线索",
+          "source_name": "上海乐高乐园官网",
+          "url": "https://www.legolandshanghai.cn/",
+          "location": "上海金山区",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530293+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海迪士尼度假区",
+      "category": "主题乐园",
+      "aliases": ["上海迪士尼乐园", "上海迪士尼"],
+      "active": true,
+      "keywords": ["上海迪士尼度假区"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/cmsres/60/60195750731c4871a03be0d896b2c7dc/7fdaf71fb7145466340c367268a7c85f.pdf",
+      "evidence": [
+        {
+          "source_title": "上海迪士尼度假区上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/cmsres/60/60195750731c4871a03be0d896b2c7dc/7fdaf71fb7145466340c367268a7c85f.pdf",
+          "location": "上海浦东新区",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530295+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海玛雅海滩水公园",
+      "category": "主题乐园",
+      "aliases": ["玛雅海滩水公园"],
+      "active": true,
+      "keywords": ["上海玛雅海滩水公园"],
+      "shanghai_evidence_url": "https://whlyj.sh.gov.cn/cmsres/60/60195750731c4871a03be0d896b2c7dc/7fdaf71fb7145466340c367268a7c85f.pdf",
+      "evidence": [
+        {
+          "source_title": "上海玛雅海滩水公园上海经营线索",
+          "source_name": "上海市文化和旅游局",
+          "url": "https://whlyj.sh.gov.cn/cmsres/60/60195750731c4871a03be0d896b2c7dc/7fdaf71fb7145466340c367268a7c85f.pdf",
+          "location": "松江区林荫新路1222号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "historical_guide",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530297+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "季节性水乐园，当前开放与可用日期需票券证据确认。"
+        }
+      ]
+    },
+    {
+      "name": "耀雪冰雪世界",
+      "category": "运动玩乐",
+      "aliases": ["上海耀雪冰雪世界", "交通银行耀雪冰雪世界"],
+      "active": true,
+      "keywords": ["耀雪冰雪世界"],
+      "shanghai_evidence_url": "https://ditu.amap.com/place/B0FFL5P95R",
+      "evidence": [
+        {
+          "source_title": "耀雪冰雪世界上海经营线索",
+          "source_name": "高德地图",
+          "url": "https://ditu.amap.com/place/B0FFL5P95R",
+          "location": "浦东新区沪城环路2088弄1-5号",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "current_directory",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530298+00:00",
+          "research_status": "directory_checked",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海千古情",
+      "category": "主题乐园",
+      "aliases": ["上海千古情景区"],
+      "active": true,
+      "keywords": ["上海千古情"],
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw4411/20250623/a5aefc7bbf9a4f608fc233405eb60591.html",
+      "evidence": [
+        {
+          "source_title": "上海千古情上海经营线索",
+          "source_name": "上海市人民政府",
+          "url": "https://www.shanghai.gov.cn/nw4411/20250623/a5aefc7bbf9a4f608fc233405eb60591.html",
+          "location": "上海",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "historical_notice",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530300+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "公开名录确认上海场馆存在；不证明当前营业、票价或抖音团购在售。"
+        }
+      ]
+    },
+    {
+      "name": "上海天文馆",
+      "category": "展馆观光",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海天文馆"],
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw4411/20240611/7d585934fa1e44f39a358ee54bfdfe76.html",
+      "evidence": [
+        {
+          "source_title": "上海天文馆上海经营线索",
+          "source_name": "上海市人民政府",
+          "url": "https://www.shanghai.gov.cn/nw4411/20240611/7d585934fa1e44f39a358ee54bfdfe76.html",
+          "location": "上海",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "historical_notice",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530301+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "实名购票场馆；不证明平台有官方团购，需区分门票和第三方研学服务。"
+        }
+      ]
+    },
+    {
+      "name": "上海自然博物馆",
+      "category": "展馆观光",
+      "aliases": [],
+      "active": true,
+      "keywords": ["上海自然博物馆"],
+      "shanghai_evidence_url": "https://www.shanghai.gov.cn/nw4411/20240611/7d585934fa1e44f39a358ee54bfdfe76.html",
+      "evidence": [
+        {
+          "source_title": "上海自然博物馆上海经营线索",
+          "source_name": "上海市人民政府",
+          "url": "https://www.shanghai.gov.cn/nw4411/20240611/7d585934fa1e44f39a358ee54bfdfe76.html",
+          "location": "上海",
+          "position": "品牌/景区名称及上海地址",
+          "evidence_type": "historical_notice",
+          "published_at": null,
+          "observed_at": "2026-09-30T05:06:11.530303+00:00",
+          "research_status": "historical_evidence_only",
+          "note": "实名购票场馆；不证明平台有官方团购，需区分门票和第三方研学服务。"
+        }
+      ]
+    }
+  ]
+}

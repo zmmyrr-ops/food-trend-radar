@@ -1,4 +1,5 @@
 import type { PGlite } from "@electric-sql/pglite";
+import { categories } from "@radar/contracts";
 import type { Express } from "express";
 import { z } from "zod";
 import { type BrandIndex, indexAvailable } from "./brand-index.js";
@@ -14,7 +15,10 @@ import { applyUsePenalty } from "./use-priority.js";
 type HeatRow = Awaited<
   ReturnType<ReturnType<typeof createSalesHeat>["read"]>
 >[number];
-type Heat = Omit<HeatRow, "sale_end"> & { sale_end?: unknown };
+type Heat = Omit<HeatRow, "sale_end"> & {
+  sale_end?: unknown;
+  category?: string;
+};
 type Signal = Pick<
   BoardCandidate,
   | "brand_id"
@@ -126,6 +130,7 @@ export function combinePicks(
         query_signature: latest.query_signature,
         brand_id: x.brand_id,
         brand_name: x.brand_name,
+        category: x.category ?? "其他餐饮",
         product_id: x.product_id,
         title: x.title,
         watching:
@@ -170,6 +175,7 @@ const inputSchema = z.object({
     .default("priority"),
   search: z.string().max(100).default(""),
   brand_id: z.uuid().optional(),
+  category: z.enum(categories).optional(),
   offset: z.coerce.number().int().min(0).default(0),
   limit: z.coerce.number().int().min(1).max(100).default(20),
 });
@@ -196,6 +202,7 @@ export function selectPicks(
   const scoped = items.filter(
     (x) =>
       (!q.brand_id || x.brand_id === q.brand_id) &&
+      (!q.category || x.category === q.category) &&
       `${x.brand_name} ${x.title}`
         .toLowerCase()
         .includes(q.search.trim().toLowerCase()),

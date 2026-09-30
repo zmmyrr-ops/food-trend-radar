@@ -1,3 +1,4 @@
+import { categories } from "@radar/contracts";
 import { useEffect, useState } from "react";
 import { appFetch, appUrl } from "./app-url";
 import { CouponConditionComparison } from "./CouponConditionComparison";
@@ -99,6 +100,7 @@ const money = (n: number | null) =>
 export function CouponPicks({ brandId }: { brandId: string }) {
   const [view, setView] = useState("recommended"),
     [order, setOrder] = useState("priority"),
+    [category, setCategory] = useState(""),
     [searchInput, setSearchInput] = useState(""),
     [search, setSearch] = useState(""),
     [offset, setOffset] = useState(0);
@@ -124,6 +126,7 @@ export function CouponPicks({ brandId }: { brandId: string }) {
     offset: String(offset),
     limit: "20",
     ...(brandId ? { brand_id: brandId } : {}),
+    ...(category ? { category } : {}),
   }).toString();
   useEffect(() => {
     const controller = new AbortController();
@@ -195,6 +198,23 @@ export function CouponPicks({ brandId }: { brandId: string }) {
         按优惠变化与销量升温排序。分数不是爆款概率，完整权益与适用性请展开核验。
       </p>
 
+      <label>
+        业态分类{" "}
+        <select
+          value={category}
+          onChange={(e) => {
+            setCategory(e.target.value);
+            setOffset(0);
+          }}
+        >
+          <option value="">全部美食与游玩</option>
+          {categories.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
+      </label>
       <div className="actions filter-chips">
         {views.map(([key, label]) => (
           <button

@@ -393,7 +393,7 @@ main > nav button[aria-pressed="true"] {
   box-shadow: 0 4px 14px #173f3512;
 }
 main > nav::after {
-  content: "探好店 · 上海美食优惠";
+  content: "探好店 · 上海吃喝玩乐优惠";
   margin: 24px 18px;
   font-size: 11px;
   color: var(--muted);

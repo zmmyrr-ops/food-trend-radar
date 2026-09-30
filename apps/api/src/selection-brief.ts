@@ -160,7 +160,7 @@ const money = (n: number | null) =>
   n == null ? "未知" : `¥${(n / 100).toFixed(2)}`;
 export function briefMarkdown(b: SelectionBrief) {
   const lines = [
-    "# 上海美食选题简报",
+    "# 上海吃喝玩乐选题简报",
     "",
     `生成时间：${b.generated_at}`,
     `覆盖：${b.coverage.enabled} 个启用品牌，${b.coverage.fresh} 个新鲜基线，${b.coverage.comparable} 个可比较。`,

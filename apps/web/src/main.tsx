@@ -229,7 +229,7 @@ function App() {
         <small>上海 · 本地数据工作台</small>
       </header>
       <section className="intro">
-        <p className="eyebrow">上海美食选题助手</p>
+        <p className="eyebrow">上海吃喝玩乐选题助手</p>
         <h1>
           {tab === "radar"
             ? "今天，哪些券值得拍？"

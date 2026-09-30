@@ -933,3 +933,69 @@ test("循环公平轮询：长品牌每三页让出一次，完整提交后逐�
     await db.close();
   }
 });
+
+test("游玩品牌解除美食限制，保留上海范围和精确查询关键词", () => {
+  for (const category of [
+    "亲子乐园",
+    "主题乐园",
+    "动物海洋馆",
+    "展馆观光",
+    "户外景区",
+    "运动玩乐",
+  ]) {
+    const url = buildSelectionUrl("上海野生动物园", "12", category);
+    assert.equal(url.searchParams.has("first_category"), false);
+    assert.equal(url.searchParams.get("city"), "310000");
+    assert.equal(url.searchParams.get("cursor"), "12");
+    assert.equal(url.searchParams.get("key_word"), "上海野生动物园");
+  }
+  assert.equal(
+    buildSelectionUrl("茶百道", "0", "茶饮果饮").searchParams.get(
+      "first_category",
+    ),
+    "1000000",
+  );
+});
+
+test("游玩分类随任务快照传递，完整采集仍原子提交基线", async () => {
+  const db = await openDatabase();
+  const id = randomUUID();
+  await db.query(
+    "INSERT INTO brands(id,name,name_key,category,shanghai_evidence_url) VALUES($1,'MELAND','meland','亲子乐园','https://example.com')",
+    [id],
+  );
+  const service = createCoupons(db, {
+    gate: gate(),
+    fetchPage: async (name, cursor, category) => {
+      assert.equal(name, "MELAND");
+      assert.equal(category, "亲子乐园");
+      assert.equal(cursor, "0");
+      return {
+        status_code: 0,
+        cursor: 12,
+        has_more: false,
+        product_list: [product(9900, "123", "MELAND")],
+      };
+    },
+  });
+  try {
+    const run = await service.start([id]);
+    await service.drain();
+    const task = (
+      await db.query<{ category: string; state: string }>(
+        "SELECT category,state FROM coupon_tasks WHERE run_id=$1",
+        [run],
+      )
+    ).rows[0];
+    assert.equal(task.category, "亲子乐园");
+    assert.equal(task.state, "complete");
+    assert.equal(
+      (await db.query("SELECT * FROM coupon_baselines WHERE brand_id=$1", [id]))
+        .rows.length,
+      1,
+    );
+  } finally {
+    await service.drain();
+    await db.close();
+  }
+});

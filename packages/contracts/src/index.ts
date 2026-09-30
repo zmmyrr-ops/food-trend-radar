@@ -1,4 +1,12 @@
 import { z } from "zod";
+export const leisureCategories = [
+  "亲子乐园",
+  "主题乐园",
+  "动物海洋馆",
+  "展馆观光",
+  "户外景区",
+  "运动玩乐",
+] as const;
 export const categories = [
   "茶饮果饮",
   "咖啡",
@@ -8,6 +16,7 @@ export const categories = [
   "火锅烧烤",
   "中餐及本地特色",
   "其他餐饮",
+  ...leisureCategories,
 ] as const;
 const url = z
   .string()

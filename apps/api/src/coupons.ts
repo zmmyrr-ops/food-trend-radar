@@ -1,6 +1,7 @@
 import { createHash, randomUUID } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
 import type { PGlite } from "@electric-sql/pglite";
+import { leisureCategories } from "@radar/contracts";
 import type { Express } from "express";
 import { z } from "zod";
 import { brandCoverage } from "./brand-coverage.js";
@@ -29,10 +30,20 @@ export const SELECTION_SCOPE = {
   count: "12",
   image_size: '{"width":360}',
 } as const;
-export function buildSelectionUrl(name: string, cursor: string) {
+export function selectionScope(category = "其他餐饮") {
+  if (!(leisureCategories as readonly string[]).includes(category))
+    return SELECTION_SCOPE;
+  const { first_category: _foodOnly, ...scope } = SELECTION_SCOPE;
+  return scope;
+}
+export function buildSelectionUrl(
+  name: string,
+  cursor: string,
+  category = "其他餐饮",
+) {
   const url = new URL(ENDPOINT);
   url.search = new URLSearchParams({
-    ...SELECTION_SCOPE,
+    ...selectionScope(category),
     key_word: name,
     cursor,
   }).toString();
@@ -246,6 +257,7 @@ export async function initCoupons(db: PGlite) {
     CREATE TABLE IF NOT EXISTS coupon_baselines(brand_id uuid PRIMARY KEY, run_id uuid NOT NULL);
     CREATE TABLE IF NOT EXISTS coupon_diffs(run_id uuid, brand_id uuid, product_id text, kind text, old_payload jsonb, new_payload jsonb, observed_at timestamptz DEFAULT now(), PRIMARY KEY(run_id,brand_id,product_id));
     ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS query_signature text;
+    ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS category text NOT NULL DEFAULT '其他餐饮';
     ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS completed_at timestamptz;
     ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS comparison_status text;
     ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS previous_run_id uuid;
@@ -270,7 +282,11 @@ export function createCoupons(
   db: PGlite,
   opts: {
     credentialPath?: string;
-    fetchPage?: (name: string, cursor: string) => Promise<unknown>;
+    fetchPage?: (
+      name: string,
+      cursor: string,
+      category?: string,
+    ) => Promise<unknown>;
     fetchStoreDetail?: (id: string) => Promise<unknown>;
     fetchStorePois?: (id: string, ids: string[]) => Promise<unknown>;
     fetchRules?: (productId: string) => Promise<unknown>;
@@ -283,10 +299,14 @@ export function createCoupons(
     maxBaselineAgeMs?: number;
   } = {},
 ) {
-  const querySignature = (name: string, aliases: string[]) =>
+  const querySignature = (
+    name: string,
+    aliases: string[],
+    category = "其他餐饮",
+  ) =>
     hash({
       endpoint: ENDPOINT,
-      scope: SELECTION_SCOPE,
+      scope: selectionScope(category),
       scene: "all_omitted",
       name,
       aliases: [...aliases].sort(),
@@ -304,9 +324,9 @@ export function createCoupons(
       )
     ).rows[0];
   }
-  async function fetchPage(name: string, cursor: string) {
-    if (opts.fetchPage) return opts.fetchPage(name, cursor);
-    return fetchJson(buildSelectionUrl(name, cursor));
+  async function fetchPage(name: string, cursor: string, category: string) {
+    if (opts.fetchPage) return opts.fetchPage(name, cursor, category);
+    return fetchJson(buildSelectionUrl(name, cursor, category));
   }
   async function fetchJson(url: URL) {
     if (url.origin !== "https://eos.douyin.com")
@@ -512,10 +532,12 @@ export function createCoupons(
           id: string;
           name: string;
           aliases: string[];
+          category: string;
+          prior_category: string;
           prior_name: string;
           prior_aliases: string[];
         }>(
-          "SELECT b.id,b.name,b.aliases,t.name AS prior_name,t.aliases AS prior_aliases FROM brands b JOIN coupon_baselines cb ON cb.brand_id=b.id JOIN coupon_tasks t ON t.run_id=cb.run_id AND t.brand_id=b.id WHERE b.active AND t.state='complete' ORDER BY b.name",
+          "SELECT b.id,b.name,b.aliases,b.category,t.category AS prior_category,t.name AS prior_name,t.aliases AS prior_aliases FROM brands b JOIN coupon_baselines cb ON cb.brand_id=b.id JOIN coupon_tasks t ON t.run_id=cb.run_id AND t.brand_id=b.id WHERE b.active AND t.state='complete' ORDER BY b.name",
         )
       ).rows;
       const attempted = new Set(
@@ -527,9 +549,11 @@ export function createCoupons(
       );
       const changed = brands.filter(
         (b) =>
-          querySignature(b.name, b.aliases) !==
-            querySignature(b.prior_name, b.prior_aliases) &&
-          !attempted.has(`${b.id}:${querySignature(b.name, b.aliases)}`),
+          querySignature(b.name, b.aliases, b.category) !==
+            querySignature(b.prior_name, b.prior_aliases, b.prior_category) &&
+          !attempted.has(
+            `${b.id}:${querySignature(b.name, b.aliases, b.category)}`,
+          ),
       );
       if (!changed.length) return false;
       return await db.transaction(async (tx) => {
@@ -547,10 +571,17 @@ export function createCoupons(
           [run],
         );
         for (const b of changed) {
-          const signature = querySignature(b.name, b.aliases);
+          const signature = querySignature(b.name, b.aliases, b.category);
           await tx.query(
-            "INSERT INTO coupon_tasks(run_id,brand_id,name,aliases,query_signature) VALUES($1,$2,$3,$4,$5)",
-            [run, b.id, b.name, JSON.stringify(b.aliases), signature],
+            "INSERT INTO coupon_tasks(run_id,brand_id,name,aliases,query_signature,category) VALUES($1,$2,$3,$4,$5,$6)",
+            [
+              run,
+              b.id,
+              b.name,
+              JSON.stringify(b.aliases),
+              signature,
+              b.category,
+            ],
           );
           await tx.query(
             "INSERT INTO coupon_identity_refreshes(brand_id,query_signature,run_id) VALUES($1,$2,$3)",
@@ -595,6 +626,7 @@ export function createCoupons(
           brand_id: string;
           name: string;
           aliases: string[];
+          category: string;
           cursor: string;
           pages: number;
           retries: number;
@@ -610,7 +642,7 @@ export function createCoupons(
         return;
       }
       try {
-        if (t.query_signature !== querySignature(t.name, t.aliases))
+        if (t.query_signature !== querySignature(t.name, t.aliases, t.category))
           throw new Error("QUERY_CHANGED_DURING_RUN");
         // A committed final page needs only finalization after restart, not a new request.
         const final = (
@@ -671,7 +703,7 @@ export function createCoupons(
             );
             let outcome = "OK";
             try {
-              const result = await fetchPage(t.name, t.cursor);
+              const result = await fetchPage(t.name, t.cursor, t.category);
               if (!pageSchema.safeParse(result).success)
                 throw new Error("BUSINESS_OR_SCHEMA_ERROR");
               return result;
@@ -845,8 +877,13 @@ export function createCoupons(
       // A scheduled slot is a distinct observation; a manual trigger may still merge.
       if (slot && existing?.slot !== slot) existing = undefined;
       const brands = (
-        await db.query<{ id: string; name: string; aliases: string[] }>(
-          `SELECT id,name,aliases FROM brands WHERE active=true ${ids ? "AND id=ANY($1::uuid[])" : ""} ORDER BY name,id`,
+        await db.query<{
+          id: string;
+          name: string;
+          aliases: string[];
+          category: string;
+        }>(
+          `SELECT id,name,aliases,category FROM brands WHERE active=true ${ids ? "AND id=ANY($1::uuid[])" : ""} ORDER BY name,id`,
           ids ? [ids] : [],
         )
       ).rows;
@@ -865,14 +902,15 @@ export function createCoupons(
           );
         for (const [position, b] of brands.entries())
           await tx.query(
-            "INSERT INTO coupon_tasks(run_id,brand_id,name,aliases,query_signature,position) VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(run_id,brand_id) DO NOTHING",
+            "INSERT INTO coupon_tasks(run_id,brand_id,name,aliases,query_signature,position,category) VALUES($1,$2,$3,$4,$5,$6,$7) ON CONFLICT(run_id,brand_id) DO NOTHING",
             [
               id,
               b.id,
               b.name,
               JSON.stringify(b.aliases),
-              querySignature(b.name, b.aliases),
+              querySignature(b.name, b.aliases, b.category),
               position,
+              b.category,
             ],
           );
       });
@@ -1074,7 +1112,7 @@ export function createCoupons(
           "规则结构化与全部适用门店核验",
         ],
         stage: "券快照、月售热度与天气背景",
-        query_scope: "上海 · 美食 · 不限直播/短视频",
+        query_scope: "上海 · 美食及游玩 · 不限直播/短视频",
       }),
     );
     app.get("/api/v3/runs", async (_req, res) =>

@@ -317,3 +317,13 @@ test("弱优惠即使热销也不进入优先券，仍可在全部券查看", ()
     1,
   );
 });
+
+test("业态筛选不混入其他分类，仍保留完整券列表", () => {
+  const rows = combinePicks([heat("1"), heat("2")], []);
+  rows[0].category = "亲子乐园";
+  rows[1].category = "茶饮果饮";
+  const result = selectPicks(rows, { ...query, category: "亲子乐园" });
+  assert.equal(result.filtered.length, 1);
+  assert.equal(result.filtered[0].product_id, "1");
+  assert.equal(result.counts.all, 1);
+});
