@@ -12,8 +12,12 @@ const read = async (name) =>
 const write = async (name, data) =>
   writeFile(new URL(name, root), JSON.stringify(data, null, 2) + "\n");
 const policy = await read("catalog/dianping-admission-policy-2026-09-29.json");
+const core = await read("catalog/core-brands-309.json");
+const coreIds = new Set(core.protected_ids);
 const raw = await read("catalog/dianping-category-popularity-2026-09-29.json");
 const apply = process.argv.includes("--apply");
+if (apply && !raw.complete)
+  throw new Error("分类采集未完成，不允许替换启用品牌池；只能生成候选名单");
 const verifiedPrefixOnly = process.argv.includes("--verified-prefix-only");
 const normalize = (value) =>
   value
@@ -195,9 +199,10 @@ const plans = [...selected.values()].map((record) => {
   );
   return { ...record, existing, input, evidence };
 });
-const keepIds = new Set(
-  plans.filter((p) => p.existing).map((p) => p.existing.id),
-);
+const keepIds = new Set([
+  ...coreIds,
+  ...plans.filter((p) => p.existing).map((p) => p.existing.id),
+]);
 const deactivate = before.filter((b) => b.active && !keepIds.has(b.id));
 const manifest = {
   policy: policy.policy,
@@ -258,7 +263,11 @@ if (!apply) {
     ...summary,
     operations: [],
   };
-  const selectedIds = new Set();
+  assert(
+    [...coreIds].every((id) => before.some((b) => b.id === id && b.active)),
+    "原始品牌保留名单缺失或被停用，请先核对恢复，禁止覆盖",
+  );
+  const selectedIds = new Set(coreIds);
   for (const plan of plans) {
     let saved = plan.existing;
     if (!saved) saved = await api("/brands", plan.input);
