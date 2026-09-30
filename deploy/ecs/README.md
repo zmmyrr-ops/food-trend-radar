@@ -65,3 +65,12 @@ nginx -t
 上线核验：HTTPS首页、JS/CSS、认证后的券列表和视频接口均为200，未认证API为401，旧路径410，原站首页200，采集继续运行。独立 htpasswd 必须为 `root:nginx`、权限640。
 
 待外部处理：2026-09-30公网HTTP返回阿里云 `Non-compliance ICP Filing`（Server: Beaver），但服务器本机访问挑战路径200。已签发证书有效期至2026-12-29；续期定时器已启用，但HTTP挑战续期演练因公网备案拦截403失败。需域名持有人确认ICP备案/阿里云接入状态，解除后重新执行 `certbot renew --dry-run --cert-name tanhaodian.cn`，不能将当前定时器视为续期成功保证。
+
+
+## 手机号账号测试模式（2026-09-30）
+
+运行版本 `6b0240a`。systemd 私有 drop-in `accounts.conf` 配置 `AUTH_TEST_MODE=true` 与 `AUTH_ADMIN_PHONE`（实际号码不入库到 Git）。固定验证码为 666666，仅限内部测试；Nginx BasicAuth 保持开启。账号验证是应用内第二层入口，固定码不能验证手机号归属。
+
+本次停服压缩备份 `data/backups/before-accounts-20260930-154441.tar.gz`，再执行归属迁移，确认 12 个素材任务、14 个上传文件、5 个视频均保留且归属指定管理员。应用数据库仅在服务停止时由迁移进程打开，退出后恢复唯一服务实例。构建按根目录发布并保留旧静态资源。
+
+已验证公网管理员登录、Secure/HttpOnly Cookie、5 个旧作品列表、成片 HEAD 访问、优先券接口、首页资源、退出后401。未提供站点访问密码依然401。采集 enabled=true、pause_reason=null。`/health` 用于本机存活检查；业务接口现在还需要登录会话，不要再把匿名调用 `/api/v3/status` 的401当作服务故障。
