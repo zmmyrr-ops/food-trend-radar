@@ -4,6 +4,7 @@ import { appFetch, appUrl } from "./app-url";
 import { CouponMedia } from "./CouponMedia";
 import { StudioCoupon } from "./StudioCoupon";
 import { visitRequest } from "./VisitPlans";
+import { videoProgress } from "./video-progress";
 
 type Asset = {
   id: string;
@@ -265,6 +266,7 @@ export function VideoStudio() {
     });
     setDirty(true);
   }
+  const production = project ? videoProgress(project) : null;
   const locked = busy || active(project),
     preview =
       project?.preview_revision === project?.revision &&
@@ -471,8 +473,35 @@ export function VideoStudio() {
         ) : (
           <>
             <div className="studio-status" aria-live="polite">
-              <strong>{project.progress}</strong>
-              {isAdmin && <span>模型费用估算 ¥{project.cost.toFixed(3)}</span>}
+              <div className="studio-production-progress">
+                <div className="studio-progress-heading">
+                  <strong>{production?.title}</strong>
+                  <span className="studio-progress-percent">
+                    {production?.percent != null
+                      ? `${production.percent}%`
+                      : project.state === "edited"
+                        ? "待更新"
+                        : "已暂停"}
+                  </span>
+                </div>
+                {production?.percent != null && (
+                  <div
+                    className={`studio-progress-track ${active(project) ? "is-running" : ""}`}
+                    role="progressbar"
+                    aria-label="视频制作进度（按阶段估算）"
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuenow={production.percent}
+                    aria-valuetext={`${production.percent}%，${production.detail}`}
+                  >
+                    <span style={{ width: `${production.percent}%` }} />
+                  </div>
+                )}
+                <div className="studio-progress-caption">
+                  <span>{production?.detail}</span>
+                  {isAdmin && <span>费用估算 ¥{project.cost.toFixed(3)}</span>}
+                </div>
+              </div>
               {active(project) && (
                 <button disabled={busy} onClick={() => void action("cancel")}>
                   停止任务

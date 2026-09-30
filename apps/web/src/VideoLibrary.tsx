@@ -2,6 +2,7 @@ import { type Brand, type Channel, inChannel } from "@radar/contracts";
 import { useEffect, useState } from "react";
 import { appFetch, appUrl } from "./app-url";
 import { type VisitPlan, visitRequest } from "./VisitPlans";
+import { videoProgress } from "./video-progress";
 
 type Video = {
   id: string;
@@ -190,7 +191,7 @@ export function VideoLibrary({
                 {p.error ? (
                   <p className="studio-error">{p.error}</p>
                 ) : (
-                  <p className="studio-hint">{p.progress}</p>
+                  <p className="studio-hint">{videoProgress(p).detail}</p>
                 )}
                 <div className="studio-actions">
                   <a href={studio}>打开工作室</a>
