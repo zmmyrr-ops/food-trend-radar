@@ -143,7 +143,7 @@ export function VideoLibrary({
               )}
               <div className="video-library-body">
                 <h2>
-                  {p.brand_name} <small>· {p.seconds}秒</small>
+                  {p.brand_name} <small>· {Math.round(p.seconds)}秒</small>
                 </h2>
                 <p>{p.title}</p>
                 <p className="studio-hint">

@@ -20,13 +20,20 @@ export function videoProgress(project: ProgressProject) {
       };
     case "planning":
       return {
-        percent: 72,
+        percent:
+          project.progress.includes("对齐") && match
+            ? Math.round(73 + fraction * 4)
+            : 72,
         title: "正在智能制作视频",
-        detail: project.progress.includes("口播")
-          ? "正在生成自然口播"
-          : project.progress.includes("视频稿")
-            ? "正在撰写探店视频稿"
-            : "正在挑选精彩镜头",
+        detail: project.progress.includes("对齐")
+          ? `正在配音并对齐画面${match ? ` ${current}/${total}` : ""}`
+          : project.progress.includes("文案")
+            ? "正在编写与画面对应的口播"
+            : project.progress.includes("口播")
+              ? "正在生成自然口播"
+              : project.progress.includes("视频稿")
+                ? "正在撰写探店视频稿"
+                : "正在挑选精彩镜头",
       };
     case "rendering_preview":
     case "rendering_export":

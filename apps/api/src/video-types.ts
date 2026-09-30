@@ -39,6 +39,7 @@ export type VideoProject = {
   production_options?: ProductionOptions;
   script?: string;
   script_segments?: string[];
+  story_blocks?: import("./video-storyboard.js").StoryBlock[];
   script_revision?: number;
   narration_revision?: number;
   subtitle_cues?: { text: string; start: number; end: number }[];

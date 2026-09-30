@@ -1,5 +1,7 @@
 import { z } from "zod";
 export const videoVoices = [
+  { id: "longanlingxin", name: "灵心 · 自然温暖女声（新版）" },
+  { id: "longanlufeng", name: "鲁风 · 明亮开朗男声（新版）" },
   { id: "Cherry", name: "芊悦 · 亲切女声" },
   { id: "Serena", name: "苏瑶 · 温柔女声" },
   { id: "Ethan", name: "晨煦 · 阳光男声" },
@@ -19,6 +21,8 @@ export const productionOptionsSchema = z.object({
   music: z.boolean().default(false),
   voice: z
     .enum([
+      "longanlingxin",
+      "longanlufeng",
       "Cherry",
       "Serena",
       "Ethan",
@@ -28,7 +32,7 @@ export const productionOptionsSchema = z.object({
       "Vincent",
       "Neil",
     ])
-    .default("Cherry"),
+    .default("longanlingxin"),
   subtitleFont: z.enum(["sans", "serif"]).default("sans"),
   subtitleSize: z.number().int().min(36).max(88).default(64),
   subtitlePosition: z.number().int().min(20).max(88).default(72),

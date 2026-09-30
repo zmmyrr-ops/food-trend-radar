@@ -37,6 +37,7 @@ type Project = {
   product_id: string;
   production_options?: ProductionOptions;
   script?: string;
+  story_blocks?: unknown[];
   id: string;
   requires_face_screen?: boolean;
   brand_name: string;
@@ -160,7 +161,15 @@ export function VideoStudio() {
   function load(p: Project) {
     setProject(p);
     setHistory((h) => [p, ...h.filter((x) => x.id !== p.id)]);
-    setOptions({ ...defaultOptions, ...p.production_options });
+    const restored = { ...defaultOptions, ...p.production_options };
+    if (!active(p) && !p.story_blocks && !restored.voice.startsWith("longan")) {
+      restored.voice = ["Ethan", "Moon", "Kai", "Vincent", "Neil"].includes(
+        restored.voice,
+      )
+        ? "longanlufeng"
+        : "longanlingxin";
+    }
+    setOptions(restored);
     setSeconds(Math.max(15, Math.min(40, p.target_seconds || p.seconds)));
     setSelected(
       p.assets.filter((a) => a.origin !== "upload").map((a) => a.source_id),
@@ -655,7 +664,9 @@ export function VideoStudio() {
                 <div className="studio-section-heading">
                   <h2>制作选项</h2>
                   <span>
-                    {preview ? `当前成片 ${project.seconds} 秒` : "自动剪辑"}
+                    {preview
+                      ? `当前成片 ${Math.round(project.seconds)} 秒`
+                      : "自动剪辑"}
                   </span>
                 </div>
                 <DurationSetting
@@ -773,7 +784,8 @@ export function VideoStudio() {
                   )
                 }
               >
-                {new Date(p.created_at).toLocaleString("zh-CN")} · {p.seconds}秒
+                {new Date(p.created_at).toLocaleString("zh-CN")} ·{" "}
+                {Math.round(p.seconds)}秒
               </button>
               <button
                 className="quiet-button"
@@ -867,7 +879,10 @@ function ProductionSettings({
       ))}
       {options.narration && (
         <div className="studio-style-panel">
-          <span className="studio-setting-title">口播音色</span>
+          <span className="studio-setting-title">
+            口播音色 ·{" "}
+            {options.voice.startsWith("longan") ? "自然口播" : "原版口播"}
+          </span>
           <div className="studio-voice-row">
             <select
               aria-label="口播音色"
@@ -875,11 +890,24 @@ function ProductionSettings({
               value={options.voice}
               onChange={(e) => update("voice", e.target.value)}
             >
-              {videoVoices.map((v) => (
-                <option key={v.id} value={v.id}>
-                  {v.name}
-                </option>
-              ))}
+              <optgroup label="自然口播 · Qwen-Audio 3.0 Plus">
+                {videoVoices
+                  .filter((v) => v.id.startsWith("longan"))
+                  .map((v) => (
+                    <option key={v.id} value={v.id}>
+                      {v.name}
+                    </option>
+                  ))}
+              </optgroup>
+              <optgroup label="经典音色 · Qwen3 TTS">
+                {videoVoices
+                  .filter((v) => !v.id.startsWith("longan"))
+                  .map((v) => (
+                    <option key={v.id} value={v.id}>
+                      {v.name}
+                    </option>
+                  ))}
+              </optgroup>
             </select>
             <button type="button" onClick={preview}>
               {playing ? "停止试听" : "▶ 试听"}

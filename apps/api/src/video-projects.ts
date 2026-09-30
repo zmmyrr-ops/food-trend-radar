@@ -268,6 +268,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
       p.revision++;
       delete p.script;
       delete p.script_segments;
+      delete p.story_blocks;
       delete p.script_revision;
       delete p.narration_revision;
       delete p.subtitle_cues;
@@ -831,7 +832,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
             req,
             res,
             file,
-            `food-${p.seconds}s-${kind}.mp4`,
+            `food-${Math.round(p.seconds)}s-${kind}.mp4`,
             "video/mp4",
             req.query.inline === "1",
           )
@@ -839,7 +840,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
           return;
         await stat(file);
         if (req.query.inline === "1") res.type("mp4").sendFile(file);
-        else res.download(file, `food-${p.seconds}s-${kind}.mp4`);
+        else res.download(file, `food-${Math.round(p.seconds)}s-${kind}.mp4`);
       }),
     );
     app.delete(

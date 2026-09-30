@@ -21,7 +21,7 @@ export function validateScript(raw: unknown, seconds: number) {
   const limit = Math.floor(seconds * 5.8);
   const parts = (text.match(/[^。！？；，]+[。！？；，]?/gu) || []).filter(
     (part) =>
-      !/(?:[0-9一二三四五六七八九十]+(?:到|至|—|-)?)\s*(?:岁|元|折|小时)|免费|每日消毒|保证安全|(?:体验票|门票|通票).*(?:可入|包含)|所有场景/.test(
+      !/(?:[0-9一二三四五六七八九十]+(?:到|至|—|-)?)\s*(?:岁|元|折|小时|平米|平方米)|免费|每日消毒|保证安全|(?:体验票|门票|通票).*(?:可入|包含)|所有场景/.test(
         part,
       ),
   );
