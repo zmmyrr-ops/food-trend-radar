@@ -73,7 +73,7 @@ export function CouponStoreSummary({
           <p
             title={
               data?.source_shop
-                ? `${data.source_shop.address || "地址未返回"} · 平台就近门店信息，不代表全部适用门店`
+                ? `${data.source_shop.name} · ${data.source_shop.address || "地址未返回"} · 平台就近门店信息，不代表全部适用门店`
                 : undefined
             }
           >

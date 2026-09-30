@@ -362,7 +362,7 @@ export function CouponPicks({
                           ? "规则变化"
                           : "热度观察"}
                 </small>
-                <h3>{x.title}</h3>
+                <h3 title={x.title}>{x.title}</h3>
                 <CouponStoreSummary
                   brandId={x.brand_id}
                   productId={x.product_id}
@@ -373,7 +373,13 @@ export function CouponPicks({
                     <strong>{money(x.price_fen)}</strong>
                   </div>
                   <div>
-                    <span>{isAdmin ? "月售净增 / 小时" : "热度增速指数"}</span>
+                    <span
+                      title={
+                        isAdmin ? "月售净增 / 小时" : "热度增速指数，满分100"
+                      }
+                    >
+                      {isAdmin ? "月售增速" : "热度增速"}
+                    </span>
                     <strong>
                       {isAdmin
                         ? x.speed === null
@@ -383,14 +389,19 @@ export function CouponPicks({
                             const part = x.priority.parts.find(
                               (p) => p.name === "销量升温",
                             );
-                            return part?.value == null
-                              ? "—"
-                              : `${Math.round((part.value / part.weight) * 100)}/100`;
+                            return part?.value == null ? (
+                              "—"
+                            ) : (
+                              <>
+                                {Math.round((part.value / part.weight) * 100)}
+                                <em>/100</em>
+                              </>
+                            );
                           })()}
                     </strong>
                   </div>
                   <div>
-                    <span>优先分 · 非概率</span>
+                    <span title="选题优先分，非爆款概率">优先分</span>
                     <strong>
                       {x.priority.score.toFixed(1)}
                       <em>/100</em>
@@ -468,6 +479,9 @@ export function CouponPicks({
                 </div>
                 <details className="card-evidence">
                   <summary>数据与使用条件</summary>
+                  <p>
+                    <strong>{x.title}</strong>
+                  </p>
                   {!isAdmin && (
                     <p className="muted">
                       热度增速指数由销量升温得分换算为0–100，非销售数量。

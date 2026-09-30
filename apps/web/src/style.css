@@ -2365,3 +2365,102 @@ footer {
     justify-self: end;
   }
 }
+
+/* Consistent four-column rhythm; keep values whole at every desktop width. */
+.app-shell .picks-panel .coupon-grid {
+  align-items: stretch;
+}
+.app-shell .coupon-card {
+  display: flex;
+  flex-direction: column;
+  container-type: inline-size;
+}
+.app-shell .coupon-card .brand-line {
+  line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.app-shell .coupon-card h3 {
+  font-size: 14px;
+  line-height: 20px;
+  height: 40px;
+  min-height: 40px;
+  margin: 6px 0 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.app-shell .coupon-card .coupon-store-summary {
+  display: block;
+  height: 34px;
+  min-height: 34px;
+  margin-bottom: 8px;
+}
+.app-shell .coupon-card .coupon-store-summary p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 17px;
+  font-size: 10px;
+}
+.app-shell .coupon-card .coupon-stats {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr);
+  padding: 9px 7px;
+  gap: 6px;
+  margin: 0 0 8px;
+  border-radius: 6px;
+}
+.app-shell .coupon-card .coupon-stats > div {
+  min-width: 0;
+}
+.app-shell .coupon-card .coupon-stats span {
+  font-size: 10px;
+  line-height: 16px;
+  white-space: nowrap;
+  letter-spacing: -0.3px;
+}
+.app-shell .coupon-card .coupon-stats strong,
+.app-shell .coupon-card .coupon-stats > div:first-child strong {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-size: clamp(12px, 5.5cqi, 17px);
+  line-height: 22px;
+  font-weight: 650;
+  white-space: nowrap;
+  word-break: normal;
+  overflow-wrap: normal;
+  letter-spacing: -0.4px;
+  margin-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+.app-shell .coupon-card .coupon-stats em {
+  font-size: 9px;
+  font-weight: 400;
+  color: #8b9691;
+  margin: 0;
+  letter-spacing: 0;
+}
+.app-shell .coupon-card .coupon-stats + .availability-note {
+  min-height: 32px;
+  margin: 0;
+  font-size: 10px;
+  line-height: 16px;
+}
+.app-shell .coupon-card .signal-tags {
+  min-height: 20px;
+  align-content: start;
+  margin: 6px 0;
+}
+.app-shell .coupon-card .card-footer {
+  margin-top: auto;
+  padding-top: 10px;
+}
+.app-shell .coupon-card .card-evidence {
+  flex-shrink: 0;
+}
+.app-shell .coupon-card .coupon-media {
+  flex-shrink: 0;
+}
