@@ -22,7 +22,19 @@ type Clip = {
   duration: number;
   caption: string;
 };
+type ProductionOptions = {
+  subtitles: boolean;
+  narration: boolean;
+  music: boolean;
+};
+const defaultOptions: ProductionOptions = {
+  subtitles: false,
+  narration: false,
+  music: false,
+};
 type Project = {
+  production_options?: ProductionOptions;
+  script?: string;
   id: string;
   requires_face_screen?: boolean;
   brand_name: string;
@@ -86,13 +98,11 @@ export function VideoStudio() {
   const [resources, setResources] = useState<Resource[]>([]),
     [selected, setSelected] = useState<string[]>([]),
     [uploads, setUploads] = useState<{ id: string; name: string }[]>([]),
-    [music, setMusic] = useState<{ id: string; name: string } | null>(null),
+    [options, setOptions] = useState<ProductionOptions>(defaultOptions),
     [seconds, setSeconds] = useState(18),
     [rights, setRights] = useState(false),
     [project, setProject] = useState<Project | null>(null),
     [history, setHistory] = useState<Project[]>([]),
-    [plan, setPlan] = useState<Clip[]>([]),
-    [dirty, setDirty] = useState(false),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [copyStatus, setCopyStatus] = useState(""),
@@ -112,17 +122,14 @@ export function VideoStudio() {
     });
   }, []);
   const prefix = "/api/v3/video-projects";
-  const captionText = plan
-    .map((clip) => clip.caption.trim())
-    .filter(Boolean)
-    .join("\n");
+  const captionText = project?.script || "";
   useEffect(() => {
     setCopyStatus("");
   }, [captionText]);
   async function copyCaptions() {
     try {
       await navigator.clipboard.writeText(captionText);
-      setCopyStatus("已复制全部字幕");
+      setCopyStatus("已复制视频稿");
     } catch {
       setCopyStatus("复制失败，请允许浏览器访问剪贴板后重试");
     }
@@ -131,8 +138,7 @@ export function VideoStudio() {
   function load(p: Project) {
     setProject(p);
     setHistory((h) => [p, ...h.filter((x) => x.id !== p.id)]);
-    setPlan(p.plan);
-    setDirty(false);
+    setOptions(p.production_options || defaultOptions);
     const u = new URL(location.href);
     u.searchParams.set("project", p.id);
     window.history.replaceState({}, "", u);
@@ -204,7 +210,7 @@ export function VideoStudio() {
       setBusy(false);
     }
   }
-  async function upload(files: FileList | null, audio = false) {
+  async function upload(files: FileList | null) {
     if (!files) return;
     await perform(async () => {
       for (const file of Array.from(files)) {
@@ -216,8 +222,7 @@ export function VideoStudio() {
         });
         const data = await r.json();
         if (!r.ok) throw Error(data.error?.message || "上传失败");
-        if (audio) setMusic({ id: data.id, name: file.name });
-        else setUploads((v) => [...v, { id: data.id, name: file.name }]);
+        setUploads((v) => [...v, { id: data.id, name: file.name }]);
       }
     });
   }
@@ -231,7 +236,7 @@ export function VideoStudio() {
         seconds,
         resource_ids: selected,
         upload_ids: uploads.map((u) => u.id),
-        music_id: music?.id,
+        production_options: options,
         rights_confirmed: rights,
       });
       load(d.project);
@@ -241,31 +246,20 @@ export function VideoStudio() {
   async function action(name: string) {
     if (!project) return;
     await perform(async () => {
-      let p = project;
-      if (dirty) {
-        const d = await request(`${prefix}/${p.id}/timeline`, "PATCH", {
-          revision: p.revision,
-          plan,
-        });
-        p = d.project;
-        load(p);
-      }
-      const d = await request(`${prefix}/${p.id}/${name}`, "POST", {});
+      const d = await request(
+        `${prefix}/${project.id}/${name}`,
+        "POST",
+        name === "remake"
+          ? { revision: project.revision, production_options: options }
+          : {},
+      );
       load(d.project);
     });
   }
-  function edit(index: number, patch: Partial<Clip>) {
-    setPlan((v) => v.map((c, i) => (i === index ? { ...c, ...patch } : c)));
-    setDirty(true);
-  }
-  function move(index: number, delta: number) {
-    setPlan((v) => {
-      const copy = [...v];
-      [copy[index], copy[index + delta]] = [copy[index + delta], copy[index]];
-      return copy;
-    });
-    setDirty(true);
-  }
+  const optionsChanged =
+    !!project &&
+    JSON.stringify(options) !==
+      JSON.stringify(project.production_options || defaultOptions);
   const production = project ? videoProgress(project) : null;
   const locked = busy || active(project),
     preview =
@@ -306,7 +300,7 @@ export function VideoStudio() {
         </div>
         <ol className="studio-steps" aria-label="制作进度">
           <li className={!project ? "current" : ""}>01 选择素材</li>
-          <li className={project && !exported ? "current" : ""}>02 编辑预览</li>
+          <li className={project && !exported ? "current" : ""}>02 智能制作</li>
           <li className={exported ? "current" : ""}>03 导出成片</li>
         </ol>
       </header>
@@ -333,7 +327,7 @@ export function VideoStudio() {
 
       {project?.requires_face_screen && (
         <p role="status">
-          此项目需按新版人物主体规则检查素材，请点击“重新分析素材”后再预览或导出。
+          此项目需按新版人物主体规则检查素材，请点击“重新制作”后再预览或导出。
         </p>
       )}
       {!configured && <p role="alert">百炼密钥尚未配置，请联系管理员。</p>}
@@ -418,19 +412,13 @@ export function VideoStudio() {
                   onChange={(e) => void upload(e.target.files)}
                 />
               </label>
-              <label>
-                配乐（可选，默认静音）
-                <input
-                  type="file"
-                  accept="audio/*"
-                  disabled={busy}
-                  onChange={(e) => void upload(e.target.files, true)}
-                />
-              </label>
             </div>
-            <p className="studio-hint">
-              至少选择4个素材，最多40个。配乐：{music?.name || "无 · 默认静音"}
-            </p>
+            <ProductionSettings
+              options={options}
+              setOptions={setOptions}
+              disabled={locked}
+            />
+            <p className="studio-hint">至少选择4个素材，最多40个。</p>
             {uploads.map((u) => (
               <p key={u.id}>
                 {u.name}{" "}
@@ -466,7 +454,7 @@ export function VideoStudio() {
               }
               onClick={() => void create()}
             >
-              {busy ? "提交中…" : "智能筛片并生成预览"}
+              {busy ? "提交中…" : "开始制作"}
             </button>
             <p className="studio-hint">素材不足时自动缩短，成片不少于12秒。</p>
           </section>
@@ -511,12 +499,7 @@ export function VideoStudio() {
             {project.error && (
               <p role="alert" className="studio-error">
                 {project.error}{" "}
-                <button
-                  disabled={locked}
-                  onClick={() =>
-                    void action(project.plan.length ? "preview" : "analyze")
-                  }
-                >
+                <button disabled={locked} onClick={() => void action("remake")}>
                   {project.error.includes("Arrearage")
                     ? "账户恢复后重试"
                     : "重试"}
@@ -526,7 +509,7 @@ export function VideoStudio() {
             <div className="studio-workspace">
               <section className="studio-preview">
                 <h2>成片预览</h2>
-                {(exported || preview) && !dirty ? (
+                {exported || preview ? (
                   <video
                     key={`${project.id}-${project.revision}-${exported}`}
                     controls
@@ -539,25 +522,17 @@ export function VideoStudio() {
                   <div className="studio-preview-placeholder">
                     {active(project)
                       ? "正在准备你的短片…"
-                      : dirty
-                        ? "时间线已修改，请重新生成预览"
-                        : "预览完成后在这里播放"}
+                      : "预览完成后在这里播放"}
                   </div>
                 )}
                 <div className="studio-actions">
                   <button
-                    disabled={locked || !plan.length}
-                    onClick={() => void action("preview")}
-                  >
-                    {dirty ? "保存并更新预览" : "生成720p预览"}
-                  </button>
-                  <button
-                    disabled={locked || !plan.length}
+                    disabled={locked || optionsChanged || !project.plan.length}
                     onClick={() => void action("export")}
                   >
                     导出1080p MP4
                   </button>
-                  {exported && !dirty && (
+                  {exported && (
                     <a
                       className="studio-download"
                       href={appUrl(`${prefix}/${project.id}/download`)}
@@ -570,125 +545,45 @@ export function VideoStudio() {
                   保留原画面比例；低分辨率素材不会因导出1080p获得真实细节。原素材声音默认静音。
                 </p>
               </section>
-              <section className="studio-timeline">
-                <h2>镜头编排</h2>
-                <button
+              <section className="studio-script-panel">
+                <div className="studio-section-heading">
+                  <h2>制作选项</h2>
+                  <span>{project.seconds}秒 · 自动剪辑</span>
+                </div>
+                <ProductionSettings
+                  options={options}
+                  setOptions={setOptions}
                   disabled={locked}
-                  onClick={() => void action("analyze")}
+                />
+                <button
+                  className="studio-make-button"
+                  disabled={locked || !configured}
+                  onClick={() => void action("remake")}
                 >
-                  重新分析素材
+                  {active(project) ? "正在制作…" : "重新制作"}
                 </button>
-                <div className="studio-actions">
+                {optionsChanged && (
+                  <p className="studio-hint">
+                    设置已更改，点击重新制作后生效。
+                  </p>
+                )}
+                <div className="studio-section-heading">
+                  <h2>视频稿</h2>
                   <button
-                    type="button"
+                    className="quiet-button"
                     disabled={!captionText}
-                    title="按镜头顺序复制当前字幕，包含尚未保存的修改"
                     onClick={() => void copyCaptions()}
                   >
-                    一键复制字幕
+                    复制文案
                   </button>
-                  <button
-                    type="button"
-                    disabled={locked || !captionText}
-                    onClick={() => {
-                      setPlan((v) => v.map((c) => ({ ...c, caption: "" })));
-                      setDirty(true);
-                    }}
-                  >
-                    清空全部字幕
-                  </button>
-                  <span role="status" className="studio-hint">
-                    {copyStatus ||
-                      (!captionText
-                        ? "填写字幕后即可复制"
-                        : "按镜头顺序复制，每条字幕一行")}
-                  </span>
                 </div>
-                <p>
-                  目标{project.seconds}秒 · 当前
-                  {plan.reduce((n, c) => n + c.duration, 0).toFixed(1)}
-                  秒。调序、换片或修改字幕后更新预览。
+                <p className="studio-script-text">
+                  {captionText ||
+                    (active(project)
+                      ? "正在结合画面与店铺信息撰写…"
+                      : "点击重新制作，自动生成一份探店视频稿。")}
                 </p>
-                {plan.map((c, i) => (
-                  <article key={`${i}-${c.asset_id}`} className="studio-shot">
-                    <div className="studio-shot-title">
-                      <strong>镜头 {i + 1}</strong>
-                      <button
-                        className="quiet-button"
-                        disabled={locked || i === 0}
-                        onClick={() => move(i, -1)}
-                      >
-                        上移
-                      </button>
-                      <button
-                        className="quiet-button"
-                        disabled={locked || i === plan.length - 1}
-                        onClick={() => move(i, 1)}
-                      >
-                        下移
-                      </button>
-                    </div>
-                    <select
-                      aria-label={`镜头${i + 1}素材`}
-                      disabled={locked}
-                      value={c.asset_id}
-                      onChange={(e) =>
-                        edit(i, { asset_id: e.target.value, start: 0 })
-                      }
-                    >
-                      {project.assets
-                        .filter((a) => a.accepted)
-                        .map((a) => (
-                          <option key={a.id} value={a.id}>
-                            {isAdmin
-                              ? `${a.score}分 · ${a.title.slice(0, 20)} · ${a.reason?.slice(0, 35) || ""}`
-                              : `素材 ${project.assets.indexOf(a) + 1}`}
-                          </option>
-                        ))}
-                    </select>
-                    <div className="studio-shot-times">
-                      <label>
-                        起点（秒）
-                        <input
-                          type="number"
-                          min="0"
-                          max="120"
-                          step="0.1"
-                          disabled={locked}
-                          value={Number(c.start.toFixed(2))}
-                          onChange={(e) =>
-                            edit(i, { start: Number(e.target.value) })
-                          }
-                        />
-                      </label>
-                      <label>
-                        长度（秒）
-                        <input
-                          type="number"
-                          min="1"
-                          max="5"
-                          step="0.1"
-                          disabled={locked}
-                          value={Number(c.duration.toFixed(2))}
-                          onChange={(e) =>
-                            edit(i, { duration: Number(e.target.value) })
-                          }
-                        />
-                      </label>
-                    </div>
-                    <input
-                      aria-label={`镜头${i + 1}字幕`}
-                      placeholder="可选短字幕，价格和权益请核实后填写"
-                      maxLength={40}
-                      value={c.caption}
-                      disabled={locked}
-                      onChange={(e) => edit(i, { caption: e.target.value })}
-                    />
-                  </article>
-                ))}
-                {!plan.length && (
-                  <p>AI正在挑选镜头；结果会自动保留，离开页面不影响任务。</p>
-                )}
+                <small role="status">{copyStatus}</small>
               </section>
             </div>
             <details className="studio-analysis">
@@ -740,7 +635,7 @@ export function VideoStudio() {
               disabled={locked}
               onClick={() => {
                 setProject(null);
-                setDirty(false);
+
                 const u = new URL(location.href);
                 u.searchParams.delete("project");
                 window.history.replaceState({}, "", u);
@@ -786,5 +681,42 @@ export function VideoStudio() {
         </details>
       )}
     </main>
+  );
+}
+
+function ProductionSettings({
+  options,
+  setOptions,
+  disabled,
+}: {
+  options: ProductionOptions;
+  setOptions: (v: ProductionOptions) => void;
+  disabled: boolean;
+}) {
+  return (
+    <div className="studio-production-options">
+      {(
+        [
+          ["subtitles", "画面字幕", "把视频稿配到画面上"],
+          ["narration", "语音口播", "自然中文讲述"],
+          ["music", "背景音乐", "自动匹配轻音乐"],
+        ] as const
+      ).map(([key, label, hint]) => (
+        <label key={key}>
+          <input
+            type="checkbox"
+            checked={options[key]}
+            disabled={disabled}
+            onChange={(e) =>
+              setOptions({ ...options, [key]: e.target.checked })
+            }
+          />
+          <span>
+            <strong>{label}</strong>
+            <small>{hint}</small>
+          </span>
+        </label>
+      ))}
+    </div>
   );
 }

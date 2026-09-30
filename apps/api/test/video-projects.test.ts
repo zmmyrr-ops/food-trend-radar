@@ -156,6 +156,31 @@ test("编辑时间线采用修订号，过期版本不能覆盖；重启标记�
     assert.equal((await send(1)).status, 200);
     assert.equal((await send(1)).status, 400);
     assert.equal((await fetch(url + "/download")).status, 400);
+    await service.stop(); // Keep the queue paused: exercise transaction/state without paid inference.
+    const remake = (revision: number) =>
+      fetch(url + "/remake", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          revision,
+          production_options: {
+            subtitles: true,
+            narration: false,
+            music: true,
+          },
+        }),
+      });
+    assert.equal((await remake(1)).status, 400);
+    const made = await (await remake(2)).json();
+    assert.equal(made.project.revision, 3);
+    assert.equal(made.project.state, "queued");
+    assert.equal(made.project.plan.length, p.plan.length);
+    assert.deepEqual(made.project.production_options, {
+      subtitles: true,
+      narration: false,
+      music: true,
+    });
+    assert.equal((await (await remake(2)).json()).project.revision, 3);
   } finally {
     await service.stop();
     await new Promise<void>((r) => server.close(() => r()));
@@ -208,7 +233,16 @@ test("真实FFmpeg渲染：18秒、竖屏、字幕、无素材音轨，生成可
     plan[0].caption = "Render test";
     await writeFile(
       join(job, "input.json"),
-      JSON.stringify({ assets: a, plan, seconds: 18, revision: 1, cost: 0 }),
+      JSON.stringify({
+        assets: a,
+        plan,
+        seconds: 18,
+        revision: 1,
+        cost: 0,
+        script_revision: 1,
+        script_segments: ["Render test.", "Another shot."],
+        production_options: { subtitles: true, narration: false, music: false },
+      }),
     );
     await exec(
       process.execPath,
@@ -244,6 +278,56 @@ test("真实FFmpeg渲染：18秒、竖屏、字幕、无素材音轨，生成可
     assert.ok(Math.abs(Number(info.format.duration) - 18) < 0.04);
     assert.equal(info.streams.length, 1);
     assert.ok((await readFile(output)).length > 1000);
+    // Exercise audio and subtitle switches through real muxing, without calling a model.
+    const { musicBed } = await import("../src/video-production.js");
+    await writeFile(join(job, "narration-1.wav"), musicBed(18, false));
+    for (const options of [
+      { subtitles: false, narration: false, music: false },
+      { subtitles: true, narration: true, music: true },
+    ]) {
+      const fixture = JSON.parse(
+        await readFile(join(job, "input.json"), "utf8"),
+      );
+      Object.assign(fixture, {
+        production_options: options,
+        narration_revision: 1,
+        subtitle_cues: [{ text: "Render test", start: 0.25, end: 4 }],
+      });
+      await writeFile(join(job, "input.json"), JSON.stringify(fixture));
+      await exec(
+        process.execPath,
+        [
+          (await import("node:url")).fileURLToPath(
+            new URL("../dist/video-worker.js", import.meta.url),
+          ),
+          job,
+          "preview",
+          root,
+        ],
+        {
+          env: { ...process.env, FFMPEG_PATH: ffmpeg, FFPROBE_PATH: probe },
+          timeout: 30000,
+        },
+      );
+      const result = JSON.parse(
+        (
+          await exec(probe, [
+            "-v",
+            "quiet",
+            "-show_format",
+            "-show_streams",
+            "-of",
+            "json",
+            output,
+          ])
+        ).stdout,
+      );
+      assert.equal(
+        result.streams.some((s: any) => s.codec_type === "audio"),
+        options.narration || options.music,
+      );
+      assert.ok(Math.abs(Number(result.format.duration) - 18) < 0.1);
+    }
   } finally {
     await rm(dir, { recursive: true, force: true });
   }

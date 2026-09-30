@@ -1,0 +1,183 @@
+import { z } from "zod";
+import { bailianError } from "./bailian-error.js";
+export const narrationModel = "qwen3-tts-instruct-flash";
+export const scriptSchema = z.object({
+  sentences: z.array(z.string().trim().min(4).max(36)).min(2).max(5),
+});
+export function validateScript(raw: unknown, seconds: number) {
+  const { sentences } = scriptSchema.parse(raw);
+  const text = sentences.join("");
+  if (
+    text.length > Math.floor(seconds * 4) ||
+    text.length < 15 ||
+    /[{}<>\[\]【】\\]|全网最低|闭眼冲|百分百|天花板/.test(text)
+  )
+    throw Error("视频稿长度或内容不合适，请重新制作");
+  return sentences;
+}
+export type Cue = { text: string; start: number; end: number };
+export function subtitleCues(
+  sentences: string[],
+  durations: number[],
+  offset = 0.25,
+): Cue[] {
+  let at = offset;
+  return sentences.flatMap((s, i) => {
+    const duration = durations[i];
+    if (!Number.isFinite(duration) || duration <= 0)
+      throw Error("字幕时长无效");
+    // Phrase-level subtitles keep punctuation; no second, independently generated text.
+    const parts = s.match(/[^，。！？；、]{1,14}[，。！？；、]?/gu) || [s];
+    const total = parts.join("").length;
+    const out = parts.map((text) => {
+      const start = at;
+      at += (duration * text.length) / total;
+      return { text, start, end: at };
+    });
+    return out;
+  });
+}
+export function assDocument(cues: Cue[], w: number, h: number) {
+  const time = (n: number) => {
+    const t = Math.round(n * 100);
+    return `${Math.floor(t / 360000)}:${String(Math.floor(t / 6000) % 60).padStart(2, "0")}:${String(Math.floor(t / 100) % 60).padStart(2, "0")}.${String(t % 100).padStart(2, "0")}`;
+  };
+  return (
+    `[Script Info]\nScriptType: v4.00+\nPlayResX: ${w}\nPlayResY: ${h}\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, OutlineColour, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV\nStyle: Default,Noto Sans CJK SC,${Math.round(w * 0.047)},&H00FFFFFF,&H00202020,1,2,0,2,45,45,${Math.round(h * 0.15)}\n[Events]\nFormat: Layer, Start, End, Style, Text\n` +
+    cues
+      .map(
+        (c) =>
+          `Dialogue: 0,${time(c.start)},${time(c.end)},Default,${c.text.replace(/[{}\\\r\n]/g, "")}`,
+      )
+      .join("\n")
+  );
+}
+/** Download only the provider's audio result, never a model-supplied arbitrary URL. */
+export async function synthesizeSpeech(
+  key: string,
+  text: string,
+  fetcher: typeof fetch = fetch,
+): Promise<Buffer> {
+  const res = await fetcher(
+    "https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${key}`,
+        "Content-Type": "application/json",
+      },
+      signal: AbortSignal.timeout(90000),
+      body: JSON.stringify({
+        model: narrationModel,
+        input: {
+          text,
+          voice: "Cherry",
+          language_type: "Chinese",
+          instructions:
+            "自然中文探店分享，亲切清楚，有轻微起伏，适中偏快的语速，不叫卖，不夸张，不加词。",
+          optimize_instructions: true,
+        },
+      }),
+    },
+  );
+  const data = await res.json().catch(() => null);
+  if (!res.ok) throw Error(bailianError(res.status, data).message);
+  const url = new URL(data?.output?.audio?.url || "https://invalid.invalid");
+  if (
+    !/^dashscope-(?:result-[a-z0-9-]+|[a-f0-9]{4})\.oss-[a-z0-9-]+\.aliyuncs\.com$/.test(
+      url.hostname,
+    ) ||
+    !["http:", "https:"].includes(url.protocol) ||
+    url.username ||
+    url.password ||
+    url.port
+  )
+    throw Error("语音返回地址无效");
+  url.protocol = "https:";
+  const audio = await fetcher(url, {
+    redirect: "error",
+    signal: AbortSignal.timeout(45000),
+  });
+  if (!audio.ok || !audio.body) throw Error("口播音频获取失败，请重试");
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  for await (const chunk of audio.body) {
+    size += chunk.length;
+    if (size > 10 * 1024 * 1024) throw Error("口播音频过大");
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks);
+}
+/** Locally composed instrumental bed: no downloaded commercial recording. */
+export function musicBed(seconds: number, leisure: boolean): Buffer {
+  const rate = 24000,
+    n = Math.ceil(seconds * rate),
+    samples = new Float32Array(n);
+  const bpm = leisure ? 108 : 88,
+    beat = 60 / bpm;
+  const chords = leisure
+    ? [
+        [60, 64, 67, 71],
+        [57, 60, 64, 67],
+        [53, 57, 60, 64],
+        [55, 59, 62, 67],
+      ]
+    : [
+        [60, 64, 67, 71],
+        [57, 60, 64, 67],
+        [62, 65, 69, 72],
+        [55, 59, 62, 65],
+      ];
+  const note = (
+    start: number,
+    duration: number,
+    midi: number,
+    gain: number,
+  ) => {
+    const f = 440 * 2 ** ((midi - 69) / 12);
+    for (
+      let i = 0;
+      i < duration * rate && Math.round(start * rate) + i < n;
+      i++
+    ) {
+      const t = i / rate;
+      const env =
+        Math.min(1, t / 0.018) *
+        Math.exp((-t * 3) / duration) *
+        Math.min(1, (duration - t) / 0.08);
+      samples[Math.round(start * rate) + i] +=
+        gain *
+        env *
+        (Math.sin(2 * Math.PI * f * t) + 0.24 * Math.sin(4 * Math.PI * f * t));
+    }
+  };
+  for (let b = 0; b * beat < seconds; b++) {
+    const chord = chords[Math.floor(b / 4) % 4];
+    note(b * beat, beat * 2, chord[0] - 24, 0.13);
+    for (let k = 0; k < 2; k++)
+      note((b + k / 2) * beat, beat * 1.4, chord[(b * 2 + k) % 4] + 12, 0.07);
+    if (b % 4 === 0)
+      for (const m of chord) note(b * beat, beat * 3.8, m, 0.035);
+  }
+  const out = Buffer.alloc(44 + n * 2);
+  out.write("RIFF");
+  out.writeUInt32LE(36 + n * 2, 4);
+  out.write("WAVEfmt ", 8);
+  out.writeUInt32LE(16, 16);
+  out.writeUInt16LE(1, 20);
+  out.writeUInt16LE(1, 22);
+  out.writeUInt32LE(rate, 24);
+  out.writeUInt32LE(rate * 2, 28);
+  out.writeUInt16LE(2, 32);
+  out.writeUInt16LE(16, 34);
+  out.write("data", 36);
+  out.writeUInt32LE(n * 2, 40);
+  for (let i = 0; i < n; i++) {
+    const fade = Math.min(1, i / rate / 0.4, (seconds - i / rate) / 0.8);
+    out.writeInt16LE(
+      Math.round(Math.max(-1, Math.min(1, samples[i] * fade)) * 32767),
+      44 + i * 2,
+    );
+  }
+  return out;
+}

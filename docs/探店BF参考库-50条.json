@@ -1,0 +1,355 @@
+{
+  "description": "公开写法归纳后的原创模板，非抓取的真实商单；占位内容必须有事实依据。",
+  "entries": [
+    {
+      "id": "food-1",
+      "channel": "food",
+      "tags": "自助餐 丰盛 全景",
+      "copy": "想吃得丰富一点，可以看看[品牌]。从[餐台]到[甜品区]，镜头里能看到不少选择。先看看这张券的范围，再决定怎么安排这一餐。",
+      "source": "https://www.hailuoshe.com/blog/store-visit-video-script"
+    },
+    {
+      "id": "food-2",
+      "channel": "food",
+      "tags": "火锅 热气 特写",
+      "copy": "这一锅热气，就是[品牌]的开场。镜头跟着[食材]下锅，再看一眼桌上的搭配。喜欢这种围桌吃饭的氛围，可以把这家记下来。",
+      "source": "https://www.hailuoshe.com/blog/xiaohongshu-store-visit-note-writing"
+    },
+    {
+      "id": "food-3",
+      "channel": "food",
+      "tags": "烤肉 动作",
+      "copy": "先把镜头给到烤盘。[食材]慢慢变色，再配上[配菜画面]，这顿饭的节奏就出来了。[品牌]的这份券，可以点开看看具体组合。",
+      "source": "https://www.biqiusoft.com/seo/48115"
+    },
+    {
+      "id": "food-4",
+      "channel": "food",
+      "tags": "咖啡 环境",
+      "copy": "想找个地方坐一会儿，先看看[品牌]。从[座位]切到杯里的[饮品]，画面很适合慢下来。下次路过，可以留意一下这家店。",
+      "source": "https://www.explinks.com/prompt/xiaohongshu-exploration-copywriting"
+    },
+    {
+      "id": "food-5",
+      "channel": "food",
+      "tags": "茶饮 特写",
+      "copy": "今天先看这一杯。[品牌]的[饮品名]，镜头里能看到[颜色或分层]。选之前看清券里的口味范围，再挑自己喜欢的那一种。",
+      "source": "https://www.sohu.com/a/887621969_121708663"
+    },
+    {
+      "id": "food-6",
+      "channel": "food",
+      "tags": "烘焙 出炉",
+      "copy": "镜头一靠近，就能看清[面包]的纹理。[品牌]从[烘焙柜]到[切面]，这一段很有看头。喜欢面包的话，可以先收藏这一站。",
+      "source": "https://www.hailuoshe.com/blog/store-visit-video-script"
+    },
+    {
+      "id": "food-7",
+      "channel": "food",
+      "tags": "甜品 摆盘",
+      "copy": "想给下午加点甜，看看[品牌]这一盘。[造型]和[切面]各有细节，镜头不用太快。把喜欢的款式记下来，选券时对一对。",
+      "source": "https://www.hailuoshe.com/blog/xiaohongshu-store-visit-note-writing"
+    },
+    {
+      "id": "food-8",
+      "channel": "food",
+      "tags": "牛排 切面",
+      "copy": "这一餐的主角是[牛排名]。在[品牌]，镜头先看摆盘，再靠近切面。至于熟度和配菜怎么选，记得看清这份套餐的说明。",
+      "source": "https://www.biqiusoft.com/seo/48115"
+    },
+    {
+      "id": "food-9",
+      "channel": "food",
+      "tags": "寿司 陈列",
+      "copy": "一排[寿司]摆开，[品牌]这一桌就有了颜色。接着看看[特写食材]，再回到整桌搭配。喜欢日料，可以从这份券开始了解。",
+      "source": "https://www.explinks.com/prompt/xiaohongshu-exploration-copywriting"
+    },
+    {
+      "id": "food-10",
+      "channel": "food",
+      "tags": "中餐 聚餐",
+      "copy": "聚餐选店，先看看这一桌。[品牌]的[菜品一]到[菜品二]，镜头跟着上菜顺序走。人数和套餐份量，选券时一起确认。",
+      "source": "https://www.sohu.com/a/887621969_121708663"
+    },
+    {
+      "id": "food-11",
+      "channel": "food",
+      "tags": "小吃 街头",
+      "copy": "逛到这里，先停下来看看[品牌]。[制作动作]之后是[成品]，几秒钟就能看清这一口的样子。路过想加餐，可以把它放进备选。",
+      "source": "https://www.hailuoshe.com/blog/store-visit-video-script"
+    },
+    {
+      "id": "food-12",
+      "channel": "food",
+      "tags": "汉堡 快餐",
+      "copy": "一份简单的饭，也能拍得有层次。[品牌]先看[汉堡切面]，再看[配餐]。这张券里具体怎么搭配，点开就能对照着选。",
+      "source": "https://www.hailuoshe.com/blog/xiaohongshu-store-visit-note-writing"
+    },
+    {
+      "id": "food-13",
+      "channel": "food",
+      "tags": "早餐 帕尼尼",
+      "copy": "早餐想换个选择，看看[品牌]。[主食]搭着[饮品画面]，镜头干净一点就够了。去之前留意一下券的使用时段。",
+      "source": "https://www.biqiusoft.com/seo/48115"
+    },
+    {
+      "id": "food-14",
+      "channel": "food",
+      "tags": "夜宵 烧烤",
+      "copy": "夜宵的画面，从[烤架]开始。[品牌]这一桌的[串类]接着上场，最后再看一眼店里的氛围。约饭前先核对营业与用券时间。",
+      "source": "https://www.explinks.com/prompt/xiaohongshu-exploration-copywriting"
+    },
+    {
+      "id": "food-15",
+      "channel": "food",
+      "tags": "冰淇淋 造型",
+      "copy": "先别急着吃，看看[品牌]这个造型。[冰淇淋]的颜色和层次，近一点更清楚。喜欢哪一款，再去券里看看有没有对应选择。",
+      "source": "https://www.sohu.com/a/887621969_121708663"
+    },
+    {
+      "id": "food-16",
+      "channel": "food",
+      "tags": "面馆 制作",
+      "copy": "这一碗，先从[制作过程]看起。[品牌]的[面食]端上来，再把镜头给到[配料]。想吃一顿简单的，可以看看这家。",
+      "source": "https://www.hailuoshe.com/blog/store-visit-video-script"
+    },
+    {
+      "id": "food-17",
+      "channel": "food",
+      "tags": "海鲜 陈列",
+      "copy": "喜欢看海鲜的，镜头先停在这里。[品牌]的[展示区]到[成品]，把这一餐的重点交代清楚。券里的品种与份数，要单独看说明。",
+      "source": "https://www.hailuoshe.com/blog/xiaohongshu-store-visit-note-writing"
+    },
+    {
+      "id": "food-18",
+      "channel": "food",
+      "tags": "披萨 拉丝",
+      "copy": "[披萨]切开的这一刻，最适合放在开头。接着看看[品牌]的[整盘画面]和店内空间。想约一餐，可以先把这家加入备选。",
+      "source": "https://www.biqiusoft.com/seo/48115"
+    },
+    {
+      "id": "food-19",
+      "channel": "food",
+      "tags": "烤鸭 切片",
+      "copy": "从[切片动作]到装盘，[品牌]这段画面很完整。镜头再靠近[鸭皮或配菜]，细节就出来了。选套餐前，再看看券里的搭配。",
+      "source": "https://www.explinks.com/prompt/xiaohongshu-exploration-copywriting"
+    },
+    {
+      "id": "food-20",
+      "channel": "food",
+      "tags": "甜品 自助 选择",
+      "copy": "不知道选哪一种，先跟镜头看一圈。[品牌]的[甜品陈列]各有样子，再给[单品]一个近景。能不能包含在券里，以实际说明为准。",
+      "source": "https://www.sohu.com/a/887621969_121708663"
+    },
+    {
+      "id": "food-21",
+      "channel": "food",
+      "tags": "饮品 制作 动作",
+      "copy": "一杯饮品怎么完成？从[倒入动作]到[成杯]，在[品牌]跟着镜头看一遍。喜欢这个样子，再去看看对应券的口味选项。",
+      "source": "https://www.hailuoshe.com/blog/store-visit-video-script"
+    },
+    {
+      "id": "food-22",
+      "channel": "food",
+      "tags": "环境 餐厅 约饭",
+      "copy": "约饭除了看吃什么，也可以先看看环境。[品牌]的[空间细节]之后，再接上[餐桌画面]。下次选店时，就多一个方向。",
+      "source": "https://www.hailuoshe.com/blog/xiaohongshu-store-visit-note-writing"
+    },
+    {
+      "id": "food-23",
+      "channel": "food",
+      "tags": "代金券 中餐",
+      "copy": "想了解[品牌]，先用这一桌画面做个参考。[可见菜品]接着[环境]，店里的样子就清楚了。代金券的抵扣规则，买之前记得核对。",
+      "source": "https://www.biqiusoft.com/seo/48115"
+    },
+    {
+      "id": "food-24",
+      "channel": "food",
+      "tags": "单人 简餐",
+      "copy": "一个人吃饭，也可以认真挑一餐。[品牌]的[主食]和[搭配]都放进镜头里。是否适合自己的饭量，结合券的份量说明再选。",
+      "source": "https://www.explinks.com/prompt/xiaohongshu-exploration-copywriting"
+    },
+    {
+      "id": "food-25",
+      "channel": "food",
+      "tags": "套餐 聚餐 预算",
+      "copy": "选套餐，先看自己想吃什么。[品牌]这里拍到了[菜品一]和[菜品二]，再看看整桌的样子。画面作为参考，套餐内容按券的说明来。",
+      "source": "https://www.sohu.com/a/887621969_121708663"
+    },
+    {
+      "id": "leisure-1",
+      "channel": "leisure",
+      "tags": "亲子 乐园 全景",
+      "copy": "周末想换个去处，先看看[品牌]。从[游乐区]到[场景细节]，跟着镜头逛一圈。适合的年龄和票种，出发前再确认。",
+      "source": "https://www.hailuoshe.com/blog/store-visit-video-script"
+    },
+    {
+      "id": "leisure-2",
+      "channel": "leisure",
+      "tags": "动物 近景",
+      "copy": "这一站，把镜头留给[动物]。[品牌]先看它的[可见动作]，再看看周围的环境。想把它放进周末计划，可以先了解门票规则。",
+      "source": "https://www.hailuoshe.com/blog/xiaohongshu-store-visit-note-writing"
+    },
+    {
+      "id": "leisure-3",
+      "channel": "leisure",
+      "tags": "海洋 水族",
+      "copy": "从这片蓝色开始，看看[品牌]。[水族景观]之后再靠近[海洋生物]，画面慢一点也好看。准备出发的话，先核对日期和票种。",
+      "source": "https://www.biqiusoft.com/seo/48115"
+    },
+    {
+      "id": "leisure-4",
+      "channel": "leisure",
+      "tags": "运动 蹦床 全景",
+      "copy": "想找个能活动一下的地方，可以看看[品牌]。镜头里的[设施]和[区域全景]，先把场地看清楚。入场要求和使用范围，记得提前确认。",
+      "source": "https://www.explinks.com/prompt/xiaohongshu-exploration-copywriting"
+    },
+    {
+      "id": "leisure-5",
+      "channel": "leisure",
+      "tags": "街机 游戏",
+      "copy": "今天这一站，跟着灯光走进[品牌]。先看[机器区域]，再看[游戏细节]。喜欢这种娱乐氛围，可以看看券对应的项目和次数。",
+      "source": "https://www.sohu.com/a/887621969_121708663"
+    },
+    {
+      "id": "leisure-6",
+      "channel": "leisure",
+      "tags": "手作 DIY 动作",
+      "copy": "从[材料]到[制作动作]，这一段很适合慢慢看。[品牌]把过程拍出来，比只看成品更直观。想体验的话，先确认项目和预约要求。",
+      "source": "https://www.hailuoshe.com/blog/store-visit-video-script"
+    },
+    {
+      "id": "leisure-7",
+      "channel": "leisure",
+      "tags": "展览 艺术",
+      "copy": "看展不急着走，先停在[作品细节]。[品牌]再用一个全景，带出整个空间。把喜欢的这一站记下，出发前看看展期和入场说明。",
+      "source": "https://www.hailuoshe.com/blog/xiaohongshu-store-visit-note-writing"
+    },
+    {
+      "id": "leisure-8",
+      "channel": "leisure",
+      "tags": "剧场 舞台 演出",
+      "copy": "镜头先打开到整个舞台。[品牌]的[布景]和[舞台变化]，让这一段有了节奏。想看现场，场次与座位信息要单独核对。",
+      "source": "https://www.biqiusoft.com/seo/48115"
+    },
+    {
+      "id": "leisure-9",
+      "channel": "leisure",
+      "tags": "室内 雨天",
+      "copy": "想安排一个室内去处，可以先看看[品牌]。从[区域一]到[区域二]，不用赶镜头，场地细节也能看清。再按自己的时间选择票种。",
+      "source": "https://www.explinks.com/prompt/xiaohongshu-exploration-copywriting"
+    },
+    {
+      "id": "leisure-10",
+      "channel": "leisure",
+      "tags": "户外 景观",
+      "copy": "想出去走走，看看[品牌]的这一段景色。[景观一]接到[景观二]，跟着镜头换个视角。出发前再确认天气和开放安排。",
+      "source": "https://www.sohu.com/a/887621969_121708663"
+    },
+    {
+      "id": "leisure-11",
+      "channel": "leisure",
+      "tags": "水乐园 设施",
+      "copy": "先从这个全景认识[品牌]。[水上设施]到[区域细节]，想玩的项目可以边看边记。身高限制和开放情况，买票前一定看清。",
+      "source": "https://www.hailuoshe.com/blog/store-visit-video-script"
+    },
+    {
+      "id": "leisure-12",
+      "channel": "leisure",
+      "tags": "冰雪 滑雪",
+      "copy": "看到这片[雪场画面]，就想换个周末玩法。[品牌]接着看看[设施]和[场地全景]。装备、场次和入场要求，需要按票面规则准备。",
+      "source": "https://www.hailuoshe.com/blog/xiaohongshu-store-visit-note-writing"
+    },
+    {
+      "id": "leisure-13",
+      "channel": "leisure",
+      "tags": "攀岩 运动",
+      "copy": "镜头从[岩壁]向上走，[品牌]这一面的结构就清楚了。再看看[场馆设施]，先感受空间。体验前确认年龄和安全要求。",
+      "source": "https://www.biqiusoft.com/seo/48115"
+    },
+    {
+      "id": "leisure-14",
+      "channel": "leisure",
+      "tags": "卡丁车 赛道",
+      "copy": "跟着镜头看一圈[品牌]的赛道。[弯道]和[车辆细节]交替出现，比一句刺激更直观。身高、场次和体验时长，记得先核对。",
+      "source": "https://www.explinks.com/prompt/xiaohongshu-exploration-copywriting"
+    },
+    {
+      "id": "leisure-15",
+      "channel": "leisure",
+      "tags": "密室 场景",
+      "copy": "先看布景，不剧透剧情。[品牌]的[场景细节]接上[空间全景]，氛围已经有了。主题和适用人数，再到券里逐项确认。",
+      "source": "https://www.sohu.com/a/887621969_121708663"
+    },
+    {
+      "id": "leisure-16",
+      "channel": "leisure",
+      "tags": "温泉 环境",
+      "copy": "想把节奏放慢，先看看[品牌]。[水景]之后是[休息空间]，用几个镜头认识这里。包含哪些区域、是否预约，出发前看清规则。",
+      "source": "https://www.hailuoshe.com/blog/store-visit-video-script"
+    },
+    {
+      "id": "leisure-17",
+      "channel": "leisure",
+      "tags": "露营 户外",
+      "copy": "周末换个背景，看看[品牌]。[帐篷区域]和[户外景色]连起来，就是这一站的样子。装备和餐食是否包含，要以预订说明为准。",
+      "source": "https://www.hailuoshe.com/blog/xiaohongshu-store-visit-note-writing"
+    },
+    {
+      "id": "leisure-18",
+      "channel": "leisure",
+      "tags": "农场 田园",
+      "copy": "这次把镜头转向[品牌]的[田园景观]。再走近[植物或设施]，看一点平时容易忽略的细节。想去的话，先确认开放和体验安排。",
+      "source": "https://www.biqiusoft.com/seo/48115"
+    },
+    {
+      "id": "leisure-19",
+      "channel": "leisure",
+      "tags": "采摘 果园",
+      "copy": "先看看[果实]，再把镜头拉回整片[果园]。[品牌]的这一段适合慢慢逛。能采什么、如何计费，以当天规则为准。",
+      "source": "https://www.explinks.com/prompt/xiaohongshu-exploration-copywriting"
+    },
+    {
+      "id": "leisure-20",
+      "channel": "leisure",
+      "tags": "博物馆 展陈",
+      "copy": "认识[品牌]，从这一组[展品]开始。近景看细节，全景看空间，把参观的节奏慢下来。想安排这一站，提前看看预约说明。",
+      "source": "https://www.sohu.com/a/887621969_121708663"
+    },
+    {
+      "id": "leisure-21",
+      "channel": "leisure",
+      "tags": "儿童 场景 布景",
+      "copy": "场景本身也值得看一看。[品牌]从[主题布景]到[设施细节]，不靠人物特写也能介绍清楚。适龄和票种，选之前再确认。",
+      "source": "https://www.hailuoshe.com/blog/store-visit-video-script"
+    },
+    {
+      "id": "leisure-22",
+      "channel": "leisure",
+      "tags": "公园 散步",
+      "copy": "给周末留一点散步的时间。[品牌]这段[步道]接着[景观]，跟着镜头慢慢走。再按自己的位置和时间安排这一站。",
+      "source": "https://www.hailuoshe.com/blog/xiaohongshu-store-visit-note-writing"
+    },
+    {
+      "id": "leisure-23",
+      "channel": "leisure",
+      "tags": "商场 娱乐",
+      "copy": "逛街想换个玩法，先看看[品牌]。[娱乐设施]和[场地画面]放在一起，环境一眼就清楚。具体能玩哪些项目，再对照券来选。",
+      "source": "https://www.biqiusoft.com/seo/48115"
+    },
+    {
+      "id": "leisure-24",
+      "channel": "leisure",
+      "tags": "门头 场馆 全景",
+      "copy": "先认一下门头，这里是[品牌]。镜头往里走，从[整体空间]到[局部细节]，简单看一圈。喜欢这个去处，可以加入自己的探店计划。",
+      "source": "https://www.explinks.com/prompt/xiaohongshu-exploration-copywriting"
+    },
+    {
+      "id": "leisure-25",
+      "channel": "leisure",
+      "tags": "亲子 动物岛",
+      "copy": "想带孩子认识一下[动物]，先看看[品牌]这段画面。动物近景接上场馆环境，比追着人拍更直观。接触和入场规则，记得提前了解。",
+      "source": "https://www.sohu.com/a/887621969_121708663"
+    }
+  ]
+}

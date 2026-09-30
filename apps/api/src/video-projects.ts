@@ -24,6 +24,7 @@ import { createObjectStorage } from "./object-storage.js";
 import {
   type Asset,
   planSchema,
+  productionOptionsSchema,
   requiresFaceScreen,
   type VideoProject,
   validatePlan,
@@ -156,9 +157,19 @@ export async function createVideoProjects(db: PGlite, root: string) {
       if (!child && queue.length && !stopped) queueMicrotask(() => void pump());
     }
   }
-  async function enqueue(id: string, mode: string) {
+  async function enqueue(
+    id: string,
+    mode: string,
+    options?: VideoProject["production_options"],
+    revision?: number,
+  ) {
     const p = await get(id);
     if (running(p.state)) return p;
+    if (revision !== undefined && revision !== p.revision)
+      throw Error("项目已更新，请刷新");
+    if (options) p.production_options = options;
+    if (mode === "remake" && (!p.plan.length || requiresFaceScreen(p)))
+      mode = "analyze";
     if (!p.rights_confirmed) throw Error("请先确认素材使用权限");
     if (mode !== "analyze") validatePlan(p.plan, p.assets, p.seconds);
     if (mode === "analyze") {
@@ -176,10 +187,17 @@ export async function createVideoProjects(db: PGlite, root: string) {
           ? "leisure"
           : "food"
         : undefined;
+      p.plan = [];
+    }
+    if (mode === "analyze" || mode === "remake") {
       p.revision++;
+      delete p.script;
+      delete p.script_segments;
+      delete p.script_revision;
+      delete p.narration_revision;
+      delete p.subtitle_cues;
       delete p.preview_revision;
       delete p.export_revision;
-      p.plan = [];
     }
     p.state = "queued";
     p.error = null;
@@ -475,6 +493,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
             resource_ids: z.array(z.string().max(200)).max(40),
             upload_ids: z.array(uuid).max(40).default([]),
             music_id: uuid.optional(),
+            production_options: productionOptionsSchema.optional(),
             rights_confirmed: z.literal(true),
           })
           .parse(req.body);
@@ -588,6 +607,11 @@ export async function createVideoProjects(db: PGlite, root: string) {
             created_at: now,
             updated_at: now,
             music_id: v.music_id,
+            production_options: v.production_options ?? {
+              subtitles: false,
+              narration: false,
+              music: !!v.music_id,
+            },
           };
         await db.query(
           "INSERT INTO video_projects(id,payload,owner_id) VALUES($1,$2,$3)",
@@ -603,6 +627,27 @@ export async function createVideoProjects(db: PGlite, root: string) {
       wrap(async (req, res) =>
         res.json({ project: visible(await get(String(req.params.id))) }),
       ),
+    );
+    app.post(
+      "/api/v3/video-projects/:id/remake",
+      wrap(async (req, res) => {
+        const v = z
+          .object({
+            revision: z.number().int(),
+            production_options: productionOptionsSchema,
+          })
+          .parse(req.body);
+        res.json({
+          project: visible(
+            await enqueue(
+              String(req.params.id),
+              "remake",
+              v.production_options,
+              v.revision,
+            ),
+          ),
+        });
+      }),
     );
     app.patch(
       "/api/v3/video-projects/:id/timeline",

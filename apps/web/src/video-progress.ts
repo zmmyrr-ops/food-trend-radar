@@ -22,7 +22,11 @@ export function videoProgress(project: ProgressProject) {
       return {
         percent: 72,
         title: "正在智能制作视频",
-        detail: "正在编排精彩镜头",
+        detail: project.progress.includes("口播")
+          ? "正在生成自然口播"
+          : project.progress.includes("视频稿")
+            ? "正在撰写探店视频稿"
+            : "正在挑选精彩镜头",
       };
     case "rendering_preview":
     case "rendering_export":
@@ -41,7 +45,7 @@ export function videoProgress(project: ProgressProject) {
       return {
         percent: 100,
         title: "视频预览已就绪",
-        detail: "可以预览、调整镜头或导出成片",
+        detail: "可以预览、复制视频稿或导出成片",
       };
     case "completed":
       return {

@@ -31,7 +31,19 @@ export type Asset = {
   best_end?: number;
   hash?: string;
 };
+export const productionOptionsSchema = z.object({
+  subtitles: z.boolean().default(false),
+  narration: z.boolean().default(false),
+  music: z.boolean().default(false),
+});
+export type ProductionOptions = z.infer<typeof productionOptionsSchema>;
 export type VideoProject = {
+  production_options?: ProductionOptions;
+  script?: string;
+  script_segments?: string[];
+  script_revision?: number;
+  narration_revision?: number;
+  subtitle_cues?: { text: string; start: number; end: number }[];
   channel?: "food" | "leisure";
   category?: string;
   visit_store_id?: string;
