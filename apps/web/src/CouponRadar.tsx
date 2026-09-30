@@ -165,9 +165,23 @@ export function CouponRadar() {
 
   const refreshSequence = useRef(0);
   useEffect(() => {
-    void request<{ items: typeof brands }>("/brands")
-      .then((d) => setBrands(d.items))
-      .catch((e) => setError(String(e)));
+    let cancelled = false;
+    const load = () =>
+      void request<{ items: typeof brands }>("/brands")
+        .then((d) => {
+          if (!cancelled) setBrands(d.items);
+        })
+        .catch((e) => {
+          if (!cancelled) setError(String(e));
+        });
+    load();
+    const timer = setInterval(() => {
+      if (document.visibilityState === "visible") load();
+    }, 60000);
+    return () => {
+      cancelled = true;
+      clearInterval(timer);
+    };
   }, []);
   const [bindings, setBindings] = useState<
     | {
