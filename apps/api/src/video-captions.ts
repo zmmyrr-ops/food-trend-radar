@@ -27,6 +27,8 @@ export function applyCaptions(plan: Clip[], raw: unknown): Clip[] {
       /[\r\n{}\\]/.test(text)
     )
       throw Error("字幕过长或镜头对应不完整，请重新生成字幕");
+    if (/开场|收尾|提前预约|双人份量|搭配均衡/.test(text))
+      throw Error("字幕包含未经核实的条件或机械画面描述，请重新生成字幕");
     return { ...clip, caption: text };
   });
 }

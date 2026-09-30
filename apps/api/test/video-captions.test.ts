@@ -30,3 +30,14 @@ test("拒绝漏镜、重复序号、空字幕和超出阅读时长的字幕", ()
   ])
     assert.throws(() => applyCaptions(plan, { captions }));
 });
+test("拒绝机械剪辑描述和未提供的预约要求", () => {
+  for (const text of ["扇形牛肉开场", "请提前预约", "双人份量刚好"]) {
+    assert.throws(
+      () =>
+        applyCaptions(plan, {
+          captions: [1, 2, 3, 4].map((index) => ({ index, text })),
+        }),
+      /未经核实/,
+    );
+  }
+});
