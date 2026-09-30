@@ -12,7 +12,7 @@ if (
 )
   throw new Error("Missing JS/CSS entrypoints");
 for (const asset of assets) {
-  if (!asset.startsWith("/food-trend-radar/assets/"))
+  if (!asset.startsWith("/assets/"))
     throw new Error(`Invalid ECS base path: ${asset}`);
   await access(resolve(dir, "assets", basename(asset)));
 }

@@ -11,7 +11,7 @@ WorkingDirectory=/opt/food-trend-radar/app
 Environment=NODE_ENV=production
 Environment=HOST=127.0.0.1
 Environment=PORT=3011
-Environment=WEB_ORIGIN=https://ruming.top
+Environment=WEB_ORIGIN=https://tanhaodian.cn
 Environment=DATA_DIR=/opt/food-trend-radar/data/postgres
 Environment=PATH=/opt/food-trend-radar/node/bin:/usr/bin:/bin
 ExecStart=/opt/food-trend-radar/node/bin/node apps/api/dist/server.js

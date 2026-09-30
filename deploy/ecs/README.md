@@ -1,6 +1,6 @@
 # 阿里云 ECS 部署
 
-访问入口：`https://ruming.top/food-trend-radar/`。HTTPS Nginx 对整个目录使用 Basic Auth，后端仅监听 `127.0.0.1:3011`，不开放公网管理端口。
+访问入口：`https://tanhaodian.cn/`（探好店）。独立 HTTPS Nginx 站点对整个域名使用 Basic Auth，后端仅监听 `127.0.0.1:3011`，不开放公网管理端口。
 
 ## 文件与运行时
 
@@ -8,11 +8,12 @@
 - `/opt/food-trend-radar/data`：数据库、备份、私有凭据、运行日志。禁止提交 Git。
 - `/opt/food-trend-radar/node`：独立 Node 22，避免更改原站 Node。
 - `food-trend-radar.service`：以专用用户 `food-radar` 运行。
-- `nginx-location.conf`：只加入原站 HTTPS server，不覆盖原站其他 location。
+- `tanhaodian.conf`：独立域名配置，部署到 `/etc/nginx/conf.d/tanhaodian.conf`。
+- `nginx-location.conf`：原站旧项目路径返回410，不再转发项目服务；原站其他路径保持不变。
 
 ## 构建与更新
 
-使用 Node >=22.12，执行 `npm ci`、`npm run check`，再执行 `npm run build:ecs`（固定子目录构建参数，勿用普通 build 产物发布）。Linux 必须安装 Linux 平台依赖，不可复制 macOS node_modules。
+使用 Node >=22.12，执行 `npm ci`、`npm run check`，再执行 `npm run build:ecs`（固定根目录构建参数，勿用普通 build 产物发布）。Linux 必须安装 Linux 平台依赖，不可复制 macOS node_modules。
 
 更新前备份数据库和当前发布目录，暂停采集、停止服务后切换代码。保留独立 data 目录及凭据，启动后验证健康接口、品牌数、采集状态和页面资源。验证通过再恢复采集。禁止本机和 ECS 同时运行采集任务。
 
@@ -53,3 +54,10 @@ nginx -t
 `coupon_pool_candidates` 保存逐品牌计算结果，`coupon_pool_dirty` 记录基线、规则、门店、品牌和指数的变化。每个品牌完整提交后立即计算并原子替换自己的结果；后台每5秒补算最多10个待更新品牌。计算失败保留旧结果，基线发生并发变化时放弃旧计算并保留待更新标记。未完整扫描不替换品牌基线。原始快照与历史记录不删除。
 
 网页只读已计算券池；仅“优先券”按分数取最多500张合格券，不为凑数放入低分或不合格券。“全部券”、搜索和其他筛选使用完整的当前券池，低分、折扣不达标或未来72小时不可用的券仍保留并标记，不受500张上限限制。确认销售截止、证据超时、品牌停用或新完整基线不再包含的券退出可见池。每分钟检查时间相关评分，读接口再次核验时间边界。销售截止未知不推定到期，节假日禁用仍按72小时窗口降分，不等于永久删除。循环密集快照采用真实的一小时间隔锚点，不跨缺失、查询口径、已知内容或价格变化拼接销量。
+
+
+## 探好店独立域名（2026-09-30）
+
+生产前端根路径为 `/`，API、素材、视频下载均通过同源根路径访问。`WEB_ORIGIN=https://tanhaodian.cn`，原域名不再允许跨站写请求。原 `ruming.top/food-trend-radar/` 返回410，独立账号文件 `/etc/nginx/tanhaodian.htpasswd` 继承原有登录账号密码。数据库、采集进度、视频及密钥沿用当前独立服务，不启动第二套采集进程。
+
+证书使用 Certbot webroot 验证，目录 `/var/www/tanhaodian-acme`，证书位于 `/etc/letsencrypt/live/tanhaodian.cn/`。系统定时运行 `certbot renew`，成功续期后检查并 reload Nginx。部署前 `nginx -t`，验证新域名首页、静态资源、认证API，以及旧路径410和原站首页未受影响。

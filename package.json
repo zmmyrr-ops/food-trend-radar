@@ -19,7 +19,7 @@
     "lint": "biome check .",
     "format": "biome check --write .",
     "check": "npm run lint && npm run typecheck && npm test && npm run build",
-    "build:ecs": "VITE_BASE_PATH=/food-trend-radar/ npm run build && node scripts/verify-web-build.mjs"
+    "build:ecs": "VITE_BASE_PATH=/ npm run build && node scripts/verify-web-build.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.14",

@@ -224,7 +224,7 @@ function App() {
     <main>
       <header>
         <a href={appUrl("/")}>
-          食刻雷达 <span>SHANGHAI FOOD RADAR</span>
+          探好店 <span>TANHAODIAN</span>
         </a>
         <small>上海 · 本地数据工作台</small>
       </header>
