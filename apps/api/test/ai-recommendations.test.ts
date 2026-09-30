@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  aiCandidateBrief,
   aiCandidates,
   createAiRecommendations,
   validateAiOutput,
@@ -124,6 +125,9 @@ test("AI request stays backend-only, deduplicates work and persists validated ev
         assert.equal(body.response_format.type, "json_object");
         const input = JSON.parse(body.messages[1].content);
         assert.equal(input.candidates[0].id, "C01");
+        assert.equal(input.candidates[0].当前票面价格, "1.00元");
+        assert.equal("price_fen" in input.candidates[0], false);
+        assert.ok(body.messages[0].content.includes("禁止以分为金额单位"));
         assert.equal(String(options?.body).includes("private-test-key"), false);
         return new Response(
           JSON.stringify({
@@ -255,4 +259,32 @@ test("short references resolve to stored IDs; extra model fields never override 
       candidates,
     ),
   );
+});
+
+test("AI brief converts every money field exactly once and preserves unknown prices", () => {
+  const c = aiCandidates([pick()])[0];
+  const brief = aiCandidateBrief(
+    {
+      ...c,
+      price_fen: 1990,
+      origin_price_fen: 3000,
+      previous_price_fen: 2500,
+      saving_fen: 510,
+    },
+    0,
+  );
+  assert.equal(brief.当前票面价格, "19.90元");
+  assert.equal(brief.平台原价, "30.00元");
+  assert.equal(brief.上次票面价格, "25.00元");
+  assert.equal(brief.较上次节省, "5.10元");
+  assert.equal(
+    aiCandidateBrief({ ...c, price_fen: null }, 0).当前票面价格,
+    "未知",
+  );
+  assert.equal(
+    aiCandidateBrief({ ...c, saving_fen: 0 }, 0).较上次节省,
+    "0.00元",
+  );
+  assert.equal(JSON.stringify(brief).includes("price_fen"), false);
+  assert.equal(JSON.stringify(brief).includes("no_verified_change"), false);
 });

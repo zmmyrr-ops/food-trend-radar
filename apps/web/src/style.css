@@ -1296,6 +1296,12 @@ footer {
 }
 .coupon-store-summary p {
   margin: 3px 0;
+  font-size: 13px;
+}
+.coupon-store-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #66716c;
 }
 .coupon-store-summary ul {
   padding-left: 18px;
