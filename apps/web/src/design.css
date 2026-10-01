@@ -1062,3 +1062,70 @@ button.visit-primary {
   box-shadow: 0 2px 6px #23456840;
   font-size: 12px;
 }
+
+/* Keep map controls inside the dynamic viewport, including mobile browser chrome. */
+.shop-map-backdrop {
+  box-sizing: border-box;
+  height: 100vh;
+  height: 100dvh;
+  padding: max(12px, env(safe-area-inset-top))
+    max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
+  overflow: hidden;
+}
+.visit-modal.shop-map-dialog {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+.shop-map-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5ecf5;
+  background: #fff;
+}
+.shop-map-header h2 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.shop-map-header .shop-map-close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 12px;
+  background: #f0f4fa;
+  color: #334b69;
+  font-size: 28px;
+  line-height: 1;
+  touch-action: manipulation;
+}
+.shop-map-body {
+  min-height: 0;
+  padding: 0 16px 16px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  overflow-wrap: anywhere;
+}
+.shop-map-dialog .visit-map {
+  height: clamp(160px, 42vh, 300px);
+  height: clamp(160px, 42dvh, 300px);
+}

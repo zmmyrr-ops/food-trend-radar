@@ -223,6 +223,23 @@ export function ShopLocation({
     [points, setPoints] = useState<Point[]>([]),
     [error, setError] = useState(""),
     [loading, setLoading] = useState(false);
+  const closeButton = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.activeElement as HTMLElement | null;
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButton.current?.focus();
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = overflow;
+      document.removeEventListener("keydown", onKey);
+      previous?.focus();
+    };
+  }, [open]);
   async function show() {
     setOpen(true);
     setError("");
@@ -252,41 +269,55 @@ export function ShopLocation({
       </button>
       {open &&
         createPortal(
-          <div className="visit-modal-backdrop">
+          <div
+            className="visit-modal-backdrop shop-map-backdrop"
+            onClick={(event) => {
+              if (event.target === event.currentTarget) setOpen(false);
+            }}
+          >
             <section
               role="dialog"
               aria-modal="true"
               aria-label="店铺地图"
-              className="visit-modal"
+              className="visit-modal shop-map-dialog"
             >
-              <div className="visit-title">
+              <div className="shop-map-header">
                 <h2>{name}</h2>
-                <button onClick={() => setOpen(false)} aria-label="关闭地图">
+                <button
+                  ref={closeButton}
+                  type="button"
+                  className="shop-map-close"
+                  onClick={() => setOpen(false)}
+                  aria-label="关闭地图"
+                >
                   ×
                 </button>
               </div>
-              <p>{address || "平台未返回地址"}</p>
-              <VisitMap stores={points} />
-              {loading && <p role="status">正在查找门店位置…</p>}
-              {error && (
-                <p role="alert">
-                  {error} <button onClick={() => void show()}>重新查找</button>
-                </p>
-              )}
-              {points.length > 1 && (
-                <p className="muted">
-                  找到多个匹配位置，请选择与你的店铺地址一致的门店。
-                </p>
-              )}
-              {points.map((p, i) => (
-                <button
-                  className="place-result"
-                  key={`${p.lat}-${p.lng}`}
-                  onClick={() => setPoints([p])}
-                >
-                  {i + 1}. {p.name} · {p.address}
-                </button>
-              ))}
+              <div className="shop-map-body">
+                <p>{address || "平台未返回地址"}</p>
+                <VisitMap stores={points} />
+                {loading && <p role="status">正在查找门店位置…</p>}
+                {error && (
+                  <p role="alert">
+                    {error}{" "}
+                    <button onClick={() => void show()}>重新查找</button>
+                  </p>
+                )}
+                {points.length > 1 && (
+                  <p className="muted">
+                    找到多个匹配位置，请选择与你的店铺地址一致的门店。
+                  </p>
+                )}
+                {points.map((p, i) => (
+                  <button
+                    className="place-result"
+                    key={`${p.lat}-${p.lng}`}
+                    onClick={() => setPoints([p])}
+                  >
+                    {i + 1}. {p.name} · {p.address}
+                  </button>
+                ))}
+              </div>
             </section>
           </div>,
           document.body,
