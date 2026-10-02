@@ -1,5 +1,5 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
-import { dirname } from "node:path";
+import { dirname, join } from "node:path";
 import type { Express } from "express";
 import { z } from "zod";
 import seeds from "./topic-ids.json" with { type: "json" };
@@ -8,6 +8,7 @@ export type TopicPlay = {
   display: string | null;
   url: string | null;
   checked_at: string;
+  view_count?: number;
   status: "ok" | "unmatched" | "unavailable";
 };
 const ua =
@@ -30,6 +31,36 @@ export function parseTopicPlays(html: string, expected: string) {
   if (title !== expected) return null;
   return block.match(/([\d.]+[万亿]?)次播放/)?.[1] || null;
 }
+export function parseTopicSuggestion(data: unknown, expected: string) {
+  const body = z
+    .object({
+      status_code: z.literal(0),
+      sug_list: z
+        .array(
+          z.object({
+            cha_name: z.string(),
+            cid: z.string().regex(/^\d+$/),
+            view_count: z.number().int().nonnegative().safe(),
+          }),
+        )
+        .nullable()
+        .optional(),
+    })
+    .parse(data);
+  const normalize = (value: string) =>
+    value.normalize("NFKC").trim().toLowerCase();
+  return (
+    body.sug_list?.find(
+      (item) => normalize(item.cha_name) === normalize(expected),
+    ) || null
+  );
+}
+export function formatTopicCount(count: number) {
+  if (count >= 100_000_000)
+    return `${Number((count / 100_000_000).toFixed(2))}亿`;
+  if (count >= 10_000) return `${Number((count / 10_000).toFixed(2))}万`;
+  return String(count);
+}
 export function registerTopicPlays(app: Express, cacheFile: string) {
   let ids: Record<string, string> = { ...seeds };
   let cache: Record<string, TopicPlay> = {};
@@ -37,7 +68,7 @@ export function registerTopicPlays(app: Express, cacheFile: string) {
     .then((s) => {
       const data = JSON.parse(s);
       ids = { ...ids, ...data.ids };
-      cache = data.cache || {};
+      cache = data.version === 2 ? data.cache || {} : {};
     })
     .catch(() => {});
   let queue = Promise.resolve();
@@ -63,6 +94,62 @@ export function registerTopicPlays(app: Express, cacheFile: string) {
       nextAt = Date.now() + 3500;
     }
   }
+  async function creatorLookup(topic: string): Promise<TopicPlay | null> {
+    let config;
+    try {
+      config = JSON.parse(
+        await readFile(
+          join(dirname(cacheFile), "secrets", "douyin-topics.json"),
+          "utf8",
+        ),
+      );
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
+      throw error;
+    }
+    const url = new URL(config.url);
+    if (
+      url.origin !== "https://creator.douyin.com" ||
+      url.pathname !== "/aweme/v1/search/challengesug/"
+    )
+      throw Error("INVALID_SOURCE");
+    url.searchParams.set("keyword", topic);
+    const headers: Record<string, string> = {};
+    for (const key of [
+      "accept",
+      "accept-language",
+      "cookie",
+      "user-agent",
+      "referer",
+      "x-secsdk-csrf-token",
+    ])
+      if (typeof config.headers?.[key] === "string")
+        headers[key] = config.headers[key];
+    await new Promise((r) => setTimeout(r, Math.max(0, nextAt - Date.now())));
+    try {
+      const response = await fetch(url, {
+        headers,
+        redirect: "error",
+        signal: AbortSignal.timeout(12000),
+      });
+      if (!response.ok) {
+        await response.body?.cancel();
+        throw Error("UPSTREAM");
+      }
+      const match = parseTopicSuggestion(await response.json(), topic);
+      if (match) ids[topic] = match.cid;
+      return {
+        topic,
+        display: match ? formatTopicCount(match.view_count) : null,
+        ...(match ? { view_count: match.view_count } : {}),
+        url: match ? `https://www.douyin.com/hashtag/${match.cid}` : null,
+        checked_at: new Date().toISOString(),
+        status: match ? "ok" : "unmatched",
+      };
+    } finally {
+      nextAt = Date.now() + 3500;
+    }
+  }
   function lookup(topic: string): Promise<TopicPlay> {
     const existing = pending.get(topic);
     if (existing) return existing;
@@ -80,14 +167,18 @@ export function registerTopicPlays(app: Express, cacheFile: string) {
         status: "unmatched",
       };
       try {
-        if (!ids[topic])
-          await page(
-            `https://www.douyin.com/search/${encodeURIComponent(topic)}`,
-          );
-        if (ids[topic]) {
-          result.url = `https://www.douyin.com/hashtag/${ids[topic]}`;
-          result.display = parseTopicPlays(await page(result.url), topic);
-          result.status = result.display ? "ok" : "unavailable";
+        const creator = await creatorLookup(topic);
+        if (creator) Object.assign(result, creator);
+        else {
+          if (!ids[topic])
+            await page(
+              `https://www.douyin.com/search/${encodeURIComponent(topic)}`,
+            );
+          if (ids[topic]) {
+            result.url = `https://www.douyin.com/hashtag/${ids[topic]}`;
+            result.display = parseTopicPlays(await page(result.url), topic);
+            result.status = result.display ? "ok" : "unavailable";
+          }
         }
       } catch {
         result.status = "unavailable";
@@ -98,9 +189,13 @@ export function registerTopicPlays(app: Express, cacheFile: string) {
         cache = Object.fromEntries(entries.slice(-2000));
       try {
         await mkdir(dirname(cacheFile), { recursive: true });
-        await writeFile(cacheFile + ".tmp", JSON.stringify({ ids, cache }), {
-          mode: 0o600,
-        });
+        await writeFile(
+          cacheFile + ".tmp",
+          JSON.stringify({ version: 2, ids, cache }),
+          {
+            mode: 0o600,
+          },
+        );
         await rename(cacheFile + ".tmp", cacheFile);
       } catch {}
       return result;
