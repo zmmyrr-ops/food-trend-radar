@@ -344,6 +344,12 @@ export function AddToVisitPlan({
   );
 }
 export function VisitPlans() {
+  const [removal, setRemoval] = useState<{
+    planId: string;
+    storeId?: string;
+    name: string;
+  } | null>(null);
+  const [removalError, setRemovalError] = useState("");
   const [plans, setPlans] = useState<VisitPlan[]>([]),
     [selected, setSelected] = useState(
       new URLSearchParams(location.search).get("plan") || "",
@@ -378,6 +384,81 @@ export function VisitPlans() {
   }
   return (
     <section className="visit-workspace">
+      {removal &&
+        createPortal(
+          <div
+            className="visit-modal-backdrop"
+            onKeyDown={(e) => {
+              if (e.key === "Escape" && !busy) setRemoval(null);
+            }}
+          >
+            <section
+              className="visit-modal visit-success-modal"
+              role="alertdialog"
+              aria-modal="true"
+              aria-labelledby="visit-removal-title"
+              aria-describedby="visit-removal-description"
+            >
+              <h2 id="visit-removal-title">
+                {removal.storeId ? "移除店铺" : "删除计划"}
+              </h2>
+              <p id="visit-removal-description">
+                确定{removal.storeId ? "从计划中移除" : "删除"}「{removal.name}
+                」？已有视频会保留。
+              </p>
+              {removalError && <p role="alert">{removalError}</p>}
+              <div className="visit-success-actions">
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => setRemoval(null)}
+                  autoFocus
+                >
+                  取消
+                </button>
+                <button
+                  type="button"
+                  className="visit-confirm-remove"
+                  disabled={busy}
+                  onClick={async () => {
+                    setBusy(true);
+                    setRemovalError("");
+                    try {
+                      await visitRequest(
+                        `visit-plans/${removal.planId}${removal.storeId ? `/stores/${removal.storeId}` : ""}`,
+                        "DELETE",
+                      );
+                      setPlans((previous) =>
+                        removal.storeId
+                          ? previous.map((p) =>
+                              p.id === removal.planId
+                                ? {
+                                    ...p,
+                                    stores: p.stores.filter(
+                                      (store) => store.id !== removal.storeId,
+                                    ),
+                                  }
+                                : p,
+                            )
+                          : previous.filter((p) => p.id !== removal.planId),
+                      );
+                      setRemoval(null);
+                    } catch (e) {
+                      setRemovalError(
+                        e instanceof Error ? e.message : "移除失败，请重试",
+                      );
+                    } finally {
+                      setBusy(false);
+                    }
+                  }}
+                >
+                  {busy ? "处理中…" : removal.storeId ? "确认移除" : "确认删除"}
+                </button>
+              </div>
+            </section>
+          </div>,
+          document.body,
+        )}
       <div className="visit-title">
         <div>
           <h1>我的探店计划</h1>
@@ -477,10 +558,8 @@ export function VisitPlans() {
                   <button
                     disabled={busy}
                     onClick={() => {
-                      if (confirm("删除此计划？已有视频会保留。"))
-                        void action(() =>
-                          visitRequest(`visit-plans/${current.id}`, "DELETE"),
-                        );
+                      setRemovalError("");
+                      setRemoval({ planId: current.id, name: current.name });
                     }}
                   >
                     删除
@@ -534,13 +613,12 @@ export function VisitPlans() {
                         <button
                           disabled={busy}
                           onClick={() => {
-                            if (confirm("从计划中移除这家店？已有视频会保留。"))
-                              void action(() =>
-                                visitRequest(
-                                  `visit-plans/${current.id}/stores/${s.id}`,
-                                  "DELETE",
-                                ),
-                              );
+                            setRemovalError("");
+                            setRemoval({
+                              planId: current.id,
+                              storeId: s.id,
+                              name: s.name,
+                            });
                           }}
                         >
                           移除

@@ -203,6 +203,26 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
       (await call(`v3/video-projects/${v.id}`, b.cookie)).status,
       404,
     );
+    assert.equal(
+      (await call(`v3/visit-plans/${p}/stores/${s}`, b.cookie, "DELETE"))
+        .status,
+      400,
+    );
+    assert.equal(
+      (await call(`v3/visit-plans/${p}/stores/${s}`, a.cookie, "DELETE"))
+        .status,
+      200,
+    );
+    const afterRemoval = await (await call("v3/visit-plans", a.cookie)).json();
+    assert.deepEqual(
+      afterRemoval.items[0].stores.map((store: { id: string }) => store.id),
+      [s2],
+    );
+    assert.equal((await call(`v3/visit-stores/${s}`, a.cookie)).status, 404);
+    assert.equal(
+      (await call(`v3/video-projects/${v.id}`, a.cookie)).status,
+      200,
+    );
     await call(`v3/visit-plans/${p}`, a.cookie, "DELETE");
     assert.equal(
       (await (await call("v3/visit-plans", a.cookie)).json()).items.length,

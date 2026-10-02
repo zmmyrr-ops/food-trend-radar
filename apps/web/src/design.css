@@ -1238,3 +1238,9 @@ button.visit-primary {
   border: 1px solid #dbe4f0;
   background: white;
 }
+
+.visit-success-actions .visit-confirm-remove {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: white;
+}
