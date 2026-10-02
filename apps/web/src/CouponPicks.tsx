@@ -270,22 +270,29 @@ export function CouponPicks({
             onChange={(e) => setSearchInput(e.target.value)}
           />
         </label>
-        <label>
-          排序{" "}
-          <select
-            value={order}
-            onChange={(e) => {
-              setOrder(e.target.value);
-              setOffset(0);
-            }}
-          >
-            <option value="priority">综合优先分</option>
-            <option value="speed">热度增速</option>
-            <option value="acceleration">升温加速度</option>
-            <option value="saving">票面降价金额</option>
-            <option value="newest">最新采集</option>
-          </select>
-        </label>
+        <div className="coupon-sort-control" role="group" aria-label="券排序">
+          <span>排序 · 从高到低</span>
+          <div>
+            {(
+              [
+                ["priority", "优先分"],
+                ["speed", "热度增速"],
+              ] as const
+            ).map(([value, label]) => (
+              <button
+                key={value}
+                type="button"
+                aria-pressed={order === value}
+                onClick={() => {
+                  setOrder(value);
+                  setOffset(0);
+                }}
+              >
+                {label} ↓
+              </button>
+            ))}
+          </div>
+        </div>
         <a
           className="admin-only"
           href={appUrl(`/api/v3/coupon-picks.csv?${query}`)}
@@ -489,7 +496,7 @@ export function CouponPicks({
               </article>
             ))}
           </div>
-          <div className="actions">
+          <nav className="coupon-pagination" aria-label="优惠券分页">
             <button
               disabled={offset === 0}
               onClick={() => setOffset(Math.max(0, offset - 20))}
@@ -506,7 +513,7 @@ export function CouponPicks({
             >
               下一页
             </button>
-          </div>
+          </nav>
         </>
       )}
     </section>

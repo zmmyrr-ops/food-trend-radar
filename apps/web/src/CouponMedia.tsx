@@ -240,7 +240,7 @@ export function CouponMedia({
                     ? "已获取 · 缓存中"
                     : "获取资源"}
             </button>
-            {!controlsOnly && !!job?.resources.length && (
+            {!!job?.resources.length && (
               <button
                 disabled={
                   busy ||
@@ -254,7 +254,7 @@ export function CouponMedia({
                   ? "暂无更多素材"
                   : job.resources.length >= 200
                     ? "已达200个上限"
-                    : "再找一些 · +20"}
+                    : "再获取一些 · 约20个"}
               </button>
             )}
             {job && (
