@@ -761,3 +761,19 @@ main.video-studio.creator-workbench {
   background: #18202d;
   border-radius: 8px;
 }
+
+.studio-material-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0;
+}
+.studio-material-actions button {
+  font-size: 13px;
+  padding: 8px 12px;
+}
+.studio-material-actions [role="status"] {
+  font-size: 12px;
+  color: #64748b;
+}

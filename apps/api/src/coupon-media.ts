@@ -1,4 +1,5 @@
 import { createHash, randomUUID } from "node:crypto";
+import { lookup } from "node:dns/promises";
 import { readFile } from "node:fs/promises";
 import type { PGlite } from "@electric-sql/pglite";
 import type { Express } from "express";
@@ -760,6 +761,71 @@ export async function createCouponMedia(
         )
       ).rows[0];
       res.json({ job: publicJob(job) });
+    });
+    app.get("/api/v3/coupon-media/download", async (req, res) => {
+      const v = input
+        .extend({ resource_id: z.string().min(1).max(200) })
+        .parse(req.query);
+      const job = (
+        await db.query<any>(
+          "SELECT resources FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2 AND owner_id=$3",
+          [v.brand_id, v.product_id, ownerOf(req)],
+        )
+      ).rows[0];
+      const resource = job?.resources.find(
+        (r: LiveResource) => r.id === v.resource_id,
+      );
+      if (!resource) {
+        res.status(404).json({ error: { message: "素材不存在" } });
+        return;
+      }
+      try {
+        const url = new URL(resource.video_url);
+        if (
+          url.protocol !== "https:" ||
+          !url.hostname.endsWith(".xhscdn.com") ||
+          url.port ||
+          url.username ||
+          url.password
+        )
+          throw Error("不支持的素材地址");
+        const addresses = await lookup(url.hostname, { all: true });
+        if (
+          !addresses.length ||
+          addresses.some((x) =>
+            /^(127\.|10\.|192\.168\.|169\.254\.|172\.(1[6-9]|2\d|3[01])\.|0\.|::|fc|fd|fe80)/i.test(
+              x.address,
+            ),
+          )
+        )
+          throw Error("不支持的素材地址");
+        const upstream = await fetch(url, {
+          redirect: "error",
+          signal: AbortSignal.timeout(45000),
+        });
+        if (!upstream.ok || !upstream.body)
+          throw Error("素材链接已失效，请重新获取");
+        const chunks: Uint8Array[] = [];
+        let size = 0;
+        for await (const chunk of upstream.body) {
+          size += chunk.length;
+          if (size > 50 * 1024 * 1024) throw Error("单个素材超过50MB");
+          chunks.push(chunk);
+        }
+        const bytes = Buffer.concat(chunks);
+        if (bytes.subarray(4, 8).toString() !== "ftyp")
+          throw Error("素材不是有效的视频文件");
+        res.setHeader("Cache-Control", "private, no-store");
+        res.setHeader(
+          "Content-Disposition",
+          'attachment; filename="material.mp4"',
+        );
+        res.type("video/mp4").send(bytes);
+      } catch {
+        res.status(502).json({
+          error: { message: "素材下载失败或链接已过期，请重新获取后重试" },
+        });
+      }
     });
     app.post("/api/v3/coupon-media", async (req, res) => {
       const v = input

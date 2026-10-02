@@ -4,6 +4,7 @@ import {
   type VideoProductionOptions,
   videoVoices,
 } from "@radar/contracts";
+import { zipSync } from "fflate";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
@@ -124,22 +125,17 @@ export function VideoStudio() {
     (next: Resource[]) => {
       const signature = JSON.stringify(next);
       if (signature === resourceSignature.current) return;
-      const oldIds = new Set<string>(
-        resourceSignature.current
-          ? JSON.parse(resourceSignature.current).map((r: Resource) => r.id)
-          : [],
-      );
+      const firstLoad = !resourceSignature.current;
       resourceSignature.current = signature;
       setResources((previous) => {
         if (JSON.stringify(previous) === JSON.stringify(next)) return previous;
         return next;
       });
       setSelected((previous) => {
-        const fresh = next.filter((r) => !oldIds.has(r.id)).map((r) => r.id);
-        return Array.from(new Set([...fresh, ...previous])).slice(
-          0,
-          Math.max(0, 40 - uploads.length),
-        );
+        // Append must never replace or silently expand an existing selection.
+        return !firstLoad || previous.length
+          ? previous
+          : next.slice(0, Math.max(0, 40 - uploads.length)).map((r) => r.id);
       });
     },
     [uploads.length],
@@ -253,6 +249,8 @@ export function VideoStudio() {
   async function upload(files: FileList | null) {
     if (!files) return;
     await perform(async () => {
+      if (selected.length + uploads.length + files.length > 40)
+        throw Error("每次最多40个素材，请减少勾选或上传数量");
       for (const file of Array.from(files)) {
         if (file.size > 50 * 1024 * 1024) throw Error("每个文件最大50MB");
         const r = await appFetch("/api/v3/video-assets", {
@@ -322,6 +320,80 @@ export function VideoStudio() {
         ) ||
       JSON.stringify(options) !==
         JSON.stringify({ ...defaultOptions, ...project.production_options }));
+  const availableResources: Resource[] = Array.from(
+    new Map(
+      [
+        ...(project?.assets.filter((a) => a.origin !== "upload") || []).map(
+          (a) => ({
+            id: a.source_id,
+            title: a.title,
+            poster: "",
+            video_url: appUrl(`${prefix}/${project!.id}/media/${a.id}`),
+          }),
+        ),
+        ...resources,
+      ].map((r) => [r.id, r]),
+    ).values(),
+  );
+  const [downloadStatus, setDownloadStatus] = useState("");
+  const [downloading, setDownloading] = useState(false);
+  const [selectionHint, setSelectionHint] = useState("");
+  async function downloadSelected() {
+    setSelectionHint("");
+    setDownloading(true);
+    setDownloadStatus("准备下载…");
+    const files: Record<string, Uint8Array> = {};
+    const failed: string[] = [];
+    let total = 0;
+    try {
+      const chosen = availableResources.filter((r) => selected.includes(r.id));
+      for (const [index, r] of chosen.entries()) {
+        setDownloadStatus(`下载中 ${index + 1}/${chosen.length}`);
+        try {
+          const cached = project?.assets.find((a) => a.source_id === r.id);
+          const path = cached
+            ? `${prefix}/${project!.id}/media/${cached.id}`
+            : `/api/v3/coupon-media/download?${new URLSearchParams({ brand_id: brand || project!.brand_id, product_id: product || project!.product_id, resource_id: r.id })}`;
+          const response = await appFetch(path, {
+            signal: AbortSignal.timeout(60000),
+          });
+          if (!response.ok) throw Error("下载失败");
+          const bytes = new Uint8Array(await response.arrayBuffer());
+          total += bytes.length;
+          if (total > 300 * 1024 * 1024) throw Error("BATCH_SIZE_LIMIT");
+          files[
+            `素材-${String(index + 1).padStart(2, "0")}.${response.headers.get("content-type")?.startsWith("image/") ? "jpg" : "mp4"}`
+          ] = bytes;
+        } catch (e) {
+          if (e instanceof Error && e.message === "BATCH_SIZE_LIMIT")
+            throw Error("本批素材超过300MB，请减少勾选后下载");
+          failed.push(`素材 ${index + 1}`);
+        }
+        if (index < chosen.length - 1)
+          await new Promise((resolve) => setTimeout(resolve, 1200));
+      }
+      if (!Object.keys(files).length)
+        throw Error("素材下载失败，请刷新素材链接后重试");
+      const packed = zipSync(files, { level: 0 });
+      const url = URL.createObjectURL(
+        new Blob([packed as BlobPart], { type: "application/zip" }),
+      );
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "探店素材.zip";
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      setDownloadStatus(
+        failed.length
+          ? `已下载${Object.keys(files).length}个；${failed.join("、")}失败，可单独重试`
+          : `已下载 ${Object.keys(files).length} 个素材`,
+      );
+    } catch (e) {
+      setDownloadStatus(e instanceof Error ? e.message : "下载失败，请重试");
+    } finally {
+      setDownloading(false);
+    }
+  }
   const production = project ? videoProgress(project) : null;
   const locked = busy || active(project),
     preview =
@@ -436,24 +508,45 @@ export function VideoStudio() {
                   onResources={receiveResources}
                 />
               )}
+            <div className="studio-material-actions">
+              <button
+                disabled={locked || !availableResources.length}
+                onClick={() => {
+                  const ids = availableResources
+                    .slice(0, Math.max(0, 40 - uploads.length))
+                    .map((r) => r.id);
+                  setSelected(ids);
+                  setSelectionHint(
+                    availableResources.length > ids.length
+                      ? `本次最多选择${ids.length}个网络素材，已选择前${ids.length}个`
+                      : "",
+                  );
+                }}
+              >
+                全选
+                {availableResources.length + uploads.length > 40
+                  ? "（最多40个）"
+                  : ""}
+              </button>
+              <button
+                disabled={locked || !selected.length}
+                onClick={() => {
+                  setSelected([]);
+                  setSelectionHint("");
+                }}
+              >
+                取消全选
+              </button>
+              <button
+                disabled={downloading || !selected.length}
+                onClick={() => void downloadSelected()}
+              >
+                {downloading ? "下载中…" : `批量下载（${selected.length}）`}
+              </button>
+              <span role="status">{selectionHint || downloadStatus}</span>
+            </div>
             <div className="studio-resource-grid">
-              {Array.from(
-                new Map(
-                  [
-                    ...(
-                      project?.assets.filter((a) => a.origin !== "upload") || []
-                    ).map((a) => ({
-                      id: a.source_id,
-                      title: a.title,
-                      poster: "",
-                      video_url: appUrl(
-                        `${prefix}/${project!.id}/media/${a.id}`,
-                      ),
-                    })),
-                    ...resources,
-                  ].map((r) => [r.id, r]),
-                ).values(),
-              ).map((r, index) => (
+              {availableResources.map((r, index) => (
                 <label key={r.id}>
                   {r.video_url ? (
                     <video
@@ -478,13 +571,23 @@ export function VideoStudio() {
                       type="checkbox"
                       disabled={locked}
                       checked={selected.includes(r.id)}
-                      onChange={(e) =>
+                      onChange={(e) => {
+                        if (
+                          e.target.checked &&
+                          selected.length + uploads.length >= 40
+                        ) {
+                          setSelectionHint(
+                            "每次最多40个素材，请先取消一个再勾选",
+                          );
+                          return;
+                        }
+                        setSelectionHint("");
                         setSelected((v) =>
                           e.target.checked
-                            ? [...v, r.id]
+                            ? [...new Set([...v, r.id])]
                             : v.filter((id) => id !== r.id),
-                        )
-                      }
+                        );
+                      }}
                     />
                     {isAdmin ? r.title : `素材 ${index + 1}`}
                   </span>
