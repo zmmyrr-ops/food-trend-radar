@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { parseStudioCopy } from "../src/studio-copy.js";
+import { parseStudioCopy, studioCouponFacts } from "../src/studio-copy.js";
 
 test("returns exactly three distinct titles", () => {
   assert.deepEqual(
@@ -40,4 +40,27 @@ test("rejects incomplete or invalid model responses", () => {
   assert.throws(() => parseStudioCopy("{}", "topics"));
   assert.throws(() => parseStudioCopy('{"topics":["#"]}', "topics"));
   assert.throws(() => parseStudioCopy("not json", "titles"));
+});
+
+test("prices are converted from fen and starting prices never become fixed prices", () => {
+  assert.equal(
+    studioCouponFacts({
+      payload: { price_min_fen: 40000, price_max_fen: 40000 },
+    }).price_label,
+    "400元",
+  );
+  assert.equal(
+    studioCouponFacts({
+      payload: { price_min_fen: 39990, price_max_fen: 79900 },
+    }).price_label,
+    "399.9元起",
+  );
+  assert.equal(
+    studioCouponFacts({ payload: { price_min_fen: 40000 } }).price_label,
+    "400元起",
+  );
+  assert.equal(
+    studioCouponFacts({ payload: { price_min_fen: null } }).price_label,
+    null,
+  );
 });
