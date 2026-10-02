@@ -506,6 +506,8 @@ export function VisitPlans() {
                     </div>
                     <a
                       className="visit-primary"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       href={appUrl(
                         `/?${new URLSearchParams({ studio: "1", visit_store_id: s.id, brand_id: s.brand_id || "", product_id: s.product_id || "" })}`,
                       )}

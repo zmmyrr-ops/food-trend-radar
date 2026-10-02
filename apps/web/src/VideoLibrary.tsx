@@ -194,7 +194,9 @@ export function VideoLibrary({
                   <p className="studio-hint">{videoProgress(p).detail}</p>
                 )}
                 <div className="studio-actions">
-                  <a href={studio}>打开工作室</a>
+                  <a href={studio} target="_blank" rel="noopener noreferrer">
+                    打开工作室
+                  </a>
                   {exported && <a href={appUrl(endpoint)}>下载成片</a>}
                   {!exported && preview && (
                     <a href={appUrl(endpoint)}>下载预览</a>
