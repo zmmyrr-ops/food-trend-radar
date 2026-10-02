@@ -9,6 +9,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
 import { CouponMedia } from "./CouponMedia";
+import { StudioCopy } from "./StudioCopy";
 import { StudioCoupon } from "./StudioCoupon";
 import { visitRequest } from "./VisitPlans";
 import { videoProgress } from "./video-progress";
@@ -873,6 +874,13 @@ export function VideoStudio() {
           </>
         )}
       </div>
+      {visitStore && (
+        <StudioCopy
+          key={visitStore}
+          visitStore={visitStore}
+          projectId={project?.id}
+        />
+      )}
       {!!history.length && (
         <details className="studio-history">
           <summary>制作记录</summary>
