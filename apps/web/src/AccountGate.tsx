@@ -126,6 +126,11 @@ export function AccountGate({ children }: { children: ReactNode }) {
     <AccountContext.Provider value={account}>
       <div className={`account-scope role-${account.role}`}>
         <div className="account-bar">
+          {new URLSearchParams(location.search).get("studio") === "1" && (
+            <a className="studio-home-link" href={appUrl("/")}>
+              <span aria-hidden="true">←</span> 返回首页
+            </a>
+          )}
           <span>
             {account.phone.slice(0, 3)}****{account.phone.slice(-4)} ·{" "}
             {account.role === "admin" ? "管理员" : "我的账号"}

@@ -868,3 +868,30 @@ main.video-studio.creator-workbench {
     padding: 16px;
   }
 }
+
+.account-bar .studio-home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: auto;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.account-bar .studio-home-link:hover {
+  color: #2563eb;
+  background: #eaf1ff;
+}
+.account-bar .studio-home-link:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.account-bar:has(.studio-home-link) {
+  flex-wrap: wrap;
+  column-gap: 8px;
+}
