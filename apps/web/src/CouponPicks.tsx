@@ -6,7 +6,7 @@ import { BrandIcon } from "./BrandIcon";
 import { CouponStoreSummary } from "./CouponStoreSummary";
 import { CouponUsageRules } from "./CouponUsageRules";
 import { PickEvaluation } from "./PickEvaluation";
-import { AddToVisitPlan } from "./VisitPlans";
+import { AddToVisitPlan, type VisitPlan, visitRequest } from "./VisitPlans";
 
 type Pick = {
   brand_index: {
@@ -114,6 +114,42 @@ export function CouponPicks({
   onBrandChange: (id: string) => void;
 }) {
   const isAdmin = useAccount().role === "admin";
+  const [planLinks, setPlanLinks] = useState<
+    Record<string, { id: string; name: string }>
+  >({});
+  useEffect(() => {
+    let alive = true;
+    async function loadPlans() {
+      try {
+        const data = await visitRequest("visit-plans");
+        const links: Record<string, { id: string; name: string }> = {};
+        for (const plan of data.items as VisitPlan[])
+          for (const store of plan.stores) {
+            const refs = [...(store.coupon_refs || [])];
+            if (store.brand_id && store.product_id)
+              refs.push({
+                brand_id: store.brand_id,
+                product_id: store.product_id,
+              });
+            for (const ref of refs)
+              links[`${ref.brand_id}:${ref.product_id}`] ??= {
+                id: plan.id,
+                name: plan.name,
+              };
+          }
+        if (alive) setPlanLinks(links);
+      } catch {
+        /* Keep the current confirmed state when a refresh fails. */
+      }
+    }
+    void loadPlans();
+    window.addEventListener("focus", loadPlans);
+    return () => {
+      alive = false;
+      window.removeEventListener("focus", loadPlans);
+    };
+  }, []);
+
   const [view, setView] = useState("recommended"),
     [order, setOrder] = useState("priority"),
     [category, setCategory] = useState(""),
@@ -379,6 +415,9 @@ export function CouponPicks({
                             : "热度观察"}
                   </span>
                 </div>
+                {planLinks[`${x.brand_id}:${x.product_id}`] && (
+                  <span className="coupon-plan-badge">✓ 已加入探店计划</span>
+                )}
                 <h3 title={x.title}>{x.title}</h3>
                 <CouponStoreSummary
                   brandId={x.brand_id}
@@ -492,7 +531,17 @@ export function CouponPicks({
                   productId={x.product_id}
                   brandId={x.brand_id}
                 />
-                <AddToVisitPlan brandId={x.brand_id} productId={x.product_id} />
+                <AddToVisitPlan
+                  brandId={x.brand_id}
+                  productId={x.product_id}
+                  existingPlan={planLinks[`${x.brand_id}:${x.product_id}`]}
+                  onAdded={(plan) =>
+                    setPlanLinks((previous) => ({
+                      ...previous,
+                      [`${x.brand_id}:${x.product_id}`]: plan,
+                    }))
+                  }
+                />
               </article>
             ))}
           </div>

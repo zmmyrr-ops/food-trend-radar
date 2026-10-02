@@ -89,6 +89,34 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
       400,
     );
     assert.equal((await call(`v3/visit-stores/${s}`, b.cookie)).status, 404);
+    // A duplicate shop may be reached through another coupon; retain both links.
+    await db.exec(
+      "CREATE TABLE IF NOT EXISTS coupon_items(run_id uuid,brand_id uuid,product_id text,payload jsonb NOT NULL,observed_at timestamptz DEFAULT now(),PRIMARY KEY(run_id,brand_id,product_id))",
+    );
+    const brand = randomUUID(),
+      run = randomUUID();
+    for (const product of ["coupon-a", "coupon-b"])
+      await db.query(
+        "INSERT INTO coupon_items(run_id,brand_id,product_id,payload) VALUES($1,$2,$3,'{}')",
+        [run, brand, product],
+      );
+    for (const product of ["coupon-a", "coupon-b", "coupon-a"]) {
+      const linked = await (
+        await call(`v3/visit-plans/${p}/stores`, a.cookie, "POST", {
+          ...store,
+          brand_id: brand,
+          product_id: product,
+        })
+      ).json();
+      assert.equal(linked.duplicate, true);
+      assert.equal(linked.id, s);
+    }
+    const linkedPlans = await (await call("v3/visit-plans", a.cookie)).json();
+    assert.equal(linkedPlans.items[0].stores.length, 1);
+    assert.deepEqual(linkedPlans.items[0].stores[0].coupon_refs, [
+      { brand_id: brand, product_id: "coupon-a" },
+      { brand_id: brand, product_id: "coupon-b" },
+    ]);
     const s2 = (
       await (
         await call(`v3/visit-plans/${p}/stores`, a.cookie, "POST", {
@@ -135,7 +163,7 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
       brand_id: "",
       product_id: "",
       visit_store_id: s,
-      seconds: 12,
+      seconds: 15,
       resource_ids: [],
       upload_ids: ids,
       rights_confirmed: true,
@@ -154,7 +182,7 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
       400,
     );
     const r = await call("v3/video-projects", a.cookie, "POST", body);
-    assert.equal(r.status, 201);
+    assert.equal(r.status, 201, await r.clone().text());
     const v = (await r.json()).project;
     assert.equal(v.visit_store_id, s);
     assert.equal(v.visit_plan_id, p);

@@ -46,6 +46,7 @@ export async function createVisitPlans(db: PGlite) {
   await db.exec(`CREATE TABLE IF NOT EXISTS visit_plans(id uuid PRIMARY KEY,owner_id uuid NOT NULL,name text NOT NULL,date text NOT NULL,created_at timestamptz DEFAULT now(),deleted_at timestamptz);
  CREATE INDEX IF NOT EXISTS visit_plans_owner ON visit_plans(owner_id);
  CREATE TABLE IF NOT EXISTS visit_plan_stores(id uuid PRIMARY KEY,plan_id uuid NOT NULL REFERENCES visit_plans(id),name text NOT NULL,address text NOT NULL,lat double precision NOT NULL,lng double precision NOT NULL,brand_id uuid,product_id text,position integer NOT NULL DEFAULT 0,identity text NOT NULL,deleted_at timestamptz);
+ ALTER TABLE visit_plan_stores ADD COLUMN IF NOT EXISTS coupon_refs jsonb NOT NULL DEFAULT '[]'::jsonb;
  CREATE UNIQUE INDEX IF NOT EXISTS visit_store_unique ON visit_plan_stores(plan_id,identity) WHERE deleted_at IS NULL;`);
   const wrap =
     (fn: (req: Request, res: Response) => Promise<void>) =>
@@ -173,9 +174,26 @@ export async function createVisitPlans(db: PGlite) {
               identity,
             ],
           );
+          const savedId =
+            out.rows[0]?.id ||
+            (
+              await db.query<{ id: string }>(
+                "SELECT id FROM visit_plan_stores WHERE plan_id=$1 AND identity=$2 AND deleted_at IS NULL",
+                [req.params.id, identity],
+              )
+            ).rows[0]?.id;
+          if (v.brand_id && v.product_id && savedId) {
+            const ref = JSON.stringify([
+              { brand_id: v.brand_id, product_id: v.product_id },
+            ]);
+            await db.query(
+              "UPDATE visit_plan_stores SET coupon_refs=coupon_refs || $2::jsonb WHERE id=$1 AND NOT coupon_refs @> $2::jsonb",
+              [savedId, ref],
+            );
+          }
           res
             .status(out.rows.length ? 201 : 200)
-            .json({ id: out.rows[0]?.id, duplicate: !out.rows.length });
+            .json({ id: savedId, duplicate: !out.rows.length });
         }),
       );
       app.patch(

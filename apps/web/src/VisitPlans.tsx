@@ -10,6 +10,7 @@ export type VisitStore = {
   lng: number;
   brand_id: string | null;
   product_id: string | null;
+  coupon_refs?: { brand_id: string; product_id: string }[];
 };
 export type VisitPlan = {
   id: string;
@@ -179,9 +180,13 @@ export function StoreEditor({
 export function AddToVisitPlan({
   brandId,
   productId,
+  existingPlan,
+  onAdded,
 }: {
   brandId: string;
   productId: string;
+  existingPlan?: { id: string; name: string };
+  onAdded: (plan: { id: string; name: string }) => void;
 }) {
   const [plans, setPlans] = useState<VisitPlan[] | null>(null),
     [selected, setSelected] = useState(""),
@@ -190,7 +195,7 @@ export function AddToVisitPlan({
     [busy, setBusy] = useState(false),
     [name, setName] = useState("我的探店计划"),
     [date, setDate] = useState(today()),
-    [message, setMessage] = useState("");
+    [success, setSuccess] = useState<{ id: string; name: string } | null>(null);
   async function start() {
     setBusy(true);
     setError("");
@@ -220,14 +225,53 @@ export function AddToVisitPlan({
   }
   return (
     <>
-      <button
-        className="studio-entry"
-        disabled={busy}
-        onClick={() => void start()}
-      >
-        ＋ 加入探店计划
-      </button>
-      {message && <small role="status">{message}</small>}
+      {existingPlan ? (
+        <a
+          className="studio-entry"
+          href={appUrl(`/?tab=plans&plan=${existingPlan.id}`)}
+        >
+          前去查看计划 →
+        </a>
+      ) : (
+        <button
+          className="studio-entry"
+          disabled={busy}
+          onClick={() => void start()}
+        >
+          ＋ 加入探店计划
+        </button>
+      )}
+      {success &&
+        createPortal(
+          <div
+            className="visit-modal-backdrop"
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setSuccess(null);
+            }}
+          >
+            <section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="visit-added-title"
+              className="visit-modal visit-success-modal"
+            >
+              <div className="visit-success-icon" aria-hidden="true">
+                ✓
+              </div>
+              <h2 id="visit-added-title">加入计划成功</h2>
+              <p>店铺已加入「{success.name}」，是否前去查看？</p>
+              <div className="visit-success-actions">
+                <button onClick={() => setSuccess(null)} autoFocus>
+                  继续选券
+                </button>
+                <a href={appUrl(`/?tab=plans&plan=${success.id}`)}>
+                  前去查看计划 →
+                </a>
+              </div>
+            </section>
+          </div>,
+          document.body,
+        )}
       {error && <small role="alert">{error}</small>}
       {plans && draft && (
         <div className="visit-add-flow">
@@ -246,14 +290,13 @@ export function AddToVisitPlan({
                   .id;
                 setSelected(id);
               }
-              const result = await visitRequest(
-                `visit-plans/${id}/stores`,
-                "POST",
-                s,
-              );
-              setMessage(
-                result.duplicate ? "该店铺已在计划中" : "已加入探店计划",
-              );
+              await visitRequest(`visit-plans/${id}/stores`, "POST", s);
+              const destination = {
+                id,
+                name: plans.find((p) => p.id === id)?.name || name,
+              };
+              onAdded(destination);
+              setSuccess(destination);
               setDraft(null);
               setPlans(null);
             }}

@@ -1180,3 +1180,61 @@ button.visit-primary {
     display: none;
   }
 }
+
+.coupon-plan-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  color: #2563eb;
+  background: #edf4ff;
+  border-radius: 5px;
+  padding: 3px 7px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.visit-success-modal {
+  width: min(400px, 100%);
+  text-align: center;
+}
+.visit-success-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 12px;
+  background: #edf4ff;
+  color: #2563eb;
+  border-radius: 50%;
+  font-size: 24px;
+}
+.visit-success-modal h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+.visit-success-modal p {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.visit-success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+.visit-success-actions a,
+.visit-success-actions button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  text-decoration: none;
+}
+.visit-success-actions a {
+  color: white;
+  background: #2563eb;
+}
+.visit-success-actions button {
+  color: #475569;
+  border: 1px solid #dbe4f0;
+  background: white;
+}
