@@ -948,7 +948,7 @@ export function createCoupons(
             "INSERT INTO coupon_runs(id,slot,status) VALUES($1,$2,'running')",
             [id, slot ?? null],
           );
-        for (const [position, b] of brands.entries())
+        for (const [position, b] of brands.entries()) {
           await tx.query(
             "INSERT INTO coupon_tasks(run_id,brand_id,name,aliases,query_signature,position,category) VALUES($1,$2,$3,$4,$5,$6,$7) ON CONFLICT(run_id,brand_id) DO NOTHING",
             [
@@ -961,6 +961,23 @@ export function createCoupons(
               b.category,
             ],
           );
+          // Explicit recollection may refresh an untouched queued identity, but
+          // must never mix a changed query into already collected pages.
+          if (ids)
+            await tx.query(
+              `UPDATE coupon_tasks t SET name=$3,aliases=$4,query_signature=$5,category=$6,position=-1
+             WHERE t.run_id=$1 AND t.brand_id=$2 AND t.state='queued' AND t.pages=0
+             AND NOT EXISTS(SELECT 1 FROM coupon_requests r WHERE r.run_id=t.run_id AND r.brand_id=t.brand_id AND r.outcome='in_flight')`,
+              [
+                id,
+                b.id,
+                b.name,
+                JSON.stringify(b.aliases),
+                querySignature(b.name, b.aliases, b.category),
+                b.category,
+              ],
+            );
+        }
       });
       kick();
       return id;

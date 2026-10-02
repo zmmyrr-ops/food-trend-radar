@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { appFetch } from "./app-url";
 
 export function StudioCopy({
@@ -10,6 +10,34 @@ export function StudioCopy({
 }) {
   const [titles, setTitles] = useState<string[]>([]);
   const [topics, setTopics] = useState<string[]>([]);
+  const [plays, setPlays] = useState<
+    Record<
+      string,
+      { display: string | null; url?: string | null; checked_at?: string }
+    >
+  >({});
+  useEffect(() => {
+    const controller = new AbortController();
+    void (async () => {
+      for (const topic of topics) {
+        if (plays[topic]) continue;
+        try {
+          const response = await appFetch(
+            `/api/v3/topic-plays?topic=${encodeURIComponent(topic)}`,
+            { signal: controller.signal },
+          );
+          if (!response.ok) throw Error("查询失败");
+          const data = await response.json();
+          if (!controller.signal.aborted)
+            setPlays((previous) => ({ ...previous, [topic]: data }));
+        } catch {
+          if (controller.signal.aborted) return;
+          setPlays((previous) => ({ ...previous, [topic]: { display: null } }));
+        }
+      }
+    })();
+    return () => controller.abort();
+  }, [topics]);
   const [locked, setLocked] = useState<string[]>([]);
   const [busy, setBusy] = useState<"titles" | "topics" | null>(null);
   const [error, setError] = useState("");
@@ -120,6 +148,19 @@ export function StudioCopy({
                       }}
                     />
                     <span>#{topic}</span>
+                    <small
+                      title={
+                        plays[topic]?.checked_at
+                          ? `抖音话题累计播放量 · ${new Date(plays[topic].checked_at!).toLocaleString("zh-CN")}`
+                          : undefined
+                      }
+                    >
+                      {!plays[topic]
+                        ? "查询播放量…"
+                        : plays[topic].display
+                          ? `${plays[topic].display}次播放`
+                          : "暂无播放数据"}
+                    </small>
                     {locked.includes(topic) && <small>已锁定</small>}
                   </label>
                 ))}

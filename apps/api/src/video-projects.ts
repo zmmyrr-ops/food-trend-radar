@@ -22,6 +22,7 @@ import { mediaUrl } from "./coupon-media.js";
 import { mediaFormat } from "./media-format.js";
 import { createObjectStorage } from "./object-storage.js";
 import { registerStudioCopy } from "./studio-copy.js";
+import { registerTopicPlays } from "./topic-plays.js";
 import {
   type Asset,
   planSchema,
@@ -376,6 +377,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
   }
   function register(app: Express) {
     visits.register(app);
+    registerTopicPlays(app, join(root, "..", "topic-plays.json"));
     registerStudioCopy(app, db, join(root, "..", "secrets", "deepseek.json"));
     // Apply before every detail, download, render, deletion and asset endpoint.
     app.use(
