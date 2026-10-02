@@ -41,6 +41,7 @@ export function StudioCopy({
   const [locked, setLocked] = useState<string[]>([]);
   const [busy, setBusy] = useState<"titles" | "topics" | null>(null);
   const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
   const [copied, setCopied] = useState("");
   async function generate(kind: "titles" | "topics") {
     setBusy(kind);
@@ -61,7 +62,11 @@ export function StudioCopy({
       const data = await response.json();
       if (!response.ok) throw Error(data.error?.message || "生成失败，请重试");
       if (kind === "titles") setTitles(data.items);
-      else setTopics(data.items);
+      else {
+        setPlays((previous) => ({ ...previous, ...data.metrics }));
+        setTopics(data.items);
+        setNotice(data.notice || "");
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : "生成失败，请重试");
     } finally {
@@ -114,16 +119,16 @@ export function StudioCopy({
         </section>
         <section>
           <div className="studio-section-heading">
-            <h3>话题标签</h3>
+            <h3>抖音热门话题</h3>
             <button
               disabled={!!busy || locked.length === 10}
               onClick={() => void generate("topics")}
             >
               {busy === "topics"
-                ? "生成中…"
+                ? "正在搜索热门话题…"
                 : topics.length
                   ? "换一批"
-                  : "生成10个话题"}
+                  : "查找热门话题"}
             </button>
           </div>
           {topics.length ? (
@@ -165,6 +170,7 @@ export function StudioCopy({
                   </label>
                 ))}
               </div>
+              {notice && <p className="studio-copy-empty">{notice}</p>}
               <div className="studio-copy-footer">
                 <span>
                   {locked.length === 10
@@ -185,7 +191,9 @@ export function StudioCopy({
               </div>
             </>
           ) : (
-            <p className="studio-copy-empty">生成相关话题，勾选后组合复制。</p>
+            <p className="studio-copy-empty">
+              根据店铺与视频提取关键词，从抖音查找相关热门话题。
+            </p>
           )}
         </section>
       </div>

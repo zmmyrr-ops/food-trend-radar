@@ -3,6 +3,8 @@ import type { PGlite } from "@electric-sql/pglite";
 import type { Express } from "express";
 import { z } from "zod";
 import { ownerOf } from "./accounts.js";
+import { recommendStudioTopics } from "./studio-topics.js";
+import type { TopicPlay } from "./topic-plays.js";
 import { ownedVisitStore } from "./visit-plans.js";
 
 export function studioCouponFacts(row: any) {
@@ -62,6 +64,7 @@ export function registerStudioCopy(
   app: Express,
   db: PGlite,
   credentialPath: string,
+  searchTopics: (keyword: string) => Promise<TopicPlay[]>,
 ) {
   const pending = new Set<string>();
   app.post("/api/v3/studio-copy", async (req, res) => {
@@ -76,8 +79,8 @@ export function registerStudioCopy(
               .string()
               .trim()
               .min(1)
-              .max(24)
-              .regex(/^[^#＃\s]+$/u),
+              .max(60)
+              .regex(/^[^#＃]+$/u),
           )
           .max(10)
           .default([]),
@@ -131,6 +134,23 @@ export function registerStudioCopy(
               )
             ).rows[0]
           : null;
+      if (input.kind === "topics") {
+        res.json(
+          await recommendStudioTopics(
+            key,
+            {
+              store: visit.name,
+              city: "上海",
+              coupon: studioCouponFacts(coupon),
+              script: project?.script?.slice(0, 6000) || "",
+            },
+            locked,
+            input.previous,
+            searchTopics,
+          ),
+        );
+        return;
+      }
       const response = await fetch(
         "https://api.deepseek.com/chat/completions",
         {
@@ -165,7 +185,7 @@ export function registerStudioCopy(
                 role: "user",
                 content: JSON.stringify({
                   kind: input.kind,
-                  count: input.kind === "titles" ? 3 : 10 - locked.length,
+                  count: 3,
                   store: visit.name,
                   city: "上海",
                   coupon: studioCouponFacts(coupon),

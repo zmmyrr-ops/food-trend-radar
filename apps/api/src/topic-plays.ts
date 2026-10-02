@@ -31,7 +31,7 @@ export function parseTopicPlays(html: string, expected: string) {
   if (title !== expected) return null;
   return block.match(/([\d.]+[万亿]?)次播放/)?.[1] || null;
 }
-export function parseTopicSuggestion(data: unknown, expected: string) {
+export function parseTopicSuggestions(data: unknown) {
   const body = z
     .object({
       status_code: z.literal(0),
@@ -47,10 +47,13 @@ export function parseTopicSuggestion(data: unknown, expected: string) {
         .optional(),
     })
     .parse(data);
+  return body.sug_list || [];
+}
+export function parseTopicSuggestion(data: unknown, expected: string) {
   const normalize = (value: string) =>
     value.normalize("NFKC").trim().toLowerCase();
   return (
-    body.sug_list?.find(
+    parseTopicSuggestions(data).find(
       (item) => normalize(item.cha_name) === normalize(expected),
     ) || null
   );
@@ -94,7 +97,9 @@ export function registerTopicPlays(app: Express, cacheFile: string) {
       nextAt = Date.now() + 3500;
     }
   }
-  async function creatorLookup(topic: string): Promise<TopicPlay | null> {
+  async function creatorSuggestions(
+    topic: string,
+  ): Promise<TopicPlay[] | null> {
     let config;
     try {
       config = JSON.parse(
@@ -136,16 +141,18 @@ export function registerTopicPlays(app: Express, cacheFile: string) {
         await response.body?.cancel();
         throw Error("UPSTREAM");
       }
-      const match = parseTopicSuggestion(await response.json(), topic);
-      if (match) ids[topic] = match.cid;
-      return {
-        topic,
-        display: match ? formatTopicCount(match.view_count) : null,
-        ...(match ? { view_count: match.view_count } : {}),
-        url: match ? `https://www.douyin.com/hashtag/${match.cid}` : null,
-        checked_at: new Date().toISOString(),
-        status: match ? "ok" : "unmatched",
-      };
+      const matches = parseTopicSuggestions(await response.json());
+      return matches.map((match) => {
+        ids[match.cha_name] = match.cid;
+        return {
+          topic: match.cha_name,
+          display: formatTopicCount(match.view_count),
+          view_count: match.view_count,
+          url: `https://www.douyin.com/hashtag/${match.cid}`,
+          checked_at: new Date().toISOString(),
+          status: "ok" as const,
+        };
+      });
     } finally {
       nextAt = Date.now() + 3500;
     }
@@ -167,9 +174,15 @@ export function registerTopicPlays(app: Express, cacheFile: string) {
         status: "unmatched",
       };
       try {
-        const creator = await creatorLookup(topic);
-        if (creator) Object.assign(result, creator);
-        else {
+        const suggestions = await creatorSuggestions(topic);
+        if (suggestions) {
+          const match = suggestions.find(
+            (x) =>
+              x.topic.normalize("NFKC").toLowerCase() ===
+              topic.normalize("NFKC").toLowerCase(),
+          );
+          if (match) Object.assign(result, match, { topic });
+        } else {
           if (!ids[topic])
             await page(
               `https://www.douyin.com/search/${encodeURIComponent(topic)}`,
@@ -208,18 +221,57 @@ export function registerTopicPlays(app: Express, cacheFile: string) {
     void work.finally(() => pending.delete(topic));
     return work;
   }
+  const searches = new Map<string, { at: number; items: TopicPlay[] }>();
+  const searching = new Map<string, Promise<TopicPlay[]>>();
+  function search(keyword: string): Promise<TopicPlay[]> {
+    const hit = searches.get(keyword);
+    if (
+      hit &&
+      Date.now() - hit.at < (hit.items.length ? 6 * 3600_000 : 30 * 60_000)
+    )
+      return Promise.resolve(hit.items);
+    const active = searching.get(keyword);
+    if (active) return active;
+    if (pending.size + searching.size >= 30)
+      return Promise.reject(Error("话题查询繁忙，请稍后重试"));
+    const work = queue.then(async () => {
+      await ready;
+      let items: TopicPlay[] | null;
+      try {
+        items = await creatorSuggestions(keyword);
+      } catch {
+        throw Error("抖音话题查询失败，请稍后重试或联系管理员更新凭证");
+      }
+      if (!items) throw Error("尚未配置抖音话题搜索凭证");
+      searches.set(keyword, { at: Date.now(), items });
+      if (searches.size > 500) searches.delete(searches.keys().next().value!);
+      for (const item of items) cache[item.topic] = item;
+      return items;
+    });
+    searching.set(keyword, work);
+    queue = work.then(
+      () => {
+        searching.delete(keyword);
+      },
+      () => {
+        searching.delete(keyword);
+      },
+    );
+    return work;
+  }
   app.get("/api/v3/topic-plays", async (req, res) => {
     const topic = z
       .string()
       .trim()
       .min(1)
-      .max(32)
-      .regex(/^[\p{L}\p{N}_]+$/u)
+      .max(60)
+      .regex(/^[^#＃]+$/u)
       .parse(req.query.topic);
-    if (pending.size >= 30 && !pending.has(topic)) {
+    if (pending.size + searching.size >= 30 && !pending.has(topic)) {
       res.status(429).json({ error: { message: "话题查询繁忙，请稍后重试" } });
       return;
     }
     res.json(await lookup(topic));
   });
+  return { search };
 }

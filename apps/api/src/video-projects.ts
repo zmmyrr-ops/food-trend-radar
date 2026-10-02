@@ -377,8 +377,16 @@ export async function createVideoProjects(db: PGlite, root: string) {
   }
   function register(app: Express) {
     visits.register(app);
-    registerTopicPlays(app, join(root, "..", "topic-plays.json"));
-    registerStudioCopy(app, db, join(root, "..", "secrets", "deepseek.json"));
+    const topicService = registerTopicPlays(
+      app,
+      join(root, "..", "topic-plays.json"),
+    );
+    registerStudioCopy(
+      app,
+      db,
+      join(root, "..", "secrets", "deepseek.json"),
+      topicService.search,
+    );
     // Apply before every detail, download, render, deletion and asset endpoint.
     app.use(
       ["/api/v3/video-projects/:id", "/api/v3/video-assets/:id"],
