@@ -586,13 +586,14 @@ export function VisitPlans() {
                   <article className="visit-store" key={s.id}>
                     <span className="visit-number">{i + 1}</span>
                     <div>
-                      <h3>{s.name}</h3>
-                      <ShopLocation
-                        name={s.name}
-                        address={s.address}
-                        lat={s.lat}
-                        lng={s.lng}
-                      />
+                      <h3>
+                        <ShopLocation
+                          name={s.name}
+                          address={s.address}
+                          lat={s.lat}
+                          lng={s.lng}
+                        />
+                      </h3>
                       <p>{s.address}</p>
                       <div className="visit-actions">
                         <button disabled={busy} onClick={() => setEditing(s)}>
