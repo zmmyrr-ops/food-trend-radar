@@ -158,7 +158,8 @@ export function StoreEditor({
                 onClick={() => {
                   setPoint({ lat: r.lat, lng: r.lng });
                   if (!r.approximate) {
-                    setName(r.name);
+                    // 地图命中可能是店铺所在商场，不能覆盖用户确认的店名。
+                    if (!name.trim()) setName(r.name);
                     if (!address.trim() && r.address) setAddress(r.address);
                   }
 
