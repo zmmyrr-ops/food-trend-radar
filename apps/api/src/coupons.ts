@@ -153,9 +153,14 @@ export function normalizeCoupon(
     monthly_sales: str(p.sold_count_display),
     sale_end: str(p.product_sold_end_time),
     status: money(p.status),
-    identity: names.some((n) => n && norm(n) === norm(str(b.brand_name)))
-      ? "name_match"
-      : "unresolved",
+    identity:
+      names.some((n) => n && norm(n) === norm(str(b.brand_name))) ||
+      (!str(b.brand_name) &&
+        str(record(record(poi.poi_display_info).poi_distance_display).value) ===
+          "上海市" &&
+        names.some((n) => n && norm(n) === norm(str(poi.poi_name))))
+        ? "name_match"
+        : "unresolved",
     terms_status: "unknown",
     city_evidence: str(
       record(record(poi.poi_display_info).poi_distance_display).value,
@@ -292,6 +297,18 @@ export async function initCoupons(db: PGlite) {
       GROUP BY i.brand_id,i.payload->>'platform_brand_id';
     CREATE INDEX IF NOT EXISTS coupon_diffs_time ON coupon_diffs(observed_at DESC);
   `);
+  // Reconcile only current baselines for exact Shanghai POI names missing brand metadata.
+  await db.exec(`WITH repaired AS (
+    UPDATE coupon_items i SET payload=jsonb_set(i.payload,'{identity}','"name_match"'::jsonb)
+    FROM brands b,coupon_baselines cb
+    WHERE i.brand_id=b.id AND cb.brand_id=b.id AND cb.run_id=i.run_id
+      AND i.payload->>'identity'='unresolved'
+      AND coalesce(i.payload->>'platform_brand_name','')=''
+      AND i.payload->>'city_evidence'='上海市'
+      AND (lower(trim(i.payload->>'poi_name'))=lower(trim(b.name))
+        OR EXISTS(SELECT 1 FROM jsonb_array_elements_text(b.aliases) a(value) WHERE lower(trim(a.value))=lower(trim(i.payload->>'poi_name'))))
+    RETURNING i.brand_id
+  ) UPDATE coupon_baselines SET run_id=run_id WHERE brand_id IN (SELECT brand_id FROM repaired);`);
   await seedOfficialBrandIcons(db);
   await initRules(db);
   await initStores(db);

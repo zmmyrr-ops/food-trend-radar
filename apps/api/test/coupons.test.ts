@@ -999,3 +999,18 @@ test("游玩分类随任务快照传递，完整采集仍原子提交基线", as
     await db.close();
   }
 });
+
+test("unbranded Shanghai stores require an exact registered name, never a conflicting brand", () => {
+  const raw = product();
+  const poi = raw.nearest_poi_info as any;
+  poi.brand_data = {};
+  poi.poi_name = "阿拉甬城饭摊";
+  poi.poi_display_info = { poi_distance_display: { value: "上海市" } };
+  assert.equal(normalizeCoupon(raw, ["阿拉甬城饭摊"]).identity, "name_match");
+  assert.equal(normalizeCoupon(raw, ["其他店"]).identity, "unresolved");
+  poi.poi_display_info.poi_distance_display.value = "宁波市";
+  assert.equal(normalizeCoupon(raw, ["阿拉甬城饭摊"]).identity, "unresolved");
+  poi.poi_display_info.poi_distance_display.value = "上海市";
+  poi.brand_data = { brand_name: "其他品牌" };
+  assert.equal(normalizeCoupon(raw, ["阿拉甬城饭摊"]).identity, "unresolved");
+});
