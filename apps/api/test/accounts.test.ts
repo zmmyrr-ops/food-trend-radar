@@ -207,3 +207,57 @@ test("账号登录、会话撤销及素材/视频跨账号隔离", async () => {
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+test("标题和话题对登录用户开放，管理接口仍受保护", async () => {
+  const db = await openDatabase();
+  const accounts = await createAccounts(db, { testMode: true });
+  const app = express();
+  app.use(express.json());
+  accounts.register(app);
+  app.post("/api/v3/studio-copy", (_req, res) => res.json({ ok: true }));
+  app.get("/api/v3/topic-plays", (_req, res) => res.json({ ok: true }));
+  app.post("/api/v3/admin-task", (_req, res) => res.json({ ok: true }));
+  const server = app.listen(0, "127.0.0.1");
+  await new Promise<void>((r) => server.once("listening", r));
+  const base = `http://127.0.0.1:${(server.address() as { port: number }).port}`;
+  try {
+    const login = await fetch(base + "/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ phone: "13800002201", code: "666666" }),
+    });
+    const cookie = login.headers.get("set-cookie")!.split(";")[0];
+    assert.equal((await fetch(base + "/api/v3/topic-plays")).status, 401);
+    assert.equal(
+      (
+        await fetch(base + "/api/v3/topic-plays?topic=上海探店", {
+          headers: { cookie },
+        })
+      ).status,
+      200,
+    );
+    for (const kind of ["titles", "topics"])
+      assert.equal(
+        (
+          await fetch(base + "/api/v3/studio-copy", {
+            method: "POST",
+            headers: { cookie, "Content-Type": "application/json" },
+            body: JSON.stringify({ kind }),
+          })
+        ).status,
+        200,
+      );
+    assert.equal(
+      (
+        await fetch(base + "/api/v3/admin-task", {
+          method: "POST",
+          headers: { cookie },
+        })
+      ).status,
+      403,
+    );
+  } finally {
+    await new Promise<void>((r) => server.close(() => r()));
+    await db.close();
+  }
+});

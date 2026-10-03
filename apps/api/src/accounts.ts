@@ -154,7 +154,11 @@ export async function createAccounts(
           /^\/api\/v3\/(coupon-picks(?:\.csv)?|coupons|brands|environment|sales-heat|ai-recommendations)(\/|$)/.test(
             route,
           ));
-      if (personal || readOnly) return next();
+      const studioCopy =
+        req.method === "POST" && route === "/api/v3/studio-copy";
+      const topicPlays =
+        ["GET", "HEAD"].includes(req.method) && route === "/api/v3/topic-plays";
+      if (personal || readOnly || studioCopy || topicPlays) return next();
       res.status(403).json({
         error: { code: "ADMIN_REQUIRED", message: "此操作仅管理员可用" },
       });

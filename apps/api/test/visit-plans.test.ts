@@ -85,6 +85,29 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
       ).json()
     ).id;
     assert.ok(s);
+    const copyInput = {
+      visit_store_id: s,
+      kind: "topics",
+      locked: Array.from({ length: 10 }, (_, i) => `话题${i}`),
+    };
+    assert.equal(
+      (await call("v3/studio-copy", a.cookie, "POST", copyInput)).status,
+      200,
+    );
+    assert.equal(
+      (await call("v3/studio-copy", b.cookie, "POST", copyInput)).status,
+      404,
+    );
+    assert.equal(
+      (
+        await call("v3/studio-copy", b.cookie, "POST", {
+          visit_store_id: s,
+          kind: "titles",
+        })
+      ).status,
+      404,
+    );
+
     assert.equal(
       (
         await (
