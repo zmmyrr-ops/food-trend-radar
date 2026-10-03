@@ -25,11 +25,11 @@ export async function visitRequest(
 ) {
   const r = await appFetch(`/api/v3/${path}`, {
     method,
-    ...(body === undefined
+    ...(body === undefined && ["GET", "HEAD"].includes(method)
       ? {}
       : {
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
+          body: JSON.stringify(body ?? {}),
         }),
   });
   const d = await r.json();

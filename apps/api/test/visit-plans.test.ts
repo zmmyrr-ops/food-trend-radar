@@ -4,8 +4,8 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
-import express from "express";
 import { createAccounts } from "../src/accounts.js";
+import { createApp } from "../src/app.js";
 import { openDatabase } from "../src/db.js";
 import { createVideoProjects } from "../src/video-projects.js";
 
@@ -15,10 +15,20 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
     videos = await createVideoProjects(db, dir),
     accounts = await createAccounts(db, { testMode: true });
   await videos.stop();
-  const app = express();
-  app.use(express.json());
-  accounts.register(app);
-  videos.register(app);
+  const app = createApp(
+    db,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    {
+      register(app) {
+        accounts.register(app);
+        videos.register(app);
+      },
+    },
+  );
   const server = app.listen(0, "127.0.0.1");
   await new Promise<void>((r) => server.once("listening", r));
   const base = `http://127.0.0.1:${(server.address() as { port: number }).port}`;
@@ -26,7 +36,10 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
     fetch(base + "/api/" + path, {
       method,
       headers: { cookie, "Content-Type": "application/json" },
-      body: body === undefined ? undefined : JSON.stringify(body),
+      body:
+        body === undefined && ["GET", "HEAD"].includes(method)
+          ? undefined
+          : JSON.stringify(body ?? {}),
     });
   const login = async (phone: string) => {
     const r = await call("auth/login", "", "POST", { phone, code: "666666" });
@@ -89,6 +102,12 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
       400,
     );
     assert.equal((await call(`v3/visit-stores/${s}`, b.cookie)).status, 404);
+    const untypedDelete = await fetch(
+      base + `/api/v3/visit-plans/${p}/stores/${s}`,
+      { method: "DELETE", headers: { cookie: a.cookie } },
+    );
+    assert.equal(untypedDelete.status, 415);
+
     // A duplicate shop may be reached through another coupon; retain both links.
     await db.exec(
       "CREATE TABLE IF NOT EXISTS coupon_items(run_id uuid,brand_id uuid,product_id text,payload jsonb NOT NULL,observed_at timestamptz DEFAULT now(),PRIMARY KEY(run_id,brand_id,product_id))",
