@@ -21,6 +21,7 @@ import { registerAdmission } from "./admission.js";
 import { createAutoRadar } from "./auto-radar.js";
 import type { createCoupons } from "./coupons.js";
 import type { createOperations } from "./operations.js";
+import { registerShopReports } from "./shop-reports.js";
 
 const hash = (value: string) =>
   createHash("sha256").update(value).digest("hex");
@@ -242,6 +243,7 @@ export function createApp(
   });
   app.use(express.json({ limit: "1mb" }));
   accounts?.register(app);
+  registerShopReports(app, db);
   if (runtimeDiagnostics)
     app.get("/api/v3/runtime-diagnostics", (_req, res) =>
       res.json(runtimeDiagnostics()),

@@ -24,6 +24,7 @@ import { Admission } from "./Admission";
 import { appFetch, appUrl } from "./app-url";
 import { BrandIcon } from "./BrandIcon";
 import { CouponRadar } from "./CouponRadar";
+import { ShopReports } from "./ShopReports";
 import { Sources } from "./Sources";
 import { VideoLibrary } from "./VideoLibrary";
 import { VideoStudio } from "./VideoStudio";
@@ -98,6 +99,7 @@ function App() {
         "radar",
         "videos",
         "plans",
+        "reports",
         "brands",
         "events",
         "import",
@@ -107,7 +109,7 @@ function App() {
         .filter(
           (v) =>
             account.role === "admin" ||
-            ["radar", "videos", "plans"].includes(v),
+            ["radar", "videos", "plans", "reports"].includes(v),
         )
         .includes(value)
         ? value
@@ -341,6 +343,20 @@ function App() {
               品牌名录<small>分类查看与管理</small>
             </div>
           </button>
+          <button
+            aria-pressed={tab === "reports"}
+            onClick={() => navigate("reports")}
+          >
+            <span>报</span>
+            <div>
+              店铺上报
+              <small>
+                {account.role === "admin"
+                  ? "审核与补充收录"
+                  : "告诉我们你想找的店"}
+              </small>
+            </div>
+          </button>
         </nav>
         <details className="sidebar-tools admin-only">
           <summary>数据与设置</summary>
@@ -370,11 +386,13 @@ function App() {
             探好店 /{" "}
             {tab === "radar"
               ? `${channelLabel}发现`
-              : tab === "plans"
-                ? "探店计划"
-                : tab === "videos"
-                  ? "视频作品"
-                  : "数据工作台"}
+              : tab === "reports"
+                ? "店铺上报"
+                : tab === "plans"
+                  ? "探店计划"
+                  : tab === "videos"
+                    ? "视频作品"
+                    : "数据工作台"}
           </span>
           <div className="channel-switch" aria-label="切换业务频道">
             {(["food", "leisure"] as const).map((c) => (
@@ -396,7 +414,7 @@ function App() {
             })}
           </small>
         </header>
-        {tab !== "radar" && tab !== "plans" && (
+        {tab !== "radar" && tab !== "plans" && tab !== "reports" && (
           <section className="page-heading">
             <div>
               <p className="eyebrow">
@@ -455,6 +473,7 @@ function App() {
         {!loaded && !error && <p role="status">正在加载工作台…</p>}
         {tab === "radar" && <CouponRadar key={channel} channel={channel} />}
         {tab === "plans" && <VisitPlans />}
+        {tab === "reports" && <ShopReports />}
         {tab === "videos" && (
           <VideoLibrary key={channel} channel={channel} brands={brands} />
         )}

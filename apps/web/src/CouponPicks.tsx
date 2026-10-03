@@ -382,7 +382,8 @@ export function CouponPicks({
             </details>
           )}
           <p className="result-meta">
-            {channel === "food" ? "美食" : "游玩"} · 共 {data.total} 张
+            {channel === "food" ? "美食" : "游玩"} · 共 {data.total} 张{" · "}
+            <a href={appUrl("/?tab=reports")}>没找到想要的店？上报店铺 →</a>
           </p>
           {!data.total && (
             <p>
