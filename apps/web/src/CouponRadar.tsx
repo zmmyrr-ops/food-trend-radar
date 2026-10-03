@@ -129,7 +129,9 @@ export function CouponRadar({ channel }: { channel: Channel }) {
       icon_url?: string | null;
     }[]
   >([]);
-  const [brandId, setBrandId] = useState("");
+  const [brandId, setBrandId] = useState(
+    new URLSearchParams(location.search).get("subscription_brand") || "",
+  );
   const [environment, setEnvironment] = useState<{
     stale: boolean;
     outlook?: {

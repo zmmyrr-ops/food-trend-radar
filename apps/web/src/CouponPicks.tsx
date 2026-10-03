@@ -9,6 +9,7 @@ import { PickEvaluation } from "./PickEvaluation";
 import { AddToVisitPlan, type VisitPlan, visitRequest } from "./VisitPlans";
 
 type Pick = {
+  is_new?: boolean;
   brand_index: {
     keyword: string;
     status: string;
@@ -93,7 +94,7 @@ const views = [
   ["value_rising", "降价且升温"],
   ["price_drop", "票面降价"],
   ["accelerating", "增长加快"],
-  ["new", "新发现"],
+  ["new", "新上 · 24小时"],
 ] as const;
 const money = (n: number | null) =>
   n === null ? "未知" : `¥${(n / 100).toFixed(2)}`;
@@ -150,7 +151,11 @@ export function CouponPicks({
     };
   }, []);
 
-  const [view, setView] = useState("recommended"),
+  const [view, setView] = useState(
+      new URLSearchParams(location.search).has("subscription_brand")
+        ? "all"
+        : "recommended",
+    ),
     [order, setOrder] = useState("priority"),
     [category, setCategory] = useState(""),
     [searchInput, setSearchInput] = useState(""),
@@ -407,7 +412,7 @@ export function CouponPicks({
                   <span className="coupon-kind">
                     {x.kind === "price_drop"
                       ? "票面降价"
-                      : x.kind === "first_observed"
+                      : x.is_new
                         ? "首次发现"
                         : x.kind === "quantity_increase"
                           ? "同价列示增量"
@@ -418,6 +423,14 @@ export function CouponPicks({
                 </div>
                 {planLinks[`${x.brand_id}:${x.product_id}`] && (
                   <span className="coupon-plan-badge">✓ 已加入探店计划</span>
+                )}
+                {x.is_new && (
+                  <span
+                    className="fresh-coupon-badge"
+                    title="首次发现后24小时内"
+                  >
+                    新上
+                  </span>
                 )}
                 <h3 title={x.title}>{x.title}</h3>
                 <CouponStoreSummary

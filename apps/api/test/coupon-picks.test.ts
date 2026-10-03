@@ -146,7 +146,7 @@ test("选券API先全量筛选排序再分页，CSV包含当前筛选全部记�
     assert.equal(all.items[0].product_id, "2");
     const ranked = await (await fetch(base + "?limit=1")).json();
     assert.equal(ranked.items[0].product_id, "1");
-    assert.equal(ranked.model.version, "priority-v5");
+    assert.equal(ranked.model.version, "priority-v6");
     assert.equal(ranked.context, null);
     const filtered = await (
       await fetch(base + "?view=value_rising&limit=1")
@@ -362,4 +362,48 @@ test("美食游玩在排名、统计及筛选前隔离，不被另一频道前50
       .filtered.length,
     0,
   );
+});
+
+test("新上保留24小时，后续无变化轮次仍保留，临界点自动撤销加分", async () => {
+  const { updatePoolClock } = await import("../src/coupon-pool.js");
+  const discovery = {
+    brand_id: "brand",
+    product_id: "1",
+    discovered_at: new Date(now - 23 * 3600000).toISOString(),
+  };
+  const regular = combinePicks([heat("1", "120", 1600)], [], now)[0];
+  const fresh = combinePicks(
+    [heat("1", "120", 1600)],
+    [],
+    now,
+    [],
+    [],
+    [],
+    [],
+    [discovery],
+  )[0];
+  assert.equal(fresh.is_new, true);
+  assert.equal(fresh.priority.score, regular.priority.score + 10);
+  assert.equal(
+    selectPicks([fresh], { ...query, view: "new" }).filtered.length,
+    1,
+  );
+  const expired = updatePoolClock(fresh, now + 3600000);
+  assert.equal(expired.is_new, false);
+  assert.equal(expired.priority.score, regular.priority.score);
+  assert.equal(
+    selectPicks([expired], { ...query, view: "new" }).filtered.length,
+    0,
+  );
+  const future = combinePicks(
+    [heat()],
+    [],
+    now,
+    [],
+    [],
+    [],
+    [],
+    [{ ...discovery, discovered_at: new Date(now + 1).toISOString() }],
+  )[0];
+  assert.equal(future.is_new, false);
 });

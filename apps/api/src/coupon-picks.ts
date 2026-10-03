@@ -49,7 +49,15 @@ export function combinePicks(
     brand_id: string;
     price_observed_at: string;
   })[] = [],
+  discoveries: {
+    brand_id: string;
+    product_id: string;
+    discovered_at: string;
+  }[] = [],
 ) {
+  const fresh = new Map(
+    discoveries.map((d) => [`${d.brand_id}:${d.product_id}`, d.discovered_at]),
+  );
   const historical = new Map(
     historicalRules.map((r) => [`${r.brand_id}:${r.product_id}`, r]),
   );
@@ -60,6 +68,11 @@ export function combinePicks(
     signals.map((x) => [`${x.brand_id}:${x.product_id}`, x]),
   );
   return heat.flatMap((x) => {
+    const discoveredAt = fresh.get(`${x.brand_id}:${x.product_id}`) ?? null;
+    const isNew =
+      discoveredAt !== null &&
+      now >= Date.parse(discoveredAt) &&
+      now < Date.parse(discoveredAt) + 24 * 3600000;
     const brandIndex = byIndex.get(x.brand_id);
     const usableIndex = brandIndex ? indexAvailable(brandIndex, now) : false;
     const latest = x.samples[0];
@@ -98,6 +111,8 @@ export function combinePicks(
         : null;
     return [
       {
+        discovered_at: discoveredAt,
+        is_new: isNew,
         run_id: latest.run_id,
         sale_end: x.sale_end ?? null,
         usage_inputs: {
@@ -118,6 +133,7 @@ export function combinePicks(
         brand_index: brandIndex ? { ...brandIndex, usable: usableIndex } : null,
         priority: applyUsePenalty(
           pickPriority({
+            is_new: isNew,
             discount_rate: x.discount.rate,
             brand_growth: usableIndex ? brandIndex!.mom : null,
             speed: x.speed,
@@ -221,7 +237,7 @@ export function selectPicks(
             : v === "accelerating"
               ? (x.speed ?? 0) > 0 && (x.acceleration ?? 0) > 0
               : v === "new"
-                ? x.kind === "first_observed"
+                ? x.is_new === true
                 : true;
   const counts = Object.fromEntries(
     [
@@ -408,6 +424,18 @@ export function createPickReader(
       : [];
     const historicalRules = await readHistoricalRules();
     const indices = readIndices ? await readIndices() : [];
+    const discoveries = db
+      ? (
+          await db.query<{
+            brand_id: string;
+            product_id: string;
+            discovered_at: string;
+          }>(
+            "SELECT brand_id,product_id,discovered_at FROM coupon_discoveries WHERE discovered_at>now()-interval '24 hours' AND ($1::uuid IS NULL OR brand_id=$1)",
+            [brand ?? null],
+          )
+        ).rows
+      : [];
     return combinePicks(
       heat,
       signals,
@@ -416,6 +444,7 @@ export function createPickReader(
       rules,
       indices,
       historicalRules,
+      discoveries,
     );
   };
   return db && !brand ? readModel(db, "coupon-picks-v5", build) : build;
@@ -480,8 +509,8 @@ export function registerCouponPicks(
           ? { outlook: environment.outlook, source: environment.attribution }
           : null,
         model: {
-          version: "priority-v5",
-          note: "初始规则排序，非爆款概率。先计算基础分，再乘优惠系数min(1,优惠比例/20%)；优惠不足10%或证据不足不进入优先券。优先使用原价折扣，缺失时用历史降价替代，已知低折扣不能被历史降价抵消。销量速度30、加速度15、原价折扣25、较上次降价10、品牌指数10、环境适配10。原价折扣以平台原价为参考，优惠比例达到50%得25分，线性封顶；仅在单一明确售价且原价不低于售价时计算，平台原价不等于历史成交价；缺失项不计分、不重新分配权重。品牌指数使用上海7日搜索指数环比，-25%计0分、持平5分、+25%计10分，线性封顶，超过72小时不计分。天气仅作背景，不推断销量增益。明确禁用日期按未来72小时受限时长降低优先分，节假日禁用最高20分，全窗口禁用为0分。近36小时历史禁用证据在本轮缺失时仅作待复核提醒并暂限20分，不当作当前确认。",
+          version: "priority-v6",
+          note: "初始规则排序，非爆款概率。先计算基础分，再乘优惠系数min(1,优惠比例/20%)；优惠不足10%或证据不足不进入优先券。优先使用原价折扣，缺失时用历史降价替代，已知低折扣不能被历史降价抵消。销量速度30、加速度15、原价折扣25、较上次降价10、品牌指数10、新上券10。首次有效发现后24小时内新上券得10分，到期撤销，不随采集刷新延长；首次建库及历史券重新出现不算新上。原价折扣以平台原价为参考，优惠比例达到50%得25分，线性封顶；仅在单一明确售价且原价不低于售价时计算，平台原价不等于历史成交价；缺失项不计分、不重新分配权重。品牌指数使用上海7日搜索指数环比，-25%计0分、持平5分、+25%计10分，线性封顶，超过72小时不计分。天气仅作背景，不推断销量增益。明确禁用日期按未来72小时受限时长降低优先分，节假日禁用最高20分，全窗口禁用为0分。近36小时历史禁用证据在本轮缺失时仅作待复核提醒并暂限20分，不当作当前确认。",
         },
         counts,
         total: filtered.length,

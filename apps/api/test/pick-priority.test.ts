@@ -10,7 +10,7 @@ test("优先分封顶且不冒充概率，不将缺失权重分配给已有指�
   });
   assert.equal(full.score, 55);
   assert.equal(full.coverage, 55);
-  assert.deepEqual(full.missing, ["原价折扣", "品牌指数", "环境销售适配"]);
+  assert.deepEqual(full.missing, ["原价折扣", "品牌指数", "新上券"]);
   const missing = pickPriority({
     speed: null,
     acceleration: null,

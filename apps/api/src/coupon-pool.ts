@@ -1,5 +1,6 @@
 import type { PGlite } from "@electric-sql/pglite";
 import { indexAvailable } from "./brand-index.js";
+import { syncSubscriptionMessages } from "./brand-subscriptions.js";
 import type { combinePicks } from "./coupon-picks.js";
 import { couponUseOutlook } from "./coupon-use-outlook.js";
 import { pickPriority } from "./pick-priority.js";
@@ -23,6 +24,10 @@ export function saleDeadline(value: unknown): string | null {
 
 export function updatePoolClock(x: Pick, now = Date.now()): Pick {
   if (!x.usage_inputs) return x; // Existing precomputed snapshots are replaced by the dirty queue.
+  const isNew =
+    !!x.discovered_at &&
+    now >= Date.parse(x.discovered_at) &&
+    now < Date.parse(x.discovered_at) + 24 * 3600000;
   const outlook = couponUseOutlook(x.usage_inputs.current, now);
   const historical = x.usage_inputs.historical
     ? couponUseOutlook(x.usage_inputs.historical, now)
@@ -31,10 +36,12 @@ export function updatePoolClock(x: Pick, now = Date.now()): Pick {
   const usable = index ? indexAvailable(index, now) : false;
   return {
     ...x,
+    is_new: isNew,
     use_outlook: outlook,
     brand_index: index ? { ...index, usable } : null,
     priority: applyUsePenalty(
       pickPriority({
+        is_new: isNew,
         discount_rate: x.discount.rate,
         brand_growth: usable ? index!.mom : null,
         speed: x.speed,
@@ -203,6 +210,7 @@ export async function createCouponPool(
           if (stopped) break;
           await refreshBrand(x.brand_id);
         }
+        await syncSubscriptionMessages(db);
       })().finally(() => {
         pumping = undefined;
       });

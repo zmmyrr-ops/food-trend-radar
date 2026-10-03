@@ -20,6 +20,7 @@ export function couponDiscount(
 
 /** Initial transparent ranking rules, not a calibrated probability or value verdict. */
 export function pickPriority(input: {
+  is_new?: boolean;
   discount_rate?: number | null;
   brand_growth?: number | null;
   speed: number | null;
@@ -69,7 +70,11 @@ export function pickPriority(input: {
           ? 10 * Math.min(1, Math.max(0, (input.brand_growth + 0.25) / 0.5))
           : null,
     },
-    { name: "环境销售适配", weight: 10, value: null },
+    {
+      name: "新上券",
+      weight: 10,
+      value: input.is_new === undefined ? null : input.is_new ? 10 : 0,
+    },
   ].map((x) => ({
     ...x,
     value: x.value === null ? null : Math.round(x.value * 10) / 10,
@@ -100,7 +105,7 @@ export function pickPriority(input: {
       ? "优惠证据不足，暂不进入优先券"
       : `${basis}优惠 ${(rate * 100).toFixed(1)}%；${eligible ? "达到优先券优惠门槛" : "不足10%，不进入优先券"}；优惠不足20%时按比例降低总分`;
   return {
-    version: "priority-v4",
+    version: "priority-v6",
     raw_score,
     value_gate: { rate, factor, eligible, reason },
     score: Math.round(raw_score * factor * 10) / 10,

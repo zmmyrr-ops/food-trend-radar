@@ -23,6 +23,7 @@ import { AccountGate, useAccount } from "./AccountGate";
 import { Admission } from "./Admission";
 import { appFetch, appUrl } from "./app-url";
 import { BrandIcon } from "./BrandIcon";
+import { BrandSubscriptions } from "./BrandSubscriptions";
 import { CouponRadar } from "./CouponRadar";
 import { ShopReports } from "./ShopReports";
 import { Sources } from "./Sources";
@@ -471,7 +472,12 @@ function App() {
           </p>
         )}
         {!loaded && !error && <p role="status">正在加载工作台…</p>}
-        {tab === "radar" && <CouponRadar key={channel} channel={channel} />}
+        {tab === "radar" && (
+          <>
+            <BrandSubscriptions />
+            <CouponRadar key={channel} channel={channel} />
+          </>
+        )}
         {tab === "plans" && <VisitPlans />}
         {tab === "reports" && <ShopReports />}
         {tab === "videos" && (

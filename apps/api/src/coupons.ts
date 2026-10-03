@@ -278,6 +278,13 @@ export async function initCoupons(db: PGlite) {
     CREATE TABLE IF NOT EXISTS brand_icons(brand_id uuid PRIMARY KEY REFERENCES brands(id),source_url text NOT NULL,kind text NOT NULL,mime text NOT NULL,content text NOT NULL,updated_at timestamptz NOT NULL DEFAULT now());
     CREATE TABLE IF NOT EXISTS coupon_baselines(brand_id uuid PRIMARY KEY, run_id uuid NOT NULL);
     CREATE TABLE IF NOT EXISTS coupon_diffs(run_id uuid, brand_id uuid, product_id text, kind text, old_payload jsonb, new_payload jsonb, observed_at timestamptz DEFAULT now(), PRIMARY KEY(run_id,brand_id,product_id));
+    CREATE TABLE IF NOT EXISTS coupon_discoveries(brand_id uuid NOT NULL,product_id text NOT NULL,discovered_at timestamptz NOT NULL,PRIMARY KEY(brand_id,product_id));
+    INSERT INTO coupon_discoveries
+      SELECT d.brand_id,d.product_id,min(d.observed_at) FROM coupon_diffs d
+      WHERE d.kind='NEW_OBSERVED' AND d.observed_at>now()-interval '24 hours'
+      AND d.new_payload->>'identity'='name_match'
+      AND NOT EXISTS(SELECT 1 FROM coupon_items i JOIN coupon_tasks t ON t.run_id=i.run_id AND t.brand_id=i.brand_id WHERE i.brand_id=d.brand_id AND i.product_id=d.product_id AND i.run_id<>d.run_id AND t.state='complete' AND i.observed_at<d.observed_at)
+      GROUP BY d.brand_id,d.product_id ON CONFLICT DO NOTHING;
     ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS query_signature text;
     ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS category text NOT NULL DEFAULT '其他餐饮';
     ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS completed_at timestamptz;
@@ -536,6 +543,12 @@ export function createCoupons(
             JSON.stringify(p),
           ],
         );
+        if (kind === "NEW_OBSERVED" && p.identity === "name_match")
+          await tx.query(
+            `INSERT INTO coupon_discoveries(brand_id,product_id,discovered_at)
+            SELECT $1,$2,now() WHERE NOT EXISTS(SELECT 1 FROM coupon_items i JOIN coupon_tasks t ON t.run_id=i.run_id AND t.brand_id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 AND i.run_id<>$3 AND t.state='complete') ON CONFLICT DO NOTHING`,
+            [brand, p.product_id, run],
+          );
         previous.delete(p.product_id);
       }
       for (const [id, p] of previous)

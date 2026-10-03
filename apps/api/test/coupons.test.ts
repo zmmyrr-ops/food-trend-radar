@@ -1014,3 +1014,55 @@ test("unbranded Shanghai stores require an exact registered name, never a confli
   poi.brand_data = { brand_name: "其他品牌" };
   assert.equal(normalizeCoupon(raw, ["阿拉甬城饭摊"]).identity, "unresolved");
 });
+
+test("新发现时间跨轮次固定，首次基准与历史券重新出现不算上新", async () => {
+  const db = await openDatabase();
+  const id = randomUUID();
+  await db.query(
+    "INSERT INTO brands(id,name,name_key,aliases,category,active,shanghai_evidence_url) VALUES($1,'品牌甲','fresh-test','[]','其他餐饮',true,'https://example.com')",
+    [id],
+  );
+  let ids = ["old"];
+  const service = createCoupons(db, {
+    gate: gate(),
+    fetchPage: async () => ({
+      status_code: 0,
+      product_list: ids.map((x) => product(1200, x)),
+      has_more: false,
+      cursor: "0",
+    }),
+  });
+  try {
+    await service.start([id]);
+    await service.drain();
+    assert.equal(
+      (await db.query("SELECT * FROM coupon_discoveries")).rows.length,
+      0,
+    );
+    ids = ["old", "new"];
+    await service.start([id]);
+    await service.drain();
+    const first = (await db.query("SELECT * FROM coupon_discoveries")).rows;
+    assert.equal(first.length, 1);
+    assert.equal(first[0].product_id, "new");
+    await service.start([id]);
+    await service.drain();
+    assert.deepEqual(
+      (await db.query("SELECT * FROM coupon_discoveries")).rows,
+      first,
+    );
+    ids = ["new"];
+    await service.start([id]);
+    await service.drain();
+    ids = ["old", "new"];
+    await service.start([id]);
+    await service.drain();
+    assert.deepEqual(
+      (await db.query("SELECT * FROM coupon_discoveries")).rows,
+      first,
+    );
+  } finally {
+    await service.stop();
+    await db.close();
+  }
+});
