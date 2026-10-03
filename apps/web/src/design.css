@@ -1244,3 +1244,32 @@ button.visit-primary {
   border-color: #dc2626;
   color: white;
 }
+
+.visit-modal.visit-store-editor {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: min(90dvh, 900px);
+}
+.visit-store-editor > .visit-title {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5eaf1;
+  background: white;
+}
+.visit-store-editor > .visit-title h2 {
+  margin: 0;
+}
+.visit-store-editor > .visit-title button {
+  flex: 0 0 auto;
+  min-width: 40px;
+  min-height: 40px;
+}
+.visit-editor-body {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 18px 20px 22px;
+}

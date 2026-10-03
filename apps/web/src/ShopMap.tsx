@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { appFetch } from "./app-url";
+import {
+  matchesStreet,
+  storeLocationQueries,
+  streetAddress,
+} from "./store-location";
 
 type Point = { name: string; lat: number; lng: number; address?: string };
 let sdk: Promise<any> | undefined;
@@ -77,6 +82,28 @@ export async function searchPlaces(q: string): Promise<Point[]> {
       },
     );
   });
+}
+export async function searchStorePlaces(
+  name: string,
+  address: string,
+): Promise<(Point & { approximate?: boolean })[]> {
+  const queries = storeLocationQueries(name, address);
+  let alternatives: Point[] = [];
+  for (let i = 0; i < queries.length; i++) {
+    if (i) await new Promise((resolve) => setTimeout(resolve, 1600));
+    const results = await searchPlaces(queries[i]);
+    if (!address.trim() && results.length) return results;
+    const exactStreet = results.filter((p) =>
+      matchesStreet(p.address || "", address),
+    );
+    const addressOnly = queries[i] === streetAddress(address);
+    if (exactStreet.length)
+      return exactStreet.map((p) => ({ ...p, approximate: addressOnly }));
+    if (addressOnly && results.length)
+      return results.map((p) => ({ ...p, approximate: true }));
+    if (results.length) alternatives = results;
+  }
+  return alternatives.map((p) => ({ ...p, approximate: true }));
 }
 export function VisitMap({
   stores,

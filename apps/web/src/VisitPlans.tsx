@@ -1,7 +1,7 @@
 import { type ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { appFetch, appUrl } from "./app-url";
-import { ShopLocation, searchPlaces, VisitMap } from "./ShopMap";
+import { ShopLocation, searchStorePlaces, VisitMap } from "./ShopMap";
 export type VisitStore = {
   id: string;
   name: string;
@@ -60,7 +60,13 @@ export function StoreEditor({
         : null,
     ),
     [results, setResults] = useState<
-      { name: string; address?: string; lat: number; lng: number }[]
+      {
+        name: string;
+        address?: string;
+        lat: number;
+        lng: number;
+        approximate?: boolean;
+      }[]
     >([]),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
@@ -68,7 +74,7 @@ export function StoreEditor({
     setBusy(true);
     setError("");
     try {
-      const items = await searchPlaces(name || address);
+      const items = await searchStorePlaces(name, address);
       setResults(items);
       if (!items.length)
         setError("没有找到准确位置，请缩放地图并点击店铺位置。");
@@ -84,7 +90,7 @@ export function StoreEditor({
         role="dialog"
         aria-modal="true"
         aria-label="店铺位置"
-        className="visit-modal"
+        className="visit-modal visit-store-editor"
       >
         <div className="visit-title">
           <h2>{initial.id ? "编辑店铺" : "添加探店店铺"}</h2>
@@ -92,86 +98,92 @@ export function StoreEditor({
             ×
           </button>
         </div>
-        {children}
-        <form
-          onSubmit={async (e) => {
-            e.preventDefault();
-            if (!point) {
-              setError("请先搜索位置或点击地图选点");
-              return;
-            }
-            setBusy(true);
-            setError("");
-            try {
-              await onSave({ ...initial, name, address, ...point });
-            } catch (e) {
-              setError(String(e));
-            } finally {
-              setBusy(false);
-            }
-          }}
-        >
-          <label>
-            店铺名称
-            <input
-              required
-              maxLength={120}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+        <div className="visit-editor-body">
+          {children}
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              if (!point) {
+                setError("请先搜索位置或点击地图选点");
+                return;
+              }
+              setBusy(true);
+              setError("");
+              try {
+                await onSave({ ...initial, name, address, ...point });
+              } catch (e) {
+                setError(String(e));
+              } finally {
+                setBusy(false);
+              }
+            }}
+          >
+            <label>
+              店铺名称
+              <input
+                required
+                maxLength={120}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+            <label>
+              详细地址
+              <input
+                required
+                maxLength={300}
+                value={address}
+                onChange={(e) => {
+                  setAddress(e.target.value);
+                  setPoint(null);
+                }}
+                placeholder="上海市 · 区 · 街道门牌号"
+              />
+            </label>
+            <div className="visit-actions">
+              <button
+                type="button"
+                disabled={busy || (!name && !address)}
+                onClick={() => void search()}
+              >
+                搜索地图位置
+              </button>
+              <span className="muted">选择搜索结果，或直接点击地图选点</span>
+            </div>
+            {results.map((r, i) => (
+              <button
+                className="place-result"
+                type="button"
+                key={`${r.lat}-${r.lng}-${i}`}
+                onClick={() => {
+                  setPoint({ lat: r.lat, lng: r.lng });
+                  if (!r.approximate) {
+                    setName(r.name);
+                    if (!address.trim() && r.address) setAddress(r.address);
+                  }
+
+                  setResults([]);
+                }}
+              >
+                {r.name} · {r.address}
+                {r.approximate ? "（候选位置，请核对后选择）" : ""}
+              </button>
+            ))}
+            <VisitMap
+              stores={point ? [{ name: name || "选定店铺", ...point }] : []}
+              onPick={(lat, lng) => setPoint({ lat, lng })}
             />
-          </label>
-          <label>
-            详细地址
-            <input
-              required
-              maxLength={300}
-              value={address}
-              onChange={(e) => {
-                setAddress(e.target.value);
-                setPoint(null);
-              }}
-              placeholder="上海市 · 区 · 街道门牌号"
-            />
-          </label>
-          <div className="visit-actions">
-            <button
-              type="button"
-              disabled={busy || (!name && !address)}
-              onClick={() => void search()}
-            >
-              搜索地图位置
+            <p className="muted">
+              {point
+                ? `已选位置 · ${point.lat.toFixed(5)}, ${point.lng.toFixed(5)}`
+                : "尚未选定位置"}
+            </p>
+            {error && <p role="alert">{error}</p>}
+            <button type="submit" disabled={busy} className="visit-primary">
+              {busy ? "处理中…" : "保存店铺"}
             </button>
-            <span className="muted">选择搜索结果，或直接点击地图选点</span>
-          </div>
-          {results.map((r, i) => (
-            <button
-              className="place-result"
-              type="button"
-              key={`${r.lat}-${r.lng}-${i}`}
-              onClick={() => {
-                setPoint({ lat: r.lat, lng: r.lng });
-                setName(r.name);
-                if (r.address) setAddress(r.address);
-                setResults([]);
-              }}
-            >
-              {r.name} · {r.address}
-            </button>
-          ))}
-          <VisitMap
-            stores={point ? [{ name: name || "选定店铺", ...point }] : []}
-            onPick={(lat, lng) => setPoint({ lat, lng })}
-          />
-          <p className="muted">
-            {point
-              ? `已选位置 · ${point.lat.toFixed(5)}, ${point.lng.toFixed(5)}`
-              : "尚未选定位置"}
-          </p>
-          {error && <p role="alert">{error}</p>}
-          <button type="submit" disabled={busy} className="visit-primary">
-            {busy ? "处理中…" : "保存店铺"}
-          </button>
-        </form>
+          </form>
+        </div>
       </section>
     </div>,
     document.body,
