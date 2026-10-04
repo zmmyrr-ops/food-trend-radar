@@ -1,5 +1,6 @@
 import { parentPort, workerData } from "node:worker_threads";
 import type { Transaction } from "@electric-sql/pglite";
+import { copyDatabaseSnapshot } from "./database-backup.js";
 import { openDatabase } from "./db.js";
 
 const port = parentPort!;
@@ -39,8 +40,13 @@ port.on("message", async ({ id, method, args }) => {
     } else if (method === "query")
       result = await (tx ?? db).query(args[0], args[1]);
     else if (method === "exec") result = await (tx ?? db).exec(args[0]);
-    else if (method === "dumpDataDir") result = await db.dumpDataDir(args[0]);
-    else if (method === "close") await db.close();
+    else if (method === "snapshotToDirectory")
+      await copyDatabaseSnapshot(db, workerData.directory, args[0]);
+    else if (method === "dumpDataDir") {
+      if (workerData.directory)
+        throw new Error("MEMORY_BACKUP_DISABLED_USE_SNAPSHOT");
+      result = await db.dumpDataDir(args[0]);
+    } else if (method === "close") await db.close();
     else throw new Error("UNKNOWN_DATABASE_OPERATION");
     port.postMessage({ id, result });
   } catch (error) {

@@ -1,4 +1,12 @@
-import { mkdir, readdir, rename, unlink, writeFile } from "node:fs/promises";
+import {
+  mkdir,
+  readdir,
+  readFile,
+  rename,
+  rm,
+  unlink,
+  writeFile,
+} from "node:fs/promises";
 import { join } from "node:path";
 import type { PGlite } from "@electric-sql/pglite";
 import type { Express } from "express";
@@ -11,6 +19,7 @@ import { couponAcceptance } from "./coupon-acceptance.js";
 import { createCouponMedia } from "./coupon-media.js";
 import { createPickReader, registerCouponPicks } from "./coupon-picks.js";
 import { createCouponPool } from "./coupon-pool.js";
+import { writeDatabaseBackup } from "./database-backup.js";
 import { createDatabaseMaintenance } from "./database-maintenance.js";
 import { createEnvironment } from "./environment.js";
 import { createObjectStorage } from "./object-storage.js";
@@ -82,12 +91,26 @@ export async function createOperations(
       await mkdir(backupDir, { recursive: true, mode: 0o700 });
       const name = `radar-${new Date().toISOString().slice(0, 10)}.tar.gz`;
       const files = await readdir(backupDir);
+      for (const stale of files.filter((f) =>
+        /^radar-\d{4}-\d{2}-\d{2}\.tar\.gz\.tmp(?:\.snapshot)?$/.test(f),
+      ))
+        await rm(join(backupDir, stale), { recursive: true, force: true });
       if (!files.includes(name) && !files.includes(name + ".oss.json")) {
-        const archive = await db.dumpDataDir("gzip");
+        const attempt = join(backupDir, ".backup-attempt.json");
+        const previous = await readFile(attempt, "utf8")
+          .then((v) => JSON.parse(v))
+          .catch(() => null);
+        if (previous?.retryAfter > Date.now()) {
+          backupRetryAfter = previous.retryAfter;
+          return;
+        }
+        await writeFile(
+          attempt,
+          JSON.stringify({ retryAfter: Date.now() + 10 * 60_000 }),
+          { mode: 0o600 },
+        );
         const temp = join(backupDir, `${name}.tmp`);
-        await writeFile(temp, Buffer.from(await archive.arrayBuffer()), {
-          mode: 0o600,
-        });
+        await writeDatabaseBackup(db, temp);
         await rename(temp, join(backupDir, name));
       }
       const names = [

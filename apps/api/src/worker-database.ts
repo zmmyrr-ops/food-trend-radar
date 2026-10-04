@@ -82,6 +82,8 @@ export async function openWorkerDatabase(directory?: string): Promise<PGlite> {
           throw error;
         }
       }),
+    snapshotToDirectory: (path: string) =>
+      exclusive(() => rpc("snapshotToDirectory", path)),
     dumpDataDir: (compression?: string) =>
       exclusive(() => rpc("dumpDataDir", compression)),
     close: () =>
