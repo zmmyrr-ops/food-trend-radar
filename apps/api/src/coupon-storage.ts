@@ -137,6 +137,27 @@ export async function compactCouponBrand(db: PGlite, brand: string) {
     return deleted.rows.length;
   });
 }
+export async function compactFailedScans(db: PGlite) {
+  return db.transaction(async (tx) => {
+    const targets = (
+      await tx.query(`SELECT t.run_id,t.brand_id FROM coupon_tasks t JOIN coupon_runs r ON r.id=t.run_id WHERE t.state='partial' AND r.status<>'running'
+    AND EXISTS(SELECT 1 FROM coupon_items i WHERE i.run_id=t.run_id AND i.brand_id=t.brand_id)
+    AND EXISTS(SELECT 1 FROM coupon_tasks n JOIN coupon_runs nr ON nr.id=n.run_id WHERE n.brand_id=t.brand_id AND n.state IN ('partial','complete') AND nr.started_at>r.started_at)
+    ORDER BY r.started_at,t.brand_id LIMIT 100`)
+    ).rows;
+    if (!targets.length) return 0;
+    const args = [JSON.stringify(targets)];
+    await tx.query(
+      `UPDATE coupon_tasks t SET archived_recalled=coalesce(t.archived_recalled,(SELECT count(*)::int FROM coupon_items i WHERE i.run_id=t.run_id AND i.brand_id=t.brand_id)),archived_matched=coalesce(t.archived_matched,(SELECT count(*)::int FROM coupon_items i WHERE i.run_id=t.run_id AND i.brand_id=t.brand_id AND i.payload->>'identity'='name_match')) FROM jsonb_to_recordset($1) AS d(run_id uuid,brand_id uuid) WHERE t.run_id=d.run_id AND t.brand_id=d.brand_id`,
+      args,
+    );
+    const deleted = await tx.query(
+      `DELETE FROM coupon_items i USING jsonb_to_recordset($1) AS d(run_id uuid,brand_id uuid) WHERE i.run_id=d.run_id AND i.brand_id=d.brand_id RETURNING i.product_id`,
+      args,
+    );
+    return deleted.rows.length;
+  });
+}
 export function createCouponStorageMaintenance(db: PGlite) {
   let active: Promise<unknown> | undefined;
   const run = () => {
@@ -147,7 +168,7 @@ export function createCouponStorageMaintenance(db: PGlite) {
           `SELECT b.id FROM brands b LEFT JOIN coupon_storage_migrations m ON m.brand_id=b.id WHERE EXISTS(SELECT 1 FROM coupon_baselines cb WHERE cb.brand_id=b.id) AND (m.last_compacted_at IS NULL OR m.last_compacted_at<now()-interval '1 hour') AND NOT EXISTS(SELECT 1 FROM coupon_storage_failures f WHERE f.brand_id=b.id AND f.attempted_at>now()-interval '1 hour') ORDER BY m.last_compacted_at NULLS FIRST,b.id LIMIT 10`,
         )
       ).rows;
-      let removed = 0;
+      let removed = await compactFailedScans(db);
       for (const b of brands) {
         try {
           removed += await compactCouponBrand(db, b.id);
@@ -187,7 +208,7 @@ export function createCouponStorageMaintenance(db: PGlite) {
       res.json(
         (
           await db.query(
-            `SELECT (SELECT count(*)::int FROM coupon_items) AS full_snapshots,(SELECT count(*)::int FROM coupon_catalog) AS catalog,(SELECT count(*)::int FROM coupon_sales_points) AS sales_points,(SELECT count(*)::int FROM coupon_change_history) AS changes,(SELECT count(*)::int FROM coupon_storage_migrations) AS migrated_brands,(SELECT count(*)::int FROM coupon_baselines) AS total_brands,(SELECT coalesce(jsonb_agg(f),'[]') FROM coupon_storage_failures f) AS failures,(SELECT jsonb_object_agg(relname,pg_total_relation_size(oid)) FROM pg_class WHERE relnamespace='public'::regnamespace AND relname IN ('coupon_items','coupon_diffs','coupon_catalog','coupon_sales_points','coupon_change_history')) AS table_bytes`,
+            `SELECT (SELECT count(*)::int FROM coupon_items) AS full_snapshots,(SELECT count(*)::int FROM coupon_catalog) AS catalog,(SELECT count(*)::int FROM coupon_sales_points) AS sales_points,(SELECT count(*)::int FROM coupon_change_history) AS changes,(SELECT count(*)::int FROM coupon_storage_migrations) AS migrated_brands,(SELECT count(*)::int FROM coupon_baselines) AS total_brands,(SELECT coalesce(jsonb_agg(f),'[]') FROM coupon_storage_failures f) AS failures,(SELECT jsonb_object_agg(relname,pg_total_relation_size(oid)) FROM pg_class WHERE relnamespace='public'::regnamespace AND relname IN ('coupon_items','coupon_diffs','coupon_catalog','coupon_sales_points','coupon_change_history')) AS table_bytes,(SELECT coalesce(jsonb_agg(x),'[]') FROM (SELECT coalesce(t.state,'orphan') AS state,count(*)::int AS count FROM coupon_items i LEFT JOIN coupon_tasks t ON t.run_id=i.run_id AND t.brand_id=i.brand_id GROUP BY t.state) x) AS snapshot_states`,
           )
         ).rows[0],
       ),

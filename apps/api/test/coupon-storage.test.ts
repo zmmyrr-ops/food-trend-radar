@@ -16,7 +16,7 @@ test("完整历史迁为轻量点，当前和上一轮保留，热度与加速�
     );
     for (let i = 0; i < runs.length; i++) {
       const at = new Date(
-        Date.now() - (runs.length - i) * 2 * 3600000,
+        Date.now() - (runs.length - i) * 0.5 * 3600000,
       ).toISOString();
       await db.query(
         "INSERT INTO coupon_runs(id,status,started_at,finished_at) VALUES($1,'complete',$2,$2)",
@@ -64,6 +64,9 @@ test("完整历史迁为轻量点，当前和上一轮保留，热度与加速�
     ] as const)
       assert.equal(after[key], before[key]);
     assert.equal((await db.query("SELECT * FROM coupon_items")).rows.length, 2);
+    assert.ok(
+      (await db.query("SELECT * FROM coupon_sales_points")).rows.length < 24,
+    );
     assert.equal(
       (await db.query("SELECT * FROM coupon_catalog")).rows.length,
       1,
@@ -85,6 +88,46 @@ test("完整历史迁为轻量点，当前和上一轮保留，热度与加速�
       0,
     );
     assert.equal(await compactCouponBrand(db, brand), 0);
+  } finally {
+    await db.close();
+  }
+});
+
+test("失败扫描只留最新一次，删除旧原始结果但保留统计，进行中的不动", async () => {
+  const { compactFailedScans } = await import("../src/coupon-storage.js");
+  const db = await openDatabase(),
+    brand = randomUUID();
+  try {
+    await db.query(
+      "INSERT INTO brands(id,name,name_key,category,shanghai_evidence_url) VALUES($1,'未匹配测试','failed-test','其他餐饮','https://example.com')",
+      [brand],
+    );
+    const runs = Array.from({ length: 3 }, () => randomUUID());
+    for (let i = 0; i < 3; i++) {
+      await db.query(
+        "INSERT INTO coupon_runs(id,status,started_at) VALUES($1,$2,now()-($3::int * interval '1 hour'))",
+        [runs[i], i === 2 ? "running" : "partial", 3 - i],
+      );
+      await db.query(
+        "INSERT INTO coupon_tasks(run_id,brand_id,name,aliases,state) VALUES($1,$2,'未匹配测试','[]',$3)",
+        [runs[i], brand, i === 2 ? "queued" : "partial"],
+      );
+      await db.query("INSERT INTO coupon_items VALUES($1,$2,'1','{}',now())", [
+        runs[i],
+        brand,
+      ]);
+    }
+    assert.equal(await compactFailedScans(db), 1);
+    assert.equal((await db.query("SELECT * FROM coupon_items")).rows.length, 2);
+    assert.equal(
+      (
+        await db.query(
+          "SELECT archived_recalled FROM coupon_tasks WHERE run_id=$1",
+          [runs[0]],
+        )
+      ).rows[0].archived_recalled,
+      1,
+    );
   } finally {
     await db.close();
   }
