@@ -1,16 +1,37 @@
-import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { execFile } from "node:child_process";
+import { access, mkdtemp, readdir, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
+import { promisify } from "node:util";
 import { PGlite } from "@electric-sql/pglite";
 
 const filename = process.argv[2];
 if (!filename)
   throw new Error("Usage: node scripts/verify-backup.mjs <backup.tar.gz>");
-// Restore only in memory. Never open or overwrite the running database.
-const db = new PGlite({
-  loadDataDir: new Blob([await readFile(resolve(filename))]),
-});
-await db.waitReady;
+// Restore a trusted application backup into a separate temporary directory.
+// Never load the complete archive/database into RAM or open the live database.
+const temp = await mkdtemp(join(tmpdir(), "radar-restore-check-"));
+let db;
 try {
+  await promisify(execFile)("tar", ["-xzf", resolve(filename), "-C", temp]);
+  const dirs = (await readdir(temp, { withFileTypes: true })).filter((d) =>
+    d.isDirectory(),
+  );
+  let directory;
+  for (const d of dirs) {
+    const path = join(temp, d.name);
+    if (
+      await access(join(path, "PG_VERSION"))
+        .then(() => true)
+        .catch(() => false)
+    ) {
+      directory = path;
+      break;
+    }
+  }
+  if (!directory) throw new Error("BACKUP_DATABASE_DIRECTORY_MISSING");
+  db = new PGlite(directory);
+  await db.waitReady;
   const brands = (await db.query("SELECT count(*)::int AS count FROM brands"))
     .rows[0];
   const coupons = (
@@ -31,5 +52,6 @@ try {
     }),
   );
 } finally {
-  await db.close();
+  await db?.close();
+  await rm(temp, { recursive: true, force: true });
 }

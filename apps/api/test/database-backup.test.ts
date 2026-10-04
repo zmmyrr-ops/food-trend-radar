@@ -20,6 +20,11 @@ test("磁盘流式备份可恢复事务数据，压缩后原库继续写入，�
     const target = join(root, "backup.tar.gz");
     await writeDatabaseBackup(db, target);
     assert.ok((await stat(target)).size > 0);
+    const checked = await exec(process.execPath, [
+      "scripts/verify-backup.mjs",
+      target,
+    ]);
+    assert.equal(JSON.parse(checked.stdout).restored, true);
     await assert.rejects(stat(target + ".snapshot"), { code: "ENOENT" });
     await db.exec("INSERT INTO restore_probe VALUES(2,'备份后新增')");
     const restore = join(root, "restore");
