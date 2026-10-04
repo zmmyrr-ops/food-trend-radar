@@ -318,7 +318,7 @@ export async function initCoupons(db: PGlite) {
   await db.exec(`    INSERT INTO coupon_discoveries
       SELECT d.brand_id,d.product_id,min(d.observed_at) FROM coupon_diffs d
       WHERE d.kind='NEW_OBSERVED' AND d.observed_at>now()-interval '24 hours'
-      AND d.new_payload->>'identity'='name_match' AND NOT EXISTS(SELECT 1 FROM coupon_catalog c WHERE c.brand_id=d.brand_id AND c.product_id=d.product_id AND c.first_seen_at<d.observed_at AND c.run_id<>d.run_id)
+      AND d.new_payload->>'identity'='name_match' AND NOT EXISTS(SELECT 1 FROM coupon_catalog c WHERE c.brand_id=d.brand_id AND c.product_id=d.product_id AND c.first_seen_at<(SELECT i.observed_at FROM coupon_items i WHERE i.brand_id=d.brand_id AND i.product_id=d.product_id AND i.run_id=d.run_id))
       AND NOT EXISTS(SELECT 1 FROM coupon_items i JOIN coupon_tasks t ON t.run_id=i.run_id AND t.brand_id=i.brand_id WHERE i.brand_id=d.brand_id AND i.product_id=d.product_id AND i.run_id<>d.run_id AND t.state='complete' AND i.observed_at<d.observed_at)
       GROUP BY d.brand_id,d.product_id ON CONFLICT DO NOTHING;
 `);

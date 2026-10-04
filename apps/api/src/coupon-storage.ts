@@ -173,6 +173,13 @@ export function createCouponStorageMaintenance(db: PGlite) {
     return active;
   };
   function register(app: Express) {
+    app.post("/api/v3/storage/reclaim", async (_req, res) => {
+      if (active) await active;
+      await db.exec("VACUUM (FULL, ANALYZE) coupon_items");
+      await db.exec("VACUUM (FULL, ANALYZE) coupon_diffs");
+      await db.exec("CHECKPOINT");
+      res.json({ ok: true });
+    });
     app.post("/api/v3/storage/compact", async (_req, res) =>
       res.json(await run()),
     );
@@ -180,7 +187,7 @@ export function createCouponStorageMaintenance(db: PGlite) {
       res.json(
         (
           await db.query(
-            `SELECT (SELECT count(*)::int FROM coupon_items) AS full_snapshots,(SELECT count(*)::int FROM coupon_catalog) AS catalog,(SELECT count(*)::int FROM coupon_sales_points) AS sales_points,(SELECT count(*)::int FROM coupon_change_history) AS changes,(SELECT count(*)::int FROM coupon_storage_migrations) AS migrated_brands,(SELECT count(*)::int FROM coupon_baselines) AS total_brands,(SELECT coalesce(jsonb_agg(f),'[]') FROM coupon_storage_failures f) AS failures`,
+            `SELECT (SELECT count(*)::int FROM coupon_items) AS full_snapshots,(SELECT count(*)::int FROM coupon_catalog) AS catalog,(SELECT count(*)::int FROM coupon_sales_points) AS sales_points,(SELECT count(*)::int FROM coupon_change_history) AS changes,(SELECT count(*)::int FROM coupon_storage_migrations) AS migrated_brands,(SELECT count(*)::int FROM coupon_baselines) AS total_brands,(SELECT coalesce(jsonb_agg(f),'[]') FROM coupon_storage_failures f) AS failures,(SELECT jsonb_object_agg(relname,pg_total_relation_size(oid)) FROM pg_class WHERE relnamespace='public'::regnamespace AND relname IN ('coupon_items','coupon_diffs','coupon_catalog','coupon_sales_points','coupon_change_history')) AS table_bytes`,
           )
         ).rows[0],
       ),
