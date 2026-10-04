@@ -13,6 +13,7 @@ import {
 import { readConditionComparison } from "./coupon-condition-comparison.js";
 import { assessCoupon } from "./coupon-evidence.js";
 import { createRuleWorker, initRules, RULES_ENDPOINT } from "./coupon-rules.js";
+import { captureCouponStorage, initCouponStorage } from "./coupon-storage.js";
 import { createStoreWorker, initStores } from "./coupon-stores.js";
 import { couponUseOutlook } from "./coupon-use-outlook.js";
 import { currentCouponDetail } from "./current-coupon-detail.js";
@@ -279,12 +280,6 @@ export async function initCoupons(db: PGlite) {
     CREATE TABLE IF NOT EXISTS coupon_baselines(brand_id uuid PRIMARY KEY, run_id uuid NOT NULL);
     CREATE TABLE IF NOT EXISTS coupon_diffs(run_id uuid, brand_id uuid, product_id text, kind text, old_payload jsonb, new_payload jsonb, observed_at timestamptz DEFAULT now(), PRIMARY KEY(run_id,brand_id,product_id));
     CREATE TABLE IF NOT EXISTS coupon_discoveries(brand_id uuid NOT NULL,product_id text NOT NULL,discovered_at timestamptz NOT NULL,PRIMARY KEY(brand_id,product_id));
-    INSERT INTO coupon_discoveries
-      SELECT d.brand_id,d.product_id,min(d.observed_at) FROM coupon_diffs d
-      WHERE d.kind='NEW_OBSERVED' AND d.observed_at>now()-interval '24 hours'
-      AND d.new_payload->>'identity'='name_match'
-      AND NOT EXISTS(SELECT 1 FROM coupon_items i JOIN coupon_tasks t ON t.run_id=i.run_id AND t.brand_id=i.brand_id WHERE i.brand_id=d.brand_id AND i.product_id=d.product_id AND i.run_id<>d.run_id AND t.state='complete' AND i.observed_at<d.observed_at)
-      GROUP BY d.brand_id,d.product_id ON CONFLICT DO NOTHING;
     ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS query_signature text;
     ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS category text NOT NULL DEFAULT '其他餐饮';
     ALTER TABLE coupon_tasks ADD COLUMN IF NOT EXISTS completed_at timestamptz;
@@ -319,6 +314,14 @@ export async function initCoupons(db: PGlite) {
   await seedOfficialBrandIcons(db);
   await initRules(db);
   await initStores(db);
+  await initCouponStorage(db);
+  await db.exec(`    INSERT INTO coupon_discoveries
+      SELECT d.brand_id,d.product_id,min(d.observed_at) FROM coupon_diffs d
+      WHERE d.kind='NEW_OBSERVED' AND d.observed_at>now()-interval '24 hours'
+      AND d.new_payload->>'identity'='name_match' AND NOT EXISTS(SELECT 1 FROM coupon_catalog c WHERE c.brand_id=d.brand_id AND c.product_id=d.product_id AND c.first_seen_at<d.observed_at AND c.run_id<>d.run_id)
+      AND NOT EXISTS(SELECT 1 FROM coupon_items i JOIN coupon_tasks t ON t.run_id=i.run_id AND t.brand_id=i.brand_id WHERE i.brand_id=d.brand_id AND i.product_id=d.product_id AND i.run_id<>d.run_id AND t.state='complete' AND i.observed_at<d.observed_at)
+      GROUP BY d.brand_id,d.product_id ON CONFLICT DO NOTHING;
+`);
 }
 export function createCoupons(
   db: PGlite,
@@ -546,7 +549,7 @@ export function createCoupons(
         if (kind === "NEW_OBSERVED" && p.identity === "name_match")
           await tx.query(
             `INSERT INTO coupon_discoveries(brand_id,product_id,discovered_at)
-            SELECT $1,$2,now() WHERE NOT EXISTS(SELECT 1 FROM coupon_items i JOIN coupon_tasks t ON t.run_id=i.run_id AND t.brand_id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 AND i.run_id<>$3 AND t.state='complete') ON CONFLICT DO NOTHING`,
+            SELECT $1,$2,now() WHERE NOT EXISTS(SELECT 1 FROM coupon_catalog WHERE brand_id=$1 AND product_id=$2) AND NOT EXISTS(SELECT 1 FROM coupon_items i JOIN coupon_tasks t ON t.run_id=i.run_id AND t.brand_id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 AND i.run_id<>$3 AND t.state='complete') ON CONFLICT DO NOTHING`,
             [brand, p.product_id, run],
           );
         previous.delete(p.product_id);
@@ -564,6 +567,7 @@ export function createCoupons(
         "UPDATE coupon_tasks SET state='complete',error_code=NULL,completed_at=now(),comparison_status=$3,previous_run_id=$4 WHERE run_id=$1 AND brand_id=$2",
         [run, brand, comparisonStatus, base?.run_id ?? null],
       );
+      await captureCouponStorage(tx, brand, run);
     });
     await opts
       .onBrandComplete?.(brand)
@@ -1256,7 +1260,7 @@ export function createCoupons(
       res.json({
         items: (
           await db.query(
-            "SELECT t.brand_id,t.name,t.state,t.pages,t.error_code,t.retries,t.retry_at,t.comparison_status,t.completed_at,t.previous_run_id,(SELECT count(*)::int FROM coupon_items i WHERE i.run_id=t.run_id AND i.brand_id=t.brand_id) AS recalled,(SELECT count(*)::int FROM coupon_items i WHERE i.run_id=t.run_id AND i.brand_id=t.brand_id AND i.payload->>'identity'='name_match') AS matched FROM coupon_tasks t WHERE run_id=$1 ORDER BY name",
+            "SELECT t.brand_id,t.name,t.state,t.pages,t.error_code,t.retries,t.retry_at,t.comparison_status,t.completed_at,t.previous_run_id,coalesce(t.archived_recalled,(SELECT count(*)::int FROM coupon_items i WHERE i.run_id=t.run_id AND i.brand_id=t.brand_id)) AS recalled,coalesce(t.archived_matched,(SELECT count(*)::int FROM coupon_items i WHERE i.run_id=t.run_id AND i.brand_id=t.brand_id AND i.payload->>'identity'='name_match')) AS matched FROM coupon_tasks t WHERE run_id=$1 ORDER BY name",
             [id],
           )
         ).rows,

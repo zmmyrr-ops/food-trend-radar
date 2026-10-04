@@ -386,9 +386,9 @@ export function createPickReader(
           await db.query<
             PickRules & { brand_id: string; price_observed_at: string }
           >(
-            `WITH latest AS (SELECT DISTINCT ON(r.product_id) r.* FROM coupon_rule_snapshots r WHERE r.observed_at > now()-interval '36 hours' AND ($1::uuid IS NULL OR EXISTS(SELECT 1 FROM coupon_items ci WHERE ci.brand_id=$1 AND ci.run_id=r.run_id AND ci.product_id=r.product_id)) ORDER BY r.product_id,r.observed_at DESC)
+            `WITH latest AS (SELECT DISTINCT ON(r.product_id) r.* FROM coupon_rule_snapshots r WHERE r.observed_at > now()-interval '36 hours' AND ($1::uuid IS NULL OR EXISTS(SELECT 1 FROM coupon_history_items ci WHERE ci.brand_id=$1 AND ci.run_id=r.run_id AND ci.product_id=r.product_id)) ORDER BY r.product_id,r.observed_at DESC)
        SELECT DISTINCT ON(i.brand_id,r.product_id) i.brand_id,r.run_id,r.product_id,r.observed_at,i.observed_at AS price_observed_at,r.payload->'rules' AS rules
-       FROM latest r JOIN coupon_items i ON i.run_id=r.run_id AND i.product_id=r.product_id
+       FROM latest r JOIN coupon_history_items i ON i.run_id=r.run_id AND i.product_id=r.product_id
        JOIN brands b ON b.id=i.brand_id AND b.active
        WHERE ($1::uuid IS NULL OR i.brand_id=$1) AND r.observed_at > now()-interval '36 hours' AND i.payload->>'identity'='name_match'
        ORDER BY i.brand_id,r.product_id,r.observed_at DESC`,

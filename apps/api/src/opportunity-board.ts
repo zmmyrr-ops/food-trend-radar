@@ -204,10 +204,11 @@ export async function createOpportunityBoard(
       ), conflicts AS MATERIALIZED (
         SELECT platform_id FROM platform_brands GROUP BY platform_id HAVING count(DISTINCT brand_id)>1
       ) SELECT i.brand_id,br.name AS brand_name,i.product_id,i.run_id,i.observed_at,i.payload,d.old_payload,d.kind,t.comparison_status,s.payload AS score_payload,a.state AS disposition,a.revision AS disposition_revision,
-      history.first_seen_at,history.first_seen_at<i.observed_at AS previously_seen,rule_now.payload AS current_rule_payload,rule_now.observed_at AS current_rule_at,
+      coalesce(catalog.first_seen_at,history.first_seen_at) AS first_seen_at,coalesce(catalog.first_seen_at,history.first_seen_at)<i.observed_at AS previously_seen,rule_now.payload AS current_rule_payload,rule_now.observed_at AS current_rule_at,
       EXISTS(SELECT 1 FROM conflicts WHERE platform_id=i.payload->>'platform_brand_id') AS identity_conflict
       FROM coupon_items i JOIN coupon_baselines b ON b.brand_id=i.brand_id AND b.run_id=i.run_id JOIN brands br ON br.id=i.brand_id AND br.active JOIN coupon_tasks t ON t.run_id=i.run_id AND t.brand_id=i.brand_id AND t.state='complete'
       JOIN coupon_diffs d ON d.run_id=i.run_id AND d.brand_id=i.brand_id AND d.product_id=i.product_id
+      LEFT JOIN coupon_catalog catalog ON catalog.brand_id=i.brand_id AND catalog.product_id=i.product_id
       LEFT JOIN LATERAL(SELECT min(prior.observed_at) AS first_seen_at FROM coupon_items prior JOIN coupon_tasks prior_task ON prior_task.brand_id=prior.brand_id AND prior_task.run_id=prior.run_id AND prior_task.state='complete' WHERE prior.brand_id=i.brand_id AND prior.product_id=i.product_id AND prior.observed_at<=i.observed_at) history ON true
       LEFT JOIN coupon_dispositions a ON a.brand_id=i.brand_id AND a.product_id=i.product_id
       ${scoreEvidenceJoins}

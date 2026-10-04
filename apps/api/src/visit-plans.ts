@@ -150,7 +150,7 @@ export async function createVisitPlans(db: PGlite) {
             v.brand_id &&
             !(
               await db.query(
-                "SELECT 1 FROM coupon_items WHERE brand_id=$1 AND product_id=$2 LIMIT 1",
+                "SELECT 1 FROM coupon_known_items WHERE brand_id=$1 AND product_id=$2 LIMIT 1",
                 [v.brand_id, v.product_id],
               )
             ).rows.length

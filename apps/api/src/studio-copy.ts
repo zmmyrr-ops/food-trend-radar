@@ -129,7 +129,7 @@ export function registerStudioCopy(
         visit.brand_id && visit.product_id
           ? (
               await db.query<any>(
-                "SELECT b.name,b.category,i.payload,i.observed_at,i.payload->>'name' AS title FROM coupon_items i JOIN brands b ON b.id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 ORDER BY i.observed_at DESC LIMIT 1",
+                "SELECT b.name,b.category,i.payload,i.observed_at,i.payload->>'name' AS title FROM coupon_known_items i JOIN brands b ON b.id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 ORDER BY i.observed_at DESC LIMIT 1",
                 [visit.brand_id, visit.product_id],
               )
             ).rows[0]

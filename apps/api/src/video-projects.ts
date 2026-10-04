@@ -612,7 +612,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
           ? { name: visit.name, payload: { name: visit.name } }
           : ((
               await db.query<{ name: string; payload: any }>(
-                `SELECT b.name,i.payload FROM coupon_items i JOIN brands b ON b.id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 AND i.payload->>'identity'='name_match' ORDER BY i.observed_at DESC LIMIT 1`,
+                `SELECT b.name,i.payload FROM coupon_known_items i JOIN brands b ON b.id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 AND i.payload->>'identity'='name_match' ORDER BY i.observed_at DESC LIMIT 1`,
                 [v.brand_id, v.product_id],
               )
             ).rows[0] ?? { name: visit.name, payload: { name: visit.name } });

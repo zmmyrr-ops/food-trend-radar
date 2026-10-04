@@ -325,17 +325,26 @@ export function createSalesHeat(db: PGlite) {
  WHERE i.payload->>'identity'='name_match'
  ), conflicts AS MATERIALIZED (SELECT payload->>'platform_brand_id' AS id FROM current WHERE coalesce(payload->>'platform_brand_id','')<>'' GROUP BY 1 HAVING count(DISTINCT brand_id)>1)
  SELECT c.brand_id,c.brand_name,c.product_id,jsonb_agg(jsonb_build_object('run_id',h.run_id,'observed_at',h.observed_at,'missing',h.missing,'query_signature',h.query_signature,'rules',h.rules,'payload',h.payload) ORDER BY (h.run_id=c.run_id) DESC,h.task_at DESC,h.run_id DESC) AS points
- FROM current c JOIN LATERAL (
+ FROM current c JOIN LATERAL (SELECT * FROM (
+
  SELECT t.run_id,coalesce(i.observed_at,t.completed_at) AS observed_at,
  coalesce(t.completed_at,i.observed_at) AS task_at,t.query_signature,
  i.product_id IS NULL AS missing,coalesce(i.payload,'{}'::jsonb) AS payload,
  CASE WHEN r.product_id IS NOT NULL THEN jsonb_build_object('observed_at',r.observed_at,'status',r.payload->>'status','commodity_fingerprint',r.payload->>'commodity_fingerprint','rule_fingerprint',r.payload->>'rule_fingerprint') ELSE NULL END AS rules
  FROM coupon_tasks t LEFT JOIN coupon_items i ON i.brand_id=t.brand_id AND i.run_id=t.run_id AND i.product_id=c.product_id
  LEFT JOIN coupon_rule_snapshots r ON r.run_id=i.run_id AND r.product_id=i.product_id
- WHERE t.brand_id=c.brand_id AND t.state='complete'
+ WHERE t.brand_id=c.brand_id AND t.state='complete' AND NOT EXISTS(SELECT 1 FROM coupon_storage_migrations m WHERE m.brand_id=c.brand_id)
  AND (t.run_id=c.run_id OR coalesce(t.completed_at,i.observed_at)<c.task_at)
  AND coalesce(t.completed_at,i.observed_at)>=c.task_at-interval '7 days'
- ORDER BY (t.run_id=c.run_id) DESC,coalesce(t.completed_at,i.observed_at) DESC,t.run_id DESC LIMIT 16) h ON true
+
+ UNION ALL
+ SELECT p.run_id,p.observed_at,p.task_at,p.query_signature,p.missing,
+ CASE WHEN p.run_id=c.run_id THEN c.payload ELSE p.payload END AS payload,
+ CASE WHEN r.product_id IS NOT NULL THEN jsonb_build_object('observed_at',r.observed_at,'status',r.payload->>'status','commodity_fingerprint',r.payload->>'commodity_fingerprint','rule_fingerprint',r.payload->>'rule_fingerprint') ELSE p.rules END AS rules
+ FROM coupon_sales_points p LEFT JOIN coupon_rule_snapshots r ON r.run_id=p.run_id AND r.product_id=p.product_id
+ WHERE p.brand_id=c.brand_id AND p.product_id=c.product_id AND p.task_at<=c.task_at AND p.task_at>=c.task_at-interval '7 days'
+ AND EXISTS(SELECT 1 FROM coupon_storage_migrations m WHERE m.brand_id=c.brand_id)
+ ) samples ORDER BY (run_id=c.run_id) DESC,task_at DESC,run_id DESC LIMIT 16) h ON true
  WHERE ($1::uuid IS NULL OR c.brand_id=$1) AND NOT EXISTS(SELECT 1 FROM conflicts x WHERE x.id=c.payload->>'platform_brand_id')
  GROUP BY c.brand_id,c.brand_name,c.product_id`,
         [brand ?? null],

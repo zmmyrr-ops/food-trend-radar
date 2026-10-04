@@ -19,6 +19,7 @@ import { couponAcceptance } from "./coupon-acceptance.js";
 import { createCouponMedia } from "./coupon-media.js";
 import { createPickReader, registerCouponPicks } from "./coupon-picks.js";
 import { createCouponPool } from "./coupon-pool.js";
+import { createCouponStorageMaintenance } from "./coupon-storage.js";
 import { writeDatabaseBackup } from "./database-backup.js";
 import { createDatabaseMaintenance } from "./database-maintenance.js";
 import { createEnvironment } from "./environment.js";
@@ -41,6 +42,7 @@ export async function createOperations(
     work,
   ) => work(),
 ) {
+  const couponStorage = createCouponStorageMaintenance(db);
   const maintainDatabase = createDatabaseMaintenance(db);
   const brandIndex = await createBrandIndex(db);
   const environment = await createEnvironment(db);
@@ -151,6 +153,7 @@ export async function createOperations(
   let lastReports = 0;
   let lastScores = 0;
   async function performTick() {
+    await observe("storage.compact", couponStorage.run);
     await observe("database.maintenance", maintainDatabase);
     await observe("alerts.health", () => alerts.health());
     if (Date.now() - lastScores >= 5 * 60000) {
@@ -264,6 +267,7 @@ export async function createOperations(
     }
   }
   function register(app: Express) {
+    couponStorage.register(app);
     registerCouponPicks(
       app,
       salesHeat.read,

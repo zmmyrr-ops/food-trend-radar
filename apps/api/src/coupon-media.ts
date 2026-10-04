@@ -638,7 +638,7 @@ export async function createCouponMedia(
   ) {
     const coupon = (
       await db.query<any>(
-        "SELECT b.name,b.aliases,i.payload->>'name' AS title FROM coupon_items i JOIN brands b ON b.id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 AND b.active AND i.payload->>'identity'='name_match' ORDER BY i.observed_at DESC LIMIT 1",
+        "SELECT b.name,b.aliases,i.payload->>'name' AS title FROM coupon_known_items i JOIN brands b ON b.id=i.brand_id WHERE i.brand_id=$1 AND i.product_id=$2 AND b.active AND i.payload->>'identity'='name_match' ORDER BY i.observed_at DESC LIMIT 1",
         [brand, product],
       )
     ).rows[0];
