@@ -1,4 +1,4 @@
-const { request, notice, authorize } = require("../../utils/api");
+const { request, notice } = require("../../utils/api");
 Page({
   data: { items: [], unread: 0, error: "", loading: false },
   onShow() {
@@ -50,16 +50,6 @@ Page({
       notice(e);
     }
     wx.reLaunch({ url: "/pages/coupons/index?brand_id=" + m.brand_id });
-  },
-  enable() {
-    authorize()
-      .then((ok) =>
-        wx.showToast({
-          title: ok ? "已开启本次提醒" : "未开启微信提醒",
-          icon: "none",
-        }),
-      )
-      .catch(notice);
   },
   retry() {
     this.load();

@@ -1,9 +1,8 @@
-const { request, notice, login, authorize } = require("../../utils/api");
+const { request, notice, login } = require("../../utils/api");
 Page({
   data: {
     loggedIn: false,
     busy: false,
-    editing: false,
     nickname: "",
     avatar: "",
     subscriptions: 0,
@@ -60,7 +59,6 @@ Page({
     try {
       await login();
       await this.refresh();
-      if (!this.data.nickname) this.setData({ editing: true });
     } catch (e) {
       notice(e);
       this.setData({ error: e.message || "登录失败，请重试" });
@@ -68,16 +66,13 @@ Page({
       this.setData({ busy: false });
     }
   },
-  edit() {
-    if (this.data.loggedIn) this.setData({ editing: !this.data.editing });
-  },
   async save(e) {
     const nickname = String(e.detail.value.nickname || "").trim();
     if (!nickname) return notice({ message: "请填写昵称" });
     this.setData({ busy: true });
     try {
       await request("profile", "POST", { nickname });
-      this.setData({ nickname, editing: false });
+      this.setData({ nickname });
       wx.showToast({ title: "资料已保存" });
     } catch (e) {
       notice(e);
@@ -121,17 +116,6 @@ Page({
     if (!this.data.loggedIn) return notice({ message: "请先微信登录" });
     wx.navigateTo({ url: e.currentTarget.dataset.url });
   },
-  enable() {
-    if (!this.data.loggedIn) return notice({ message: "请先微信登录" });
-    authorize()
-      .then((ok) =>
-        wx.showToast({
-          title: ok ? "已开启本次提醒" : "未开启微信提醒",
-          icon: "none",
-        }),
-      )
-      .catch(notice);
-  },
   logout() {
     wx.showModal({
       title: "退出登录",
@@ -146,7 +130,6 @@ Page({
         }
         wx.removeStorageSync("miniToken");
         wx.removeTabBarBadge({ index: 1 });
-        this.setData({ editing: false });
         this.refresh();
       },
     });
