@@ -1525,3 +1525,102 @@ button.visit-primary {
   gap: 8px;
   margin: 12px 0;
 }
+
+.my-workspace {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.workspace-heading {
+  padding: 20px 0 18px;
+}
+.workspace-heading h1 {
+  font-size: 26px;
+  margin: 0 0 6px;
+  color: #24324b;
+}
+.workspace-heading p {
+  margin: 0;
+  color: #7a879b;
+  font-size: 13px;
+}
+.workspace-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.workspace-tabs button {
+  text-align: left;
+  border: 1px solid #e3e9f3;
+  border-radius: 14px;
+  padding: 16px 20px;
+  background: #fff;
+  color: #53627c;
+}
+.workspace-tabs strong {
+  display: block;
+  font-size: 15px;
+}
+.workspace-tabs small {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #8894a6;
+}
+.workspace-tabs button[aria-pressed="true"] {
+  border-color: #aac4fb;
+  background: #eff5ff;
+  color: #326cda;
+  box-shadow: 0 2px 8px #4876c50a;
+}
+.workspace-content .visit-title h1 {
+  font-size: 20px;
+}
+.workspace-video-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.workspace-video-heading h2,
+.workspace-blacklist h2 {
+  font-size: 20px;
+  margin: 0;
+}
+.workspace-blacklist {
+  padding: 20px;
+  margin: 0;
+}
+.workspace-blacklist .blacklist-body {
+  padding: 16px 0 0;
+}
+@media (max-width: 600px) {
+  .workspace-heading {
+    padding: 12px 0 16px;
+  }
+  .workspace-heading h1 {
+    font-size: 22px;
+  }
+  .workspace-tabs {
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+  .workspace-tabs button {
+    padding: 12px 6px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  .workspace-tabs strong {
+    font-size: 13px;
+  }
+  .workspace-tabs small {
+    display: none;
+  }
+  .workspace-blacklist {
+    padding: 16px;
+  }
+  .workspace-video-heading {
+    flex-wrap: wrap;
+  }
+}

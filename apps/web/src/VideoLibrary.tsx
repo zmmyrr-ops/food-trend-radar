@@ -43,7 +43,7 @@ export function VideoLibrary({
   channel,
   brands,
 }: {
-  channel: Channel;
+  channel: Channel | "all";
   brands: Brand[];
 }) {
   const [plans, setPlans] = useState<VisitPlan[]>([]);
@@ -87,14 +87,15 @@ export function VideoLibrary({
   }, [refresh]);
   const scoped = items.filter(
     (p) =>
+      channel === "all" ||
       !p.brand_id ||
       brands.some((b) => b.id === p.brand_id && inChannel(b.category, channel)),
   );
   return (
     <section aria-label="我的视频">
       <p>
-        {channel === "food" ? "美食" : "游玩"}频道 · {scoped.length}{" "}
-        个视频项目，按最近更新排序。
+        {channel === "all" ? "全部" : channel === "food" ? "美食" : "游玩"} ·{" "}
+        {scoped.length} 个视频项目，按最近更新排序。
       </p>
       {error && (
         <p role="alert">
@@ -119,7 +120,11 @@ export function VideoLibrary({
           const studio = appUrl(
             `/?${new URLSearchParams({
               studio: "1",
-              channel,
+              channel: brands.some(
+                (b) => b.id === p.brand_id && inChannel(b.category, "leisure"),
+              )
+                ? "leisure"
+                : "food",
               brand_id: p.brand_id,
               product_id: p.product_id,
               project: p.id,

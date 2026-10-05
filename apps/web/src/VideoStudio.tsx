@@ -412,14 +412,14 @@ export function VideoStudio() {
           <nav className="studio-navigation" aria-label="视频制作导航">
             <a
               href={appUrl(
-                `/?tab=plans${visit?.plan_id ? `&plan=${visit.plan_id}` : ""}`,
+                `/?tab=workspace&section=plans${visit?.plan_id ? `&plan=${visit.plan_id}` : ""}`,
               )}
             >
               ← 返回探店计划
             </a>
             <a
               href={appUrl(
-                `/?tab=videos&channel=${new URLSearchParams(location.search).get("channel") === "leisure" ? "leisure" : "food"}`,
+                `/?tab=workspace&section=videos&channel=${new URLSearchParams(location.search).get("channel") === "leisure" ? "leisure" : "food"}`,
               )}
             >
               我的视频 →
@@ -447,7 +447,11 @@ export function VideoStudio() {
             </strong>
             <h2>{visit.name}</h2>
             <p>{visit.address}</p>
-            <a href={appUrl(`/?tab=plans&plan=${visit.plan_id}`)}>
+            <a
+              href={appUrl(
+                `/?tab=workspace&section=plans&plan=${visit.plan_id}`,
+              )}
+            >
               返回探店计划
             </a>
           </section>

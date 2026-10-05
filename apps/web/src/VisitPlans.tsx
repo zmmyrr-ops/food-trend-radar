@@ -241,7 +241,7 @@ export function AddToVisitPlan({
       {existingPlan ? (
         <a
           className="studio-entry"
-          href={appUrl(`/?tab=plans&plan=${existingPlan.id}`)}
+          href={appUrl(`/?tab=workspace&section=plans&plan=${existingPlan.id}`)}
         >
           前去查看计划 →
         </a>
@@ -277,7 +277,11 @@ export function AddToVisitPlan({
                 <button onClick={() => setSuccess(null)} autoFocus>
                   继续选券
                 </button>
-                <a href={appUrl(`/?tab=plans&plan=${success.id}`)}>
+                <a
+                  href={appUrl(
+                    `/?tab=workspace&section=plans&plan=${success.id}`,
+                  )}
+                >
                   前去查看计划 →
                 </a>
               </div>

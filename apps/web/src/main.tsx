@@ -25,11 +25,11 @@ import { appFetch, appUrl } from "./app-url";
 import { BrandIcon } from "./BrandIcon";
 import { BrandSubscriptions } from "./BrandSubscriptions";
 import { CouponRadar } from "./CouponRadar";
+import { MyWorkspace } from "./MyWorkspace";
 import { ShopReports } from "./ShopReports";
 import { Sources } from "./Sources";
-import { VideoLibrary } from "./VideoLibrary";
 import { VideoStudio } from "./VideoStudio";
-import { VisitPlans } from "./VisitPlans";
+
 import "./style.css";
 import "./design.css";
 import "./studio.css";
@@ -95,11 +95,14 @@ function App() {
   const [sources, setSources] = useState<DataSource[]>([]);
   const [reviewBrand, setReviewBrand] = useState<Brand | null>(null);
   const [tab, setTab] = useState(() => {
-      const value = new URLSearchParams(location.search).get("tab") || "radar";
+      const requested =
+        new URLSearchParams(location.search).get("tab") || "radar";
+      const value = ["videos", "plans"].includes(requested)
+        ? "workspace"
+        : requested;
       return [
         "radar",
-        "videos",
-        "plans",
+        "workspace",
         "reports",
         "brands",
         "events",
@@ -110,7 +113,7 @@ function App() {
         .filter(
           (v) =>
             account.role === "admin" ||
-            ["radar", "videos", "plans", "reports"].includes(v),
+            ["radar", "workspace", "reports"].includes(v),
         )
         .includes(value)
         ? value
@@ -317,21 +320,12 @@ function App() {
             </div>
           </button>
           <button
-            aria-pressed={tab === "plans"}
-            onClick={() => navigate("plans")}
+            aria-pressed={tab === "workspace"}
+            onClick={() => navigate("workspace")}
           >
-            <span>行</span>
+            <span>我</span>
             <div>
-              探店计划<small>店铺 · 路线 · 创作</small>
-            </div>
-          </button>
-          <button
-            aria-pressed={tab === "videos"}
-            onClick={() => navigate("videos")}
-          >
-            <span>映</span>
-            <div>
-              我的视频<small>素材成片与制作记录</small>
+              我的工作台<small>计划 · 视频 · 黑名单</small>
             </div>
           </button>
           <button
@@ -389,23 +383,23 @@ function App() {
               ? `${channelLabel}发现`
               : tab === "reports"
                 ? "店铺上报"
-                : tab === "plans"
-                  ? "探店计划"
-                  : tab === "videos"
-                    ? "视频作品"
-                    : "数据工作台"}
+                : tab === "workspace"
+                  ? "我的工作台"
+                  : "数据工作台"}
           </span>
-          <div className="channel-switch" aria-label="切换业务频道">
-            {(["food", "leisure"] as const).map((c) => (
-              <button
-                key={c}
-                aria-pressed={channel === c}
-                onClick={() => navigate(tab, c)}
-              >
-                {c === "food" ? "美食" : "游玩"}
-              </button>
-            ))}
-          </div>
+          {tab !== "workspace" && (
+            <div className="channel-switch" aria-label="切换业务频道">
+              {(["food", "leisure"] as const).map((c) => (
+                <button
+                  key={c}
+                  aria-pressed={channel === c}
+                  onClick={() => navigate(tab, c)}
+                >
+                  {c === "food" ? "美食" : "游玩"}
+                </button>
+              ))}
+            </div>
+          )}
           <small>
             上海 ·{" "}
             {new Date().toLocaleDateString("zh-CN", {
@@ -415,7 +409,7 @@ function App() {
             })}
           </small>
         </header>
-        {tab !== "radar" && tab !== "plans" && tab !== "reports" && (
+        {tab !== "radar" && tab !== "workspace" && tab !== "reports" && (
           <section className="page-heading">
             <div>
               <p className="eyebrow">
@@ -478,11 +472,8 @@ function App() {
             <CouponRadar key={channel} channel={channel} />
           </>
         )}
-        {tab === "plans" && <VisitPlans />}
+        {tab === "workspace" && <MyWorkspace brands={brands} />}
         {tab === "reports" && <ShopReports />}
-        {tab === "videos" && (
-          <VideoLibrary key={channel} channel={channel} brands={brands} />
-        )}
         {tab === "brands" && (
           <div
             className={`brand-workspace ${showBrandEditor ? "with-editor" : ""}`}

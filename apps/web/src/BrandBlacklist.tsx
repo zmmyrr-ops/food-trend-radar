@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { visitRequest } from "./VisitPlans";
 
 type Brand = { brand_id: string; name: string };
-export function BrandBlacklist({ onChange }: { onChange: () => void }) {
+export function BrandBlacklist() {
   const [items, setItems] = useState<Brand[]>([]);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<{ id: string; name: string }[]>([]);
@@ -49,7 +49,6 @@ export function BrandBlacklist({ onChange }: { onChange: () => void }) {
           ? [...old.filter((b) => b.brand_id !== brand.brand_id), brand]
           : old.filter((b) => b.brand_id !== brand.brand_id),
       );
-      onChange();
     } catch {
       setError("保存失败，请重试");
     } finally {
@@ -57,10 +56,8 @@ export function BrandBlacklist({ onChange }: { onChange: () => void }) {
     }
   }
   return (
-    <details className="brand-blacklist">
-      <summary>
-        品牌黑名单{items.length > 0 ? ` · ${items.length}` : ""}
-      </summary>
+    <section className="brand-blacklist workspace-blacklist">
+      <h2>品牌黑名单{items.length > 0 ? ` · ${items.length}` : ""}</h2>
       <div className="blacklist-body">
         <p>不再向你推荐这些品牌的优先券，可随时移除。</p>
         <input
@@ -115,6 +112,6 @@ export function BrandBlacklist({ onChange }: { onChange: () => void }) {
         </div>
         {!items.length && <small>尚未添加品牌</small>}
       </div>
-    </details>
+    </section>
   );
 }
