@@ -6,9 +6,18 @@
       "!**/node_modules",
       "!**/data",
       "!**/work",
-      "!package-lock.json"
+      "!package-lock.json",
+      "!**/project.private.config.json"
     ]
   },
-  "formatter": { "enabled": true, "indentStyle": "space" },
-  "linter": { "enabled": true, "rules": { "preset": "none" } }
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "none"
+    }
+  }
 }

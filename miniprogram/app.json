@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/coupons/index",
+    "pages/brands/index",
+    "pages/messages/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "达人优选",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f7fb"
+  },
+  "tabBar": {
+    "color": "#8190a6",
+    "selectedColor": "#356ce0",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/coupons/index", "text": "选券" },
+      { "pagePath": "pages/brands/index", "text": "我的品牌" },
+      { "pagePath": "pages/messages/index", "text": "消息" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

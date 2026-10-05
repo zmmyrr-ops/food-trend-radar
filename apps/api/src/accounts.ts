@@ -2,6 +2,7 @@ import { createHash, randomBytes, randomUUID } from "node:crypto";
 import type { PGlite } from "@electric-sql/pglite";
 import type { Express, Request, RequestHandler } from "express";
 import { z } from "zod";
+import { createWechatMini } from "./wechat-mini.js";
 
 // Reserved archive owner: never assigned by public registration.
 export const legacyOwner = "00000000-0000-0000-0000-000000000000";
@@ -13,7 +14,12 @@ export function ownerOf(req: Request): string {
 const digest = (v: string) => createHash("sha256").update(v).digest("hex");
 export async function createAccounts(
   db: PGlite,
-  options: { testMode: boolean; secure?: boolean; adminPhone?: string },
+  options: {
+    testMode: boolean;
+    secure?: boolean;
+    adminPhone?: string;
+    wechat?: Parameters<typeof createWechatMini>[1];
+  },
 ) {
   await db.exec(`CREATE TABLE IF NOT EXISTS accounts(id uuid PRIMARY KEY,phone text UNIQUE NOT NULL,role text NOT NULL DEFAULT 'user',created_at timestamptz NOT NULL DEFAULT now());
     CREATE TABLE IF NOT EXISTS account_sessions(token_hash text PRIMARY KEY,account_id uuid NOT NULL REFERENCES accounts(id),expires_at timestamptz NOT NULL);
@@ -38,6 +44,7 @@ export async function createAccounts(
       ]);
     }
   }
+  const mini = await createWechatMini(db, options.wechat);
   const cookie = (req: Request) =>
     req.headers.cookie
       ?.split(";")
@@ -69,6 +76,7 @@ export async function createAccounts(
     next();
   };
   function register(app: Express) {
+    mini.register(app);
     app.get("/api/auth/config", (_req, res) =>
       res.json({ test_mode: options.testMode }),
     );
@@ -164,5 +172,5 @@ export async function createAccounts(
       });
     });
   }
-  return { register };
+  return { register, tick: mini.tick, drain: mini.drain };
 }

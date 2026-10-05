@@ -44,6 +44,9 @@ void operations.tick().catch(console.error);
 radar.kick();
 const timer = setInterval(() => {
   void operations.tick().catch(console.error);
+  void accounts
+    .tick()
+    .catch(() => console.error("WeChat notification tick failed"));
 }, 60000);
 const collectionTimer = setInterval(() => {
   void radar.schedule().catch(console.error);
@@ -71,6 +74,7 @@ for (const signal of ["SIGINT", "SIGTERM"] as const) {
     server.close(async () => {
       await stopped;
       await operations.drain();
+      await accounts.drain();
       await stopRuntimeReporting();
       await db.close();
       await releaseLease();
