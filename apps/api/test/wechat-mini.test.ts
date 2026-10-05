@@ -100,6 +100,51 @@ test("微信登录、限定接口、账号隔离、券字段脱敏、授权及�
     assert.equal((await call("login", "", { code: "bad" })).status, 401);
     const a = await (await call("login", "", { code: "a" })).json();
     const b = await (await call("login", "", { code: "b" })).json();
+    assert.equal((await call("profile")).status, 401);
+    const avatar =
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a3ioAAAAASUVORK5CYII=";
+    assert.equal(
+      (
+        await call("profile", a.token, {
+          nickname: "探店达人",
+          avatar_data: avatar,
+        })
+      ).status,
+      200,
+    );
+    assert.equal(
+      (await (await call("profile", a.token)).json()).profile.nickname,
+      "探店达人",
+    );
+    assert.equal(
+      (await (await call("profile", a.token)).json()).profile.avatar_data,
+      avatar,
+    );
+    assert.equal(
+      (await (await call("profile", b.token)).json()).profile.nickname,
+      "",
+    );
+    assert.equal(
+      (
+        await call("profile", a.token, {
+          avatar_data: "https://example.com/a.png",
+        })
+      ).status,
+      400,
+    );
+    assert.equal(
+      (
+        await call("profile", a.token, {
+          avatar_data: "data:image/png;base64,YWJj",
+        })
+      ).status,
+      400,
+    );
+    await call("profile", a.token, { nickname: "新昵称" });
+    assert.equal(
+      (await (await call("profile", a.token)).json()).profile.avatar_data,
+      avatar,
+    );
     assert.equal(a.template_id, MINI_TEMPLATE_ID);
     assert.equal(a.openid, undefined);
     assert.equal(a.session_key, undefined);

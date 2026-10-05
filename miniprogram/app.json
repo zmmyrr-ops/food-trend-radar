@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/coupons/index",
+    "pages/mine/index",
     "pages/brands/index",
     "pages/messages/index"
   ],
@@ -16,9 +17,14 @@
     "backgroundColor": "#ffffff",
     "borderStyle": "white",
     "list": [
-      { "pagePath": "pages/coupons/index", "text": "选券" },
-      { "pagePath": "pages/brands/index", "text": "我的品牌" },
-      { "pagePath": "pages/messages/index", "text": "消息" }
+      {
+        "pagePath": "pages/coupons/index",
+        "text": "选券"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的"
+      }
     ]
   },
   "style": "v2",

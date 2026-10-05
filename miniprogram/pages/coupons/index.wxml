@@ -3,8 +3,9 @@
  <view class="tabs"><view class="chip {{channel==='food'?'active':''}}" data-id="food" bindtap="channel">美食</view><view class="chip {{channel==='leisure'?'active':''}}" data-id="leisure" bindtap="channel">游玩</view></view>
  <input class="search" placeholder="搜索品牌或优惠券" value="{{search}}" bindinput="search" />
  <scroll-view scroll-x><view class="tabs"><view wx:for="{{views}}" wx:key="id" class="chip {{view===item.id?'active':''}}" data-id="{{item.id}}" bindtap="view">{{item.name}}</view></view></scroll-view>
- <view class="row muted"><text>共 {{total}} 张</text><picker range="{{sorts}}" value="{{sortIndex}}" bindchange="sort"><text class="link">{{sorts[sortIndex]}} ▾</text></picker></view>
+ <view class="row muted"><picker range="{{categories}}" value="{{categoryIndex}}" bindchange="category"><text class="link">{{categories[categoryIndex]}} ▾</text></picker><text>共 {{total}} 张</text><picker range="{{sorts}}" value="{{sortIndex}}" bindchange="sort"><text class="link">{{sorts[sortIndex]}} ▾</text></picker></view>
  <view wx:if="{{brand_id}}" class="chip" bindtap="clearBrand">当前仅看所选品牌 ×</view>
+ <view wx:if="{{!loggedIn}}" class="card"><view class="heading">登录后发现适合你的好券</view><view class="muted rule">查看优先券、新上与热度增长，订阅感兴趣的品牌。</view><button class="primary" bindtap="goLogin">去微信登录</button></view>
  <view wx:if="{{error}}" class="error" bindtap="retry">{{error}} · 点击重试</view>
  <view wx:for="{{items}}" wx:key="key" class="card" data-index="{{index}}" bindtap="detail">
   <view class="row"><text class="muted">{{item.brand_name}}</text><text wx:if="{{item.is_new}}" class="badge">新上</text></view>
@@ -12,6 +13,6 @@
   <view class="row muted"><text>热度增速 {{item.heat_index===null?'待积累':item.heat_index+'/100'}}</text><text>使用规则 ›</text></view>
   <view class="actions"><button size="mini" data-brand="{{item.brand_id}}" catchtap="subscribe">订阅品牌</button><button size="mini" data-brand="{{item.brand_id}}" catchtap="block">不推荐此品牌</button></view>
  </view>
- <view class="empty" wx:if="{{loading}}">正在加载…</view><view class="empty" wx:elif="{{!items.length && !error}}">暂无符合条件的券</view><view class="empty" wx:elif="{{items.length>=total && items.length}}">已展示全部结果</view>
+ <view class="empty" wx:if="{{loading}}">正在加载…</view><view class="empty" wx:elif="{{loggedIn && !items.length && !error}}">暂无符合条件的券</view><view class="empty" wx:elif="{{items.length>=total && items.length}}">已展示全部结果</view>
 </view>
 <view wx:if="{{detail}}" class="modal" bindtap="close"><view class="sheet" catchtap="noop"><view class="row"><text class="heading">使用规则</text><button size="mini" bindtap="close">关闭</button></view><scroll-view scroll-y class="sheet-scroll"><view class="rule heading">{{detail.title}}</view><view wx:if="{{detail.shop}}" class="rule"><view>{{detail.shop.name}}</view><view class="muted">{{detail.shop.address}}</view></view><view wx:if="{{detail.loading}}">加载中…</view><view wx:elif="{{detail.error}}">{{detail.error}}</view><view wx:elif="{{!detail.rules.length}}" class="muted">暂无附加使用条件，请购买前核实。</view><view wx:for="{{detail.rules}}" wx:key="key" class="rule"><view>{{item.name}}</view><view class="muted" wx:for="{{item.value}}" wx:for-item="entry" wx:key="index">{{entry.content}}</view></view></scroll-view></view></view>

@@ -1,0 +1,20 @@
+<view class="page mine">
+ <view class="profile-card">
+  <view class="row">
+   <button wx:if="{{loggedIn}}" class="avatar-button" open-type="chooseAvatar" bindchooseavatar="avatar" disabled="{{busy}}"><image wx:if="{{avatar}}" src="{{avatar}}" mode="aspectFill"/><view wx:else class="avatar-placeholder">优</view><view class="avatar-edit">编辑</view></button>
+   <view wx:else class="avatar-placeholder">优</view>
+   <view class="profile-text"><view class="profile-name">{{loggedIn?(nickname||'达人用户'):'欢迎来到达人优选'}}</view><view class="muted">{{loggedIn?'好券与好店，都为你留在这里':'登录后同步订阅与推荐偏好'}}</view></view>
+  </view>
+  <button wx:if="{{!loggedIn}}" class="primary login" loading="{{busy}}" disabled="{{busy}}" bindtap="login">微信登录</button>
+  <view wx:else class="profile-edit" bindtap="edit">{{editing?'收起资料编辑':'完善头像与昵称'}} ›</view>
+  <form wx:if="{{loggedIn && editing}}" bindsubmit="save"><view class="muted">点击头像选择图片，点击下方填写微信昵称。</view><input name="nickname" type="nickname" value="{{nickname}}" placeholder="填写昵称" maxlength="32" class="search"/><button form-type="submit" class="primary" disabled="{{busy}}">保存昵称</button></form>
+ </view>
+ <view wx:if="{{error}}" class="error" bindtap="retry">{{error}} · 点击重试</view>
+ <view class="menu">
+  <view class="menu-item" data-url="/pages/brands/index?mode=subscriptions" bindtap="open"><view><view class="heading">品牌订阅</view><view class="muted">关注品牌的新上券与热度变化</view></view><text class="count">{{subscriptions}} ›</text></view>
+  <view class="menu-item" data-url="/pages/messages/index" bindtap="open"><view><view class="heading">订阅消息</view><view class="muted">不错过适合你的新商机</view></view><text class="badge" wx:if="{{unread}}">{{unread}} 未读</text><text wx:else class="count">›</text></view>
+  <view class="menu-item" data-url="/pages/brands/index?mode=blacklist" bindtap="open"><view><view class="heading">品牌黑名单</view><view class="muted">管理不想推荐的品牌</view></view><text class="count">{{blacklist}} ›</text></view>
+  <view class="menu-item" bindtap="enable"><view><view class="heading">微信消息提醒</view><view class="muted">主动授权接收下一次商机提醒</view></view><text class="count">开启 ›</text></view>
+ </view>
+ <button wx:if="{{loggedIn}}" class="logout" bindtap="logout">退出登录</button>
+</view>

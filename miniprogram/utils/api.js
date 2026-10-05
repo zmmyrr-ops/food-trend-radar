@@ -40,7 +40,8 @@ function login() {
   return loginTask;
 }
 async function request(path, method = "GET", data) {
-  let token = wx.getStorageSync("miniToken") || (await login());
+  let token = wx.getStorageSync("miniToken");
+  if (!token) throw { status: 401, message: "请先到“我的”页面微信登录" };
   try {
     return await raw(path, method, data, token);
   } catch (e) {
@@ -68,4 +69,4 @@ function authorize() {
     }).then(() => r[templateId] === "accept"),
   );
 }
-module.exports = { request, notice, authorize };
+module.exports = { request, notice, authorize, login };

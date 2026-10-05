@@ -22,10 +22,10 @@ Page({
       this.setData({ items: r.items, unread: r.unread });
       if (r.unread)
         wx.setTabBarBadge({
-          index: 2,
+          index: 1,
           text: r.unread > 99 ? "99+" : String(r.unread),
         });
-      else wx.removeTabBarBadge({ index: 2 });
+      else wx.removeTabBarBadge({ index: 1 });
     } catch (e) {
       this.setData({ error: e.message });
     } finally {

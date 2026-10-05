@@ -1,4 +1,26 @@
 const { request, notice } = require("../../utils/api");
+const categoryOptions = {
+  food: [
+    "全部分类",
+    "茶饮果饮",
+    "咖啡",
+    "烘焙甜品",
+    "西式快餐",
+    "中式快餐小吃",
+    "火锅烧烤",
+    "中餐及本地特色",
+    "其他餐饮",
+  ],
+  leisure: [
+    "全部分类",
+    "亲子乐园",
+    "主题乐园",
+    "动物海洋馆",
+    "展馆观光",
+    "户外景区",
+    "运动玩乐",
+  ],
+};
 const money = (n) => (n == null ? "—" : (n / 100).toFixed(2));
 Page({
   data: {
@@ -10,6 +32,8 @@ Page({
       { id: "price_drop", name: "降价" },
       { id: "value_rising", name: "降价且升温" },
     ],
+    categoryIndex: 0,
+    categories: categoryOptions.food,
     view: "recommended",
     channel: "food",
     order: "priority",
@@ -22,12 +46,18 @@ Page({
     loading: false,
     error: "",
     detail: null,
+    loggedIn: false,
   },
   onLoad(q) {
     if (q.brand_id) this.setData({ brand_id: q.brand_id, view: "all" });
   },
   onShow() {
-    this.load(true);
+    this.setData({ loggedIn: !!wx.getStorageSync("miniToken") });
+    if (this.data.loggedIn) this.load(true);
+    else this.setData({ items: [], total: 0, error: "" });
+  },
+  goLogin() {
+    wx.switchTab({ url: "/pages/mine/index" });
   },
   onUnload() {
     clearTimeout(this.searchTimer);
@@ -41,6 +71,7 @@ Page({
       this.load(false);
   },
   async load(reset) {
+    if (!wx.getStorageSync("miniToken")) return;
     const version = (this.version = (this.version || 0) + 1);
     const offset = reset ? 0 : this.data.items.length;
     this.setData({ loading: true, error: "", ...(reset ? { items: [] } : {}) });
@@ -54,6 +85,8 @@ Page({
         limit: 20,
       };
       if (this.data.brand_id) q.brand_id = this.data.brand_id;
+      if (this.data.categoryIndex)
+        q.category = this.data.categories[this.data.categoryIndex];
       const r = await request(
         "coupon-picks?" +
           Object.keys(q)
@@ -84,7 +117,16 @@ Page({
     this.load(true);
   },
   channel(e) {
-    this.setData({ channel: e.currentTarget.dataset.id, brand_id: "" });
+    this.setData({
+      channel: e.currentTarget.dataset.id,
+      brand_id: "",
+      categoryIndex: 0,
+      categories: categoryOptions[e.currentTarget.dataset.id],
+    });
+    this.load(true);
+  },
+  category(e) {
+    this.setData({ categoryIndex: Number(e.detail.value) });
     this.load(true);
   },
   search(e) {

@@ -38,6 +38,7 @@ export async function createWechatMini(
   } = {},
 ) {
   await db.exec(`CREATE TABLE IF NOT EXISTS wechat_identities(openid text PRIMARY KEY,owner_id uuid UNIQUE NOT NULL REFERENCES accounts(id));
+    CREATE TABLE IF NOT EXISTS wechat_profiles(owner_id uuid PRIMARY KEY REFERENCES accounts(id),nickname text NOT NULL DEFAULT '',avatar_data text NOT NULL DEFAULT '',updated_at timestamptz NOT NULL DEFAULT now());
     CREATE TABLE IF NOT EXISTS wechat_grants(owner_id uuid PRIMARY KEY REFERENCES accounts(id),available boolean NOT NULL DEFAULT false,granted_at timestamptz NOT NULL DEFAULT now());
     CREATE TABLE IF NOT EXISTS wechat_deliveries(message_id uuid PRIMARY KEY,owner_id uuid NOT NULL,state text NOT NULL,code text,created_at timestamptz NOT NULL DEFAULT now());`);
   async function secret() {
@@ -131,11 +132,11 @@ export async function createWechatMini(
       const route = req.path.slice("/api/mini".length);
       const allowed =
         (req.method === "GET" &&
-          /^\/(coupon-picks|coupons\/\d+\/(rules|stores)|brand-subscriptions(?:\/(search|messages))?|brand-blacklist(?:\/search)?|notification-status)$/.test(
+          /^\/(coupon-picks|coupons\/\d+\/(rules|stores)|brand-subscriptions(?:\/(search|messages))?|brand-blacklist(?:\/search)?|notification-status|profile)$/.test(
             route,
           )) ||
         (req.method === "POST" &&
-          /^\/(brand-subscriptions(?:\/read)?|brand-blacklist|notification-consent|logout)$/.test(
+          /^\/(brand-subscriptions(?:\/read)?|brand-blacklist|notification-consent|logout|profile)$/.test(
             route,
           ));
       if (!allowed)
@@ -154,6 +155,48 @@ export async function createWechatMini(
       if (!user)
         return res.status(401).json({ error: { message: "请重新微信登录" } });
       res.setHeader("Cache-Control", "private, no-store");
+      if (route === "/profile") {
+        if (req.method === "POST") {
+          const input = z
+            .object({
+              nickname: z.string().trim().min(1).max(32).optional(),
+              avatar_data: z.string().max(90000).optional(),
+            })
+            .strict()
+            .parse(req.body);
+          if (input.avatar_data !== undefined && input.avatar_data !== "") {
+            const match = input.avatar_data.match(
+              /^data:image\/(jpeg|png);base64,([A-Za-z0-9+/]+={0,2})$/,
+            );
+            if (!match)
+              return res
+                .status(400)
+                .json({ error: { message: "头像仅支持 JPEG 或 PNG 图片" } });
+            const bytes = Buffer.from(match[2], "base64");
+            const valid =
+              match[1] === "jpeg"
+                ? bytes.subarray(0, 3).equals(Buffer.from([255, 216, 255]))
+                : bytes
+                    .subarray(0, 8)
+                    .equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+            if (!valid || bytes.length > 65536)
+              return res.status(400).json({
+                error: { message: "头像格式不正确或超过 64KB，请重新选择" },
+              });
+          }
+          await db.query(
+            "INSERT INTO wechat_profiles(owner_id,nickname,avatar_data) VALUES($1,COALESCE($2,''),COALESCE($3,'')) ON CONFLICT(owner_id) DO UPDATE SET nickname=COALESCE($2,wechat_profiles.nickname),avatar_data=COALESCE($3,wechat_profiles.avatar_data),updated_at=now()",
+            [user.owner_id, input.nickname ?? null, input.avatar_data ?? null],
+          );
+        }
+        const profile = (
+          await db.query(
+            "SELECT nickname,avatar_data FROM wechat_profiles WHERE owner_id=$1",
+            [user.owner_id],
+          )
+        ).rows[0] || { nickname: "", avatar_data: "" };
+        return res.json({ profile });
+      }
       if (route === "/logout") {
         await db.query("DELETE FROM account_sessions WHERE token_hash=$1", [
           hash(token!),

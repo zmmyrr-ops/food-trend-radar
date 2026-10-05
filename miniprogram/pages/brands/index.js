@@ -10,6 +10,9 @@ Page({
     error: "",
     searching: false,
   },
+  onLoad(q) {
+    if (q.mode === "blacklist") this.setData({ mode: "blacklist" });
+  },
   onShow() {
     this.load();
   },
