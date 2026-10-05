@@ -2,7 +2,7 @@ const { request, notice, login } = require("../../utils/api");
 Page({
   data: {
     loggedIn: false,
-    editingNickname: false,
+    nicknameSaving: false,
     busy: false,
     nickname: "",
     avatar: "",
@@ -67,26 +67,45 @@ Page({
       this.setData({ busy: false });
     }
   },
-  editNickname() {
-    this.setData({ editingNickname: true });
+  nicknameChanged(e) {
+    this.nicknameDraft = String(e.detail.value || "").trim();
   },
-  closeNickname() {
-    if (!this.data.busy) this.setData({ editingNickname: false });
+  nicknameReviewed(e) {
+    if (!e.detail.pass || e.detail.timeout) {
+      notice({
+        message: e.detail.timeout
+          ? "昵称校验超时，请重新选择"
+          : "请选择其他微信昵称",
+      });
+      return;
+    }
+    this.createSelectorQuery()
+      .select("#wechat-nickname")
+      .fields({ properties: ["value"] }, (field) => {
+        const nickname = String(
+          field?.value ?? this.nicknameDraft ?? "",
+        ).trim();
+        this.saveNickname(nickname);
+      })
+      .exec();
   },
-  noop() {},
-  async save(e) {
-    if (this.data.busy) return;
-    const nickname = String(e.detail.value.nickname || "").trim();
-    if (!nickname) return notice({ message: "请先选择微信昵称" });
-    this.setData({ busy: true });
+  async saveNickname(nickname) {
+    if (
+      !nickname ||
+      nickname === this.data.nickname ||
+      this.data.nicknameSaving ||
+      !this.data.loggedIn
+    )
+      return;
+    this.setData({ nicknameSaving: true });
     try {
       await request("profile", "POST", { nickname });
-      this.setData({ nickname, editingNickname: false });
-      wx.showToast({ title: "资料已保存" });
+      this.setData({ nickname });
+      wx.showToast({ title: "昵称已更新" });
     } catch (e) {
       notice(e);
     } finally {
-      this.setData({ busy: false });
+      this.setData({ nicknameSaving: false });
     }
   },
   async avatar(e) {
