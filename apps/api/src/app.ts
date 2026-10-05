@@ -19,6 +19,7 @@ import express, { type ErrorRequestHandler } from "express";
 import { z } from "zod";
 import { registerAdmission } from "./admission.js";
 import { createAutoRadar } from "./auto-radar.js";
+import { registerBrandBlacklist } from "./brand-blacklist.js";
 import { registerBrandSubscriptions } from "./brand-subscriptions.js";
 import type { createCoupons } from "./coupons.js";
 import type { createOperations } from "./operations.js";
@@ -246,6 +247,7 @@ export function createApp(
   accounts?.register(app);
   registerShopReports(app, db);
   registerBrandSubscriptions(app, db);
+  registerBrandBlacklist(app, db);
   if (runtimeDiagnostics)
     app.get("/api/v3/runtime-diagnostics", (_req, res) =>
       res.json(runtimeDiagnostics()),

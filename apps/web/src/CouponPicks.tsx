@@ -2,6 +2,7 @@ import { type Channel, categories, inChannel } from "@radar/contracts";
 import { useEffect, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
+import { BrandBlacklist } from "./BrandBlacklist";
 import { BrandIcon } from "./BrandIcon";
 import { CouponStoreSummary } from "./CouponStoreSummary";
 import { CouponUsageRules } from "./CouponUsageRules";
@@ -262,6 +263,12 @@ export function CouponPicks({
           </button>
         ))}
       </div>
+      <BrandBlacklist
+        onChange={() => {
+          setOffset(0);
+          setRefresh((n) => n + 1);
+        }}
+      />
       <div className="actions filter-chips">
         {views.map(([key, label]) => (
           <button

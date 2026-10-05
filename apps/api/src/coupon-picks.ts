@@ -2,6 +2,8 @@ import type { PGlite } from "@electric-sql/pglite";
 import { categories, inChannel } from "@radar/contracts";
 import type { Express } from "express";
 import { z } from "zod";
+import { ownerOf } from "./accounts.js";
+import { readBrandBlacklist } from "./brand-blacklist.js";
 import { type BrandIndex, indexAvailable } from "./brand-index.js";
 import { couponUseOutlook } from "./coupon-use-outlook.js";
 import type { createEnvironment } from "./environment.js";
@@ -199,11 +201,13 @@ const inputSchema = z.object({
 export function selectPicks(
   items: ReturnType<typeof combinePicks>,
   q: z.infer<typeof inputSchema>,
+  blockedBrands: ReadonlySet<string> = new Set(),
 ) {
   items = items.filter((x) => inChannel(x.category, q.channel));
   const ranked = items
     .filter(
       (x) =>
+        !blockedBrands.has(x.brand_id) &&
         !x.use_outlook.fully_excluded &&
         x.priority.value_gate.eligible &&
         x.priority.score > 0,
@@ -492,7 +496,10 @@ export function registerCouponPicks(
     ["/api/v3/coupon-picks", "/api/v3/coupon-picks.csv"],
     async (req, res) => {
       const q = inputSchema.parse(req.query);
-      const { counts, filtered } = selectPicks(await readPicks(), q);
+      const blocked = db
+        ? await readBrandBlacklist(db, ownerOf(req))
+        : new Set<string>();
+      const { counts, filtered } = selectPicks(await readPicks(), q, blocked);
       if (req.path.endsWith(".csv")) {
         res.setHeader(
           "Content-Disposition",

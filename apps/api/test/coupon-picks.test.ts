@@ -407,3 +407,24 @@ test("新上保留24小时，后续无变化轮次仍保留，临界点自动撤
   )[0];
   assert.equal(future.is_new, false);
 });
+
+test("黑名单在前500排名之前排除，全部券保留，移除后恢复推荐", () => {
+  const [item] = combinePicks([heat()], []);
+  item.priority.value_gate.eligible = true;
+  item.priority.score = 80;
+  item.use_outlook.fully_excluded = false;
+  const rows = Array.from({ length: 510 }, (_, i) => ({
+    ...item,
+    brand_id: `brand${i}`,
+    product_id: `${i}`,
+  }));
+  const blocked = new Set(rows.slice(0, 10).map((r) => r.brand_id));
+  const q = { ...query, view: "recommended" as const };
+  const selected = selectPicks(rows, q, blocked);
+  assert.equal(selected.filtered.length, 500);
+  assert.equal(selected.counts.recommended, 500);
+  assert.ok(selected.filtered.every((r) => !blocked.has(r.brand_id)));
+  assert.equal(selectPicks(rows, query, blocked).filtered.length, 510);
+  assert.equal(selectPicks([rows[0]], q, blocked).filtered.length, 0);
+  assert.equal(selectPicks([rows[0]], q).filtered.length, 1);
+});
