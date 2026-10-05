@@ -19,11 +19,15 @@
     "list": [
       {
         "pagePath": "pages/coupons/index",
-        "text": "选券"
+        "text": "选券",
+        "iconPath": "assets/tabs/coupons.png",
+        "selectedIconPath": "assets/tabs/coupons-active.png"
       },
       {
         "pagePath": "pages/mine/index",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "assets/tabs/mine.png",
+        "selectedIconPath": "assets/tabs/mine-active.png"
       }
     ]
   },

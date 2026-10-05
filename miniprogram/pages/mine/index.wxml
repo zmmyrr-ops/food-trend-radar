@@ -3,10 +3,10 @@
  <view class="profile-card">
   <view class="profile-header">
    <view class="avatar-area"><button wx:if="{{loggedIn}}" class="avatar-button" open-type="chooseAvatar" bindchooseavatar="avatar" disabled="{{busy}}"><image wx:if="{{avatar}}" src="{{avatar}}" mode="aspectFill"/><view wx:else class="avatar-placeholder">优</view></button><view wx:else class="avatar-placeholder">优</view><text wx:if="{{loggedIn}}" class="avatar-caption">更换头像</text></view>
-   <view class="profile-text"><view class="profile-name">{{loggedIn?(nickname||'完善你的达人名片'):'欢迎来到达人优选'}}</view><view class="profile-description">{{loggedIn?'让每次探店，都有好发现':'发现好券，收藏你的探店灵感'}}</view></view>
+   <view class="profile-text"><view class="profile-name">{{loggedIn?(nickname||'微信用户'):'欢迎来到达人优选'}}</view><view class="profile-description">{{loggedIn?'让每次探店，都有好发现':'发现好券，收藏你的探店灵感'}}</view></view>
   </view>
   <button wx:if="{{!loggedIn}}" class="primary login" loading="{{busy}}" disabled="{{busy}}" bindtap="login">微信登录</button>
-  <form wx:else class="nickname-form" bindsubmit="save"><view class="nickname-label">微信昵称</view><view class="nickname-field"><input name="nickname" type="nickname" value="{{nickname}}" placeholder="点击填写微信昵称" placeholder-class="nickname-placeholder" maxlength="32"/><button form-type="submit" disabled="{{busy}}">保存</button></view><view class="nickname-hint">点击输入框，可选择微信昵称，也可以自行填写。</view></form>
+  <button wx:if="{{loggedIn}}" class="nickname-link" bindtap="editNickname">{{nickname?'更新微信昵称':'使用微信昵称'}} <text>›</text></button>
  </view>
  <view wx:if="{{error}}" class="error" bindtap="retry">{{error}} · 点击重试</view>
  <view class="menu-title">我的偏好与动态</view>
@@ -16,4 +16,11 @@
   <view class="menu-item" data-url="/pages/brands/index?mode=blacklist" bindtap="open"><view class="menu-icon gray">隐</view><view class="menu-copy"><view class="heading">品牌黑名单</view><view class="muted">减少不感兴趣的推荐</view></view><text class="count">{{blacklist}}</text><text class="chevron">›</text></view>
  </view>
  <button wx:if="{{loggedIn}}" class="logout" bindtap="logout">退出登录</button>
+ <view wx:if="{{editingNickname}}" class="nickname-mask" bindtap="closeNickname">
+  <view class="nickname-sheet" catchtap="noop">
+   <view class="sheet-header"><text>使用微信昵称</text><button bindtap="closeNickname" disabled="{{busy}}">关闭</button></view>
+   <view class="nickname-hint">点击下方输入框，选择微信提供的昵称。</view>
+   <form bindsubmit="save"><input class="nickname-input" name="nickname" type="nickname" value="{{nickname}}" placeholder="点击选择微信昵称" maxlength="32"/><button class="primary nickname-confirm" form-type="submit" loading="{{busy}}" disabled="{{busy}}">确认使用</button></form>
+  </view>
+ </view>
 </view>

@@ -2,6 +2,7 @@ const { request, notice, login } = require("../../utils/api");
 Page({
   data: {
     loggedIn: false,
+    editingNickname: false,
     busy: false,
     nickname: "",
     avatar: "",
@@ -66,13 +67,21 @@ Page({
       this.setData({ busy: false });
     }
   },
+  editNickname() {
+    this.setData({ editingNickname: true });
+  },
+  closeNickname() {
+    if (!this.data.busy) this.setData({ editingNickname: false });
+  },
+  noop() {},
   async save(e) {
+    if (this.data.busy) return;
     const nickname = String(e.detail.value.nickname || "").trim();
-    if (!nickname) return notice({ message: "请填写昵称" });
+    if (!nickname) return notice({ message: "请先选择微信昵称" });
     this.setData({ busy: true });
     try {
       await request("profile", "POST", { nickname });
-      this.setData({ nickname });
+      this.setData({ nickname, editingNickname: false });
       wx.showToast({ title: "资料已保存" });
     } catch (e) {
       notice(e);
