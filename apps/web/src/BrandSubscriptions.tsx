@@ -13,7 +13,12 @@ type Message = {
   created_at: string;
   read_at: string | null;
 };
-export function BrandSubscriptions() {
+export function BrandSubscriptions({
+  mode = "messages",
+}: {
+  mode?: "messages" | "manage";
+}) {
+  const manage = mode === "manage";
   const [open, setOpen] = useState(false),
     [q, setQ] = useState(""),
     [results, setResults] = useState<{ id: string; name: string }[]>([]),
@@ -35,6 +40,7 @@ export function BrandSubscriptions() {
     setSubscriptions(r.items);
   }
   useEffect(() => {
+    if (manage) return;
     let alive = true;
     const poll = async () => {
       try {
@@ -89,11 +95,11 @@ export function BrandSubscriptions() {
       alive = false;
       clearInterval(timer);
     };
-  }, []);
+  }, [manage]);
   useEffect(() => {
-    if (!open) return;
+    if (!manage) return;
     void refreshSubscriptions().catch((e) => setError(String(e)));
-  }, [open]);
+  }, [manage]);
   useEffect(() => {
     let alive = true;
     if (!q.trim()) {
@@ -133,142 +139,160 @@ export function BrandSubscriptions() {
   }
   return (
     <section className="brand-subscriptions">
-      <button
-        className="subscription-entry"
-        onClick={() => setOpen(!open)}
-        aria-expanded={open}
-      >
-        品牌订阅 <span>{unread ? `${unread} 条未读` : "消息提醒"}</span>
-        <span>{open ? "收起" : "展开"}</span>
-      </button>
-      {open && (
+      {!manage && (
+        <button
+          className="subscription-entry"
+          onClick={() => setOpen(!open)}
+          aria-expanded={open}
+        >
+          订阅消息 <span>{unread ? `${unread} 条未读` : "消息提醒"}</span>
+          <span>{open ? "收起" : "展开"}</span>
+        </button>
+      )}
+      {(manage || open) && (
         <div className="subscription-body">
-          <div className="subscription-tools">
-            <h3>我的品牌订阅</h3>
-            <button
-              disabled={
-                permission === "unsupported" || permission === "granted"
-              }
-              onClick={async () => {
-                try {
-                  setPermission(await Notification.requestPermission());
-                  seen.current.clear();
-                } catch {
-                  setPermission("unsupported");
-                }
-              }}
-            >
-              {permission === "granted"
-                ? "系统通知已开启"
-                : permission === "unsupported"
-                  ? "此浏览器使用站内提醒"
-                  : permission === "denied"
-                    ? "请在浏览器设置允许通知"
-                    : "开启系统通知"}
-            </button>
-          </div>
-          <p className="muted">
-            订阅后提醒新上券与热度飙升。网页打开期间可接收系统通知，离线消息会保留在这里。
-          </p>
-          <input
-            aria-label="搜索订阅品牌"
-            placeholder="输入品牌名，搜索并订阅"
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            maxLength={80}
-          />
-          {q.trim() && (
-            <div className="subscription-results">
-              {results.map((b) => (
-                <div key={b.id}>
-                  <span>{b.name}</span>
-                  <button
-                    disabled={busy}
-                    onClick={() =>
-                      void toggle(
-                        b.id,
-                        !subscriptions.some((s) => s.brand_id === b.id),
-                      )
+          {manage && (
+            <>
+              <div className="subscription-tools">
+                <h3>我的品牌订阅</h3>
+                <button
+                  disabled={
+                    permission === "unsupported" || permission === "granted"
+                  }
+                  onClick={async () => {
+                    try {
+                      setPermission(await Notification.requestPermission());
+                      seen.current.clear();
+                    } catch {
+                      setPermission("unsupported");
                     }
-                  >
-                    {subscriptions.some((s) => s.brand_id === b.id)
-                      ? "取消订阅"
-                      : "订阅"}
-                  </button>
-                </div>
-              ))}
-              {!results.length && <p className="muted">暂无匹配品牌</p>}
-            </div>
-          )}
-          <div className="subscription-chips">
-            {subscriptions.map((s) => (
-              <button
-                key={s.brand_id}
-                disabled={busy}
-                onClick={() => void toggle(s.brand_id, false)}
-                title="取消订阅"
-              >
-                {s.name} ×
-              </button>
-            ))}
-          </div>
-          <div className="subscription-tools">
-            <h3>订阅消息</h3>
-            <button
-              disabled={!messages.some((m) => !m.read_at) || busy}
-              onClick={async () => {
-                setBusy(true);
-                try {
-                  const ids = messages
-                    .filter((m) => !m.read_at)
-                    .map((m) => m.id);
-                  await visitRequest("brand-subscriptions/read", "POST", {
-                    ids,
-                  });
-                  setMessages((items) =>
-                    items.map((m) => ({
-                      ...m,
-                      read_at: m.read_at || new Date().toISOString(),
-                    })),
-                  );
-                  setUnread((n) => Math.max(0, n - ids.length));
-                } catch (e) {
-                  setError(String(e));
-                } finally {
-                  setBusy(false);
-                }
-              }}
-            >
-              本页标为已读
-            </button>
-          </div>
-          <div className="subscription-messages">
-            {messages.map((m) => (
-              <a
-                key={m.id}
-                className={m.read_at ? "" : "unread"}
-                href={appUrl(
-                  `/?tab=radar&subscription_brand=${m.brand_id}&channel=${m.channel}`,
-                )}
-                onClick={() => {
-                  void visitRequest("brand-subscriptions/read", "POST", {
-                    ids: [m.id],
-                  });
-                }}
-              >
-                <strong>
-                  {m.brand_name} · {m.kind === "new" ? "新上" : "热度飙升"}
-                </strong>
-                <span>{m.title}</span>
-                <small>{new Date(m.created_at).toLocaleString("zh-CN")}</small>
-              </a>
-            ))}
-            {!messages.length && (
+                  }}
+                >
+                  {permission === "granted"
+                    ? "系统通知已开启"
+                    : permission === "unsupported"
+                      ? "此浏览器使用站内提醒"
+                      : permission === "denied"
+                        ? "请在浏览器设置允许通知"
+                        : "开启系统通知"}
+                </button>
+              </div>
               <p className="muted">
-                暂无消息，订阅品牌后有新的变化会在这里提醒。
+                订阅品牌的新上券与热度飙升，消息在首页查看。首页打开期间可接收系统通知。
               </p>
-            )}
-          </div>
+              <input
+                aria-label="搜索订阅品牌"
+                placeholder="输入品牌名，搜索并订阅"
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                maxLength={80}
+              />
+              {q.trim() && (
+                <div className="subscription-results">
+                  {results.map((b) => (
+                    <div key={b.id}>
+                      <span>{b.name}</span>
+                      <button
+                        disabled={busy}
+                        onClick={() =>
+                          void toggle(
+                            b.id,
+                            !subscriptions.some((s) => s.brand_id === b.id),
+                          )
+                        }
+                      >
+                        {subscriptions.some((s) => s.brand_id === b.id)
+                          ? "取消订阅"
+                          : "订阅"}
+                      </button>
+                    </div>
+                  ))}
+                  {!results.length && <p className="muted">暂无匹配品牌</p>}
+                </div>
+              )}
+              <div className="subscription-chips">
+                {subscriptions.map((s) => (
+                  <button
+                    key={s.brand_id}
+                    disabled={busy}
+                    onClick={() => void toggle(s.brand_id, false)}
+                    title="取消订阅"
+                  >
+                    {s.name} ×
+                  </button>
+                ))}
+              </div>
+              {!subscriptions.length && (
+                <p className="muted">尚未订阅品牌，搜索后即可添加。</p>
+              )}
+            </>
+          )}
+          {!manage && (
+            <>
+              <div className="subscription-tools">
+                <h3>订阅消息</h3>
+                <a href={appUrl("/?tab=workspace&section=subscriptions")}>
+                  管理品牌订阅 →
+                </a>
+                <button
+                  disabled={!messages.some((m) => !m.read_at) || busy}
+                  onClick={async () => {
+                    setBusy(true);
+                    try {
+                      const ids = messages
+                        .filter((m) => !m.read_at)
+                        .map((m) => m.id);
+                      await visitRequest("brand-subscriptions/read", "POST", {
+                        ids,
+                      });
+                      setMessages((items) =>
+                        items.map((m) => ({
+                          ...m,
+                          read_at: m.read_at || new Date().toISOString(),
+                        })),
+                      );
+                      setUnread((n) => Math.max(0, n - ids.length));
+                    } catch (e) {
+                      setError(String(e));
+                    } finally {
+                      setBusy(false);
+                    }
+                  }}
+                >
+                  本页标为已读
+                </button>
+              </div>
+              <div className="subscription-messages">
+                {messages.map((m) => (
+                  <a
+                    key={m.id}
+                    className={m.read_at ? "" : "unread"}
+                    href={appUrl(
+                      `/?tab=radar&subscription_brand=${m.brand_id}&channel=${m.channel}`,
+                    )}
+                    onClick={() => {
+                      void visitRequest("brand-subscriptions/read", "POST", {
+                        ids: [m.id],
+                      });
+                    }}
+                  >
+                    <strong>
+                      {m.brand_name} · {m.kind === "new" ? "新上" : "热度飙升"}
+                    </strong>
+                    <span>{m.title}</span>
+                    <small>
+                      {new Date(m.created_at).toLocaleString("zh-CN")}
+                    </small>
+                  </a>
+                ))}
+                {!messages.length && (
+                  <p className="muted">
+                    暂无消息，订阅品牌后有新的变化会在这里提醒。
+                  </p>
+                )}
+              </div>
+            </>
+          )}
           {error && <p role="alert">{error}</p>}
         </div>
       )}

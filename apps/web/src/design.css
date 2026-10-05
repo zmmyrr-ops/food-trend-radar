@@ -1668,3 +1668,25 @@ button.visit-primary {
     flex-wrap: wrap;
   }
 }
+
+.my-workspace .brand-subscriptions {
+  margin: 0;
+}
+.my-workspace .subscription-tools h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.subscription-tools a {
+  font-size: 12px;
+  color: #3478ee;
+  text-decoration: none;
+}
+@media (max-width: 600px) {
+  .my-workspace .personal-tabs {
+    overflow-x: auto;
+  }
+  .my-workspace .personal-tabs button {
+    flex: 1 0 auto;
+    padding: 9px 8px;
+  }
+}

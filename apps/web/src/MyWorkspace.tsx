@@ -1,12 +1,14 @@
 import type { Brand } from "@radar/contracts";
 import { useState } from "react";
 import { BrandBlacklist } from "./BrandBlacklist";
+import { BrandSubscriptions } from "./BrandSubscriptions";
 import { VideoLibrary } from "./VideoLibrary";
 import { VisitPlans } from "./VisitPlans";
 
 const sections = [
   ["plans", "探店计划", "安排店铺与路线"],
   ["videos", "我的视频", "查看成片与制作记录"],
+  ["subscriptions", "品牌订阅", "管理订阅与通知"],
   ["blacklist", "品牌黑名单", "管理不想推荐的品牌"],
 ] as const;
 export function MyWorkspace({ brands }: { brands: Brand[] }) {
@@ -55,6 +57,10 @@ export function MyWorkspace({ brands }: { brands: Brand[] }) {
                   <rect x="3" y="4" width="18" height="16" rx="3" />
                   <path d="m10 8 6 4-6 4Z" />
                 </>
+              ) : key === "subscriptions" ? (
+                <>
+                  <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4" />
+                </>
               ) : (
                 <>
                   <path d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6Z" />
@@ -87,6 +93,7 @@ export function MyWorkspace({ brands }: { brands: Brand[] }) {
             <VideoLibrary channel={videoChannel} brands={brands} />
           </>
         )}
+        {section === "subscriptions" && <BrandSubscriptions mode="manage" />}
         {section === "blacklist" && <BrandBlacklist />}
       </div>
     </section>

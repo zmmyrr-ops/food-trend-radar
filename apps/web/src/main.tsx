@@ -325,7 +325,7 @@ function App() {
           >
             <span>我</span>
             <div>
-              我的工作台<small>计划 · 视频 · 黑名单</small>
+              我的工作台<small>计划 · 视频 · 订阅</small>
             </div>
           </button>
           <button
@@ -468,7 +468,7 @@ function App() {
         {!loaded && !error && <p role="status">正在加载工作台…</p>}
         {tab === "radar" && (
           <>
-            <BrandSubscriptions />
+            <BrandSubscriptions mode="messages" />
             <CouponRadar key={channel} channel={channel} />
           </>
         )}
