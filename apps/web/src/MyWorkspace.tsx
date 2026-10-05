@@ -27,19 +27,42 @@ export function MyWorkspace({ brands }: { brands: Brand[] }) {
   }
   return (
     <section className="my-workspace" aria-label="我的工作台">
-      <header className="workspace-heading">
-        <h1>我的工作台</h1>
-        <p>计划、作品和推荐偏好，都在这里。</p>
-      </header>
-      <nav className="workspace-tabs" aria-label="工作台分类">
-        {sections.map(([key, label, detail]) => (
+      <nav className="personal-tabs" aria-label="工作台分类">
+        {sections.map(([key, label]) => (
           <button
             key={key}
             aria-pressed={section === key}
             onClick={() => select(key)}
           >
-            <strong>{label}</strong>
-            <small>{detail}</small>
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              {key === "plans" ? (
+                <>
+                  <rect x="4" y="5" width="16" height="16" rx="3" />
+                  <path d="M8 3v4m8-4v4M4 11h16m-11 5h2m3 0h2" />
+                </>
+              ) : key === "videos" ? (
+                <>
+                  <rect x="3" y="4" width="18" height="16" rx="3" />
+                  <path d="m10 8 6 4-6 4Z" />
+                </>
+              ) : (
+                <>
+                  <path d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6Z" />
+                  <path d="M9 12h6" />
+                </>
+              )}
+            </svg>
+            <span>{label}</span>
           </button>
         ))}
       </nav>
