@@ -92,7 +92,7 @@ Page({
   async saveNickname(nickname) {
     if (
       !nickname ||
-      nickname === this.data.nickname ||
+      this.data.nickname ||
       this.data.nicknameSaving ||
       !this.data.loggedIn
     )
