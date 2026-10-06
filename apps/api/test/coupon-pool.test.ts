@@ -185,3 +185,51 @@ test("品牌增量更新原子替换、失败保留旧池、到期移出、禁�
     await db.close();
   }
 });
+
+test("单品牌更新只重读该品牌，禁用后立即移出缓存", async () => {
+  const db = await openDatabase();
+  const ids = [randomUUID(), randomUUID()];
+  const run = randomUUID();
+  await db.exec(
+    "CREATE TABLE radar_read_models(name text PRIMARY KEY,payload jsonb,calculated_at timestamptz); CREATE TABLE coupon_dispositions(brand_id uuid,product_id text); CREATE TABLE brand_index_observations(brand_id uuid)",
+  );
+  await db.query("INSERT INTO coupon_runs(id,status) VALUES($1,'complete')", [
+    run,
+  ]);
+  for (const id of ids) {
+    await db.query(
+      "INSERT INTO brands(id,name,name_key,category,shanghai_evidence_url) VALUES($1,$1,$1,'火锅','https://example.com')",
+      [id],
+    );
+    await db.query("INSERT INTO coupon_baselines VALUES($1,$2)", [id, run]);
+  }
+  const current = new Map(ids.map((id) => [id, picks(id, run, 1)]));
+  const pool = await createCouponPool(db, async (id) => current.get(id)!);
+  try {
+    for (const id of ids) await pool.refreshBrand(id);
+    assert.equal((await pool.read()).length, 2);
+    const query = db.query.bind(db);
+    const loaded: string[][] = [];
+    db.query = ((...args: Parameters<typeof db.query>) => {
+      if (args[0].includes("SELECT c.payload,b.category"))
+        loaded.push(args[1]![0] as string[]);
+      return query(...args);
+    }) as typeof db.query;
+    current.get(ids[0])![0].title = "更新的券";
+    await pool.refreshBrand(ids[0]);
+    assert.equal(
+      (await pool.read()).find((x) => x.brand_id === ids[0])?.title,
+      "更新的券",
+    );
+    assert.deepEqual(loaded, [[ids[0]]]);
+    await db.query("UPDATE brands SET active=false WHERE id=$1", [ids[1]]);
+    assert.deepEqual(
+      (await pool.read()).map((x) => x.brand_id),
+      [ids[0]],
+    );
+    assert.deepEqual(loaded, [[ids[0]]]);
+  } finally {
+    await pool.stop();
+    await db.close();
+  }
+});

@@ -204,7 +204,7 @@ export async function createCouponPool(
     });
     if (changed.length)
       await db.query(
-        `UPDATE coupon_pool_candidates c SET payload=v.payload FROM jsonb_to_recordset($1) AS v(brand_id uuid,product_id text,payload jsonb) WHERE c.brand_id=v.brand_id AND c.product_id=v.product_id`,
+        `UPDATE coupon_pool_candidates c SET payload=v.payload,calculated_at=now() FROM jsonb_to_recordset($1) AS v(brand_id uuid,product_id text,payload jsonb) WHERE c.brand_id=v.brand_id AND c.product_id=v.product_id`,
         [JSON.stringify(changed)],
       );
     await db.exec(
@@ -236,6 +236,10 @@ export async function createCouponPool(
   // Keep the complete current set; only selectPicks limits the recommended view.
   let cached: { revision: string; until: number; items: Pick[] } | undefined;
   let reading: Promise<Pick[]> | undefined;
+  const brands = new Map<
+    string,
+    { stamp: string; until: number; items: Pick[] }
+  >();
   async function load() {
     const revision = (
       await db.query<{ revision: string }>(
@@ -244,32 +248,64 @@ export async function createCouponPool(
     ).rows[0].revision;
     if (cached && cached.revision === revision && Date.now() < cached.until)
       return cached.items;
-    const rows = (
+    const summaries = (
       await db.query<{
-        payload: Pick;
+        brand_id: string;
+        stamp: string;
         category: string;
-      }>(`SELECT c.payload,b.category FROM coupon_pool_candidates c JOIN brands b ON b.id=c.brand_id AND b.active JOIN coupon_baselines cb ON cb.brand_id=c.brand_id AND cb.run_id=c.run_id
+      }>(`SELECT c.brand_id, concat(cb.run_id,':',b.category,':',count(*),':',max(c.calculated_at)) AS stamp,b.category
+      FROM coupon_pool_candidates c JOIN brands b ON b.id=c.brand_id AND b.active
+      JOIN coupon_baselines cb ON cb.brand_id=c.brand_id AND cb.run_id=c.run_id
       WHERE c.observed_at BETWEEN now()-interval '36 hours' AND now() AND (c.sale_end IS NULL OR c.sale_end>now())
-      `)
+      GROUP BY c.brand_id,cb.run_id,b.category`)
     ).rows;
     const now = Date.now();
-    const items = rows
-      .filter(({ payload }) => {
-        const end = saleDeadline(payload.sale_end);
-        return !end || Date.parse(end) > now;
-      })
-      .map((x) => updatePoolClock({ ...x.payload, category: x.category }, now))
-      .sort((a, b) => b.priority.score - a.priority.score);
-    let until = now + 10_000;
-    for (const x of items) {
-      // Expiry and the 24-hour new badge must not wait for the cache TTL.
-      for (const boundary of [
-        Date.parse(x.observed_at) + 36 * 3600000,
-        Date.parse(saleDeadline(x.sale_end) ?? ""),
-        Date.parse(x.discovered_at ?? "") + 24 * 3600000,
-      ])
-        if (boundary > now) until = Math.min(until, boundary);
+    const changed = summaries.filter((x) => {
+      const previous = brands.get(x.brand_id);
+      return !previous || previous.stamp !== x.stamp || now >= previous.until;
+    });
+    const rows = changed.length
+      ? (
+          await db.query<{ payload: Pick; category: string }>(
+            `SELECT c.payload,b.category FROM coupon_pool_candidates c JOIN brands b ON b.id=c.brand_id AND b.active JOIN coupon_baselines cb ON cb.brand_id=c.brand_id AND cb.run_id=c.run_id
+       WHERE c.brand_id=ANY($1::uuid[]) AND c.observed_at BETWEEN now()-interval '36 hours' AND now() AND (c.sale_end IS NULL OR c.sale_end>now())`,
+            [changed.map((x) => x.brand_id)],
+          )
+        ).rows
+      : [];
+    const grouped = new Map<string, Pick[]>();
+    for (const x of rows) {
+      const end = saleDeadline(x.payload.sale_end);
+      if (end && Date.parse(end) <= now) continue;
+      const item = updatePoolClock({ ...x.payload, category: x.category }, now);
+      const group = grouped.get(item.brand_id) ?? [];
+      group.push(item);
+      grouped.set(item.brand_id, group);
     }
+    for (const x of changed) {
+      const items = grouped.get(x.brand_id) ?? [];
+      let until = now + 60_000;
+      for (const item of items) {
+        // Expiry and the 24-hour new badge must not wait for the cache TTL.
+        for (const boundary of [
+          Date.parse(item.observed_at) + 36 * 3600000,
+          Date.parse(saleDeadline(item.sale_end) ?? ""),
+          Date.parse(item.discovered_at ?? "") + 24 * 3600000,
+          item.brand_index
+            ? Date.parse(item.brand_index.period_end) + 72 * 3600000
+            : NaN,
+        ])
+          if (boundary > now) until = Math.min(until, boundary);
+      }
+      brands.set(x.brand_id, { stamp: x.stamp, until, items });
+    }
+    const visible = new Set(summaries.map((x) => x.brand_id));
+    for (const id of brands.keys()) if (!visible.has(id)) brands.delete(id);
+    const items = [...brands.values()]
+      .flatMap((x) => x.items)
+      .sort((a, b) => b.priority.score - a.priority.score);
+    let until = now + 60_000;
+    for (const entry of brands.values()) until = Math.min(until, entry.until);
     cached = { revision, until, items };
     return items;
   }
