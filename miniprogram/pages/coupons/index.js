@@ -26,8 +26,8 @@ const money = (n) => (n == null ? "—" : (n / 100).toFixed(2));
 Page({
   data: {
     views: [
+      { id: "all", name: "全部" },
       { id: "recommended", name: "优先券" },
-      { id: "all", name: "全部券" },
       { id: "accelerating", name: "增长加快" },
       { id: "new", name: "新上" },
     ],
@@ -167,7 +167,7 @@ Page({
     this.setData(updates);
   },
   view(e) {
-    this.setData({ view: e.currentTarget.dataset.id });
+    this.setData({ view: e.detail.value });
     this.load(true);
   },
   channel(e) {

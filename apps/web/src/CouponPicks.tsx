@@ -87,8 +87,8 @@ type Result = {
   calculated_at?: string | null;
 };
 const views = [
+  ["all", "全部"],
   ["recommended", "优先券"],
-  ["all", "全部券"],
   ["accelerating", "增长加快"],
   ["new", "新上"],
 ] as const;
@@ -212,99 +212,125 @@ export function CouponPicks({
   }, [query, offset]);
   return (
     <section className="picks-panel" aria-label="选券工作台">
-      <div className="category-rail" role="group" aria-label="业态分类">
-        {["", ...categories.filter((c) => inChannel(c, channel))].map((c) => (
-          <button
-            key={c}
-            aria-pressed={category === c}
-            onClick={() => {
-              setCategory(c);
-              setOffset(0);
-            }}
-          >
-            {c || (channel === "food" ? "全部美食" : "全部游玩")}
-          </button>
-        ))}
-      </div>
-      <div className="actions filter-chips">
-        {views.map(([key, label]) => (
-          <button
-            key={key}
-            aria-pressed={view === key}
-            onClick={() => {
-              setView(key);
-              setOffset(0);
-            }}
-          >
-            {label}
-            {data ? ` ${data.counts[key] ?? 0}` : ""}
-          </button>
-        ))}
-      </div>
-      <div className="actions">
-        <label>
-          品牌
-          <select
-            aria-label="品牌筛选"
-            value={brandId}
-            onChange={(e) => {
-              onBrandChange(e.target.value);
-              setOffset(0);
-            }}
-          >
-            <option value="">
-              全部{channel === "food" ? "美食" : "游玩"}品牌（{brands.length}）
-            </option>
-            {brands.map((b) => (
-              <option key={b.id} value={b.id}>
-                {b.name}
+      <div className="coupon-filter-panel">
+        <div className="coupon-search-row">
+          <label className="coupon-search-field">
+            搜索品牌或券{" "}
+            <input
+              value={searchInput}
+              maxLength={100}
+              placeholder={
+                channel === "food"
+                  ? "搜索餐厅、茶饮或套餐…"
+                  : "搜索乐园、场馆或门票…"
+              }
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
+          </label>
+          <label className="coupon-brand-field">
+            品牌
+            <select
+              aria-label="品牌筛选"
+              value={brandId}
+              onChange={(e) => {
+                onBrandChange(e.target.value);
+                setOffset(0);
+              }}
+            >
+              <option value="">
+                全部{channel === "food" ? "美食" : "游玩"}品牌（{brands.length}
+                ）
               </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          搜索品牌或券{" "}
-          <input
-            value={searchInput}
-            maxLength={100}
-            placeholder={
-              channel === "food"
-                ? "搜索餐厅、茶饮或套餐…"
-                : "搜索乐园、场馆或门票…"
-            }
-            onChange={(e) => setSearchInput(e.target.value)}
-          />
-        </label>
-        <div className="coupon-sort-control" role="group" aria-label="券排序">
-          <span>排序 · 从高到低</span>
-          <div>
-            {(
-              [
-                ["priority", "优先分"],
-                ["speed", "热度增速"],
-              ] as const
-            ).map(([value, label]) => (
-              <button
-                key={value}
-                type="button"
-                aria-pressed={order === value}
-                onClick={() => {
-                  setOrder(value);
-                  setOffset(0);
-                }}
-              >
-                {label} ↓
-              </button>
-            ))}
+              {brands.map((b) => (
+                <option key={b.id} value={b.id}>
+                  {b.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="coupon-order-field">
+            排序
+            <select
+              value={order}
+              onChange={(e) => {
+                setOrder(e.target.value);
+                setOffset(0);
+              }}
+            >
+              <option value="priority">优先分 · 高到低</option>
+              <option value="speed">热度增速 · 高到低</option>
+            </select>
+          </label>
+        </div>
+        <div className="coupon-category-row">
+          <span className="coupon-filter-caption">分类</span>
+          <div
+            className="coupon-category-options"
+            role="group"
+            aria-label="业态分类"
+          >
+            {["", ...categories.filter((c) => inChannel(c, channel))].map(
+              (c) => (
+                <button
+                  key={c}
+                  aria-pressed={category === c}
+                  onClick={() => {
+                    setCategory(c);
+                    setOffset(0);
+                  }}
+                >
+                  {c || (channel === "food" ? "全部美食" : "全部游玩")}
+                </button>
+              ),
+            )}
           </div>
         </div>
-        <a
-          className="admin-only"
-          href={appUrl(`/api/v3/coupon-picks.csv?${query}`)}
-          download
-        >
-          导出结果
-        </a>
+        <div className="coupon-filter-bottom">
+          <fieldset className="coupon-mode-filter">
+            <legend>券类型</legend>
+            <div className="coupon-mode-options">
+              {views.map(([key, label]) => (
+                <label className="coupon-mode-option" key={key}>
+                  <input
+                    type="radio"
+                    name="coupon-mode"
+                    value={key}
+                    checked={view === key}
+                    onChange={() => {
+                      setView(key);
+                      setOffset(0);
+                    }}
+                  />
+                  <span>{label}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+          <div className="coupon-filter-tools">
+            <button
+              type="button"
+              className="coupon-filter-reset"
+              onClick={() => {
+                setView("all");
+                setCategory("");
+                setSearchInput("");
+                setSearch("");
+                onBrandChange("");
+                setOrder("priority");
+                setOffset(0);
+              }}
+            >
+              重置筛选
+            </button>
+            <a
+              className="admin-only"
+              href={appUrl(`/api/v3/coupon-picks.csv?${query}`)}
+              download
+            >
+              导出结果
+            </a>
+          </div>
+        </div>
       </div>
       {error && <p role="alert">{error}</p>}
       {!data && !error && <p>正在汇总优惠与热度…</p>}

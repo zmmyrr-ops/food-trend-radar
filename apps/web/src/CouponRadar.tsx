@@ -418,7 +418,7 @@ export function CouponRadar({ channel }: { channel: Channel }) {
       )}
       <div className="workspace-tabs" role="group" aria-label="雷达视图">
         {[
-          ["picks", "优先选券"],
+          ["picks", "选券"],
           ["ai", "AI 精选"],
           ["manage", "全站采集管理"],
           ["snapshots", "全站原始快照"],
