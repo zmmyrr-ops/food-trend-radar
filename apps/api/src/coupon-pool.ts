@@ -88,6 +88,23 @@ export async function createCouponPool(
     await db.exec(
       `DROP TRIGGER IF EXISTS pool_dirty ON ${table}; CREATE TRIGGER pool_dirty AFTER INSERT OR UPDATE OR DELETE ON ${table} FOR EACH ROW EXECUTE FUNCTION coupon_pool_mark_dirty();`,
     );
+  // A small revision query replaces repeated transfer/parsing of the complete JSON pool.
+  // Visibility changes must invalidate immediately, even before the dirty queue runs.
+  await db.exec(`
+    CREATE TABLE IF NOT EXISTS coupon_pool_read_revision(id int PRIMARY KEY CHECK(id=1), revision bigint NOT NULL);
+    INSERT INTO coupon_pool_read_revision VALUES(1,0) ON CONFLICT DO NOTHING;
+    CREATE OR REPLACE FUNCTION coupon_pool_touch_read_revision() RETURNS trigger LANGUAGE plpgsql AS $$
+    BEGIN UPDATE coupon_pool_read_revision SET revision=revision+1 WHERE id=1; RETURN NULL; END $$;
+  `);
+  for (const table of [
+    "coupon_pool_candidates",
+    "brands",
+    "coupon_baselines",
+    "coupon_dispositions",
+  ])
+    await db.exec(
+      `DROP TRIGGER IF EXISTS pool_read_changed ON ${table}; CREATE TRIGGER pool_read_changed AFTER INSERT OR UPDATE OR DELETE OR TRUNCATE ON ${table} FOR EACH STATEMENT EXECUTE FUNCTION coupon_pool_touch_read_revision();`,
+    );
   // Preserve the existing complete result while the first incremental pass fills richer evidence.
   await db.exec(`INSERT INTO coupon_pool_candidates(brand_id,product_id,run_id,observed_at,payload,calculated_at)
     SELECT (p->>'brand_id')::uuid,p->>'product_id',b.run_id,(p->>'observed_at')::timestamptz,p || jsonb_build_object('run_id',b.run_id,'sale_end',i.payload->>'sale_end'),r.calculated_at
@@ -217,22 +234,52 @@ export async function createCouponPool(
     return pumping;
   }
   // Keep the complete current set; only selectPicks limits the recommended view.
-  async function read() {
+  let cached: { revision: string; until: number; items: Pick[] } | undefined;
+  let reading: Promise<Pick[]> | undefined;
+  async function load() {
+    const revision = (
+      await db.query<{ revision: string }>(
+        "SELECT revision::text FROM coupon_pool_read_revision WHERE id=1",
+      )
+    ).rows[0].revision;
+    if (cached && cached.revision === revision && Date.now() < cached.until)
+      return cached.items;
     const rows = (
       await db.query<{
         payload: Pick;
         category: string;
       }>(`SELECT c.payload,b.category FROM coupon_pool_candidates c JOIN brands b ON b.id=c.brand_id AND b.active JOIN coupon_baselines cb ON cb.brand_id=c.brand_id AND cb.run_id=c.run_id
       WHERE c.observed_at BETWEEN now()-interval '36 hours' AND now() AND (c.sale_end IS NULL OR c.sale_end>now())
-      ORDER BY (c.payload#>>'{priority,score}')::numeric DESC,c.brand_id,c.product_id`)
+      `)
     ).rows;
-    return rows
+    const now = Date.now();
+    const items = rows
       .filter(({ payload }) => {
         const end = saleDeadline(payload.sale_end);
-        return !end || Date.parse(end) > Date.now();
+        return !end || Date.parse(end) > now;
       })
-      .map((x) => updatePoolClock({ ...x.payload, category: x.category }))
+      .map((x) => updatePoolClock({ ...x.payload, category: x.category }, now))
       .sort((a, b) => b.priority.score - a.priority.score);
+    let until = now + 10_000;
+    for (const x of items) {
+      // Expiry and the 24-hour new badge must not wait for the cache TTL.
+      for (const boundary of [
+        Date.parse(x.observed_at) + 36 * 3600000,
+        Date.parse(saleDeadline(x.sale_end) ?? ""),
+        Date.parse(x.discovered_at ?? "") + 24 * 3600000,
+      ])
+        if (boundary > now) until = Math.min(until, boundary);
+    }
+    cached = { revision, until, items };
+    return items;
+  }
+  function read() {
+    if (!reading)
+      reading = load().finally(() => {
+        reading = undefined;
+      });
+    // Callers may reorder their own array without mutating the shared ordering.
+    return reading.then((items) => items.slice());
   }
   return {
     refreshBrand,

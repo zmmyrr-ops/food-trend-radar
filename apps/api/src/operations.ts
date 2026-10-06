@@ -152,6 +152,7 @@ export async function createOperations(
   }
   let lastReports = 0;
   let lastScores = 0;
+  let lastEvaluation = 0;
   async function performTick() {
     await observe("storage.compact", couponStorage.run);
     await observe("database.maintenance", maintainDatabase);
@@ -162,7 +163,12 @@ export async function createOperations(
     }
     await observe("board.digest", () => board.digest());
     await observe("picks.precompute", () => readPicks());
-    await observe("picks.evaluate", () => evaluation.refresh());
+    // 72-hour backtesting need not scan all sales history every minute.
+    // Coupon collection, pool updates and subscription notifications keep their cadence.
+    if (Date.now() - lastEvaluation >= 10 * 60000) {
+      await observe("picks.evaluate", () => evaluation.refresh());
+      lastEvaluation = Date.now();
+    }
     await observe("backup", () => backup());
     await observe("environment.refresh", () => environment.refresh());
     if (Date.now() - lastReports < 15 * 60000) return;

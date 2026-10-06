@@ -75,7 +75,30 @@ test("品牌增量更新原子替换、失败保留旧池、到期移出、禁�
   });
   try {
     await pool.refreshBrand(brand);
-    assert.equal((await pool.read()).length, 510);
+    let fullReads = 0;
+    const query = db.query.bind(db);
+    db.query = ((...args: Parameters<typeof db.query>) => {
+      if (args[0].includes("SELECT c.payload,b.category")) fullReads++;
+      return query(...args);
+    }) as typeof db.query;
+    const concurrent = await Promise.all([
+      pool.read(),
+      pool.read(),
+      pool.read(),
+    ]);
+    assert.equal(concurrent[0].length, 510);
+    assert.equal(fullReads, 1, "concurrent requests share one full pool load");
+    concurrent[0].pop();
+    assert.equal(
+      (await pool.read()).length,
+      510,
+      "returned arrays are independent",
+    );
+    assert.equal(
+      fullReads,
+      1,
+      "repeated reads only check the small revision row",
+    );
     const tuples = () =>
       db.query(
         "SELECT product_id,ctid::text FROM coupon_pool_candidates ORDER BY product_id",

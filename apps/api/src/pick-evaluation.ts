@@ -108,8 +108,8 @@ export async function createPickEvaluation(
       )
     ).rows;
     if (existing && !pending.length) return;
-    const picks = await read();
     if (!existing) {
+      const picks = await read();
       const capturedAt = requestedNow ?? Date.now();
       const ranked = picks
         .filter(
@@ -155,6 +155,8 @@ export async function createPickEvaluation(
             now,
           ),
       }));
+      if (entries.every((e, i) => e.outcome === batch.payload[i].outcome))
+        continue;
       await db.query(
         "UPDATE coupon_pick_evaluations SET payload=$2,finished=$3 WHERE slot=$1",
         [

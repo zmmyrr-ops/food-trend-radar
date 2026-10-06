@@ -120,3 +120,38 @@ test("automatic half-day samples freeze scores, survive restart and finish only 
     await db.close();
   }
 });
+
+test("pending backtests skip ranking reads and unchanged payload writes", async () => {
+  const db = await openDatabase();
+  let rankingReads = 0;
+  const service = await createPickEvaluation(
+    db,
+    async () => {
+      rankingReads++;
+      return [pick()];
+    },
+    async () => [],
+  );
+  try {
+    await service.refresh(now);
+    await service.refresh(now + 73 * hour);
+    rankingReads = 0;
+    const before = (
+      await db.query(
+        "SELECT slot,ctid::text FROM coupon_pick_evaluations ORDER BY slot",
+      )
+    ).rows;
+    await service.refresh(now + 73 * hour + 1000);
+    assert.equal(rankingReads, 0);
+    assert.deepEqual(
+      (
+        await db.query(
+          "SELECT slot,ctid::text FROM coupon_pick_evaluations ORDER BY slot",
+        )
+      ).rows,
+      before,
+    );
+  } finally {
+    await db.close();
+  }
+});
