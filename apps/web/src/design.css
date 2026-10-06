@@ -1967,3 +1967,11 @@ button.visit-primary {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.coupon-mode-count {
+  margin-left: 6px;
+  font-size: 11px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+}

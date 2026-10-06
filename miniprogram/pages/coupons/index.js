@@ -42,6 +42,7 @@ Page({
     brand_id: "",
     items: [],
     total: 0,
+    counts: null,
     loading: false,
     error: "",
     detail: null,
@@ -58,7 +59,7 @@ Page({
     if (this.data.loggedIn) {
       await this.loadPreferences();
       this.load(true);
-    } else this.setData({ items: [], total: 0, error: "" });
+    } else this.setData({ items: [], total: 0, counts: null, error: "" });
   },
   goLogin() {
     wx.switchTab({ url: "/pages/mine/index" });
@@ -151,6 +152,7 @@ Page({
           })),
         ),
         total: r.total,
+        counts: r.counts || null,
       });
     } catch (e) {
       if (version === this.version) this.setData({ error: e.message });

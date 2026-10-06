@@ -5,3 +5,5 @@
 .coupon-actions .is-added{background:#f1f4f8;color:#8995a7}.coupon-actions button[disabled]{opacity:.7}.coupon-actions button.is-added[disabled]{opacity:1}
 
 .coupon-mode-filter{display:flex;align-items:center;gap:14rpx;padding:24rpx 0}.coupon-mode-caption{font-size:23rpx;color:#8b98ab;flex-shrink:0}.coupon-mode-options{display:flex;gap:10rpx;flex-wrap:wrap}.coupon-mode-option{position:relative;display:flex;align-items:center;justify-content:center;padding:13rpx 21rpx;border-radius:40rpx;background:#f2f5f9;border:1rpx solid transparent;font-size:24rpx;color:#65758b;line-height:32rpx}.coupon-mode-option.selected{background:#eaf1ff;border-color:#cfddfb;color:#326bd1;font-weight:600}.coupon-mode-radio{position:absolute;opacity:0;width:1rpx;height:1rpx;overflow:hidden}
+
+.coupon-mode-count{margin-left:7rpx;font-size:21rpx;font-weight:400;opacity:.8}.coupon-mode-option{padding-left:15rpx;padding-right:15rpx}

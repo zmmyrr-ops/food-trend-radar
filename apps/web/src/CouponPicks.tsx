@@ -267,7 +267,14 @@ export function CouponPicks({
                       setOffset(0);
                     }}
                   />
-                  <span>{label}</span>
+                  <span>
+                    {label}
+                    {key !== "all" && data && (
+                      <small className="coupon-mode-count">
+                        {data.counts[key] ?? 0}
+                      </small>
+                    )}
+                  </span>
                 </label>
               ))}
             </div>
