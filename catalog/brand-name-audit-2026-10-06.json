@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-06",
+  "scope": {
+    "catalog_records": 1517,
+    "active": 1009,
+    "platform_candidate_records": 225,
+    "uncovered_platform_aliases": []
+  },
+  "limitations": "全库结构筛查、相似名称筛查及重点品牌联网核验；不代表1517个品牌均已逐一完成官方身份核验。相似名称可能是不同品牌或子品牌，不能自动合并。",
+  "completed": {
+    "results": [
+      {
+        "id": "0b52ce6e-8c58-4497-99aa-e952a5d2c991",
+        "name": "沼津港",
+        "action": "updated",
+        "active": true
+      },
+      {
+        "id": "19202418-a037-4535-ad40-9e85c3fdbc74",
+        "name": "季季山",
+        "action": "updated",
+        "active": true
+      },
+      {
+        "id": "e875f649-0424-4387-a7b3-e92a7543a30d",
+        "name": "湊湊",
+        "action": "updated",
+        "active": true
+      },
+      {
+        "id": "18d6052c-a3ae-4953-9fac-16254ecd9663",
+        "name": "丰和日丽",
+        "action": "created",
+        "active": true
+      },
+      {
+        "id": "d3238297-8525-4622-986d-057528d5eab2",
+        "name": "玺炖",
+        "action": "created",
+        "active": true
+      },
+      {
+        "id": "ba5772a4-d5c1-42ae-84c4-33735d946806",
+        "name": "友藤",
+        "action": "created",
+        "active": true
+      }
+    ],
+    "report_approved": "99d9c385-8548-4837-b9e7-8a944e32f97a",
+    "collection": {
+      "id": "57061137-b554-4e6e-b528-98615e9a1d7d"
+    }
+  },
+  "identity_findings": [
+    {
+      "names": ["孤独得寿喜烧", "孤独的寿喜烧"],
+      "finding": "导入文章来源使用了“得”，官方店铺名单使用“的”；两条记录均启用，待保留用户关联的合并处理。",
+      "sources": [
+        "https://www.shcn.gov.cn/col7344/20260611/1310724.html",
+        "https://www.ideaplus-inc.co.jp/brand/shop/kodokunosukiyaki.html"
+      ],
+      "status": "duplicate_correction_pending"
+    },
+    {
+      "names": ["One Step Garden", "一尺花园"],
+      "finding": "官网中英文同页确认是同一品牌；库中两条记录均启用，待保留用户关联的合并处理。",
+      "sources": ["https://www.yichizhijian.com/NewsDetail/5828591.html"],
+      "status": "duplicate_merge_pending"
+    },
+    {
+      "names": ["1886汽车餐厅", "1886德国汽车餐厅"],
+      "finding": "疑似简称与全称重复；抖音候选名为1886汽车餐厅，未仅凭相似名称合并。",
+      "status": "identity_verification_pending"
+    }
+  ],
+  "similarity_candidates": [
+    {
+      "names": ["嗨享乐亲子互动乐园", "嗨享来亲子互动乐园"],
+      "ids": [
+        "54792469-d665-4f4b-bdbc-69eeb08192b9",
+        "1c6ef75d-dd5e-4806-96d9-9500aa2e38ba"
+      ],
+      "status": "similarity_only_not_identity_proof"
+    },
+    {
+      "names": ["1886汽车餐厅", "1886德国汽车餐厅"],
+      "ids": [
+        "928884e7-1341-4a34-adab-c87d9e7567c7",
+        "78bf6ff0-d833-4ed7-9ec7-3df9e6bcc33a"
+      ],
+      "status": "similarity_only_not_identity_proof"
+    },
+    {
+      "names": ["yeetchoco巧克力蛋糕", "yeetchoco2重巧克力蛋糕"],
+      "ids": [
+        "adb88d54-5df4-44c4-b6f8-0c784ce45f5e",
+        "2d6b3fd1-2e49-47b2-895c-48bc7a66fdde"
+      ],
+      "status": "similarity_only_not_identity_proof"
+    },
+    {
+      "names": ["鮨政·Omakase", "鮨海月 omakase"],
+      "ids": [
+        "f623340a-525a-41fc-8405-ed0230d97331",
+        "0e9063a6-95c6-4203-903c-f9bdf5cc2403"
+      ],
+      "status": "similarity_only_not_identity_proof"
+    },
+    {
+      "names": ["芥末Wasabi·無界", "芥末Wasabi"],
+      "ids": [
+        "2ab0e717-96eb-4371-9599-4dbd0fc32e26",
+        "94081e03-0628-49f5-a03f-a95cb06f14aa"
+      ],
+      "status": "similarity_only_not_identity_proof"
+    },
+    {
+      "names": ["芥末 Wasabi•赏味", "芥末Wasabi"],
+      "ids": [
+        "f7a22fbe-1dce-4e61-bf98-a9011bd460a2",
+        "94081e03-0628-49f5-a03f-a95cb06f14aa"
+      ],
+      "status": "similarity_only_not_identity_proof"
+    }
+  ]
+}
