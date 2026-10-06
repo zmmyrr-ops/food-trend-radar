@@ -157,3 +157,61 @@ test("brand subscription requires native acceptance before consent and brand wri
     }
   }
 });
+
+test("mini login preserves native network diagnostics, deduplicates taps and can retry", async () => {
+  const module = { exports: {} as any };
+  let loginCalls = 0;
+  let requestCalls = 0;
+  let fail = true;
+  let token = "";
+  runInNewContext(
+    readFileSync(
+      new URL("../../../miniprogram/utils/api.js", import.meta.url),
+      "utf8",
+    ),
+    {
+      module,
+      require: () => ({
+        apiBase: "https://example.com/api/mini",
+        templateId: "template",
+      }),
+      wx: {
+        login(options: any) {
+          loginCalls++;
+          options.success({ code: "one-use-code" });
+        },
+        setStorageSync(_key: string, value: string) {
+          token = value;
+        },
+        request(options: any) {
+          requestCalls++;
+          if (fail)
+            options.fail({
+              errMsg: "request:fail url not in domain list",
+              errno: 600002,
+            });
+          else
+            options.success({
+              statusCode: 200,
+              data: { token: "session-token" },
+            });
+        },
+      },
+    },
+  );
+  const first = module.exports.login();
+  assert.equal(module.exports.login(), first);
+  await assert.rejects(first, (error: any) => {
+    assert.match(error.message, /域名/);
+    assert.equal(error.code, "600002");
+    assert.match(error.detail, /request:fail url not in domain list/);
+    assert.equal(error.detail.includes("one-use-code"), false);
+    return true;
+  });
+  assert.equal(token, "");
+  fail = false;
+  assert.equal(await module.exports.login(), "session-token");
+  assert.equal(loginCalls, 2);
+  assert.equal(requestCalls, 2);
+  assert.equal(token, "session-token");
+});

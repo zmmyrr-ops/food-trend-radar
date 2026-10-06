@@ -10,6 +10,7 @@ Page({
     blacklist: 0,
     unread: 0,
     error: "",
+    errorDetail: "",
   },
   onShow() {
     this.refresh();
@@ -56,13 +57,18 @@ Page({
   },
   async login() {
     if (this.data.busy) return;
-    this.setData({ busy: true, error: "" });
+    this.setData({ busy: true, error: "", errorDetail: "" });
     try {
       await login();
       await this.refresh();
     } catch (e) {
       notice(e);
-      this.setData({ error: e.message || "登录失败，请重试" });
+      this.setData({
+        error: e.message || "登录失败，请重试",
+        errorDetail: e.detail
+          ? e.detail + (e.code ? " [" + e.code + "]" : "")
+          : "",
+      });
     } finally {
       this.setData({ busy: false });
     }
@@ -163,6 +169,7 @@ Page({
     });
   },
   retry() {
+    if (!this.data.loggedIn) return this.login();
     this.refresh();
   },
 });

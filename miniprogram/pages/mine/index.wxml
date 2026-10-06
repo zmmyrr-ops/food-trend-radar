@@ -7,7 +7,7 @@
   </view>
   <button wx:if="{{!loggedIn}}" class="primary login" loading="{{busy}}" disabled="{{busy}}" bindtap="login">微信登录</button>
  </view>
- <view wx:if="{{error}}" class="error" bindtap="retry">{{error}} · 点击重试</view>
+ <view wx:if="{{error}}" class="error" bindtap="retry">{{error}} · 点击重试<view wx:if="{{errorDetail}}" class="request-error-detail"><text selectable="{{true}}">{{errorDetail}}</text></view></view>
  <view class="menu-title">我的偏好与动态</view>
  <view class="menu">
   <view class="menu-item" data-url="/pages/brands/index?mode=subscriptions" bindtap="open"><view class="menu-icon blue">订</view><view class="menu-copy"><view class="heading">品牌订阅</view><view class="muted">订阅管理与微信提醒</view></view><text class="count">{{subscriptions}}</text><text class="chevron">›</text></view>

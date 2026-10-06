@@ -1,7 +1,30 @@
 const { apiBase, templateId } = require("../config");
 let loginTask;
+function platformError(error, stage) {
+  const detail = String(error?.errMsg || error?.message || "未知错误").slice(
+    0,
+    240,
+  );
+  let message =
+    stage === "wx.login"
+      ? "微信登录调用失败，请重试"
+      : "网络连接失败，请稍后重试";
+  if (/domain list|合法域名/i.test(detail))
+    message = "微信拦截了请求域名，请检查服务器域名配置";
+  else if (/ssl|tls|certificate|cert_/i.test(detail))
+    message = "HTTPS 连接失败，请检查证书或切换网络";
+  else if (/timeout|timed out/i.test(detail))
+    message = "连接超时，请切换网络后重试";
+  else if (/dns|resolve|name_not_resolved/i.test(detail))
+    message = "域名解析失败，请切换网络后重试";
+  return {
+    message,
+    detail: stage + ": " + detail,
+    code: String(error?.errno ?? error?.errCode ?? ""),
+  };
+}
 function raw(path, method, data, token) {
-  return new Promise((resolve, reject) =>
+  return new Promise((resolve, reject) => {
     wx.request({
       url: apiBase + "/" + path,
       method,
@@ -20,15 +43,26 @@ function raw(path, method, data, token) {
                 (r.data && r.data.error && r.data.error.message) ||
                 "请求失败，请重试",
             }),
-      fail: () => reject({ message: "网络连接失败，请稍后重试" }),
-    }),
-  );
+      fail: (error) => {
+        reject(platformError(error, "wx.request"));
+      },
+    });
+  });
 }
 function login() {
   if (!loginTask)
-    loginTask = new Promise((resolve, reject) =>
-      wx.login({ success: resolve, fail: reject }),
-    )
+    loginTask = new Promise((resolve, reject) => {
+      wx.login({
+        timeout: 10000,
+        success: (r) => {
+          if (r.code) resolve({ code: r.code });
+          else reject({ message: "微信未返回登录凭证，请重新打开小程序" });
+        },
+        fail: (error) => {
+          reject(platformError(error, "wx.login"));
+        },
+      });
+    })
       .then((r) => raw("login", "POST", { code: r.code }))
       .then((r) => {
         wx.setStorageSync("miniToken", r.token);
