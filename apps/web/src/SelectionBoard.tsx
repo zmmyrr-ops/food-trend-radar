@@ -44,7 +44,7 @@ const range = (a: number | null, b: number | null) =>
 const labels: Record<string, string> = {
   price_drop: "票面降价",
   quantity_increase: "同价列示增量",
-  watched: "关注中 · 无新变化",
+  watched: "无新变化",
   first_observed: "首次发现",
   reappeared: "历史券再次出现",
   terms_changed: "套餐/规则变化",
@@ -201,7 +201,6 @@ export function SelectionBoard({ brandId }: { brandId: string }) {
             <option value="first_observed">首次发现</option>
             <option value="reappeared">历史券再次出现（不计新机会）</option>
             <option value="terms_changed">套餐/规则变化</option>
-            <option value="watching">已关注</option>
             <option value="dismissed">暂不考虑</option>
           </select>
         </label>
@@ -278,7 +277,6 @@ export function SelectionBoard({ brandId }: { brandId: string }) {
           >
             <small>
               {x.brand_name} · {labels[x.kind]}
-              {x.disposition === "watching" ? " · 已关注" : ""}
             </small>
             <h3>{x.title}</h3>
             <CouponStoreSummary brandId={x.brand_id} productId={x.product_id} />
@@ -317,17 +315,6 @@ export function SelectionBoard({ brandId }: { brandId: string }) {
             )}
             <p>采集于 {new Date(x.observed_at).toLocaleString("zh-CN")}</p>
             <div className="actions">
-              <button
-                disabled={busy}
-                onClick={() =>
-                  void disposition(
-                    x,
-                    x.disposition === "watching" ? "new" : "watching",
-                  )
-                }
-              >
-                {x.disposition === "watching" ? "取消关注" : "关注这张券"}
-              </button>
               <button
                 disabled={busy}
                 onClick={() =>
@@ -378,7 +365,7 @@ export function SelectionBoard({ brandId }: { brandId: string }) {
       )}
       <small>
         {data?.caveat}
-        。关注只影响个人筛选，不会改变算法分数；新变化会让暂不考虑的券重新进入待看。
+        。新变化会让暂不考虑的券重新进入待看。
       </small>
       <details>
         <summary>每轮扫描摘要（最近 5 条）</summary>

@@ -46,7 +46,6 @@ type Pick = {
   product_id: string;
   brand_name: string;
   title: string;
-  watching: boolean;
   observed_at: string;
   price_fen: number | null;
   origin_price_fen: number | null;
@@ -90,11 +89,8 @@ type Result = {
 const views = [
   ["recommended", "优先券"],
   ["all", "全部券"],
-  ["watching", "已关注"],
-  ["value_rising", "降价且升温"],
-  ["price_drop", "票面降价"],
   ["accelerating", "增长加快"],
-  ["new", "新上 · 24小时"],
+  ["new", "新上"],
 ] as const;
 const money = (n: number | null) =>
   n === null ? "未知" : `¥${(n / 100).toFixed(2)}`;
@@ -162,10 +158,7 @@ export function CouponPicks({
     [search, setSearch] = useState(""),
     [offset, setOffset] = useState(0);
   const [data, setData] = useState<Result | null>(null),
-    [error, setError] = useState(""),
-    [refresh, setRefresh] = useState(0),
-    [saving, setSaving] = useState(false),
-    [saveError, setSaveError] = useState("");
+    [error, setError] = useState("");
   useEffect(() => {
     const t = setTimeout(() => {
       setSearch(searchInput);
@@ -220,32 +213,7 @@ export function CouponPicks({
       controller.abort();
       clearInterval(timer);
     };
-  }, [query, offset, refresh]);
-  async function watch(x: Pick) {
-    setSaving(true);
-    setSaveError("");
-    try {
-      const r = await appFetch(
-        `/api/v3/coupon-picks/${encodeURIComponent(x.product_id)}/watch`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ brand_id: x.brand_id, watching: !x.watching }),
-        },
-      );
-      if (!r.ok)
-        throw Error(
-          r.status === 409
-            ? "该券已变化，请刷新页面后重试。"
-            : "关注保存失败，请重试。",
-        );
-      setRefresh((n) => n + 1);
-    } catch (e) {
-      setSaveError(e instanceof Error ? e.message : "保存失败");
-    } finally {
-      setSaving(false);
-    }
-  }
+  }, [query, offset]);
   return (
     <section className="picks-panel" aria-label="选券工作台">
       <div className="category-rail" role="group" aria-label="业态分类">
@@ -343,7 +311,6 @@ export function CouponPicks({
         </a>
       </div>
       {error && <p role="alert">{error}</p>}
-      {saveError && <p role="alert">{saveError}</p>}
       {!data && !error && <p>正在汇总优惠与热度…</p>}
       {data && (
         <>
@@ -532,15 +499,6 @@ export function CouponPicks({
                       </details>
                     </div>
                   )}
-                <div className="card-footer">
-                  <button
-                    className="quiet-button admin-only"
-                    disabled={saving}
-                    onClick={() => void watch(x)}
-                  >
-                    {x.watching ? "取消关注" : "关注"}
-                  </button>
-                </div>
                 <CouponUsageRules
                   productId={x.product_id}
                   brandId={x.brand_id}

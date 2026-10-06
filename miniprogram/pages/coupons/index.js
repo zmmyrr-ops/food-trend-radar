@@ -28,10 +28,8 @@ Page({
     views: [
       { id: "recommended", name: "优先券" },
       { id: "all", name: "全部券" },
-      { id: "new", name: "新上" },
       { id: "accelerating", name: "增长加快" },
-      { id: "price_drop", name: "降价" },
-      { id: "value_rising", name: "降价且升温" },
+      { id: "new", name: "新上" },
     ],
     categoryIndex: 0,
     categories: categoryOptions.food,
