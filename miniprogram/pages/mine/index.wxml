@@ -2,7 +2,7 @@
  <view class="mine-title">我的工作台</view>
  <view class="profile-card">
   <view class="profile-header">
-   <view class="avatar-area"><button wx:if="{{loggedIn}}" class="avatar-button" open-type="chooseAvatar" bindchooseavatar="avatar" disabled="{{busy}}"><image wx:if="{{avatar}}" src="{{avatar}}" mode="aspectFill"/><view wx:else class="avatar-placeholder">优</view></button><view wx:else class="avatar-placeholder">优</view><text wx:if="{{loggedIn}}" class="avatar-caption">更换头像</text></view>
+   <view class="avatar-area"><button wx:if="{{loggedIn}}" class="avatar-button" open-type="chooseAvatar" bindchooseavatar="avatar" disabled="{{busy}}"><image wx:if="{{avatar}}" src="{{avatar}}" mode="aspectFit"/><view wx:else class="avatar-placeholder">优</view></button><view wx:else class="avatar-placeholder">优</view><text wx:if="{{loggedIn}}" class="avatar-caption">更换头像</text></view>
    <view class="profile-text"><input wx:if="{{loggedIn ? !nickname : false}}" id="wechat-nickname" class="profile-name nickname-inline" type="nickname" value="{{nickname}}" placeholder="点击获取微信昵称" placeholder-class="nickname-placeholder" maxlength="32" disabled="{{nicknameSaving}}" bindinput="nicknameChanged" bindblur="nicknameChanged" bindnicknamereview="nicknameReviewed"/><view wx:elif="{{loggedIn}}" class="profile-name">{{nickname}}</view><view wx:else class="profile-name">欢迎来到达人优选</view><view class="profile-description">{{loggedIn?'让每次探店，都有好发现':'发现好券，收藏你的探店灵感'}}</view></view>
   </view>
   <button wx:if="{{!loggedIn}}" class="primary login" loading="{{busy}}" disabled="{{busy}}" bindtap="login">微信登录</button>

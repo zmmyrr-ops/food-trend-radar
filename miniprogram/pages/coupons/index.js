@@ -1,3 +1,4 @@
+const { apiBase } = require("../../config");
 const { request, notice } = require("../../utils/api");
 const categoryOptions = {
   food: [
@@ -99,6 +100,9 @@ Page({
           r.items.map((x) => ({
             ...x,
             key: x.brand_id + ":" + x.product_id,
+            iconUrl: apiBase + "/brand-icons/" + encodeURIComponent(x.brand_id),
+            brandInitial: Array.from(x.brand_name || "店")[0],
+            iconFailed: false,
             price: money(x.price_fen),
             origin: money(x.origin_price_fen),
             score: Number(x.priority_score).toFixed(1),
@@ -111,6 +115,14 @@ Page({
     } finally {
       if (version === this.version) this.setData({ loading: false });
     }
+  },
+  iconError(e) {
+    const brand = e.currentTarget.dataset.brand;
+    const updates = {};
+    this.data.items.forEach((x, i) => {
+      if (x.brand_id === brand) updates["items[" + i + "].iconFailed"] = true;
+    });
+    this.setData(updates);
   },
   view(e) {
     this.setData({ view: e.currentTarget.dataset.id });

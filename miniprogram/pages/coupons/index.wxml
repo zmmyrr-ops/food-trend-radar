@@ -11,7 +11,7 @@
  <view wx:if="{{!loggedIn}}" class="card"><view class="heading">登录后发现适合你的好券</view><view class="muted rule">查看优先券、新上与热度增长，订阅感兴趣的品牌。</view><button class="primary" bindtap="goLogin">去微信登录</button></view>
  <view wx:if="{{error}}" class="error" bindtap="retry">{{error}} · 点击重试</view>
  <view wx:for="{{items}}" wx:key="key" class="coupon-card" data-index="{{index}}" bindtap="detail">
-  <view class="row"><text class="coupon-brand">{{item.brand_name}}</text><text wx:if="{{item.is_new}}" class="badge">新上</text></view>
+  <view class="row"><view class="coupon-brand-heading"><image wx:if="{{!item.iconFailed}}" class="brand-logo" src="{{item.iconUrl}}" mode="aspectFit" lazy-load="{{true}}" data-brand="{{item.brand_id}}" binderror="iconError"/><view wx:else class="brand-logo brand-logo-fallback">{{item.brandInitial}}</view><text class="coupon-brand">{{item.brand_name}}</text></view><text wx:if="{{item.is_new}}" class="badge">新上</text></view>
   <view class="coupon-title">{{item.title}}</view><view class="row"><view class="price">¥{{item.price}}<text class="original" wx:if="{{item.origin_price_fen}}">¥{{item.origin}}</text></view><view class="score-block"><text class="score-number">{{item.score}}</text><text class="score-label">优先分</text></view></view>
   <view class="coupon-meta"><text>热度增速 {{item.heat_index===null?'待积累':item.heat_index+'/100'}}</text><text>使用规则 ›</text></view>
   <view class="coupon-actions"><button class="follow-brand" data-brand="{{item.brand_id}}" catchtap="subscribe">订阅品牌</button><button class="mute-brand" data-brand="{{item.brand_id}}" catchtap="block">不感兴趣</button></view>

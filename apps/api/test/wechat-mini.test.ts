@@ -103,6 +103,23 @@ test("微信登录、限定接口、账号隔离、券字段脱敏、授权及�
     assert.equal((await call("profile")).status, 401);
     const avatar =
       "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a3ioAAAAASUVORK5CYII=";
+    await db.query(
+      "INSERT INTO brand_icons(brand_id,mime,content,source_url,kind) VALUES($1,'image/png',$2,'https://example.com/logo.png','official_logo')",
+      [brand, avatar.split(",")[1]],
+    );
+    const icon = await call("brand-icons/" + brand);
+    assert.equal(icon.status, 200);
+    assert.match(icon.headers.get("content-type")!, /^image\/png/);
+    assert.match(icon.headers.get("cache-control")!, /max-age=3600/);
+    assert.deepEqual(
+      Buffer.from(await icon.arrayBuffer()),
+      Buffer.from(avatar.split(",")[1], "base64"),
+    );
+    assert.equal((await call("brand-icons/not-a-uuid")).status, 404);
+    assert.equal((await call("brand-icons/" + randomUUID())).status, 404);
+    await db.query("UPDATE brands SET active=false WHERE id=$1", [brand]);
+    assert.equal((await call("brand-icons/" + brand)).status, 404);
+    await db.query("UPDATE brands SET active=true WHERE id=$1", [brand]);
     assert.equal(
       (
         await call("profile", a.token, {

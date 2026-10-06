@@ -71,6 +71,26 @@ export async function createWechatMini(
     return r.json();
   }
   function register(app: Express) {
+    // Only the already stored public brand image is exposed here. Native image
+    // components cannot attach the account's Bearer header; never put it in a URL.
+    app.get("/api/mini/brand-icons/:id", async (req, res) => {
+      const parsed = z.uuid().safeParse(req.params.id);
+      if (!parsed.success) return res.sendStatus(404);
+      const item = (
+        await db.query<{ mime: string; content: string }>(
+          "SELECT i.mime,i.content FROM brand_icons i JOIN brands b ON b.id=i.brand_id AND b.active WHERE i.brand_id=$1",
+          [parsed.data],
+        )
+      ).rows[0];
+      if (
+        !item ||
+        !["image/png", "image/jpeg", "image/webp"].includes(item.mime)
+      )
+        return res.sendStatus(404);
+      res.setHeader("Cache-Control", "public, max-age=3600");
+      res.setHeader("X-Content-Type-Options", "nosniff");
+      res.type(item.mime).send(Buffer.from(item.content, "base64"));
+    });
     app.post("/api/mini/login", async (req, res) => {
       const code = z.string().min(1).max(256).parse(req.body.code);
       const appSecret = await secret();
