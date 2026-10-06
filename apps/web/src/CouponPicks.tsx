@@ -227,40 +227,6 @@ export function CouponPicks({
               onChange={(e) => setSearchInput(e.target.value)}
             />
           </label>
-          <label className="coupon-brand-field">
-            品牌
-            <select
-              aria-label="品牌筛选"
-              value={brandId}
-              onChange={(e) => {
-                onBrandChange(e.target.value);
-                setOffset(0);
-              }}
-            >
-              <option value="">
-                全部{channel === "food" ? "美食" : "游玩"}品牌（{brands.length}
-                ）
-              </option>
-              {brands.map((b) => (
-                <option key={b.id} value={b.id}>
-                  {b.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="coupon-order-field">
-            排序
-            <select
-              value={order}
-              onChange={(e) => {
-                setOrder(e.target.value);
-                setOffset(0);
-              }}
-            >
-              <option value="priority">优先分 · 高到低</option>
-              <option value="speed">热度增速 · 高到低</option>
-            </select>
-          </label>
         </div>
         <div className="coupon-category-row">
           <span className="coupon-filter-caption">分类</span>
@@ -375,10 +341,60 @@ export function CouponPicks({
               )}
             </details>
           )}
-          <p className="result-meta">
-            {channel === "food" ? "美食" : "游玩"} · 共 {data.total} 张{" · "}
-            <a href={appUrl("/?tab=reports")}>没找到想要的店？上报店铺 →</a>
-          </p>
+          <div className="coupon-results-toolbar">
+            <p className="result-meta">
+              {channel === "food" ? "美食" : "游玩"} · 共 {data.total} 张{" · "}
+              <a href={appUrl("/?tab=reports")}>没找到想要的店？上报店铺 →</a>
+            </p>
+            <div
+              className="coupon-result-sort"
+              role="group"
+              aria-label="排序（从高到低）"
+            >
+              {(
+                [
+                  ["priority", "优先分"],
+                  ["speed", "热度增速"],
+                ] as const
+              ).map(([value, label]) => (
+                <button
+                  type="button"
+                  key={value}
+                  aria-pressed={order === value}
+                  title={`${label}从高到低`}
+                  onClick={() => {
+                    setOrder(value);
+                    setOffset(0);
+                  }}
+                >
+                  {label}
+                  <svg
+                    width="14"
+                    height="16"
+                    viewBox="0 0 14 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 12V3M1.5 5.5 4 3l2.5 2.5"
+                      stroke="currentColor"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      opacity=".4"
+                    />
+                    <path
+                      d="M10 4v9m-2.5-2.5L10 13l2.5-2.5"
+                      stroke="currentColor"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              ))}
+            </div>
+          </div>
           {!data.total && (
             <p>
               当前没有符合条件的券。可以切换“全部券”或清空搜索；没有证据时不会补成推荐结果。
