@@ -69,4 +69,26 @@ function authorize() {
     }).then(() => r[templateId] === "accept"),
   );
 }
-module.exports = { request, notice, authorize, login };
+// Start the native authorization in the tap call stack, before any HTTP request.
+async function subscribeBrand(brand) {
+  const accepted = await authorize();
+  if (!accepted) {
+    wx.showModal({
+      title: "需开启消息提醒",
+      content:
+        "允许微信新商机提醒后，才能订阅品牌。若之前拒绝并记住了选择，请前往设置开启，再点击订阅。",
+      confirmText: "去设置",
+      cancelText: "暂不开启",
+      success: (r) => {
+        if (r.confirm) wx.openSetting({});
+      },
+    });
+    return false;
+  }
+  await request("brand-subscriptions", "POST", {
+    brand_id: brand,
+    subscribed: true,
+  });
+  return true;
+}
+module.exports = { request, notice, authorize, login, subscribeBrand };

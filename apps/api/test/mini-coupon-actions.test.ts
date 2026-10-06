@@ -27,6 +27,13 @@ test("mini coupon actions sync duplicate-brand cards, prevent duplicate writes a
           return { apiBase: "https://example.com/api/mini" };
         return {
           notice() {},
+          async subscribeBrand() {
+            writes++;
+            await pending;
+            if (failWrite) throw new Error("offline");
+            subscribed = true;
+            return true;
+          },
           async request(path: string, method?: string) {
             if (method === "POST") {
               writes++;
@@ -92,4 +99,61 @@ test("mini coupon actions sync duplicate-brand cards, prevent duplicate writes a
   await page.subscribe(event);
   assert.equal(page.data.items[0].subscribing, false);
   assert.equal(page.data.items[0].subscribed, false);
+});
+
+test("brand subscription requires native acceptance before consent and brand writes", async () => {
+  for (const result of ["accept", "reject", "fail", "consent-fail"]) {
+    const calls: string[] = [];
+    const module = { exports: {} as any };
+    runInNewContext(
+      readFileSync(
+        new URL("../../../miniprogram/utils/api.js", import.meta.url),
+        "utf8",
+      ),
+      {
+        module,
+        require: () => ({
+          apiBase: "https://example.com/api/mini",
+          templateId: "template",
+        }),
+        wx: {
+          getStorageSync: () => "token",
+          requestSubscribeMessage(options: any) {
+            calls.push("native");
+            if (result === "fail") options.fail({ message: "cancelled" });
+            else
+              options.success({
+                template: result === "consent-fail" ? "accept" : result,
+              });
+          },
+          request(options: any) {
+            calls.push(options.url.split("/").pop());
+            if (result === "consent-fail") options.fail();
+            else options.success({ statusCode: 200, data: { ok: true } });
+          },
+          showModal() {
+            calls.push("settings-prompt");
+          },
+        },
+      },
+    );
+    const pending = module.exports.subscribeBrand("a");
+    assert.deepEqual(
+      calls,
+      ["native"],
+      "authorization starts synchronously from tap",
+    );
+    if (result === "fail" || result === "consent-fail") {
+      await assert.rejects(pending);
+      assert.equal(calls.includes("brand-subscriptions"), false);
+    } else {
+      assert.equal(await pending, result === "accept");
+      assert.deepEqual(
+        calls,
+        result === "accept"
+          ? ["native", "notification-consent", "brand-subscriptions"]
+          : ["native", "notification-consent", "settings-prompt"],
+      );
+    }
+  }
 });

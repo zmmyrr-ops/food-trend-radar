@@ -197,10 +197,59 @@ test("微信登录、限定接口、账号隔离、券字段脱敏、授权及�
       (await (await call("coupon-picks?view=all", a.token)).json()).total,
       1,
     );
-    await call("brand-subscriptions", a.token, {
-      brand_id: brand,
-      subscribed: true,
-    });
+    assert.equal(
+      (
+        await call("brand-subscriptions", a.token, {
+          brand_id: brand,
+          subscribed: true,
+        })
+      ).status,
+      409,
+    );
+    assert.equal(
+      (await (await call("brand-subscriptions", a.token)).json()).items.length,
+      0,
+    );
+    await call("notification-consent", a.token, { accepted: false });
+    assert.equal(
+      (
+        await call("brand-subscriptions", a.token, {
+          brand_id: brand,
+          subscribed: true,
+        })
+      ).status,
+      409,
+    );
+    await call("notification-consent", a.token, { accepted: true });
+    assert.equal(
+      (
+        await call("brand-subscriptions", b.token, {
+          brand_id: brand,
+          subscribed: true,
+        })
+      ).status,
+      409,
+    );
+    assert.equal(
+      (
+        await call("brand-subscriptions", a.token, {
+          brand_id: brand,
+          subscribed: true,
+        })
+      ).status,
+      200,
+    );
+    await call("notification-consent", a.token, { accepted: false });
+    assert.equal(
+      (
+        await call("brand-subscriptions", a.token, {
+          brand_id: brand,
+          subscribed: true,
+        })
+      ).status,
+      200,
+    );
+
     const owner = (
       await db.query<{ owner_id: string }>(
         "SELECT owner_id FROM wechat_identities WHERE openid='openid-a'",

@@ -249,6 +249,27 @@ export async function createWechatMini(
           ).rows[0] || null;
         return res.json({ grant, last, template_id: MINI_TEMPLATE_ID });
       }
+      if (route === "/brand-subscriptions" && req.method === "POST") {
+        const input = z
+          .object({ brand_id: z.uuid(), subscribed: z.boolean() })
+          .parse(req.body);
+        if (input.subscribed) {
+          const allowed = (
+            await db.query<{ allowed: boolean }>(
+              `SELECT EXISTS(SELECT 1 FROM wechat_grants WHERE owner_id=$1 AND available)
+              OR EXISTS(SELECT 1 FROM brand_subscriptions WHERE owner_id=$1 AND brand_id=$2) AS allowed`,
+              [user.owner_id, input.brand_id],
+            )
+          ).rows[0].allowed;
+          if (!allowed)
+            return res.status(409).json({
+              error: {
+                code: "WECHAT_NOTIFICATION_REQUIRED",
+                message: "请先允许微信消息提醒，再订阅品牌",
+              },
+            });
+        }
+      }
       // Reuse account-scoped brand APIs and the shared pool, never expose sales counts.
       if (route === "/coupon-picks") {
         const send = res.json.bind(res);

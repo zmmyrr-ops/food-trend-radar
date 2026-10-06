@@ -1,4 +1,9 @@
-const { request, notice, authorize } = require("../../utils/api");
+const {
+  request,
+  notice,
+  authorize,
+  subscribeBrand,
+} = require("../../utils/api");
 Page({
   data: {
     mode: "subscriptions",
@@ -80,10 +85,15 @@ Page({
     const brand = e.currentTarget.dataset.brand;
     const value = e.currentTarget.dataset.add === "yes";
     try {
-      await request(this.endpoint(), "POST", {
-        brand_id: brand,
-        [this.data.mode === "subscriptions" ? "subscribed" : "blocked"]: value,
-      });
+      if (this.data.mode === "subscriptions" && value) {
+        if (!(await subscribeBrand(brand))) return;
+      } else {
+        await request(this.endpoint(), "POST", {
+          brand_id: brand,
+          [this.data.mode === "subscriptions" ? "subscribed" : "blocked"]:
+            value,
+        });
+      }
       await this.load();
       this.setData({
         results: this.data.results.map((b) => ({

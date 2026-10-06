@@ -1,5 +1,5 @@
 const { apiBase } = require("../../config");
-const { request, notice } = require("../../utils/api");
+const { request, notice, subscribeBrand } = require("../../utils/api");
 const categoryOptions = {
   food: [
     "全部分类",
@@ -248,10 +248,7 @@ Page({
     this.pendingSubscriptions.add(id);
     this.syncBrandStates();
     try {
-      await request("brand-subscriptions", "POST", {
-        brand_id: id,
-        subscribed: true,
-      });
+      if (!(await subscribeBrand(id))) return;
       this.setData({
         subscribedIds: [...new Set([...this.data.subscribedIds, id])],
       });
