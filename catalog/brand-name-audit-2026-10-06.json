@@ -122,5 +122,20 @@
       ],
       "status": "similarity_only_not_identity_proof"
     }
-  ]
+  ],
+  "collection_verified": {
+    "at": "2026-10-06T13:08:51.398Z",
+    "run_id": "57061137-b554-4e6e-b528-98615e9a1d7d",
+    "all_six_complete": true,
+    "matched_coupons": {
+      "沼津港": 8,
+      "丰和日丽": 20,
+      "玺炖": 11,
+      "友藤": 11,
+      "季季山": 13,
+      "湊湊": 16
+    },
+    "total": 79,
+    "note": "品牌匹配通过数量，不等于所有券均满足优先券推荐条件。"
+  }
 }
