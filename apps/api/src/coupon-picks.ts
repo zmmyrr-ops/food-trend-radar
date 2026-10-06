@@ -202,8 +202,13 @@ export function selectPicks(
   items: ReturnType<typeof combinePicks>,
   q: z.infer<typeof inputSchema>,
   blockedBrands: ReadonlySet<string> = new Set(),
+  excludeBlockedFromAll = false,
 ) {
-  items = items.filter((x) => inChannel(x.category, q.channel));
+  items = items.filter(
+    (x) =>
+      inChannel(x.category, q.channel) &&
+      (!excludeBlockedFromAll || !blockedBrands.has(x.brand_id)),
+  );
   const ranked = items
     .filter(
       (x) =>
@@ -499,7 +504,12 @@ export function registerCouponPicks(
       const blocked = db
         ? await readBrandBlacklist(db, ownerOf(req))
         : new Set<string>();
-      const { counts, filtered } = selectPicks(await readPicks(), q, blocked);
+      const { counts, filtered } = selectPicks(
+        await readPicks(),
+        q,
+        blocked,
+        res.locals.miniCouponList === true,
+      );
       if (req.path.endsWith(".csv")) {
         res.setHeader(
           "Content-Disposition",

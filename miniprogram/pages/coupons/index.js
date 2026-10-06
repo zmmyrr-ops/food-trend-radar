@@ -277,7 +277,7 @@ Page({
     };
     wx.showModal({
       title: "加入品牌黑名单",
-      content: "该品牌将不再出现在你的优先券中。",
+      content: "该品牌将不再出现在你的所有选券列表中，可在“我的”中移出黑名单。",
       success: async (r) => {
         if (!r.confirm) return release();
         try {
@@ -291,8 +291,7 @@ Page({
           this.syncBrandStates();
           wx.showToast({ title: "已拉黑品牌" });
           this.close();
-          // All-coupon views retain the card with its new state; priority excludes it.
-          if (this.data.view === "recommended") await this.load(true);
+          await this.load(true);
         } catch (e) {
           notice(e);
         } finally {

@@ -63,6 +63,14 @@ test("mini coupon actions sync duplicate-brand cards, prevent duplicate writes a
   page.setData = (values: any) => Object.assign(page.data, values);
   page.data.items = [{ brand_id: "a" }, { brand_id: "a" }, { brand_id: "b" }];
   page.data.view = "all";
+  let reloads = 0;
+  page.load = async (reset: boolean) => {
+    assert.equal(reset, true);
+    reloads++;
+    page.data.items = page.data.items.filter(
+      (x: any) => !page.data.blockedIds.includes(x.brand_id),
+    );
+  };
   const event = { currentTarget: { dataset: { brand: "a" } } };
   await page.loadPreferences();
   pending = new Promise<void>((resolve) => {
@@ -86,12 +94,14 @@ test("mini coupon actions sync duplicate-brand cards, prevent duplicate writes a
   assert.equal(page.data.items[0].blocking, false);
   page.block(event);
   await modal.success({ confirm: true });
-  assert.equal(page.data.items[1].blocked, true);
-  assert.equal(page.data.items.length, 3);
+  assert.equal(reloads, 1);
+  assert.equal(page.data.items.length, 1);
+  assert.equal(page.data.items[0].brand_id, "b");
   page.block(event);
   assert.equal(writes, 2);
   subscribed = false;
   blocked = false;
+  page.data.items = [{ brand_id: "a" }, { brand_id: "a" }, { brand_id: "b" }];
   await page.loadPreferences();
   assert.equal(page.data.items[1].blocked, false);
   assert.equal(page.data.items[1].subscribed, false);

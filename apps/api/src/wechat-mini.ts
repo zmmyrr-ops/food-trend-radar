@@ -272,6 +272,7 @@ export async function createWechatMini(
       }
       // Reuse account-scoped brand APIs and the shared pool, never expose sales counts.
       if (route === "/coupon-picks") {
+        res.locals.miniCouponList = true;
         const send = res.json.bind(res);
         res.json = (body: any) =>
           send(

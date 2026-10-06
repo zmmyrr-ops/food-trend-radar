@@ -75,6 +75,8 @@ test("微信登录、限定接口、账号隔离、券字段脱敏、授权及�
           origin_price_fen: 2000,
           latest_sales: "12345",
           speed: 99,
+          acceleration: 2,
+          is_new: true,
           priority: {
             score: 50,
             value_gate: { eligible: true },
@@ -187,6 +189,23 @@ test("微信登录、限定接口、账号隔离、券字段脱敏、授权及�
       (await (await call("coupon-picks?view=recommended", a.token)).json())
         .total,
       0,
+    );
+    for (const view of ["all", "recommended", "accelerating", "new"]) {
+      const hidden = await (
+        await call(`coupon-picks?view=${view}&limit=1`, a.token)
+      ).json();
+      assert.equal(hidden.total, 0);
+      assert.equal(hidden.items.length, 0);
+      assert.equal(hidden.counts[view], 0);
+      assert.equal(
+        (await (await call(`coupon-picks?view=${view}`, b.token)).json()).total,
+        1,
+      );
+    }
+    await call("brand-blacklist", a.token, { brand_id: brand, blocked: false });
+    assert.equal(
+      (await (await call("coupon-picks?view=all", a.token)).json()).total,
+      1,
     );
     assert.equal(
       (await (await call("coupon-picks?view=recommended", b.token)).json())
