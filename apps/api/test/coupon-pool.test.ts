@@ -198,7 +198,7 @@ test("单品牌更新只重读该品牌，禁用后立即移出缓存", async ()
   ]);
   for (const id of ids) {
     await db.query(
-      "INSERT INTO brands(id,name,name_key,category,shanghai_evidence_url) VALUES($1,$1,$1,'火锅','https://example.com')",
+      "INSERT INTO brands(id,name,name_key,category,shanghai_evidence_url) VALUES($1::uuid,$1::text,$1::text,'火锅','https://example.com')",
       [id],
     );
     await db.query("INSERT INTO coupon_baselines VALUES($1,$2)", [id, run]);
