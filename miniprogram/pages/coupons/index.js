@@ -48,14 +48,19 @@ Page({
     error: "",
     detail: null,
     loggedIn: false,
+    preferencesReady: false,
+    subscribedIds: [],
+    blockedIds: [],
   },
   onLoad(q) {
     if (q.brand_id) this.setData({ brand_id: q.brand_id, view: "all" });
   },
-  onShow() {
+  async onShow() {
     this.setData({ loggedIn: !!wx.getStorageSync("miniToken") });
-    if (this.data.loggedIn) this.load(true);
-    else this.setData({ items: [], total: 0, error: "" });
+    if (this.data.loggedIn) {
+      await this.loadPreferences();
+      this.load(true);
+    } else this.setData({ items: [], total: 0, error: "" });
   },
   goLogin() {
     wx.switchTab({ url: "/pages/mine/index" });
@@ -64,8 +69,46 @@ Page({
     clearTimeout(this.searchTimer);
     this.version = (this.version || 0) + 1;
   },
-  onPullDownRefresh() {
-    this.load(true).finally(() => wx.stopPullDownRefresh());
+  async onPullDownRefresh() {
+    try {
+      await this.loadPreferences();
+      await this.load(true);
+    } finally {
+      wx.stopPullDownRefresh();
+    }
+  },
+  async loadPreferences() {
+    this.setData({ preferencesReady: false });
+    try {
+      const [subscriptions, blacklist] = await Promise.all([
+        request("brand-subscriptions"),
+        request("brand-blacklist"),
+      ]);
+      this.setData({
+        subscribedIds: subscriptions.items.map((x) => x.brand_id),
+        blockedIds: blacklist.items.map((x) => x.brand_id),
+        preferencesReady: true,
+      });
+      this.syncBrandStates();
+    } catch (e) {
+      notice(e);
+    }
+  },
+  brandState(id) {
+    return {
+      subscribed: this.data.subscribedIds.includes(id),
+      blocked: this.data.blockedIds.includes(id),
+      subscribing: !!this.pendingSubscriptions?.has(id),
+      blocking: !!this.pendingBlocks?.has(id),
+    };
+  },
+  syncBrandStates() {
+    this.setData({
+      items: this.data.items.map((x) => ({
+        ...x,
+        ...this.brandState(x.brand_id),
+      })),
+    });
   },
   onReachBottom() {
     if (!this.data.loading && this.data.items.length < this.data.total)
@@ -99,6 +142,7 @@ Page({
         items: (reset ? [] : this.data.items).concat(
           r.items.map((x) => ({
             ...x,
+            ...this.brandState(x.brand_id),
             key: x.brand_id + ":" + x.product_id,
             iconUrl: apiBase + "/brand-icons/" + encodeURIComponent(x.brand_id),
             brandInitial: Array.from(x.brand_name || "店")[0],
@@ -193,34 +237,72 @@ Page({
   },
   noop() {},
   async subscribe(e) {
+    const id = e.currentTarget.dataset.brand;
+    this.pendingSubscriptions ??= new Set();
+    if (
+      !this.data.preferencesReady ||
+      this.data.subscribedIds.includes(id) ||
+      this.pendingSubscriptions.has(id)
+    )
+      return;
+    this.pendingSubscriptions.add(id);
+    this.syncBrandStates();
     try {
       await request("brand-subscriptions", "POST", {
-        brand_id: e.currentTarget.dataset.brand,
+        brand_id: id,
         subscribed: true,
+      });
+      this.setData({
+        subscribedIds: [...new Set([...this.data.subscribedIds, id])],
       });
       wx.showToast({ title: "已订阅品牌" });
     } catch (e) {
       notice(e);
+    } finally {
+      this.pendingSubscriptions.delete(id);
+      this.syncBrandStates();
     }
   },
   block(e) {
     const id = e.currentTarget.dataset.brand;
+    this.pendingBlocks ??= new Set();
+    if (
+      !this.data.preferencesReady ||
+      this.data.blockedIds.includes(id) ||
+      this.pendingBlocks.has(id)
+    )
+      return;
+    this.pendingBlocks.add(id);
+    this.syncBrandStates();
+    const release = () => {
+      this.pendingBlocks.delete(id);
+      this.syncBrandStates();
+    };
     wx.showModal({
       title: "加入品牌黑名单",
       content: "该品牌将不再出现在你的优先券中。",
       success: async (r) => {
-        if (!r.confirm) return;
+        if (!r.confirm) return release();
         try {
           await request("brand-blacklist", "POST", {
             brand_id: id,
             blocked: true,
           });
+          this.setData({
+            blockedIds: [...new Set([...this.data.blockedIds, id])],
+          });
+          this.syncBrandStates();
+          wx.showToast({ title: "已拉黑品牌" });
           this.close();
-          this.load(true);
+          // All-coupon views retain the card with its new state; priority excludes it.
+          if (this.data.view === "recommended") await this.load(true);
         } catch (e) {
           notice(e);
+        } finally {
+          release();
         }
       },
+      fail: release,
     });
   },
 });
