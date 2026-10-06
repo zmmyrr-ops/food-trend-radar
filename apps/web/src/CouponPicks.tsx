@@ -147,11 +147,7 @@ export function CouponPicks({
     };
   }, []);
 
-  const [view, setView] = useState(
-      new URLSearchParams(location.search).has("subscription_brand")
-        ? "all"
-        : "recommended",
-    ),
+  const [view, setView] = useState("all"),
     [order, setOrder] = useState("priority"),
     [category, setCategory] = useState(""),
     [searchInput, setSearchInput] = useState(""),

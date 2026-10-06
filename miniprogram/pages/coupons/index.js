@@ -33,7 +33,7 @@ Page({
     ],
     categoryIndex: 0,
     categories: categoryOptions.food,
-    view: "recommended",
+    view: "all",
     channel: "food",
     order: "priority",
     sortIndex: 0,
