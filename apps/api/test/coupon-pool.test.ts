@@ -76,9 +76,12 @@ test("品牌增量更新原子替换、失败保留旧池、到期移出、禁�
   try {
     await pool.refreshBrand(brand);
     let fullReads = 0;
+    let clockBatches = 0;
     const query = db.query.bind(db);
     db.query = ((...args: Parameters<typeof db.query>) => {
       if (args[0].includes("SELECT c.payload,b.category")) fullReads++;
+      if (args[0].includes("calculated_at::text AS version,payload"))
+        clockBatches++;
       return query(...args);
     }) as typeof db.query;
     const concurrent = await Promise.all([
@@ -109,6 +112,25 @@ test("品牌增量更新原子替换、失败保留旧池、到期移出、禁�
       (await tuples()).rows,
       beforeRefresh,
       "unchanged refresh must not rewrite PostgreSQL tuples",
+    );
+    await db.query(
+      "UPDATE coupon_pool_candidates SET payload=jsonb_set(payload,'{is_new}','true'::jsonb) WHERE brand_id=$1 AND product_id='1'",
+      [brand],
+    );
+    await pool.tick();
+    assert.equal(
+      clockBatches,
+      3,
+      "510 coupons are processed in bounded 200-row batches",
+    );
+    assert.equal(
+      (
+        await db.query<{ is_new: boolean }>(
+          "SELECT (payload->>'is_new')::boolean AS is_new FROM coupon_pool_candidates WHERE brand_id=$1 AND product_id='1'",
+          [brand],
+        )
+      ).rows[0].is_new,
+      false,
     );
     const selected = selectPicks(await pool.read(), {
       view: "recommended",

@@ -156,20 +156,26 @@ export async function createCouponPool(
           "DELETE FROM coupon_pool_candidates WHERE brand_id=$1 AND NOT (product_id = ANY($2::text[]))",
           [brand, baseline ? items.map((x) => x.product_id) : []],
         );
-        if (baseline)
-          for (const x of items) {
-            await tx.query(
-              "INSERT INTO coupon_pool_candidates(brand_id,product_id,run_id,observed_at,sale_end,payload) VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(brand_id,product_id) DO UPDATE SET run_id=excluded.run_id,observed_at=excluded.observed_at,sale_end=excluded.sale_end,payload=excluded.payload,calculated_at=now() WHERE (coupon_pool_candidates.run_id,coupon_pool_candidates.observed_at,coupon_pool_candidates.sale_end,coupon_pool_candidates.payload) IS DISTINCT FROM (excluded.run_id,excluded.observed_at,excluded.sale_end,excluded.payload)",
-              [
-                brand,
-                x.product_id,
-                baseline.run_id,
-                x.observed_at,
-                saleDeadline(x.sale_end),
-                JSON.stringify(x),
-              ],
-            );
-          }
+        if (baseline && items.length)
+          await tx.query(
+            `INSERT INTO coupon_pool_candidates(brand_id,product_id,run_id,observed_at,sale_end,payload)
+             SELECT $1::uuid,v.product_id,$2::uuid,v.observed_at,v.sale_end,v.payload
+             FROM jsonb_to_recordset($3) AS v(product_id text,observed_at timestamptz,sale_end timestamptz,payload jsonb)
+             ON CONFLICT(brand_id,product_id) DO UPDATE SET run_id=excluded.run_id,observed_at=excluded.observed_at,sale_end=excluded.sale_end,payload=excluded.payload,calculated_at=now()
+             WHERE (coupon_pool_candidates.run_id,coupon_pool_candidates.observed_at,coupon_pool_candidates.sale_end,coupon_pool_candidates.payload) IS DISTINCT FROM (excluded.run_id,excluded.observed_at,excluded.sale_end,excluded.payload)`,
+            [
+              brand,
+              baseline.run_id,
+              JSON.stringify(
+                items.map((x) => ({
+                  product_id: x.product_id,
+                  observed_at: x.observed_at,
+                  sale_end: saleDeadline(x.sale_end),
+                  payload: x,
+                })),
+              ),
+            ],
+          );
         if (stamp)
           await tx.query(
             "DELETE FROM coupon_pool_dirty WHERE brand_id=$1 AND revision=$2",
@@ -183,30 +189,48 @@ export async function createCouponPool(
   let lastClock = 0;
   async function refreshClock() {
     if (Date.now() - lastClock < 60000) return;
-    const rows = (
-      await db.query<{ payload: Pick }>(
-        "SELECT payload FROM coupon_pool_candidates",
-      )
-    ).rows;
-    const changed = rows.flatMap(({ payload }) => {
-      const next = updatePoolClock(payload);
-      return JSON.stringify(next.priority) !==
-        JSON.stringify(payload.priority) ||
-        next.use_outlook.fully_excluded !== payload.use_outlook.fully_excluded
-        ? [
-            {
-              brand_id: next.brand_id,
-              product_id: next.product_id,
-              payload: next,
-            },
-          ]
-        : [];
-    });
-    if (changed.length)
-      await db.query(
-        `UPDATE coupon_pool_candidates c SET payload=v.payload,calculated_at=now() FROM jsonb_to_recordset($1) AS v(brand_id uuid,product_id text,payload jsonb) WHERE c.brand_id=v.brand_id AND c.product_id=v.product_id`,
-        [JSON.stringify(changed)],
-      );
+    let cursor: { brand_id: string; product_id: string } | undefined;
+    while (!stopped) {
+      // Small keyset batches release the worker queue between reads and writes.
+      const rows = (
+        await db.query<{
+          brand_id: string;
+          product_id: string;
+          version: string;
+          payload: Pick;
+        }>(
+          `SELECT brand_id,product_id,calculated_at::text AS version,payload FROM coupon_pool_candidates
+         WHERE ($1::uuid IS NULL OR (brand_id,product_id)>($1::uuid,$2::text)) ORDER BY brand_id,product_id LIMIT 200`,
+          [cursor?.brand_id ?? null, cursor?.product_id ?? null],
+        )
+      ).rows;
+      if (!rows.length) break;
+      const changed = rows.flatMap(({ payload, version }) => {
+        const next = updatePoolClock(payload);
+        return JSON.stringify(next.priority) !==
+          JSON.stringify(payload.priority) ||
+          next.use_outlook.fully_excluded !==
+            payload.use_outlook.fully_excluded ||
+          next.is_new !== payload.is_new
+          ? [
+              {
+                brand_id: next.brand_id,
+                product_id: next.product_id,
+                payload: next,
+                version,
+              },
+            ]
+          : [];
+      });
+      if (changed.length)
+        await db.query(
+          `UPDATE coupon_pool_candidates c SET payload=v.payload,calculated_at=now() FROM jsonb_to_recordset($1) AS v(brand_id uuid,product_id text,payload jsonb,version text)
+           WHERE c.brand_id=v.brand_id AND c.product_id=v.product_id AND c.calculated_at=v.version::timestamptz`,
+          [JSON.stringify(changed)],
+        );
+      cursor = rows[rows.length - 1];
+      if (rows.length < 200) break;
+    }
     await db.exec(
       "DELETE FROM coupon_pool_candidates WHERE sale_end<=now() OR observed_at<now()-interval '36 hours'",
     );
