@@ -21,12 +21,12 @@ AppID：`wxdcd4067f8d413b31`。使用原生 JavaScript / WXML / WXSS，无需额
 
 ## 微信平台操作
 
-1. 公众平台设置 request 合法域名 `https://tanhaodian.cn`。
+1. 公众平台设置 request 合法域名 `https://ruming.top`（仅域名，不带 `/api/mini`），然后重新上传并设置体验版。
 2. 确认模板 `ceAsC4n9rxFS_02B1pPJalXqPOQjorHgpmM-26NG9J8` 属于本 AppID，字段为 thing1、thing2、thing3、time4。模板标题“新商机提醒”；地区固定上海。
 3. 按平台要求配置服务端调用 IP 白名单、隐私声明与实际服务类目。
 4. 上传体验版，验证微信登录、授权、真实消息与落地页，再提交审核发布。没有自动上传或代替运营方提交审核。
 
-官网当前有 Nginx Basic Auth，小程序无法使用网站密码。必须仅为 `/api/mini/` 增加反向代理入口（见根项目 deploy/ecs/tanhaodian.conf）；应用内仍严格校验微信会话，并只允许券、规则、品牌订阅和黑名单等明确列举的路径。其余网站路径保持原有保护。
+小程序使用 `https://ruming.top/api/mini`，专用反向代理见根项目 `deploy/ecs/nginx-location.conf`，在 ruming.top 的 HTTPS server 中引入。应用内仍严格校验微信会话，并只允许券、规则、品牌订阅和黑名单等明确列举的路径。网站和管理端仍使用 tanhaodian.cn，原网站及其余 API 路由保持不变。
 
 ## 验证清单
 
