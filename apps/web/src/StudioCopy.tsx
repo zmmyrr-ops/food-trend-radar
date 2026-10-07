@@ -52,6 +52,7 @@ export function StudioCopy({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          request_id: crypto.randomUUID(),
           visit_store_id: visitStore,
           project_id: projectId,
           kind,
@@ -95,8 +96,8 @@ export function StudioCopy({
               {busy === "titles"
                 ? "生成中…"
                 : titles.length
-                  ? "换一批"
-                  : "生成3个标题"}
+                  ? "换一批 · 5积分"
+                  : "生成3个标题 · 5积分"}
             </button>
           </div>
           {titles.length ? (
@@ -127,7 +128,7 @@ export function StudioCopy({
               {busy === "topics"
                 ? "正在搜索热门话题…"
                 : topics.length
-                  ? "换一批"
+                  ? "换一批 · 5积分"
                   : "查找热门话题"}
             </button>
           </div>

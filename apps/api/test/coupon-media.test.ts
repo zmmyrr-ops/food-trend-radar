@@ -12,6 +12,7 @@ import {
   rankCouponResource,
 } from "../src/coupon-media.js";
 import { openDatabase } from "../src/db.js";
+import { setupPoints } from "../src/points.js";
 
 const search = "https://so.xiaohongshu.com/api/sns/web/v2/search/notes",
   detail = "https://edith.xiaohongshu.com/api/sns/web/v1/feed";
@@ -431,6 +432,12 @@ test("同券跨账号复用公开素材并续期，任务与私人作品仍隔�
   const source = randomUUID(),
     ownerA = randomUUID(),
     ownerB = randomUUID();
+  await f.db.exec("CREATE TABLE accounts(id uuid PRIMARY KEY)");
+  await f.db.query("INSERT INTO accounts(id) VALUES($1),($2)", [
+    ownerA,
+    ownerB,
+  ]);
+  await setupPoints(f.db);
   try {
     await f.db.query(
       `INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,resources,coupon_title,owner_id,updated_at) VALUES($1,$2,'coupon','品牌甲','["品牌甲"]','complete',$3,'双人套餐',$4,now()-interval '2 hours')`,
@@ -468,8 +475,65 @@ test("同券跨账号复用公开素材并续期，任务与私人作品仍隔�
     const again = await service.start(f.brand, "coupon", false, false, ownerB);
     assert.equal(again.id, b.id);
     assert.equal(requests, 0);
+    assert.equal(
+      (
+        await f.db.query<{ balance: number }>(
+          "SELECT balance FROM point_wallets WHERE owner_id=$1",
+          [ownerB],
+        )
+      ).rows[0].balance,
+      490,
+    );
   } finally {
     await service.drain();
+    await f.cleanup();
+  }
+});
+
+test("素材获取失败退分且重复退款幂等，余额不足不创建收费任务", async () => {
+  const f = await fixture();
+  const owner = randomUUID();
+  await f.db.exec("CREATE TABLE accounts(id uuid PRIMARY KEY)");
+  await f.db.query("INSERT INTO accounts(id) VALUES($1)", [owner]);
+  await setupPoints(f.db);
+  let requests = 0;
+  const service = await createCouponMedia(f.db, f.path, {
+    wait: async () => {},
+    transport: async () => {
+      requests++;
+      throw Error("NETWORK_ERROR");
+    },
+  });
+  try {
+    await service.start(f.brand, "coupon", false, false, owner);
+    await service.drain();
+    assert.equal(
+      (
+        await f.db.query<{ balance: number }>(
+          "SELECT balance FROM point_wallets WHERE owner_id=$1",
+          [owner],
+        )
+      ).rows[0].balance,
+      500,
+    );
+    assert.equal(
+      (await f.db.query("SELECT id FROM point_entries WHERE amount=10")).rows
+        .length,
+      1,
+    );
+    const job = (await f.db.query<any>("SELECT * FROM coupon_media_jobs"))
+      .rows[0];
+    assert.equal(job.point_charge_key, null);
+    await f.db.query("UPDATE point_wallets SET balance=0 WHERE owner_id=$1", [
+      owner,
+    ]);
+    await assert.rejects(
+      service.start(f.brand, "coupon", false, true, owner),
+      /POINTS_INSUFFICIENT/,
+    );
+    assert.equal(requests, 1);
+  } finally {
+    await service.stop();
     await f.cleanup();
   }
 });

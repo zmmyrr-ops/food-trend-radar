@@ -29,7 +29,7 @@ test("users submit private reports; only admin can atomically review and enable 
   async function login(phone: string) {
     const r = await call("/api/auth/login", "", {
       phone,
-      code: await seedInvitation(db, phone),
+      password: await seedInvitation(db, phone),
     });
     return r.headers.get("set-cookie")!.split(";")[0];
   }

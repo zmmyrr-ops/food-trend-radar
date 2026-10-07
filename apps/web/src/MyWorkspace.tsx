@@ -2,10 +2,12 @@ import type { Brand } from "@radar/contracts";
 import { useState } from "react";
 import { BrandBlacklist } from "./BrandBlacklist";
 import { BrandSubscriptions } from "./BrandSubscriptions";
+import { Membership } from "./Membership";
 import { VideoLibrary } from "./VideoLibrary";
 import { VisitPlans } from "./VisitPlans";
 
 const sections = [
+  ["member", "积分与邀请", "积分、邀请好友与账号安全"],
   ["plans", "探店计划", "安排店铺与路线"],
   ["videos", "我的视频", "查看成片与制作记录"],
   ["subscriptions", "品牌订阅", "管理订阅与通知"],
@@ -73,6 +75,7 @@ export function MyWorkspace({ brands }: { brands: Brand[] }) {
         ))}
       </nav>
       <div className="workspace-content">
+        {section === "member" && <Membership />}
         {section === "plans" && <VisitPlans />}
         {section === "videos" && (
           <>

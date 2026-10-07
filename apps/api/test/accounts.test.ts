@@ -41,7 +41,7 @@ test("账号登录、会话撤销及素材/视频跨账号隔离", async () => {
   async function login(phone: string) {
     const r = await call("/api/auth/login", "", "POST", {
       phone,
-      code: await seedInvitation(db, phone),
+      password: await seedInvitation(db, phone),
     });
     assert.equal(r.status, 200);
     const c = r.headers.get("set-cookie")!;
@@ -55,7 +55,7 @@ test("账号登录、会话撤销及素材/视频跨账号隔离", async () => {
       (
         await call("/api/auth/login", "", "POST", {
           phone: "13800000001",
-          code: "123456",
+          password: "123456",
         })
       ).status,
       401,
@@ -180,13 +180,13 @@ test("账号登录、会话撤销及素材/视频跨账号隔离", async () => {
     for (let i = 0; i < 10; i++)
       await call("/api/auth/login", "", "POST", {
         phone: "13800000004",
-        code: "123456",
+        password: "123456",
       });
     assert.equal(
       (
         await call("/api/auth/login", "", "POST", {
           phone: "13800000004",
-          code: "666666",
+          password: "666666",
         })
       ).status,
       429,
@@ -227,7 +227,7 @@ test("标题和话题对登录用户开放，管理接口仍受保护", async ()
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         phone: "13800002201",
-        code: await seedInvitation(db, "13800002201"),
+        password: await seedInvitation(db, "13800002201"),
       }),
     });
     const cookie = login.headers.get("set-cookie")!.split(";")[0];

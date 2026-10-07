@@ -32,7 +32,7 @@ test("普通用户黑名单模糊搜索、添加去重、移除和账号隔离",
     (
       await call("/api/auth/login", "", {
         phone,
-        code: await seedInvitation(db, phone),
+        password: await seedInvitation(db, phone),
       })
     ).headers
       .get("set-cookie")!

@@ -13,6 +13,9 @@ import { dirname, join } from "node:path";
 import type { PGlite } from "@electric-sql/pglite";
 import type { Express, Request, RequestHandler } from "express";
 import { z } from "zod";
+import { createMembership } from "./account-membership.js";
+import { setupPoints } from "./points.js";
+import { createSmsAuth, type SmsAuth } from "./sms-auth.js";
 import { createWechatMini } from "./wechat-mini.js";
 
 // Reserved archive owner: never assigned by public registration.
@@ -103,7 +106,7 @@ export async function hashAccountPassword(
   );
   return `scrypt:${salt}:${value.toString("hex")}`;
 }
-async function verifyPassword(password: string, stored: string | null) {
+export async function verifyPassword(password: string, stored: string | null) {
   if (!stored || !/^scrypt:[a-f0-9]{32}:[a-f0-9]{128}$/.test(stored))
     return false;
   const derived = await hashAccountPassword(password, stored.split(":")[1]);
@@ -112,6 +115,7 @@ async function verifyPassword(password: string, stored: string | null) {
 export async function createAccounts(
   db: PGlite,
   options: {
+    sms?: SmsAuth;
     testMode?: boolean; // Legacy option is ignored; fixed-code login is no longer supported.
     invitationExportPath?: string;
     secure?: boolean;
@@ -153,7 +157,7 @@ export async function createAccounts(
     await db.transaction(async (tx) => {
       const changed = (
         await tx.query<{ id: string }>(
-          "UPDATE accounts SET password_hash=$1,invitation_hash=NULL WHERE phone=$2 AND role='admin' AND password_hash IS DISTINCT FROM $1 RETURNING id",
+          "UPDATE accounts SET password_hash=$1,invitation_hash=NULL WHERE phone=$2 AND role='admin' AND password_hash IS NULL RETURNING id",
           [options.adminPasswordHash, options.adminPhone],
         )
       ).rows;
@@ -169,7 +173,7 @@ export async function createAccounts(
     await db.transaction(async (tx) => {
       const rows = (
         await tx.query<{ id: string; phone: string; role: string }>(
-          "SELECT id,phone,role FROM accounts WHERE phone ~ '^1[3-9][0-9]{9}$' AND role<>'admin' AND invitation_encrypted IS NULL FOR UPDATE",
+          "SELECT id,phone,role FROM accounts WHERE phone ~ '^1[3-9][0-9]{9}$' AND role<>'admin' AND invitation_encrypted IS NULL AND password_hash IS NULL FOR UPDATE",
         )
       ).rows;
       if (!rows.length) return;
@@ -197,6 +201,31 @@ export async function createAccounts(
       });
     });
   }
+  // Preserve each legacy account and use its previous invitation as its initial password.
+  await db.transaction(async (tx) => {
+    const rows = (
+      await tx.query<{
+        id: string;
+        phone: string;
+        invitation_encrypted: string;
+      }>(
+        "SELECT id,phone,invitation_encrypted FROM accounts WHERE password_hash IS NULL AND invitation_encrypted IS NOT NULL FOR UPDATE",
+      )
+    ).rows;
+    for (const row of rows) {
+      const password = decryptInvitation(
+        row.invitation_encrypted,
+        row.phone,
+        key,
+      );
+      await tx.query(
+        "UPDATE accounts SET password_hash=$2,invitation_hash=NULL,invitation_encrypted=NULL WHERE id=$1",
+        [row.id, await hashAccountPassword(password)],
+      );
+    }
+  });
+  await setupPoints(db);
+  const membership = await createMembership(db, options.sms ?? createSmsAuth());
   const mini = await createWechatMini(db, options.wechat);
   const cookie = (req: Request) =>
     req.headers.authorization?.match(/^Bearer ([a-f0-9]{64})$/)?.[1] ??
@@ -232,34 +261,20 @@ export async function createAccounts(
   };
   function register(app: Express) {
     mini.register(app);
-    app.get("/api/auth/config", async (req, res) => {
-      const phone =
-        typeof req.query.phone === "string" &&
-        /^1[3-9]\d{9}$/.test(req.query.phone)
-          ? req.query.phone
-          : "";
-      const account = phone
-        ? (
-            await db.query<{ role: string }>(
-              "SELECT role FROM accounts WHERE phone=$1",
-              [phone],
-            )
-          ).rows[0]
-        : null;
-      res.setHeader("Cache-Control", "no-store");
-      res.json({
-        login_mode: account?.role === "admin" ? "password" : "invitation",
-      });
-    });
+    membership.publicRoutes(app);
+    membership.privateRoutes(app, authenticate);
+    app.get("/api/auth/config", (_req, res) =>
+      res
+        .setHeader("Cache-Control", "no-store")
+        .json({ login_mode: "password", registration: true }),
+    );
     app.post("/api/auth/login", async (req, res) => {
       const parsed = z
         .object({
           phone: z.string().regex(/^1[3-9]\d{9}$/),
-          code: z.string().trim().min(1).max(128).optional(),
-          password: z.string().min(1).max(128).optional(),
+          password: z.string().min(1).max(128),
         })
         .strict()
-        .refine((v) => Boolean(v.code) !== Boolean(v.password))
         .safeParse(req.body);
       if (!parsed.success) {
         res
@@ -267,7 +282,7 @@ export async function createAccounts(
           .json({ error: { message: "请输入正确的手机号及登录凭据" } });
         return;
       }
-      const { phone, code, password } = parsed.data;
+      const { phone, password } = parsed.data;
       for (const key of [`phone:${phone}`, `ip:${req.ip}`]) {
         const limit = (
           await db.query<{ attempts: number }>(
@@ -288,28 +303,19 @@ export async function createAccounts(
           [phone],
         )
       ).rows[0];
-      const isAdmin = candidate?.role === "admin";
       if (
-        (isAdmin &&
-          (!password ||
-            !(await verifyPassword(password, candidate.password_hash)))) ||
-        (!isAdmin && !code)
+        !candidate ||
+        !(await verifyPassword(password, candidate.password_hash))
       ) {
-        res
-          .status(401)
-          .json({ error: { message: "手机号或登录凭据不正确，请联系管理员" } });
+        res.status(401).json({ error: { message: "手机号或密码不正确" } });
         return;
       }
       const token = randomBytes(32).toString("hex");
       const account = await db.transaction(async (tx) => {
         const row = (
           await tx.query<{ id: string; phone: string; role: string }>(
-            "SELECT id,phone,role FROM accounts WHERE phone=$1 AND ((role='admin' AND password_hash=$2) OR (role<>'admin' AND invitation_hash=$3)) FOR UPDATE",
-            [
-              phone,
-              isAdmin ? candidate.password_hash : null,
-              isAdmin ? null : digest(code!),
-            ],
+            "SELECT id,phone,role FROM accounts WHERE phone=$1 AND password_hash=$2 FOR UPDATE",
+            [phone, candidate.password_hash],
           )
         ).rows[0];
         if (!row) return null;
@@ -369,86 +375,13 @@ export async function createAccounts(
         error: { code: "ADMIN_REQUIRED", message: "此操作仅管理员可用" },
       });
     });
-    app.get("/api/v3/accounts", async (_req, res) => {
-      const items = (
-        await db.query<{
-          id: string;
-          phone: string;
-          role: string;
-          invitation_encrypted: string | null;
-        }>(
-          "SELECT id,phone,role,created_at,invitation_updated_at,invitation_encrypted,invitation_hash IS NOT NULL AS has_invitation FROM accounts WHERE phone ~ '^1[3-9][0-9]{9}$' ORDER BY created_at DESC",
-        )
-      ).rows;
-      res.json({
-        items: items.map(({ invitation_encrypted, ...account }) => ({
-          ...account,
-          invitation_code:
-            account.role !== "admin" && invitation_encrypted
-              ? decryptInvitation(invitation_encrypted, account.phone, key)
-              : null,
-        })),
-      });
-    });
-    app.post("/api/v3/accounts", async (req, res) => {
-      const input = z
-        .object({ phone: z.string().regex(/^1[3-9]\d{9}$/) })
-        .strict()
-        .safeParse(req.body);
-      if (!input.success)
-        return res
-          .status(400)
-          .json({ error: { message: "请输入正确的手机号" } });
-      const { account, code } = await db.transaction(async (tx) => {
-        const code = await newInvitation(tx);
-        const account = (
-          await tx.query(
-            "INSERT INTO accounts(id,phone,invitation_hash,invitation_updated_at,invitation_encrypted) VALUES($1,$2,$3,now(),$4) ON CONFLICT(phone) DO NOTHING RETURNING id,phone,role",
-            [
-              randomUUID(),
-              input.data.phone,
-              digest(code),
-              encryptInvitation(code, input.data.phone, key),
-            ],
-          )
-        ).rows[0];
-        return { account, code };
-      });
-      if (!account)
-        return res
-          .status(409)
-          .json({ error: { message: "手机号已存在，请使用重置邀请码" } });
-      res.status(201).json({ account, invitation_code: code });
-    });
-    app.post("/api/v3/accounts/:id/invitation", async (req, res) => {
-      const id = z.uuid().safeParse(req.params.id);
-      if (!id.success) return res.sendStatus(404);
-      const { account, code } = await db.transaction(async (tx) => {
-        const code = await newInvitation(tx);
-        const account = (
-          await tx.query<{ id: string; phone: string; role: string }>(
-            "SELECT id,phone,role FROM accounts WHERE id=$1 AND role<>'admin' AND phone ~ '^1[3-9][0-9]{9}$' FOR UPDATE",
-            [id.data],
-          )
-        ).rows[0];
-        if (account) {
-          await tx.query(
-            "UPDATE accounts SET invitation_hash=$1,invitation_updated_at=now(),invitation_encrypted=$3 WHERE id=$2",
-            [
-              digest(code),
-              id.data,
-              encryptInvitation(code, account.phone, key),
-            ],
-          );
-          await tx.query("DELETE FROM account_sessions WHERE account_id=$1", [
-            id.data,
-          ]);
-        }
-        return { account, code };
-      });
-      if (!account) return res.sendStatus(404);
-      res.json({ account, invitation_code: code });
-    });
+    app.all(
+      ["/api/v3/accounts", "/api/v3/accounts/:id/invitation"],
+      (_req, res) =>
+        res.status(410).json({
+          error: { message: "请使用新的账号积分管理页面；用户通过邀请注册" },
+        }),
+    );
   }
   return { register, tick: mini.tick, drain: mini.drain };
 }

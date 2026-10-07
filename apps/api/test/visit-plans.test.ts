@@ -45,7 +45,7 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
   const login = async (phone: string) => {
     const r = await call("auth/login", "", "POST", {
       phone,
-      code: await seedInvitation(db, phone),
+      password: await seedInvitation(db, phone),
     });
     return {
       cookie: r.headers.get("set-cookie")!.split(";")[0],

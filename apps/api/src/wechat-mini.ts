@@ -5,6 +5,7 @@ import type { PGlite } from "@electric-sql/pglite";
 import type { Express } from "express";
 import { z } from "zod";
 import { projectRoot } from "./config.js";
+import { changePoints } from "./points.js";
 
 export const MINI_APP_ID = "wxdcd4067f8d413b31";
 export const MINI_TEMPLATE_ID = "ceAsC4n9rxFS_02B1pPJalXqPOQjorHgpmM-26NG9J8";
@@ -70,6 +71,12 @@ export async function createWechatMini(
     if (!r.ok) throw Error("WECHAT_UPSTREAM_FAILED");
     return r.json();
   }
+  const pointsEnabled =
+    (
+      await db.query(
+        "SELECT 1 FROM information_schema.tables WHERE table_name='point_wallets'",
+      )
+    ).rows.length > 0;
   function register(app: Express) {
     app.post("/api/mini/login", async (req, res) => {
       const code = z.string().min(1).max(256).parse(req.body.code);
@@ -110,6 +117,14 @@ export async function createWechatMini(
             [randomUUID(), `wx:${data.openid}`],
           )
         ).rows[0].id;
+        if (pointsEnabled)
+          await changePoints(
+            tx,
+            owner,
+            100,
+            "新用户注册赠送",
+            `welcome:${owner}`,
+          );
         await tx.query(
           "INSERT INTO wechat_identities(openid,owner_id) VALUES($1,$2) ON CONFLICT DO NOTHING",
           [data.openid, owner],

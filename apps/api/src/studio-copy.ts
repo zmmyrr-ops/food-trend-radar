@@ -1,8 +1,10 @@
+import { randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import type { PGlite } from "@electric-sql/pglite";
 import type { Express } from "express";
 import { z } from "zod";
 import { ownerOf } from "./accounts.js";
+import { changePoints, refundPoints } from "./points.js";
 import { recommendStudioTopics } from "./studio-topics.js";
 import type { TopicPlay } from "./topic-plays.js";
 import { ownedVisitStore } from "./visit-plans.js";
@@ -70,6 +72,7 @@ export function registerStudioCopy(
   app.post("/api/v3/studio-copy", async (req, res) => {
     const input = z
       .object({
+        request_id: z.uuid().optional(),
         visit_store_id: z.uuid(),
         project_id: z.uuid().optional(),
         kind: z.enum(["titles", "topics"]),
@@ -112,6 +115,7 @@ export function registerStudioCopy(
       return;
     }
     pending.add(owner);
+    let chargeKey: string | undefined;
     try {
       const locked = input.kind === "topics" ? [...new Set(input.locked)] : [];
       if (locked.length === 10) {
@@ -134,21 +138,56 @@ export function registerStudioCopy(
               )
             ).rows[0]
           : null;
-      if (input.kind === "topics") {
-        res.json(
-          await recommendStudioTopics(
-            key,
-            {
-              store: visit.name,
-              city: "上海",
-              coupon: studioCouponFacts(coupon),
-              script: project?.script?.slice(0, 6000) || "",
-            },
-            locked,
-            input.previous,
-            searchTopics,
-          ),
+      chargeKey = `copy:${owner}:${input.request_id ?? randomUUID()}`;
+      const previous = (
+        await db.query<any>(
+          "SELECT result,state FROM point_operations WHERE key=$1 AND owner_id=$2",
+          [chargeKey, owner],
+        )
+      ).rows[0];
+      if (previous) {
+        chargeKey = undefined;
+        if (previous.state === "complete") return res.json(previous.result);
+        return res.status(409).json({
+          error: {
+            message:
+              previous.state === "pending"
+                ? "正在生成，请稍候"
+                : "上次生成失败，积分已退回，请重新生成",
+          },
+        });
+      }
+      await db.transaction(async (tx) => {
+        await changePoints(
+          tx,
+          owner,
+          -5,
+          input.kind === "topics" ? "生成话题" : "生成标题",
+          chargeKey!,
         );
+        await tx.query(
+          "INSERT INTO point_operations(key,owner_id) VALUES($1,$2)",
+          [chargeKey, owner],
+        );
+      });
+      if (input.kind === "topics") {
+        const result = await recommendStudioTopics(
+          key,
+          {
+            store: visit.name,
+            city: "上海",
+            coupon: studioCouponFacts(coupon),
+            script: project?.script?.slice(0, 6000) || "",
+          },
+          locked,
+          input.previous,
+          searchTopics,
+        );
+        await db.query(
+          "UPDATE point_operations SET result=$2,state='complete' WHERE key=$1",
+          [chargeKey, JSON.stringify(result)],
+        );
+        res.json(result);
         return;
       }
       const response = await fetch(
@@ -219,16 +258,31 @@ export function registerStudioCopy(
       } catch {
         throw Error("生成内容格式不完整，请换一批重试");
       }
+      await db.query(
+        "UPDATE point_operations SET result=$2,state='complete' WHERE key=$1",
+        [chargeKey, JSON.stringify({ items })],
+      );
       res.json({ items });
     } catch (e) {
-      res.status(502).json({
-        error: {
-          message:
-            e instanceof Error && e.name !== "TimeoutError"
-              ? e.message
-              : "生成超时，请重试",
-        },
-      });
+      if (chargeKey) {
+        await refundPoints(db, chargeKey);
+        await db.query(
+          "UPDATE point_operations SET state='failed' WHERE key=$1",
+          [chargeKey],
+        );
+      }
+      res
+        .status((e as Error).message === "POINTS_INSUFFICIENT" ? 402 : 502)
+        .json({
+          error: {
+            message:
+              (e as Error).message === "POINTS_INSUFFICIENT"
+                ? "积分不足，请前往工作台查看积分或邀请好友"
+                : e instanceof Error && e.name !== "TimeoutError"
+                  ? e.message
+                  : "生成超时，请重试",
+          },
+        });
     } finally {
       pending.delete(owner);
     }

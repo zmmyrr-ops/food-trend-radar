@@ -5,6 +5,7 @@ import type { PGlite } from "@electric-sql/pglite";
 import type { Express } from "express";
 import { z } from "zod";
 import { legacyOwner, ownerOf } from "./accounts.js";
+import { changePoints, refundPoints } from "./points.js";
 
 const SEARCH = "https://so.xiaohongshu.com/api/sns/web/v2/search/notes";
 const DETAIL = "https://edith.xiaohongshu.com/api/sns/web/v1/feed";
@@ -147,6 +148,8 @@ export async function createCouponMedia(
 ) {
   await db.exec(`
     CREATE TABLE IF NOT EXISTS coupon_media_jobs(id uuid PRIMARY KEY,brand_id uuid NOT NULL,product_id text NOT NULL,keyword text NOT NULL,names jsonb NOT NULL,state text NOT NULL,resources jsonb NOT NULL DEFAULT '[]',searched int NOT NULL DEFAULT 0,inspected int NOT NULL DEFAULT 0,error_code text,created_at timestamptz NOT NULL DEFAULT now(),updated_at timestamptz NOT NULL DEFAULT now(),UNIQUE(brand_id,product_id));
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS point_charge_key text;
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS point_before_count int NOT NULL DEFAULT 0;
     CREATE TABLE IF NOT EXISTS coupon_media_cache(note_id text PRIMARY KEY,resources jsonb NOT NULL,observed_at timestamptz NOT NULL DEFAULT now());
     CREATE TABLE IF NOT EXISTS coupon_media_gate(id int PRIMARY KEY,finished_at timestamptz,blocked_until timestamptz,credential_hash text,block_code text);
     ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS next_page int NOT NULL DEFAULT 1;
@@ -612,6 +615,23 @@ export async function createCouponMedia(
             "UPDATE coupon_media_jobs SET state='failed',error_code=$2,updated_at=now() WHERE id=$1 AND state IN ('queued','running')",
             [job.id, code],
           );
+        } finally {
+          const final = (
+            await db.query<any>("SELECT * FROM coupon_media_jobs WHERE id=$1", [
+              job.id,
+            ])
+          ).rows[0];
+          if (
+            final?.point_charge_key &&
+            final.point_charge_key === job.point_charge_key
+          ) {
+            if (final.resources.length <= final.point_before_count)
+              await refundPoints(db, final.point_charge_key);
+            await db.query(
+              "UPDATE coupon_media_jobs SET point_charge_key=NULL WHERE id=$1 AND point_charge_key=$2",
+              [job.id, final.point_charge_key],
+            );
+          }
         }
       }
     })().finally(() => {
@@ -620,7 +640,14 @@ export async function createCouponMedia(
   }
   function publicJob(job: any) {
     if (!job) return null;
-    const { names, seen_notes, search_id, ...safe } = job;
+    const {
+      names,
+      seen_notes,
+      search_id,
+      point_charge_key,
+      point_before_count,
+      ...safe
+    } = job;
     return {
       ...safe,
       resources: job.resources.map(({ note_text, ...r }: LiveResource) => r),
@@ -645,6 +672,10 @@ export async function createCouponMedia(
     if (!coupon) throw Error("COUPON_NOT_FOUND");
     const keyword = coupon.name;
     const result = await db.transaction(async (tx) => {
+      if (owner !== legacyOwner)
+        await tx.query("SELECT id FROM accounts WHERE id=$1 FOR UPDATE", [
+          owner,
+        ]);
       const old = (
         await tx.query<any>(
           "SELECT * FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2 AND owner_id=$3",
@@ -686,6 +717,17 @@ export async function createCouponMedia(
           }
         });
         if (shared && signedUrlsValid) {
+          if (
+            owner !== legacyOwner &&
+            (!old || old.state !== "complete" || !old.resources.length)
+          )
+            await changePoints(
+              tx,
+              owner,
+              10 * -1,
+              "获取网络素材",
+              `media-cache:${randomUUID()}`,
+            );
           await tx.query(
             "UPDATE coupon_media_jobs SET updated_at=now() WHERE id=$1",
             [shared.id],
@@ -715,22 +757,40 @@ export async function createCouponMedia(
         }
       }
       await credentials();
+      if (
+        more &&
+        old &&
+        !reset &&
+        old.keyword === keyword &&
+        (old.exhausted || old.resources.length >= 200)
+      )
+        return old;
+      const chargeKey = owner === legacyOwner ? null : `media:${randomUUID()}`;
+      if (chargeKey)
+        await changePoints(
+          tx,
+          owner,
+          more && !reset && old ? -5 : -10,
+          more && !reset && old ? "获取更多素材" : "获取网络素材",
+          chargeKey,
+        );
       if (more && old && !reset && old.keyword === keyword) {
         if (old.exhausted || old.resources.length >= 200) return old;
         return (
           await tx.query<any>(
-            "UPDATE coupon_media_jobs SET state='queued',target_count=$2,coupon_title=$3,searched=0,inspected=0,error_code=NULL,updated_at=now() WHERE id=$1 RETURNING *",
+            "UPDATE coupon_media_jobs SET point_charge_key=$4,point_before_count=jsonb_array_length(resources),state='queued',target_count=$2,coupon_title=$3,searched=0,inspected=0,error_code=NULL,updated_at=now() WHERE id=$1 RETURNING *",
             [
               old.id,
               Math.min(200, old.resources.length + 20),
               coupon.title || "",
+              chargeKey,
             ],
           )
         ).rows[0];
       }
       return (
         await tx.query<any>(
-          "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,refresh_details,coupon_title,owner_id) VALUES($1,$2,$3,$4,$5,'queued',$6,$7,$8) ON CONFLICT(owner_id,brand_id,product_id) DO UPDATE SET id=excluded.id,keyword=excluded.keyword,names=excluded.names,state='queued',resources='[]',next_page=1,seen_notes='[]',target_count=40,exhausted=false,search_id=NULL,refresh_details=excluded.refresh_details,coupon_title=excluded.coupon_title,searched=0,inspected=0,error_code=NULL,created_at=now(),updated_at=now() RETURNING *",
+          "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,refresh_details,coupon_title,owner_id,point_charge_key,point_before_count) VALUES($1,$2,$3,$4,$5,'queued',$6,$7,$8,$9,0) ON CONFLICT(owner_id,brand_id,product_id) DO UPDATE SET point_charge_key=excluded.point_charge_key,point_before_count=0,id=excluded.id,keyword=excluded.keyword,names=excluded.names,state='queued',resources='[]',next_page=1,seen_notes='[]',target_count=40,exhausted=false,search_id=NULL,refresh_details=excluded.refresh_details,coupon_title=excluded.coupon_title,searched=0,inspected=0,error_code=NULL,created_at=now(),updated_at=now() RETURNING *",
           [
             randomUUID(),
             brand,
@@ -740,6 +800,7 @@ export async function createCouponMedia(
             reset,
             coupon.title || "",
             owner,
+            chargeKey,
           ],
         )
       ).rows[0];
@@ -848,6 +909,13 @@ export async function createCouponMedia(
         });
       } catch (e) {
         const code = e instanceof Error ? e.message : "INTERNAL_ERROR";
+        if (code === "POINTS_INSUFFICIENT")
+          return res.status(402).json({
+            error: {
+              code,
+              message: "积分不足，请前往工作台查看积分或邀请好友",
+            },
+          });
         res
           .status(
             code === "JOB_RUNNING"
@@ -877,10 +945,17 @@ export async function createCouponMedia(
     });
     app.post("/api/v3/coupon-media/:id/cancel", async (req, res) => {
       const id = z.uuid().parse(req.params.id);
-      await db.query(
-        "UPDATE coupon_media_jobs SET state='cancelled',updated_at=now() WHERE id=$1 AND owner_id=$2 AND state IN ('queued','running')",
-        [id, ownerOf(req)],
-      );
+      const cancelled = (
+        await db.query<any>(
+          "UPDATE coupon_media_jobs SET state='cancelled',updated_at=now() WHERE id=$1 AND owner_id=$2 AND state IN ('queued','running') RETURNING point_charge_key,resources,point_before_count",
+          [id, ownerOf(req)],
+        )
+      ).rows[0];
+      if (
+        cancelled?.point_charge_key &&
+        cancelled.resources.length <= cancelled.point_before_count
+      )
+        await refundPoints(db, cancelled.point_charge_key);
       res.json({ ok: true });
     });
   }

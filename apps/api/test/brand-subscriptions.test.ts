@@ -37,7 +37,7 @@ test("普通用户模糊订阅、通知去重、已读与取消订阅按账号�
     (
       await call("/api/auth/login", "", {
         phone,
-        code: await seedInvitation(db, phone),
+        password: await seedInvitation(db, phone),
       })
     ).headers
       .get("set-cookie")!
