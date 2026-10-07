@@ -20,6 +20,7 @@ import {
 } from "react";
 import { createRoot } from "react-dom/client";
 import { AccountGate, useAccount } from "./AccountGate";
+import { AccountManagement } from "./AccountManagement";
 import { Admission } from "./Admission";
 import { appFetch, appUrl } from "./app-url";
 import { BrandIcon } from "./BrandIcon";
@@ -109,6 +110,7 @@ function App() {
         "import",
         "sources",
         "admission",
+        "accounts",
       ]
         .filter(
           (v) =>
@@ -144,6 +146,10 @@ function App() {
     [report, setReport] = useState<ImportResult | null>(null),
     [history, setHistory] = useState<string>("");
   const refresh = useCallback(async () => {
+    if (tab === "accounts") {
+      setLoaded(true);
+      return;
+    }
     const b = await api<{ items: Brand[] }>("/brands");
     setBrands(b.items);
     setLoaded(true);
@@ -353,9 +359,13 @@ function App() {
             </div>
           </button>
         </nav>
-        <details className="sidebar-tools admin-only">
+        <details
+          className="sidebar-tools admin-only"
+          open={tab === "accounts" ? true : undefined}
+        >
           <summary>数据与设置</summary>
           {[
+            ...(account.role === "admin" ? [["accounts", "账号管理"]] : []),
             ["events", "事件管理"],
             ["import", "数据导入"],
             ["sources", "数据源核验"],
@@ -385,9 +395,11 @@ function App() {
                 ? "店铺上报"
                 : tab === "workspace"
                   ? "我的工作台"
-                  : "数据工作台"}
+                  : tab === "accounts"
+                    ? "账号管理"
+                    : "数据工作台"}
           </span>
-          {tab !== "workspace" && (
+          {tab !== "workspace" && tab !== "accounts" && (
             <div className="channel-switch" aria-label="切换业务频道">
               {(["food", "leisure"] as const).map((c) => (
                 <button
@@ -409,45 +421,48 @@ function App() {
             })}
           </small>
         </header>
-        {tab !== "radar" && tab !== "workspace" && tab !== "reports" && (
-          <section className="page-heading">
-            <div>
-              <p className="eyebrow">
-                {channel === "food" ? "FOOD & FLAVOUR" : "PLAY & EXPLORE"} /
-                SHANGHAI
-              </p>
-              <h1>
-                {tab === "radar"
-                  ? channel === "food"
-                    ? "下一站，去吃点好的。"
-                    : "把周末，交给新鲜感。"
-                  : tab === "videos"
-                    ? "灵感，已经成为作品。"
-                    : tab === "brands"
-                      ? `${channelLabel}品牌名录`
-                      : "把数据整理得井井有条。"}
-              </h1>
-              <p>
-                {tab === "radar"
-                  ? channel === "food"
-                    ? "从一张好券开始，发现值得探的餐厅与正在升温的美味。"
-                    : "发现亲子乐园、城市展馆与户外体验，让下一条内容有新去处。"
-                  : `当前查看${channelLabel}频道，随时切换另一种灵感。`}
-              </p>
-            </div>
-            <div className="heading-index">
-              <span>{channelLabel}频道</span>
-              <strong>
-                {loaded
-                  ? brands.filter(
-                      (b) => b.active && inChannel(b.category, channel),
-                    ).length
-                  : "—"}
-              </strong>
-              <small>启用品牌 / 上海</small>
-            </div>
-          </section>
-        )}
+        {tab !== "radar" &&
+          tab !== "workspace" &&
+          tab !== "reports" &&
+          tab !== "accounts" && (
+            <section className="page-heading">
+              <div>
+                <p className="eyebrow">
+                  {channel === "food" ? "FOOD & FLAVOUR" : "PLAY & EXPLORE"} /
+                  SHANGHAI
+                </p>
+                <h1>
+                  {tab === "radar"
+                    ? channel === "food"
+                      ? "下一站，去吃点好的。"
+                      : "把周末，交给新鲜感。"
+                    : tab === "videos"
+                      ? "灵感，已经成为作品。"
+                      : tab === "brands"
+                        ? `${channelLabel}品牌名录`
+                        : "把数据整理得井井有条。"}
+                </h1>
+                <p>
+                  {tab === "radar"
+                    ? channel === "food"
+                      ? "从一张好券开始，发现值得探的餐厅与正在升温的美味。"
+                      : "发现亲子乐园、城市展馆与户外体验，让下一条内容有新去处。"
+                    : `当前查看${channelLabel}频道，随时切换另一种灵感。`}
+                </p>
+              </div>
+              <div className="heading-index">
+                <span>{channelLabel}频道</span>
+                <strong>
+                  {loaded
+                    ? brands.filter(
+                        (b) => b.active && inChannel(b.category, channel),
+                      ).length
+                    : "—"}
+                </strong>
+                <small>启用品牌 / 上海</small>
+              </div>
+            </section>
+          )}
         {error && (
           <div role="alert" className="message error">
             {error}
@@ -473,6 +488,9 @@ function App() {
         )}
         {tab === "workspace" && <MyWorkspace brands={brands} />}
         {tab === "reports" && <ShopReports />}
+        {tab === "accounts" && account.role === "admin" && (
+          <AccountManagement />
+        )}
         {tab === "brands" && (
           <div
             className={`brand-workspace ${showBrandEditor ? "with-editor" : ""}`}

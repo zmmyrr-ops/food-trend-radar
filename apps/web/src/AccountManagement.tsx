@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useState } from "react";
 import { appFetch } from "./app-url";
 import "./account-management.css";
 
@@ -10,8 +9,8 @@ type Account = {
   has_invitation: boolean;
   invitation_code: string | null;
 };
-export function AccountManagement({ onClose }: { onClose: () => void }) {
-  const dialog = useRef<HTMLDialogElement>(null);
+export function AccountManagement() {
+  const [loading, setLoading] = useState(true);
   const [items, setItems] = useState<Account[]>([]);
   const [phone, setPhone] = useState("");
   const [busy, setBusy] = useState(false);
@@ -27,8 +26,9 @@ export function AccountManagement({ onClose }: { onClose: () => void }) {
     setItems((await r.json()).items);
   }
   useEffect(() => {
-    dialog.current?.showModal();
-    void refresh().catch((e) => setError(e.message));
+    void refresh()
+      .catch((e) => setError(e.message))
+      .finally(() => setLoading(false));
   }, []);
   async function issue(account?: Account) {
     if (
@@ -64,16 +64,19 @@ export function AccountManagement({ onClose }: { onClose: () => void }) {
       setBusy(false);
     }
   }
-  return createPortal(
-    <dialog ref={dialog} className="account-management" onCancel={onClose}>
+  return (
+    <section
+      className="account-management"
+      aria-labelledby="account-management-title"
+    >
       <header>
         <div>
-          <h2>账号管理</h2>
+          <h1 id="account-management-title">账号管理</h1>
           <p>按手机号开通访问权限</p>
         </div>
-        <button onClick={onClose} aria-label="关闭账号管理">
-          ×
-        </button>
+        <span className="account-management-count">
+          {loading ? "加载中…" : `${items.length} 个账号`}
+        </span>
       </header>
       <div className="account-management-body">
         <form
@@ -116,7 +119,8 @@ export function AccountManagement({ onClose }: { onClose: () => void }) {
             </button>
           </section>
         )}
-        <ul>
+        {loading && <p role="status">正在加载账号…</p>}
+        <ul aria-label="账号列表">
           {items.map((account) => (
             <li key={account.id}>
               <div>
@@ -159,7 +163,6 @@ export function AccountManagement({ onClose }: { onClose: () => void }) {
           ))}
         </ul>
       </div>
-    </dialog>,
-    document.body,
+    </section>
   );
 }

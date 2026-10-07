@@ -1,15 +1,14 @@
 .account-management {
-  width: min(620px, calc(100vw - 32px));
-  max-height: 85dvh;
+  width: 100%;
+  max-width: 1080px;
+  margin: 20px auto 0;
+  min-width: 0;
   padding: 0;
   border: 1px solid #e1e8f3;
   border-radius: 20px;
   color: #24324b;
   background: #fff;
-  box-shadow: 0 24px 80px #17274433;
-}
-.account-management::backdrop {
-  background: #15274466;
+  box-shadow: 0 4px 18px #17274405;
 }
 .account-management header {
   display: flex;
@@ -18,7 +17,7 @@
   padding: 20px 24px;
   border-bottom: 1px solid #edf0f6;
 }
-.account-management h2 {
+.account-management h1 {
   font-size: 20px;
   margin: 0;
 }
@@ -42,10 +41,9 @@
 }
 .account-management-body {
   padding: 20px 24px;
-  overflow: auto;
-  max-height: 65dvh;
 }
 .account-management form {
+  max-width: 580px;
   display: flex;
   gap: 10px;
 }
@@ -121,5 +119,36 @@
   }
   .account-management form {
     flex-wrap: wrap;
+  }
+}
+
+.account-management-count {
+  font-size: 13px;
+  color: #71819b;
+  white-space: nowrap;
+}
+.account-management li {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) minmax(180px, 1fr) 110px;
+}
+.account-management li > button {
+  justify-self: end;
+}
+@media (max-width: 600px) {
+  .account-management {
+    margin-top: 12px;
+    border-radius: 14px;
+  }
+  .account-management header {
+    padding: 16px;
+  }
+  .account-management li {
+    display: flex;
+  }
+  .account-management li > div:first-child {
+    flex-basis: 100%;
+  }
+  .account-management li > button {
+    margin-left: auto;
   }
 }

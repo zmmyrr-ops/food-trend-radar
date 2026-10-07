@@ -5,7 +5,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { AccountManagement } from "./AccountManagement";
 import { appFetch, appUrl } from "./app-url";
 
 const AccountContext = createContext<{ role: string }>({ role: "user" });
@@ -17,7 +16,6 @@ export function AccountGate({ children }: { children: ReactNode }) {
     role: string;
   } | null>(null);
   const [loading, setLoading] = useState(true);
-  const [managing, setManaging] = useState(false);
   const [phone, setPhone] = useState("");
   const [loginMode, setLoginMode] = useState("invitation");
   const [checkingMode, setCheckingMode] = useState(false);
@@ -164,9 +162,6 @@ export function AccountGate({ children }: { children: ReactNode }) {
             {account.phone.slice(0, 3)}****{account.phone.slice(-4)} ·{" "}
             {account.role === "admin" ? "管理员" : "我的账号"}
           </span>
-          {account.role === "admin" && (
-            <button onClick={() => setManaging(true)}>账号管理</button>
-          )}
           <button
             onClick={async () => {
               setBusy(true);
@@ -190,9 +185,6 @@ export function AccountGate({ children }: { children: ReactNode }) {
           {error && <small role="alert">{error}</small>}
         </div>
         <div key={account.id}>{children}</div>
-        {managing && account.role === "admin" && (
-          <AccountManagement onClose={() => setManaging(false)} />
-        )}
       </div>
     </AccountContext.Provider>
   );
