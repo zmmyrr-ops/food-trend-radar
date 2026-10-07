@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { appFetch } from "./app-url";
+import { Points } from "./Points";
 
 export function StudioCopy({
   visitStore,
@@ -93,11 +94,17 @@ export function StudioCopy({
           <div className="studio-section-heading">
             <h3>爆款标题灵感</h3>
             <button disabled={!!busy} onClick={() => void generate("titles")}>
-              {busy === "titles"
-                ? "生成中…"
-                : titles.length
-                  ? "换一批 · 5积分"
-                  : "生成3个标题 · 5积分"}
+              {busy === "titles" ? (
+                "生成中…"
+              ) : titles.length ? (
+                <>
+                  换一批 <Points amount={5} cost />
+                </>
+              ) : (
+                <>
+                  生成3个标题 <Points amount={5} cost />
+                </>
+              )}
             </button>
           </div>
           {titles.length ? (
@@ -125,11 +132,17 @@ export function StudioCopy({
               disabled={!!busy || locked.length === 10}
               onClick={() => void generate("topics")}
             >
-              {busy === "topics"
-                ? "正在搜索热门话题…"
-                : topics.length
-                  ? "换一批 · 5积分"
-                  : "查找热门话题"}
+              {busy === "topics" ? (
+                "正在搜索热门话题…"
+              ) : topics.length ? (
+                <>
+                  换一批 <Points amount={5} cost />
+                </>
+              ) : (
+                <>
+                  查找热门话题 <Points amount={5} cost />
+                </>
+              )}
             </button>
           </div>
           {topics.length ? (

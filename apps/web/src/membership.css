@@ -500,3 +500,42 @@ main.auth-loading {
   background: #dce9ff;
   border-color: #8eb5ff;
 }
+
+.points-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+.points-badge small {
+  display: inline;
+  font-size: 11px;
+  margin-left: 3px;
+  color: inherit;
+}
+.points-cost {
+  padding: 3px 6px;
+  border-radius: 6px;
+  background: rgba(52, 120, 238, 0.09);
+  color: inherit;
+  margin-left: 6px;
+}
+.account-bar .points-balance-link {
+  padding: 7px 11px;
+  border: 1px solid #dce6f5;
+  border-radius: 999px;
+  color: #3478ee;
+  background: #f1f6ff;
+}
+
+.member-balance > strong .points-badge {
+  font-size: 36px;
+}
+.member-balance > strong .points-badge svg {
+  width: 26px;
+  height: 26px;
+}

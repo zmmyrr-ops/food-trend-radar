@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { memberRequest } from "./Membership";
+import { Points } from "./Points";
 import "./membership.css";
 export function AccountManagement() {
   const panelRef = useRef<HTMLElement>(null);
@@ -158,8 +159,7 @@ export function AccountManagement() {
                   </small>
                 </div>
                 <b>
-                  {e.amount > 0 ? "+" : ""}
-                  {e.amount}
+                  <Points amount={`${e.amount > 0 ? "+" : ""}${e.amount}`} />
                 </b>
               </li>
             ))}
@@ -211,7 +211,9 @@ export function AccountManagement() {
                   {a.role === "admin" && <small> 管理员</small>}
                 </td>
                 <td>
-                  <strong>{a.balance}</strong>
+                  <strong>
+                    <Points amount={a.balance} />
+                  </strong>
                 </td>
                 <td>{a.referral_code || "未生成"}</td>
                 <td>{a.invited_count}人</td>

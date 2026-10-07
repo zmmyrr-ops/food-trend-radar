@@ -9,6 +9,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
 import { CouponMedia } from "./CouponMedia";
+import { Points } from "./Points";
 import { StudioCopy } from "./StudioCopy";
 import { StudioCoupon } from "./StudioCoupon";
 import { visitRequest } from "./VisitPlans";
@@ -675,7 +676,13 @@ export function VideoStudio() {
               }
               onClick={() => void create()}
             >
-              {busy ? "提交中…" : "开始制作"}
+              {busy ? (
+                "提交中…"
+              ) : (
+                <>
+                  开始制作 <Points amount={50} cost />
+                </>
+              )}
             </button>
             <p className="studio-hint">
               成片时长会根据可用素材在目标附近调整。
@@ -792,7 +799,13 @@ export function VideoStudio() {
                   disabled={locked || !configured}
                   onClick={() => void action("remake")}
                 >
-                  {active(project) ? "正在制作…" : "重新制作"}
+                  {active(project) ? (
+                    "正在制作…"
+                  ) : (
+                    <>
+                      重新制作 <Points amount={50} cost />
+                    </>
+                  )}
                 </button>
                 {optionsChanged && (
                   <p className="studio-hint">

@@ -9,5 +9,7 @@ export async function appFetch(
   const response = await fetch(appUrl(path), init);
   if (response.status === 401 && !path.startsWith("/api/auth/"))
     window.dispatchEvent(new Event("account-expired"));
+  if (init?.method && init.method !== "GET")
+    window.dispatchEvent(new Event("points-changed"));
   return response;
 }

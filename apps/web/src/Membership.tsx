@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { appFetch } from "./app-url";
+import { Points } from "./Points";
 export async function memberRequest(path: string, body?: unknown) {
   const r = await appFetch(
     path,
@@ -57,8 +58,10 @@ export function Membership() {
       <div className="member-overview">
         <section className="member-balance">
           <span>可用积分</span>
-          <strong>{data?.balance ?? "—"}</strong>
-          <small>获取素材10分 · 追加素材5分 · 标题5分 · 话题5分</small>
+          <strong>
+            <Points amount={data?.balance ?? "—"} />
+          </strong>
+          <small>素材10分 · 追加5分 · 标题5分 · 热门话题5分 · 视频50分</small>
         </section>
         <section className="member-invite">
           <span>邀请好友，共享创作灵感</span>
@@ -107,7 +110,9 @@ export function Membership() {
               <li key={u.phone}>
                 <strong>{u.phone}</strong>
                 <span>{new Date(u.created_at).toLocaleString("zh-CN")}</span>
-                <b>+100积分</b>
+                <b>
+                  <Points amount="+100" />
+                </b>
               </li>
             ))}
           </ul>
@@ -125,8 +130,7 @@ export function Membership() {
                 <small>{new Date(e.created_at).toLocaleString("zh-CN")}</small>
               </div>
               <b className={e.amount > 0 ? "member-positive" : ""}>
-                {e.amount > 0 ? "+" : ""}
-                {e.amount}
+                <Points amount={`${e.amount > 0 ? "+" : ""}${e.amount}`} />
               </b>
             </li>
           ))}

@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import { appFetch, appUrl } from "./app-url";
+import { PointsBalance } from "./Points";
 import "./membership.css";
 
 const AccountContext = createContext<{ role: string }>({ role: "user" });
@@ -290,6 +291,7 @@ export function AccountGate({ children }: { children: ReactNode }) {
     <AccountContext.Provider value={account}>
       <div className={`account-scope role-${account.role}`}>
         <div className="account-bar">
+          <PointsBalance />
           {new URLSearchParams(location.search).get("studio") === "1" && (
             <a className="studio-home-link" href={appUrl("/")}>
               ← 返回首页

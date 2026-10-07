@@ -17,10 +17,11 @@ import type { PGlite } from "@electric-sql/pglite";
 import { inChannel } from "@radar/contracts";
 import express, { type Express, type Request, type Response } from "express";
 import { z } from "zod";
-import { ownerOf } from "./accounts.js";
+import { legacyOwner, ownerOf } from "./accounts.js";
 import { mediaUrl } from "./coupon-media.js";
 import { mediaFormat } from "./media-format.js";
 import { createObjectStorage } from "./object-storage.js";
+import { changePoints } from "./points.js";
 import { registerStudioCopy } from "./studio-copy.js";
 import { registerTopicPlays } from "./topic-plays.js";
 import {
@@ -57,6 +58,51 @@ export async function createVideoProjects(db: PGlite, root: string) {
   await db.exec(`ALTER TABLE video_projects ADD COLUMN IF NOT EXISTS owner_id uuid NOT NULL DEFAULT '00000000-0000-0000-0000-000000000000';
     ALTER TABLE video_uploads ADD COLUMN IF NOT EXISTS owner_id uuid NOT NULL DEFAULT '00000000-0000-0000-0000-000000000000';
     CREATE INDEX IF NOT EXISTS video_project_owner ON video_projects(owner_id);`);
+  await db.exec(
+    "ALTER TABLE video_projects ADD COLUMN IF NOT EXISTS point_charge_key text; ALTER TABLE video_projects ADD COLUMN IF NOT EXISTS point_paid_revision int",
+  );
+  await db.exec(
+    "UPDATE video_projects SET point_paid_revision=(payload->>'revision')::int WHERE point_paid_revision IS NULL AND point_charge_key IS NULL AND payload->>'state' IN ('preview_ready','completed')",
+  );
+  async function settleVideo(id: string, state: string) {
+    if (
+      ![
+        "failed",
+        "cancelled",
+        "interrupted",
+        "preview_ready",
+        "completed",
+      ].includes(state)
+    )
+      return;
+    await db.transaction(async (tx) => {
+      const row = (
+        await tx.query<{ owner_id: string; point_charge_key: string }>(
+          "SELECT owner_id,point_charge_key FROM video_projects WHERE id=$1 FOR UPDATE",
+          [id],
+        )
+      ).rows[0];
+      if (!row?.point_charge_key) return;
+      if (["failed", "cancelled", "interrupted"].includes(state))
+        await changePoints(
+          tx,
+          row.owner_id,
+          50,
+          "视频制作退回",
+          `refund:${row.point_charge_key}`,
+        );
+      await tx.query(
+        "UPDATE video_projects SET point_charge_key=NULL,point_paid_revision=CASE WHEN $2 THEN (payload->>'revision')::int ELSE point_paid_revision END WHERE id=$1",
+        [id, ["preview_ready", "completed"].includes(state)],
+      );
+    });
+  }
+  for (const row of (
+    await db.query<{ id: string; state: string }>(
+      "SELECT id,payload->>'state' AS state FROM video_projects WHERE point_charge_key IS NOT NULL",
+    )
+  ).rows)
+    await settleVideo(row.id, row.state);
   let child: ChildProcess | undefined,
     activeId = "",
     stopped = false,
@@ -81,6 +127,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
       p.id,
       JSON.stringify(p),
     ]);
+    await settleVideo(p.id, p.state);
   };
   const visible = (p: VideoProject) => ({
     ...p,
@@ -280,10 +327,28 @@ export async function createVideoProjects(db: PGlite, root: string) {
     p.state = "queued";
     p.error = null;
     p.progress = "等待视频处理";
-    const claimed = await db.query(
-      "UPDATE video_projects SET payload=$2 WHERE id=$1 AND payload->>'state' NOT IN ('queued','preparing','analyzing','planning','rendering_preview','rendering_export') RETURNING id",
-      [id, JSON.stringify(p)],
-    );
+    const claimed = await db.transaction(async (tx) => {
+      const claimed = await tx.query(
+        "UPDATE video_projects SET payload=$2 WHERE id=$1 AND payload->>'state' NOT IN ('queued','preparing','analyzing','planning','rendering_preview','rendering_export') RETURNING owner_id,point_paid_revision",
+        [id, JSON.stringify(p)],
+      );
+      const owner = (claimed.rows[0] as { owner_id: string } | undefined)
+        ?.owner_id;
+      if (
+        owner &&
+        owner !== legacyOwner &&
+        (["analyze", "remake"].includes(mode) ||
+          (claimed.rows[0] as any).point_paid_revision !== p.revision)
+      ) {
+        const key = `video:${id}:${randomUUID()}`;
+        await changePoints(tx, owner, -50, "制作探店视频", key);
+        await tx.query(
+          "UPDATE video_projects SET point_charge_key=$2 WHERE id=$1",
+          [id, key],
+        );
+      }
+      return claimed;
+    });
     if (!claimed.rows.length) return get(id);
     queue.push({ id, mode });
     void pump().catch(async () => {
@@ -299,16 +364,24 @@ export async function createVideoProjects(db: PGlite, root: string) {
       try {
         await f(req, res);
       } catch (e) {
-        res.status(400).json({
-          error: {
-            message:
-              e instanceof z.ZodError
-                ? "输入参数不正确"
-                : e instanceof Error
-                  ? e.message
-                  : "请求失败",
-          },
-        });
+        res
+          .status(
+            e instanceof Error && e.message === "POINTS_INSUFFICIENT"
+              ? 402
+              : 400,
+          )
+          .json({
+            error: {
+              message:
+                e instanceof Error && e.message === "POINTS_INSUFFICIENT"
+                  ? "积分不足，制作视频需要50积分"
+                  : e instanceof z.ZodError
+                    ? "输入参数不正确"
+                    : e instanceof Error
+                      ? e.message
+                      : "请求失败",
+            },
+          });
       }
     };
   async function removeUpload(id: string) {
@@ -376,6 +449,18 @@ export async function createVideoProjects(db: PGlite, root: string) {
     return true;
   }
   function register(app: Express) {
+    const creatingOwners = new Set<string>();
+    app.post("/api/v3/video-projects", (req, res, next) => {
+      const owner = ownerOf(req);
+      if (creatingOwners.has(owner))
+        return res
+          .status(409)
+          .json({ error: { message: "正在提交制作任务，请稍候" } });
+      creatingOwners.add(owner);
+      res.once("finish", () => creatingOwners.delete(owner));
+      res.once("close", () => creatingOwners.delete(owner));
+      next();
+    });
     visits.register(app);
     const topicService = registerTopicPlays(
       app,
@@ -706,9 +791,17 @@ export async function createVideoProjects(db: PGlite, root: string) {
           "INSERT INTO video_projects(id,payload,owner_id) VALUES($1,$2,$3)",
           [p.id, JSON.stringify(p), ownerOf(req)],
         );
-        res
-          .status(201)
-          .json({ project: visible(await enqueue(p.id, "analyze")) });
+        try {
+          res
+            .status(201)
+            .json({ project: visible(await enqueue(p.id, "analyze")) });
+        } catch (error) {
+          await db.query(
+            "DELETE FROM video_projects WHERE id=$1 AND payload->>'state'='draft' AND point_charge_key IS NULL",
+            [p.id],
+          );
+          throw error;
+        }
       }),
     );
     app.get(

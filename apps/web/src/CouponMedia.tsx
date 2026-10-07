@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch } from "./app-url";
+import { Points } from "./Points";
 
 type Resource = {
   id: string;
@@ -232,13 +233,17 @@ export function CouponMedia({
               disabled={busy || !!running || !!fresh}
               onClick={() => void acquire()}
             >
-              {busy
-                ? "提交中…"
-                : running
-                  ? "获取中…"
-                  : fresh
-                    ? "已获取 · 缓存中"
-                    : "获取资源 · 10积分"}
+              {busy ? (
+                "提交中…"
+              ) : running ? (
+                "获取中…"
+              ) : fresh ? (
+                "已获取 · 缓存中"
+              ) : (
+                <>
+                  获取资源 <Points amount={10} cost />
+                </>
+              )}
             </button>
             {!!job?.resources.length && (
               <button
@@ -250,11 +255,15 @@ export function CouponMedia({
                 }
                 onClick={() => void acquire(true)}
               >
-                {job.exhausted
-                  ? "暂无更多素材"
-                  : job.resources.length >= 200
-                    ? "已达200个上限"
-                    : "再获取一些 · 5积分"}
+                {job.exhausted ? (
+                  "暂无更多素材"
+                ) : job.resources.length >= 200 ? (
+                  "已达200个上限"
+                ) : (
+                  <>
+                    再获取一些 <Points amount={5} cost />
+                  </>
+                )}
               </button>
             )}
             {job && (
@@ -263,7 +272,7 @@ export function CouponMedia({
                 onClick={() => void acquire(false, true)}
                 title="清空本券素材和搜索进度，重新获取最新链接；已制作的视频保留"
               >
-                重置并重新获取 · 10积分
+                重置并重新获取 <Points amount={10} cost />
               </button>
             )}
             {running && <button onClick={() => void cancel()}>停止</button>}
