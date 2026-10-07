@@ -299,7 +299,7 @@ function App() {
             探好店<small>帮你探好每一家店</small>
           </span>
         </a>
-        <div className="sidebar-label">探店达人的创作助手</div>
+        <BrandSubscriptions mode="messages" />
         <nav className="primary-nav" aria-label="主导航">
           <button
             aria-pressed={tab === "radar" && channel === "food"}
@@ -468,7 +468,6 @@ function App() {
         {!loaded && !error && <p role="status">正在加载工作台…</p>}
         {tab === "radar" && (
           <>
-            <BrandSubscriptions mode="messages" />
             <CouponRadar key={channel} channel={channel} />
           </>
         )}

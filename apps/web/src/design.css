@@ -1975,3 +1975,93 @@ button.visit-primary {
   font-variant-numeric: tabular-nums;
   opacity: 0.8;
 }
+
+/* Compact global notification entry and discovery header. */
+.sidebar-notifications {
+  margin: 0 0 12px;
+}
+.app-sidebar .notification-entry {
+  width: 100%;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid #e5ebf5;
+  border-radius: 8px;
+  background: #f7f9fd;
+  color: #52647e;
+  font-size: 12px;
+  font-weight: 500;
+}
+.notification-entry:hover {
+  background: #edf3ff;
+}
+.notification-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ef4444;
+  flex-shrink: 0;
+}
+.notification-chevron {
+  margin-left: auto;
+  color: #94a3b8;
+}
+.notification-dialog {
+  width: min(580px, calc(100vw - 32px));
+  max-height: min(720px, 85dvh);
+  padding: 0;
+  border: 1px solid #e2e9f3;
+  border-radius: 16px;
+  color: #26364e;
+  background: white;
+  box-shadow: 0 24px 80px #1c355530;
+}
+.notification-dialog::backdrop {
+  background: #18263d55;
+}
+.notification-dialog-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: white;
+  border-bottom: 1px solid #edf1f7;
+}
+.notification-dialog-header button {
+  border: 0;
+  border-radius: 8px;
+  background: #f1f5fa;
+  color: #52647e;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  font-size: 22px;
+}
+.notification-dialog .subscription-tools {
+  flex-wrap: wrap;
+}
+.notification-dialog .subscription-tools h3 {
+  display: none;
+}
+.notification-dialog .subscription-messages {
+  max-height: none;
+}
+.app-shell .app-topbar {
+  min-height: 48px;
+  margin-bottom: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.app-shell .coupon-radar > .workspace-tabs {
+  margin: 0 0 12px;
+}
+@media (max-width: 900px) {
+  .sidebar-notifications {
+    margin-bottom: 8px;
+  }
+}

@@ -321,14 +321,6 @@ export function CouponRadar({ channel }: { channel: Channel }) {
   return (
     <section className="coupon-radar">
       {error && <p role="alert">{error}</p>}
-      {account.role !== "admin" && (
-        <div className="radar-context-line" aria-label="频道概况">
-          <span>
-            {scopedBrands.length} 个{channel === "food" ? "美食" : "游玩"}品牌
-          </span>
-          <span>上海</span>
-        </div>
-      )}
       {account.role === "admin" && (
         <section className="overview-metrics" aria-label="工作台概览">
           <article>
