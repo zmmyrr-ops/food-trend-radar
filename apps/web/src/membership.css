@@ -535,7 +535,23 @@ main.auth-loading {
 .member-balance > strong .points-badge {
   font-size: 36px;
 }
-.member-balance > strong .points-badge svg {
+.member-balance > strong .points-badge .points-icon {
   width: 26px;
   height: 26px;
+}
+
+.points-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+.points-cost {
+  background: #edf4ff;
+  color: #3867b1;
+  border: 1px solid #dce9fb;
+}
+.points-badge {
+  gap: 5px;
 }

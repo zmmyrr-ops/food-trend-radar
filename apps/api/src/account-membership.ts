@@ -6,6 +6,21 @@ import { hashAccountPassword, ownerOf, verifyPassword } from "./accounts.js";
 import { changePoints } from "./points.js";
 import type { SmsAuth } from "./sms-auth.js";
 
+const referralSchema = z
+  .string()
+  .trim()
+  .toUpperCase()
+  .regex(/^[A-Z0-9]{6}$/);
+export function generateReferralCode() {
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  for (;;) {
+    const code = Array.from(
+      { length: 6 },
+      () => alphabet[randomInt(alphabet.length)],
+    ).join("");
+    if (/[A-Z]/.test(code) && /[2-9]/.test(code)) return code;
+  }
+}
 const phoneSchema = z.string().regex(/^1[3-9]\d{9}$/);
 const passwordSchema = z
   .string()
@@ -17,6 +32,8 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
  ALTER TABLE accounts ADD COLUMN IF NOT EXISTS invited_by uuid REFERENCES accounts(id);
  ALTER TABLE accounts ADD COLUMN IF NOT EXISTS phone_verified_at timestamptz;
  CREATE UNIQUE INDEX IF NOT EXISTS account_referral_unique ON accounts(referral_code) WHERE referral_code IS NOT NULL;
+ CREATE TABLE IF NOT EXISTS referral_code_allocator(id int PRIMARY KEY CHECK(id=1));
+ INSERT INTO referral_code_allocator VALUES(1) ON CONFLICT DO NOTHING;
  CREATE TABLE IF NOT EXISTS sms_limits(phone text PRIMARY KEY,day text NOT NULL,count int NOT NULL,last_sent_at timestamptz NOT NULL);
  CREATE TABLE IF NOT EXISTS sms_challenges(phone text PRIMARY KEY,id uuid NOT NULL,state text NOT NULL,attempts int NOT NULL DEFAULT 0,expires_at timestamptz NOT NULL);
  CREATE TABLE IF NOT EXISTS sms_ip_limits(key text PRIMARY KEY,count int NOT NULL);
@@ -27,7 +44,7 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
       const v = z
         .object({
           phone: phoneSchema,
-          invitation_code: z.string().regex(/^\d{6}$/),
+          invitation_code: referralSchema,
         })
         .strict()
         .safeParse(req.body);
@@ -117,7 +134,7 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
         .object({
           phone: phoneSchema,
           code: z.string().regex(/^\d{6}$/),
-          invitation_code: z.string().regex(/^\d{6}$/),
+          invitation_code: referralSchema,
           password: passwordSchema,
         })
         .strict()
@@ -227,6 +244,9 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
     app.post("/api/member/invitation", auth, async (req, res) => {
       const id = ownerOf(req);
       const code = await db.transaction(async (tx) => {
+        await tx.query(
+          "SELECT id FROM referral_code_allocator WHERE id=1 FOR UPDATE",
+        );
         const a = (
           await tx.query<{ referral_code: string | null }>(
             "SELECT referral_code FROM accounts WHERE id=$1 FOR UPDATE",
@@ -235,7 +255,7 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
         ).rows[0];
         if (a.referral_code) return a.referral_code;
         for (let n = 0; n < 30; n++) {
-          const candidate = String(randomInt(100000, 1000000));
+          const candidate = generateReferralCode();
           if (
             (
               await tx.query("SELECT id FROM accounts WHERE referral_code=$1", [

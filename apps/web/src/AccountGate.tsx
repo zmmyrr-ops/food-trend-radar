@@ -188,14 +188,17 @@ export function AccountGate({ children }: { children: ReactNode }) {
                   邀请码
                   <input
                     required
-                    inputMode="numeric"
-                    pattern="[0-9]{6}"
+                    autoCapitalize="characters"
+                    autoComplete="off"
+                    pattern="[A-Za-z0-9]{6}"
                     maxLength={6}
                     value={invite}
                     onChange={(e) =>
-                      setInvite(e.target.value.replace(/\D/g, ""))
+                      setInvite(
+                        e.target.value.replace(/[^a-z0-9]/gi, "").toUpperCase(),
+                      )
                     }
-                    placeholder="请输入好友提供的6位邀请码"
+                    placeholder="6位邀请码（字母与数字）"
                   />
                 </label>
                 <label>
@@ -220,7 +223,7 @@ export function AccountGate({ children }: { children: ReactNode }) {
                         sending ||
                         cooldown > 0 ||
                         !/^1[3-9]\d{9}$/.test(phone) ||
-                        !/^\d{6}$/.test(invite)
+                        !/^[A-Z0-9]{6}$/.test(invite)
                       }
                       onClick={async () => {
                         setSending(true);

@@ -88,7 +88,22 @@ test("legacy migration, verified invitation registration, SMS limits, rewards, h
     await setupPoints(db);
     assert.equal((await call("/api/member", user)).data.balance, 500);
     const referral = (await call("/api/member/invitation", user, {})).data.code;
-    assert.match(referral, /^\d{6}$/);
+    assert.match(referral, /^(?=.*[A-Z])(?=.*[2-9])[A-Z2-9]{6}$/);
+    const concurrent = await Promise.all([
+      call("/api/member/invitation", a, {}),
+      call("/api/member/invitation", a, {}),
+    ]);
+    assert.equal(concurrent[0].status, 200);
+    assert.equal(concurrent[1].status, 200);
+    assert.equal(concurrent[0].data.code, concurrent[1].data.code);
+    assert.notEqual(concurrent[0].data.code, referral);
+    await assert.rejects(
+      db.query("UPDATE accounts SET referral_code=$1 WHERE referral_code=$2", [
+        referral,
+        concurrent[0].data.code,
+      ]),
+    );
+
     assert.equal(
       (await call("/api/member/invitation", user, {})).data.code,
       referral,
@@ -103,7 +118,10 @@ test("legacy migration, verified invitation registration, SMS limits, rewards, h
       400,
     );
     assert.equal(sends, 0);
-    const smsBody = { phone: "13800000003", invitation_code: referral };
+    const smsBody = {
+      phone: "13800000003",
+      invitation_code: referral.toLowerCase(),
+    };
     const parallel = await Promise.all([
       call("/api/auth/sms", "", smsBody),
       call("/api/auth/sms", "", smsBody),

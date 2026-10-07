@@ -9,16 +9,14 @@ export function Points({
 }) {
   return (
     <span className={`points-badge${cost ? " points-cost" : ""}`}>
-      <svg
-        width="15"
-        height="15"
-        viewBox="0 0 24 24"
-        fill="none"
+      <img
+        className="points-icon"
+        src={appUrl("/branding/points-token-v2.png")}
+        width="22"
+        height="22"
+        alt=""
         aria-hidden="true"
-      >
-        <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.7" />
-        <path d="m13 6-5 7h4l-1 5 5-7h-4z" fill="currentColor" />
-      </svg>
+      />
       <span>
         {cost ? "−" : ""}
         {amount}
