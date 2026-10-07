@@ -9,6 +9,7 @@ import { createAccounts, legacyOwner } from "../src/accounts.js";
 import { createCouponMedia } from "../src/coupon-media.js";
 import { openDatabase } from "../src/db.js";
 import { createVideoProjects } from "../src/video-projects.js";
+import { seedInvitation } from "./helpers/invitation.js";
 
 test("账号登录、会话撤销及素材/视频跨账号隔离", async () => {
   const db = await openDatabase();
@@ -40,7 +41,7 @@ test("账号登录、会话撤销及素材/视频跨账号隔离", async () => {
   async function login(phone: string) {
     const r = await call("/api/auth/login", "", "POST", {
       phone,
-      code: "666666",
+      code: await seedInvitation(db, phone),
     });
     assert.equal(r.status, 200);
     const c = r.headers.get("set-cookie")!;
@@ -224,7 +225,10 @@ test("标题和话题对登录用户开放，管理接口仍受保护", async ()
     const login = await fetch(base + "/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ phone: "13800002201", code: "666666" }),
+      body: JSON.stringify({
+        phone: "13800002201",
+        code: await seedInvitation(db, "13800002201"),
+      }),
     });
     const cookie = login.headers.get("set-cookie")!.split(";")[0];
     assert.equal((await fetch(base + "/api/v3/topic-plays")).status, 401);

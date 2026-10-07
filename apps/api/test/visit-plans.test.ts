@@ -8,6 +8,7 @@ import { createAccounts } from "../src/accounts.js";
 import { createApp } from "../src/app.js";
 import { openDatabase } from "../src/db.js";
 import { createVideoProjects } from "../src/video-projects.js";
+import { seedInvitation } from "./helpers/invitation.js";
 
 test("探店计划隔离、店铺去重、排序、视频归属及软删除保留视频", async () => {
   const db = await openDatabase(),
@@ -42,7 +43,10 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
           : JSON.stringify(body ?? {}),
     });
   const login = async (phone: string) => {
-    const r = await call("auth/login", "", "POST", { phone, code: "666666" });
+    const r = await call("auth/login", "", "POST", {
+      phone,
+      code: await seedInvitation(db, phone),
+    });
     return {
       cookie: r.headers.get("set-cookie")!.split(";")[0],
       account: (await r.json()).account,

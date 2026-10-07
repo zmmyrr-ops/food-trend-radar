@@ -1,0 +1,92 @@
+.account-management {
+  width: min(620px, calc(100vw - 32px));
+  max-height: 85dvh;
+  padding: 0;
+  border: 1px solid #e1e8f3;
+  border-radius: 20px;
+  color: #24324b;
+  background: #fff;
+  box-shadow: 0 24px 80px #17274433;
+}
+.account-management::backdrop {
+  background: #15274466;
+}
+.account-management header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #edf0f6;
+}
+.account-management h2 {
+  font-size: 20px;
+  margin: 0;
+}
+.account-management p {
+  font-size: 13px;
+  color: #71819b;
+  margin: 8px 0;
+}
+.account-management button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 8px;
+  background: #edf3ff;
+  color: #3467d5;
+  padding: 9px 12px;
+  font-size: 13px;
+}
+.account-management button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.account-management-body {
+  padding: 20px 24px;
+  overflow: auto;
+  max-height: 65dvh;
+}
+.account-management form {
+  display: flex;
+  gap: 10px;
+}
+.account-management input {
+  min-width: 0;
+  flex: 1;
+  border: 1px solid #dce4f1;
+  padding: 10px;
+  border-radius: 8px;
+}
+.account-management ul {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+.account-management li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 0;
+  border-bottom: 1px solid #edf0f6;
+}
+.account-management small {
+  display: block;
+  color: #8995a8;
+  margin-top: 5px;
+}
+.invitation-result {
+  background: #f1f6ff;
+  border: 1px solid #dce7ff;
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 16px;
+}
+.invitation-result code {
+  display: block;
+  overflow-wrap: anywhere;
+  user-select: all;
+  margin-top: 10px;
+  font-size: 17px;
+}
+.account-management [role="alert"] {
+  color: #c73e50;
+}

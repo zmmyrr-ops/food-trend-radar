@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { AccountManagement } from "./AccountManagement";
 import { appFetch, appUrl } from "./app-url";
 
 const AccountContext = createContext<{ role: string }>({ role: "user" });
@@ -16,8 +17,10 @@ export function AccountGate({ children }: { children: ReactNode }) {
     role: string;
   } | null>(null);
   const [loading, setLoading] = useState(true);
-  const [testMode, setTestMode] = useState(false);
+  const [managing, setManaging] = useState(false);
   const [phone, setPhone] = useState("");
+  const [loginMode, setLoginMode] = useState("invitation");
+  const [checkingMode, setCheckingMode] = useState(false);
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -25,9 +28,6 @@ export function AccountGate({ children }: { children: ReactNode }) {
     void Promise.all([
       appFetch("/api/auth/me").then(async (r) => {
         if (r.ok) setAccount((await r.json()).account);
-      }),
-      appFetch("/api/auth/config").then(async (r) => {
-        if (r.ok) setTestMode((await r.json()).test_mode);
       }),
     ])
       .catch(() => setError("无法连接服务器，请刷新重试"))
@@ -41,6 +41,32 @@ export function AccountGate({ children }: { children: ReactNode }) {
     window.addEventListener("account-expired", expired);
     return () => window.removeEventListener("account-expired", expired);
   }, []);
+  useEffect(() => {
+    const controller = new AbortController();
+    setCode("");
+    if (!/^1[3-9]\d{9}$/.test(phone)) {
+      setLoginMode("invitation");
+      setCheckingMode(false);
+      return;
+    }
+    setCheckingMode(true);
+    void appFetch(`/api/auth/config?phone=${encodeURIComponent(phone)}`, {
+      signal: controller.signal,
+    })
+      .then(async (r) => {
+        if (!r.ok) throw Error();
+        const result = await r.json();
+        if (!controller.signal.aborted) setLoginMode(result.login_mode);
+      })
+      .catch(() => {
+        if (!controller.signal.aborted)
+          setError("暂时无法识别登录方式，请重新输入手机号");
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setCheckingMode(false);
+      });
+    return () => controller.abort();
+  }, [phone]);
   if (loading)
     return (
       <main className="account-login">
@@ -59,7 +85,11 @@ export function AccountGate({ children }: { children: ReactNode }) {
               const r = await appFetch("/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ phone, code }),
+                body: JSON.stringify(
+                  loginMode === "password"
+                    ? { phone, password: code }
+                    : { phone, code },
+                ),
               });
               const v = await r.json();
               if (!r.ok) throw Error(v.error?.message || "登录失败");
@@ -78,15 +108,7 @@ export function AccountGate({ children }: { children: ReactNode }) {
           <p className="account-slogan">帮你探好每一家店</p>
           <h1>登录你的创作空间</h1>
           <p>素材与制作的视频，按账号独立保存。</p>
-          {testMode ? (
-            <p className="account-test">
-              内部测试模式 · 暂未验证手机号归属
-              <br />
-              验证码固定为 666666，请勿对外开放使用。
-            </p>
-          ) : (
-            <p>短信登录尚未开通，请联系管理员。</p>
-          )}
+          <p>普通账号使用专属邀请码，管理员使用密码登录。</p>
           <label>
             手机号码
             <input
@@ -102,23 +124,29 @@ export function AccountGate({ children }: { children: ReactNode }) {
             />
           </label>
           <label>
-            验证码
+            {loginMode === "password" ? "管理员密码" : "专属邀请码"}
             <input
-              inputMode="numeric"
-              autoComplete="one-time-code"
-              maxLength={6}
-              pattern="[0-9]{6}"
+              type="password"
+              autoComplete="current-password"
+              maxLength={128}
               required
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              placeholder="请输入六位验证码"
+              placeholder={
+                checkingMode
+                  ? "正在识别登录方式…"
+                  : loginMode === "password"
+                    ? "请输入管理员密码"
+                    : "请输入专属邀请码"
+              }
+              disabled={checkingMode}
             />
           </label>
           {error && <p role="alert">{error}</p>}
-          <button disabled={busy || !testMode}>
-            {busy ? "登录中…" : "登录 / 注册"}
+          <button disabled={busy || checkingMode}>
+            {busy ? "登录中…" : "登录"}
           </button>
-          <small>首次登录自动建立账号</small>
+          <small>未获得邀请码？请联系管理员开通账号。</small>
         </form>
       </main>
     );
@@ -135,7 +163,9 @@ export function AccountGate({ children }: { children: ReactNode }) {
             {account.phone.slice(0, 3)}****{account.phone.slice(-4)} ·{" "}
             {account.role === "admin" ? "管理员" : "我的账号"}
           </span>
-          {testMode && <small>内部测试</small>}
+          {account.role === "admin" && (
+            <button onClick={() => setManaging(true)}>账号管理</button>
+          )}
           <button
             onClick={async () => {
               setBusy(true);
@@ -159,6 +189,9 @@ export function AccountGate({ children }: { children: ReactNode }) {
           {error && <small role="alert">{error}</small>}
         </div>
         <div key={account.id}>{children}</div>
+        {managing && account.role === "admin" && (
+          <AccountManagement onClose={() => setManaging(false)} />
+        )}
       </div>
     </AccountContext.Provider>
   );

@@ -6,6 +6,7 @@ import { createApp } from "../src/app.js";
 import { syncSubscriptionMessages } from "../src/brand-subscriptions.js";
 import { initCoupons } from "../src/coupons.js";
 import { openDatabase } from "../src/db.js";
+import { seedInvitation } from "./helpers/invitation.js";
 
 test("普通用户模糊订阅、通知去重、已读与取消订阅按账号隔离", async () => {
   const db = await openDatabase();
@@ -33,7 +34,12 @@ test("普通用户模糊订阅、通知去重、已读与取消订阅按账号�
       body: body === undefined ? undefined : JSON.stringify(body),
     });
   const login = async (phone: string) =>
-    (await call("/api/auth/login", "", { phone, code: "666666" })).headers
+    (
+      await call("/api/auth/login", "", {
+        phone,
+        code: await seedInvitation(db, phone),
+      })
+    ).headers
       .get("set-cookie")!
       .split(";")[0];
   try {

@@ -1,4 +1,4 @@
-const { apiBase } = require("../../config");
+const { brandIcon } = require("../../utils/brand-icon");
 const { request, notice, subscribeBrand } = require("../../utils/api");
 const categoryOptions = {
   food: [
@@ -143,7 +143,7 @@ Page({
             ...x,
             ...this.brandState(x.brand_id),
             key: x.brand_id + ":" + x.product_id,
-            iconUrl: apiBase + "/brand-icons/" + encodeURIComponent(x.brand_id),
+            iconUrl: "",
             brandInitial: Array.from(x.brand_name || "店")[0],
             iconFailed: false,
             price: money(x.price_fen),
@@ -154,6 +154,23 @@ Page({
         total: r.total,
         counts: r.counts || null,
       });
+      // Load authenticated images after rendering the list; never put a session token in image URLs.
+      const ids = [...new Set(r.items.map((x) => x.brand_id))];
+      let cursor = 0;
+      const worker = async () => {
+        while (cursor < ids.length && version === this.version) {
+          const id = ids[cursor++];
+          const iconUrl = await brandIcon(id);
+          if (version !== this.version || !iconUrl) continue;
+          const updates = {};
+          this.data.items.forEach((x, i) => {
+            if (x.brand_id === id)
+              updates["items[" + i + "].iconUrl"] = iconUrl;
+          });
+          this.setData(updates);
+        }
+      };
+      void Promise.all([worker(), worker(), worker()]);
     } catch (e) {
       if (version === this.version) this.setData({ error: e.message });
     } finally {

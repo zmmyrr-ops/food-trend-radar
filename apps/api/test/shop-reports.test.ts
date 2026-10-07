@@ -3,6 +3,7 @@ import test from "node:test";
 import { createAccounts } from "../src/accounts.js";
 import { createApp } from "../src/app.js";
 import { openDatabase } from "../src/db.js";
+import { seedInvitation } from "./helpers/invitation.js";
 
 test("users submit private reports; only admin can atomically review and enable brands", async () => {
   const db = await openDatabase();
@@ -26,7 +27,10 @@ test("users submit private reports; only admin can atomically review and enable 
       body: body === undefined ? undefined : JSON.stringify(body),
     });
   async function login(phone: string) {
-    const r = await call("/api/auth/login", "", { phone, code: "666666" });
+    const r = await call("/api/auth/login", "", {
+      phone,
+      code: await seedInvitation(db, phone),
+    });
     return r.headers.get("set-cookie")!.split(";")[0];
   }
   try {

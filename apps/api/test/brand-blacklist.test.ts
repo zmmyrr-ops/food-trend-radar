@@ -5,6 +5,7 @@ import { createAccounts } from "../src/accounts.js";
 import { createApp } from "../src/app.js";
 import { readBrandBlacklist } from "../src/brand-blacklist.js";
 import { openDatabase } from "../src/db.js";
+import { seedInvitation } from "./helpers/invitation.js";
 
 test("普通用户黑名单模糊搜索、添加去重、移除和账号隔离", async () => {
   const db = await openDatabase();
@@ -28,7 +29,12 @@ test("普通用户黑名单模糊搜索、添加去重、移除和账号隔离",
       body: body === undefined ? undefined : JSON.stringify(body),
     });
   const login = async (phone: string) =>
-    (await call("/api/auth/login", "", { phone, code: "666666" })).headers
+    (
+      await call("/api/auth/login", "", {
+        phone,
+        code: await seedInvitation(db, phone),
+      })
+    ).headers
       .get("set-cookie")!
       .split(";")[0];
   try {

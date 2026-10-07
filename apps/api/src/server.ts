@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createAccounts } from "./accounts.js";
 import { createApp } from "./app.js";
@@ -32,7 +33,19 @@ const operations = await createOperations(
   (label, work) => runtime.track(label, work),
 );
 const accounts = await createAccounts(db, {
-  testMode: process.env.AUTH_TEST_MODE === "true",
+  invitationExportPath: resolve(
+    projectRoot,
+    `data/secrets/account-invitations-${Date.now()}.json`,
+  ),
+  adminPasswordHash: await readFile(
+    resolve(projectRoot, "data/secrets/admin-login.json"),
+    "utf8",
+  )
+    .then((value) => JSON.parse(value).password_hash as string)
+    .catch((error) => {
+      if (error.code === "ENOENT") return undefined;
+      throw error;
+    }),
   secure: config.WEB_ORIGIN.startsWith("https:"),
   adminPhone: process.env.AUTH_ADMIN_PHONE,
 });
