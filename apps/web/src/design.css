@@ -1768,19 +1768,28 @@ button.visit-primary {
 .app-shell .coupon-filter-panel {
   background: #fff;
   border: 1px solid #e4eaf3;
-  border-radius: 16px;
-  padding: 18px 20px;
-  margin: 16px 0 12px;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin: 8px 0 10px;
   box-shadow: 0 3px 14px #23395d03;
 }
 .coupon-search-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 14px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #f0f3f8;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.coupon-search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 .coupon-search-row > label {
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -1793,10 +1802,10 @@ button.visit-primary {
   box-sizing: border-box;
   min-width: 0;
   width: 100%;
-  height: 40px;
-  min-height: 40px;
+  height: 34px;
+  min-height: 34px;
   margin: 0;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border: 1px solid #e3e9f2;
   border-radius: 9px;
   background: #f9fbfe;
@@ -1813,13 +1822,13 @@ button.visit-primary {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  margin-top: 14px;
+  margin-top: 8px;
 }
 .coupon-filter-caption {
   flex: 0 0 40px;
   font-size: 12px;
   color: #8390a4;
-  line-height: 32px;
+  line-height: 28px;
 }
 .coupon-category-options {
   display: flex;
@@ -1831,8 +1840,8 @@ button.visit-primary {
   background: transparent;
   color: #67778f;
   border-radius: 7px;
-  padding: 7px 11px;
-  min-height: 32px;
+  padding: 5px 10px;
+  min-height: 28px;
   line-height: 18px;
   font-size: 12px;
   margin: 0;
@@ -1852,7 +1861,7 @@ button.visit-primary {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 .coupon-filter-bottom .coupon-mode-filter {
   margin: 0;
@@ -1863,7 +1872,7 @@ button.visit-primary {
   width: 40px;
 }
 .coupon-filter-bottom .coupon-mode-option span {
-  padding: 5px 12px;
+  padding: 3px 10px;
   font-size: 12px;
 }
 .coupon-filter-tools {
@@ -1896,7 +1905,7 @@ button.visit-primary {
     grid-column: 1 / -1;
   }
   .app-shell .coupon-filter-panel {
-    padding: 14px;
+    padding: 10px 12px;
     border-radius: 12px;
   }
   .coupon-filter-bottom {

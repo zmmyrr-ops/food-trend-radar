@@ -215,7 +215,7 @@ export function CouponPicks({
       <div className="coupon-filter-panel">
         <div className="coupon-search-row">
           <label className="coupon-search-field">
-            搜索品牌或券{" "}
+            <span className="coupon-search-label">搜索品牌或券</span>
             <input
               value={searchInput}
               maxLength={100}
