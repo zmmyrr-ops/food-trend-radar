@@ -79,6 +79,14 @@ test("邀请码准入、管理员发放、重置撤销与匿名接口保护", as
     });
     assert.equal(created.status, 201);
     const user = await created.json();
+    assert.match(user.invitation_code, /^[1-9][0-9]{7}$/);
+    const encrypted = (
+      await db.query<{ invitation_encrypted: string }>(
+        "SELECT invitation_encrypted FROM accounts WHERE id=$1",
+        [user.account.id],
+      )
+    ).rows[0].invitation_encrypted;
+    assert.ok(encrypted && !encrypted.includes(user.invitation_code));
     assert.equal(
       (await call("/api/v3/accounts", admin, { phone: "13800000002" })).status,
       409,
@@ -130,7 +138,8 @@ test("邀请码准入、管理员发放、重置撤销与匿名接口保护", as
       200,
     );
     const listed = await (await call("/api/v3/accounts", admin)).text();
-    assert.ok(!listed.includes(rotated.invitation_code));
+    assert.ok(listed.includes(rotated.invitation_code));
+    assert.ok(!listed.includes("invitation_encrypted"));
     assert.ok(!listed.includes("invitation_hash"));
     assert.equal((await call("/api/auth/logout", admin, {})).status, 200);
     assert.equal((await call("/api/auth/me", admin)).status, 401);
@@ -148,10 +157,14 @@ test("既有手机号一次迁移、保留账号、撤销旧会话且不修改�
     await db.exec(
       "INSERT INTO accounts(id,phone) VALUES('11111111-1111-4111-8111-111111111111','13800000009'),('22222222-2222-4222-8222-222222222222','wx:test'); INSERT INTO account_sessions VALUES('old','11111111-1111-4111-8111-111111111111',now()+interval '1 day')",
     );
+    await db.query(
+      "UPDATE accounts SET invitation_hash='old-long-code-hash' WHERE phone='13800000009'",
+    );
     const path = join(dir, "codes.json");
     await createAccounts(db, { invitationExportPath: path });
     const exported = JSON.parse(await readFile(path, "utf8"));
     assert.equal(exported.length, 1);
+    assert.match(exported[0].invitation_code, /^[1-9][0-9]{7}$/);
     assert.equal(exported[0].id, "11111111-1111-4111-8111-111111111111");
     assert.equal((await stat(path)).mode & 0o777, 0o600);
     assert.equal(
@@ -166,7 +179,20 @@ test("既有手机号一次迁移、保留账号、撤销旧会话且不修改�
       ).rows[0].invitation_hash,
       null,
     );
+    const before = (
+      await db.query<{ invitation_encrypted: string }>(
+        "SELECT invitation_encrypted FROM accounts WHERE phone='13800000009'",
+      )
+    ).rows[0].invitation_encrypted;
     await createAccounts(db, { invitationExportPath: path }); // no rotation on restart
+    assert.equal(
+      (
+        await db.query<{ invitation_encrypted: string }>(
+          "SELECT invitation_encrypted FROM accounts WHERE phone='13800000009'",
+        )
+      ).rows[0].invitation_encrypted,
+      before,
+    );
     assert.equal(
       JSON.parse(await readFile(path, "utf8"))[0].invitation_code,
       exported[0].invitation_code,

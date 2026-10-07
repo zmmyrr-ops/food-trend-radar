@@ -90,3 +90,36 @@
 .account-management [role="alert"] {
   color: #c73e50;
 }
+
+.account-invitation-cell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+}
+.account-invitation-cell code {
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+  user-select: all;
+  color: #24324b;
+}
+.account-invitation-cell > span {
+  color: #8995a8;
+  font-size: 13px;
+}
+.account-management li {
+  gap: 12px;
+  flex-wrap: wrap;
+}
+@media (max-width: 480px) {
+  .account-management-body {
+    padding: 16px;
+  }
+  .account-management li > div:first-child {
+    flex-basis: 100%;
+  }
+  .account-management form {
+    flex-wrap: wrap;
+  }
+}

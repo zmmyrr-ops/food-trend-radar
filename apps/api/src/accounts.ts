@@ -1,12 +1,15 @@
 import {
+  createCipheriv,
+  createDecipheriv,
   createHash,
   randomBytes,
+  randomInt,
   randomUUID,
   scrypt,
   timingSafeEqual,
 } from "node:crypto";
-import { mkdir, writeFile } from "node:fs/promises";
-import { dirname } from "node:path";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { dirname, join } from "node:path";
 import type { PGlite } from "@electric-sql/pglite";
 import type { Express, Request, RequestHandler } from "express";
 import { z } from "zod";
@@ -20,6 +23,75 @@ export function ownerOf(req: Request): string {
   );
 }
 const digest = (v: string) => createHash("sha256").update(v).digest("hex");
+const memoryKeys = new WeakMap<object, Buffer>();
+async function invitationKey(db: PGlite, exportPath?: string) {
+  if (!exportPath) {
+    if (!memoryKeys.has(db)) memoryKeys.set(db, randomBytes(32));
+    return memoryKeys.get(db)!;
+  }
+  const path = join(dirname(exportPath), "account-invitation-key");
+  try {
+    const key = await readFile(path);
+    if (key.length !== 32) throw Error("Invalid invitation encryption key");
+    return key;
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+    if (
+      (
+        await db.query(
+          "SELECT id FROM accounts WHERE invitation_encrypted IS NOT NULL LIMIT 1",
+        )
+      ).rows.length
+    )
+      throw Error(
+        "Invitation encryption key is missing; restore it from backup",
+      );
+    await mkdir(dirname(path), { recursive: true, mode: 0o700 });
+    try {
+      await writeFile(path, randomBytes(32), { mode: 0o600, flag: "wx" });
+    } catch (writeError) {
+      if ((writeError as NodeJS.ErrnoException).code !== "EEXIST")
+        throw writeError;
+    }
+    const key = await readFile(path);
+    if (key.length !== 32) throw Error("Invalid invitation encryption key");
+    return key;
+  }
+}
+function encryptInvitation(code: string, phone: string, key: Buffer) {
+  const iv = randomBytes(12),
+    cipher = createCipheriv("aes-256-gcm", key, iv);
+  cipher.setAAD(Buffer.from(phone));
+  const encrypted = Buffer.concat([
+    cipher.update(code, "utf8"),
+    cipher.final(),
+  ]);
+  return Buffer.concat([iv, cipher.getAuthTag(), encrypted]).toString("base64");
+}
+function decryptInvitation(value: string, phone: string, key: Buffer) {
+  const bytes = Buffer.from(value, "base64"),
+    decipher = createDecipheriv("aes-256-gcm", key, bytes.subarray(0, 12));
+  decipher.setAAD(Buffer.from(phone));
+  decipher.setAuthTag(bytes.subarray(12, 28));
+  return Buffer.concat([
+    decipher.update(bytes.subarray(28)),
+    decipher.final(),
+  ]).toString("utf8");
+}
+async function newInvitation(db: Pick<PGlite, "query">) {
+  for (let i = 0; i < 10; i++) {
+    const code = String(randomInt(10000000, 100000000));
+    if (
+      !(
+        await db.query("SELECT id FROM accounts WHERE invitation_hash=$1", [
+          digest(code),
+        ])
+      ).rows.length
+    )
+      return code;
+  }
+  throw Error("Could not allocate a unique invitation code");
+}
 export async function hashAccountPassword(
   password: string,
   salt = randomBytes(16).toString("hex"),
@@ -52,8 +124,9 @@ export async function createAccounts(
     CREATE TABLE IF NOT EXISTS account_sessions(token_hash text PRIMARY KEY,account_id uuid NOT NULL REFERENCES accounts(id),expires_at timestamptz NOT NULL);
     CREATE TABLE IF NOT EXISTS account_login_limits(key text PRIMARY KEY,attempts int NOT NULL,expires_at timestamptz NOT NULL);`);
   await db.exec(
-    "ALTER TABLE accounts ADD COLUMN IF NOT EXISTS invitation_hash text; ALTER TABLE accounts ADD COLUMN IF NOT EXISTS invitation_updated_at timestamptz; ALTER TABLE accounts ADD COLUMN IF NOT EXISTS password_hash text",
+    "ALTER TABLE accounts ADD COLUMN IF NOT EXISTS invitation_hash text; ALTER TABLE accounts ADD COLUMN IF NOT EXISTS invitation_updated_at timestamptz; ALTER TABLE accounts ADD COLUMN IF NOT EXISTS password_hash text; ALTER TABLE accounts ADD COLUMN IF NOT EXISTS invitation_encrypted text",
   );
+  const key = await invitationKey(db, options.invitationExportPath);
   if (options.adminPhone) {
     if (!/^1[3-9]\d{9}$/.test(options.adminPhone))
       throw Error("Invalid administrator phone");
@@ -96,16 +169,20 @@ export async function createAccounts(
     await db.transaction(async (tx) => {
       const rows = (
         await tx.query<{ id: string; phone: string; role: string }>(
-          "SELECT id,phone,role FROM accounts WHERE phone ~ '^1[3-9][0-9]{9}$' AND role<>'admin' AND invitation_hash IS NULL FOR UPDATE",
+          "SELECT id,phone,role FROM accounts WHERE phone ~ '^1[3-9][0-9]{9}$' AND role<>'admin' AND invitation_encrypted IS NULL FOR UPDATE",
         )
       ).rows;
       if (!rows.length) return;
       const exported = [];
       for (const account of rows) {
-        const code = randomBytes(12).toString("hex");
+        const code = await newInvitation(tx);
         await tx.query(
-          "UPDATE accounts SET invitation_hash=$1,invitation_updated_at=now() WHERE id=$2",
-          [digest(code), account.id],
+          "UPDATE accounts SET invitation_hash=$1,invitation_updated_at=now(),invitation_encrypted=$3 WHERE id=$2",
+          [
+            digest(code),
+            account.id,
+            encryptInvitation(code, account.phone, key),
+          ],
         );
         await tx.query("DELETE FROM account_sessions WHERE account_id=$1", [
           account.id,
@@ -294,11 +371,24 @@ export async function createAccounts(
     });
     app.get("/api/v3/accounts", async (_req, res) => {
       const items = (
-        await db.query(
-          "SELECT id,phone,role,created_at,invitation_updated_at,invitation_hash IS NOT NULL AS has_invitation FROM accounts WHERE phone ~ '^1[3-9][0-9]{9}$' ORDER BY created_at DESC",
+        await db.query<{
+          id: string;
+          phone: string;
+          role: string;
+          invitation_encrypted: string | null;
+        }>(
+          "SELECT id,phone,role,created_at,invitation_updated_at,invitation_encrypted,invitation_hash IS NOT NULL AS has_invitation FROM accounts WHERE phone ~ '^1[3-9][0-9]{9}$' ORDER BY created_at DESC",
         )
       ).rows;
-      res.json({ items });
+      res.json({
+        items: items.map(({ invitation_encrypted, ...account }) => ({
+          ...account,
+          invitation_code:
+            account.role !== "admin" && invitation_encrypted
+              ? decryptInvitation(invitation_encrypted, account.phone, key)
+              : null,
+        })),
+      });
     });
     app.post("/api/v3/accounts", async (req, res) => {
       const input = z
@@ -309,13 +399,21 @@ export async function createAccounts(
         return res
           .status(400)
           .json({ error: { message: "请输入正确的手机号" } });
-      const code = randomBytes(12).toString("hex");
-      const account = (
-        await db.query(
-          "INSERT INTO accounts(id,phone,invitation_hash,invitation_updated_at) VALUES($1,$2,$3,now()) ON CONFLICT(phone) DO NOTHING RETURNING id,phone,role",
-          [randomUUID(), input.data.phone, digest(code)],
-        )
-      ).rows[0];
+      const { account, code } = await db.transaction(async (tx) => {
+        const code = await newInvitation(tx);
+        const account = (
+          await tx.query(
+            "INSERT INTO accounts(id,phone,invitation_hash,invitation_updated_at,invitation_encrypted) VALUES($1,$2,$3,now(),$4) ON CONFLICT(phone) DO NOTHING RETURNING id,phone,role",
+            [
+              randomUUID(),
+              input.data.phone,
+              digest(code),
+              encryptInvitation(code, input.data.phone, key),
+            ],
+          )
+        ).rows[0];
+        return { account, code };
+      });
       if (!account)
         return res
           .status(409)
@@ -325,19 +423,28 @@ export async function createAccounts(
     app.post("/api/v3/accounts/:id/invitation", async (req, res) => {
       const id = z.uuid().safeParse(req.params.id);
       if (!id.success) return res.sendStatus(404);
-      const code = randomBytes(12).toString("hex");
-      const account = await db.transaction(async (tx) => {
-        const row = (
-          await tx.query(
-            "UPDATE accounts SET invitation_hash=$1,invitation_updated_at=now() WHERE id=$2 AND role<>'admin' AND phone ~ '^1[3-9][0-9]{9}$' RETURNING id,phone,role",
-            [digest(code), id.data],
+      const { account, code } = await db.transaction(async (tx) => {
+        const code = await newInvitation(tx);
+        const account = (
+          await tx.query<{ id: string; phone: string; role: string }>(
+            "SELECT id,phone,role FROM accounts WHERE id=$1 AND role<>'admin' AND phone ~ '^1[3-9][0-9]{9}$' FOR UPDATE",
+            [id.data],
           )
         ).rows[0];
-        if (row)
+        if (account) {
+          await tx.query(
+            "UPDATE accounts SET invitation_hash=$1,invitation_updated_at=now(),invitation_encrypted=$3 WHERE id=$2",
+            [
+              digest(code),
+              id.data,
+              encryptInvitation(code, account.phone, key),
+            ],
+          );
           await tx.query("DELETE FROM account_sessions WHERE account_id=$1", [
             id.data,
           ]);
-        return row;
+        }
+        return { account, code };
       });
       if (!account) return res.sendStatus(404);
       res.json({ account, invitation_code: code });

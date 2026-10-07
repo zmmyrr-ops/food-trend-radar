@@ -128,7 +128,8 @@ export function AccountGate({ children }: { children: ReactNode }) {
             <input
               type="password"
               autoComplete="current-password"
-              maxLength={128}
+              maxLength={loginMode === "password" ? 128 : 8}
+              inputMode={loginMode === "password" ? "text" : "numeric"}
               required
               value={code}
               onChange={(e) => setCode(e.target.value)}
@@ -137,7 +138,7 @@ export function AccountGate({ children }: { children: ReactNode }) {
                   ? "正在识别登录方式…"
                   : loginMode === "password"
                     ? "请输入管理员密码"
-                    : "请输入专属邀请码"
+                    : "请输入8位数字邀请码"
               }
               disabled={checkingMode}
             />

@@ -8,6 +8,7 @@ type Account = {
   phone: string;
   role: string;
   has_invitation: boolean;
+  invitation_code: string | null;
 };
 export function AccountManagement({ onClose }: { onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -18,6 +19,7 @@ export function AccountManagement({ onClose }: { onClose: () => void }) {
   const [issued, setIssued] = useState<{ phone: string; code: string } | null>(
     null,
   );
+  const [copiedAccount, setCopiedAccount] = useState("");
   const [copied, setCopied] = useState(false);
   async function refresh() {
     const r = await appFetch("/api/v3/accounts");
@@ -39,6 +41,7 @@ export function AccountManagement({ onClose }: { onClose: () => void }) {
     setBusy(true);
     setError("");
     setCopied(false);
+    setCopiedAccount("");
     try {
       const r = await appFetch(
         account
@@ -96,7 +99,7 @@ export function AccountManagement({ onClose }: { onClose: () => void }) {
           <section className="invitation-result">
             <strong>手机号：{issued.phone}</strong>
             <code>{issued.code}</code>
-            <p>邀请码仅展示这一次，请复制后单独发给对应用户。</p>
+            <p>8 位数字邀请码，可随时在账号列表中查看和复制。</p>
             <button
               onClick={async () => {
                 try {
@@ -122,12 +125,36 @@ export function AccountManagement({ onClose }: { onClose: () => void }) {
                   {account.role === "admin" ? "管理员" : "普通用户"}
                 </small>
               </div>
-              <button
-                disabled={busy || account.role === "admin"}
-                onClick={() => void issue(account)}
-              >
-                {account.role === "admin" ? "密码登录" : "重置邀请码"}
-              </button>
+              <div className="account-invitation-cell">
+                {account.role === "admin" ? (
+                  <span>密码登录</span>
+                ) : (
+                  <>
+                    <code>{account.invitation_code || "待生成"}</code>
+                    {account.invitation_code && (
+                      <button
+                        onClick={async () => {
+                          try {
+                            await navigator.clipboard.writeText(
+                              account.invitation_code!,
+                            );
+                            setCopiedAccount(account.id);
+                          } catch {
+                            setError("复制失败，请手动复制邀请码");
+                          }
+                        }}
+                      >
+                        {copiedAccount === account.id ? "已复制" : "复制"}
+                      </button>
+                    )}
+                  </>
+                )}
+              </div>
+              {account.role !== "admin" && (
+                <button disabled={busy} onClick={() => void issue(account)}>
+                  重置邀请码
+                </button>
+              )}
             </li>
           ))}
         </ul>
