@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { memberRequest } from "./Membership";
 import "./membership.css";
 export function AccountManagement() {
+  const panelRef = useRef<HTMLElement>(null);
   const [items, setItems] = useState<any[]>([]),
     [error, setError] = useState(""),
+    [success, setSuccess] = useState(""),
+    [ledgerLoading, setLedgerLoading] = useState(false),
     [busy, setBusy] = useState(false),
     [selected, setSelected] = useState(""),
     [amount, setAmount] = useState(100),
@@ -20,14 +23,30 @@ export function AccountManagement() {
     void load().catch((e) => setError(e.message));
   }, []);
   useEffect(() => {
+    let active = true;
     setLedger([]);
-    if (selected)
-      void memberRequest(
-        `/api/admin/members/${selected}/points?offset=${ledgerOffset}`,
-      )
-        .then((d) => setLedger(d.items))
-        .catch((e) => setError(e.message));
+    if (!selected) return;
+    setLedgerLoading(true);
+    void memberRequest(
+      `/api/admin/members/${selected}/points?offset=${ledgerOffset}`,
+    )
+      .then((d) => {
+        if (active) setLedger(d.items);
+      })
+      .catch((e) => {
+        if (active) setError(e.message);
+      })
+      .finally(() => {
+        if (active) setLedgerLoading(false);
+      });
+    return () => {
+      active = false;
+    };
   }, [selected, ledgerOffset]);
+  useEffect(() => {
+    if (selected)
+      panelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [selected]);
   const filtered = items.filter((i) => i.phone.includes(query)),
     current = items.find((i) => i.id === selected);
   return (
@@ -45,6 +64,121 @@ export function AccountManagement() {
         <p role="alert" className="member-error">
           {error}
         </p>
+      )}
+      {current && (
+        <section
+          ref={panelRef}
+          className="member-card member-admin-detail"
+          aria-label="用户积分管理"
+        >
+          <div className="member-detail-heading">
+            <h3>
+              {current.phone} · 积分管理{" "}
+              <small>余额 {current.balance} 积分</small>
+            </h3>
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => setSelected("")}
+            >
+              收起
+            </button>
+          </div>
+          {success && (
+            <p role="status" className="member-success">
+              {success}
+            </p>
+          )}
+          <form
+            className="member-password"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              setBusy(true);
+              setError("");
+              setSuccess("");
+              try {
+                await memberRequest(`/api/admin/members/${selected}/points`, {
+                  amount,
+                  note,
+                  request_id: requestId,
+                });
+                setRequestId(crypto.randomUUID());
+                setSuccess(`已成功赠送 ${amount} 积分`);
+                await load();
+                setLedger(
+                  (await memberRequest(`/api/admin/members/${selected}/points`))
+                    .items,
+                );
+                setLedgerOffset(0);
+              } catch (e) {
+                setError((e as Error).message);
+              } finally {
+                setBusy(false);
+              }
+            }}
+          >
+            <label>
+              赠送积分
+              <input
+                required
+                type="number"
+                min={1}
+                max={1000000}
+                value={amount}
+                onChange={(e) => {
+                  setAmount(Number(e.target.value));
+                  setRequestId(crypto.randomUUID());
+                }}
+              />
+            </label>
+            <label>
+              内部备注
+              <input
+                maxLength={200}
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+              />
+            </label>
+            <button disabled={busy}>{busy ? "正在赠送…" : "确认赠送"}</button>
+          </form>
+          <small>赠送会增加用户余额，该条记录仅管理员可见。</small>
+          {ledgerLoading ? (
+            <p role="status">正在加载积分明细…</p>
+          ) : (
+            !ledger.length && <p className="member-muted">暂无积分记录</p>
+          )}
+          <ul className="member-records">
+            {ledger.map((e) => (
+              <li key={e.id}>
+                <div>
+                  <strong>{e.reason}</strong>
+                  <small>
+                    {new Date(e.created_at).toLocaleString("zh-CN")}
+                    {e.hidden ? " · 仅管理员可见" : ""}
+                  </small>
+                </div>
+                <b>
+                  {e.amount > 0 ? "+" : ""}
+                  {e.amount}
+                </b>
+              </li>
+            ))}
+          </ul>
+          <div className="member-pagination">
+            <button
+              disabled={!ledgerOffset}
+              onClick={() => setLedgerOffset((x) => Math.max(0, x - 30))}
+            >
+              上一页
+            </button>
+            <button
+              disabled={ledger.length < 30}
+              onClick={() => setLedgerOffset((x) => x + 30)}
+            >
+              下一页
+            </button>
+          </div>
+        </section>
       )}
       <input
         className="member-search"
@@ -84,8 +218,17 @@ export function AccountManagement() {
                 <td>{a.inviter_phone || "—"}</td>
                 <td>
                   <button
+                    type="button"
+                    disabled={busy}
+                    aria-pressed={selected === a.id}
                     onClick={() => {
+                      setError("");
+                      setSuccess("");
                       setSelected(a.id);
+                      panelRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
                       setLedgerOffset(0);
                       setRequestId(crypto.randomUUID());
                     }}
@@ -113,93 +256,6 @@ export function AccountManagement() {
           下一页
         </button>
       </div>
-      {current && (
-        <section className="member-card">
-          <h3>{current.phone} · 积分管理</h3>
-          <form
-            className="member-password"
-            onSubmit={async (e) => {
-              e.preventDefault();
-              setBusy(true);
-              setError("");
-              try {
-                await memberRequest(`/api/admin/members/${selected}/points`, {
-                  amount,
-                  note,
-                  request_id: requestId,
-                });
-                setRequestId(crypto.randomUUID());
-                await load();
-                setLedger(
-                  (await memberRequest(`/api/admin/members/${selected}/points`))
-                    .items,
-                );
-                setLedgerOffset(0);
-              } catch (e) {
-                setError((e as Error).message);
-              } finally {
-                setBusy(false);
-              }
-            }}
-          >
-            <label>
-              赠送积分
-              <input
-                required
-                type="number"
-                min={1}
-                max={1000000}
-                value={amount}
-                onChange={(e) => {
-                  setAmount(Number(e.target.value));
-                  setRequestId(crypto.randomUUID());
-                }}
-              />
-            </label>
-            <label>
-              内部备注
-              <input
-                maxLength={200}
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
-              />
-            </label>
-            <button disabled={busy}>确认赠送</button>
-          </form>
-          <small>赠送会增加用户余额，该条记录仅管理员可见。</small>
-          <ul className="member-records">
-            {ledger.map((e) => (
-              <li key={e.id}>
-                <div>
-                  <strong>{e.reason}</strong>
-                  <small>
-                    {new Date(e.created_at).toLocaleString("zh-CN")}
-                    {e.hidden ? " · 仅管理员可见" : ""}
-                  </small>
-                </div>
-                <b>
-                  {e.amount > 0 ? "+" : ""}
-                  {e.amount}
-                </b>
-              </li>
-            ))}
-          </ul>
-          <div className="member-pagination">
-            <button
-              disabled={!ledgerOffset}
-              onClick={() => setLedgerOffset((x) => Math.max(0, x - 30))}
-            >
-              上一页
-            </button>
-            <button
-              disabled={ledger.length < 30}
-              onClick={() => setLedgerOffset((x) => x + 30)}
-            >
-              下一页
-            </button>
-          </div>
-        </section>
-      )}
     </section>
   );
 }

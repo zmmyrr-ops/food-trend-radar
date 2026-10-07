@@ -480,3 +480,23 @@ main.auth-loading {
   margin-left: 0;
   letter-spacing: 0;
 }
+
+.member-admin-detail {
+  scroll-margin-top: 90px;
+  border-color: #b8d0ff;
+}
+.member-detail-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.member-detail-heading h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.member-page button[aria-pressed="true"] {
+  background: #dce9ff;
+  border-color: #8eb5ff;
+}
