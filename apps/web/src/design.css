@@ -2074,3 +2074,16 @@ button.visit-primary {
     margin-bottom: 8px;
   }
 }
+
+/* Anchor both plan actions to the bottom of equal-height coupon cards. */
+.app-shell .picks-panel .coupon-card > .studio-entry {
+  margin-top: auto;
+  min-height: 36px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100%;
+  line-height: 18px;
+}
