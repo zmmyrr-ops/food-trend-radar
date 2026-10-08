@@ -27,7 +27,7 @@ test("researched AI charges 30 once, isolates reports and refunds failed researc
     run_id: String(i),
     observed_at: new Date(now - h * 3600000).toISOString(),
     payload: {
-      monthly_sales: String(120 - i * 20),
+      monthly_sales: String(400 - i * 300),
       platform_brand_id: "p",
       identity: "name_match",
       origin_price_fen: 200,

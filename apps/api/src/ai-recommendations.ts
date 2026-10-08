@@ -10,14 +10,14 @@ import {
   type Research,
   researchBrand,
 } from "./brand-research.js";
-import type { combinePicks } from "./coupon-picks.js";
+import { type combinePicks, priorityAdmission } from "./coupon-picks.js";
 import { changePoints, refundPoints } from "./points.js";
 
 type Pick = ReturnType<typeof combinePicks>[number];
 type Scope = "all" | "food" | "leisure";
 const scopeSchema = z.enum(["all", "food", "leisure"]).default("all");
 const MODEL = "deepseek-flash";
-const VERSION = "coupon-sales-research-v5";
+const VERSION = "coupon-sales-research-v6";
 const outputSchema = z
   .object({
     summary: z.string().min(1).max(1200),
@@ -45,13 +45,7 @@ export function aiCandidates(picks: Pick[], now = Date.now()) {
   return picks
     .filter((p) => {
       const age = now - Date.parse(p.observed_at);
-      return (
-        age >= 0 &&
-        age <= 36 * 3600000 &&
-        !p.use_outlook.fully_excluded &&
-        p.priority.value_gate.eligible &&
-        p.priority.score > 0
-      );
+      return age >= 0 && age <= 36 * 3600000 && priorityAdmission(p);
     })
     .sort(
       (a, b) =>

@@ -103,7 +103,7 @@ export function pickPriority(input: {
   const reason =
     rate === null
       ? "优惠证据不足，暂不进入优先券"
-      : `${basis}优惠 ${(rate * 100).toFixed(1)}%；${eligible ? "达到优先券优惠门槛" : "不足10%，不进入优先券"}；优惠不足20%时按比例降低总分`;
+      : `${basis}优惠 ${(rate * 100).toFixed(1)}%；${eligible ? "达到基础优惠评分门槛，优先券另需满足质量与增长条件" : "不足10%，不进入优先券"}；优惠不足20%时按比例降低总分`;
   return {
     version: "priority-v6",
     raw_score,

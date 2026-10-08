@@ -198,6 +198,39 @@ const inputSchema = z.object({
   offset: z.coerce.number().int().min(0).default(0),
   limit: z.coerce.number().int().min(1).max(100).default(20),
 });
+export function priorityAdmission(x: ReturnType<typeof combinePicks>[number]) {
+  const rate = x.priority.value_gate.rate;
+  if (
+    x.use_outlook.fully_excluded ||
+    !x.priority.value_gate.eligible ||
+    rate == null ||
+    rate < 0.2
+  )
+    return false;
+  // A new coupon may lack comparable sales; only a substantial discount earns entry.
+  if (x.is_new && rate >= 0.4 && x.priority.score >= 30) return true;
+  const growing =
+    x.speed != null &&
+    x.speed >= 1 &&
+    x.net_change != null &&
+    x.net_change >= 5 &&
+    x.hours != null &&
+    x.hours >= 0.5;
+  const cheaper =
+    x.kind === "price_drop" &&
+    (x.reduction_rate ?? 0) >= 0.1 &&
+    (x.saving_fen ?? 0) >= 1000;
+  return x.priority.score >= 40 && (growing || cheaper);
+}
+export function isHotPick(x: ReturnType<typeof combinePicks>[number]) {
+  return (
+    !x.use_outlook.fully_excluded &&
+    (x.speed ?? 0) >= 5 &&
+    (x.acceleration ?? 0) > 0 &&
+    (x.net_change ?? 0) >= 5 &&
+    (x.hours ?? 0) >= 0.5
+  );
+}
 export function selectPicks(
   items: ReturnType<typeof combinePicks>,
   q: z.infer<typeof inputSchema>,
@@ -209,14 +242,9 @@ export function selectPicks(
       inChannel(x.category, q.channel) &&
       (!excludeBlockedFromAll || !blockedBrands.has(x.brand_id)),
   );
+  const brandCounts = new Map<string, number>();
   const ranked = items
-    .filter(
-      (x) =>
-        !blockedBrands.has(x.brand_id) &&
-        !x.use_outlook.fully_excluded &&
-        x.priority.value_gate.eligible &&
-        x.priority.score > 0,
-    )
+    .filter((x) => !blockedBrands.has(x.brand_id) && priorityAdmission(x))
     .sort(
       (a, b) =>
         b.priority.score - a.priority.score ||
@@ -224,6 +252,12 @@ export function selectPicks(
           `${b.brand_id}:${b.product_id}`,
         ),
     )
+    .filter((x) => {
+      const count = brandCounts.get(x.brand_id) ?? 0;
+      if (count >= 3) return false;
+      brandCounts.set(x.brand_id, count + 1);
+      return true;
+    })
     .slice(0, 500);
   const top = new Set(ranked.map((x) => `${x.brand_id}:${x.product_id}`));
   const scoped = items.filter(
@@ -527,12 +561,14 @@ export function registerCouponPicks(
           : null,
         model: {
           version: "priority-v6",
-          note: "初始规则排序，非爆款概率。先计算基础分，再乘优惠系数min(1,优惠比例/20%)；优惠不足10%或证据不足不进入优先券。优先使用原价折扣，缺失时用历史降价替代，已知低折扣不能被历史降价抵消。销量速度30、加速度15、原价折扣25、较上次降价10、品牌指数10、新上券10。首次有效发现后24小时内新上券得10分，到期撤销，不随采集刷新延长；首次建库及历史券重新出现不算新上。原价折扣以平台原价为参考，优惠比例达到50%得25分，线性封顶；仅在单一明确售价且原价不低于售价时计算，平台原价不等于历史成交价；缺失项不计分、不重新分配权重。品牌指数使用上海7日搜索指数环比，-25%计0分、持平5分、+25%计10分，线性封顶，超过72小时不计分。天气仅作背景，不推断销量增益。明确禁用日期按未来72小时受限时长降低优先分，节假日禁用最高20分，全窗口禁用为0分。近36小时历史禁用证据在本轮缺失时仅作待复核提醒并暂限20分，不当作当前确认。",
+          note: "初始规则排序，非爆款概率。先计算基础分，再乘优惠系数min(1,优惠比例/20%)；优先券要求优惠至少20%、总分至少40分，且有有效销量增长或较上次降价至少10%并节省10元；新券优惠至少40%且总分至少30分可独立入选。每品牌最多3张，不凑满500张。优先使用原价折扣，缺失时用历史降价替代，已知低折扣不能被历史降价抵消。销量速度30、加速度15、原价折扣25、较上次降价10、品牌指数10、新上券10。首次有效发现后24小时内新上券得10分，到期撤销，不随采集刷新延长；首次建库及历史券重新出现不算新上。原价折扣以平台原价为参考，优惠比例达到50%得25分，线性封顶；仅在单一明确售价且原价不低于售价时计算，平台原价不等于历史成交价；缺失项不计分、不重新分配权重。品牌指数使用上海7日搜索指数环比，-25%计0分、持平5分、+25%计10分，线性封顶，超过72小时不计分。天气仅作背景，不推断销量增益。明确禁用日期按未来72小时受限时长降低优先分，节假日禁用最高20分，全窗口禁用为0分。近36小时历史禁用证据在本轮缺失时仅作待复核提醒并暂限20分，不当作当前确认。",
         },
         counts,
         total: filtered.length,
         pool_limit: 500,
-        items: filtered.slice(q.offset, q.offset + q.limit),
+        items: filtered
+          .slice(q.offset, q.offset + q.limit)
+          .map((x) => ({ ...x, is_hot: isHotPick(x) })),
         calculated_at: filtered[0]?.use_outlook.generated_at ?? null,
         generated_at: new Date().toISOString(),
       });

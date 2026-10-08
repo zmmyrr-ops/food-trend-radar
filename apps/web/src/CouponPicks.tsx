@@ -10,6 +10,7 @@ import { AddToVisitPlan, type VisitPlan, visitRequest } from "./VisitPlans";
 
 type Pick = {
   is_new?: boolean;
+  is_hot?: boolean;
   brand_index: {
     keyword: string;
     status: string;
@@ -336,7 +337,7 @@ export function CouponPicks({
             <details className="method-note">
               <summary>评分口径与天气背景</summary>
               <p>
-                优先券最多展示当前频道500张；全部券不受此上限限制。分数为选题参考，并非爆款概率。
+                优先券按优惠和增长证据筛选，每品牌最多3张，最多500张，不凑数；全部券不受此限制。分数为选题参考，并非爆款概率。
               </p>
               <p>{data.model?.note}</p>
               {data.context ? (
@@ -460,16 +461,13 @@ export function CouponPicks({
                     <span className="coupon-plan-badge">✓ 已加入探店计划</span>
                   )}
                 </div>
-                {(x.is_new ||
-                  ![
-                    "price_drop",
-                    "quantity_increase",
-                    "terms_changed",
-                  ].includes(x.kind)) && (
+                {(x.is_new || x.is_hot) && (
                   <span
                     className={`fresh-coupon-badge${x.is_new ? "" : " hot-coupon-badge"}`}
-                    title={x.is_new ? "首次发现后24小时内" : "热度观察"}
-                    aria-label={x.is_new ? "新上券" : "热度观察"}
+                    title={
+                      x.is_new ? "首次发现后24小时内" : "销量持续升温且增长加快"
+                    }
+                    aria-label={x.is_new ? "新上券" : "销量持续升温且增长加快"}
                   >
                     {x.is_new ? "新" : "热"}
                   </span>

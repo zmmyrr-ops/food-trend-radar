@@ -3,7 +3,9 @@ import test from "node:test";
 import express from "express";
 import {
   combinePicks,
+  isHotPick,
   picksCsv,
+  priorityAdmission,
   registerCouponPicks,
   selectPicks,
 } from "../src/coupon-picks.js";
@@ -270,7 +272,7 @@ test("优先券排除72小时全部禁用；部分禁用保留原文，缺失与
   assert.equal(partial[0].use_outlook.fully_excluded, false);
   assert.equal(
     selectPicks(partial, { ...query, view: "recommended" }).filtered.length,
-    1,
+    0,
   );
 
   const unmatched = combinePicks(
@@ -283,7 +285,7 @@ test("优先券排除72小时全部禁用；部分禁用保留原文，缺失与
   assert.equal(unmatched[0].use_outlook.evidence_status, "missing_or_stale");
   assert.equal(
     selectPicks(unmatched, { ...query, view: "recommended" }).filtered.length,
-    1,
+    0,
   );
   const zero = combinePicks([heat("1", "100")], [], now);
   assert.equal(
@@ -334,12 +336,14 @@ test("美食游玩在排名、统计及筛选前隔离，不被另一频道前50
   leisure.category = "亲子乐园";
   for (const p of [food, leisure]) {
     p.priority.value_gate.eligible = true;
-    p.priority.score = p === food ? 80 : 20;
+    p.priority.score = 80;
+    p.priority.value_gate.rate = 0.4;
     p.use_outlook.fully_excluded = false;
   }
   const rows = [
     ...Array.from({ length: 510 }, (_, i) => ({
       ...food,
+      brand_id: `brand${i}`,
       product_id: `f${i}`,
     })),
     leisure,
@@ -412,6 +416,7 @@ test("黑名单在前500排名之前排除，全部券保留，移除后恢复�
   const [item] = combinePicks([heat()], []);
   item.priority.value_gate.eligible = true;
   item.priority.score = 80;
+  item.priority.value_gate.rate = 0.4;
   item.use_outlook.fully_excluded = false;
   const rows = Array.from({ length: 510 }, (_, i) => ({
     ...item,
@@ -427,4 +432,84 @@ test("黑名单在前500排名之前排除，全部券保留，移除后恢复�
   assert.equal(selectPicks(rows, query, blocked).filtered.length, 510);
   assert.equal(selectPicks([rows[0]], q, blocked).filtered.length, 0);
   assert.equal(selectPicks([rows[0]], q).filtered.length, 1);
+});
+
+test("优先券质量门槛、新券独立入选、品牌配额与热角标", () => {
+  const item = combinePicks([heat()], [], now)[0];
+  item.priority.value_gate = {
+    rate: 0.4,
+    factor: 1,
+    eligible: true,
+    reason: "test",
+  };
+  item.priority.score = 45;
+  item.speed = 6;
+  item.net_change = 6;
+  item.hours = 1;
+  item.acceleration = 1;
+  assert.equal(priorityAdmission(item), true);
+  assert.equal(isHotPick(item), true);
+  assert.equal(isHotPick({ ...item, acceleration: 0 }), false);
+  assert.equal(priorityAdmission({ ...item, speed: null }), false);
+  assert.equal(
+    priorityAdmission({ ...item, priority: { ...item.priority, score: 39 } }),
+    false,
+  );
+  assert.equal(
+    priorityAdmission({
+      ...item,
+      is_new: true,
+      speed: null,
+      priority: { ...item.priority, score: 30 },
+    }),
+    true,
+  );
+  assert.equal(
+    priorityAdmission({
+      ...item,
+      is_new: true,
+      speed: null,
+      priority: { ...item.priority, score: 29 },
+    }),
+    false,
+  );
+  assert.equal(
+    priorityAdmission({
+      ...item,
+      speed: null,
+      kind: "price_drop",
+      reduction_rate: 0.15,
+      saving_fen: 1000,
+    }),
+    true,
+  );
+  assert.equal(
+    priorityAdmission({
+      ...item,
+      speed: null,
+      kind: "price_drop",
+      reduction_rate: 0.15,
+      saving_fen: 100,
+    }),
+    false,
+  );
+  assert.equal(
+    priorityAdmission({
+      ...item,
+      priority: {
+        ...item.priority,
+        value_gate: { ...item.priority.value_gate, rate: 0.19 },
+      },
+    }),
+    false,
+  );
+  const rows = Array.from({ length: 6 }, (_, i) => ({
+    ...item,
+    product_id: String(i),
+  }));
+  assert.equal(
+    selectPicks(rows, { ...query, view: "recommended" }).filtered.length,
+    3,
+  );
+  assert.equal(selectPicks(rows, query).filtered.length, 6);
 });

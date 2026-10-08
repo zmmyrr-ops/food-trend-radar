@@ -29,7 +29,7 @@ function picks(brand: string, run: string, count: number, expired = false) {
       title: "双人餐",
       price_fen: 6600,
       sale_end: expired ? "2020-01-01" : "2099-01-01",
-      ...salesTrend([point(run, "150"), point("old", "100", 2)], now),
+      ...salesTrend([point(run, "300"), point("old", "100", 2)], now),
     })),
     [],
   );
@@ -139,7 +139,7 @@ test("品牌增量更新原子替换、失败保留旧池、到期移出、禁�
       offset: 0,
       limit: 20,
     });
-    assert.equal(selected.filtered.length, 500);
+    assert.equal(selected.filtered.length, 3);
     assert.equal(selected.counts.all, 510);
     const outside = current.find(
       (x) => !selected.filtered.some((y) => y.product_id === x.product_id),
