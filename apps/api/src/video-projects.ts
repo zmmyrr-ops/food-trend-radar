@@ -64,6 +64,15 @@ export async function createVideoProjects(db: PGlite, root: string) {
   await db.exec(
     "UPDATE video_projects SET point_paid_revision=(payload->>'revision')::int WHERE point_paid_revision IS NULL AND point_charge_key IS NULL AND payload->>'state' IN ('preview_ready','completed')",
   );
+  // Give existing projects a full grace period; expiry never changes from viewing/editing.
+  await db.query(
+    "UPDATE video_projects SET payload=jsonb_set(payload,'{expires_at}',to_jsonb($1::text)) WHERE payload->>'expires_at' IS NULL",
+    [new Date(Date.now() + 30 * 86400000).toISOString()],
+  );
+  const expired = (p: VideoProject) =>
+    !!p.expires_at &&
+    Date.parse(p.expires_at) <= Date.now() &&
+    !running(p.state);
   async function settleVideo(id: string, state: string) {
     if (
       ![
@@ -131,6 +140,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
   };
   const visible = (p: VideoProject) => ({
     ...p,
+    expired: expired(p),
     error: p.error?.replace(/DeepSeek|百炼|Qwen[\w .+-]*/gi, "智能服务"),
     requires_face_screen: requiresFaceScreen(p),
     preview_revision: requiresFaceScreen(p) ? undefined : p.preview_revision,
@@ -219,6 +229,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
     },
   ) {
     const p = await get(id);
+    if (expired(p)) throw Error("视频项目已过期，请新建制作项目");
     if (running(p.state)) return p;
     if (revision !== undefined && revision !== p.revision)
       throw Error("项目已更新，请刷新");
@@ -486,11 +497,23 @@ export async function createVideoProjects(db: PGlite, root: string) {
           ? "video_uploads"
           : "video_projects";
         const row = await db.query(
-          `SELECT id FROM ${table} WHERE id=$1 AND owner_id=$2`,
+          `SELECT id${table === "video_projects" ? ",payload" : ""} FROM ${table} WHERE id=$1 AND owner_id=$2`,
           [req.params.id, ownerOf(req)],
         );
         if (!row.rows.length) {
           res.status(404).json({ error: { message: "项目或素材不存在" } });
+          return;
+        }
+        const payload = (row.rows[0] as { payload?: VideoProject }).payload;
+        if (
+          payload &&
+          expired(payload) &&
+          (req.method === "POST" ||
+            /\/(download|media|poster)(\/|\?|$)/.test(req.originalUrl))
+        ) {
+          res
+            .status(410)
+            .json({ error: { message: "视频已过期，请新建制作项目" } });
           return;
         }
         next();
@@ -617,6 +640,8 @@ export async function createVideoProjects(db: PGlite, root: string) {
               title: p.title,
               seconds: p.seconds,
               state: p.state,
+              expired: expired(p),
+              expires_at: p.expires_at,
               progress: p.progress,
               error: p.error,
               revision: p.revision,
@@ -779,6 +804,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
             revision: 1,
             cost: 0,
             rights_confirmed: true,
+            expires_at: new Date(Date.now() + 30 * 86400000).toISOString(),
             created_at: now,
             updated_at: now,
             music_id: v.music_id,

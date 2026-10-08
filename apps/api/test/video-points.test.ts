@@ -103,6 +103,24 @@ test("video charges once, cancel/startup refund, insufficient balance rolls back
       ])
     ).rows[0].payload.state;
     assert.equal(state, "interrupted");
+    await db.query(
+      "UPDATE video_projects SET payload=jsonb_set(payload,'{expires_at}',to_jsonb($2::text)) WHERE id=$1",
+      [id, new Date(Date.now() - 1000).toISOString()],
+    );
+    assert.equal((await (await fetch(url)).json()).project.expired, true);
+    assert.equal((await fetch(url + "/download")).status, 410);
+    assert.equal((await post("remake")).status, 410);
+    const otherId = randomUUID();
+    await db.query(
+      "INSERT INTO video_projects(id,payload,owner_id) VALUES($1,$2,$3)",
+      [otherId, JSON.stringify({ ...p, id: otherId }), randomUUID()],
+    );
+    assert.equal(
+      (await fetch(url.replace(id, otherId), { method: "DELETE" })).status,
+      404,
+    );
+    assert.equal((await fetch(url, { method: "DELETE" })).status, 200);
+    assert.equal((await fetch(url)).status, 404);
   } finally {
     await svc.stop();
     await new Promise<void>((r) => server.close(() => r()));

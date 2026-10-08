@@ -23,6 +23,8 @@ type Video = {
   preview_revision?: number;
   export_revision?: number;
   updated_at: string;
+  expired?: boolean;
+  expires_at?: string;
 };
 const labels: Record<string, string> = {
   draft: "待制作",
@@ -56,6 +58,19 @@ export function VideoLibrary({
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState("");
   const [refresh, setRefresh] = useState(0);
+  const [deleting, setDeleting] = useState<string | null>(null);
+  async function remove(p: Video) {
+    if (!window.confirm(`删除“${p.title}”及其成片？删除后无法恢复。`)) return;
+    setDeleting(p.id);
+    try {
+      await visitRequest(`video-projects/${p.id}`, "DELETE");
+      setItems((items) => items.filter((x) => x.id !== p.id));
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "删除失败");
+    } finally {
+      setDeleting(null);
+    }
+  }
   useEffect(() => {
     let cancelled = false,
       pending = false;
@@ -113,8 +128,19 @@ export function VideoLibrary({
       )}
       <div className="video-library-grid">
         {scoped.map((p) => {
-          const exported = p.export_revision === p.revision;
-          const preview = p.preview_revision === p.revision;
+          const expired =
+            !!p.expired ||
+            (!!p.expires_at && Date.parse(p.expires_at) <= Date.now());
+          const working = [
+            "queued",
+            "preparing",
+            "analyzing",
+            "planning",
+            "rendering_preview",
+            "rendering_export",
+          ].includes(p.state);
+          const exported = !expired && p.export_revision === p.revision;
+          const preview = !expired && p.preview_revision === p.revision;
           const kind = exported ? "export" : "preview";
           const endpoint = `/api/v3/video-projects/${p.id}/download?kind=${kind}`;
           const studio = appUrl(
@@ -143,7 +169,7 @@ export function VideoLibrary({
                 />
               ) : (
                 <div className="video-library-placeholder">
-                  {labels[p.state] || "待处理"}
+                  {expired ? "已过期" : labels[p.state] || "待处理"}
                 </div>
               )}
               <div className="video-library-body">
@@ -190,18 +216,37 @@ export function VideoLibrary({
                   </select>
                 </label>
                 <p className="studio-hint">
-                  {labels[p.state] || p.state} ·{" "}
+                  {expired ? "已过期" : labels[p.state] || p.state} ·{" "}
                   {new Date(p.updated_at).toLocaleString("zh-CN")}
                 </p>
-                {p.error ? (
+                {p.expires_at && (
+                  <p className="studio-hint">
+                    {expired ? "已于" : "保留至"}{" "}
+                    {new Date(p.expires_at).toLocaleString("zh-CN")}
+                    {expired ? "过期，请新建制作项目" : "，请及时下载"}
+                  </p>
+                )}
+                {expired ? null : p.error ? (
                   <p className="studio-error">{p.error}</p>
                 ) : (
                   <p className="studio-hint">{videoProgress(p).detail}</p>
                 )}
                 <div className="studio-actions">
-                  <a href={studio} target="_blank" rel="noopener noreferrer">
-                    打开工作室
-                  </a>
+                  {!expired && (
+                    <a href={studio} target="_blank" rel="noopener noreferrer">
+                      打开工作室
+                    </a>
+                  )}
+                  <button
+                    type="button"
+                    disabled={!!deleting || working}
+                    title={
+                      working ? "请先在工作室停止制作任务" : "删除项目及成片"
+                    }
+                    onClick={() => void remove(p)}
+                  >
+                    {deleting === p.id ? "删除中…" : "删除视频"}
+                  </button>
                   {exported && <a href={appUrl(endpoint)}>下载成片</a>}
                   {!exported && preview && (
                     <a href={appUrl(endpoint)}>下载预览</a>

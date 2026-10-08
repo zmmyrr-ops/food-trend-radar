@@ -12,6 +12,7 @@ function init(db: PGlite) {
     p =
       db.exec(`CREATE TABLE IF NOT EXISTS brand_subscriptions(owner_id uuid NOT NULL,brand_id uuid NOT NULL REFERENCES brands(id),created_at timestamptz NOT NULL DEFAULT now(),PRIMARY KEY(owner_id,brand_id));
       CREATE TABLE IF NOT EXISTS subscription_messages(id uuid PRIMARY KEY,owner_id uuid NOT NULL,brand_id uuid NOT NULL,product_id text NOT NULL,kind text NOT NULL,event_key text NOT NULL,brand_name text NOT NULL,title text NOT NULL,created_at timestamptz NOT NULL DEFAULT now(),read_at timestamptz,UNIQUE(owner_id,brand_id,product_id,event_key));
+      ALTER TABLE subscription_messages ADD COLUMN IF NOT EXISTS cleared_at timestamptz;
       CREATE INDEX IF NOT EXISTS subscription_message_owner ON subscription_messages(owner_id,created_at DESC);`);
     readiness.set(db, p);
   }
@@ -112,13 +113,13 @@ export function registerBrandSubscriptions(app: Express, db: PGlite) {
     const owner = ownerOf(req);
     const items = (
       await db.query<Record<string, unknown>>(
-        "SELECT m.id,m.brand_id,m.product_id,m.kind,m.brand_name,m.title,m.created_at,m.read_at,b.category FROM subscription_messages m JOIN brands b ON b.id=m.brand_id WHERE m.owner_id=$1 ORDER BY m.created_at DESC,m.id LIMIT 50",
+        "SELECT m.id,m.brand_id,m.product_id,m.kind,m.brand_name,m.title,m.created_at,m.read_at,b.category FROM subscription_messages m JOIN brands b ON b.id=m.brand_id WHERE m.owner_id=$1 AND m.cleared_at IS NULL ORDER BY m.created_at DESC,m.id LIMIT 50",
         [owner],
       )
     ).rows;
     const count = (
       await db.query<{ count: number }>(
-        "SELECT count(*)::int AS count FROM subscription_messages WHERE owner_id=$1 AND read_at IS NULL",
+        "SELECT count(*)::int AS count FROM subscription_messages WHERE owner_id=$1 AND cleared_at IS NULL AND read_at IS NULL",
         [owner],
       )
     ).rows[0].count;
@@ -129,6 +130,14 @@ export function registerBrandSubscriptions(app: Express, db: PGlite) {
       })),
       unread: count,
     });
+  });
+  app.delete("/api/v3/brand-subscriptions/messages", async (req, res) => {
+    await ready;
+    await db.query(
+      "UPDATE subscription_messages SET cleared_at=now(),read_at=coalesce(read_at,now()) WHERE owner_id=$1 AND cleared_at IS NULL",
+      [ownerOf(req)],
+    );
+    res.json({ ok: true });
   });
   app.post("/api/v3/brand-subscriptions/read", async (req, res) => {
     await ready;

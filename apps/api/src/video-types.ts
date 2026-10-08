@@ -67,6 +67,7 @@ export type VideoProject = {
   export_revision?: number;
   cost: number;
   rights_confirmed: boolean;
+  expires_at?: string;
   created_at: string;
   updated_at: string;
   music_id?: string;

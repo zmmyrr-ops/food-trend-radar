@@ -287,6 +287,33 @@ export function BrandSubscriptions({
               <>
                 <div className="subscription-tools">
                   <h3>订阅消息</h3>
+                  <button
+                    type="button"
+                    disabled={busy || !messages.length}
+                    onClick={async () => {
+                      if (
+                        !window.confirm(
+                          "清空全部订阅消息？品牌订阅会保留，后续新消息仍正常接收。",
+                        )
+                      )
+                        return;
+                      setBusy(true);
+                      try {
+                        await visitRequest(
+                          "brand-subscriptions/messages",
+                          "DELETE",
+                        );
+                        setMessages([]);
+                        setUnread(0);
+                      } catch (e) {
+                        setError(String(e));
+                      } finally {
+                        setBusy(false);
+                      }
+                    }}
+                  >
+                    一键清空
+                  </button>
                   <a href={appUrl("/?tab=workspace&section=subscriptions")}>
                     管理品牌订阅 →
                   </a>

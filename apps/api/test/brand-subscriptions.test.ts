@@ -105,6 +105,46 @@ test("普通用户模糊订阅、通知去重、已读与取消订阅按账号�
       (await (await call(endpoint + "/messages", a)).json()).unread,
       0,
     );
+    assert.equal(
+      (
+        await fetch(base + endpoint + "/messages", {
+          method: "DELETE",
+          headers: { cookie: b, "Content-Type": "application/json" },
+          body: "{}",
+        })
+      ).status,
+      200,
+    );
+    assert.equal(
+      (await (await call(endpoint + "/messages", a)).json()).items.length,
+      2,
+    );
+    assert.equal(
+      (
+        await fetch(base + endpoint + "/messages", {
+          method: "DELETE",
+          headers: { cookie: a, "Content-Type": "application/json" },
+          body: "{}",
+        })
+      ).status,
+      200,
+    );
+    const cleared = await (await call(endpoint + "/messages", a)).json();
+    assert.equal(cleared.items.length, 0);
+    assert.equal(cleared.unread, 0);
+    assert.equal(
+      (
+        await db.query<{ n: number }>(
+          "SELECT count(*)::int n FROM subscription_messages WHERE cleared_at IS NOT NULL",
+        )
+      ).rows[0].n,
+      2,
+    );
+    await syncSubscriptionMessages(db);
+    assert.equal(
+      (await (await call(endpoint + "/messages", a)).json()).items.length,
+      0,
+    );
     await call(endpoint, b, { brand_id: brand, subscribed: false });
     assert.equal((await (await call(endpoint, a)).json()).items.length, 1);
     await call(endpoint, a, { brand_id: brand, subscribed: false });

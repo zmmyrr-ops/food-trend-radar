@@ -111,6 +111,13 @@ export function CouponPicks({
   onBrandChange: (id: string) => void;
 }) {
   const isAdmin = useAccount().role === "admin";
+  function clearBrandFilter() {
+    onBrandChange("");
+    const url = new URL(location.href);
+    url.searchParams.delete("subscription_brand");
+    history.replaceState(history.state, "", url);
+    setOffset(0);
+  }
   const [planLinks, setPlanLinks] = useState<
     Record<string, { id: string; name: string }>
   >({});
@@ -213,6 +220,15 @@ export function CouponPicks({
   return (
     <section className="picks-panel" aria-label="选券工作台">
       <div className="coupon-filter-panel">
+        {brandId && (
+          <p className="muted">
+            当前品牌：
+            {brands.find((b) => b.id === brandId)?.name || "通知指定品牌"}{" "}
+            <button type="button" onClick={clearBrandFilter}>
+              清除品牌筛选
+            </button>
+          </p>
+        )}
         <div className="coupon-search-row">
           <label className="coupon-search-field">
             <span className="coupon-search-label">搜索品牌或券</span>
@@ -224,7 +240,10 @@ export function CouponPicks({
                   ? "搜索餐厅、茶饮或套餐…"
                   : "搜索乐园、场馆或门票…"
               }
-              onChange={(e) => setSearchInput(e.target.value)}
+              onChange={(e) => {
+                clearBrandFilter();
+                setSearchInput(e.target.value);
+              }}
             />
           </label>
         </div>
@@ -288,7 +307,7 @@ export function CouponPicks({
                 setCategory("");
                 setSearchInput("");
                 setSearch("");
-                onBrandChange("");
+                clearBrandFilter();
                 setOrder("priority");
                 setOffset(0);
               }}

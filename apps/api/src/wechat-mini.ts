@@ -368,7 +368,7 @@ export async function createWechatMini(
       return;
     const rows = (
       await db.query<any>(
-        `SELECT DISTINCT ON (m.owner_id) m.*,w.openid FROM subscription_messages m JOIN wechat_identities w ON w.owner_id=m.owner_id JOIN wechat_grants g ON g.owner_id=m.owner_id AND g.available JOIN brand_subscriptions s ON s.owner_id=m.owner_id AND s.brand_id=m.brand_id WHERE m.created_at>=g.granted_at AND m.created_at>now()-interval '24 hours' AND NOT EXISTS(SELECT 1 FROM wechat_deliveries d WHERE d.message_id=m.id) ORDER BY m.owner_id,m.created_at DESC LIMIT 5`,
+        `SELECT DISTINCT ON (m.owner_id) m.*,w.openid FROM subscription_messages m JOIN wechat_identities w ON w.owner_id=m.owner_id JOIN wechat_grants g ON g.owner_id=m.owner_id AND g.available JOIN brand_subscriptions s ON s.owner_id=m.owner_id AND s.brand_id=m.brand_id WHERE (to_jsonb(m)->>'cleared_at') IS NULL AND m.created_at>=g.granted_at AND m.created_at>now()-interval '24 hours' AND NOT EXISTS(SELECT 1 FROM wechat_deliveries d WHERE d.message_id=m.id) ORDER BY m.owner_id,m.created_at DESC LIMIT 5`,
       )
     ).rows;
     if (!rows.length) return;
