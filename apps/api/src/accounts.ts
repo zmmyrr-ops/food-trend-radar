@@ -367,7 +367,8 @@ export async function createAccounts(
             route,
           ));
       const studioCopy =
-        req.method === "POST" && route === "/api/v3/studio-copy";
+        req.method === "POST" &&
+        ["/api/v3/studio-copy", "/api/v3/ai-recommendations"].includes(route);
       const topicPlays =
         ["GET", "HEAD"].includes(req.method) && route === "/api/v3/topic-plays";
       if (personal || readOnly || studioCopy || topicPlays) return next();

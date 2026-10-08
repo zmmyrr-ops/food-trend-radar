@@ -113,6 +113,12 @@ test("AI request stays backend-only, deduplicates work and persists validated ev
   let calls = 0;
   try {
     const service = await createAiRecommendations(db, {
+      research: async (brand) => ({
+        brand,
+        summary: "已核对品牌定位",
+        sources: [{ title: "官方", url: "https://example.com" }],
+        researched_at: new Date().toISOString(),
+      }),
       readPicks: async () => [pick()],
       readContext: async () => ({ weather: "unknown" }),
       credentialPath: "unused",
@@ -190,6 +196,12 @@ test("provider failures and malformed content never replace a successful report 
         ),
     ]) {
       const service = await createAiRecommendations(db, {
+        research: async (brand) => ({
+          brand,
+          summary: "已核对品牌定位",
+          sources: [{ title: "官方", url: "https://example.com" }],
+          researched_at: new Date().toISOString(),
+        }),
         readPicks: async () => [pick()],
         readContext: async () => null,
         credentialPath: "unused",
@@ -301,6 +313,12 @@ test("AI频道筛选先于候选截取，报告独立保存，旧综合报告不
     };
     let got = "";
     const service = await createAiRecommendations(db, {
+      research: async (brand) => ({
+        brand,
+        summary: "已核对品牌定位",
+        sources: [{ title: "官方", url: "https://example.com" }],
+        researched_at: new Date().toISOString(),
+      }),
       credentialPath: "unused",
       getKey: async () => "test",
       readPicks: async () => [food, play],
