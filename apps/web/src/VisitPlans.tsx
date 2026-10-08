@@ -579,42 +579,44 @@ export function VisitPlans() {
                     {current.date} · {current.stores.length} 家店铺
                   </span>
                 </div>
-                <div className="visit-actions">
-                  {!current.completed_at && (
+                {!current.completed_at && (
+                  <div className="visit-actions">
+                    {!current.completed_at && (
+                      <button
+                        disabled={busy}
+                        onClick={() => setCompleting(current.id)}
+                      >
+                        完结计划
+                      </button>
+                    )}
                     <button
                       disabled={busy}
-                      onClick={() => setCompleting(current.id)}
+                      onClick={() =>
+                        setForm({
+                          id: current.id,
+                          name: current.name,
+                          date: current.date,
+                        })
+                      }
                     >
-                      完结计划
+                      编辑计划
                     </button>
-                  )}
-                  <button
-                    disabled={busy}
-                    onClick={() =>
-                      setForm({
-                        id: current.id,
-                        name: current.name,
-                        date: current.date,
-                      })
-                    }
-                  >
-                    编辑计划
-                  </button>
-                  <button
-                    disabled={busy}
-                    onClick={() => {
-                      setRemovalError("");
-                      setRemoval({ planId: current.id, name: current.name });
-                    }}
-                  >
-                    删除
-                  </button>
-                  {!current.completed_at && (
-                    <button onClick={() => setEditing({})}>
-                      ＋ 自定义店铺
+                    <button
+                      disabled={busy}
+                      onClick={() => {
+                        setRemovalError("");
+                        setRemoval({ planId: current.id, name: current.name });
+                      }}
+                    >
+                      删除
                     </button>
-                  )}
-                </div>
+                    {!current.completed_at && (
+                      <button onClick={() => setEditing({})}>
+                        ＋ 自定义店铺
+                      </button>
+                    )}
+                  </div>
+                )}
               </div>
               {completing === current.id && !current.completed_at && (
                 <div className="visit-complete-confirm">
@@ -656,68 +658,76 @@ export function VisitPlans() {
                     <span className="visit-number">{i + 1}</span>
                     <div>
                       <h3>
-                        <ShopLocation
-                          name={s.name}
-                          address={s.address}
-                          lat={s.lat}
-                          lng={s.lng}
-                        />
+                        {current.completed_at ? (
+                          s.name
+                        ) : (
+                          <ShopLocation
+                            name={s.name}
+                            address={s.address}
+                            lat={s.lat}
+                            lng={s.lng}
+                          />
+                        )}
                       </h3>
                       <p>{s.address}</p>
-                      <div className="visit-actions">
-                        <button disabled={busy} onClick={() => setEditing(s)}>
-                          编辑
-                        </button>
-                        {["上移", "下移"].map((label, n) => (
-                          <button
-                            key={label}
-                            disabled={
-                              busy ||
-                              (n === 0
-                                ? i === 0
-                                : i === current.stores.length - 1)
-                            }
-                            onClick={() =>
-                              void action(() => {
-                                const ids = current.stores.map((s) => s.id),
-                                  j = i + (n === 0 ? -1 : 1);
-                                [ids[i], ids[j]] = [ids[j], ids[i]];
-                                return visitRequest(
-                                  `visit-plans/${current.id}/order`,
-                                  "PUT",
-                                  { ids },
-                                );
-                              })
-                            }
-                          >
-                            {label}
+                      {!current.completed_at && (
+                        <div className="visit-actions">
+                          <button disabled={busy} onClick={() => setEditing(s)}>
+                            编辑
                           </button>
-                        ))}
-                        <button
-                          disabled={busy}
-                          onClick={() => {
-                            setRemovalError("");
-                            setRemoval({
-                              planId: current.id,
-                              storeId: s.id,
-                              name: s.name,
-                            });
-                          }}
-                        >
-                          移除
-                        </button>
-                      </div>
-                    </div>
-                    <a
-                      className="visit-primary"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={appUrl(
-                        `/?${new URLSearchParams({ studio: "1", visit_store_id: s.id, brand_id: s.brand_id || "", product_id: s.product_id || "" })}`,
+                          {["上移", "下移"].map((label, n) => (
+                            <button
+                              key={label}
+                              disabled={
+                                busy ||
+                                (n === 0
+                                  ? i === 0
+                                  : i === current.stores.length - 1)
+                              }
+                              onClick={() =>
+                                void action(() => {
+                                  const ids = current.stores.map((s) => s.id),
+                                    j = i + (n === 0 ? -1 : 1);
+                                  [ids[i], ids[j]] = [ids[j], ids[i]];
+                                  return visitRequest(
+                                    `visit-plans/${current.id}/order`,
+                                    "PUT",
+                                    { ids },
+                                  );
+                                })
+                              }
+                            >
+                              {label}
+                            </button>
+                          ))}
+                          <button
+                            disabled={busy}
+                            onClick={() => {
+                              setRemovalError("");
+                              setRemoval({
+                                planId: current.id,
+                                storeId: s.id,
+                                name: s.name,
+                              });
+                            }}
+                          >
+                            移除
+                          </button>
+                        </div>
                       )}
-                    >
-                      制作探店视频 →
-                    </a>
+                    </div>
+                    {!current.completed_at && (
+                      <a
+                        className="visit-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={appUrl(
+                          `/?${new URLSearchParams({ studio: "1", visit_store_id: s.id, brand_id: s.brand_id || "", product_id: s.product_id || "" })}`,
+                        )}
+                      >
+                        制作探店视频 →
+                      </a>
+                    )}
                   </article>
                 ))}
               </div>
@@ -726,7 +736,7 @@ export function VisitPlans() {
                   从选券页加入店铺，也可以自定义店铺名称和位置。
                 </p>
               )}
-              {editing && (
+              {editing && !current.completed_at && (
                 <StoreEditor
                   key={editing.id || "new"}
                   initial={editing}

@@ -217,6 +217,17 @@ export async function createVideoProjects(db: PGlite, root: string) {
       if (!child && queue.length && !stopped) queueMicrotask(() => void pump());
     }
   }
+  async function assertPlanActive(p: VideoProject) {
+    if (!p.visit_plan_id) return;
+    const plan = (
+      await db.query<{ completed_at: string | null }>(
+        "SELECT completed_at FROM visit_plans WHERE id=$1",
+        [p.visit_plan_id],
+      )
+    ).rows[0];
+    if (plan?.completed_at)
+      throw Error("探店计划已完结，不能继续制作视频，请加入新计划");
+  }
   async function enqueue(
     id: string,
     mode: string,
@@ -229,6 +240,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
     },
   ) {
     const p = await get(id);
+    await assertPlanActive(p);
     if (expired(p)) throw Error("视频项目已过期，请新建制作项目");
     if (running(p.state)) return p;
     if (revision !== undefined && revision !== p.revision)
@@ -894,6 +906,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
       "/api/v3/video-projects/:id/timeline",
       wrap(async (req, res) => {
         const p = await get(String(req.params.id));
+        await assertPlanActive(p);
         if (running(p.state)) throw Error("请等待当前任务结束");
         const v = z
           .object({ revision: z.number().int(), plan: planSchema })

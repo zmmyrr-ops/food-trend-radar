@@ -255,6 +255,26 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
     );
 
     assert.equal(
+      (await call(`v3/visit-plans/${p}/stores/${s}`, b.cookie, "DELETE"))
+        .status,
+      400,
+    );
+    assert.equal(
+      (await call(`v3/visit-plans/${p}/stores/${s}`, a.cookie, "DELETE"))
+        .status,
+      200,
+    );
+    const afterRemoval = await (await call("v3/visit-plans", a.cookie)).json();
+    assert.deepEqual(
+      afterRemoval.items[0].stores.map((store: { id: string }) => store.id),
+      [s2],
+    );
+    assert.equal((await call(`v3/visit-stores/${s}`, a.cookie)).status, 404);
+    assert.equal(
+      (await call(`v3/video-projects/${v.id}`, a.cookie)).status,
+      200,
+    );
+    assert.equal(
       (await call(`v3/visit-plans/${p}/complete`, b.cookie, "POST")).status,
       400,
     );
@@ -265,7 +285,7 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
     const completed = (await (await call("v3/visit-plans", a.cookie)).json())
       .items[0];
     assert.ok(completed.completed_at);
-    assert.equal(completed.stores.length, 2);
+    assert.equal(completed.stores.length, 1);
     assert.equal(
       (await (await call("v3/visit-plans?active=true", a.cookie)).json()).items
         .length,
@@ -309,29 +329,39 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
     );
     await call(`v3/visit-plans/${next}`, a.cookie, "DELETE");
     assert.equal(
-      (await call(`v3/visit-plans/${p}/stores/${s}`, b.cookie, "DELETE"))
+      (
+        await call(`v3/visit-plans/${p}`, a.cookie, "PATCH", {
+          name: "不能修改",
+          date: "2026-10-10",
+        })
+      ).status,
+      400,
+    );
+    assert.equal(
+      (await call(`v3/visit-plans/${p}/stores/${s2}`, a.cookie, "DELETE"))
         .status,
       400,
     );
     assert.equal(
-      (await call(`v3/visit-plans/${p}/stores/${s}`, a.cookie, "DELETE"))
+      (await call(`v3/visit-plans/${p}/stores/${s2}`, a.cookie, "PATCH", store))
         .status,
-      200,
+      400,
     );
-    const afterRemoval = await (await call("v3/visit-plans", a.cookie)).json();
-    assert.deepEqual(
-      afterRemoval.items[0].stores.map((store: { id: string }) => store.id),
-      [s2],
-    );
-    assert.equal((await call(`v3/visit-stores/${s}`, a.cookie)).status, 404);
     assert.equal(
-      (await call(`v3/video-projects/${v.id}`, a.cookie)).status,
-      200,
+      (await call(`v3/visit-plans/${p}/order`, a.cookie, "PUT", { ids: [s2] }))
+        .status,
+      400,
+    );
+    assert.equal((await call(`v3/visit-stores/${s2}`, a.cookie)).status, 404);
+    assert.equal(
+      (await call(`v3/video-projects/${v.id}/analyze`, a.cookie, "POST"))
+        .status,
+      400,
     );
     await call(`v3/visit-plans/${p}`, a.cookie, "DELETE");
     assert.equal(
       (await (await call("v3/visit-plans", a.cookie)).json()).items.length,
-      0,
+      1,
     );
     assert.equal(
       (await call(`v3/video-projects/${v.id}`, a.cookie)).status,

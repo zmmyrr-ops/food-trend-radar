@@ -37,7 +37,7 @@ export type VisitStore = {
 export async function ownedVisitStore(db: PGlite, id: string, owner: string) {
   return (
     await db.query<VisitStore>(
-      `SELECT s.*,p.name plan_name,p.date FROM visit_plan_stores s JOIN visit_plans p ON p.id=s.plan_id WHERE s.id=$1 AND p.owner_id=$2 AND p.deleted_at IS NULL AND s.deleted_at IS NULL`,
+      `SELECT s.*,p.name plan_name,p.date FROM visit_plan_stores s JOIN visit_plans p ON p.id=s.plan_id WHERE s.id=$1 AND p.owner_id=$2 AND p.deleted_at IS NULL AND p.completed_at IS NULL AND s.deleted_at IS NULL`,
       [uuid.parse(id), owner],
     )
   ).rows[0];
@@ -67,7 +67,7 @@ export async function createVisitPlans(db: PGlite) {
         });
       }
     };
-  const owned = async (id: unknown, req: Request) => {
+  const owned = async (id: unknown, req: Request, editable = true) => {
     const p = (
       await db.query<{ completed_at: string | null }>(
         "SELECT * FROM visit_plans WHERE id=$1 AND owner_id=$2 AND deleted_at IS NULL",
@@ -75,6 +75,7 @@ export async function createVisitPlans(db: PGlite) {
       )
     ).rows[0];
     if (!p) throw Error("计划不存在");
+    if (editable && p.completed_at) throw Error("计划已完结，仅可查看历史记录");
     return p;
   };
   return {
@@ -118,7 +119,7 @@ export async function createVisitPlans(db: PGlite) {
       app.post(
         "/api/v3/visit-plans/:id/complete",
         wrap(async (req, res) => {
-          await owned(req.params.id, req);
+          await owned(req.params.id, req, false);
           await db.query(
             "UPDATE visit_plans SET completed_at=COALESCE(completed_at,now()) WHERE id=$1 AND owner_id=$2 AND deleted_at IS NULL",
             [req.params.id, ownerOf(req)],
