@@ -190,7 +190,6 @@ export async function createCouponMedia(
     raw?: any,
     resources: LiveResource[] = [],
   ) {
-    if (job.text_state !== "queued") return;
     const note = raw?.data?.items?.find(
       (x: any) => (x.id ?? x.note_card?.note_id) === id,
     )?.note_card;
@@ -220,7 +219,8 @@ export async function createCouponMedia(
     ).rows[0];
     if (!job) return;
     try {
-      if (job.state !== "complete") throw Error("INCOMPLETE");
+      if (job.state !== "complete" && !job.resources.length)
+        throw Error("INCOMPLETE");
       const notes = new Map<string, MediaTextNote>();
       for (const r of job.resources)
         if (r.note_text)
@@ -254,7 +254,7 @@ export async function createCouponMedia(
       }
       if (!summary) throw Error("SUMMARY_FAILED");
       await db.query(
-        "UPDATE coupon_media_jobs SET text_state='complete',text_error=NULL,text_summary=$2,text_charge_key=NULL,text_notes='[]' WHERE id=$1",
+        "UPDATE coupon_media_jobs SET text_state='complete',text_error=NULL,text_summary=$2,text_charge_key=NULL WHERE id=$1",
         [id, JSON.stringify(summary)],
       );
     } catch (error) {
@@ -808,6 +808,7 @@ export async function createCouponMedia(
       ).rows[0];
       if (old && ["queued", "running"].includes(old.text_state)) return old;
       let accepted = false;
+      let cachedNotes: unknown[] | undefined;
       const selectJob = async () => {
         if (reset && old && ["queued", "running"].includes(old.state))
           throw Error("JOB_RUNNING");
@@ -845,6 +846,7 @@ export async function createCouponMedia(
           });
           if (shared && signedUrlsValid) {
             accepted = true;
+            cachedNotes = shared.text_notes;
             if (
               owner !== legacyOwner &&
               (!old || old.state !== "complete" || !old.resources.length)
@@ -920,7 +922,7 @@ export async function createCouponMedia(
         }
         return (
           await tx.query<any>(
-            "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,refresh_details,coupon_title,owner_id,point_charge_key,point_before_count) VALUES($1,$2,$3,$4,$5,'queued',$6,$7,$8,$9,0) ON CONFLICT(owner_id,brand_id,product_id) DO UPDATE SET point_charge_key=excluded.point_charge_key,point_before_count=0,id=excluded.id,keyword=excluded.keyword,names=excluded.names,state='queued',resources='[]',next_page=1,seen_notes='[]',target_count=40,exhausted=false,search_id=NULL,refresh_details=excluded.refresh_details,coupon_title=excluded.coupon_title,searched=0,inspected=0,error_code=NULL,created_at=now(),updated_at=now() RETURNING *",
+            "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,refresh_details,coupon_title,owner_id,point_charge_key,point_before_count) VALUES($1,$2,$3,$4,$5,'queued',$6,$7,$8,$9,0) ON CONFLICT(owner_id,brand_id,product_id) DO UPDATE SET point_charge_key=excluded.point_charge_key,point_before_count=0,id=excluded.id,keyword=excluded.keyword,names=excluded.names,state='queued',resources='[]',text_notes='[]',text_state=NULL,text_summary=NULL,next_page=1,seen_notes='[]',target_count=40,exhausted=false,search_id=NULL,refresh_details=excluded.refresh_details,coupon_title=excluded.coupon_title,searched=0,inspected=0,error_code=NULL,created_at=now(),updated_at=now() RETURNING *",
             [
               randomUUID(),
               brand,
@@ -936,6 +938,11 @@ export async function createCouponMedia(
         ).rows[0];
       };
       const selected = await selectJob();
+      if (cachedNotes?.length)
+        await tx.query(
+          "UPDATE coupon_media_jobs SET text_notes=$2 WHERE id=$1",
+          [selected.id, JSON.stringify(cachedNotes)],
+        );
       if (includeText && accepted) {
         const key = owner === legacyOwner ? null : `media-text:${randomUUID()}`;
         if (key) await changePoints(tx, owner, -5, "整理文字素材", key);
@@ -956,10 +963,59 @@ export async function createCouponMedia(
     kick();
     return publicJob(result);
   }
+  async function generateText(brand: string, product: string, owner: string) {
+    const job = await db.transaction(async (tx) => {
+      await tx.query("SELECT id FROM accounts WHERE id=$1 FOR UPDATE", [owner]);
+      const current = (
+        await tx.query<any>(
+          "SELECT * FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2 AND owner_id=$3 FOR UPDATE",
+          [brand, product, owner],
+        )
+      ).rows[0];
+      if (!current?.resources.length) throw Error("MATERIALS_REQUIRED");
+      if (["queued", "running"].includes(current.text_state)) return current;
+      if (["queued", "running"].includes(current.state))
+        throw Error("JOB_RUNNING");
+      if (
+        !current.text_notes.length &&
+        !current.resources.some((r: LiveResource) => r.note_text?.trim())
+      )
+        throw Error("NO_TEXT");
+      const key = `media-text:${randomUUID()}`;
+      await changePoints(tx, owner, -5, "智能生成视频文案", key);
+      return (
+        await tx.query<any>(
+          "UPDATE coupon_media_jobs SET text_state='queued',text_error=NULL,text_charge_key=$2 WHERE id=$1 RETURNING *",
+          [current.id, key],
+        )
+      ).rows[0];
+    });
+    kick();
+    return publicJob(job);
+  }
   function register(app: Express) {
     const input = z.object({
       brand_id: z.uuid(),
       product_id: z.string().min(1).max(100),
+    });
+    app.post("/api/v3/coupon-media/text", async (req, res) => {
+      const v = input.parse(req.body);
+      try {
+        res.status(202).json({
+          job: await generateText(v.brand_id, v.product_id, ownerOf(req)),
+        });
+      } catch (error) {
+        const code = error instanceof Error ? error.message : "";
+        const messages: Record<string, string> = {
+          MATERIALS_REQUIRED: "请先获取视频素材",
+          JOB_RUNNING: "请等待素材获取完成",
+          NO_TEXT: "暂存文章不足，请先再获取一些素材",
+          POINTS_INSUFFICIENT: "积分不足",
+        };
+        res
+          .status(code === "POINTS_INSUFFICIENT" ? 402 : 409)
+          .json({ error: { message: messages[code] || "暂时无法生成文案" } });
+      }
     });
     app.get("/api/v3/coupon-media", async (req, res) => {
       const v = input.parse(req.query);
@@ -1054,7 +1110,7 @@ export async function createCouponMedia(
             v.more,
             v.reset,
             ownerOf(req),
-            v.include_text,
+            false,
           ),
         });
       } catch (e) {
@@ -1111,6 +1167,7 @@ export async function createCouponMedia(
   }
   return {
     register,
+    generateText,
     start,
     drain: async () => {
       await worker;

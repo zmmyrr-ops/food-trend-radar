@@ -138,7 +138,6 @@ export function CouponMedia({
   onResources?: (resources: Resource[]) => void;
 }) {
   const isAdmin = useAccount().role === "admin";
-  const [includeText, setIncludeText] = useState(false);
   const [open, setOpen] = useState(true),
     [job, setJob] = useState<Job | null>(null),
     [busy, setBusy] = useState(false),
@@ -186,11 +185,8 @@ export function CouponMedia({
     if (
       !(await confirmPointSpend(
         reset ? "重置并重新获取素材" : more ? "再获取一些素材" : "获取网络素材",
-        (more && !reset ? 5 : 10) + (includeText ? 5 : 0),
-        (includeText
-          ? "包含文字素材整理5积分；整理失败自动退回这5积分。"
-          : "") +
-          "最多消耗上述积分。本人已有可用缓存免费查看；首次复用他人缓存仍计费。未获取到新增素材自动退分。",
+        more && !reset ? 5 : 10,
+        "本人已有可用缓存免费查看；首次复用他人缓存仍计费。未获取到新增素材自动退分。文章同步暂存，不额外扣分。",
       ))
     )
       return;
@@ -205,7 +201,6 @@ export function CouponMedia({
           product_id: productId,
           more,
           reset,
-          include_text: includeText,
         }),
       });
       const data = await r.json();
@@ -213,6 +208,36 @@ export function CouponMedia({
       setJob(data.job);
     } catch (e) {
       setError(String(e));
+    } finally {
+      setBusy(false);
+    }
+  }
+  async function generateCopy() {
+    if (!job?.resources.length) {
+      setError("请先获取视频素材");
+      return;
+    }
+    if (
+      !(await confirmPointSpend(
+        "智能生成视频文案",
+        5,
+        "根据已获取素材的暂存文章提取口播句子，失败自动退分。",
+      ))
+    )
+      return;
+    setBusy(true);
+    setError("");
+    try {
+      const response = await appFetch("/api/v3/coupon-media/text", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ brand_id: brandId, product_id: productId }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw Error(data.error?.message || "生成失败");
+      setJob(data.job);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : String(error));
     } finally {
       setBusy(false);
     }
@@ -252,16 +277,6 @@ export function CouponMedia({
       </button>
       {open && (
         <div className="coupon-media-body">
-          <label className="media-text-option">
-            <input
-              type="checkbox"
-              checked={includeText}
-              disabled={busy || !!running}
-              onChange={(e) => setIncludeText(e.target.checked)}
-            />
-            <span>同步获取文字素材</span>
-            <Points amount={5} cost />
-          </label>
           <div className="coupon-media-toolbar">
             <div>
               <strong>网络参考素材</strong>
@@ -270,32 +285,18 @@ export function CouponMedia({
               </p>
             </div>
             <button
-              disabled={
-                busy ||
-                !!running ||
-                (!!fresh &&
-                  !(
-                    includeText &&
-                    (job?.text_state !== "complete" ||
-                      !job?.text_summary?.snippets?.length)
-                  ))
-              }
+              disabled={busy || !!running || !!fresh}
               onClick={() => void acquire()}
             >
               {busy ? (
                 "提交中…"
               ) : running ? (
                 "搜索中…"
-              ) : fresh &&
-                !(
-                  includeText &&
-                  (job?.text_state !== "complete" ||
-                    !job?.text_summary?.snippets?.length)
-                ) ? (
+              ) : fresh ? (
                 "已获取 · 缓存中"
               ) : (
                 <>
-                  获取资源 <Points amount={10 + (includeText ? 5 : 0)} cost />
+                  获取资源 <Points amount={10} cost />
                 </>
               )}
             </button>
@@ -315,8 +316,7 @@ export function CouponMedia({
                   "已达200个上限"
                 ) : (
                   <>
-                    再获取一些{" "}
-                    <Points amount={5 + (includeText ? 5 : 0)} cost />
+                    再获取一些 <Points amount={5} cost />
                   </>
                 )}
               </button>
@@ -327,26 +327,41 @@ export function CouponMedia({
                 onClick={() => void acquire(false, true)}
                 title="清空本券素材和搜索进度，重新获取最新链接；已制作的视频保留"
               >
-                重置并重新获取{" "}
-                <Points amount={10 + (includeText ? 5 : 0)} cost />
+                重置并重新获取 <Points amount={10} cost />
               </button>
             )}
+            <button
+              className="media-generate-copy"
+              disabled={busy || !!running || !job?.resources.length}
+              title={!job?.resources.length ? "请先获取视频素材" : undefined}
+              onClick={() => void generateCopy()}
+            >
+              {job && ["queued", "running"].includes(job.text_state || "") ? (
+                "正在生成文案…"
+              ) : (
+                <>
+                  智能生成视频文案 <Points amount={5} cost />
+                </>
+              )}
+            </button>
             {job && ["queued", "running"].includes(job.state) && (
               <button onClick={() => void cancel()}>停止</button>
             )}
           </div>
           <p className="coupon-media-status" aria-live="polite">
-            {running
-              ? "正在搜索素材，请稍候…"
-              : job?.state === "complete"
-                ? job.resources.length
-                  ? "素材已准备好"
-                  : "暂未找到合适素材，请稍后再试"
-                : job?.state === "cancelled"
-                  ? "已停止，已获取素材保留"
-                  : job
-                    ? errors[job.error_code || ""] || "任务未完成"
-                    : "选择获取资源，开始准备素材。"}
+            {job && ["queued", "running"].includes(job.text_state || "")
+              ? "正在生成视频文案，请稍候…"
+              : running
+                ? "正在搜索素材，请稍候…"
+                : job?.state === "complete"
+                  ? job.resources.length
+                    ? "素材已准备好"
+                    : "暂未找到合适素材，请稍后再试"
+                  : job?.state === "cancelled"
+                    ? "已停止，已获取素材保留"
+                    : job
+                      ? errors[job.error_code || ""] || "任务未完成"
+                      : "选择获取资源，开始准备素材。"}
           </p>
           {error && <p role="alert">{error}</p>}
           {!controlsOnly && !!job?.resources.length && (
@@ -409,7 +424,7 @@ export function TextMaterialSummary({ value }: { value: TextMaterial | null }) {
                 : value.text_error === "INTERRUPTED"
                   ? "服务更新中断了文字整理。"
                   : "文字整理暂未成功。"}
-          额外5积分已退回，可勾选后重试。
+          本次文案生成的5积分已退回，可点击“智能生成视频文案”重试。
         </p>
       ) : summary ? (
         <>

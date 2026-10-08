@@ -687,3 +687,80 @@ test("纯文字素材成功时退还视频获取费，重启中断的文字任�
     await f.cleanup();
   }
 });
+
+test("独立生成文案：先获取暂存文章、不自动扣5分；生成幂等、跨账号缓存保留正文", async () => {
+  const f = await fixture(),
+    owner = randomUUID(),
+    other = randomUUID();
+  await f.db.exec("CREATE TABLE accounts(id uuid PRIMARY KEY)");
+  await f.db.query("INSERT INTO accounts(id) VALUES($1),($2)", [owner, other]);
+  await setupPoints(f.db);
+  let calls = 0,
+    requests = 0;
+  const service = await createCouponMedia(f.db, f.path, {
+    wait: async () => {},
+    transport: async (url, _h, body) => {
+      requests++;
+      return url === search
+        ? {
+            code: 0,
+            success: true,
+            data: {
+              has_more: false,
+              items: ["plain", "live"].map((id) => ({
+                model_type: "note",
+                id,
+                xsec_token: "t",
+              })),
+            },
+          }
+        : response(
+            JSON.parse(body).source_note_id,
+            JSON.parse(body).source_note_id === "plain" ? 0 : 2,
+          );
+    },
+    summarizeText: async (notes) => {
+      calls++;
+      assert.ok(notes.some((n) => n.id === "plain"));
+      return { overview: "", highlights: ["具体口播句子"] };
+    },
+  });
+  const balance = async (id: string) =>
+    (
+      await f.db.query<any>(
+        "SELECT balance FROM point_wallets WHERE owner_id=$1",
+        [id],
+      )
+    ).rows[0].balance;
+  try {
+    await assert.rejects(
+      service.generateText(f.brand, "coupon", owner),
+      /MATERIALS_REQUIRED/,
+    );
+    await service.start(f.brand, "coupon", false, false, owner);
+    await service.drain();
+    assert.equal(calls, 0);
+    assert.equal(await balance(owner), 490);
+    const before = requests;
+    await service.generateText(f.brand, "coupon", owner);
+    await service.generateText(f.brand, "coupon", owner);
+    await service.drain();
+    assert.equal(calls, 1);
+    assert.equal(await balance(owner), 485);
+    assert.equal(requests, before);
+    await service.start(f.brand, "coupon", false, false, other);
+    await service.drain();
+    await service.generateText(f.brand, "coupon", other);
+    await service.drain();
+    assert.equal(calls, 2);
+    assert.equal(await balance(other), 485);
+    assert.equal(requests, before);
+    await service.generateText(f.brand, "coupon", owner);
+    await service.drain();
+    assert.equal(calls, 3);
+    assert.equal(await balance(owner), 480);
+  } finally {
+    await service.stop();
+    await f.cleanup();
+  }
+});

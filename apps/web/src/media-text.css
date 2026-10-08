@@ -61,3 +61,37 @@
   list-style: none;
   padding: 0;
 }
+
+.coupon-media-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.coupon-media-toolbar > div:first-child {
+  flex-basis: 100%;
+}
+.coupon-media-toolbar > button {
+  min-height: 38px;
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 10px;
+}
+.coupon-media-toolbar > .media-generate-copy {
+  margin-left: auto;
+  background: #edf3ff;
+  color: #2864d8;
+  border: 1px solid #cadbfd;
+}
+.coupon-media-toolbar > button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+@media (max-width: 640px) {
+  .coupon-media-toolbar > .media-generate-copy {
+    margin-left: 0;
+  }
+  .coupon-media-toolbar > button {
+    flex: 1 1 auto;
+  }
+}
