@@ -131,6 +131,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
   };
   const visible = (p: VideoProject) => ({
     ...p,
+    error: p.error?.replace(/DeepSeek|百炼|Qwen[\w .+-]*/gi, "智能服务"),
     requires_face_screen: requiresFaceScreen(p),
     preview_revision: requiresFaceScreen(p) ? undefined : p.preview_revision,
     export_revision: requiresFaceScreen(p) ? undefined : p.export_revision,

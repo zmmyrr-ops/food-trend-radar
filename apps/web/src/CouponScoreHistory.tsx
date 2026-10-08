@@ -75,7 +75,7 @@ export function CouponScoreHistory({
               </strong>
               {row.payload.score.version?.includes("sales-evidence") && (
                 <p>
-                  月售净增速度：
+                  销售增速：
                   {row.payload.features?.sales_heat?.speed?.toFixed(2) ??
                     "未知"}{" "}
                   /小时； 加速度：

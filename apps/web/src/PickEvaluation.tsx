@@ -44,7 +44,7 @@ export function PickEvaluation() {
     >
       <summary>查看排序效果验证</summary>
       <p>
-        自动冻结当时的优先榜单，观察72小时后月售净增速度是否仍为正。结果用于后续校准，不是爆款概率。
+        自动冻结当时的优先榜单，观察72小时后销售增速是否仍为正。结果用于后续校准，不是爆款概率。
       </p>
       <button type="button" disabled={busy} onClick={() => void load()}>
         {busy ? "读取中…" : "刷新验证结果"}

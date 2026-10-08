@@ -95,7 +95,7 @@ export function StudioCopy({
     <section className="studio-publish-copy">
       <div className="studio-section-heading">
         <h2>发布灵感</h2>
-        <span>DeepSeek</span>
+        <span>智能创作</span>
       </div>
       <div className="studio-copy-columns">
         <section>

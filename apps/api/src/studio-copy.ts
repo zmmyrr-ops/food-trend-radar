@@ -128,7 +128,7 @@ export function registerStudioCopy(
           key = JSON.parse(await readFile(credentialPath, "utf8")).api_key;
         } catch {}
       }
-      if (!key) throw Error("DeepSeek 尚未配置，请联系管理员");
+      if (!key) throw Error("智能服务 尚未配置，请联系管理员");
       const coupon =
         visit.brand_id && visit.product_id
           ? (
@@ -241,10 +241,10 @@ export function registerStudioCopy(
         await response.body?.cancel();
         throw Error(
           response.status === 429
-            ? "DeepSeek 请求繁忙，请稍后重试"
+            ? "智能服务 请求繁忙，请稍后重试"
             : response.status === 402
-              ? "DeepSeek 余额不足，请联系管理员"
-              : "DeepSeek 调用失败，请稍后重试",
+              ? "智能服务 余额不足，请联系管理员"
+              : "智能服务 调用失败，请稍后重试",
         );
       }
       const data = await response.json();

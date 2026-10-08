@@ -21,7 +21,7 @@ type State = {
   other_channel_running?: boolean;
   error: string | null;
   stale: boolean;
-  model: string;
+  needs_refresh?: boolean;
   report: null | {
     summary: string;
     generated_at: string;
@@ -116,10 +116,10 @@ export function AiRecommendations({ channel }: { channel: Channel }) {
     <section className="ai-panel" aria-label="AI 综合推荐">
       <h2>{channel === "food" ? "美食" : "游玩"} · AI 精选</h2>
       <p className="muted">
-        联网研究品牌内容与价值，结合历史表现、天气和节假日，寻找值得拍摄的机会。
+        结合品牌吸引力、目标客群、历史表现和天气环境，判断优惠券的销售潜力。
       </p>
       <p className="muted">
-        每次研究最多12个候选品牌，可能需要数分钟；报告仅本人可见。失败自动退分，已有报告可免费查看。
+        仅研究优先券排名前6的不同品牌，可能需要数分钟；报告仅本人可见。失败自动退分，已有报告可免费查看。
       </p>
       <button
         type="button"
@@ -142,7 +142,7 @@ export function AiRecommendations({ channel }: { channel: Channel }) {
       {data?.other_channel_running && (
         <p role="status">当前有分析任务正在执行，完成后可生成本次推荐。</p>
       )}
-      {data && !data.configured && <p>后端尚未配置 DeepSeek 密钥。</p>}
+      {data && !data.configured && <p>智能分析服务尚未配置，请联系管理员。</p>}
       {(error || data?.error) && (
         <p role="alert">{error || data?.error}。原有选券榜单仍可使用。</p>
       )}
@@ -150,8 +150,13 @@ export function AiRecommendations({ channel }: { channel: Channel }) {
         <>
           <p>
             分析于 {new Date(data.report.generated_at).toLocaleString("zh-CN")}{" "}
-            · 本次评估{data.report.candidate_count}张候选券 · {data.model}
+            · 本次评估{data.report.candidate_count}张候选券
           </p>
+          {data.needs_refresh && (
+            <p role="status">
+              这是旧口径报告，重新生成后将按优惠券销售潜力分析。
+            </p>
+          )}
           {data.stale && (
             <p role="status">这份建议已超过12小时，请重新生成后再参考。</p>
           )}
@@ -166,7 +171,7 @@ export function AiRecommendations({ channel }: { channel: Channel }) {
             <p>{data.report.summary}</p>
           </details>
           {!data.report.recommendations.length && (
-            <p>AI 本次未选出值得推荐的券，请查看数据局限。</p>
+            <p>AI 本次未选出销售潜力较好的券，请查看数据局限。</p>
           )}
           <div className="ai-grid">
             {data.report.recommendations.map((r, i) => (
@@ -184,7 +189,7 @@ export function AiRecommendations({ channel }: { channel: Channel }) {
                   {isAdmin && (
                     <>
                       {" "}
-                      · 月售净增速度：
+                      · 销售增速：
                       {r.evidence.sales_speed_per_hour === null
                         ? "未知"
                         : `${r.evidence.sales_speed_per_hour.toFixed(2)}/小时`}
@@ -213,53 +218,6 @@ export function AiRecommendations({ channel }: { channel: Channel }) {
                     {r.environment_fit}
                   </p>
                 )}
-                {r.timing && (
-                  <p>
-                    <strong>为什么是现在：</strong>
-                    {r.timing}
-                  </p>
-                )}
-                {data.report?.research
-                  ?.filter((d) => d.brand === r.evidence.brand)
-                  .map((d) => (
-                    <details key={d.brand} className="ai-caveats">
-                      <summary>品牌调研与来源（{d.sources.length}）</summary>
-                      <p style={{ whiteSpace: "pre-wrap" }}>{d.summary}</p>
-                      <small>
-                        调研于{" "}
-                        {new Date(d.researched_at).toLocaleString("zh-CN")}
-                      </small>
-                      <ul>
-                        {d.sources.map((source, j) => (
-                          <li key={j}>
-                            <a
-                              href={source.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              [{source.index ?? j + 1}] {source.title}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
-                  ))}
-                <p>
-                  <strong>选题角度：</strong>
-                  {r.angle}
-                </p>
-                <details className="ai-caveats">
-                  <summary>待核验事项与数据依据</summary>
-                  <p>
-                    <strong>待核验：</strong>
-                    {r.risks.join("；")}
-                  </p>
-                  <p>
-                    原始观测：
-                    {new Date(r.evidence.observed_at).toLocaleString("zh-CN")}
-                    ；缺失指标：{r.evidence.missing.join("、") || "无"}
-                  </p>
-                </details>
               </article>
             ))}
           </div>

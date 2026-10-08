@@ -19,7 +19,7 @@ export async function researchBrand(
   );
   const cached = (
     await db.query<{ payload: Research }>(
-      "SELECT payload FROM ai_brand_research WHERE brand=$1 AND expires_at>now()",
+      "SELECT payload FROM ai_brand_research WHERE brand=$1 AND expires_at>now() AND payload->>'purpose'='sales-v2'",
       [brand],
     )
   ).rows[0];
@@ -53,7 +53,7 @@ export async function researchBrand(
             },
             {
               role: "user",
-              content: `截至${new Date().toISOString()}，调研上海的「${brand}」（分类${category}）。逐项检索并分析：1品牌定位、代表产品/体验、价格带、目标客群和可拍摄卖点；2最近30-90天新品活动、社交内容主题、口碑及争议，区分广告和公开报道；3往期营销或节假日表现，只有可靠资料才写销量/人气数字，不知道就写未知；4上海门店与室内外属性、季节/气候适配条件；5品牌价值为何能吸引用户以及不足。优先官网/官方账号/权威报道，多来源交叉核对。每项给出具体事实与可追溯来源，不给主观爆款概率。不把全国热度当上海销量。控制在1800字内。`,
+              content: `截至${new Date().toISOString()}，调研上海的「${brand}」（分类${category}）。逐项检索并分析：1品牌定位、代表产品/体验、价格带、目标客群、品牌信任及购买动机；2最近30-90天新品活动、社交内容主题、口碑及争议，区分广告和公开报道；3往期营销或节假日表现，只有可靠资料才写销量/人气数字，不知道就写未知；4上海门店与室内外属性、季节/气候适配条件；5品牌价值如何促进购买、需求门槛及不足。所有因素用于判断券是否好卖，不能讨论达人探店或拍摄便利性。优先官网/官方账号/权威报道，多来源交叉核对。每项给出具体事实与可追溯来源，不给主观爆款概率。不把全国热度当上海销量。控制在1800字内。`,
             },
           ],
         },
@@ -88,6 +88,7 @@ export async function researchBrand(
     throw Error("BRAND_SEARCH_NO_SOURCES");
   const result = {
     brand,
+    purpose: "sales-v2",
     summary: summary.slice(0, 12000),
     sources,
     researched_at: new Date().toISOString(),

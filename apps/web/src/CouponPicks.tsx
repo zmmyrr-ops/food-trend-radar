@@ -457,7 +457,7 @@ export function CouponPicks({
                   <div>
                     <span
                       title={
-                        isAdmin ? "月售净增 / 小时" : "热度增速指数，满分100"
+                        isAdmin ? "销售增速 / 小时" : "热度增速指数，满分100"
                       }
                     >
                       {isAdmin ? "月售增速" : "热度增速"}

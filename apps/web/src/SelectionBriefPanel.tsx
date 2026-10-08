@@ -119,7 +119,7 @@ export function SelectionBriefPanel({ brandId }: { brandId: string }) {
             张。热度衡量月售展示净变化，优惠变化衡量价格与权益，两者分别呈现，综合分尚未校准。
           </p>
           <details>
-            <summary>全品牌月售净增速度 Top 10</summary>
+            <summary>全品牌销售增速 Top 10</summary>
             <ol>
               {brief.sales_top.map((x) => (
                 <li key={`${x.brand_id}:${x.product_id}`}>

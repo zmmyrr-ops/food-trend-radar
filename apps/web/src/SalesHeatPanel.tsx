@@ -104,8 +104,8 @@ export function SalesHeatPanel({ brandId }: { brandId: string }) {
         <label>
           热度排序{" "}
           <select value={order} onChange={(e) => setOrder(e.target.value)}>
-            <option value="speed">月售净增速度</option>
-            <option value="acceleration">月售净增加速度</option>
+            <option value="speed">销售增速</option>
+            <option value="acceleration">销售加速度</option>
             <option value="lift_ratio">相对自身历史倍数</option>
             <option value="newest">最新采集</option>
           </select>
@@ -128,7 +128,7 @@ export function SalesHeatPanel({ brandId }: { brandId: string }) {
           />
         </label>
         <label>
-          最低净增速度{" "}
+          最低销售增速{" "}
           <input
             type="number"
             min="0"
@@ -209,7 +209,7 @@ export function SalesHeatPanel({ brandId }: { brandId: string }) {
                   （具体套餐及限制需核验）
                 </p>
                 <p>
-                  净增速度：<strong>{num(x.speed)}</strong> /小时 · 加速度：
+                  销售增速：<strong>{num(x.speed)}</strong> /小时 · 加速度：
                   {num(x.acceleration)} /小时²
                 </p>
                 <p>

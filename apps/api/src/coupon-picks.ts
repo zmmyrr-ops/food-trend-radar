@@ -320,7 +320,7 @@ export function picksCsv(items: ReturnType<typeof combinePicks>) {
         "折扣口径",
         "上次起价元",
         "票面降价元",
-        "月售净增速度/小时",
+        "销售增速/小时",
         "加速度/小时²",
         "最新月售原文",
         "采集时间",

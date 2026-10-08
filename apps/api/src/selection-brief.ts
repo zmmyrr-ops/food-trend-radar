@@ -171,7 +171,7 @@ export function briefMarkdown(b: SelectionBrief) {
   ];
   lines.push(
     "",
-    "## 券月售净增速度 Top 10",
+    "## 券销售增速 Top 10",
     "",
     `可计算 ${b.sales_summary.measured}/${b.sales_summary.total} 张，净增长 ${b.sales_summary.rising} 张。月售展示净变化不是新增订单；不衡量内容竞争，也不生成未校准综合分。`,
   );

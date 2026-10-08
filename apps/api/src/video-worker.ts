@@ -174,7 +174,7 @@ async function ask(
       await readFile(join(root, "..", "secrets", "bailian.json"), "utf8"),
     );
     key = secrets.api_key;
-    if (!key) throw Error("未配置百炼API Key");
+    if (!key) throw Error("未配置智能服务API Key");
   }
   const reserve = model.includes("plus") ? 0.12 : 0.025;
   if (project.cost + reserve > 1)
@@ -236,7 +236,7 @@ async function ask(
       throw Error("模型输出格式不正确，请重试");
     }
   }
-  throw Error("百炼限流，请稍后重试");
+  throw Error("智能服务限流，请稍后重试");
 }
 async function frames(a: Asset) {
   const paths: string[] = [];

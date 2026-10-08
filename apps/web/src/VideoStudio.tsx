@@ -493,7 +493,7 @@ export function VideoStudio() {
           此项目需按新版人物主体规则检查素材，请点击“重新制作”后再预览或导出。
         </p>
       )}
-      {!configured && <p role="alert">百炼密钥尚未配置，请联系管理员。</p>}
+      {!configured && <p role="alert">智能制作服务尚未配置，请联系管理员。</p>}
       {error && (
         <p role="alert" className="studio-error">
           {error}
@@ -1041,7 +1041,7 @@ function ProductionSettings({
               value={options.voice}
               onChange={(e) => update("voice", e.target.value)}
             >
-              <optgroup label="自然口播 · Qwen-Audio 3.0 Plus">
+              <optgroup label="自然口播">
                 {videoVoices
                   .filter((v) => v.id.startsWith("longan"))
                   .map((v) => (
@@ -1050,7 +1050,7 @@ function ProductionSettings({
                     </option>
                   ))}
               </optgroup>
-              <optgroup label="经典音色 · Qwen3 TTS">
+              <optgroup label="经典音色">
                 {videoVoices
                   .filter((v) => !v.id.startsWith("longan"))
                   .map((v) => (

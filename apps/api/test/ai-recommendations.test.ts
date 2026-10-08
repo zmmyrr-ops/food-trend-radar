@@ -267,7 +267,7 @@ test("short references resolve to stored IDs; extra model fields never override 
   );
   assert.throws(() =>
     validateAiOutput(
-      { ...reply, recommendations: [{ id: "C01", reason: "缺少角度和风险" }] },
+      { ...reply, recommendations: [{ id: "C01", angle: "缺少推荐理由" }] },
       candidates,
     ),
   );
@@ -357,6 +357,82 @@ test("AI频道筛选先于候选截取，报告独立保存，旧综合报告不
     assert.equal((await service.status("leisure")).report?.channel, "leisure");
     assert.equal((await service.status("food")).report, null);
     assert.equal((await service.status()).report?.summary, "旧综合报告");
+  } finally {
+    await db.close();
+  }
+});
+
+test("AI researches only six leading priority brands, evaluates sales and hides provider metadata", async () => {
+  const db = await openDatabase();
+  const p = pick();
+  const rows = Array.from({ length: 9 }, (_, i) => ({
+    ...p,
+    brand_id: `brand${i}`,
+    brand_name: `品牌${i}`,
+    priority: { ...p.priority, score: 90 - i },
+  }));
+  const researched: string[] = [];
+  try {
+    const svc = await createAiRecommendations(db, {
+      readPicks: async () => [
+        rows[8],
+        { ...rows[0], product_id: "duplicate" },
+        ...rows,
+      ],
+      readContext: async () => ({ weather: "unknown" }),
+      getKey: async () => "test",
+      credentialPath: "unused",
+      research: async (brand) => {
+        researched.push(brand);
+        return {
+          brand,
+          summary: "购买需求",
+          sources: [{ title: "来源", url: "https://example.com" }],
+          researched_at: new Date().toISOString(),
+        };
+      },
+      fetcher: async (_, options) => {
+        const body = JSON.parse(String(options?.body));
+        assert.match(body.messages[0].content, /判断候选券好不好卖/);
+        const input = JSON.parse(body.messages[1].content);
+        assert.equal(input.brand_research.length, 6);
+        assert.ok(
+          input.candidates.every(
+            (c: any) => !["品牌6", "品牌7", "品牌8"].includes(c.品牌),
+          ),
+        );
+        return Response.json({
+          choices: [
+            {
+              finish_reason: "stop",
+              message: {
+                content: JSON.stringify({
+                  summary: "销售判断",
+                  recommendations: [],
+                  limitations: ["不保证销量"],
+                }),
+              },
+            },
+          ],
+        });
+      },
+    });
+    await svc.start();
+    await svc.drain();
+    assert.deepEqual(researched, [
+      "品牌0",
+      "品牌1",
+      "品牌2",
+      "品牌3",
+      "品牌4",
+      "品牌5",
+    ]);
+    const status = await svc.status();
+    assert.equal(status.error, null);
+    assert.ok(status.report);
+    assert.equal("model" in status, false);
+    assert.equal("model" in status.report!, false);
+    assert.equal("version" in status.report!, false);
   } finally {
     await db.close();
   }

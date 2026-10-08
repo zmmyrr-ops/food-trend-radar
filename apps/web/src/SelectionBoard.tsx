@@ -173,7 +173,7 @@ export function SelectionBoard({ brandId }: { brandId: string }) {
     <section aria-label="选题机会榜" className="selection-board">
       <h2>今天先看哪些优惠</h2>
       <p>
-        自动筛出降价、首次发现和内容变化；下方销量热度榜按月售净增速度与加速度排序，不衡量内容竞争。
+        自动筛出降价、首次发现和内容变化；下方销量热度榜按销售增速与加速度排序，不衡量内容竞争。
       </p>
       {data && (
         <p>
