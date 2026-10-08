@@ -44,6 +44,7 @@ export async function ownedVisitStore(db: PGlite, id: string, owner: string) {
 }
 export async function createVisitPlans(db: PGlite) {
   await db.exec(`CREATE TABLE IF NOT EXISTS visit_plans(id uuid PRIMARY KEY,owner_id uuid NOT NULL,name text NOT NULL,date text NOT NULL,created_at timestamptz DEFAULT now(),deleted_at timestamptz);
+ ALTER TABLE visit_plans ADD COLUMN IF NOT EXISTS completed_at timestamptz;
  CREATE INDEX IF NOT EXISTS visit_plans_owner ON visit_plans(owner_id);
  CREATE TABLE IF NOT EXISTS visit_plan_stores(id uuid PRIMARY KEY,plan_id uuid NOT NULL REFERENCES visit_plans(id),name text NOT NULL,address text NOT NULL,lat double precision NOT NULL,lng double precision NOT NULL,brand_id uuid,product_id text,position integer NOT NULL DEFAULT 0,identity text NOT NULL,deleted_at timestamptz);
  ALTER TABLE visit_plan_stores ADD COLUMN IF NOT EXISTS coupon_refs jsonb NOT NULL DEFAULT '[]'::jsonb;
@@ -68,7 +69,7 @@ export async function createVisitPlans(db: PGlite) {
     };
   const owned = async (id: unknown, req: Request) => {
     const p = (
-      await db.query(
+      await db.query<{ completed_at: string | null }>(
         "SELECT * FROM visit_plans WHERE id=$1 AND owner_id=$2 AND deleted_at IS NULL",
         [uuid.parse(id), ownerOf(req)],
       )
@@ -84,8 +85,8 @@ export async function createVisitPlans(db: PGlite) {
         wrap(async (req, res) => {
           const plans = (
             await db.query<{ id: string; name: string; date: string }>(
-              `SELECT * FROM visit_plans WHERE owner_id=$1 AND deleted_at IS NULL ORDER BY date DESC,created_at DESC`,
-              [ownerOf(req)],
+              `SELECT * FROM visit_plans WHERE owner_id=$1 AND deleted_at IS NULL AND (NOT $2::boolean OR completed_at IS NULL) ORDER BY (completed_at IS NOT NULL),date DESC,created_at DESC`,
+              [ownerOf(req), req.query.active === "true"],
             )
           ).rows;
           const stores = (
@@ -112,6 +113,17 @@ export async function createVisitPlans(db: PGlite) {
             [id, ownerOf(req), v.name, v.date],
           );
           res.status(201).json({ id });
+        }),
+      );
+      app.post(
+        "/api/v3/visit-plans/:id/complete",
+        wrap(async (req, res) => {
+          await owned(req.params.id, req);
+          await db.query(
+            "UPDATE visit_plans SET completed_at=COALESCE(completed_at,now()) WHERE id=$1 AND owner_id=$2 AND deleted_at IS NULL",
+            [req.params.id, ownerOf(req)],
+          );
+          res.json({ ok: true });
         }),
       );
       app.patch(
@@ -141,7 +153,8 @@ export async function createVisitPlans(db: PGlite) {
       app.post(
         "/api/v3/visit-plans/:id/stores",
         wrap(async (req, res) => {
-          await owned(req.params.id, req);
+          const plan = await owned(req.params.id, req);
+          if (plan.completed_at) throw Error("计划已完结，请加入新的探店计划");
           const v = storeInput.parse(req.body),
             id = randomUUID();
           if (Boolean(v.brand_id) !== Boolean(v.product_id))

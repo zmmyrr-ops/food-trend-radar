@@ -33,3 +33,38 @@
 .visit-store-editor .visit-location-status.is-selected {
   color: #3478ee;
 }
+
+.visit-complete-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 8px;
+  background: #eef2f7;
+  color: #728097;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  vertical-align: middle;
+}
+.visit-complete-confirm {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: #f1f6ff;
+  border: 1px solid #d9e6fc;
+  border-radius: 12px;
+  margin: 12px 0;
+}
+.visit-complete-confirm > div {
+  flex: 1 1 240px;
+}
+.visit-complete-confirm p,
+.visit-complete-note {
+  font-size: 13px;
+  color: #78869b;
+  line-height: 1.7;
+}
+.visit-complete-confirm p {
+  margin: 6px 0 0;
+}

@@ -18,6 +18,7 @@ export type VisitPlan = {
   name: string;
   date: string;
   stores: VisitStore[];
+  completed_at?: string | null;
 };
 export async function visitRequest(
   path: string,
@@ -221,7 +222,7 @@ export function AddToVisitPlan({
     setError("");
     try {
       const [p, r] = await Promise.all([
-        visitRequest("visit-plans"),
+        visitRequest("visit-plans?active=true"),
         appFetch(
           `/api/v3/coupons/${encodeURIComponent(productId)}/stores?brand_id=${encodeURIComponent(brandId)}`,
         ).then(async (r) => {
@@ -368,6 +369,7 @@ export function AddToVisitPlan({
   );
 }
 export function VisitPlans() {
+  const [completing, setCompleting] = useState<string | null>(null);
   const [removal, setRemoval] = useState<{
     planId: string;
     storeId?: string;
@@ -400,6 +402,7 @@ export function VisitPlans() {
     try {
       await fn();
       await refresh();
+      window.dispatchEvent(new Event("visit-plans-changed"));
     } catch (e) {
       setError(String(e));
     } finally {
@@ -550,7 +553,12 @@ export function VisitPlans() {
                 aria-pressed={current?.id === p.id}
                 onClick={() => setSelected(p.id)}
               >
-                <strong>{p.name}</strong>
+                <strong>
+                  {p.name}
+                  {p.completed_at && (
+                    <small className="visit-complete-badge">已完结</small>
+                  )}
+                </strong>
                 <span>
                   {p.date} · {p.stores.length} 家店
                 </span>
@@ -561,12 +569,25 @@ export function VisitPlans() {
             <div className="visit-detail">
               <div className="visit-title">
                 <div>
-                  <h2>{current.name}</h2>
+                  <h2>
+                    {current.name}
+                    {current.completed_at && (
+                      <small className="visit-complete-badge">已完结</small>
+                    )}
+                  </h2>
                   <span>
                     {current.date} · {current.stores.length} 家店铺
                   </span>
                 </div>
                 <div className="visit-actions">
+                  {!current.completed_at && (
+                    <button
+                      disabled={busy}
+                      onClick={() => setCompleting(current.id)}
+                    >
+                      完结计划
+                    </button>
+                  )}
                   <button
                     disabled={busy}
                     onClick={() =>
@@ -588,9 +609,46 @@ export function VisitPlans() {
                   >
                     删除
                   </button>
-                  <button onClick={() => setEditing({})}>＋ 自定义店铺</button>
+                  {!current.completed_at && (
+                    <button onClick={() => setEditing({})}>
+                      ＋ 自定义店铺
+                    </button>
+                  )}
                 </div>
               </div>
+              {completing === current.id && !current.completed_at && (
+                <div className="visit-complete-confirm">
+                  <div>
+                    <strong>确认完结这个计划？</strong>
+                    <p>
+                      历史店铺和视频会保留，关联券恢复“加入探店计划”，可以再次探店。
+                    </p>
+                  </div>
+                  <button
+                    disabled={busy}
+                    onClick={() =>
+                      void action(async () => {
+                        await visitRequest(
+                          `visit-plans/${current.id}/complete`,
+                          "POST",
+                          {},
+                        );
+                        setCompleting(null);
+                      })
+                    }
+                  >
+                    确认完结
+                  </button>
+                  <button disabled={busy} onClick={() => setCompleting(null)}>
+                    取消
+                  </button>
+                </div>
+              )}
+              {current.completed_at && (
+                <p className="visit-complete-note">
+                  计划已完结，历史店铺与视频已保留。相关店铺可再次加入新计划。
+                </p>
+              )}
               <VisitMap stores={current.stores} />
               <div className="visit-stores">
                 {current.stores.map((s, i) => (

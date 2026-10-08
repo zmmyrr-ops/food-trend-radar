@@ -126,7 +126,7 @@ export function CouponPicks({
     let alive = true;
     async function loadPlans() {
       try {
-        const data = await visitRequest("visit-plans");
+        const data = await visitRequest("visit-plans?active=true");
         const links: Record<string, { id: string; name: string }> = {};
         for (const plan of data.items as VisitPlan[])
           for (const store of plan.stores) {
@@ -149,9 +149,11 @@ export function CouponPicks({
     }
     void loadPlans();
     window.addEventListener("focus", loadPlans);
+    window.addEventListener("visit-plans-changed", loadPlans);
     return () => {
       alive = false;
       window.removeEventListener("focus", loadPlans);
+      window.removeEventListener("visit-plans-changed", loadPlans);
     };
   }, []);
 

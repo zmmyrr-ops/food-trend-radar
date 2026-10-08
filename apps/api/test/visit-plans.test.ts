@@ -7,6 +7,7 @@ import test from "node:test";
 import { createAccounts } from "../src/accounts.js";
 import { createApp } from "../src/app.js";
 import { openDatabase } from "../src/db.js";
+import { changePoints } from "../src/points.js";
 import { createVideoProjects } from "../src/video-projects.js";
 import { seedInvitation } from "./helpers/invitation.js";
 
@@ -227,6 +228,9 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
       ).status,
       400,
     );
+    await db.transaction((tx) =>
+      changePoints(tx, a.account.id, 100, "测试积分", "visit-test-budget"),
+    );
     const r = await call("v3/video-projects", a.cookie, "POST", body);
     assert.equal(r.status, 201, await r.clone().text());
     const v = (await r.json()).project;
@@ -249,6 +253,61 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
       (await call(`v3/video-projects/${v.id}`, b.cookie)).status,
       404,
     );
+
+    assert.equal(
+      (await call(`v3/visit-plans/${p}/complete`, b.cookie, "POST")).status,
+      400,
+    );
+    assert.equal(
+      (await call(`v3/visit-plans/${p}/complete`, a.cookie, "POST")).status,
+      200,
+    );
+    const completed = (await (await call("v3/visit-plans", a.cookie)).json())
+      .items[0];
+    assert.ok(completed.completed_at);
+    assert.equal(completed.stores.length, 2);
+    assert.equal(
+      (await (await call("v3/visit-plans?active=true", a.cookie)).json()).items
+        .length,
+      0,
+    );
+    await call(`v3/visit-plans/${p}/complete`, a.cookie, "POST");
+    assert.equal(
+      (await (await call("v3/visit-plans", a.cookie)).json()).items[0]
+        .completed_at,
+      completed.completed_at,
+    );
+    assert.equal(
+      (await call(`v3/visit-plans/${p}/stores`, a.cookie, "POST", store))
+        .status,
+      400,
+    );
+    assert.equal(
+      (await call(`v3/video-projects/${v.id}`, a.cookie)).status,
+      200,
+    );
+    const next = (
+      await (
+        await call("v3/visit-plans", a.cookie, "POST", {
+          name: "二次探店",
+          date: "2026-10-09",
+        })
+      ).json()
+    ).id;
+    const added = await call(
+      `v3/visit-plans/${next}/stores`,
+      a.cookie,
+      "POST",
+      { ...store, brand_id: brand, product_id: "coupon-a" },
+    );
+    assert.equal(added.status, 201);
+    assert.notEqual((await added.json()).id, s);
+    assert.equal(
+      (await (await call("v3/visit-plans?active=true", a.cookie)).json())
+        .items[0].id,
+      next,
+    );
+    await call(`v3/visit-plans/${next}`, a.cookie, "DELETE");
     assert.equal(
       (await call(`v3/visit-plans/${p}/stores/${s}`, b.cookie, "DELETE"))
         .status,
