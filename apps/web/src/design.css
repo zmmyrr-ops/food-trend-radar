@@ -2087,3 +2087,84 @@ button.visit-primary {
   width: 100%;
   line-height: 18px;
 }
+
+/* Shared rows keep coupon information aligned despite badges and longer rules. */
+.app-shell .picks-panel .coupon-card {
+  position: relative;
+  display: grid;
+  container-type: normal;
+  grid-template-rows: subgrid;
+  grid-row: span 8;
+  row-gap: 0;
+  align-content: start;
+}
+.app-shell .picks-panel .coupon-card .brand-line {
+  margin: 0 0 8px;
+  padding-right: 34px;
+}
+.app-shell .picks-panel .coupon-status-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 23px;
+  margin-bottom: 8px;
+}
+.app-shell .picks-panel .coupon-status-row .coupon-kind,
+.app-shell .picks-panel .coupon-status-row .coupon-plan-badge {
+  margin: 0;
+  padding: 3px 6px;
+  font-size: 10px;
+  line-height: 16px;
+  white-space: nowrap;
+  border-radius: 5px;
+}
+.app-shell .picks-panel .coupon-status-row .coupon-plan-badge {
+  color: #4675ad;
+  background: #edf4ff;
+}
+.app-shell .picks-panel .coupon-card > .fresh-coupon-badge {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  margin: 0;
+  padding: 5px 10px 6px;
+  border: 0;
+  border-radius: 0 12px 0 10px;
+  background: linear-gradient(135deg, #4b91ff, #3470e2);
+  color: white;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 5px #3478ee20;
+}
+.app-shell .picks-panel .coupon-card h3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 40px;
+  min-height: 40px;
+  line-height: 20px;
+  margin: 0 0 8px;
+}
+.app-shell .picks-panel .coupon-store-slot {
+  min-width: 0;
+  min-height: 29px;
+}
+.app-shell .picks-panel .coupon-notes-slot {
+  min-width: 0;
+  padding-bottom: 6px;
+}
+.app-shell .picks-panel .coupon-card > .studio-entry {
+  margin-top: 8px;
+  align-self: end;
+}
+@supports not (grid-template-rows: subgrid) {
+  .app-shell .picks-panel .coupon-card {
+    display: flex;
+  }
+  .app-shell .picks-panel .coupon-card > .studio-entry {
+    margin-top: auto;
+  }
+}

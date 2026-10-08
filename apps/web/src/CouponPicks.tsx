@@ -440,6 +440,8 @@ export function CouponPicks({
                   <span className="brand-name" title={x.brand_name}>
                     {x.brand_name}
                   </span>
+                </div>
+                <div className="coupon-status-row">
                   <span className="coupon-kind">
                     {x.kind === "price_drop"
                       ? "票面降价"
@@ -451,10 +453,10 @@ export function CouponPicks({
                             ? "规则变化"
                             : "热度观察"}
                   </span>
+                  {planLinks[`${x.brand_id}:${x.product_id}`] && (
+                    <span className="coupon-plan-badge">✓ 已加入探店计划</span>
+                  )}
                 </div>
-                {planLinks[`${x.brand_id}:${x.product_id}`] && (
-                  <span className="coupon-plan-badge">✓ 已加入探店计划</span>
-                )}
                 {x.is_new && (
                   <span
                     className="fresh-coupon-badge"
@@ -464,10 +466,12 @@ export function CouponPicks({
                   </span>
                 )}
                 <h3 title={x.title}>{x.title}</h3>
-                <CouponStoreSummary
-                  brandId={x.brand_id}
-                  productId={x.product_id}
-                />
+                <div className="coupon-store-slot">
+                  <CouponStoreSummary
+                    brandId={x.brand_id}
+                    productId={x.product_id}
+                  />
+                </div>
                 <div className="coupon-stats">
                   <div>
                     <span>票面起价</span>
@@ -509,60 +513,62 @@ export function CouponPicks({
                     </strong>
                   </div>
                 </div>
-                <p className="availability-note">
-                  {x.discount.rate === null
-                    ? `原价折扣暂缺：${x.discount.reason}`
-                    : `平台原价 ${money(x.origin_price_fen)} · ${(10 * (1 - x.discount.rate)).toFixed(1)}折 · 比原价省 ${(100 * x.discount.rate).toFixed(1)}%`}
-                </p>
-                <div className="signal-tags">
-                  {x.kind === "price_drop" && (
-                    <span>
-                      票面降 {money(x.saving_fen)} · 上次售价{" "}
-                      {money(x.previous_price_fen)}
-                    </span>
-                  )}
-                  {isAdmin && (
-                    <>
+                <div className="coupon-notes-slot">
+                  <p className="availability-note">
+                    {x.discount.rate === null
+                      ? `原价折扣暂缺：${x.discount.reason}`
+                      : `平台原价 ${money(x.origin_price_fen)} · ${(10 * (1 - x.discount.rate)).toFixed(1)}折 · 比原价省 ${(100 * x.discount.rate).toFixed(1)}%`}
+                  </p>
+                  <div className="signal-tags">
+                    {x.kind === "price_drop" && (
                       <span>
-                        {x.acceleration === null
-                          ? "加速度暂缺"
-                          : `加速度 ${x.acceleration.toFixed(2)}/小时²`}
+                        票面降 {money(x.saving_fen)} · 上次售价{" "}
+                        {money(x.previous_price_fen)}
                       </span>
-                      <span>{x.priority.coverage}% 指标已具备</span>
-                    </>
+                    )}
+                    {isAdmin && (
+                      <>
+                        <span>
+                          {x.acceleration === null
+                            ? "加速度暂缺"
+                            : `加速度 ${x.acceleration.toFixed(2)}/小时²`}
+                        </span>
+                        <span>{x.priority.coverage}% 指标已具备</span>
+                      </>
+                    )}
+                  </div>
+                  {!x.priority.value_gate.eligible && (
+                    <p className="availability-note">
+                      {x.priority.value_gate.reason}
+                    </p>
                   )}
+                  {(x.use_outlook.fully_excluded ||
+                    x.use_outlook.has_explicit_exclusion) && (
+                    <p className="availability-note">
+                      {x.use_outlook.fully_excluded
+                        ? "未来72小时明确不可用"
+                        : "部分日期不可用，请查看使用规则"}
+                    </p>
+                  )}
+                  {x.priority.availability_gate &&
+                    (x.priority.availability_gate.penalty > 0 ||
+                      x.priority.availability_gate.evidence.length > 0) && (
+                      <div className="coupon-use-warning">
+                        <strong>{x.priority.availability_gate.reason}</strong>
+                        <p>
+                          使用限制调整：
+                          {x.priority.availability_gate.before_score.toFixed(1)}{" "}
+                          → {x.priority.score.toFixed(1)} 分
+                        </p>
+                        <details>
+                          <summary>查看限制原文</summary>
+                          {x.priority.availability_gate.evidence.map((t) => (
+                            <p key={t}>{t}</p>
+                          ))}
+                        </details>
+                      </div>
+                    )}
                 </div>
-                {!x.priority.value_gate.eligible && (
-                  <p className="availability-note">
-                    {x.priority.value_gate.reason}
-                  </p>
-                )}
-                {(x.use_outlook.fully_excluded ||
-                  x.use_outlook.has_explicit_exclusion) && (
-                  <p className="availability-note">
-                    {x.use_outlook.fully_excluded
-                      ? "未来72小时明确不可用"
-                      : "部分日期不可用，请查看使用规则"}
-                  </p>
-                )}
-                {x.priority.availability_gate &&
-                  (x.priority.availability_gate.penalty > 0 ||
-                    x.priority.availability_gate.evidence.length > 0) && (
-                    <div className="coupon-use-warning">
-                      <strong>{x.priority.availability_gate.reason}</strong>
-                      <p>
-                        使用限制调整：
-                        {x.priority.availability_gate.before_score.toFixed(1)} →{" "}
-                        {x.priority.score.toFixed(1)} 分
-                      </p>
-                      <details>
-                        <summary>查看限制原文</summary>
-                        {x.priority.availability_gate.evidence.map((t) => (
-                          <p key={t}>{t}</p>
-                        ))}
-                      </details>
-                    </div>
-                  )}
                 <CouponUsageRules
                   productId={x.product_id}
                   brandId={x.brand_id}
