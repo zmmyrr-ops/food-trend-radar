@@ -267,18 +267,20 @@ export function BrandSubscriptions({
                     {!results.length && <p className="muted">暂无匹配品牌</p>}
                   </div>
                 )}
-                <div className="subscription-chips">
+                <ul className="workspace-brand-list" aria-label="已订阅品牌">
                   {subscriptions.map((s) => (
-                    <button
-                      key={s.brand_id}
-                      disabled={busy}
-                      onClick={() => void toggle(s.brand_id, false)}
-                      title="取消订阅"
-                    >
-                      {s.name} ×
-                    </button>
+                    <li key={s.brand_id}>
+                      <span className="workspace-brand-name">{s.name}</span>
+                      <button
+                        disabled={busy}
+                        onClick={() => void toggle(s.brand_id, false)}
+                        aria-label={`取消订阅${s.name}`}
+                      >
+                        取消订阅
+                      </button>
+                    </li>
                   ))}
-                </div>
+                </ul>
                 {!subscriptions.length && (
                   <p className="muted">尚未订阅品牌，搜索后即可添加。</p>
                 )}

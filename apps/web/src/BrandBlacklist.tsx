@@ -97,19 +97,20 @@ export function BrandBlacklist() {
             )}
           </div>
         )}
-        <div className="blacklist-tags">
+        <ul className="workspace-brand-list" aria-label="已屏蔽品牌">
           {items.map((b) => (
-            <button
-              key={b.brand_id}
-              disabled={busy}
-              aria-label={`移除${b.name}`}
-              onClick={() => void update(b, false)}
-            >
-              {b.name}
-              <span aria-hidden="true"> ×</span>
-            </button>
+            <li key={b.brand_id}>
+              <span className="workspace-brand-name">{b.name}</span>
+              <button
+                disabled={busy}
+                aria-label={`移除${b.name}`}
+                onClick={() => void update(b, false)}
+              >
+                移除
+              </button>
+            </li>
           ))}
-        </div>
+        </ul>
         {!items.length && <small>尚未添加品牌</small>}
       </div>
     </section>
