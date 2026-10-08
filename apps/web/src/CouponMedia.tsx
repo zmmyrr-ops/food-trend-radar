@@ -265,15 +265,10 @@ export function CouponMedia({
       ["queued", "running"].includes(job.text_state || ""));
   const fresh =
     job?.state === "complete" && Date.parse(job.expires_at) > Date.now();
+  const searching =
+    acquiring || !!(job && ["queued", "running"].includes(job.state));
   return (
-    <section
-      className="coupon-media"
-      data-searching={
-        acquiring || (job && ["queued", "running"].includes(job.state))
-          ? "true"
-          : undefined
-      }
-    >
+    <section className="coupon-media">
       <button
         className="coupon-media-toggle"
         aria-expanded={open}
@@ -295,13 +290,20 @@ export function CouponMedia({
               </p>
             </div>
             <button
+              className={
+                searching
+                  ? "media-search-button is-searching"
+                  : "media-search-button"
+              }
+              aria-busy={searching}
               disabled={busy || !!running || !!fresh}
               onClick={() => void acquire()}
             >
-              {busy ? (
-                "提交中…"
-              ) : running ? (
-                "搜索中…"
+              {searching ? (
+                <span className="media-search-label">
+                  <span className="media-search-orbit" aria-hidden="true" />
+                  搜索中
+                </span>
               ) : fresh ? (
                 "已获取 · 缓存中"
               ) : (

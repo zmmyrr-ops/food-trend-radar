@@ -96,76 +96,75 @@
   }
 }
 
-/* The light sits beneath content, so previews and the stop action stay usable. */
-.studio-network-materials {
+/* Keep motion local to the action; the material canvas remains unchanged. */
+@property --search-light-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.coupon-media .coupon-media-toolbar > .media-search-button.is-searching {
   position: relative;
-  isolation: isolate;
-  border-radius: 16px;
-}
-.studio-network-materials::before,
-.studio-network-materials::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 700ms ease;
-}
-.studio-network-materials::before {
-  background: linear-gradient(125deg, #edf5ffcc, #e3eeff70 48%, #f0f9ffb3);
-  box-shadow:
-    inset 0 0 0 1px #b8d3ff66,
-    0 8px 32px #427fdb0a;
-}
-.studio-network-materials::after {
-  background:
-    radial-gradient(ellipse at 15% 20%, #76aaff55, transparent 62%),
-    radial-gradient(ellipse at 85% 75%, #8ddaff44, transparent 58%);
-}
-.studio-network-materials:has([data-searching="true"])::before {
+  min-width: 110px;
   opacity: 1;
+  color: #285fba;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(120deg, #f7fbff, #eaf2ff) padding-box,
+    conic-gradient(
+      from var(--search-light-angle),
+      #d3e2fa 0%,
+      #d3e2fa 60%,
+      #8cbaf9 76%,
+      #448af0 86%,
+      #b5e4ff 93%,
+      #d3e2fa 100%
+    )
+    border-box;
+  animation:
+    search-border-travel 3.6s linear infinite,
+    search-button-breathe 3.6s ease-in-out infinite;
+  cursor: progress;
 }
-.studio-network-materials:has([data-searching="true"])::after {
-  animation: material-blue-breathe 4s ease-in-out infinite;
+.media-search-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
-.creator-workbench
-  .studio-network-materials:has([data-searching="true"])
-  .coupon-media-toolbar {
-  background: transparent;
-}
-.creator-workbench
-  .studio-network-materials:has([data-searching="true"])
-  .coupon-media-status {
-  color: #4b77ae;
-}
-.coupon-media[data-searching="true"] .coupon-media-status::before {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin-right: 8px;
+.media-search-orbit {
+  width: 12px;
+  height: 12px;
+  box-sizing: border-box;
+  border: 1.5px solid #cadcf7;
+  border-top-color: #4385e5;
+  border-right-color: #83b7f4;
   border-radius: 50%;
-  background: #6099ed;
-  box-shadow: 0 0 10px #6099ed66;
+  animation: search-orbit 1.4s linear infinite;
 }
-@keyframes material-blue-breathe {
+@keyframes search-border-travel {
+  to {
+    --search-light-angle: 360deg;
+  }
+}
+@keyframes search-button-breathe {
   0%,
   100% {
-    opacity: 0.3;
+    box-shadow: 0 2px 6px #4385e508;
   }
   50% {
-    opacity: 0.95;
+    box-shadow: 0 2px 14px #4385e526;
+  }
+}
+@keyframes search-orbit {
+  to {
+    transform: rotate(360deg);
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .studio-network-materials::before,
-  .studio-network-materials::after {
-    transition: none;
-  }
-  .studio-network-materials:has([data-searching="true"])::after {
+  .coupon-media .coupon-media-toolbar > .media-search-button.is-searching,
+  .media-search-orbit {
     animation: none;
-    opacity: 0.55;
   }
 }
