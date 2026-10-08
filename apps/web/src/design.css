@@ -2099,15 +2099,18 @@ button.visit-primary {
   align-content: start;
 }
 .app-shell .picks-panel .coupon-card .brand-line {
-  margin: 0 0 8px;
+  margin: 0 0 5px;
   padding-right: 34px;
 }
 .app-shell .picks-panel .coupon-status-row {
   display: flex;
   align-items: center;
   gap: 5px;
-  min-height: 23px;
-  margin-bottom: 8px;
+  min-height: 0;
+  margin-bottom: 0;
+}
+.app-shell .picks-panel .coupon-status-row:not(:empty) {
+  margin-bottom: 5px;
 }
 .app-shell .picks-panel .coupon-status-row .coupon-kind,
 .app-shell .picks-panel .coupon-status-row .coupon-plan-badge {
