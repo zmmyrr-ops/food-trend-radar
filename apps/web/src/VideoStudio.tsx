@@ -165,7 +165,11 @@ export function VideoStudio() {
   function load(p: Project) {
     setProject(p);
     setHistory((h) => [p, ...h.filter((x) => x.id !== p.id)]);
-    const restored = { ...defaultOptions, ...p.production_options };
+    const restored = {
+      ...defaultOptions,
+      ...p.production_options,
+      music: false,
+    };
     if (!active(p) && !p.story_blocks && !restored.voice.startsWith("longan")) {
       restored.voice = ["Ethan", "Moon", "Kai", "Vincent", "Neil"].includes(
         restored.voice,
@@ -856,23 +860,27 @@ export function VideoStudio() {
                     设置已更改，点击重新制作后生效。
                   </p>
                 )}
-                <div className="studio-section-heading">
-                  <h2>视频稿</h2>
-                  <button
-                    className="quiet-button"
-                    disabled={!captionText}
-                    onClick={() => void copyCaptions()}
-                  >
-                    复制文案
-                  </button>
-                </div>
-                <p className="studio-script-text">
-                  {captionText ||
-                    (active(project)
-                      ? "正在结合画面与店铺信息撰写…"
-                      : "点击重新制作，自动生成一份探店视频稿。")}
-                </p>
-                <small role="status">{copyStatus}</small>
+                {options.script && (
+                  <>
+                    <div className="studio-section-heading">
+                      <h2>视频稿</h2>
+                      <button
+                        className="quiet-button"
+                        disabled={!captionText}
+                        onClick={() => void copyCaptions()}
+                      >
+                        复制文案
+                      </button>
+                    </div>
+                    <p className="studio-script-text">
+                      {captionText ||
+                        (active(project)
+                          ? "正在结合画面与店铺信息撰写…"
+                          : "点击重新制作，自动生成一份探店视频稿。")}
+                    </p>
+                    <small role="status">{copyStatus}</small>
+                  </>
+                )}
               </section>
             </div>
             <details className="studio-analysis">
@@ -1029,18 +1037,25 @@ function ProductionSettings({
     <div className="studio-production-options">
       {(
         [
-          ["subtitles", "画面字幕", "把视频稿配到画面上"],
-          ["narration", "语音口播", "自然中文讲述"],
-          ["music", "背景音乐", "自动匹配轻音乐"],
+          ["script", "视频稿", "根据画面生成可复制文案"],
+          ["subtitles", "画面字幕", "需先勾选视频稿"],
+          ["narration", "语音口播", "需先勾选视频稿"],
         ] as const
       ).map(([key, label, hint]) => (
         <label key={key}>
           <input
             type="checkbox"
             checked={options[key]}
-            disabled={disabled}
+            disabled={disabled || (key !== "script" && !options.script)}
             onChange={(e) =>
-              setOptions({ ...options, [key]: e.target.checked })
+              setOptions({
+                ...options,
+                [key]: e.target.checked,
+                music: false,
+                ...(key === "script" && !e.target.checked
+                  ? { subtitles: false, narration: false }
+                  : {}),
+              })
             }
           />
           <span>

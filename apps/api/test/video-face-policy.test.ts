@@ -27,7 +27,7 @@ test("网络素材必须通过新版本正面人脸检查，用户上传豁免",
         ...asset,
         origin: "network",
         face_screen: status,
-        face_screen_version: 2,
+        face_screen_version: 3,
       }),
       false,
     );
@@ -36,7 +36,7 @@ test("网络素材必须通过新版本正面人脸检查，用户上传豁免",
       ...asset,
       origin: "network",
       face_screen: "clear",
-      face_screen_version: 2,
+      face_screen_version: 3,
     }),
     true,
   );
@@ -86,7 +86,7 @@ test("拒绝的网络素材不会阻挡只使用自有素材的成片", () => {
     id: "22222222-2222-4222-8222-222222222222",
     origin: "network" as const,
     face_screen: "present" as const,
-    face_screen_version: 2,
+    face_screen_version: 3,
     accepted: false,
   };
   const plan = Array.from({ length: 4 }, () => ({

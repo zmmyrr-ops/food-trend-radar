@@ -425,7 +425,7 @@ async function analyze() {
     const cache = join(
       root,
       "analysis",
-      `${a.hash}-flash-v7-${project.channel || "unknown"}.json`,
+      `${a.hash}-flash-v8-${project.channel || "unknown"}.json`,
     );
     let cached: any;
     try {
@@ -565,6 +565,18 @@ ${contentPolicy(project).ordering}
   report({ plan, assets: project.assets });
 }
 async function prepareProduction() {
+  if (!project.production_options?.script) {
+    project.production_options = {
+      ...project.production_options,
+      script: false,
+      subtitles: false,
+      narration: false,
+      music: false,
+    };
+    report({ script: "", script_segments: [], script_revision: undefined });
+    return;
+  }
+  project.production_options.music = false;
   const options = project.production_options;
   const narration = join(base, `narration-${project.revision}.wav`);
   if (

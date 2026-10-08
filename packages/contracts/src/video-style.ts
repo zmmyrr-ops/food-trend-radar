@@ -15,36 +15,44 @@ export const subtitleFonts = [
   { id: "sans", name: "思源黑体", family: "Noto Sans CJK SC" },
   { id: "serif", name: "思源宋体", family: "Noto Serif SC" },
 ] as const;
-export const productionOptionsSchema = z.object({
-  subtitles: z.boolean().default(false),
-  narration: z.boolean().default(false),
-  music: z.boolean().default(false),
-  voice: z
-    .enum([
-      "longanlingxin",
-      "longanlufeng",
-      "Cherry",
-      "Serena",
-      "Ethan",
-      "Maia",
-      "Moon",
-      "Kai",
-      "Vincent",
-      "Neil",
-    ])
-    .default("longanlingxin"),
-  subtitleFont: z.enum(["sans", "serif"]).default("sans"),
-  subtitleSize: z.number().int().min(36).max(88).default(64),
-  subtitlePosition: z.number().int().min(20).max(88).default(72),
-  subtitleOutline: z.number().min(0).max(8).default(3),
-  subtitleColor: z
-    .string()
-    .regex(/^#[0-9a-fA-F]{6}$/)
-    .default("#FFFFFF"),
-  subtitleOutlineColor: z
-    .string()
-    .regex(/^#[0-9a-fA-F]{6}$/)
-    .default("#202020"),
-});
+export const productionOptionsSchema = z
+  .object({
+    script: z.boolean().default(false),
+    subtitles: z.boolean().default(false),
+    narration: z.boolean().default(false),
+    music: z.boolean().default(false),
+    voice: z
+      .enum([
+        "longanlingxin",
+        "longanlufeng",
+        "Cherry",
+        "Serena",
+        "Ethan",
+        "Maia",
+        "Moon",
+        "Kai",
+        "Vincent",
+        "Neil",
+      ])
+      .default("longanlingxin"),
+    subtitleFont: z.enum(["sans", "serif"]).default("sans"),
+    subtitleSize: z.number().int().min(36).max(88).default(64),
+    subtitlePosition: z.number().int().min(20).max(88).default(72),
+    subtitleOutline: z.number().min(0).max(8).default(3),
+    subtitleColor: z
+      .string()
+      .regex(/^#[0-9a-fA-F]{6}$/)
+      .default("#FFFFFF"),
+    subtitleOutlineColor: z
+      .string()
+      .regex(/^#[0-9a-fA-F]{6}$/)
+      .default("#202020"),
+  })
+  .transform((value) => ({
+    ...value,
+    music: false,
+    subtitles: value.script && value.subtitles,
+    narration: value.script && value.narration,
+  }));
 export type VideoProductionOptions = z.infer<typeof productionOptionsSchema>;
 export const defaultVideoProductionOptions = productionOptionsSchema.parse({});

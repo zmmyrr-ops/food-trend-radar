@@ -166,6 +166,7 @@ test("编辑时间线采用修订号，过期版本不能覆盖；重启标记�
         body: JSON.stringify({
           revision,
           production_options: {
+            script: true,
             subtitles: true,
             narration: false,
             music: true,
@@ -180,6 +181,7 @@ test("编辑时间线采用修订号，过期版本不能覆盖；重启标记�
     assert.deepEqual(
       made.project.production_options,
       productionOptionsSchema.parse({
+        script: true,
         subtitles: true,
         narration: false,
         music: true,
@@ -246,7 +248,12 @@ test("真实FFmpeg渲染：18秒、竖屏、字幕、无素材音轨，生成可
         cost: 0,
         script_revision: 1,
         script_segments: ["Render test.", "Another shot."],
-        production_options: { subtitles: true, narration: false, music: false },
+        production_options: {
+          script: true,
+          subtitles: true,
+          narration: false,
+          music: false,
+        },
       }),
     );
     await exec(
@@ -289,6 +296,7 @@ test("真实FFmpeg渲染：18秒、竖屏、字幕、无素材音轨，生成可
     for (const options of [
       { subtitles: false, narration: false, music: false },
       {
+        script: true,
         subtitles: true,
         narration: true,
         music: true,
@@ -404,7 +412,7 @@ test("remake atomically adopts current material selection and target duration, r
       ...a,
       origin: "network",
       face_screen: "clear",
-      face_screen_version: 2,
+      face_screen_version: 3,
       hash: a.id,
     }));
   const p = {
@@ -474,7 +482,7 @@ test("review reuse skips completed checks but rechecks uncertain or outdated rul
     origin: "network",
     hash: "a".repeat(64),
     face_screen: "clear",
-    face_screen_version: 2,
+    face_screen_version: 3,
   };
   assert.equal(reusableAssessment(asset), true);
   assert.equal(

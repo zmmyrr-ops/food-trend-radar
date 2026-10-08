@@ -28,13 +28,14 @@ test("BF references cover both channels and return relevant samples", () => {
 test("option combinations remain independent and reject string booleans", () => {
   for (let mask = 0; mask < 8; mask++) {
     const value = {
+      script: true,
       subtitles: !!(mask & 1),
       narration: !!(mask & 2),
       music: !!(mask & 4),
     };
     const parsed = productionOptionsSchema.parse(value);
     for (const key of ["music", "narration", "subtitles"] as const)
-      assert.equal(parsed[key], value[key]);
+      assert.equal(parsed[key], key === "music" ? false : value[key]);
   }
   assert.equal(
     productionOptionsSchema.safeParse({ music: "false" }).success,
@@ -190,4 +191,22 @@ test("length repair does not preserve invented age eligibility or coupon entitle
   assert.ok(!result.includes("岁"));
   assert.ok(!result.includes("可入园"));
   assert.ok(result.includes("沙池"));
+});
+
+test("视频稿默认关闭，未勾选不生成字幕口播，背景音乐始终关闭", () => {
+  const defaults = productionOptionsSchema.parse({});
+  assert.equal(defaults.script, false);
+  const disabled = productionOptionsSchema.parse({
+    script: false,
+    subtitles: true,
+    narration: true,
+    music: true,
+  });
+  assert.equal(disabled.subtitles, false);
+  assert.equal(disabled.narration, false);
+  assert.equal(disabled.music, false);
+  const scriptOnly = productionOptionsSchema.parse({ script: true });
+  assert.equal(scriptOnly.script, true);
+  assert.equal(scriptOnly.subtitles, false);
+  assert.equal(scriptOnly.narration, false);
 });

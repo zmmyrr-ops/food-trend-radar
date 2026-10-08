@@ -811,7 +811,8 @@ export async function createVideoProjects(db: PGlite, root: string) {
             production_options: v.production_options ?? {
               subtitles: false,
               narration: false,
-              music: !!v.music_id,
+              script: false,
+              music: false,
             },
           };
         await db.query(
