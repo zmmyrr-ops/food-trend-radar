@@ -1,0 +1,35 @@
+.visit-store-editor .visit-editor-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 6px;
+}
+.visit-store-editor .visit-editor-actions button {
+  margin: 0;
+  min-height: 40px;
+  padding: 9px 12px;
+  border: 1px solid #dce7f7;
+  border-radius: 8px;
+  background: #f2f6fe;
+  color: #3478ee;
+  font-size: 13px;
+  line-height: 20px;
+}
+.visit-store-editor .visit-editor-actions .visit-primary {
+  background: #3478ee;
+  color: white;
+  border-color: #3478ee;
+}
+.visit-store-editor .visit-editor-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.visit-store-editor .visit-location-status {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #78869c;
+  margin: 0 0 4px;
+}
+.visit-store-editor .visit-location-status.is-selected {
+  color: #3478ee;
+}

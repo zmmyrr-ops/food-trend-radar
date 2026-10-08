@@ -1,4 +1,5 @@
 import { type ReactNode, useEffect, useState } from "react";
+import "./visit-editor.css";
 import { createPortal } from "react-dom";
 import { appFetch, appUrl } from "./app-url";
 import { ShopLocation, searchStorePlaces, VisitMap } from "./ShopMap";
@@ -140,7 +141,7 @@ export function StoreEditor({
                 placeholder="上海市 · 区 · 街道门牌号"
               />
             </label>
-            <div className="visit-actions">
+            <div className="visit-editor-actions">
               <button
                 type="button"
                 disabled={busy || (!name && !address)}
@@ -148,8 +149,22 @@ export function StoreEditor({
               >
                 搜索地图位置
               </button>
-              <span className="muted">选择搜索结果，或直接点击地图选点</span>
+              <button
+                type="submit"
+                disabled={busy || !point || !name.trim() || !address.trim()}
+                className="visit-primary"
+              >
+                保存店铺
+              </button>
             </div>
+            <p
+              className={`visit-location-status${point ? " is-selected" : ""}`}
+              aria-live="polite"
+            >
+              {point
+                ? "✓ 已选定位置，确认店铺名称和地址后即可保存。"
+                : "先搜索并选择下方结果，或点击地图选点，再保存店铺。"}
+            </p>
             {results.map((r, i) => (
               <button
                 className="place-result"
@@ -174,15 +189,7 @@ export function StoreEditor({
               stores={point ? [{ name: name || "选定店铺", ...point }] : []}
               onPick={(lat, lng) => setPoint({ lat, lng })}
             />
-            <p className="muted">
-              {point
-                ? `已选位置 · ${point.lat.toFixed(5)}, ${point.lng.toFixed(5)}`
-                : "尚未选定位置"}
-            </p>
             {error && <p role="alert">{error}</p>}
-            <button type="submit" disabled={busy} className="visit-primary">
-              {busy ? "处理中…" : "保存店铺"}
-            </button>
           </form>
         </div>
       </section>
