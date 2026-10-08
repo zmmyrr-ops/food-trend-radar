@@ -293,18 +293,40 @@ export function AccountGate({ children }: { children: ReactNode }) {
   return (
     <AccountContext.Provider value={account}>
       <div className={`account-scope role-${account.role}`}>
-        <div className="account-bar">
+        <div className="account-bar account-bar-compact">
           <PointsBalance />
           {new URLSearchParams(location.search).get("studio") === "1" && (
             <a className="studio-home-link" href={appUrl("/")}>
               ← 返回首页
             </a>
           )}
-          <a href={appUrl("/?tab=workspace&section=member")}>
-            {account.phone.slice(0, 3)}****{account.phone.slice(-4)} ·{" "}
-            {account.role === "admin" ? "管理员" : "我的账号"} · 积分与邀请
+          <a
+            className="account-profile-link"
+            href={appUrl("/?tab=workspace&section=member")}
+            aria-label="账号与积分管理"
+            title="账号与积分管理"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="8" r="3.5" />
+              <path d="M5 21v-2a7 7 0 0 1 14 0v2" />
+            </svg>
+            <span>
+              {account.phone.slice(0, 3)}****{account.phone.slice(-4)}
+            </span>
+            {account.role === "admin" && (
+              <small className="account-role">管理员</small>
+            )}
           </a>
           <button
+            className="account-logout"
             disabled={busy}
             onClick={async () => {
               setBusy(true);

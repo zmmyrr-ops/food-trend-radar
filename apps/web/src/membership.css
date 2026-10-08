@@ -555,3 +555,94 @@ main.auth-loading {
 .points-badge {
   gap: 5px;
 }
+
+/* Compact account utilities; keep balance separate from the account identity. */
+.account-bar.account-bar-compact {
+  min-height: 48px;
+  padding: 6px 28px;
+  gap: 16px;
+  background: #fff;
+  flex-wrap: wrap;
+}
+.account-bar-compact .points-balance-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 4px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: #f3f6fc;
+  color: #3866bb;
+  text-decoration: none;
+}
+.account-bar-compact .points-badge {
+  gap: 5px;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.account-bar-compact .points-icon {
+  width: 18px;
+  height: 18px;
+}
+.account-bar-compact .points-badge small {
+  color: #768399;
+  font-size: 11px;
+  margin-left: 5px;
+  font-weight: 400;
+}
+.account-bar-compact .account-profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #526078;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  min-height: 32px;
+}
+.account-bar-compact .account-role {
+  background: #f1f4f9;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 10px;
+}
+.account-bar-compact button.account-logout {
+  border: 0;
+  border-left: 1px solid #e6ebf2;
+  border-radius: 0;
+  padding: 4px 0 4px 16px;
+  background: transparent;
+  color: #8390a3;
+  font-size: 12px;
+}
+.account-bar-compact .account-profile-link:hover,
+.account-bar-compact button.account-logout:hover {
+  color: #3478ee;
+}
+.account-bar-compact a:focus-visible,
+.account-bar-compact button:focus-visible {
+  outline: 2px solid #3478ee;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .account-bar.account-bar-compact {
+    padding: 6px 12px;
+    gap: 10px;
+  }
+  .account-bar-compact button.account-logout {
+    padding-left: 10px;
+  }
+}
+.account-bar-compact a span {
+  margin: 0;
+  display: inline;
+  letter-spacing: normal;
+  font-size: inherit;
+  color: inherit;
+  white-space: nowrap;
+}
+.account-bar-compact a .points-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+}
