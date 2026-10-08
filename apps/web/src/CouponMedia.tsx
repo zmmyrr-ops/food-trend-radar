@@ -17,6 +17,7 @@ type Resource = {
 };
 export type TextMaterial = {
   text_state?: string;
+  text_error?: string;
   text_summary?: { overview: string; highlights: string[] } | null;
 };
 type Job = TextMaterial & {
@@ -384,7 +385,16 @@ export function TextMaterialSummary({ value }: { value: TextMaterial | null }) {
       {value.text_state === "queued" || value.text_state === "running" ? (
         <p>正在整理文字素材…</p>
       ) : value.text_state === "failed" ? (
-        <p>暂未完成文字整理，额外积分已退回。可勾选后重新获取。</p>
+        <p>
+          {value.text_error === "NO_TEXT"
+            ? "本次素材没有可提炼的文章正文。"
+            : value.text_error === "INCOMPLETE"
+              ? "素材搜索未完成，文字整理已停止。"
+              : value.text_error === "INTERRUPTED"
+                ? "服务更新中断了文字整理。"
+                : "文字整理暂未成功。"}
+          额外5积分已退回，可勾选后重试。
+        </p>
       ) : summary ? (
         <>
           <p>{summary.overview}</p>

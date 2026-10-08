@@ -152,6 +152,7 @@ export async function createCouponMedia(
   await db.exec(`
     CREATE TABLE IF NOT EXISTS coupon_media_jobs(id uuid PRIMARY KEY,brand_id uuid NOT NULL,product_id text NOT NULL,keyword text NOT NULL,names jsonb NOT NULL,state text NOT NULL,resources jsonb NOT NULL DEFAULT '[]',searched int NOT NULL DEFAULT 0,inspected int NOT NULL DEFAULT 0,error_code text,created_at timestamptz NOT NULL DEFAULT now(),updated_at timestamptz NOT NULL DEFAULT now(),UNIQUE(brand_id,product_id));
     ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS text_state text;
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS text_error text;
     ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS text_summary jsonb;
     ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS text_charge_key text;
     ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS text_notes jsonb NOT NULL DEFAULT '[]';
@@ -179,7 +180,7 @@ export async function createCouponMedia(
   ).rows) {
     if (job.text_charge_key) await refundPoints(db, job.text_charge_key);
     await db.query(
-      "UPDATE coupon_media_jobs SET text_state='failed',text_charge_key=NULL WHERE id=$1",
+      "UPDATE coupon_media_jobs SET text_state='failed',text_error='INTERRUPTED',text_charge_key=NULL WHERE id=$1",
       [job.id],
     );
   }
@@ -230,20 +231,52 @@ export async function createCouponMedia(
           });
       for (const n of job.text_notes) notes.set(n.id, n);
       if (!notes.size) throw Error("NO_TEXT");
-      const summary = await (options.summarizeText ?? summarizeMediaText)(
-        [...notes.values()].slice(-30),
-        job.keyword,
-        join(dirname(credentialPath), "deepseek.json"),
-      );
+      let summary;
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          summary = await (options.summarizeText ?? summarizeMediaText)(
+            [...notes.values()].slice(-25),
+            job.keyword,
+            join(dirname(credentialPath), "deepseek.json"),
+          );
+          break;
+        } catch (error) {
+          const code = error instanceof Error ? error.message : "";
+          if (
+            attempt ||
+            !["SUMMARY_BUSY", "SUMMARY_INVALID", "SUMMARY_TRUNCATED"].includes(
+              code,
+            )
+          )
+            throw error;
+          await wait(2000);
+        }
+      }
+      if (!summary) throw Error("SUMMARY_FAILED");
       await db.query(
-        "UPDATE coupon_media_jobs SET text_state='complete',text_summary=$2,text_charge_key=NULL,text_notes='[]' WHERE id=$1",
+        "UPDATE coupon_media_jobs SET text_state='complete',text_error=NULL,text_summary=$2,text_charge_key=NULL,text_notes='[]' WHERE id=$1",
         [id, JSON.stringify(summary)],
       );
-    } catch {
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "";
+      const code = [
+        "NO_TEXT",
+        "INCOMPLETE",
+        "SUMMARY_BUSY",
+        "SUMMARY_INVALID",
+        "SUMMARY_TRUNCATED",
+        "NOT_CONFIGURED",
+      ].includes(message)
+        ? message
+        : message.includes("timeout") ||
+            (error instanceof Error && error.name === "TimeoutError")
+          ? "SUMMARY_TIMEOUT"
+          : "SUMMARY_FAILED";
+      console.warn("Media text summary failed", { job: id, code });
       if (job.text_charge_key) await refundPoints(db, job.text_charge_key);
       await db.query(
-        "UPDATE coupon_media_jobs SET text_state='failed',text_charge_key=NULL,text_notes='[]' WHERE id=$1",
-        [id],
+        "UPDATE coupon_media_jobs SET text_state='failed',text_error=$2,text_charge_key=NULL WHERE id=$1",
+        [id, code],
       );
     }
   }
@@ -907,7 +940,7 @@ export async function createCouponMedia(
         if (key) await changePoints(tx, owner, -5, "整理文字素材", key);
         return (
           await tx.query<any>(
-            "UPDATE coupon_media_jobs SET text_state='queued',text_charge_key=$2,text_notes='[]',text_summary=NULL WHERE id=$1 RETURNING *",
+            "UPDATE coupon_media_jobs SET text_state='queued',text_error=NULL,text_charge_key=$2,text_summary=NULL WHERE id=$1 RETURNING *",
             [selected.id, key],
           )
         ).rows[0];

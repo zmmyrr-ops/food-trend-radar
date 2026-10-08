@@ -19,11 +19,12 @@ export async function summarizeMediaText(
       Authorization: `Bearer ${key}`,
       "Content-Type": "application/json",
     },
-    signal: AbortSignal.timeout(60000),
+    signal: AbortSignal.timeout(90000),
     body: JSON.stringify({
       model: "deepseek-flash",
+      thinking: { type: "disabled" },
       response_format: { type: "json_object" },
-      max_tokens: 1400,
+      max_tokens: 2400,
       messages: [
         {
           role: "system",
@@ -42,9 +43,21 @@ export async function summarizeMediaText(
       ],
     }),
   });
-  if (!response.ok) throw Error("SUMMARY_FAILED");
+  if (!response.ok)
+    throw Error(
+      response.status === 429 || response.status >= 500
+        ? "SUMMARY_BUSY"
+        : "SUMMARY_FAILED",
+    );
   const data = (await response.json()) as any;
-  return mediaTextSchema.parse(
-    JSON.parse(data.choices?.[0]?.message?.content ?? ""),
-  );
+  if (data.choices?.[0]?.finish_reason === "length")
+    throw Error("SUMMARY_TRUNCATED");
+  try {
+    const content = String(data.choices?.[0]?.message?.content ?? "")
+      .trim()
+      .replace(/^```(?:json)?\s*|\s*```$/g, "");
+    return mediaTextSchema.parse(JSON.parse(content));
+  } catch {
+    throw Error("SUMMARY_INVALID");
+  }
 }
