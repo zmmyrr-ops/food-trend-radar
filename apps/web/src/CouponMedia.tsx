@@ -1,3 +1,4 @@
+import "./media-text.css";
 import { useCallback, useEffect, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch } from "./app-url";
@@ -14,7 +15,11 @@ type Resource = {
   match: string;
   relevance?: "coupon" | "brand";
 };
-type Job = {
+export type TextMaterial = {
+  text_state?: string;
+  text_summary?: { overview: string; highlights: string[] } | null;
+};
+type Job = TextMaterial & {
   id: string;
   state: string;
   keyword: string;
@@ -119,20 +124,24 @@ export function CouponMedia({
   productId,
   onResources,
   controlsOnly = false,
+  onTextMaterial,
 }: {
+  onTextMaterial?: (value: TextMaterial | null) => void;
   controlsOnly?: boolean;
   brandId: string;
   productId: string;
   onResources?: (resources: Resource[]) => void;
 }) {
   const isAdmin = useAccount().role === "admin";
+  const [includeText, setIncludeText] = useState(false);
   const [open, setOpen] = useState(true),
     [job, setJob] = useState<Job | null>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
   useEffect(() => {
     if (job) onResources?.(job.resources);
-  }, [job, onResources]);
+    onTextMaterial?.(job);
+  }, [job, onResources, onTextMaterial]);
   const query = new URLSearchParams({
     brand_id: brandId,
     product_id: productId,
@@ -172,8 +181,11 @@ export function CouponMedia({
     if (
       !(await confirmPointSpend(
         reset ? "重置并重新获取素材" : more ? "再获取一些素材" : "获取网络素材",
-        more && !reset ? 5 : 10,
-        "最多消耗上述积分。本人已有可用缓存免费查看；首次复用他人缓存仍计费。未获取到新增素材自动退分。",
+        (more && !reset ? 5 : 10) + (includeText ? 5 : 0),
+        (includeText
+          ? "包含文字素材整理5积分；整理失败自动退回这5积分。"
+          : "") +
+          "最多消耗上述积分。本人已有可用缓存免费查看；首次复用他人缓存仍计费。未获取到新增素材自动退分。",
       ))
     )
       return;
@@ -188,6 +200,7 @@ export function CouponMedia({
           product_id: productId,
           more,
           reset,
+          include_text: includeText,
         }),
       });
       const data = await r.json();
@@ -213,7 +226,10 @@ export function CouponMedia({
       setError(String(e));
     }
   }
-  const running = job && ["queued", "running"].includes(job.state);
+  const running =
+    job &&
+    (["queued", "running"].includes(job.state) ||
+      ["queued", "running"].includes(job.text_state || ""));
   const fresh =
     job?.state === "complete" && Date.parse(job.expires_at) > Date.now();
   return (
@@ -231,6 +247,16 @@ export function CouponMedia({
       </button>
       {open && (
         <div className="coupon-media-body">
+          <label className="media-text-option">
+            <input
+              type="checkbox"
+              checked={includeText}
+              disabled={busy || !!running}
+              onChange={(e) => setIncludeText(e.target.checked)}
+            />
+            <span>同步获取文字素材</span>
+            <Points amount={5} cost />
+          </label>
           <div className="coupon-media-toolbar">
             <div>
               <strong>网络参考素材</strong>
@@ -239,18 +265,22 @@ export function CouponMedia({
               </p>
             </div>
             <button
-              disabled={busy || !!running || !!fresh}
+              disabled={
+                busy ||
+                !!running ||
+                (!!fresh && !(includeText && job?.text_state !== "complete"))
+              }
               onClick={() => void acquire()}
             >
               {busy ? (
                 "提交中…"
               ) : running ? (
                 "搜索中…"
-              ) : fresh ? (
+              ) : fresh && !(includeText && job?.text_state !== "complete") ? (
                 "已获取 · 缓存中"
               ) : (
                 <>
-                  获取资源 <Points amount={10} cost />
+                  获取资源 <Points amount={10 + (includeText ? 5 : 0)} cost />
                 </>
               )}
             </button>
@@ -270,7 +300,8 @@ export function CouponMedia({
                   "已达200个上限"
                 ) : (
                   <>
-                    再获取一些 <Points amount={5} cost />
+                    再获取一些{" "}
+                    <Points amount={5 + (includeText ? 5 : 0)} cost />
                   </>
                 )}
               </button>
@@ -281,10 +312,13 @@ export function CouponMedia({
                 onClick={() => void acquire(false, true)}
                 title="清空本券素材和搜索进度，重新获取最新链接；已制作的视频保留"
               >
-                重置并重新获取 <Points amount={10} cost />
+                重置并重新获取{" "}
+                <Points amount={10 + (includeText ? 5 : 0)} cost />
               </button>
             )}
-            {running && <button onClick={() => void cancel()}>停止</button>}
+            {job && ["queued", "running"].includes(job.state) && (
+              <button onClick={() => void cancel()}>停止</button>
+            )}
           </div>
           <p className="coupon-media-status" aria-live="polite">
             {running
@@ -310,6 +344,7 @@ export function CouponMedia({
               ))}
             </div>
           )}
+          {!controlsOnly && <TextMaterialSummary value={job} />}
           {job?.state === "complete" && !job.resources.length && (
             <p className="coupon-media-empty">
               本次没有找到可用的相关实况素材。普通图片、无动态资源或归属不明的内容未列入。
@@ -317,6 +352,49 @@ export function CouponMedia({
           )}
         </div>
       )}
+    </section>
+  );
+}
+
+export function TextMaterialSummary({ value }: { value: TextMaterial | null }) {
+  const [copied, setCopied] = useState(false);
+  if (!value?.text_state) return null;
+  const summary = value.text_summary;
+  return (
+    <section className="media-text-summary" aria-live="polite">
+      <header>
+        <strong>文字素材</strong>
+        {summary && (
+          <button
+            onClick={async () => {
+              try {
+                await navigator.clipboard.writeText(
+                  [summary.overview, ...summary.highlights].join("\n"),
+                );
+                setCopied(true);
+              } catch {
+                setCopied(false);
+              }
+            }}
+          >
+            {copied ? "已复制" : "复制内容"}
+          </button>
+        )}
+      </header>
+      {value.text_state === "queued" || value.text_state === "running" ? (
+        <p>正在整理文字素材…</p>
+      ) : value.text_state === "failed" ? (
+        <p>暂未完成文字整理，额外积分已退回。可勾选后重新获取。</p>
+      ) : summary ? (
+        <>
+          <p>{summary.overview}</p>
+          <ul>
+            {summary.highlights.map((text, i) => (
+              <li key={i}>{text}</li>
+            ))}
+          </ul>
+        </>
+      ) : null}
     </section>
   );
 }

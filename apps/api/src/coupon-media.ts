@@ -1,10 +1,12 @@
 import { createHash, randomUUID } from "node:crypto";
 import { lookup } from "node:dns/promises";
 import { readFile } from "node:fs/promises";
+import { dirname, join } from "node:path";
 import type { PGlite } from "@electric-sql/pglite";
 import type { Express } from "express";
 import { z } from "zod";
 import { legacyOwner, ownerOf } from "./accounts.js";
+import { type MediaTextNote, summarizeMediaText } from "./media-text.js";
 import { changePoints, refundPoints } from "./points.js";
 
 const SEARCH = "https://so.xiaohongshu.com/api/sns/web/v2/search/notes";
@@ -143,11 +145,16 @@ export async function createCouponMedia(
       headers: Record<string, string>,
       body: string,
     ) => Promise<any>;
+    summarizeText?: typeof summarizeMediaText;
     wait?: (ms: number) => Promise<void>;
   } = {},
 ) {
   await db.exec(`
     CREATE TABLE IF NOT EXISTS coupon_media_jobs(id uuid PRIMARY KEY,brand_id uuid NOT NULL,product_id text NOT NULL,keyword text NOT NULL,names jsonb NOT NULL,state text NOT NULL,resources jsonb NOT NULL DEFAULT '[]',searched int NOT NULL DEFAULT 0,inspected int NOT NULL DEFAULT 0,error_code text,created_at timestamptz NOT NULL DEFAULT now(),updated_at timestamptz NOT NULL DEFAULT now(),UNIQUE(brand_id,product_id));
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS text_state text;
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS text_summary jsonb;
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS text_charge_key text;
+    ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS text_notes jsonb NOT NULL DEFAULT '[]';
     ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS point_charge_key text;
     ALTER TABLE coupon_media_jobs ADD COLUMN IF NOT EXISTS point_before_count int NOT NULL DEFAULT 0;
     CREATE TABLE IF NOT EXISTS coupon_media_cache(note_id text PRIMARY KEY,resources jsonb NOT NULL,observed_at timestamptz NOT NULL DEFAULT now());
@@ -165,6 +172,81 @@ export async function createCouponMedia(
     CREATE UNIQUE INDEX IF NOT EXISTS coupon_media_owner_product ON coupon_media_jobs(owner_id,brand_id,product_id);
     UPDATE coupon_media_jobs SET state='interrupted',error_code='INTERRUPTED',updated_at=now() WHERE state IN ('queued','running');
   `);
+  for (const job of (
+    await db.query<any>(
+      "SELECT id,text_charge_key FROM coupon_media_jobs WHERE text_state IN ('queued','running')",
+    )
+  ).rows) {
+    if (job.text_charge_key) await refundPoints(db, job.text_charge_key);
+    await db.query(
+      "UPDATE coupon_media_jobs SET text_state='failed',text_charge_key=NULL WHERE id=$1",
+      [job.id],
+    );
+  }
+  async function captureText(
+    job: any,
+    id: string,
+    raw?: any,
+    resources: LiveResource[] = [],
+  ) {
+    if (job.text_state !== "queued") return;
+    const note = raw?.data?.items?.find(
+      (x: any) => (x.id ?? x.note_card?.note_id) === id,
+    )?.note_card;
+    const title = String(note?.title ?? resources[0]?.title ?? "");
+    const text = String(note?.desc ?? resources[0]?.note_text ?? "").slice(
+      0,
+      6000,
+    );
+    if (
+      !text.trim() ||
+      !job.names.some((n: string) =>
+        normalize(title + text).includes(normalize(n)),
+      )
+    )
+      return;
+    await db.query(
+      "UPDATE coupon_media_jobs SET text_notes=text_notes || $2::jsonb WHERE id=$1 AND NOT EXISTS (SELECT 1 FROM jsonb_array_elements(text_notes) n WHERE n->>'id'=$3)",
+      [job.id, JSON.stringify([{ id, title, text }]), id],
+    );
+  }
+  async function finishText(id: string) {
+    const job = (
+      await db.query<any>(
+        "UPDATE coupon_media_jobs SET text_state='running' WHERE id=$1 AND text_state='queued' RETURNING *",
+        [id],
+      )
+    ).rows[0];
+    if (!job) return;
+    try {
+      if (job.state !== "complete") throw Error("INCOMPLETE");
+      const notes = new Map<string, MediaTextNote>();
+      for (const r of job.resources)
+        if (r.note_text)
+          notes.set(r.note_id, {
+            id: r.note_id,
+            title: r.title,
+            text: r.note_text,
+          });
+      for (const n of job.text_notes) notes.set(n.id, n);
+      if (!notes.size) throw Error("NO_TEXT");
+      const summary = await (options.summarizeText ?? summarizeMediaText)(
+        [...notes.values()].slice(-30),
+        job.keyword,
+        join(dirname(credentialPath), "deepseek.json"),
+      );
+      await db.query(
+        "UPDATE coupon_media_jobs SET text_state='complete',text_summary=$2,text_charge_key=NULL,text_notes='[]' WHERE id=$1",
+        [id, JSON.stringify(summary)],
+      );
+    } catch {
+      if (job.text_charge_key) await refundPoints(db, job.text_charge_key);
+      await db.query(
+        "UPDATE coupon_media_jobs SET text_state='failed',text_charge_key=NULL,text_notes='[]' WHERE id=$1",
+        [id],
+      );
+    }
+  }
   let worker: Promise<void> | undefined;
   let stopped = false;
   const wait = options.wait ?? ((ms) => new Promise((r) => setTimeout(r, ms)));
@@ -375,6 +457,7 @@ export async function createCouponMedia(
             note.xsec_token,
             job.names,
           );
+          await captureText(job, note.id, detail, found);
           // Empty/mismatched results are not cached across brands.
           if (found.length)
             await db.query(
@@ -390,6 +473,7 @@ export async function createCouponMedia(
           )
         )
           found = [];
+        if (cache) await captureText(job, note.id, undefined, found);
         inspected++;
         for (const item of found) {
           const key = new URL(item.video_url).pathname;
@@ -537,12 +621,14 @@ export async function createCouponMedia(
         );
         if (await cancelled(job.id)) return;
         found = extractLiveResources(raw, n.id, n.xsec_token, job.names);
+        await captureText(job, n.id, raw, found);
         if (found.length)
           await db.query(
             "INSERT INTO coupon_media_cache(note_id,resources) VALUES($1,$2) ON CONFLICT(note_id) DO UPDATE SET resources=$2,observed_at=now()",
             [n.id, JSON.stringify(found)],
           );
       }
+      if (cache) await captureText(job, n.id, undefined, found);
       inspected++;
       found = found.map((r) => rankCouponResource(r, terms));
       inspectedNotes.set(n.id, found);
@@ -590,12 +676,12 @@ export async function createCouponMedia(
       while (!stopped) {
         const job = (
           await db.query<any>(
-            "SELECT * FROM coupon_media_jobs WHERE state='queued' ORDER BY created_at LIMIT 1",
+            "SELECT * FROM coupon_media_jobs WHERE state='queued' OR text_state='queued' ORDER BY created_at LIMIT 1",
           )
         ).rows[0];
         if (!job) return;
         try {
-          await run(job);
+          if (job.state === "queued") await run(job);
         } catch (e) {
           const code =
             e instanceof Error &&
@@ -616,6 +702,7 @@ export async function createCouponMedia(
             [job.id, code],
           );
         } finally {
+          await finishText(job.id);
           const final = (
             await db.query<any>("SELECT * FROM coupon_media_jobs WHERE id=$1", [
               job.id,
@@ -641,6 +728,8 @@ export async function createCouponMedia(
   function publicJob(job: any) {
     if (!job) return null;
     const {
+      text_notes,
+      text_charge_key,
       names,
       seen_notes,
       search_id,
@@ -662,6 +751,7 @@ export async function createCouponMedia(
     more = false,
     reset = false,
     owner = legacyOwner,
+    includeText = false,
   ) {
     const coupon = (
       await db.query<any>(
@@ -682,128 +772,152 @@ export async function createCouponMedia(
           [brand, product, owner],
         )
       ).rows[0];
-      if (reset && old && ["queued", "running"].includes(old.state))
-        throw Error("JOB_RUNNING");
-      if (
-        !reset &&
-        old &&
-        (["queued", "running"].includes(old.state) ||
-          (old.state === "failed" &&
-            Date.now() - new Date(old.updated_at).getTime() < 60_000))
-      )
-        return old;
-      // Only reuse public network resources; every account gets its own job ID.
-      if (!reset && !more) {
-        const shared = (
-          await tx.query<any>(
-            "SELECT * FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2 AND keyword=$3 AND coupon_title=$4 AND state='complete' AND jsonb_array_length(resources)>0 AND updated_at>now()-interval '4 hours' ORDER BY updated_at DESC LIMIT 1",
-            [brand, product, keyword, coupon.title || ""],
-          )
-        ).rows[0];
-        const signedUrlsValid = shared?.resources.every((r: LiveResource) => {
-          try {
-            const t = new URL(r.video_url).searchParams.get("t");
-            if (!t) return true;
-            const expiry = /^\d{10}$/.test(t)
-              ? Number(t)
-              : /^[a-f0-9]{8}$/i.test(t)
-                ? Number.parseInt(t, 16)
-                : NaN;
-            return (
-              !Number.isFinite(expiry) || expiry * 1000 > Date.now() + 300000
-            );
-          } catch {
-            return false;
-          }
-        });
-        if (shared && signedUrlsValid) {
-          if (
-            owner !== legacyOwner &&
-            (!old || old.state !== "complete" || !old.resources.length)
-          )
-            await changePoints(
-              tx,
-              owner,
-              10 * -1,
-              "获取网络素材",
-              `media-cache:${randomUUID()}`,
-            );
-          await tx.query(
-            "UPDATE coupon_media_jobs SET updated_at=now() WHERE id=$1",
-            [shared.id],
-          );
-          return (
+      if (old && ["queued", "running"].includes(old.text_state)) return old;
+      let accepted = false;
+      const selectJob = async () => {
+        if (reset && old && ["queued", "running"].includes(old.state))
+          throw Error("JOB_RUNNING");
+        if (
+          !reset &&
+          old &&
+          (["queued", "running"].includes(old.state) ||
+            (old.state === "failed" &&
+              Date.now() - new Date(old.updated_at).getTime() < 60_000))
+        )
+          return old;
+        // Only reuse public network resources; every account gets its own job ID.
+        if (!reset && !more) {
+          const shared = (
             await tx.query<any>(
-              `INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,resources,coupon_title,owner_id,next_page,seen_notes,target_count,exhausted,search_id)
+              "SELECT * FROM coupon_media_jobs WHERE brand_id=$1 AND product_id=$2 AND keyword=$3 AND coupon_title=$4 AND state='complete' AND jsonb_array_length(resources)>0 AND updated_at>now()-interval '4 hours' ORDER BY updated_at DESC LIMIT 1",
+              [brand, product, keyword, coupon.title || ""],
+            )
+          ).rows[0];
+          const signedUrlsValid = shared?.resources.every((r: LiveResource) => {
+            try {
+              const t = new URL(r.video_url).searchParams.get("t");
+              if (!t) return true;
+              const expiry = /^\d{10}$/.test(t)
+                ? Number(t)
+                : /^[a-f0-9]{8}$/i.test(t)
+                  ? Number.parseInt(t, 16)
+                  : NaN;
+              return (
+                !Number.isFinite(expiry) || expiry * 1000 > Date.now() + 300000
+              );
+            } catch {
+              return false;
+            }
+          });
+          if (shared && signedUrlsValid) {
+            accepted = true;
+            if (
+              owner !== legacyOwner &&
+              (!old || old.state !== "complete" || !old.resources.length)
+            )
+              await changePoints(
+                tx,
+                owner,
+                10 * -1,
+                "获取网络素材",
+                `media-cache:${randomUUID()}`,
+              );
+            await tx.query(
+              "UPDATE coupon_media_jobs SET updated_at=now() WHERE id=$1",
+              [shared.id],
+            );
+            return (
+              await tx.query<any>(
+                `INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,resources,coupon_title,owner_id,next_page,seen_notes,target_count,exhausted,search_id)
             VALUES($1,$2,$3,$4,$5,'complete',$6,$7,$8,$9,$10,$11,$12,$13)
             ON CONFLICT(owner_id,brand_id,product_id) DO UPDATE SET resources=excluded.resources,state='complete',keyword=excluded.keyword,names=excluded.names,coupon_title=excluded.coupon_title,next_page=excluded.next_page,seen_notes=excluded.seen_notes,target_count=excluded.target_count,exhausted=excluded.exhausted,search_id=excluded.search_id,error_code=NULL,updated_at=now() RETURNING *`,
+                [
+                  randomUUID(),
+                  brand,
+                  product,
+                  keyword,
+                  JSON.stringify([coupon.name, ...coupon.aliases]),
+                  JSON.stringify(shared.resources),
+                  coupon.title || "",
+                  owner,
+                  shared.next_page,
+                  JSON.stringify(shared.seen_notes),
+                  shared.target_count,
+                  shared.exhausted,
+                  shared.search_id,
+                ],
+              )
+            ).rows[0];
+          }
+        }
+        await credentials();
+        if (
+          more &&
+          old &&
+          !reset &&
+          old.keyword === keyword &&
+          (old.exhausted || old.resources.length >= 200)
+        )
+          return old;
+        accepted = true;
+        const chargeKey =
+          owner === legacyOwner ? null : `media:${randomUUID()}`;
+        if (chargeKey)
+          await changePoints(
+            tx,
+            owner,
+            more && !reset && old ? -5 : -10,
+            more && !reset && old ? "获取更多素材" : "获取网络素材",
+            chargeKey,
+          );
+        if (more && old && !reset && old.keyword === keyword) {
+          if (old.exhausted || old.resources.length >= 200) return old;
+          return (
+            await tx.query<any>(
+              "UPDATE coupon_media_jobs SET point_charge_key=$4,point_before_count=jsonb_array_length(resources),state='queued',target_count=$2,coupon_title=$3,searched=0,inspected=0,error_code=NULL,updated_at=now() WHERE id=$1 RETURNING *",
               [
-                randomUUID(),
-                brand,
-                product,
-                keyword,
-                JSON.stringify([coupon.name, ...coupon.aliases]),
-                JSON.stringify(shared.resources),
+                old.id,
+                Math.min(200, old.resources.length + 20),
                 coupon.title || "",
-                owner,
-                shared.next_page,
-                JSON.stringify(shared.seen_notes),
-                shared.target_count,
-                shared.exhausted,
-                shared.search_id,
+                chargeKey,
               ],
             )
           ).rows[0];
         }
-      }
-      await credentials();
-      if (
-        more &&
-        old &&
-        !reset &&
-        old.keyword === keyword &&
-        (old.exhausted || old.resources.length >= 200)
-      )
-        return old;
-      const chargeKey = owner === legacyOwner ? null : `media:${randomUUID()}`;
-      if (chargeKey)
-        await changePoints(
-          tx,
-          owner,
-          more && !reset && old ? -5 : -10,
-          more && !reset && old ? "获取更多素材" : "获取网络素材",
-          chargeKey,
-        );
-      if (more && old && !reset && old.keyword === keyword) {
-        if (old.exhausted || old.resources.length >= 200) return old;
         return (
           await tx.query<any>(
-            "UPDATE coupon_media_jobs SET point_charge_key=$4,point_before_count=jsonb_array_length(resources),state='queued',target_count=$2,coupon_title=$3,searched=0,inspected=0,error_code=NULL,updated_at=now() WHERE id=$1 RETURNING *",
+            "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,refresh_details,coupon_title,owner_id,point_charge_key,point_before_count) VALUES($1,$2,$3,$4,$5,'queued',$6,$7,$8,$9,0) ON CONFLICT(owner_id,brand_id,product_id) DO UPDATE SET point_charge_key=excluded.point_charge_key,point_before_count=0,id=excluded.id,keyword=excluded.keyword,names=excluded.names,state='queued',resources='[]',next_page=1,seen_notes='[]',target_count=40,exhausted=false,search_id=NULL,refresh_details=excluded.refresh_details,coupon_title=excluded.coupon_title,searched=0,inspected=0,error_code=NULL,created_at=now(),updated_at=now() RETURNING *",
             [
-              old.id,
-              Math.min(200, old.resources.length + 20),
+              randomUUID(),
+              brand,
+              product,
+              keyword,
+              JSON.stringify([coupon.name, ...coupon.aliases]),
+              reset,
               coupon.title || "",
+              owner,
               chargeKey,
             ],
           )
         ).rows[0];
+      };
+      const selected = await selectJob();
+      if (includeText && accepted) {
+        const key = owner === legacyOwner ? null : `media-text:${randomUUID()}`;
+        if (key) await changePoints(tx, owner, -5, "整理文字素材", key);
+        return (
+          await tx.query<any>(
+            "UPDATE coupon_media_jobs SET text_state='queued',text_charge_key=$2,text_notes='[]',text_summary=NULL WHERE id=$1 RETURNING *",
+            [selected.id, key],
+          )
+        ).rows[0];
       }
-      return (
-        await tx.query<any>(
-          "INSERT INTO coupon_media_jobs(id,brand_id,product_id,keyword,names,state,refresh_details,coupon_title,owner_id,point_charge_key,point_before_count) VALUES($1,$2,$3,$4,$5,'queued',$6,$7,$8,$9,0) ON CONFLICT(owner_id,brand_id,product_id) DO UPDATE SET point_charge_key=excluded.point_charge_key,point_before_count=0,id=excluded.id,keyword=excluded.keyword,names=excluded.names,state='queued',resources='[]',next_page=1,seen_notes='[]',target_count=40,exhausted=false,search_id=NULL,refresh_details=excluded.refresh_details,coupon_title=excluded.coupon_title,searched=0,inspected=0,error_code=NULL,created_at=now(),updated_at=now() RETURNING *",
-          [
-            randomUUID(),
-            brand,
-            product,
-            keyword,
-            JSON.stringify([coupon.name, ...coupon.aliases]),
-            reset,
-            coupon.title || "",
-            owner,
-            chargeKey,
-          ],
-        )
-      ).rows[0];
+      if (reset && accepted)
+        await tx.query(
+          "UPDATE coupon_media_jobs SET text_state=NULL,text_summary=NULL,text_notes='[]' WHERE id=$1",
+          [selected.id],
+        );
+      return selected;
     });
     kick();
     return publicJob(result);
@@ -891,6 +1005,7 @@ export async function createCouponMedia(
     app.post("/api/v3/coupon-media", async (req, res) => {
       const v = input
         .extend({
+          include_text: z.boolean().default(false),
           more: z.boolean().default(false),
           reset: z.boolean().default(false),
         })
@@ -905,6 +1020,7 @@ export async function createCouponMedia(
             v.more,
             v.reset,
             ownerOf(req),
+            v.include_text,
           ),
         });
       } catch (e) {

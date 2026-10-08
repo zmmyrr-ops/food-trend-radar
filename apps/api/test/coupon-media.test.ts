@@ -537,3 +537,153 @@ test("素材获取失败退分且重复退款幂等，余额不足不创建收�
     await f.cleanup();
   }
 });
+
+test("同步文字：普通图文也提炼、按文章去重、缓存可整理、失败仅退额外积分", async () => {
+  const f = await fixture();
+  const owner = randomUUID();
+  await f.db.exec("CREATE TABLE accounts(id uuid PRIMARY KEY)");
+  await f.db.query("INSERT INTO accounts(id) VALUES($1)", [owner]);
+  await setupPoints(f.db);
+  let calls = 0,
+    fail = false;
+  const service = await createCouponMedia(f.db, f.path, {
+    wait: async () => {},
+    transport: async (url, _h, body) =>
+      url === search
+        ? {
+            code: 0,
+            success: true,
+            data: {
+              has_more: false,
+              items: ["plain", "live"].map((id) => ({
+                model_type: "note",
+                id,
+                xsec_token: "t",
+              })),
+            },
+          }
+        : response(
+            JSON.parse(body).source_note_id,
+            JSON.parse(body).source_note_id === "plain" ? 0 : 2,
+          ),
+    summarizeText: async (notes) => {
+      calls++;
+      if (fail) throw Error("FAILED");
+      assert.equal(new Set(notes.map((n) => n.id)).size, notes.length);
+      if (calls === 1) assert.ok(notes.some((n) => n.id === "plain"));
+      return { overview: "核心概述", highlights: ["体验特色"] };
+    },
+  });
+  const balance = async () =>
+    (
+      await f.db.query<any>(
+        "SELECT balance FROM point_wallets WHERE owner_id=$1",
+        [owner],
+      )
+    ).rows[0].balance;
+  try {
+    await f.db.query("UPDATE point_wallets SET balance=12 WHERE owner_id=$1", [
+      owner,
+    ]);
+    await assert.rejects(
+      service.start(f.brand, "coupon", false, false, owner, true),
+      /POINTS_INSUFFICIENT/,
+    );
+    assert.equal(await balance(), 12);
+    assert.equal(
+      (await f.db.query("SELECT * FROM coupon_media_jobs")).rows.length,
+      0,
+    );
+    await f.db.query("UPDATE point_wallets SET balance=500 WHERE owner_id=$1", [
+      owner,
+    ]);
+    await service.start(f.brand, "coupon", false, false, owner, true);
+    await service.start(f.brand, "coupon", false, false, owner, true);
+    await service.drain();
+    assert.equal(calls, 1);
+    assert.equal(await balance(), 485);
+    const view = await service.start(f.brand, "coupon", false, false, owner);
+    assert.equal(view.text_state, "complete");
+    assert.equal(view.text_notes, undefined);
+    assert.equal(view.text_charge_key, undefined);
+    assert.equal(view.resources[0].note_text, undefined);
+    assert.equal(await balance(), 485);
+    fail = true;
+    await service.start(f.brand, "coupon", false, false, owner, true);
+    await service.drain();
+    assert.equal(await balance(), 485);
+    assert.equal(
+      (await f.db.query<any>("SELECT text_state FROM coupon_media_jobs"))
+        .rows[0].text_state,
+      "failed",
+    );
+  } finally {
+    await service.drain();
+    await f.cleanup();
+  }
+});
+
+test("纯文字素材成功时退还视频获取费，重启中断的文字任务只退一次", async () => {
+  const f = await fixture(),
+    owner = randomUUID();
+  await f.db.exec("CREATE TABLE accounts(id uuid PRIMARY KEY)");
+  await f.db.query("INSERT INTO accounts(id) VALUES($1)", [owner]);
+  await setupPoints(f.db);
+  const service = await createCouponMedia(f.db, f.path, {
+    wait: async () => {},
+    transport: async (url) =>
+      url === search
+        ? {
+            code: 0,
+            success: true,
+            data: {
+              has_more: false,
+              items: [{ model_type: "note", id: "plain", xsec_token: "t" }],
+            },
+          }
+        : response("plain", 0),
+    summarizeText: async () => ({
+      overview: "图文体验",
+      highlights: ["空间宽敞"],
+    }),
+  });
+  try {
+    await service.start(f.brand, "coupon", false, false, owner, true);
+    await service.drain();
+    assert.equal(
+      (await f.db.query<any>("SELECT balance FROM point_wallets")).rows[0]
+        .balance,
+      495,
+    );
+    const job = (await f.db.query<any>("SELECT * FROM coupon_media_jobs"))
+      .rows[0];
+    assert.equal(job.text_state, "complete");
+    assert.equal(job.resources.length, 0);
+    const charge = (
+      await f.db.query<any>(
+        "SELECT event_key FROM point_entries WHERE amount=-5",
+      )
+    ).rows[0].event_key;
+    await f.db.query(
+      "UPDATE coupon_media_jobs SET text_state='running',text_charge_key=$1",
+      [charge],
+    );
+    const recovered = await createCouponMedia(f.db, f.path);
+    await recovered.stop();
+    assert.equal(
+      (await f.db.query<any>("SELECT balance FROM point_wallets")).rows[0]
+        .balance,
+      500,
+    );
+    const again = await createCouponMedia(f.db, f.path);
+    await again.stop();
+    assert.equal(
+      (await f.db.query<any>("SELECT balance FROM point_wallets")).rows[0]
+        .balance,
+      500,
+    );
+  } finally {
+    await service.stop();
+    await f.cleanup();
+  }
+});

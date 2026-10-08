@@ -8,7 +8,11 @@ import { zipSync } from "fflate";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
-import { CouponMedia } from "./CouponMedia";
+import {
+  CouponMedia,
+  type TextMaterial,
+  TextMaterialSummary,
+} from "./CouponMedia";
 import { confirmPointSpend } from "./PointSpendConfirm";
 import { Points } from "./Points";
 import { StudioCopy } from "./StudioCopy";
@@ -108,6 +112,7 @@ export function VideoStudio() {
         .then((d) => setVisit(d.item))
         .catch(() => setVisit(null));
   }, [visitStore]);
+  const [textMaterial, setTextMaterial] = useState<TextMaterial | null>(null);
   const [materialTab, setMaterialTab] = useState<"network" | "upload">(
     "network",
   );
@@ -545,6 +550,7 @@ export function VideoStudio() {
             {(brand || project?.brand_id) &&
               (product || project?.product_id) && (
                 <CouponMedia
+                  onTextMaterial={setTextMaterial}
                   controlsOnly
                   brandId={brand || project!.brand_id}
                   productId={product || project!.product_id}
@@ -646,6 +652,7 @@ export function VideoStudio() {
                 </label>
               ))}
             </div>
+            <TextMaterialSummary value={textMaterial} />
           </div>
           <div
             hidden={materialTab !== "upload"}
