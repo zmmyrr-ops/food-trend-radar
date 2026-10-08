@@ -2124,19 +2124,18 @@ button.visit-primary {
 }
 .app-shell .picks-panel .coupon-card > .fresh-coupon-badge {
   position: absolute;
-  top: -1px;
-  right: -1px;
+  top: 0;
+  right: 0;
   margin: 0;
   width: 34px;
-  height: 39px;
+  height: 34px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 6px 0 0;
+  align-items: center;
+  padding: 0;
   border: 0;
-  border-radius: 0 12px 0 10px;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+  border-radius: 0 11px 0 11px;
   background: linear-gradient(135deg, #63caff, #3478ee 75%);
   color: white;
   font-size: 17px;
