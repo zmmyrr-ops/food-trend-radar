@@ -1,0 +1,271 @@
+/* One visual system across personal tools; excludes portalled map/editor dialogs. */
+.my-workspace {
+  --ws-border: #e5ebf4;
+  --ws-muted: #8290a5;
+  --ws-ink: #293b55;
+  color: var(--ws-ink);
+}
+.my-workspace .personal-tabs {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 6px;
+  padding: 6px;
+  margin: 0 0 18px;
+  background: #edf2f9;
+  border: 1px solid var(--ws-border);
+  border-radius: 12px;
+  overflow-x: auto;
+}
+.my-workspace .personal-tabs button {
+  flex: 1 0 auto;
+  justify-content: center;
+  padding: 10px 14px;
+  min-height: 40px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+.my-workspace .personal-tabs button[aria-pressed="true"] {
+  background: #fff;
+  color: #3478ee;
+  box-shadow: 0 2px 6px #29446b08;
+}
+.my-workspace .workspace-content {
+  padding: 22px;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid var(--ws-border);
+  border-radius: 14px;
+}
+.my-workspace .workspace-content h1,
+.my-workspace .workspace-content h2 {
+  font-size: 19px;
+  font-weight: 650;
+  color: var(--ws-ink);
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0;
+}
+.my-workspace .workspace-content h3 {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ws-ink);
+}
+.my-workspace .workspace-content p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+.my-workspace .workspace-content button,
+.my-workspace .workspace-content .visit-primary,
+.my-workspace .workspace-content .studio-actions a {
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 8px 12px;
+  min-height: 36px;
+  font-size: 12px;
+  line-height: 20px;
+}
+.my-workspace .workspace-content input,
+.my-workspace .workspace-content select {
+  box-sizing: border-box;
+  min-height: 40px;
+  padding: 9px 12px;
+  border: 1px solid #dfe6f1;
+  border-radius: 8px;
+  font-size: 13px;
+  background: #fbfcfe;
+  color: var(--ws-ink);
+  max-width: 100%;
+}
+.my-workspace .workspace-content button:focus-visible,
+.my-workspace .workspace-content input:focus-visible,
+.my-workspace .workspace-content a:focus-visible {
+  outline: 2px solid #7da8f4;
+  outline-offset: 2px;
+}
+.my-workspace .workspace-content button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.my-workspace .member-page,
+.my-workspace .workspace-blacklist,
+.my-workspace .brand-subscriptions {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.my-workspace .member-page > header {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0 0 18px;
+}
+.my-workspace .member-page > header p {
+  margin: 4px 0 0;
+  color: var(--ws-muted);
+  font-size: 12px;
+}
+.my-workspace .member-overview {
+  gap: 14px;
+}
+.my-workspace .member-balance,
+.my-workspace .member-invite,
+.my-workspace .member-card,
+.my-workspace .visit-detail,
+.my-workspace .video-library-card {
+  border: 1px solid var(--ws-border);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: none;
+}
+.my-workspace .member-balance {
+  background: #f5f8ff;
+  color: var(--ws-ink);
+}
+.my-workspace .member-balance,
+.my-workspace .member-invite,
+.my-workspace .member-card {
+  padding: 18px;
+}
+.my-workspace .member-balance > strong {
+  font-size: 32px;
+}
+.my-workspace .member-card {
+  margin-top: 14px;
+}
+.my-workspace .member-records li {
+  font-size: 13px;
+  padding: 12px 0;
+  border-color: #edf1f6;
+}
+.my-workspace .visit-workspace > .visit-title,
+.my-workspace .workspace-video-heading {
+  margin: 0 0 18px;
+}
+.my-workspace .visit-plan-list button {
+  text-align: left;
+  padding: 12px;
+  border-radius: 8px;
+}
+.my-workspace .visit-detail {
+  padding: 18px;
+}
+.my-workspace .visit-detail .visit-title h2 {
+  font-size: 16px;
+}
+.my-workspace .visit-store {
+  padding: 14px;
+  border-radius: 8px;
+  border-color: var(--ws-border);
+}
+.my-workspace .visit-actions,
+.my-workspace .studio-actions,
+.my-workspace .subscription-tools {
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.my-workspace .workspace-video-heading .channel-switch {
+  padding: 3px;
+  border-radius: 8px;
+  background: #f1f5fa;
+}
+.my-workspace .video-library-grid {
+  gap: 14px;
+}
+.my-workspace .video-library-card {
+  overflow: hidden;
+}
+.my-workspace .video-library-card h3 {
+  margin: 5px 0 10px;
+}
+.my-workspace .video-library-card .studio-actions {
+  display: flex;
+  padding-top: 10px;
+}
+.my-workspace .video-library-card .studio-actions a {
+  display: inline-flex;
+  color: #3478ee;
+  background: #edf4ff;
+  text-decoration: none;
+}
+.my-workspace .subscription-body,
+.my-workspace .workspace-blacklist .blacklist-body {
+  padding: 0;
+}
+.my-workspace .subscription-tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.my-workspace .subscription-tools h3 {
+  font-size: 19px;
+  font-weight: 650;
+}
+.my-workspace .subscription-body > p,
+.my-workspace .blacklist-body > p {
+  margin: 10px 0 16px;
+  color: var(--ws-muted);
+}
+.my-workspace .subscription-body > input,
+.my-workspace .blacklist-body > input {
+  width: 100%;
+  max-width: 560px;
+}
+.my-workspace .subscription-chips,
+.my-workspace .blacklist-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+.my-workspace .subscription-chips button,
+.my-workspace .blacklist-tags button {
+  background: #f4f7fc;
+  border: 1px solid var(--ws-border);
+  color: #536b8c;
+}
+.my-workspace .blacklist-results,
+.my-workspace .subscription-results {
+  border: 1px solid var(--ws-border);
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 6px 12px;
+}
+@media (max-width: 700px) {
+  .my-workspace .personal-tabs {
+    gap: 4px;
+    padding: 4px;
+    margin-bottom: 12px;
+  }
+  .my-workspace .personal-tabs button {
+    flex: 0 0 auto;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  .my-workspace .workspace-content {
+    padding: 14px;
+    border-radius: 10px;
+  }
+  .my-workspace .member-overview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .my-workspace .member-balance,
+  .my-workspace .member-invite,
+  .my-workspace .member-card,
+  .my-workspace .visit-detail {
+    padding: 14px;
+  }
+  .my-workspace .subscription-tools {
+    align-items: flex-start;
+  }
+}

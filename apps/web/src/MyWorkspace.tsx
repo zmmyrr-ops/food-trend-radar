@@ -1,3 +1,4 @@
+import "./workspace.css";
 import type { Brand } from "@radar/contracts";
 import { useState } from "react";
 import { BrandBlacklist } from "./BrandBlacklist";
@@ -63,6 +64,11 @@ export function MyWorkspace({ brands }: { brands: Brand[] }) {
                 <>
                   <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4" />
                 </>
+              ) : key === "member" ? (
+                <>
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="m12 7 1.5 3 3.5.5-2.5 2.5.5 3.5-3-1.5-3 1.5.5-3.5L7 10.5l3.5-.5Z" />
+                </>
               ) : (
                 <>
                   <path d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6Z" />
@@ -74,7 +80,7 @@ export function MyWorkspace({ brands }: { brands: Brand[] }) {
           </button>
         ))}
       </nav>
-      <div className="workspace-content">
+      <div className={`workspace-content workspace-section-${section}`}>
         {section === "member" && <Membership />}
         {section === "plans" && <VisitPlans />}
         {section === "videos" && (
