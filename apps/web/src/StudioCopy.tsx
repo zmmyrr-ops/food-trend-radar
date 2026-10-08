@@ -135,7 +135,7 @@ export function StudioCopy({
         </section>
         <section>
           <div className="studio-section-heading">
-            <h3>抖音热门话题</h3>
+            <h3>热门话题</h3>
             <button
               disabled={!!busy || locked.length === 10}
               onClick={() => void generate("topics")}
@@ -178,7 +178,7 @@ export function StudioCopy({
                     <small
                       title={
                         plays[topic]?.checked_at
-                          ? `抖音话题累计播放量 · ${new Date(plays[topic].checked_at!).toLocaleString("zh-CN")}`
+                          ? `话题累计播放量 · ${new Date(plays[topic].checked_at!).toLocaleString("zh-CN")}`
                           : undefined
                       }
                     >
@@ -214,7 +214,7 @@ export function StudioCopy({
             </>
           ) : (
             <p className="studio-copy-empty">
-              根据店铺与视频提取关键词，从抖音查找相关热门话题。
+              根据店铺与视频提取关键词，查找相关热门话题。
             </p>
           )}
         </section>

@@ -342,7 +342,7 @@ function ReviewReport({
               target="_blank"
               rel="noopener noreferrer"
             >
-              去抖音核实 ↗
+              去平台核实 ↗
             </a>
           </div>
           <label>

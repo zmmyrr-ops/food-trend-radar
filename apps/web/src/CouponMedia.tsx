@@ -26,11 +26,11 @@ type Job = {
   target_count?: number;
 };
 const errors: Record<string, string> = {
-  AUTH_MISSING: "尚未配置小红书登录请求",
-  AUTH_EXPIRED: "登录或请求签名已失效，请更新小红书请求凭据",
-  RATE_LIMITED: "小红书限制了访问，已停止获取，请稍后再试",
+  AUTH_MISSING: "尚未配置素材平台登录请求",
+  AUTH_EXPIRED: "登录或请求签名已失效，请更新素材平台请求凭据",
+  RATE_LIMITED: "素材平台限制了访问，已停止获取，请稍后再试",
   NETWORK_ERROR: "网络请求失败，已保留获取到的素材",
-  UPSTREAM_ERROR: "小红书服务暂不可用",
+  UPSTREAM_ERROR: "素材平台服务暂不可用",
   INVALID_RESPONSE: "响应无法识别，已停止获取",
   INTERRUPTED: "服务重启中断了任务，可重新获取",
   INTERNAL_ERROR: "获取失败，请稍后重试",
@@ -245,7 +245,7 @@ export function CouponMedia({
               {busy ? (
                 "提交中…"
               ) : running ? (
-                "获取中…"
+                "搜索中…"
               ) : fresh ? (
                 "已获取 · 缓存中"
               ) : (
@@ -288,29 +288,17 @@ export function CouponMedia({
           </div>
           <p className="coupon-media-status" aria-live="polite">
             {running
-              ? `${job.state === "queued" ? "排队等待" : "串行获取"} · 已检查 ${job.inspected} 篇 · 已找到 ${job.resources.length}/${job.target_count || 40} 个`
+              ? "正在搜索素材，请稍候…"
               : job?.state === "complete"
-                ? `已找到 ${job.resources.length} 个${job.resources.length < 30 ? "，本次结果不足 30 个，不补入无关素材" : ""}`
+                ? job.resources.length
+                  ? "素材已准备好"
+                  : "暂未找到合适素材，请稍后再试"
                 : job?.state === "cancelled"
                   ? "已停止，已获取素材保留"
                   : job
                     ? errors[job.error_code || ""] || "任务未完成"
                     : "选择获取资源，开始准备素材。"}
           </p>
-          {isAdmin && job && (
-            <small className="coupon-media-query">
-              搜索：{job.keyword} ·
-              每轮最多3页、20篇详情，保持3–5秒间隔。结果缓存4小时，链接可能提前失效。
-            </small>
-          )}
-          {isAdmin && !!job?.resources.some((r) => r.relevance) && (
-            <p className="coupon-media-query">
-              券相关线索{" "}
-              {job.resources.filter((r) => r.relevance === "coupon").length} 个
-              · 品牌通用补充{" "}
-              {job.resources.filter((r) => r.relevance === "brand").length} 个
-            </p>
-          )}
           {error && <p role="alert">{error}</p>}
           {!controlsOnly && !!job?.resources.length && (
             <div className="live-media-grid">

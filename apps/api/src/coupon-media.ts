@@ -124,7 +124,7 @@ export function extractLiveResources(
       id: `${noteId}:${image.file_id || index}`,
       note_id: noteId,
       title: String(n.title || "相关探店笔记"),
-      author: String(n.user?.nickname || "小红书作者"),
+      author: String(n.user?.nickname || "素材作者"),
       note_url: `https://www.xiaohongshu.com/explore/${encodeURIComponent(noteId)}?${new URLSearchParams({ xsec_token: token, xsec_source: "pc_search" })}`,
       poster,
       video_url: video,
@@ -937,7 +937,7 @@ export async function createCouponMedia(
                 code === "JOB_RUNNING"
                   ? "请先停止当前素材获取，再重置"
                   : code === "AUTH_MISSING"
-                    ? "小红书请求凭据未配置"
+                    ? "素材平台请求凭据未配置"
                     : "无法创建素材任务",
             },
           });

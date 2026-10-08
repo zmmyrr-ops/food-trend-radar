@@ -240,9 +240,9 @@ export function registerTopicPlays(app: Express, cacheFile: string) {
       try {
         items = await creatorSuggestions(keyword);
       } catch {
-        throw Error("抖音话题查询失败，请稍后重试或联系管理员更新凭证");
+        throw Error("话题查询失败，请稍后重试或联系管理员更新凭证");
       }
-      if (!items) throw Error("尚未配置抖音话题搜索凭证");
+      if (!items) throw Error("尚未配置话题搜索凭证");
       searches.set(keyword, { at: Date.now(), items });
       if (searches.size > 500) searches.delete(searches.keys().next().value!);
       for (const item of items) cache[item.topic] = item;

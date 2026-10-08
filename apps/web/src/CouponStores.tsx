@@ -121,7 +121,7 @@ export function CouponStores({
               </ul>
             </>
           ) : (
-            <p>尚无门店快照，待串行采集。缺失数据不会视作全上海适用。</p>
+            <p>门店信息正在更新，请稍后查看。</p>
           )}
         </section>
       )}
