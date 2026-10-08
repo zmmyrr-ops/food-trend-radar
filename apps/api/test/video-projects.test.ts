@@ -11,6 +11,7 @@ import {
   type Asset,
   adaptivePlan,
   automaticPlan,
+  planFromSuggestedOrder,
   productionOptionsSchema,
   reusableAssessment,
   validatePlan,
@@ -495,4 +496,46 @@ test("review reuse skips completed checks but rechecks uncertain or outdated rul
   );
   assert.equal(reusableAssessment({ ...asset, face_screen_version: 1 }), false);
   assert.equal(reusableAssessment({ ...asset, hash: undefined }), false);
+});
+
+test("模型顺序含未知/重复编号不阻断制作，失败回退仍严格校验素材", () => {
+  const a = assets();
+  const fallback = automaticPlan(a, 18);
+  const plan = planFromSuggestedOrder(
+    [a[2].id, "不存在", a[2].id, a[1].id],
+    a,
+    fallback,
+    a,
+    18,
+  );
+  assert.equal(plan[0].asset_id, a[2].id);
+  assert.equal(new Set(plan.map((c) => c.asset_id)).size, plan.length);
+  validatePlan(plan, a, 18);
+  for (const invalid of [undefined, null, {}, ["未知"], [12], []])
+    assert.deepEqual(
+      planFromSuggestedOrder(invalid, a, fallback, a, 18),
+      fallback,
+    );
+  assert.deepEqual(
+    planFromSuggestedOrder([a[0].id], a.slice(0, 2), fallback, a, 18),
+    fallback,
+  );
+  const rejected = { ...a[0], id: randomUUID(), accepted: false };
+  const safe = planFromSuggestedOrder(
+    [rejected.id, a[1].id],
+    [rejected, ...a],
+    fallback,
+    [rejected, ...a],
+    18,
+  );
+  assert.ok(safe.every((c) => c.asset_id !== rejected.id));
+  assert.throws(() =>
+    planFromSuggestedOrder(
+      null,
+      a,
+      [{ ...fallback[0], asset_id: "unknown" }],
+      a,
+      18,
+    ),
+  );
 });

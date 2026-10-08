@@ -222,3 +222,38 @@ export function reusableAssessment(a: Asset) {
         (a.face_screen === "clear" || a.face_screen === "present")))
   );
 }
+
+/** Model ordering is advisory; only validated local assets may enter a render. */
+export function planFromSuggestedOrder(
+  order: unknown,
+  candidates: Asset[],
+  fallback: Clip[],
+  assets: Asset[],
+  seconds: number,
+): Clip[] {
+  validatePlan(fallback, assets, seconds);
+  if (!Array.isArray(order)) return fallback;
+  const allowed = new Map(
+    candidates
+      .filter((a) => a.accepted && a.path && permittedAsset(a))
+      .map((a) => [a.id, a]),
+  );
+  const ids = [
+    ...new Set(
+      order.filter(
+        (id): id is string => typeof id === "string" && allowed.has(id),
+      ),
+    ),
+  ];
+  if (!ids.length) return fallback;
+  for (const id of allowed.keys()) if (!ids.includes(id)) ids.push(id);
+  try {
+    return automaticPlan(
+      ids.map((id) => allowed.get(id)!),
+      seconds,
+      true,
+    );
+  } catch {
+    return fallback;
+  }
+}

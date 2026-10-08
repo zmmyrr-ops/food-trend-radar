@@ -40,9 +40,9 @@ import {
 import {
   type Asset,
   adaptivePlan,
-  automaticPlan,
   networkAsset,
   permittedAsset,
+  planFromSuggestedOrder,
   reusableAssessment,
   type VideoProject,
   validatePlan,
@@ -543,25 +543,19 @@ ${contentPolicy(project).ordering}
       },
     );
   }
-  const ordered = z
-    .object({ order: z.array(z.string()).min(4).max(24) })
-    .parse(await ask("qwen3-vl-plus-2025-12-19", content));
-  if (
-    new Set(ordered.order).size !== ordered.order.length ||
-    ordered.order.some((id) => !candidates.find((a) => a.id === id))
-  )
-    throw Error("精选结果包含无效素材，请重试");
-  const pool = ordered.order.map((id, index) => ({
-    ...candidates.find((a) => a.id === id)!,
-    score: 100 - index * 3,
-  }));
-  let plan;
+  let suggestion: unknown;
   try {
-    plan = automaticPlan(pool, project.seconds, true);
+    suggestion = (await ask("qwen3-vl-plus-2025-12-19", content))?.order;
   } catch {
-    plan = preliminary;
-    report({ progress: "精选镜头时长不足，采用已验证的初筛组合" });
+    report({ progress: "正在整理已通过的镜头" });
   }
+  const plan = planFromSuggestedOrder(
+    suggestion,
+    candidates,
+    preliminary,
+    project.assets,
+    project.seconds,
+  );
   report({ plan, assets: project.assets });
 }
 async function prepareProduction() {
