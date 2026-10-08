@@ -371,6 +371,20 @@ export function VideoStudio() {
     const failed: string[] = [];
     let total = 0;
     try {
+      const brandName =
+        project?.brand_name ||
+        (
+          await request(
+            `/api/v3/coupons/${encodeURIComponent(product)}/summary?brand_id=${encodeURIComponent(brand)}`,
+          ).catch(() => ({ item: null }))
+        ).item?.brand_name;
+      const archiveName =
+        (brandName || "探店素材")
+          .replace(/[\\/:*?"<>|]/g, "-")
+          .replace(/[\u0000-\u001f]/g, "")
+          .trim()
+          .replace(/[. ]+$/g, "")
+          .slice(0, 80) || "探店素材";
       const chosen = availableResources.filter((r) => selected.includes(r.id));
       for (const [index, r] of chosen.entries()) {
         setDownloadStatus(`下载中 ${index + 1}/${chosen.length}`);
@@ -405,7 +419,7 @@ export function VideoStudio() {
       );
       const link = document.createElement("a");
       link.href = url;
-      link.download = "探店素材.zip";
+      link.download = `${archiveName}.zip`;
       link.click();
       setTimeout(() => URL.revokeObjectURL(url), 60000);
       setDownloadStatus(
