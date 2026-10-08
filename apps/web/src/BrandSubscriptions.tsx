@@ -1,3 +1,4 @@
+import "./notifications.css";
 import { Fragment, type ReactNode, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { appUrl } from "./app-url";
@@ -285,10 +286,15 @@ export function BrandSubscriptions({
             )}
             {!manage && (
               <>
-                <div className="subscription-tools">
+                <p className="notification-summary">
+                  {unread ? `${unread} 条未读消息` : "暂无未读消息"}
+                  <span>品牌新动态，都在这里</span>
+                </p>
+                <div className="subscription-tools notification-actions">
                   <h3>订阅消息</h3>
                   <button
                     type="button"
+                    className="notification-clear"
                     disabled={busy || !messages.length}
                     onClick={async () => {
                       if (
@@ -314,10 +320,14 @@ export function BrandSubscriptions({
                   >
                     一键清空
                   </button>
-                  <a href={appUrl("/?tab=workspace&section=subscriptions")}>
+                  <a
+                    className="notification-manage"
+                    href={appUrl("/?tab=workspace&section=subscriptions")}
+                  >
                     管理品牌订阅 →
                   </a>
                   <button
+                    className="notification-read"
                     disabled={!messages.some((m) => !m.read_at) || busy}
                     onClick={async () => {
                       setBusy(true);
@@ -359,9 +369,10 @@ export function BrandSubscriptions({
                         });
                       }}
                     >
-                      <strong>
-                        {m.brand_name} ·{" "}
-                        {m.kind === "new" ? "新上" : "热度飙升"}
+                      <strong className="notification-message-heading">
+                        {m.brand_name}
+                        <em>{m.kind === "new" ? "新上券" : "热度飙升"}</em>
+                        {!m.read_at && <i aria-label="未读" />}
                       </strong>
                       <span>{m.title}</span>
                       <small>

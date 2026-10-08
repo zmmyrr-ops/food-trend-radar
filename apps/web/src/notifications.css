@@ -1,0 +1,155 @@
+.notification-dialog .subscription-body {
+  padding: 18px 20px 20px;
+}
+.notification-dialog .notification-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 14px;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+}
+.notification-dialog .notification-summary span {
+  font-weight: 400;
+  font-size: 12px;
+  color: #94a3b8;
+}
+.notification-dialog .notification-actions {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 16px;
+  margin-bottom: 0;
+  border-bottom: 1px solid #edf1f7;
+  align-items: center;
+}
+.notification-dialog .notification-actions button,
+.notification-dialog .notification-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 7px 12px;
+  margin: 0;
+  box-sizing: border-box;
+  border: 1px solid #e5ebf4;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  background: #fff;
+  color: #64748b;
+  text-decoration: none;
+}
+.notification-dialog .notification-actions .notification-manage {
+  order: 0;
+  background: #edf4ff;
+  border-color: #edf4ff;
+  color: #3478ee;
+}
+.notification-dialog .notification-actions .notification-read {
+  order: 1;
+}
+.notification-dialog .notification-actions .notification-clear {
+  order: 2;
+  margin-left: auto;
+  color: #a06c70;
+}
+.notification-dialog .notification-actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.notification-dialog .notification-actions a:hover,
+.notification-dialog .notification-actions button:not(:disabled):hover {
+  background: #f2f6fc;
+  border-color: #cad9ef;
+}
+.notification-dialog .subscription-messages {
+  display: grid;
+  gap: 10px;
+  padding-top: 16px;
+}
+.notification-dialog .subscription-messages a {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 14px;
+  border: 1px solid #edf1f7;
+  border-radius: 10px;
+  background: #fff;
+  font-weight: 400;
+}
+.notification-dialog .subscription-messages a.unread {
+  border-color: #e0eaff;
+  background: #f8faff;
+}
+.notification-dialog .subscription-messages a:hover {
+  border-color: #bed3f5;
+  background: #f3f7ff;
+}
+.notification-dialog .subscription-messages a span {
+  display: block;
+  margin: 0;
+  letter-spacing: normal;
+  font-size: 13px;
+  color: #526178;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.notification-dialog .notification-message-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #273850;
+}
+.notification-dialog .notification-message-heading em {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  color: #5480bf;
+  background: #eaf1fc;
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+.notification-dialog .notification-message-heading i {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #f07777;
+  margin-left: auto;
+}
+.notification-dialog .subscription-messages small {
+  color: #9aa6b7;
+  font-size: 11px;
+}
+.notification-dialog .subscription-messages > p {
+  text-align: center;
+  padding: 32px 12px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #94a3b8;
+}
+@media (max-width: 480px) {
+  .notification-dialog .subscription-body {
+    padding: 14px;
+  }
+  .notification-dialog .notification-summary span {
+    display: none;
+  }
+  .notification-dialog .notification-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .notification-dialog .notification-actions .notification-manage {
+    grid-column: 1 / -1;
+  }
+  .notification-dialog .notification-actions .notification-clear {
+    margin: 0;
+  }
+}
