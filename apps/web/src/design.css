@@ -2127,15 +2127,28 @@ button.visit-primary {
   top: -1px;
   right: -1px;
   margin: 0;
-  padding: 5px 10px 6px;
+  width: 34px;
+  height: 39px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 6px 0 0;
   border: 0;
   border-radius: 0 12px 0 10px;
-  background: linear-gradient(135deg, #4b91ff, #3470e2);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+  background: linear-gradient(135deg, #63caff, #3478ee 75%);
   color: white;
-  font-size: 10px;
-  font-weight: 650;
-  letter-spacing: 1px;
-  box-shadow: 0 2px 5px #3478ee20;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-shadow: 0 1px 1px #2252aa30;
+  box-shadow: inset 1px 1px 0 #ffffff55;
+}
+.app-shell .picks-panel .coupon-card > .hot-coupon-badge {
+  background: linear-gradient(135deg, #ffb08b, #ff695d 75%);
+  text-shadow: 0 1px 1px #ac403030;
 }
 .app-shell .picks-panel .coupon-card h3 {
   display: -webkit-box;

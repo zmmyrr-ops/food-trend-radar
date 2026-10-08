@@ -442,27 +442,36 @@ export function CouponPicks({
                   </span>
                 </div>
                 <div className="coupon-status-row">
-                  <span className="coupon-kind">
-                    {x.kind === "price_drop"
-                      ? "票面降价"
-                      : x.is_new
-                        ? "首次发现"
-                        : x.kind === "quantity_increase"
-                          ? "同价列示增量"
-                          : x.kind === "terms_changed"
-                            ? "规则变化"
-                            : "热度观察"}
-                  </span>
+                  {!x.is_new &&
+                    [
+                      "price_drop",
+                      "quantity_increase",
+                      "terms_changed",
+                    ].includes(x.kind) && (
+                      <span className="coupon-kind">
+                        {x.kind === "price_drop"
+                          ? "票面降价"
+                          : x.kind === "quantity_increase"
+                            ? "同价列示增量"
+                            : "规则变化"}
+                      </span>
+                    )}
                   {planLinks[`${x.brand_id}:${x.product_id}`] && (
                     <span className="coupon-plan-badge">✓ 已加入探店计划</span>
                   )}
                 </div>
-                {x.is_new && (
+                {(x.is_new ||
+                  ![
+                    "price_drop",
+                    "quantity_increase",
+                    "terms_changed",
+                  ].includes(x.kind)) && (
                   <span
-                    className="fresh-coupon-badge"
-                    title="首次发现后24小时内"
+                    className={`fresh-coupon-badge${x.is_new ? "" : " hot-coupon-badge"}`}
+                    title={x.is_new ? "首次发现后24小时内" : "热度观察"}
+                    aria-label={x.is_new ? "新上券" : "热度观察"}
                   >
-                    新上
+                    {x.is_new ? "新" : "热"}
                   </span>
                 )}
                 <h3 title={x.title}>{x.title}</h3>
