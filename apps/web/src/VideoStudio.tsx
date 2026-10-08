@@ -551,7 +551,10 @@ export function VideoStudio() {
               我的上传 · {uploads.length}
             </button>
           </div>
-          <div hidden={materialTab !== "network"}>
+          <div
+            className="studio-network-materials"
+            hidden={materialTab !== "network"}
+          >
             {(brand || project?.brand_id) &&
               (product || project?.product_id) && (
                 <CouponMedia

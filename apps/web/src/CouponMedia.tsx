@@ -141,6 +141,7 @@ export function CouponMedia({
   const [open, setOpen] = useState(true),
     [job, setJob] = useState<Job | null>(null),
     [busy, setBusy] = useState(false),
+    [acquiring, setAcquiring] = useState(false),
     [error, setError] = useState("");
   useEffect(() => {
     if (job) onResources?.(job.resources);
@@ -190,6 +191,7 @@ export function CouponMedia({
       ))
     )
       return;
+    setAcquiring(true);
     setBusy(true);
     setError("");
     try {
@@ -209,6 +211,7 @@ export function CouponMedia({
     } catch (e) {
       setError(String(e));
     } finally {
+      setAcquiring(false);
       setBusy(false);
     }
   }
@@ -263,7 +266,14 @@ export function CouponMedia({
   const fresh =
     job?.state === "complete" && Date.parse(job.expires_at) > Date.now();
   return (
-    <section className="coupon-media">
+    <section
+      className="coupon-media"
+      data-searching={
+        acquiring || (job && ["queued", "running"].includes(job.state))
+          ? "true"
+          : undefined
+      }
+    >
       <button
         className="coupon-media-toggle"
         aria-expanded={open}

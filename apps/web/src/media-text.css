@@ -95,3 +95,77 @@
     flex: 1 1 auto;
   }
 }
+
+/* The light sits beneath content, so previews and the stop action stay usable. */
+.studio-network-materials {
+  position: relative;
+  isolation: isolate;
+  border-radius: 16px;
+}
+.studio-network-materials::before,
+.studio-network-materials::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+.studio-network-materials::before {
+  background: linear-gradient(125deg, #edf5ffcc, #e3eeff70 48%, #f0f9ffb3);
+  box-shadow:
+    inset 0 0 0 1px #b8d3ff66,
+    0 8px 32px #427fdb0a;
+}
+.studio-network-materials::after {
+  background:
+    radial-gradient(ellipse at 15% 20%, #76aaff55, transparent 62%),
+    radial-gradient(ellipse at 85% 75%, #8ddaff44, transparent 58%);
+}
+.studio-network-materials:has([data-searching="true"])::before {
+  opacity: 1;
+}
+.studio-network-materials:has([data-searching="true"])::after {
+  animation: material-blue-breathe 4s ease-in-out infinite;
+}
+.creator-workbench
+  .studio-network-materials:has([data-searching="true"])
+  .coupon-media-toolbar {
+  background: transparent;
+}
+.creator-workbench
+  .studio-network-materials:has([data-searching="true"])
+  .coupon-media-status {
+  color: #4b77ae;
+}
+.coupon-media[data-searching="true"] .coupon-media-status::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #6099ed;
+  box-shadow: 0 0 10px #6099ed66;
+}
+@keyframes material-blue-breathe {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .studio-network-materials::before,
+  .studio-network-materials::after {
+    transition: none;
+  }
+  .studio-network-materials:has([data-searching="true"])::after {
+    animation: none;
+    opacity: 0.55;
+  }
+}
