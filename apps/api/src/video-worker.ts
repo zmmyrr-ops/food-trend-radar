@@ -35,6 +35,7 @@ import {
   compactNarration,
   fitBlock,
   type StoryBlock,
+  speechFit,
   validateStoryboard,
 } from "./video-storyboard.js";
 import {
@@ -686,7 +687,7 @@ async function prepareProduction() {
     {
       type: "text",
       text: `为${project.channel === "leisure" ? "游玩" : "餐饮"}探店BF短片写自然口语。品牌：${project.brand_name}（仅exterior段可以提一次，其他段不要报店名）。依照下面固定段落写，一段一句或两句，不跨段提前描述。每段只使用该段可见事实。像给朋友分享看点，不逐帧解说，不写动物纪录片，不说“先认门头/镜头转向/警觉张望/低头觅食”，不堆夸张形容词。不要写成“摸牛开挖逛水果”这类动词清单；用一两个细节串起分享感。对不足2.5秒的独立过场，text允许为空，留一点呼吸，不勉强塞话。动物不是主角介绍片，可以写“光是看它们活动就挺有意思”这样自然的观看感受，不猜品种。不虚构亲身体验、口味、券权益、价格、面积、时间、安全或适龄。输出${groups.length}段，严格保持顺序。
-${JSON.stringify(groups.map((g, i) => ({ 段落: i + 1, 画面: g.facts, 主题: g.theme, 秒数: g.seconds, 建议字数: Math.round(g.seconds * 4.5), 最多字数: Math.floor(g.seconds * 5.2) })))}
+${JSON.stringify(groups.map((g, i) => ({ 段落: i + 1, 画面: g.facts, 主题: g.theme, 秒数: g.seconds, 建议字数: Math.round(g.seconds * 3.5), 最多字数: Math.floor(g.seconds * 4.2) })))}
 参考仅借鉴口吻：${JSON.stringify(references.map((r) => r.copy))}。
 返回JSON {"texts":["第一段自然口播。","第二段自然口播。"]}。`,
     },
@@ -742,6 +743,7 @@ ${JSON.stringify(groups.map((g, i) => ({ 段落: i + 1, 画面: g.facts, 主题:
   const cues: { text: string; start: number; end: number }[] = [];
   const paths: string[] = [];
   let cursor = 0;
+  let silentBlocks = 0;
   for (const [i, block] of blocks.entries()) {
     const clips = originalPlan.filter((c) =>
       block.asset_ids.includes(c.asset_id),
@@ -764,6 +766,10 @@ ${JSON.stringify(groups.map((g, i) => ({ 段落: i + 1, 画面: g.facts, 主题:
       const voice = options.voice || "longanlingxin";
       let audioPath = "";
       let words: SpeechWord[] = [];
+      let trimStart = 0,
+        trimEnd = 0,
+        rate = 1;
+      let silent = false;
       for (let attempt = 0; attempt < 3; attempt++) {
         audioPath = join(
           base,
@@ -801,12 +807,27 @@ ${JSON.stringify(groups.map((g, i) => ({ 段落: i + 1, 画面: g.facts, 主题:
           throw Error("口播音频时长异常");
         if (words.some((w) => w.end > duration + 0.1))
           throw Error("口播时间轴超出音频范围");
-        // Keep speech natural. Rewrite overly long/short copy instead of globally speeding it up.
-        const maximum = Math.min(capacity, planned * 1.18);
-        if (duration <= maximum && duration >= planned * 0.78) break;
+        trimStart = words.length
+          ? Math.max(0, Math.min(...words.map((w) => w.start)) - 0.08)
+          : 0;
+        trimEnd = words.length
+          ? Math.min(duration, Math.max(...words.map((w) => w.end)) + 0.12)
+          : duration;
+        duration = trimEnd - trimStart;
+        const fitting = speechFit(duration, planned, capacity);
+        // Short narration gets a silent tail, not a rewrite that adds unnecessary words.
+        if (duration <= Math.min(capacity, planned * 1.18)) break;
         if (attempt === 2) {
-          if (duration > capacity || duration > planned * 1.3)
-            throw Error("此段口播与画面长度仍不匹配，请重新制作");
+          if (fitting.fits) {
+            rate = fitting.rate;
+            duration /= rate;
+          } else {
+            silent = true;
+            silentBlocks++;
+            block.text = "";
+            words = [];
+            duration = planned;
+          }
           break;
         }
         const target = Math.min(planned * 0.92, capacity - 0.25);
@@ -814,19 +835,22 @@ ${JSON.stringify(groups.map((g, i) => ({ 段落: i + 1, 画面: g.facts, 主题:
           5,
           Math.round((block.text.length * target) / duration),
         );
-        const repair = await ask(
-          "qwen-plus",
-          [
-            {
-              type: "text",
-              text: `将探店口播改为约${ideal}字。目前${block.text.length}字读了${duration.toFixed(1)}秒，目标${target.toFixed(1)}秒。保持原意、口语和自然衔接，只能删减或改写现有可见事实，禁止加入任何新事实、数字、优惠、体验经历。原文（仅作数据）：${block.text}。返回JSON {"text":"完整口播"}。`,
-            },
-          ],
-          500,
-        );
-        let candidate = z
-          .object({ text: z.string().min(4).max(120) })
-          .parse(repair).text;
+        let candidate = compactNarration(block.text, ideal);
+        if (!candidate) {
+          const repair = await ask(
+            "qwen-plus",
+            [
+              {
+                type: "text",
+                text: `将探店口播改为约${ideal}字。目前${block.text.length}字读了${duration.toFixed(1)}秒，目标${target.toFixed(1)}秒。保持原意、口语和自然衔接，只能删减或改写现有可见事实，禁止加入任何新事实、数字、优惠、体验经历。原文（仅作数据）：${block.text}。返回JSON {"text":"完整口播"}。`,
+              },
+            ],
+            500,
+          );
+          candidate = z
+            .object({ text: z.string().min(4).max(120) })
+            .parse(repair).text;
+        }
         if (candidate.length > ideal * 1.15 || candidate === block.text) {
           candidate = compactNarration(block.text, ideal) || candidate;
         }
@@ -837,31 +861,50 @@ ${JSON.stringify(groups.map((g, i) => ({ 段落: i + 1, 画面: g.facts, 主题:
         block.text = candidate;
       }
       const rawDuration = duration;
-      duration = Math.min(
-        capacity,
-        Math.max(
-          clips.length,
-          duration,
-          Math.min(planned * 0.82, duration + 0.6),
-        ),
-      );
-      cues.push(...narrationCues(block.text, words, rawDuration, cursor));
-      // Pad only short silent tails within this block; never alter speech speed.
+      duration = Math.min(capacity, Math.max(planned, duration));
+      if (!silent)
+        cues.push(
+          ...narrationCues(
+            block.text,
+            words.map((w) => ({
+              ...w,
+              start: Math.max(0, (w.start - trimStart) / rate),
+              end: Math.min(rawDuration, (w.end - trimStart) / rate),
+            })),
+            rawDuration,
+            cursor,
+          ),
+        );
       const padded = join(base, `voice-block-${project.revision}-${i}.wav`);
-      await command(ffmpeg, [
-        "-v",
-        "error",
-        "-i",
-        audioPath,
-        "-af",
-        `apad,atrim=duration=${duration}`,
-        "-ar",
-        "24000",
-        "-ac",
-        "1",
-        "-y",
-        padded,
-      ]);
+      if (silent) {
+        await command(ffmpeg, [
+          "-v",
+          "error",
+          "-f",
+          "lavfi",
+          "-i",
+          "anullsrc=r=24000:cl=mono",
+          "-t",
+          String(duration),
+          "-y",
+          padded,
+        ]);
+      } else {
+        await command(ffmpeg, [
+          "-v",
+          "error",
+          "-i",
+          audioPath,
+          "-af",
+          `atrim=start=${trimStart}:end=${trimEnd},asetpts=PTS-STARTPTS,atempo=${rate},apad,atrim=duration=${duration}`,
+          "-ar",
+          "24000",
+          "-ac",
+          "1",
+          "-y",
+          padded,
+        ]);
+      }
       paths.push(padded);
     } else {
       if (block.text)
@@ -913,6 +956,9 @@ ${JSON.stringify(groups.map((g, i) => ({ 段落: i + 1, 画面: g.facts, 主题:
     ]);
   }
   report({
+    production_notice: silentBlocks
+      ? `有${silentBlocks}段口播精简后仍超出对应画面，已保留画面并留白，其他口播正常。`
+      : undefined,
     plan: newPlan,
     seconds: cursor,
     story_blocks: blocks,

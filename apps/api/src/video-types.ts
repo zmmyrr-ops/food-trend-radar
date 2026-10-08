@@ -38,6 +38,7 @@ export type ProductionOptions = Partial<
 export type VideoProject = {
   production_options?: ProductionOptions;
   script?: string;
+  production_notice?: string;
   script_segments?: string[];
   story_blocks?: import("./video-storyboard.js").StoryBlock[];
   script_revision?: number;

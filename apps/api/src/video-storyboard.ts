@@ -115,3 +115,25 @@ export function clipFrameCounts(clips: Pick<Clip, "duration">[], fps = 30) {
     return count;
   });
 }
+
+/** Keep natural pauses; never accelerate speech beyond 15 percent. */
+export function speechFit(
+  audioSeconds: number,
+  planned: number,
+  capacity: number,
+) {
+  if (
+    ![audioSeconds, planned, capacity].every((n) => Number.isFinite(n) && n > 0)
+  )
+    throw Error("口播音频时长异常");
+  const maximum = Math.min(capacity, planned * 1.18);
+  const rate = Math.max(1, audioSeconds / maximum);
+  return {
+    fits: rate <= 1.15,
+    rate: Math.min(1.15, rate),
+    duration: Math.min(
+      capacity,
+      Math.max(planned, audioSeconds / Math.min(1.15, rate)),
+    ),
+  };
+}

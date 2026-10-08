@@ -9,6 +9,7 @@ import {
   clipFrameCounts,
   compactNarration,
   fitBlock,
+  speechFit,
   validateStoryboard,
 } from "../src/video-storyboard.js";
 import type { Asset, Clip } from "../src/video-types.js";
@@ -201,5 +202,24 @@ test("fractional speech durations produce integer frames without cumulative drif
   assert.equal(
     counts.reduce((a, b) => a + b, 0),
     Math.round(durations.reduce((a, b) => a + b, 0) * 30),
+  );
+});
+
+test("口播时长适配保留短句停顿，小幅加速有上限，过长可留白而不越界", () => {
+  const short = speechFit(1.6, 4, 5);
+  assert.equal(short.rate, 1);
+  assert.equal(short.duration, 4);
+  const long = speechFit(5.4, 4, 5);
+  assert.equal(long.fits, true);
+  assert.ok(long.rate <= 1.15);
+  assert.ok(long.duration <= 5);
+  const extreme = speechFit(9, 4, 5);
+  assert.equal(extreme.fits, false);
+  assert.equal(extreme.rate, 1.15);
+  assert.throws(() => speechFit(NaN, 4, 5));
+  const fitted = fitBlock(clips, assets, short.duration);
+  assert.equal(
+    fitted.reduce((n, c) => n + c.duration, 0),
+    4,
   );
 });

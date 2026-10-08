@@ -45,6 +45,7 @@ type Project = {
   product_id: string;
   production_options?: ProductionOptions;
   script?: string;
+  production_notice?: string;
   story_blocks?: unknown[];
   id: string;
   requires_face_screen?: boolean;
@@ -858,6 +859,11 @@ export function VideoStudio() {
                 {optionsChanged && (
                   <p className="studio-hint">
                     设置已更改，点击重新制作后生效。
+                  </p>
+                )}
+                {project.production_notice && (
+                  <p role="status" className="studio-hint">
+                    {project.production_notice}
                   </p>
                 )}
                 {options.script && (

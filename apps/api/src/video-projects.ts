@@ -327,6 +327,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
     }
     if (mode === "analyze" || mode === "remake") {
       p.revision++;
+      delete p.production_notice;
       delete p.script;
       delete p.script_segments;
       delete p.story_blocks;
