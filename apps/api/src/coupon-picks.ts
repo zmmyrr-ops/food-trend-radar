@@ -165,6 +165,7 @@ export function combinePicks(
         change_reason: signal?.reason ?? "当前没有可关联的优惠变化证据",
         speed: x.speed,
         acceleration: x.acceleration,
+        previous_speed: x.previous_speed,
         net_change: x.net_change,
         hours: x.hours,
         reason: x.reason,
@@ -223,12 +224,24 @@ export function priorityAdmission(x: ReturnType<typeof combinePicks>[number]) {
   return x.priority.score >= 40 && (growing || cheaper);
 }
 export function isHotPick(x: ReturnType<typeof combinePicks>[number]) {
+  const speed = x.speed;
+  const previous = x.previous_speed;
+  if (
+    speed == null ||
+    previous == null ||
+    !Number.isFinite(speed) ||
+    !Number.isFinite(previous) ||
+    previous < 0
+  )
+    return false;
   return (
     !x.use_outlook.fully_excluded &&
-    (x.speed ?? 0) >= 5 &&
+    speed >= 5 &&
     (x.acceleration ?? 0) > 0 &&
-    (x.net_change ?? 0) >= 5 &&
-    (x.hours ?? 0) >= 0.5
+    (x.net_change ?? 0) >= 10 &&
+    (x.hours ?? 0) >= 1 &&
+    speed - previous >= 2 &&
+    (previous === 0 ? speed >= 10 : speed >= previous * 1.3)
   );
 }
 export function selectPicks(
@@ -278,7 +291,7 @@ export function selectPicks(
           : v === "price_drop"
             ? x.kind === "price_drop"
             : v === "accelerating"
-              ? (x.speed ?? 0) > 0 && (x.acceleration ?? 0) > 0
+              ? isHotPick(x)
               : v === "new"
                 ? x.is_new === true
                 : true;

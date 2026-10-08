@@ -444,7 +444,8 @@ test("优先券质量门槛、新券独立入选、品牌配额与热角标", ()
   };
   item.priority.score = 45;
   item.speed = 6;
-  item.net_change = 6;
+  item.net_change = 12;
+  item.previous_speed = 3;
   item.hours = 1;
   item.acceleration = 1;
   assert.equal(priorityAdmission(item), true);
@@ -512,4 +513,38 @@ test("优先券质量门槛、新券独立入选、品牌配额与热角标", ()
     3,
   );
   assert.equal(selectPicks(rows, query).filtered.length, 6);
+});
+
+test("明显增长加快排除微涨、低基数和不可比窗口", () => {
+  const item = {
+    ...combinePicks([heat()], [], now)[0],
+    speed: 13,
+    previous_speed: 10,
+    acceleration: 1,
+    net_change: 26,
+    hours: 2,
+  };
+  assert.equal(isHotPick(item), true);
+  for (const change of [
+    { speed: 12.9 },
+    { speed: 5, previous_speed: 4 },
+    { net_change: 9 },
+    { previous_speed: null },
+    { previous_speed: -1 },
+    { speed: 9, previous_speed: 0 },
+    { acceleration: 0 },
+    { hours: 0.5 },
+  ]) {
+    const row = { ...item, ...change };
+    assert.equal(isHotPick(row), false, JSON.stringify(change));
+    assert.equal(
+      selectPicks([row], { ...query, view: "accelerating" }).filtered.length,
+      0,
+    );
+  }
+  assert.equal(isHotPick({ ...item, speed: 10, previous_speed: 0 }), true);
+  assert.equal(
+    selectPicks([item], { ...query, view: "accelerating" }).counts.accelerating,
+    1,
+  );
 });
