@@ -261,6 +261,7 @@ export async function createCouponMedia(
       const message = error instanceof Error ? error.message : "";
       const code = [
         "NO_TEXT",
+        "NO_COPY",
         "INCOMPLETE",
         "SUMMARY_BUSY",
         "SUMMARY_INVALID",

@@ -18,7 +18,11 @@ type Resource = {
 export type TextMaterial = {
   text_state?: string;
   text_error?: string;
-  text_summary?: { overview: string; highlights: string[] } | null;
+  text_summary?: {
+    overview: string;
+    highlights: string[];
+    snippets?: { subject: string; copy: string }[];
+  } | null;
 };
 type Job = TextMaterial & {
   id: string;
@@ -269,7 +273,12 @@ export function CouponMedia({
               disabled={
                 busy ||
                 !!running ||
-                (!!fresh && !(includeText && job?.text_state !== "complete"))
+                (!!fresh &&
+                  !(
+                    includeText &&
+                    (job?.text_state !== "complete" ||
+                      !job?.text_summary?.snippets?.length)
+                  ))
               }
               onClick={() => void acquire()}
             >
@@ -277,7 +286,12 @@ export function CouponMedia({
                 "提交中…"
               ) : running ? (
                 "搜索中…"
-              ) : fresh && !(includeText && job?.text_state !== "complete") ? (
+              ) : fresh &&
+                !(
+                  includeText &&
+                  (job?.text_state !== "complete" ||
+                    !job?.text_summary?.snippets?.length)
+                ) ? (
                 "已获取 · 缓存中"
               ) : (
                 <>
@@ -364,13 +378,13 @@ export function TextMaterialSummary({ value }: { value: TextMaterial | null }) {
   return (
     <section className="media-text-summary" aria-live="polite">
       <header>
-        <strong>文字素材</strong>
+        <strong>口播文案素材</strong>
         {summary && (
           <button
             onClick={async () => {
               try {
                 await navigator.clipboard.writeText(
-                  [summary.overview, ...summary.highlights].join("\n"),
+                  summary.highlights.join("\n"),
                 );
                 setCopied(true);
               } catch {
@@ -383,24 +397,45 @@ export function TextMaterialSummary({ value }: { value: TextMaterial | null }) {
         )}
       </header>
       {value.text_state === "queued" || value.text_state === "running" ? (
-        <p>正在整理文字素材…</p>
+        <p>正在提取适合口播的句子…</p>
       ) : value.text_state === "failed" ? (
         <p>
-          {value.text_error === "NO_TEXT"
-            ? "本次素材没有可提炼的文章正文。"
-            : value.text_error === "INCOMPLETE"
-              ? "素材搜索未完成，文字整理已停止。"
-              : value.text_error === "INTERRUPTED"
-                ? "服务更新中断了文字整理。"
-                : "文字整理暂未成功。"}
+          {value.text_error === "NO_COPY"
+            ? "本次文章中没有提取到具体可用的口播句子。"
+            : value.text_error === "NO_TEXT"
+              ? "本次素材没有可提炼的文章正文。"
+              : value.text_error === "INCOMPLETE"
+                ? "素材搜索未完成，文字整理已停止。"
+                : value.text_error === "INTERRUPTED"
+                  ? "服务更新中断了文字整理。"
+                  : "文字整理暂未成功。"}
           额外5积分已退回，可勾选后重试。
         </p>
       ) : summary ? (
         <>
-          <p>{summary.overview}</p>
+          {summary.overview && <p>{summary.overview}</p>}
           <ul>
             {summary.highlights.map((text, i) => (
-              <li key={i}>{text}</li>
+              <li key={i} className="media-copy-line">
+                <div>
+                  {summary.snippets?.[i] && (
+                    <strong>{summary.snippets[i].subject}</strong>
+                  )}
+                  <p>{text}</p>
+                </div>
+                <button
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText(text);
+                      setCopied(true);
+                    } catch {
+                      setCopied(false);
+                    }
+                  }}
+                >
+                  复制
+                </button>
+              </li>
             ))}
           </ul>
         </>
