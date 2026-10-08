@@ -1,0 +1,78 @@
+.point-spend-dialog {
+  border: 1px solid #e1e9f6;
+  border-radius: 22px;
+  padding: 26px;
+  width: min(440px, calc(100vw - 32px));
+  box-sizing: border-box;
+  color: #263951;
+  background: #fff;
+  box-shadow: 0 24px 80px #19366b30;
+  max-height: 90dvh;
+  overflow: auto;
+}
+.point-spend-dialog::backdrop {
+  background: #15244070;
+  backdrop-filter: blur(3px);
+}
+.point-spend-head,
+.point-spend-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.point-spend-head {
+  font-size: 13px;
+  color: #78879f;
+}
+.point-spend-head button {
+  border: 0;
+  background: transparent;
+  color: #728097;
+  font-size: 24px;
+  padding: 0 5px;
+}
+.point-spend-dialog h2 {
+  font-size: 21px;
+  margin: 18px 0;
+}
+.point-spend-dialog p {
+  font-size: 13px;
+  line-height: 1.8;
+}
+.point-spend-amount {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f3f7ff;
+  border-radius: 14px;
+  padding: 18px;
+}
+.point-spend-amount > span:last-child {
+  font-size: 13px;
+  color: #728097;
+}
+.point-spend-note {
+  color: #77869b;
+}
+.point-spend-actions {
+  margin-top: 24px;
+}
+.point-spend-actions button {
+  flex: 1;
+  border: 1px solid #dce6f6;
+  border-radius: 10px;
+  padding: 12px;
+  background: #f4f7fc;
+  color: #5c6f8a;
+  font-size: 14px;
+}
+.point-spend-actions button:last-child {
+  background: #3478ee;
+  border-color: #3478ee;
+  color: white;
+}
+.point-spend-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

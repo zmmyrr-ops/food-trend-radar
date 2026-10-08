@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch } from "./app-url";
+import { confirmPointSpend } from "./PointSpendConfirm";
 import { Points } from "./Points";
 
 type Resource = {
@@ -168,6 +169,14 @@ export function CouponMedia({
     };
   }, [open, read]);
   async function acquire(more = false, reset = false) {
+    if (
+      !(await confirmPointSpend(
+        reset ? "重置并重新获取素材" : more ? "再获取一些素材" : "获取网络素材",
+        more && !reset ? 5 : 10,
+        "最多消耗上述积分。本人已有可用缓存免费查看；首次复用他人缓存仍计费。未获取到新增素材自动退分。",
+      ))
+    )
+      return;
     setBusy(true);
     setError("");
     try {

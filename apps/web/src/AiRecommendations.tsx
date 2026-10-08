@@ -2,6 +2,7 @@ import type { Channel } from "@radar/contracts";
 import { useEffect, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch } from "./app-url";
+import { confirmPointSpend } from "./PointSpendConfirm";
 import { Points } from "./Points";
 
 type Evidence = {
@@ -79,6 +80,14 @@ export function AiRecommendations({ channel }: { channel: Channel }) {
     };
   }, [channel]);
   async function generate() {
+    if (
+      !(await confirmPointSpend(
+        "生成 AI 精选",
+        30,
+        "结合联网品牌调研、历史与天气综合推荐。已有报告免费查看；本次生成失败自动退分。",
+      ))
+    )
+      return;
     setSending(true);
     setError("");
     try {

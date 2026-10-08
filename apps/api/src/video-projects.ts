@@ -805,6 +805,32 @@ export async function createVideoProjects(db: PGlite, root: string) {
       }),
     );
     app.get(
+      "/api/v3/video-projects/:id/point-cost",
+      wrap(async (req, res) => {
+        const action = z
+          .enum(["analyze", "remake", "preview", "export"])
+          .parse(req.query.action);
+        const p = await get(String(req.params.id));
+        const row = (
+          await db.query<{ point_paid_revision: number | null }>(
+            "SELECT point_paid_revision FROM video_projects WHERE id=$1",
+            [p.id],
+          )
+        ).rows[0];
+        const existing =
+          !p.captions_pending &&
+          ((action === "preview" && p.preview_revision === p.revision) ||
+            (action === "export" && p.export_revision === p.revision));
+        const cost = existing
+          ? 0
+          : ["analyze", "remake"].includes(action) ||
+              row?.point_paid_revision !== p.revision
+            ? 50
+            : 0;
+        res.json({ cost, revision: p.revision });
+      }),
+    );
+    app.get(
       "/api/v3/video-projects/:id",
       wrap(async (req, res) =>
         res.json({ project: visible(await get(String(req.params.id))) }),

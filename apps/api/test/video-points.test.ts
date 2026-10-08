@@ -62,6 +62,21 @@ test("video charges once, cancel/startup refund, insufficient balance rolls back
       )
     ).rows[0].balance;
   try {
+    const quote = async (action: string) =>
+      (await (await fetch(url + "/point-cost?action=" + action)).json()).cost;
+    assert.equal(await quote("remake"), 50);
+    assert.equal(await quote("export"), 50);
+    await db.query(
+      "UPDATE video_projects SET point_paid_revision=1 WHERE id=$1",
+      [id],
+    );
+    assert.equal(await quote("export"), 0);
+    assert.equal(await quote("preview"), 0);
+    assert.equal(await quote("remake"), 50);
+    await db.query(
+      "UPDATE video_projects SET point_paid_revision=NULL WHERE id=$1",
+      [id],
+    );
     const results = await Promise.all([post("analyze"), post("analyze")]);
     assert.ok(results.every((r) => r.ok));
     assert.equal(await balance(), 50);

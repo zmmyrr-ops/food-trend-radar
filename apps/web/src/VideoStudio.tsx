@@ -9,6 +9,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
 import { CouponMedia } from "./CouponMedia";
+import { confirmPointSpend } from "./PointSpendConfirm";
 import { Points } from "./Points";
 import { StudioCopy } from "./StudioCopy";
 import { StudioCoupon } from "./StudioCoupon";
@@ -267,6 +268,14 @@ export function VideoStudio() {
     });
   }
   async function create() {
+    if (
+      !(await confirmPointSpend(
+        "制作探店视频",
+        50,
+        "包含本次素材分析、文案、所选配音配乐及字幕。同版本预览与导出免费；失败自动退分。",
+      ))
+    )
+      return;
     await perform(async () => {
       if (!visitStore) throw Error("请从探店计划选择店铺制作视频");
       const d = await request(prefix, "POST", {
@@ -286,6 +295,20 @@ export function VideoStudio() {
   async function action(name: string) {
     if (!project) return;
     await perform(async () => {
+      if (["analyze", "remake", "preview", "export"].includes(name)) {
+        const quote = await request(
+          `${prefix}/${project.id}/point-cost?action=${name}`,
+        );
+        if (
+          quote.cost > 0 &&
+          !(await confirmPointSpend(
+            name === "remake" ? "重新制作探店视频" : "制作探店视频",
+            quote.cost,
+            "本次制作按新版本计费。同一已付费版本的预览、导出免费；失败自动退分。",
+          ))
+        )
+          return;
+      }
       const d = await request(
         `${prefix}/${project.id}/${name}`,
         "POST",

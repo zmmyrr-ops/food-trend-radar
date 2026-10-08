@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { appFetch } from "./app-url";
+import { confirmPointSpend } from "./PointSpendConfirm";
 import { Points } from "./Points";
 
 export function StudioCopy({
@@ -45,6 +46,13 @@ export function StudioCopy({
   const [notice, setNotice] = useState("");
   const [copied, setCopied] = useState("");
   async function generate(kind: "titles" | "topics") {
+    if (
+      !(await confirmPointSpend(
+        kind === "titles" ? "生成一批标题" : "查找一批热门话题",
+        5,
+      ))
+    )
+      return;
     setBusy(kind);
     setError("");
     setCopied("");
