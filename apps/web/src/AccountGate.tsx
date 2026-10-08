@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import { appFetch, appUrl } from "./app-url";
+import { DailyLoginReward } from "./DailyLoginReward";
 import { PointsBalance } from "./Points";
 import "./membership.css";
 
@@ -343,6 +344,7 @@ export function AccountGate({ children }: { children: ReactNode }) {
           </button>
           {error && <small role="alert">{error}</small>}
         </div>
+        <DailyLoginReward key={account.id} />
         <div key={account.id}>{children}</div>
       </div>
     </AccountContext.Provider>

@@ -97,3 +97,28 @@ export async function refundPoints(db: PGlite, key: string) {
       );
   });
 }
+
+/** One reward per account and Shanghai calendar day, protected by the wallet lock. */
+export async function grantDailyLoginPoints(
+  db: PGlite,
+  owner: string,
+  now = new Date(),
+) {
+  const day = new Date(now.getTime() + 8 * 3600000).toISOString().slice(0, 10);
+  return db.transaction(async (tx) => {
+    const awarded = await changePoints(
+      tx,
+      owner,
+      20,
+      "每日登录奖励",
+      `daily-login:${owner}:${day}`,
+    );
+    const wallet = (
+      await tx.query<{ balance: number }>(
+        "SELECT balance FROM point_wallets WHERE owner_id=$1",
+        [owner],
+      )
+    ).rows[0];
+    return { awarded, amount: awarded ? 20 : 0, balance: wallet.balance, day };
+  });
+}

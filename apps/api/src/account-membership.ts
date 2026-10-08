@@ -3,7 +3,7 @@ import type { PGlite } from "@electric-sql/pglite";
 import type { Express, RequestHandler } from "express";
 import { z } from "zod";
 import { hashAccountPassword, ownerOf, verifyPassword } from "./accounts.js";
-import { changePoints } from "./points.js";
+import { changePoints, grantDailyLoginPoints } from "./points.js";
 import type { SmsAuth } from "./sms-auth.js";
 
 const referralSchema = z
@@ -203,6 +203,10 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
     });
   }
   function privateRoutes(app: Express, auth: RequestHandler) {
+    app.post("/api/member/daily-login", auth, async (req, res) => {
+      res.setHeader("Cache-Control", "no-store");
+      res.json(await grantDailyLoginPoints(db, ownerOf(req)));
+    });
     app.get("/api/member", auth, async (req, res) => {
       const id = ownerOf(req);
       const a = (

@@ -264,6 +264,16 @@ test("legacy migration, verified invitation registration, SMS limits, rewards, h
       200,
     );
     assert.equal((await call("/api/member", user)).data.balance, 600);
+    assert.equal((await call("/api/member/daily-login", "", {})).status, 401);
+    const daily = await call("/api/member/daily-login", user, {});
+    assert.equal(daily.status, 200);
+    assert.equal(daily.data.awarded, true);
+    assert.equal(daily.data.balance, 620);
+    assert.equal(
+      (await call("/api/member/daily-login", user, {})).data.awarded,
+      false,
+    );
+    assert.equal((await call("/api/member", user)).data.balance, 620);
   } finally {
     await new Promise<void>((r) => server.close(() => r()));
     await accounts.drain();

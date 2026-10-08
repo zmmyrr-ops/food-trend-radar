@@ -1,0 +1,102 @@
+.daily-login-reward {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(380px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  box-sizing: border-box;
+  border: 1px solid #e1e9fb;
+  border-radius: 24px;
+  padding: 30px 28px 24px;
+  background: linear-gradient(160deg, #edf4ff 0%, #fff 48%);
+  color: #22344d;
+  text-align: center;
+  box-shadow: 0 24px 80px #142c5733;
+}
+.daily-login-reward::backdrop {
+  background: #172a4659;
+  backdrop-filter: blur(3px);
+}
+.daily-login-reward .daily-reward-close {
+  position: absolute;
+  right: 14px;
+  top: 12px;
+  border: 0;
+  background: transparent;
+  color: #71809a;
+  font-size: 26px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.daily-reward-art {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  margin: 4px auto 18px;
+  border-radius: 26px;
+  background: #e5efff;
+}
+.daily-reward-art img {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+.daily-login-reward .daily-reward-eyebrow {
+  font-size: 12px;
+  color: #7485a0;
+  margin: 0 0 8px;
+}
+.daily-login-reward h2 {
+  font-size: 23px;
+  margin: 0;
+  font-weight: 650;
+}
+.daily-reward-amount {
+  font-size: 52px;
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: -2px;
+  color: #3478ee;
+  margin: 16px 0 10px;
+}
+.daily-reward-amount span {
+  font-size: 15px;
+  letter-spacing: 0;
+  font-weight: 500;
+  margin-left: 8px;
+}
+.daily-login-reward .daily-reward-description {
+  font-size: 13px;
+  color: #7485a0;
+  margin: 0 0 18px;
+}
+.daily-reward-balance {
+  font-size: 13px;
+  color: #63738c;
+  padding: 12px;
+  background: #f4f7fc;
+  border-radius: 12px;
+}
+.daily-reward-balance strong {
+  color: #22344d;
+  margin: 0 4px;
+}
+.daily-login-reward .daily-reward-confirm {
+  display: block;
+  width: 100%;
+  margin: 20px 0 12px;
+  padding: 12px;
+  border: 0;
+  border-radius: 12px;
+  background: #3478ee;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.daily-login-reward small {
+  font-size: 11px;
+  color: #8996aa;
+}
