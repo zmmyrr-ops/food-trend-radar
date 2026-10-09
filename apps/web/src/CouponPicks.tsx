@@ -577,7 +577,7 @@ export function CouponPicks({
                       <div className="coupon-use-warning">
                         <strong>{x.priority.availability_gate.reason}</strong>
                         <p>
-                          使用限制调整：
+                          评分
                           {x.priority.availability_gate.before_score.toFixed(1)}{" "}
                           → {x.priority.score.toFixed(1)} 分
                         </p>

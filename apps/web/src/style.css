@@ -1322,16 +1322,39 @@ footer {
   cursor: pointer;
   color: #257456;
 }
-.coupon-use-warning {
-  background: #fff2e7;
-  border-left: 3px solid #c96724;
-  padding: 10px 12px;
-  margin: 12px 0;
-  font-size: 13px;
-  color: #854010;
+.coupon-card .coupon-use-warning {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 4px 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #c54b50;
 }
-.coupon-use-warning p {
-  margin: 5px 0;
+.coupon-card .coupon-use-warning strong {
+  font-size: inherit;
+  font-weight: 400;
+  color: inherit;
+}
+.coupon-card .coupon-use-warning > p {
+  display: inline;
+  margin: 0 0 0 6px;
+  font-size: inherit;
+  color: inherit;
+}
+.coupon-card .coupon-use-warning details {
+  margin: 2px 0 0;
+  font-size: inherit;
+}
+.coupon-card .coupon-use-warning summary {
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.coupon-card .coupon-use-warning details p {
+  margin: 3px 0;
+  font-size: inherit;
+  color: inherit;
 }
 
 /* Tanhaodian: two editorial channels, one shared operations workspace. */
