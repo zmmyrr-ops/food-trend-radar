@@ -191,7 +191,7 @@ const inputSchema = z.object({
     .default("all"),
   order: z
     .enum(["priority", "speed", "acceleration", "saving", "newest"])
-    .default("priority"),
+    .optional(),
   search: z.string().max(100).default(""),
   brand_id: z.uuid().optional(),
   category: z.enum(categories).optional(),
@@ -306,15 +306,18 @@ export function selectPicks(
       "watching",
     ].map((v) => [v, scoped.filter((x) => matches(x, v)).length]),
   );
+  const order = q.order ?? (q.view === "new" ? "newest" : "priority");
   const value = (x: (typeof items)[number]) =>
-    q.order === "priority"
+    order === "priority"
       ? x.priority.score
-      : q.order === "acceleration"
+      : order === "acceleration"
         ? x.acceleration
-        : q.order === "saving"
+        : order === "saving"
           ? x.saving_fen
-          : q.order === "newest"
-            ? Date.parse(x.observed_at)
+          : order === "newest"
+            ? Date.parse(
+                q.view === "new" ? (x.discovered_at ?? "") : x.observed_at,
+              ) || 0
             : x.speed;
   const filtered = scoped
     .filter((x) => matches(x, q.view))

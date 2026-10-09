@@ -187,7 +187,18 @@ Page({
     this.setData(updates);
   },
   view(e) {
-    this.setData({ view: e.detail.value });
+    const isNew = e.detail.value === "new";
+    this.setData({
+      view: e.detail.value,
+      order: isNew ? "newest" : "priority",
+      sortIndex: isNew ? 3 : 0,
+      sorts: [
+        "优先分",
+        "热度增速",
+        "增长加快",
+        isNew ? "上新时间" : "最新采集",
+      ],
+    });
     this.load(true);
   },
   channel(e) {

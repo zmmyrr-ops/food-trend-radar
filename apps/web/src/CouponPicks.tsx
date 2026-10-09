@@ -296,6 +296,8 @@ export function CouponPicks({
                     value={key}
                     checked={view === key}
                     onChange={() => {
+                      if (key === "new") setOrder("newest");
+                      else if (view === "new") setOrder("priority");
                       setView(key);
                       setOffset(0);
                     }}
@@ -394,6 +396,7 @@ export function CouponPicks({
               <BrandBoost brands={brands} />
               {(
                 [
+                  ...(view === "new" ? [["newest", "上新时间"]] : []),
                   ["priority", "优先分"],
                   ["speed", "热度增速"],
                 ] as const
@@ -402,7 +405,11 @@ export function CouponPicks({
                   type="button"
                   key={value}
                   aria-pressed={order === value}
-                  title={`${label}从高到低`}
+                  title={
+                    value === "newest"
+                      ? "上新时间：最新在前"
+                      : `${label}从高到低`
+                  }
                   onClick={() => {
                     setOrder(value);
                     setOffset(0);

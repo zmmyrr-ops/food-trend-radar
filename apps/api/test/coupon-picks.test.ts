@@ -548,3 +548,23 @@ test("明显增长加快排除微涨、低基数和不可比窗口", () => {
     1,
   );
 });
+
+test("新上默认按发现时间倒序，刷新时间不改变上新顺序", () => {
+  const rows = combinePicks([heat("1"), heat("2")], []);
+  rows[0].is_new = true;
+  rows[1].is_new = true;
+  rows[0].discovered_at = new Date(now - 7200000).toISOString();
+  rows[1].discovered_at = new Date(now - 3600000).toISOString();
+  rows[0].observed_at = new Date(now).toISOString();
+  const q = { view: "new" as const, search: "", offset: 0, limit: 20 };
+  assert.deepEqual(
+    selectPicks(rows, q).filtered.map((x) => x.product_id),
+    ["2", "1"],
+  );
+  assert.deepEqual(
+    selectPicks(rows, { ...q, order: "newest" }).filtered.map(
+      (x) => x.product_id,
+    ),
+    ["2", "1"],
+  );
+});
