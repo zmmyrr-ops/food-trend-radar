@@ -1,0 +1,64 @@
+.app-sidebar .primary-nav button {
+  gap: 12px;
+  align-items: center;
+}
+.app-sidebar .primary-nav button > .sidebar-menu-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 10px;
+  background: #f0f4fa;
+  color: #657b99;
+  line-height: 1;
+  box-sizing: border-box;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+.sidebar-menu-icon svg {
+  display: block;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  overflow: visible;
+}
+.app-sidebar .primary-nav button[aria-pressed="true"] > .sidebar-menu-icon {
+  background: #dceaff;
+  color: #286bd5;
+}
+.app-sidebar .primary-nav button:hover > .sidebar-menu-icon {
+  color: #286bd5;
+  background: #e7effc;
+}
+.app-sidebar .primary-nav button > div {
+  min-width: 0;
+  line-height: 1.4;
+}
+@media (max-width: 800px) {
+  .app-sidebar .primary-nav button {
+    gap: 7px;
+  }
+  .app-sidebar .primary-nav button > .sidebar-menu-icon {
+    flex-basis: 26px;
+    width: 26px;
+    min-width: 26px;
+    height: 26px;
+    border-radius: 7px;
+  }
+  .sidebar-menu-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app-sidebar .primary-nav button > .sidebar-menu-icon {
+    transition: none;
+  }
+}

@@ -29,6 +29,7 @@ import { BrandSubscriptions } from "./BrandSubscriptions";
 import { CouponRadar } from "./CouponRadar";
 import { FeedbackPage } from "./FeedbackPage";
 import { MyWorkspace } from "./MyWorkspace";
+import { SidebarIcon } from "./SidebarIcon";
 import { Sources } from "./Sources";
 import { PageAnalytics } from "./telemetry";
 import { UserGuide } from "./UserGuide";
@@ -316,7 +317,7 @@ function App() {
             aria-pressed={tab === "radar" && channel === "food"}
             onClick={() => navigate("radar", "food")}
           >
-            <span>食</span>
+            <SidebarIcon name="food" />
             <div>
               美食发现<small>餐饮 · 茶咖 · 甜品</small>
             </div>
@@ -325,7 +326,7 @@ function App() {
             aria-pressed={tab === "radar" && channel === "leisure"}
             onClick={() => navigate("radar", "leisure")}
           >
-            <span>游</span>
+            <SidebarIcon name="leisure" />
             <div>
               游玩灵感<small>亲子 · 乐园 · 城市体验</small>
             </div>
@@ -334,7 +335,7 @@ function App() {
             aria-pressed={tab === "workspace"}
             onClick={() => navigate("workspace")}
           >
-            <span>我</span>
+            <SidebarIcon name="workspace" />
             <div>
               我的工作台<small>计划 · 视频 · 订阅</small>
             </div>
@@ -344,7 +345,7 @@ function App() {
             className="admin-only"
             onClick={() => navigate("brands")}
           >
-            <span>店</span>
+            <SidebarIcon name="brands" />
             <div>
               品牌名录<small>分类查看与管理</small>
             </div>
@@ -353,7 +354,7 @@ function App() {
             aria-pressed={tab === "reports"}
             onClick={() => navigate("reports")}
           >
-            <span>馈</span>
+            <SidebarIcon name="feedback" />
             <div>
               我要反馈
               <small>
@@ -367,7 +368,7 @@ function App() {
             aria-pressed={tab === "guide"}
             onClick={() => navigate("guide")}
           >
-            <span>？</span>
+            <SidebarIcon name="guide" />
             <div>
               使用指南<small>功能说明与操作方法</small>
             </div>
