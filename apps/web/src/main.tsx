@@ -31,6 +31,7 @@ import { FeedbackPage } from "./FeedbackPage";
 import { MyWorkspace } from "./MyWorkspace";
 import { Sources } from "./Sources";
 import { PageAnalytics } from "./telemetry";
+import { UserGuide } from "./UserGuide";
 import { VideoStudio } from "./VideoStudio";
 
 import "./style.css";
@@ -107,6 +108,7 @@ function App() {
         "radar",
         "workspace",
         "reports",
+        "guide",
         "brands",
         "events",
         "import",
@@ -118,7 +120,7 @@ function App() {
         .filter(
           (v) =>
             account.role === "admin" ||
-            ["radar", "workspace", "reports"].includes(v),
+            ["radar", "workspace", "reports", "guide"].includes(v),
         )
         .includes(value)
         ? value
@@ -361,6 +363,15 @@ function App() {
               </small>
             </div>
           </button>
+          <button
+            aria-pressed={tab === "guide"}
+            onClick={() => navigate("guide")}
+          >
+            <span>？</span>
+            <div>
+              使用指南<small>功能说明与操作方法</small>
+            </div>
+          </button>
         </nav>
         <details
           className="sidebar-tools admin-only"
@@ -399,15 +410,17 @@ function App() {
             探好店 /{" "}
             {tab === "radar"
               ? `${channelLabel}发现`
-              : tab === "reports"
-                ? "我要反馈"
-                : tab === "workspace"
-                  ? "我的工作台"
-                  : tab === "accounts"
-                    ? "账号管理"
-                    : "数据工作台"}
+              : tab === "guide"
+                ? "使用指南"
+                : tab === "reports"
+                  ? "我要反馈"
+                  : tab === "workspace"
+                    ? "我的工作台"
+                    : tab === "accounts"
+                      ? "账号管理"
+                      : "数据工作台"}
           </span>
-          {tab !== "workspace" && tab !== "accounts" && (
+          {tab !== "workspace" && tab !== "accounts" && tab !== "guide" && (
             <div className="channel-switch" aria-label="切换业务频道">
               {(["food", "leisure"] as const).map((c) => (
                 <button
@@ -432,6 +445,7 @@ function App() {
         {tab !== "radar" &&
           tab !== "workspace" &&
           tab !== "reports" &&
+          tab !== "guide" &&
           tab !== "accounts" && (
             <section className="page-heading">
               <div>
@@ -497,6 +511,7 @@ function App() {
         {tab === "analytics" && account.role === "admin" && <AnalyticsAdmin />}
         {tab === "workspace" && <MyWorkspace brands={brands} />}
         {tab === "reports" && <FeedbackPage />}
+        {tab === "guide" && <UserGuide />}
         {tab === "accounts" && account.role === "admin" && (
           <AccountManagement />
         )}
