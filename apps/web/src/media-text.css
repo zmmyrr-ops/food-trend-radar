@@ -20,13 +20,13 @@
   font-size: 14px;
   line-height: 1.8;
 }
-.media-text-summary header {
+.media-text-summary .media-text-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
 }
-.media-text-summary header button {
+.media-text-summary .media-text-heading button {
   font-size: 12px;
   padding: 6px 12px;
 }

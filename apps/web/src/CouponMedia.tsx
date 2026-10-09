@@ -404,7 +404,7 @@ export function TextMaterialSummary({ value }: { value: TextMaterial | null }) {
   const summary = value.text_summary;
   return (
     <section className="media-text-summary" aria-live="polite">
-      <header>
+      <div className="media-text-heading">
         <strong>口播文案素材</strong>
         {summary && (
           <button
@@ -422,7 +422,7 @@ export function TextMaterialSummary({ value }: { value: TextMaterial | null }) {
             {copied ? "已复制" : "复制内容"}
           </button>
         )}
-      </header>
+      </div>
       {value.text_state === "queued" || value.text_state === "running" ? (
         <p>正在提取适合口播的句子…</p>
       ) : value.text_state === "failed" ? (
