@@ -1,5 +1,6 @@
 import "./brand-boost.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { appFetch } from "./app-url";
 import { confirmPointSpend } from "./PointSpendConfirm";
 import { Points } from "./Points";
@@ -11,7 +12,16 @@ type Job = {
   mine: boolean;
   votes: number;
 };
-export function useBrandBoost() {
+export function BrandBoost({
+  brands,
+}: {
+  brands: { id: string; name: string; category: string; active?: boolean }[];
+}) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const [selected, setSelected] = useState("");
+
   const [jobs, setJobs] = useState<Job[]>([]);
   const [remaining, setRemaining] = useState(2);
   const [busy, setBusy] = useState("");
@@ -25,10 +35,12 @@ export function useBrandBoost() {
     }
   }
   useEffect(() => {
+    if (!open) return;
+    dialog.current?.showModal();
     void refresh().catch(() => {});
     const timer = setInterval(() => void refresh().catch(() => {}), 15000);
     return () => clearInterval(timer);
-  }, []);
+  }, [open]);
   async function accelerate(id: string, name: string) {
     if (busy) return;
     if (
@@ -60,38 +72,145 @@ export function useBrandBoost() {
       setBusy("");
     }
   }
-  return {
-    message,
-    dismiss: () => setMessage(""),
-    button: (id: string, name: string) => {
-      const job = jobs.find((j) => j.brand_id === id);
-      return (
-        <button
-          className="brand-boost-button"
-          disabled={
-            !!busy || job?.mine || job?.state === "running" || remaining === 0
-          }
-          title={
-            remaining === 0
-              ? "今日加速次数已用完"
-              : `每天最多2次，今日剩余${remaining}次`
-          }
-          onClick={() => void accelerate(id, name)}
-        >
-          {busy === id ? (
-            "提交中…"
-          ) : job?.state === "running" ? (
-            "正在刷新"
-          ) : job?.mine ? (
-            `已加速 · 第${job.position}位`
-          ) : (
-            <>
-              {job ? `助力加速 · 第${job.position}位` : "加速刷新"}{" "}
-              <Points amount={20} cost />
-            </>
-          )}
-        </button>
-      );
-    },
-  };
+  const selectedBrand = brands.find((b) => b.id === selected);
+  const job = jobs.find((j) => j.brand_id === selected);
+  const results = search.trim()
+    ? brands
+        .filter(
+          (b) =>
+            b.active !== false &&
+            b.name.toLowerCase().includes(search.trim().toLowerCase()),
+        )
+        .slice(0, 30)
+    : [];
+  function close() {
+    dialog.current?.close();
+    setOpen(false);
+  }
+  return (
+    <>
+      <button
+        className="brand-boost-entry"
+        onClick={() => {
+          setSearch("");
+          setSelected("");
+          setMessage("");
+          setOpen(true);
+        }}
+      >
+        加速刷新品牌 <Points amount={20} cost />
+      </button>
+      {open &&
+        createPortal(
+          <dialog
+            ref={dialog}
+            className="brand-boost-dialog"
+            aria-labelledby="brand-boost-title"
+            onCancel={(e) => {
+              e.preventDefault();
+              if (!busy) close();
+            }}
+          >
+            <div className="brand-boost-heading">
+              <div>
+                <h2 id="brand-boost-title">加速刷新品牌</h2>
+                <p>今日还可使用 {remaining} / 2 次</p>
+              </div>
+              <button
+                aria-label="关闭加速窗口"
+                disabled={!!busy}
+                onClick={close}
+              >
+                ×
+              </button>
+            </div>
+            <label className="brand-boost-search">
+              搜索品牌
+              <input
+                autoFocus
+                placeholder="输入品牌名称，如肯德基"
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setSelected("");
+                  setMessage("");
+                }}
+              />
+            </label>
+            <div
+              className="brand-boost-results"
+              role="radiogroup"
+              aria-label="选择要刷新的品牌"
+            >
+              {!search.trim() && <p>输入名称，选择需要提前刷新的品牌</p>}
+              {search.trim() && !results.length && (
+                <p>没有找到匹配品牌，请换个关键词</p>
+              )}
+              {results.map((b) => (
+                <label
+                  className={selected === b.id ? "is-selected" : ""}
+                  key={b.id}
+                >
+                  <input
+                    type="radio"
+                    name="boost-brand"
+                    value={b.id}
+                    checked={selected === b.id}
+                    disabled={!!busy}
+                    onChange={() => {
+                      setSelected(b.id);
+                      setMessage("");
+                    }}
+                  />
+                  <span>
+                    {b.name}
+                    <small>{b.category}</small>
+                  </span>
+                </label>
+              ))}
+            </div>
+            <p className="brand-boost-note">
+              30分钟内已刷新不扣分；失败退回积分与次数。多人加速提升顺位，依次刷新。
+            </p>
+            {message && (
+              <p className="brand-boost-feedback" role="status">
+                {message}
+              </p>
+            )}
+            <div className="brand-boost-footer">
+              <button onClick={close} disabled={!!busy}>
+                关闭
+              </button>
+              <button
+                className="brand-boost-submit"
+                disabled={
+                  !selectedBrand ||
+                  !!busy ||
+                  job?.mine ||
+                  job?.state === "running" ||
+                  remaining === 0
+                }
+                onClick={() =>
+                  selectedBrand &&
+                  void accelerate(selectedBrand.id, selectedBrand.name)
+                }
+              >
+                {busy ? (
+                  "提交中…"
+                ) : job?.state === "running" ? (
+                  "正在刷新"
+                ) : job?.mine ? (
+                  `已加速 · 第${job.position}位`
+                ) : (
+                  <>
+                    确认加速 <Points amount={20} cost />
+                  </>
+                )}
+              </button>
+            </div>
+          </dialog>,
+          document.body,
+        )}
+    </>
+  );
 }
