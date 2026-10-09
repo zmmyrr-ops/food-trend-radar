@@ -89,8 +89,8 @@ export function pickPriority(input: {
     },
     {
       name: "新上券",
-      weight: 10,
-      value: input.is_new === undefined ? null : input.is_new ? 10 : 0,
+      weight: 5,
+      value: input.is_new === undefined ? null : input.is_new ? 5 : 0,
     },
   ].map((x) => ({
     ...x,

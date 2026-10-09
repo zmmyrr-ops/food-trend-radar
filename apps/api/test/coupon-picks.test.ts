@@ -387,7 +387,7 @@ test("新上保留24小时，后续无变化轮次仍保留，临界点自动撤
     [discovery],
   )[0];
   assert.equal(fresh.is_new, true);
-  assert.equal(fresh.priority.score, regular.priority.score + 10);
+  assert.equal(fresh.priority.score, regular.priority.score + 5);
   assert.equal(
     selectPicks([fresh], { ...query, view: "new" }).filtered.length,
     1,
