@@ -314,8 +314,7 @@ export async function createCouponMedia(
     ).rows[0];
     if (
       state.credential_hash === c.hash &&
-      (state.block_code === "AUTH_EXPIRED" ||
-        new Date(state.blocked_until).getTime() > Date.now())
+      new Date(state.blocked_until).getTime() > Date.now()
     )
       throw Error(state.block_code || "COOLDOWN");
     const delay = Math.max(
@@ -348,6 +347,8 @@ export async function createCouponMedia(
         ].includes(k.toLowerCase()),
       ),
     );
+    let httpStatus: number | undefined;
+    let upstreamCode: number | string | undefined;
     try {
       let data: any;
       if (options.transport)
@@ -360,20 +361,31 @@ export async function createCouponMedia(
           redirect: "error",
           signal: AbortSignal.timeout(15000),
         });
-        if ([401, 403, 406, 461, 471].includes(r.status))
-          throw Error("AUTH_EXPIRED");
-        if (r.status === 429) throw Error("RATE_LIMITED");
+        httpStatus = r.status;
+        if ([401, 403].includes(r.status)) throw Error("AUTH_EXPIRED");
+        if ([406, 429, 461, 471].includes(r.status))
+          throw Error("RATE_LIMITED");
         if (!r.ok) throw Error("UPSTREAM_ERROR");
         const text = await r.text();
         if (text.length > 5_000_000) throw Error("INVALID_RESPONSE");
         try {
           data = JSON.parse(text);
         } catch {
-          throw Error("AUTH_EXPIRED");
+          throw Error("INVALID_RESPONSE");
         }
       }
+      upstreamCode =
+        typeof data?.code === "number" || typeof data?.code === "string"
+          ? data.code
+          : undefined;
       if (data?.success !== true || data?.code !== 0)
-        throw Error("AUTH_EXPIRED");
+        throw Error(
+          Number(upstreamCode) === -100 ? "AUTH_EXPIRED" : "UPSTREAM_ERROR",
+        );
+      await db.query(
+        "UPDATE coupon_media_gate SET credential_hash=$1,block_code=NULL,blocked_until=NULL WHERE id=1",
+        [c.hash],
+      );
       return data;
     } catch (error) {
       const code =
@@ -386,6 +398,13 @@ export async function createCouponMedia(
         ].includes(error.message)
           ? error.message
           : "NETWORK_ERROR";
+      console.warn("MEDIA_REQUEST_FAILED", {
+        endpoint: new URL(url).pathname,
+        code,
+        http_status: httpStatus,
+        upstream_code: upstreamCode,
+        job_id: jobId,
+      });
       await db.query(
         "UPDATE coupon_media_gate SET credential_hash=$1,block_code=$2,blocked_until=now()+interval '10 minutes' WHERE id=1",
         [c.hash, code],

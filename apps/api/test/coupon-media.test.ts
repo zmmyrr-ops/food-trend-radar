@@ -181,11 +181,14 @@ test("重复点击复用任务，串行获取到40即停止，成功缓存不再
 test("授权失败后不反复请求，不把错误当作无素材", async () => {
   const f = await fixture();
   let requests = 0;
+  let recovered = false;
   const service = await createCouponMedia(f.db, f.path, {
     wait: async () => {},
     transport: async () => {
       requests++;
-      return { success: false, code: -100 };
+      return recovered
+        ? { success: true, code: 0, data: { items: [] } }
+        : { success: false, code: -100 };
     },
   });
   try {
@@ -203,7 +206,21 @@ test("授权失败后不反复请求，不把错误当作无素材", async () =>
     assert.equal(requests, 1);
     await service.start(f.brand, "coupon", false, true);
     await service.drain();
-    assert.equal(requests, 1); // 重置不解除账号失效或风控闸门。
+    assert.equal(requests, 1); // 冷却期间重置也不重复请求。
+    recovered = true;
+    await f.db.exec(
+      "UPDATE coupon_media_gate SET blocked_until=now()-interval '1 second'; UPDATE coupon_media_jobs SET updated_at=now()-interval '2 minutes'",
+    );
+    await service.start(f.brand, "coupon", false, true);
+    await service.drain();
+    assert.ok(requests > 1);
+    const recoveredGate = (
+      await f.db.query<any>(
+        "SELECT block_code,blocked_until FROM coupon_media_gate",
+      )
+    ).rows[0];
+    assert.equal(recoveredGate.block_code, null);
+    assert.equal(recoveredGate.blocked_until, null);
   } finally {
     await service.stop();
     await f.cleanup();
@@ -759,6 +776,26 @@ test("独立生成文案：先获取暂存文章、不自动扣5分；生成幂�
     await service.drain();
     assert.equal(calls, 3);
     assert.equal(await balance(owner), 480);
+  } finally {
+    await service.stop();
+    await f.cleanup();
+  }
+});
+
+test("业务错误不再误报登录失效", async () => {
+  const f = await fixture();
+  const service = await createCouponMedia(f.db, f.path, {
+    wait: async () => {},
+    transport: async () => ({ success: false, code: -9999 }),
+  });
+  try {
+    await service.start(f.brand, "coupon");
+    await service.drain();
+    assert.equal(
+      (await f.db.query<any>("SELECT error_code FROM coupon_media_jobs"))
+        .rows[0].error_code,
+      "UPSTREAM_ERROR",
+    );
   } finally {
     await service.stop();
     await f.cleanup();
