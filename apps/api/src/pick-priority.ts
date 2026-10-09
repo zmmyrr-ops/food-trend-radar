@@ -41,24 +41,25 @@ export function pickPriority(input: {
     },
     {
       name: "销售额增速（估算）",
-      weight: 12,
+      weight: 22,
       value:
         valid(input.speed) &&
         Number.isSafeInteger(input.price_fen) &&
         input.price_fen! > 0
-          ? 12 *
+          ? 22 *
             Math.min(
               1,
-              Math.log1p(Math.max(0, input.speed!) * (input.price_fen! / 100)) /
-                Math.log(10001),
+              Math.sqrt(
+                (Math.max(0, input.speed!) * (input.price_fen! / 100)) / 10000,
+              ),
             )
           : null,
     },
     {
       name: "增长加快",
-      weight: 15,
+      weight: 5,
       value: valid(input.acceleration)
-        ? 15 * Math.min(1, Math.max(0, input.acceleration!) / 10)
+        ? 5 * Math.min(1, Math.max(0, input.acceleration!) / 10)
         : null,
     },
     {
@@ -143,7 +144,7 @@ export function pickPriority(input: {
   const selling_score = selling_points.reduce((n, x) => n + x.value, 0);
   const adjusted_score = Math.min(100, raw_score + selling_score);
   return {
-    version: "priority-v9",
+    version: "priority-v10",
     selling_points,
     adjusted_score: Math.round(adjusted_score * 10) / 10,
     raw_score,

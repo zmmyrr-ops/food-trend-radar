@@ -8,8 +8,8 @@ test("优先分封顶且不冒充概率，不将缺失权重分配给已有指�
     acceleration: 10,
     reduction_rate: 0.3,
   });
-  assert.equal(full.score, 43);
-  assert.equal(full.coverage, 43);
+  assert.equal(full.score, 33);
+  assert.equal(full.coverage, 33);
   assert.deepEqual(full.missing, [
     "销售额增速（估算）",
     "原价折扣",
@@ -25,7 +25,7 @@ test("优先分封顶且不冒充概率，不将缺失权重分配给已有指�
   assert.equal(missing.coverage, 0);
   const zero = pickPriority({ speed: 0, acceleration: 0, reduction_rate: 0 });
   assert.equal(zero.score, 0);
-  assert.equal(zero.coverage, 43);
+  assert.equal(zero.coverage, 33);
   assert.equal(
     pickPriority({ speed: -10, acceleration: -10, reduction_rate: -1 }).score,
     0,
@@ -37,7 +37,7 @@ test("优先分封顶且不冒充概率，不将缺失权重分配给已有指�
   );
   assert.equal(
     pickPriority({ speed: 1e6, acceleration: 1e6, reduction_rate: 1 }).score,
-    43,
+    33,
   );
 });
 test("优惠更强、热度更快会单调提高排序，关注不参与分数", () => {
@@ -79,8 +79,8 @@ test("南京大牌档1%优惠降权，已知弱折扣不能被涨速或历史降
     reduction_rate: null,
   };
   const result = pickPriority(input);
-  assert.equal(result.raw_score, 27.4);
-  assert.equal(result.score, 1.4);
+  assert.equal(result.raw_score, 18);
+  assert.equal(result.score, 0.9);
   assert.equal(result.value_gate.eligible, false);
   assert.equal(
     pickPriority({ ...input, reduction_rate: 0.5 }).value_gate.eligible,
@@ -116,8 +116,8 @@ test("代金券卖点不放大缺失数据，保留低优惠约束", () => {
     is_new: false,
   };
   const result = pickPriority(input);
-  assert.equal(result.raw_score, 43.8);
-  assert.equal(result.score, 54.5);
+  assert.equal(result.raw_score, 48.8);
+  assert.equal(result.score, 59.5);
   assert.equal("evidence_factor" in result, false);
   assert.equal(result.selling_points[0].value, 4.65);
   assert.equal(
@@ -154,11 +154,40 @@ test("销售分结合实际售价，缺失价格不虚构销售额，高价零�
     assert.equal(sales(price)[1].value, null);
   assert.deepEqual(
     sales(10000000, 100000).map((x) => x.value),
-    [18, 12],
+    [18, 22],
   );
   assert.equal(
     pickPriority({ ...base, price_fen: 10000, speed: null }).parts[1].value,
     null,
   );
   assert.ok(sales(10000, 30)[1].value! > sales(1000, 100)[1].value!);
+});
+
+test("销售额拉开区分度，加速度最多5分且不补偿缺失", () => {
+  const base = {
+    speed: 10,
+    price_fen: 10000,
+    acceleration: null,
+    reduction_rate: null,
+    discount_rate: 0.3,
+    is_new: false,
+  };
+  const revenue = (yuan: number) =>
+    pickPriority({ ...base, price_fen: 100, speed: yuan }).parts[1].value!;
+  assert.equal(revenue(100), 2.2);
+  assert.equal(revenue(1000), 7);
+  assert.equal(revenue(5000), 15.6);
+  assert.equal(revenue(10000), 22);
+  assert.ok(revenue(5395) - revenue(437) > 11);
+  const missing = pickPriority(base);
+  assert.equal(
+    pickPriority({ ...base, acceleration: 100 }).score - missing.score,
+    5,
+  );
+  assert.equal(pickPriority({ ...base, acceleration: 0 }).score, missing.score);
+  assert.equal(
+    pickPriority({ ...base, acceleration: -5 }).score,
+    missing.score,
+  );
+  assert.ok(revenue(5000) - revenue(4000) > revenue(9000) - revenue(8000));
 });

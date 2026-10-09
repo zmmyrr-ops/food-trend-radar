@@ -148,7 +148,7 @@ test("选券API先全量筛选排序再分页，CSV包含当前筛选全部记�
     assert.equal(all.items[0].product_id, "2");
     const ranked = await (await fetch(base + "?limit=1")).json();
     assert.equal(ranked.items[0].product_id, "1");
-    assert.equal(ranked.model.version, "priority-v9");
+    assert.equal(ranked.model.version, "priority-v10");
     assert.equal(ranked.context, null);
     const filtered = await (
       await fetch(base + "?view=value_rising&limit=1")
