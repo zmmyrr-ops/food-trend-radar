@@ -69,6 +69,8 @@ export function BrandSubscriptions({
         : Notification.permission,
     );
   const seen = useRef(new Set<string>());
+  const messageRevision = useRef(0);
+  const clearingMessages = useRef(false);
   async function refreshSubscriptions() {
     const r = await visitRequest("brand-subscriptions");
     setSubscriptions(r.items);
@@ -77,9 +79,12 @@ export function BrandSubscriptions({
     if (manage) return;
     let alive = true;
     const poll = async () => {
+      if (clearingMessages.current) return;
+      const revision = messageRevision.current;
       try {
         const r = await visitRequest("brand-subscriptions/messages");
-        if (!alive) return;
+        if (!alive || revision !== messageRevision.current) return;
+        setError("");
         setMessages(r.items);
         setUnread(r.unread);
         const fresh = (r.items as Message[]).filter(
@@ -120,7 +125,7 @@ export function BrandSubscriptions({
         }
         for (const m of r.items as Message[]) seen.current.add(m.id);
       } catch (e) {
-        if (alive) setError(String(e));
+        if (alive && revision === messageRevision.current) setError(String(e));
       }
     };
     void poll();
@@ -306,6 +311,9 @@ export function BrandSubscriptions({
                       )
                         return;
                       setBusy(true);
+                      setError("");
+                      clearingMessages.current = true;
+                      messageRevision.current++;
                       try {
                         await visitRequest(
                           "brand-subscriptions/messages",
@@ -313,9 +321,11 @@ export function BrandSubscriptions({
                         );
                         setMessages([]);
                         setUnread(0);
+                        setError("");
                       } catch (e) {
                         setError(String(e));
                       } finally {
+                        clearingMessages.current = false;
                         setBusy(false);
                       }
                     }}

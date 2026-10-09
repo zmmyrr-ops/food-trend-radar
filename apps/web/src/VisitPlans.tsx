@@ -1,6 +1,7 @@
 import { type ReactNode, useEffect, useState } from "react";
 import "./visit-editor.css";
 import { createPortal } from "react-dom";
+import { readApiResponse } from "./api-response";
 import { appFetch, appUrl } from "./app-url";
 import { ShopLocation, searchStorePlaces, VisitMap } from "./ShopMap";
 export type VisitStore = {
@@ -34,9 +35,7 @@ export async function visitRequest(
           body: JSON.stringify(body ?? {}),
         }),
   });
-  const d = await r.json();
-  if (!r.ok) throw Error(d.error?.message || "操作失败");
-  return d;
+  return readApiResponse(r);
 }
 const today = () =>
   new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Shanghai" }).format(
