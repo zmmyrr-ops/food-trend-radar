@@ -47,7 +47,7 @@ export function BrandBoost({
       !(await confirmPointSpend(
         `加速刷新 · ${name}`,
         20,
-        `今日还可使用${remaining}次。优先刷新品牌券信息，不保证出现新券；30分钟内已刷新不扣分，失败退分。多人加速可提升顺位。`,
+        `今日剩余${remaining}次，确认后消耗20积分。`,
       ))
     )
       return;
@@ -98,7 +98,21 @@ export function BrandBoost({
           setOpen(true);
         }}
       >
-        加速刷新品牌 <Points amount={20} cost />
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="m13 3-8 11h6l-1 7 9-12h-6l1-6Z"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinejoin="round"
+          />
+        </svg>
+        加速刷新品牌
       </button>
       {open &&
         createPortal(
@@ -114,7 +128,7 @@ export function BrandBoost({
             <div className="brand-boost-heading">
               <div>
                 <h2 id="brand-boost-title">加速刷新品牌</h2>
-                <p>今日还可使用 {remaining} / 2 次</p>
+                <p>今日剩余 {remaining} 次</p>
               </div>
               <button
                 aria-label="关闭加速窗口"
@@ -169,9 +183,6 @@ export function BrandBoost({
                 </label>
               ))}
             </div>
-            <p className="brand-boost-note">
-              30分钟内已刷新不扣分；失败退回积分与次数。多人加速提升顺位，依次刷新。
-            </p>
             {message && (
               <p className="brand-boost-feedback" role="status">
                 {message}

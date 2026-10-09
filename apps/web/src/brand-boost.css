@@ -98,12 +98,6 @@
   color: #8a98ab;
   font-size: 11px;
 }
-.brand-boost-note {
-  font-size: 12px;
-  line-height: 1.7;
-  color: #8290a5;
-  margin: 16px 0;
-}
 .brand-boost-feedback {
   font-size: 13px;
   padding: 10px 12px;
@@ -125,7 +119,118 @@
   padding: 9px 14px;
   font-size: 13px;
 }
-.brand-boost-dialog button:disabled {
+.brand-boost-dialog button:disabled,
+.brand-boost-footer button.brand-boost-submit:disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+/* Explicit colors keep portal content independent of the site's base buttons. */
+.app-shell .coupon-result-sort button.brand-boost-entry {
+  padding: 9px 15px;
+  min-height: 36px;
+  gap: 7px;
+  border: 1px solid #3474e9;
+  border-radius: 9px;
+  background: #3474e9;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 3px 9px #3474e926;
+}
+.app-shell .coupon-result-sort button.brand-boost-entry:hover {
+  background: #2764d2;
+}
+.brand-boost-dialog {
+  padding: 26px;
+  border: 1px solid #e5eaf2;
+  border-radius: 20px;
+  color: #243247;
+  box-shadow: 0 24px 80px #172b4d26;
+}
+.brand-boost-dialog button {
+  background: #f3f5f8;
+  color: #637186;
+  border: 1px solid transparent;
+  font-weight: 500;
+}
+.brand-boost-heading > button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+}
+.brand-boost-heading p {
+  display: inline-block;
+  padding: 4px 8px;
+  margin: 9px 0 24px;
+  background: #f1f5fd;
+  color: #6680a9;
+  border-radius: 6px;
+}
+.brand-boost-search input {
+  color: #243247;
+  background: #f8fafc;
+  min-height: 44px;
+  outline: none;
+  transition:
+    border-color 150ms,
+    box-shadow 150ms;
+}
+.brand-boost-search input:focus {
+  border-color: #6b9aed;
+  box-shadow: 0 0 0 3px #3474e912;
+  background: #fff;
+}
+.brand-boost-results {
+  margin-bottom: 18px;
+}
+.brand-boost-results label {
+  border: 1px solid transparent;
+  margin-bottom: 4px;
+}
+.brand-boost-results label.is-selected {
+  border-color: #d4e3fc;
+  background: #f0f6ff;
+  color: #285cac;
+}
+.brand-boost-results > p {
+  text-align: center;
+  padding: 22px 0;
+}
+.brand-boost-footer button.brand-boost-submit {
+  background: #3474e9;
+  color: #fff;
+  border-color: #3474e9;
+}
+.brand-boost-submit .points-badge {
+  background: #ffffff1f;
+  color: #fff;
+  border: 0;
+  padding: 3px 5px;
+  font-size: 12px;
+}
+.brand-boost-submit .points-badge small {
+  color: inherit;
+}
+.brand-boost-submit .points-icon {
+  width: 18px;
+  height: 18px;
+}
+.brand-boost-dialog button:focus-visible {
+  outline: 2px solid #6b9aed;
+  outline-offset: 3px;
+}
+.brand-boost-dialog button:disabled,
+.brand-boost-footer button.brand-boost-submit:disabled {
+  opacity: 1;
+  background: #edf1f7;
+  color: #9ba8ba;
+  border-color: transparent;
+}
+.brand-boost-submit:disabled .points-badge {
+  color: #9ba8ba;
+  background: transparent;
 }
