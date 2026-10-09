@@ -1,0 +1,11 @@
+[Unit]
+Description=Check Xiaohongshu credentials every ten minutes
+
+[Timer]
+OnActiveSec=10min
+OnUnitInactiveSec=10min
+RandomizedDelaySec=30
+Unit=food-trend-radar-xhs-check.service
+
+[Install]
+WantedBy=timers.target

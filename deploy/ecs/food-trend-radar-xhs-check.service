@@ -1,0 +1,17 @@
+[Unit]
+Description=Low-frequency Xiaohongshu credential availability probe
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=food-radar
+Group=food-radar
+ExecStart=/usr/bin/python3 /opt/food-trend-radar/app/deploy/ecs/xhs-credential-check.py
+TimeoutStartSec=100
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/food-trend-radar/data/xhs-credential-health
