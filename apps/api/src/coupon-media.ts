@@ -316,7 +316,7 @@ export async function createCouponMedia(
       state.credential_hash === c.hash &&
       new Date(state.blocked_until).getTime() > Date.now()
     )
-      throw Error(state.block_code || "COOLDOWN");
+      throw Error("COOLDOWN");
     const delay = Math.max(
       0,
       new Date(state.finished_at || "1970-01-01").getTime() +

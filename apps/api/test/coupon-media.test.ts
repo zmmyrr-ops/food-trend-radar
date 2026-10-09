@@ -207,6 +207,11 @@ test("授权失败后不反复请求，不把错误当作无素材", async () =>
     await service.start(f.brand, "coupon", false, true);
     await service.drain();
     assert.equal(requests, 1); // 冷却期间重置也不重复请求。
+    assert.equal(
+      (await f.db.query<any>("SELECT error_code FROM coupon_media_jobs"))
+        .rows[0].error_code,
+      "COOLDOWN",
+    );
     recovered = true;
     await f.db.exec(
       "UPDATE coupon_media_gate SET blocked_until=now()-interval '1 second'; UPDATE coupon_media_jobs SET updated_at=now()-interval '2 minutes'",

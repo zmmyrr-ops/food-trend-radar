@@ -37,7 +37,8 @@ type Job = TextMaterial & {
 };
 const errors: Record<string, string> = {
   AUTH_MISSING: "尚未配置素材平台登录请求",
-  AUTH_EXPIRED: "素材服务登录校验暂未通过，请10分钟后重试；仍失败请联系管理员",
+  AUTH_EXPIRED: "上次获取时登录校验未通过，可重新获取；仍失败请联系管理员",
+  COOLDOWN: "素材服务暂处于冷却期，本次未发起搜索，请稍后重新获取",
   RATE_LIMITED: "素材平台限制了访问，已停止获取，请稍后再试",
   NETWORK_ERROR: "网络请求失败，已保留获取到的素材",
   UPSTREAM_ERROR: "素材平台服务暂不可用",
