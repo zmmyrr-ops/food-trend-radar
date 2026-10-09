@@ -1,0 +1,1225 @@
+{
+  "source_run": "4e3bd713-29ea-4518-bca2-55c8e5ceeb56",
+  "reviewed_brands": 226,
+  "alias_fixes": [
+    {
+      "name": "ARK运动方舟",
+      "aliases_to_add": ["ARK城市运动方舟"],
+      "evidence": [
+        {
+          "brand_id": "3e1d7023-5187-4339-a533-ecdf9c0e81b9",
+          "name": "ARK运动方舟",
+          "category": "运动玩乐",
+          "platform_name": "",
+          "poi_name": "ARK城市运动方舟",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 9,
+          "example": "【周末节假日】家庭三人畅玩票+30枚游戏币"
+        }
+      ]
+    },
+    {
+      "name": "BIGX超级运动玩乐场",
+      "aliases_to_add": ["BIGX"],
+      "evidence": [
+        {
+          "brand_id": "47d9fac1-3a01-4df0-905e-74ae7a2220ab",
+          "name": "BIGX超级运动玩乐场",
+          "category": "运动玩乐",
+          "platform_name": "BIGX",
+          "poi_name": "BIGX超级运动玩乐场",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 8,
+          "example": "【主题party】8大8小游玩门票+派对屋3小时嗨玩"
+        }
+      ]
+    },
+    {
+      "name": "Bright Land耀心岛",
+      "aliases_to_add": ["耀心岛"],
+      "evidence": [
+        {
+          "brand_id": "78d67b79-e3fd-4200-84a8-c7dfb636e706",
+          "name": "Bright Land耀心岛",
+          "category": "亲子乐园",
+          "platform_name": "耀心岛",
+          "poi_name": "Bright Land耀心岛·亲子乐园(元祖梦世界店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 5,
+          "example": "【10月特惠】2大2小 单次全天通用票"
+        }
+      ]
+    },
+    {
+      "name": "CityFlight上海飞行体验馆",
+      "aliases_to_add": ["CITYFLIGHT"],
+      "evidence": [
+        {
+          "brand_id": "b6884fd5-8af0-477c-a182-30d9f6a335e0",
+          "name": "CityFlight上海飞行体验馆",
+          "category": "运动玩乐",
+          "platform_name": "CITYFLIGHT",
+          "poi_name": "CityFlight上海飞行体验馆(虹桥旗舰店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 7,
+          "example": "【上海航司体验】60分钟空客320全动模拟舱体验"
+        }
+      ]
+    },
+    {
+      "name": "Jump360蹦床中心",
+      "aliases_to_add": ["JUMP 360"],
+      "evidence": [
+        {
+          "brand_id": "0fe23ffb-0c61-4015-b414-8c4e32e134e4",
+          "name": "Jump360蹦床中心",
+          "category": "运动玩乐",
+          "platform_name": "JUMP 360",
+          "poi_name": "JUMP360蹦床中心(世贸店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 8,
+          "example": "【18点后畅玩】单人夜场票"
+        }
+      ]
+    },
+    {
+      "name": "PARTY KING",
+      "aliases_to_add": ["PK·运动娱乐中心"],
+      "evidence": [
+        {
+          "brand_id": "d4b71cea-3720-4b48-832d-5264dd070060",
+          "name": "PARTY KING",
+          "category": "运动玩乐",
+          "platform_name": "PK·运动娱乐中心",
+          "poi_name": "PARTY KING·保龄球·游戏·喝酒(迪美店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 5,
+          "example": "【工作日】18:00-24:00 单人夜场票"
+        }
+      ]
+    },
+    {
+      "name": "PARTYDAY 超星嘉年华",
+      "aliases_to_add": ["Partyday"],
+      "evidence": [
+        {
+          "brand_id": "6f148f76-a249-4c49-b430-1b8b2f302707",
+          "name": "PARTYDAY 超星嘉年华",
+          "category": "运动玩乐",
+          "platform_name": "Partyday",
+          "poi_name": "PARTYDAY超星嘉年华(上海环球港店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 20,
+          "example": "[全国通用]10枚游戏币"
+        }
+      ]
+    },
+    {
+      "name": "SeaWaves",
+      "aliases_to_add": ["SeaWaves乐享冲浪·滑雪·团建派对"],
+      "evidence": [
+        {
+          "brand_id": "6d5a8ae6-b12b-43f5-acbc-6eef8db17380",
+          "name": "SeaWaves",
+          "category": "运动玩乐",
+          "platform_name": "",
+          "poi_name": "SeaWaves乐享冲浪·滑雪·团建派对",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 4,
+          "example": "30分钟私教/1V1/首次滑雪体验（单/双板）"
+        }
+      ]
+    },
+    {
+      "name": "X-META机遇时空全感乐园",
+      "aliases_to_add": ["机遇时空"],
+      "evidence": [
+        {
+          "brand_id": "0132394c-978e-4d52-880c-5ef05a587188",
+          "name": "X-META机遇时空全感乐园",
+          "category": "运动玩乐",
+          "platform_name": "机遇时空",
+          "poi_name": "X-META机遇时空全感乐园·风起洛阳·苍兰诀·魔法冰堡(明天广场店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 9,
+          "example": "【三人】爆！风起洛阳·全感VR体验"
+        }
+      ]
+    },
+    {
+      "name": "一工元运动空间",
+      "aliases_to_add": ["一工元"],
+      "evidence": [
+        {
+          "brand_id": "2e825645-421f-41cf-8508-10f620cedafc",
+          "name": "一工元运动空间",
+          "category": "运动玩乐",
+          "platform_name": "一工元",
+          "poi_name": "奈尔宝·一工元运动空间·团建派对·攀岩蹦床(上海西岸店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 8,
+          "example": "1大1小工作日晚场票·17点后入场·周二-周四可用"
+        },
+        {
+          "brand_id": "2e825645-421f-41cf-8508-10f620cedafc",
+          "name": "一工元运动空间",
+          "category": "运动玩乐",
+          "platform_name": "一工元",
+          "poi_name": "奈尔宝·一工元运动空间·团建派对·攀岩蹦床(上海新嘉店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 6,
+          "example": "【大学生特惠】单人3小时票"
+        }
+      ]
+    },
+    {
+      "name": "上海乐高乐园",
+      "aliases_to_add": ["乐高乐园"],
+      "evidence": [
+        {
+          "brand_id": "be69d306-6d09-4112-9834-8d1c31f93f41",
+          "name": "上海乐高乐园",
+          "category": "主题乐园",
+          "platform_name": "乐高乐园",
+          "poi_name": "上海乐高乐园度假区",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 35,
+          "example": "【1V1管家服务】上海乐高乐园+送双人童车（不含门票）"
+        }
+      ]
+    },
+    {
+      "name": "上海子兮艺术社非遗文化馆",
+      "aliases_to_add": ["子兮艺术社"],
+      "evidence": [
+        {
+          "brand_id": "5487fd3b-9a0e-43c3-b23d-525f67a128c1",
+          "name": "上海子兮艺术社非遗文化馆",
+          "category": "亲子乐园",
+          "platform_name": "",
+          "poi_name": "子兮艺术社",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 28,
+          "example": "DIY非遗上海梨膏糖制作 1-2小时前活动"
+        }
+      ]
+    },
+    {
+      "name": "上海新实达皮划艇水上运动中心",
+      "aliases_to_add": ["上海新实达皮划艇水上运动旅游中心"],
+      "evidence": [
+        {
+          "brand_id": "3254a9a5-5ff1-44ee-89b5-ab84fddd915f",
+          "name": "上海新实达皮划艇水上运动中心",
+          "category": "运动玩乐",
+          "platform_name": "",
+          "poi_name": "上海新实达皮划艇水上运动旅游中心(汇龙湖公园店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 5,
+          "example": "汇龙湖公园皮划艇60分钟体验（双人船型）"
+        }
+      ]
+    },
+    {
+      "name": "上海杜莎夫人蜡像馆",
+      "aliases_to_add": ["杜莎夫人"],
+      "evidence": [
+        {
+          "brand_id": "13d554c4-8fe1-4d25-b2d0-7494db3434c6",
+          "name": "上海杜莎夫人蜡像馆",
+          "category": "展馆观光",
+          "platform_name": "杜莎夫人",
+          "poi_name": "上海杜莎夫人蜡像馆(南京西路)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 31,
+          "example": "Paradox Museum悖论博物馆+上海杜莎夫人蜡像馆"
+        }
+      ]
+    },
+    {
+      "name": "上海林语丛林马术营地",
+      "aliases_to_add": ["林语丛林马术营地"],
+      "evidence": [
+        {
+          "brand_id": "cd86ec1f-2eba-4162-bcfc-2995ae5ee402",
+          "name": "上海林语丛林马术营地",
+          "category": "运动玩乐",
+          "platform_name": "",
+          "poi_name": "林语丛林马术营地",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 9,
+          "example": "[团建]方案定制"
+        }
+      ]
+    },
+    {
+      "name": "上海欢乐谷",
+      "aliases_to_add": ["欢乐谷"],
+      "evidence": [
+        {
+          "brand_id": "8cb27700-9794-4025-b9b8-6cfacaee57c7",
+          "name": "上海欢乐谷",
+          "category": "主题乐园",
+          "platform_name": "欢乐谷",
+          "poi_name": "上海欢乐谷",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 21,
+          "example": "2026欢乐谷银卡（限制年卡，部分日期不可用）"
+        }
+      ]
+    },
+    {
+      "name": "上海环游嘉年华Funloop land主题乐园",
+      "aliases_to_add": ["环游嘉年华"],
+      "evidence": [
+        {
+          "brand_id": "63ccc51e-1a88-49ae-bac8-aebe7def52ec",
+          "name": "上海环游嘉年华Funloop land主题乐园",
+          "category": "主题乐园",
+          "platform_name": "环游嘉年华",
+          "poi_name": "环游嘉年华Funloop land乐园(上海环球港店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 7,
+          "example": "【人气爆单】200币"
+        }
+      ]
+    },
+    {
+      "name": "上美影泡泡米益智乐园",
+      "aliases_to_add": ["POPOME"],
+      "evidence": [
+        {
+          "brand_id": "b1567b31-c9e6-4039-8c15-9cd2418aec99",
+          "name": "上美影泡泡米益智乐园",
+          "category": "亲子乐园",
+          "platform_name": "POPOME",
+          "poi_name": "上美影POPOME泡泡米乐园(上海月星环球港店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 21,
+          "example": "1680联票（本人专属8次乐园8次戏水）创始人直播间"
+        }
+      ]
+    },
+    {
+      "name": "丛林玩家探险乐园",
+      "aliases_to_add": ["丛林玩家"],
+      "evidence": [
+        {
+          "brand_id": "53c48c51-8a06-42e5-98f7-cac52551a3e3",
+          "name": "丛林玩家探险乐园",
+          "category": "亲子乐园",
+          "platform_name": "丛林玩家",
+          "poi_name": "丛林玩家探险乐园(上海松江九科绿洲店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 15,
+          "example": "【单线】橙线 | 高空骑士 单人票（难度系数：★★★☆）含空中滑板"
+        }
+      ]
+    },
+    {
+      "name": "仙渡森野乐园",
+      "aliases_to_add": ["上海·仙渡森野乐园"],
+      "evidence": [
+        {
+          "brand_id": "e5f68ffe-cb96-4474-a11b-a549305c1e0a",
+          "name": "仙渡森野乐园",
+          "category": "户外景区",
+          "platform_name": "",
+          "poi_name": "上海·仙渡森野乐园(浦江店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 3,
+          "example": "中秋国庆2大1小畅玩游玩票-【林下避暑无动力项目畅玩+任选私教项目4项+咖啡券+入场手环+儿童臻享游玩票】"
+        }
+      ]
+    },
+    {
+      "name": "博纳仕运动",
+      "aliases_to_add": ["博纳仕"],
+      "evidence": [
+        {
+          "brand_id": "5f51aef6-58f3-4317-b4b6-d61a72984ef8",
+          "name": "博纳仕运动",
+          "category": "运动玩乐",
+          "platform_name": "博纳仕",
+          "poi_name": "Mr.Bonus博纳仕运动畅玩终端·团建聚会·保龄球(徐汇店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 11,
+          "example": "【双节特惠 只卖一次】通用单人畅玩3次卡"
+        }
+      ]
+    },
+    {
+      "name": "卡皮巴拉城市乐园",
+      "aliases_to_add": ["卡皮巴拉"],
+      "evidence": [
+        {
+          "brand_id": "9b7b6ce6-03ff-44c2-8abe-b628f42a3b5d",
+          "name": "卡皮巴拉城市乐园",
+          "category": "亲子乐园",
+          "platform_name": "卡皮巴拉",
+          "poi_name": "卡皮巴拉城市乐园(五角场合生汇店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 1,
+          "example": "亲子一大一小3个项目全场任选4选3（需当天游玩完）"
+        }
+      ]
+    },
+    {
+      "name": "吾舍农场",
+      "aliases_to_add": ["松江吾舍农场"],
+      "evidence": [
+        {
+          "brand_id": "7f4a7135-748e-40e7-89f8-44dc531b7119",
+          "name": "吾舍农场",
+          "category": "户外景区",
+          "platform_name": "",
+          "poi_name": "松江吾舍农场",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 3,
+          "example": "「亲子体验」披萨DIY/萝卜/青菜/番茄出逃计划~"
+        }
+      ]
+    },
+    {
+      "name": "嗨享乐亲子互动乐园",
+      "aliases_to_add": ["嗨享乐亲子乐园"],
+      "evidence": [
+        {
+          "brand_id": "54792469-d665-4f4b-bdbc-69eeb08192b9",
+          "name": "嗨享乐亲子互动乐园",
+          "category": "亲子乐园",
+          "platform_name": "嗨享乐亲子乐园",
+          "poi_name": "嗨享乐亲子互动乐园(浦东店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 4,
+          "example": "【工作日专属】亲子畅玩票（一大一小）"
+        }
+      ]
+    },
+    {
+      "name": "嗨享来亲子互动乐园",
+      "aliases_to_add": ["嗨享来亲子乐园"],
+      "evidence": [
+        {
+          "brand_id": "1c6ef75d-dd5e-4806-96d9-9500aa2e38ba",
+          "name": "嗨享来亲子互动乐园",
+          "category": "亲子乐园",
+          "platform_name": "",
+          "poi_name": "嗨享来亲子乐园",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 7,
+          "example": "【一票通·玩  50项无动力项目➕5项有动力项目畅玩】家庭票（一大两小/一小两大）"
+        }
+      ]
+    },
+    {
+      "name": "嘻哆哆亲子乐园",
+      "aliases_to_add": ["嘻哆哆亲子游乐园"],
+      "evidence": [
+        {
+          "brand_id": "8d51c4a2-0b2b-415e-89ad-cf4aaf907b28",
+          "name": "嘻哆哆亲子乐园",
+          "category": "亲子乐园",
+          "platform_name": "",
+          "poi_name": "嘻哆哆亲子游乐园(曹路店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 3,
+          "example": "【抖音特惠】2大1小｜家庭全天畅玩票I 无动力联票（可免费携带1米以下1位儿童）"
+        }
+      ]
+    },
+    {
+      "name": "巧匠木工坊DIY",
+      "aliases_to_add": ["巧匠木工坊"],
+      "evidence": [
+        {
+          "brand_id": "425a854f-7928-4d29-991f-bf816612fefc",
+          "name": "巧匠木工坊DIY",
+          "category": "亲子乐园",
+          "platform_name": "",
+          "poi_name": "巧匠木工坊",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 3,
+          "example": "100元代金券"
+        }
+      ]
+    },
+    {
+      "name": "弹力小镇蹦床亲子运动中心",
+      "aliases_to_add": ["弹力小镇蹦床公园"],
+      "evidence": [
+        {
+          "brand_id": "692ea487-4870-4e8c-b3c1-6550a82df1c5",
+          "name": "弹力小镇蹦床亲子运动中心",
+          "category": "运动玩乐",
+          "platform_name": "",
+          "poi_name": "弹力小镇蹦床公园",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 5,
+          "example": "【成年人】陪同票"
+        }
+      ]
+    },
+    {
+      "name": "未来站小小海洋馆",
+      "aliases_to_add": ["未来站"],
+      "evidence": [
+        {
+          "brand_id": "4f12ba60-0e4a-4972-9bf9-d4f8bfaeff73",
+          "name": "未来站小小海洋馆",
+          "category": "动物海洋馆",
+          "platform_name": "未来站",
+          "poi_name": "未来站小小海洋馆(松江吾悦店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 4,
+          "example": "【焕新季囤币】398元3000枚游戏币"
+        },
+        {
+          "brand_id": "4f12ba60-0e4a-4972-9bf9-d4f8bfaeff73",
+          "name": "未来站小小海洋馆",
+          "category": "动物海洋馆",
+          "platform_name": "未来站",
+          "poi_name": "未来站小小海洋馆(奉贤店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 3,
+          "example": "【弹珠狂欢】268元3600颗弹珠"
+        },
+        {
+          "brand_id": "4f12ba60-0e4a-4972-9bf9-d4f8bfaeff73",
+          "name": "未来站小小海洋馆",
+          "category": "动物海洋馆",
+          "platform_name": "未来站",
+          "poi_name": "未来站小小海洋馆(前湾印象城店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 1,
+          "example": "【秋季专享】54.9元200枚游戏币"
+        }
+      ]
+    },
+    {
+      "name": "林间穿越森林探险乐园",
+      "aliases_to_add": ["林间穿越"],
+      "evidence": [
+        {
+          "brand_id": "e0bca6dc-ea2a-448d-85bb-98824d0df1c0",
+          "name": "林间穿越森林探险乐园",
+          "category": "户外景区",
+          "platform_name": "林间穿越",
+          "poi_name": "林间穿越森林探险乐园",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 13,
+          "example": "【中秋十一尊享】单人黄金线｜林间穿越单线门票 享免费停车"
+        }
+      ]
+    },
+    {
+      "name": "树间跳动森林探索营地",
+      "aliases_to_add": ["树间跳动森林探险营地"],
+      "evidence": [
+        {
+          "brand_id": "1e6f318f-0e58-4b93-a891-a09870dfea59",
+          "name": "树间跳动森林探索营地",
+          "category": "户外景区",
+          "platform_name": "",
+          "poi_name": "树间跳动森林探险营地(上海店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 7,
+          "example": "【单线】黄线丨单人单次（1星初级考验)"
+        }
+      ]
+    },
+    {
+      "name": "汤姆熊欢乐世界",
+      "aliases_to_add": ["汤姆熊"],
+      "evidence": [
+        {
+          "brand_id": "a8178bca-0788-4a48-8807-12f0f2b16d7f",
+          "name": "汤姆熊欢乐世界",
+          "category": "亲子乐园",
+          "platform_name": "汤姆熊",
+          "poi_name": "汤姆熊欢乐世界(金山店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 3,
+          "example": "【上海套餐】100元110枚游戏币"
+        }
+      ]
+    },
+    {
+      "name": "沃野冰雪乐园",
+      "aliases_to_add": ["沃野雪园"],
+      "evidence": [
+        {
+          "brand_id": "1e3228e9-2c10-4d84-9075-04efba191700",
+          "name": "沃野冰雪乐园",
+          "category": "运动玩乐",
+          "platform_name": "沃野雪园",
+          "poi_name": "沃野冰雪乐园(上海爱琴海店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 2,
+          "example": "【中秋国庆】DIY拼豆1小时不限板不限量｜全套拼豆工具丨帮烫（节假日周末通用单人票）"
+        }
+      ]
+    },
+    {
+      "name": "活力街",
+      "aliases_to_add": ["活力街家庭运动中心"],
+      "evidence": [
+        {
+          "brand_id": "bdc670b1-eb2c-4f1b-a6ad-17b7b1c68822",
+          "name": "活力街",
+          "category": "运动玩乐",
+          "platform_name": "",
+          "poi_name": "活力街家庭运动中心",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 5,
+          "example": "1大1小·全天畅玩"
+        }
+      ]
+    },
+    {
+      "name": "熊猫密室探索乐园",
+      "aliases_to_add": ["熊猫密室"],
+      "evidence": [
+        {
+          "brand_id": "4e83c92c-d63b-4c82-a9ca-d07dc3fe9bd4",
+          "name": "熊猫密室探索乐园",
+          "category": "亲子乐园",
+          "platform_name": "熊猫密室",
+          "poi_name": "熊猫密室探索乐园(虹桥南丰城店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 3,
+          "example": "【家长陪同】家长陪同票"
+        }
+      ]
+    },
+    {
+      "name": "牛玩牛叫",
+      "aliases_to_add": ["COW PLAY COW MOO"],
+      "evidence": [
+        {
+          "brand_id": "8888d935-ac24-4eec-b647-82d2f11c357d",
+          "name": "牛玩牛叫",
+          "category": "运动玩乐",
+          "platform_name": "COW PLAY COW MOO",
+          "poi_name": "牛玩牛叫COW PLAY COW MOO(龙之梦店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 7,
+          "example": "1000枚游戏币｜游戏厅畅玩套餐"
+        }
+      ]
+    },
+    {
+      "name": "爸爸的工作室",
+      "aliases_to_add": ["爸爸的工作室·RC遥控越野攀爬馆·PAPA'S WORKSHOP"],
+      "evidence": [
+        {
+          "brand_id": "13ee465c-cc33-496e-bbfd-49caea981f76",
+          "name": "爸爸的工作室",
+          "category": "亲子乐园",
+          "platform_name": "",
+          "poi_name": "爸爸的工作室·RC遥控越野攀爬馆·PAPA'S WORKSHOP",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 4,
+          "example": "【单人票】仿真驾驶越野游玩券（单次15分钟）"
+        }
+      ]
+    },
+    {
+      "name": "神奇动物撸宠馆",
+      "aliases_to_add": ["神奇动物撸宠馆·羊驼·小浣熊"],
+      "evidence": [
+        {
+          "brand_id": "b847fcec-81ed-4d46-a1aa-b49f111eb1c4",
+          "name": "神奇动物撸宠馆",
+          "category": "动物海洋馆",
+          "platform_name": "",
+          "poi_name": "神奇动物撸宠馆·羊驼·小浣熊(豫园店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 6,
+          "example": "亲子票（1大1小）||儿童1.2m以内【异宠馆·撸宠】 \n"
+        }
+      ]
+    },
+    {
+      "name": "种动员农场",
+      "aliases_to_add": ["种动员亲子农场"],
+      "evidence": [
+        {
+          "brand_id": "8693ac32-8c1d-4881-9a80-c2db840ee9c3",
+          "name": "种动员农场",
+          "category": "户外景区",
+          "platform_name": "",
+          "poi_name": "种动员亲子农场",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 2,
+          "example": "【中秋十一特惠】单人烧烤自助+户外游玩+萌宠喂养+挖红薯"
+        }
+      ]
+    },
+    {
+      "name": "红豆手作",
+      "aliases_to_add": ["红豆手作·拼豆"],
+      "evidence": [
+        {
+          "brand_id": "d8f16b7c-e9cd-4861-a9bb-373ab75089c7",
+          "name": "红豆手作",
+          "category": "亲子乐园",
+          "platform_name": "",
+          "poi_name": "红豆手作·拼豆",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 12,
+          "example": "【帮烫拼豆】单面无孔、特殊烫"
+        }
+      ]
+    },
+    {
+      "name": "超级飞侠启航站",
+      "aliases_to_add": ["超级飞侠"],
+      "evidence": [
+        {
+          "brand_id": "ba711ad3-b360-4c37-af9e-6cf2ffd7d286",
+          "name": "超级飞侠启航站",
+          "category": "亲子乐园",
+          "platform_name": "超级飞侠",
+          "poi_name": "超级飞侠启航站",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 5,
+          "example": "【中秋特惠】捞鱼体验"
+        }
+      ]
+    },
+    {
+      "name": "金茂大厦88层观光厅",
+      "aliases_to_add": ["上海金茂大厦88层观光厅"],
+      "evidence": [
+        {
+          "brand_id": "a7f2c554-f838-41a0-813d-3410cfa2a945",
+          "name": "金茂大厦88层观光厅",
+          "category": "展馆观光",
+          "platform_name": "",
+          "poi_name": "上海金茂大厦88层观光厅",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 8,
+          "example": "A【金秋特惠】上海金茂大厦88层观光厅门票"
+        }
+      ]
+    },
+    {
+      "name": "陶氣手工坊",
+      "aliases_to_add": ["陶气手工坊"],
+      "evidence": [
+        {
+          "brand_id": "1122e06f-5116-4a87-90f3-054fb01d5ba3",
+          "name": "陶氣手工坊",
+          "category": "亲子乐园",
+          "platform_name": "",
+          "poi_name": "陶气手工坊",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 11,
+          "example": "【双人手工 DIY 异形】陶艺·2 小时·情侣"
+        }
+      ]
+    },
+    {
+      "name": "集合石",
+      "aliases_to_add": ["集合石 超级派对 SUPER PARTY"],
+      "evidence": [
+        {
+          "brand_id": "0bdb14f5-0b0e-44fa-b72c-1dab5a67a85c",
+          "name": "集合石",
+          "category": "运动玩乐",
+          "platform_name": "集合石 超级派对 SUPER PARTY",
+          "poi_name": "集合石超级派对(瑞虹月亮湾店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 3,
+          "example": "【中秋国庆】单人周末节假日畅玩 I 自由进出"
+        }
+      ]
+    },
+    {
+      "name": "露营湾",
+      "aliases_to_add": ["露营湾淀山湖营地"],
+      "evidence": [
+        {
+          "brand_id": "be2e1e5c-9c0b-4041-8095-65e7d05beaac",
+          "name": "露营湾",
+          "category": "运动玩乐",
+          "platform_name": "",
+          "poi_name": "露营湾淀山湖营地",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 7,
+          "example": "【企业团建定制】一站式拓展方案•咨询策划高效落地"
+        }
+      ]
+    },
+    {
+      "name": "风云再起游乐汇",
+      "aliases_to_add": ["风云再起"],
+      "evidence": [
+        {
+          "brand_id": "4ab3836c-b869-4518-83f4-082e836d0543",
+          "name": "风云再起游乐汇",
+          "category": "运动玩乐",
+          "platform_name": "风云再起",
+          "poi_name": "风云再起(上海龙阳广场店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 4,
+          "example": "120枚游戏币"
+        }
+      ]
+    },
+    {
+      "name": "飞越丛林探险乐园",
+      "aliases_to_add": ["飞越丛林"],
+      "evidence": [
+        {
+          "brand_id": "f0cca2f8-01dc-4c7c-8fd7-6f9f0c6d3c79",
+          "name": "飞越丛林探险乐园",
+          "category": "亲子乐园",
+          "platform_name": "飞越丛林",
+          "poi_name": "飞越丛林探险乐园(佘山店)",
+          "city": "上海市",
+          "identity": "unresolved",
+          "count": 20,
+          "example": "1380元代金券"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    {
+      "name": "BLACK冠军皮艇桨板运动中心",
+      "status": "no_recall",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "Bingo Mini进击的人类幼崽",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "GG-Two拼豆-亲子DIY手作",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "Galli戏剧",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "Judys奇妙植物城",
+      "status": "different_platform_names",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "Merry Host 儿童互动剧游",
+      "status": "stale_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "Momoda宝宝戏剧",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "PlayGrow贝林麟",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "TUTU农场",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "Tim嘟嘟动物园",
+      "status": "stale_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "amego儿童玩具体验馆",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "dadaland低幼龄儿童成长乐园",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "上海东滩湿地公园",
+      "status": "no_recall",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "上海乐高探索中心",
+      "status": "different_platform_names",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "上海古猗园",
+      "status": "no_recall",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "上海天文馆",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "上海玛雅海滩水公园",
+      "status": "no_recall",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "上海蓝精灵乐园",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "上海薰衣草公园",
+      "status": "stale_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "上海辰山植物园",
+      "status": "missing_platform_identity",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "上海醉白池公园",
+      "status": "stale_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "上海高家庄生态园",
+      "status": "no_recall",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "东方明珠",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "乐客灵境未来科技乐园",
+      "status": "no_recall",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "乐田农场",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "亚马逊皮划艇俱乐部",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "千棠非遗文化体验馆",
+      "status": "stale_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "咕lu猫diy",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "咕噜镇萌宠乐园",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "土人陶艺/蛋糕烘焙/手工乐园",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "土拨鼠俱乐部",
+      "status": "different_platform_names",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "壹号码头-皮划艇桨板-水上运动俱乐部",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "多栖博物",
+      "status": "different_platform_names",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "大乐堡The L Land",
+      "status": "different_platform_names",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "大魔王拼豆手作diy",
+      "status": "stale_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "奈尔宝科技馆",
+      "status": "different_platform_names",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "奥土农场",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "奥德亲子",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "小木木亲子烘焙",
+      "status": "stale_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "小虎探险队",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "开小造",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "微微田生态农场",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "恒酷帝国",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "我嘞个豆",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "拼豆豆",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "探蜜营地",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "朝露菇园",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "格子大乱斗",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "格子大作战",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "桨趣亲子野营",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "梦幻三喵拼豆DIY手作",
+      "status": "missing_platform_identity",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "汤姆猫超能战队乐园",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "泡泡侦探社",
+      "status": "different_platform_names",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "洋桃艺术实验空间",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "浦东嘉里儿童探险乐园",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "滩玩乐园-亲子世界",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "澎湃兄弟",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "煋际时空局",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "玩童会主题店",
+      "status": "no_recall",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "珍得巧克力剧院",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "璞叶小镇",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "碧海金沙",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "米谷农场",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "粉红农场",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "耀雪冰雪世界",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "自然寻",
+      "status": "stale_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "藦茜花园宠物主题亲子互动体验馆",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "蘑力森林",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "蘑幻森林",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "豆像素拼豆",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "躺营",
+      "status": "missing_platform_identity",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "远景村.野性之心小马俱乐部",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "迪艇皮划艇之家",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "逸飞轩手作馆",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "长兴岛郊野公园",
+      "status": "stale_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "青云卡哇伊拼豆馆",
+      "status": "no_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    },
+    {
+      "name": "鹿儿岛婴幼儿成长乐园",
+      "status": "stale_baseline",
+      "note": "未确认同一品牌，保留原配置，不将泛搜索结果视为有效券"
+    }
+  ]
+}

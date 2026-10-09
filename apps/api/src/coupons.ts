@@ -728,7 +728,7 @@ export function createCoupons(
           retry_at: string | null;
           query_signature: string | null;
         }>(
-          "SELECT t.* FROM coupon_tasks t JOIN coupon_runs r ON r.id=t.run_id JOIN brands br ON br.id=t.brand_id AND br.active LEFT JOIN brand_boost_jobs boost ON boost.run_id=t.run_id AND boost.brand_id=t.brand_id AND boost.state IN ('queued','running') WHERE t.state='queued' AND r.status='running' AND (t.retry_at IS NULL OR t.retry_at<=now()) ORDER BY (boost.state='running') DESC NULLS LAST,boost.votes DESC NULLS LAST,boost.created_at,r.started_at,r.id,(t.pages/3),t.position,t.name,t.brand_id LIMIT 1",
+          "SELECT t.* FROM coupon_tasks t JOIN coupon_runs r ON r.id=t.run_id JOIN brands br ON br.id=t.brand_id AND br.active LEFT JOIN brand_boost_jobs boost ON boost.run_id=t.run_id AND boost.brand_id=t.brand_id AND boost.state IN ('queued','running') WHERE t.state='queued' AND r.status='running' AND (t.retry_at IS NULL OR t.retry_at<=now()) ORDER BY (boost.state='running') DESC NULLS LAST,boost.votes DESC NULLS LAST,boost.created_at,r.started_at,r.id,CASE WHEN t.position=-2 THEN 0 ELSE 1 END,(t.pages/3),t.position,t.name,t.brand_id LIMIT 1",
         )
       ).rows[0];
       if (!t) {
@@ -1313,6 +1313,19 @@ export function createCoupons(
         ).rows,
       });
     });
+    app.get("/api/v3/runs/:id/identities", async (req, res) => {
+      const id = z.uuid().parse(req.params.id);
+      res.json({
+        items: (
+          await db.query(
+            `SELECT i.brand_id,b.name,b.category,i.payload->>'platform_brand_name' AS platform_name,i.payload->>'poi_name' AS poi_name,i.payload->>'city_evidence' AS city,i.payload->>'identity' AS identity,count(*)::int AS count,min(i.payload->>'name') AS example
+        FROM coupon_items i JOIN brands b ON b.id=i.brand_id WHERE i.run_id=$1
+        GROUP BY i.brand_id,b.name,b.category,i.payload->>'platform_brand_name',i.payload->>'poi_name',i.payload->>'city_evidence',i.payload->>'identity' ORDER BY b.name,count(*) DESC`,
+            [id],
+          )
+        ).rows,
+      });
+    });
     app.get("/api/v3/runs/:id/requests", async (req, res) => {
       const id = z.uuid().parse(req.params.id);
       const { offset, limit } = z
@@ -1334,6 +1347,88 @@ export function createCoupons(
         )
       ).rows[0];
       res.json({ items, summary, offset, limit });
+    });
+    // Alias-only repair: the upstream search is unchanged, so collected pages remain valid.
+    app.post("/api/v3/identity-recheck", async (req, res) => {
+      const { brand_ids } = z
+        .object({ brand_ids: z.array(z.uuid()).min(1).max(500) })
+        .strict()
+        .parse(req.body);
+      if (!(await settings()).pause_reason || worker || requestDeadline.pending)
+        return res
+          .status(409)
+          .json({ error: { message: "请先暂停采集并等待当前请求完成" } });
+      const result: { brand_id: string; repaired: number }[] = [];
+      for (const brand of brand_ids) {
+        let repaired = 0;
+        await db.transaction(async (tx) => {
+          const b = (
+            await tx.query<{
+              name: string;
+              aliases: string[];
+              category: string;
+            }>("SELECT name,aliases,category FROM brands WHERE id=$1", [brand])
+          ).rows[0];
+          if (!b) return;
+          const tasks = (
+            await tx.query<{
+              run_id: string;
+              state: string;
+              error_code: string | null;
+              running: boolean;
+            }>(
+              `SELECT t.run_id,t.state,t.error_code,(r.status='running') AS running FROM coupon_tasks t JOIN coupon_runs r ON r.id=t.run_id WHERE t.brand_id=$1 AND t.name=$2 AND t.category=$3 AND (r.status='running' OR t.run_id=(SELECT run_id FROM coupon_baselines WHERE brand_id=$1))`,
+              [brand, b.name, b.category],
+            )
+          ).rows;
+          const names = [b.name, ...b.aliases];
+          for (const task of tasks) {
+            const items = (
+              await tx.query<{ product_id: string; payload: Coupon }>(
+                "SELECT product_id,payload FROM coupon_items WHERE run_id=$1 AND brand_id=$2 AND payload->>'identity'='unresolved'",
+                [task.run_id, brand],
+              )
+            ).rows;
+            for (const item of items) {
+              const p = item.payload;
+              const match =
+                names.some(
+                  (n) => n && norm(n) === norm(p.platform_brand_name),
+                ) ||
+                (!p.platform_brand_name &&
+                  p.city_evidence === "上海市" &&
+                  matchesShanghaiStore(p.poi_name, names));
+              if (!match) continue;
+              await tx.query(
+                `UPDATE coupon_items SET payload=jsonb_set(payload,'{identity}','"name_match"'::jsonb) WHERE run_id=$1 AND brand_id=$2 AND product_id=$3`,
+                [task.run_id, brand, item.product_id],
+              );
+              repaired++;
+            }
+            if (task.running && task.state !== "complete") {
+              await tx.query(
+                "UPDATE coupon_tasks SET aliases=$3,query_signature=$4,position=-2,state=CASE WHEN error_code='NO_BRAND_MATCH' THEN 'queued' ELSE state END,error_code=CASE WHEN error_code='NO_BRAND_MATCH' THEN NULL ELSE error_code END WHERE run_id=$1 AND brand_id=$2",
+                [
+                  task.run_id,
+                  brand,
+                  JSON.stringify(b.aliases),
+                  querySignature(b.name, b.aliases, b.category),
+                ],
+              );
+            }
+          }
+          if (repaired) {
+            await captureCouponStorage(tx, brand);
+            await tx.query(
+              "UPDATE coupon_baselines SET run_id=run_id WHERE brand_id=$1",
+              [brand],
+            );
+          }
+        });
+        if (repaired) await opts.onBrandComplete?.(brand);
+        result.push({ brand_id: brand, repaired });
+      }
+      res.json({ items: result });
     });
     app.post("/api/v3/runs", async (req, res) => {
       const input = z

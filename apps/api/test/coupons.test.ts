@@ -1100,3 +1100,79 @@ test("上海空品牌元数据可用精确品牌加分店后缀匹配，拒绝�
     "unresolved",
   );
 });
+
+test("alias repair preserves timestamps, repairs exact Shanghai identities and rejects noisy matches", async () => {
+  const { default: express } = await import("express");
+  const db = await openDatabase();
+  const id = randomUUID();
+  await db.query(
+    "INSERT INTO brands(id,name,name_key,category,shanghai_evidence_url) VALUES($1,'ARK运动方舟','ark-repair','运动玩乐','https://example.com')",
+    [id],
+  );
+  const raw = (name: string, id: string) => ({
+    ...product(1200, id, ""),
+    nearest_poi_info: {
+      brand_data: { brand_name: "" },
+      poi_name: name,
+      poi_display_info: { poi_distance_display: { value: "上海市" } },
+    },
+  });
+  const service = createCoupons(db, {
+    gate: gate(),
+    fetchPage: async () => ({
+      status_code: 0,
+      cursor: "12",
+      has_more: false,
+      product_list: [raw("ARK城市运动方舟", "1"), raw("熠博方舟运动营", "2")],
+    }),
+  });
+  const app = express();
+  app.use(express.json());
+  service.register(app);
+  const server = app.listen(0, "127.0.0.1");
+  await new Promise<void>((r) => server.once("listening", r));
+  const url = `http://127.0.0.1:${(server.address() as { port: number }).port}/api/v3/identity-recheck`;
+  const repair = () =>
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ brand_ids: [id] }),
+    });
+  try {
+    await service.start([id]);
+    await service.drain();
+    const before = (
+      await db.query<{ observed_at: string }>(
+        "SELECT observed_at FROM coupon_items WHERE brand_id=$1 AND product_id='1'",
+        [id],
+      )
+    ).rows[0].observed_at;
+    assert.equal((await repair()).status, 409);
+    await db.query("UPDATE brands SET aliases=$2 WHERE id=$1", [
+      id,
+      JSON.stringify(["ARK城市运动方舟"]),
+    ]);
+    await db.exec("UPDATE coupon_settings SET pause_reason='USER_PAUSED'");
+    const r = await repair();
+    assert.equal(r.status, 200);
+    assert.equal((await r.json()).items[0].repaired, 1);
+    const rows = (
+      await db.query<{
+        product_id: string;
+        payload: { identity: string };
+        observed_at: string;
+      }>(
+        "SELECT product_id,payload,observed_at FROM coupon_items WHERE brand_id=$1 ORDER BY product_id",
+        [id],
+      )
+    ).rows;
+    assert.equal(rows[0].payload.identity, "name_match");
+    assert.equal(rows[1].payload.identity, "unresolved");
+    assert.deepEqual(rows[0].observed_at, before);
+    assert.equal((await (await repair()).json()).items[0].repaired, 0);
+  } finally {
+    await service.stop();
+    await new Promise<void>((r) => server.close(() => r()));
+    await db.close();
+  }
+});
