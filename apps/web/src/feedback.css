@@ -1,8 +1,14 @@
 .feedback-page {
-  max-width: 1200px;
+  max-width: 1100px;
+  width: 100%;
+  min-width: 0;
   margin: auto;
 }
+.feedback-heading {
+  padding: 8px 0 0;
+}
 .feedback-heading h1 {
+  font-size: 24px;
   margin: 0 0 8px;
 }
 .feedback-heading p,
@@ -14,7 +20,8 @@
   display: flex;
   gap: 24px;
   border-bottom: 1px solid #e2e8f2;
-  margin: 24px 0;
+  margin: 20px 0;
+  flex-wrap: wrap;
 }
 .feedback-tabs button {
   background: none;
@@ -26,6 +33,7 @@
   font-weight: 600;
 }
 .feedback-tabs button[aria-pressed="true"] {
+  background: transparent;
   color: #3478ef;
   border-bottom-color: #3478ef;
 }
@@ -126,7 +134,54 @@
   .feedback-meta {
     flex-wrap: wrap;
   }
+  .feedback-heading {
+    padding: 8px 0 0;
+  }
   .feedback-heading h1 {
     font-size: 24px;
+    font-size: 24px;
+  }
+}
+
+.feedback-page .shop-reports {
+  max-width: none;
+  margin: 0;
+}
+.feedback-page .shop-reports .section-title {
+  padding: 0 0 16px;
+  border: 0;
+}
+.feedback-page .shop-reports .section-title h1 {
+  margin: 0 0 8px;
+}
+.feedback-page .shop-reports .section-title p {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #738198;
+}
+.feedback-page .report-form {
+  margin: 0 0 24px;
+}
+.feedback-page .feedback-other > h2 {
+  margin: 0 0 8px;
+}
+.feedback-page .feedback-form + h2 {
+  margin-top: 28px;
+}
+.feedback-page .feedback-tabs button {
+  white-space: nowrap;
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .feedback-page .report-form {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 14px;
+  }
+  .feedback-form-footer button {
+    min-height: 44px;
+  }
+  .feedback-admin button {
+    width: 100%;
   }
 }

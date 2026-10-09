@@ -15,10 +15,10 @@ export function FeedbackPage() {
   const [tab, setTab] = useState("shops");
   return (
     <section className="feedback-page">
-      <header className="feedback-heading">
+      <div className="feedback-heading">
         <h1>我要反馈</h1>
         <p>补充想找的店铺，或告诉我们使用中遇到的问题。</p>
-      </header>
+      </div>
       <nav className="feedback-tabs" aria-label="反馈类型">
         <button
           type="button"
