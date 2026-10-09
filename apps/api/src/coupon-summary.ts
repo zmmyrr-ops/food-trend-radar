@@ -20,7 +20,11 @@ export async function readCouponSummary(
   ).rows[0];
   if (!row) return null;
   const p = row.payload,
-    end = saleDeadline(p.sale_end);
+    end = saleDeadline(
+      String(p.sale_end ?? "")
+        .replace(/^(\d{4})\.(\d{2})\.(\d{2})/, "$1-$2-$3")
+        .replace(/( \d{2}:\d{2})$/, "$1:00"),
+    );
   const availability =
     end && Date.parse(end) <= Date.now()
       ? "expired"

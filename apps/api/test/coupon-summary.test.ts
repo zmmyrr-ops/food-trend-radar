@@ -43,7 +43,7 @@ test("archived coupon summary distinguishes expiration, latest absence, and unkn
       "unavailable",
     );
     await db.exec(
-      `UPDATE coupon_catalog SET payload=jsonb_set(payload,'{sale_end}','"2020-01-01"')`,
+      `UPDATE coupon_catalog SET payload=jsonb_set(payload,'{sale_end}','"2020.01.01 23:59"')`,
     );
     assert.equal(
       (await readCouponSummary(db, brand, "123"))?.availability,
