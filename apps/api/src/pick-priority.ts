@@ -121,14 +121,6 @@ export function pickPriority(input: {
     rate === null
       ? "优惠证据不足，暂不进入优先券"
       : `${basis}优惠 ${(rate * 100).toFixed(1)}%；${eligible ? "达到基础优惠评分门槛，优先券另需满足质量与增长条件" : "不足10%，不进入优先券"}；优惠不足20%时按比例降低总分`;
-  const coverage = parts.reduce(
-    (n, x) => n + (x.value === null ? 0 : x.weight),
-    0,
-  );
-  // Only compensate incomplete history when both price value and actual movement exist.
-  // At most 25% uplift; unknown evidence can never produce a perfect score.
-  const evidence_factor =
-    hasDiscount && valid(input.speed) ? 100 / Math.max(80, coverage) : 1;
   const title = input.title ?? "";
   const voucher = /代金券/.test(title);
   const stackable =
@@ -149,13 +141,9 @@ export function pickPriority(input: {
     { name: "明确支持多张叠加", value: stackable ? 6 : 0 },
   ];
   const selling_score = selling_points.reduce((n, x) => n + x.value, 0);
-  const adjusted_score = Math.min(
-    100,
-    raw_score * evidence_factor + selling_score,
-  );
+  const adjusted_score = Math.min(100, raw_score + selling_score);
   return {
-    version: "priority-v8",
-    evidence_factor,
+    version: "priority-v9",
     selling_points,
     adjusted_score: Math.round(adjusted_score * 10) / 10,
     raw_score,

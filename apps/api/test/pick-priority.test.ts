@@ -80,7 +80,7 @@ test("南京大牌档1%优惠降权，已知弱折扣不能被涨速或历史降
   };
   const result = pickPriority(input);
   assert.equal(result.raw_score, 27.4);
-  assert.equal(result.score, 1.7);
+  assert.equal(result.score, 1.4);
   assert.equal(result.value_gate.eligible, false);
   assert.equal(
     pickPriority({ ...input, reduction_rate: 0.5 }).value_gate.eligible,
@@ -105,7 +105,7 @@ test("南京大牌档1%优惠降权，已知弱折扣不能被涨速或历史降
   );
 });
 
-test("代金券卖点与有限缺失校正，保留低优惠约束", () => {
+test("代金券卖点不放大缺失数据，保留低优惠约束", () => {
   const input = {
     title: "100元代金券|四店齐开•开业钜惠•叠加三张",
     speed: 78.18748,
@@ -117,8 +117,8 @@ test("代金券卖点与有限缺失校正，保留低优惠约束", () => {
   };
   const result = pickPriority(input);
   assert.equal(result.raw_score, 43.8);
-  assert.equal(result.score, 65.4);
-  assert.equal(result.evidence_factor, 1.25);
+  assert.equal(result.score, 54.5);
+  assert.equal("evidence_factor" in result, false);
   assert.equal(result.selling_points[0].value, 4.65);
   assert.equal(
     pickPriority({ ...input, discount_rate: 0.5 }).selling_points[0].value,
@@ -137,7 +137,7 @@ test("代金券卖点与有限缺失校正，保留低优惠约束", () => {
   );
   assert.ok(pickPriority({ ...input, discount_rate: 0.01 }).score < 5);
   assert.equal(pickPriority({ ...input, discount_rate: null }).score, 0);
-  assert.equal(pickPriority({ ...input, speed: null }).evidence_factor, 1);
+  assert.equal(pickPriority({ ...input, speed: null }).score, 26.2);
 });
 
 test("销售分结合实际售价，缺失价格不虚构销售额，高价零增长不得分", () => {
