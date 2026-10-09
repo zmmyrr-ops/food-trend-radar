@@ -83,7 +83,16 @@ test("users submit private reports; only admin can atomically review and enable 
       approval,
     );
     assert.equal(accepted.status, 200, await accepted.clone().text());
-    const brandId = (await accepted.json()).brand_id;
+    const approved = await accepted.json();
+    const brandId = approved.brand_id;
+    assert.equal(approved.reward_points, 20);
+    const rewards = async () =>
+      (
+        await db.query<any>(
+          "SELECT amount,hidden FROM point_entries WHERE event_key LIKE 'shop-report-reward:%'",
+        )
+      ).rows;
+    assert.deepEqual(await rewards(), [{ amount: 20, hidden: false }]);
     assert.equal(
       (await db.query<any>("SELECT active FROM brands WHERE id=$1", [brandId]))
         .rows[0].active,
@@ -93,8 +102,10 @@ test("users submit private reports; only admin can atomically review and enable 
       (await call(`/api/v3/shop-reports/${id}/review`, admin, approval)).status,
       409,
     );
+    assert.equal((await rewards()).length, 1);
     const own = await (await call("/api/v3/shop-reports", a)).json();
     assert.equal(own.items[0].status, "approved");
+    assert.equal(own.items[0].reward_points, 20);
     assert.equal(own.items[0].review_note, "核实后收录");
     assert.equal(own.items[0].owner_id, undefined);
     const second = (
@@ -150,6 +161,16 @@ test("users submit private reports; only admin can atomically review and enable 
       ).status,
       200,
     );
+    assert.equal((await rewards()).length, 2); // Two different reporters, one reward each.
+    const again = await (await call("/api/v3/shop-reports", a, payload)).json();
+    const repeatApproval = await (
+      await call(`/api/v3/shop-reports/${again.id}/review`, admin, {
+        decision: "approve",
+        brand_id: brandId,
+      })
+    ).json();
+    assert.equal(repeatApproval.reward_points, 0);
+    assert.equal((await rewards()).length, 2);
   } finally {
     await new Promise<void>((r) => server.close(() => r()));
     await db.close();

@@ -15,6 +15,7 @@ type Report = {
   brand_name?: string;
   review_note?: string;
   created_at: string;
+  reward_points?: number;
 };
 const statuses: Record<string, string> = {
   pending: "待审核",
@@ -59,6 +60,11 @@ export function ShopReports() {
         <div>
           <h1>{admin ? "店铺上报与审核" : "上报想找的店铺"}</h1>
           <p>没找到想要的店铺或券？告诉我们，审核后补充收录。</p>
+          <p>
+            <strong>收录奖励 · 20 积分</strong>
+            ：上报缺失品牌，经审核通过并收录后自动到账，可在积分明细查看。
+            同一用户、同一品牌仅奖励一次；待审核或未采纳不发放。本规则自上线起审核通过的记录生效。
+          </p>
         </div>
       </div>
       <form
@@ -187,6 +193,9 @@ export function ShopReports() {
               <a href={r.url} target="_blank" rel="noopener noreferrer">
                 查看提交链接 ↗
               </a>
+            )}
+            {!!r.reward_points && (
+              <p>收录奖励 +{r.reward_points} 积分 · 已到账</p>
             )}
             {r.review_note && <p>审核回复：{r.review_note}</p>}
             {r.status === "approved" && (

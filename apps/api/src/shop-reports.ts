@@ -4,6 +4,7 @@ import { brandInput, categories } from "@radar/contracts";
 import type { Express } from "express";
 import { z } from "zod";
 import { ownerOf } from "./accounts.js";
+import { changePoints } from "./points.js";
 
 const normalize = (s: string) =>
   s.normalize("NFKC").trim().toLowerCase().replace(/\s+/g, " ");
@@ -28,6 +29,7 @@ const submission = z
 export function registerShopReports(app: Express, db: PGlite) {
   const ready =
     db.exec(`CREATE TABLE IF NOT EXISTS shop_reports(id uuid PRIMARY KEY,owner_id uuid NOT NULL,name text NOT NULL,address text NOT NULL,category text NOT NULL,url text NOT NULL,note text NOT NULL,dedupe text NOT NULL,status text NOT NULL DEFAULT 'pending',brand_id uuid,review_note text,reviewed_by uuid,created_at timestamptz NOT NULL DEFAULT now(),reviewed_at timestamptz);
+    ALTER TABLE shop_reports ADD COLUMN IF NOT EXISTS reward_points int NOT NULL DEFAULT 0;
     CREATE INDEX IF NOT EXISTS shop_reports_owner ON shop_reports(owner_id,created_at DESC);
     CREATE UNIQUE INDEX IF NOT EXISTS shop_reports_pending ON shop_reports(owner_id,dedupe) WHERE status='pending';`);
   app.get("/api/v3/shop-reports", async (req, res) => {
@@ -45,7 +47,7 @@ export function registerShopReports(app: Express, db: PGlite) {
     const where =
       "($1::uuid IS NULL OR r.owner_id=$1) AND ($2='all' OR r.status=$2)";
     const items = await db.query(
-      `SELECT r.id,r.name,r.address,r.category,r.url,r.note,r.status,r.brand_id,r.review_note,r.created_at,r.reviewed_at,b.name AS brand_name FROM shop_reports r LEFT JOIN brands b ON b.id=r.brand_id WHERE ${where} ORDER BY r.created_at DESC,r.id LIMIT 20 OFFSET $3`,
+      `SELECT r.id,r.name,r.address,r.category,r.url,r.note,r.status,r.brand_id,r.review_note,r.created_at,r.reviewed_at,r.reward_points,b.name AS brand_name FROM shop_reports r LEFT JOIN brands b ON b.id=r.brand_id WHERE ${where} ORDER BY r.created_at DESC,r.id LIMIT 20 OFFSET $3`,
       [...args, q.offset],
     );
     const total = await db.query<{ count: number }>(
@@ -169,17 +171,28 @@ export function registerShopReports(app: Express, db: PGlite) {
             );
           }
         }
+        const rewarded =
+          v.decision === "approve" && brandId
+            ? await changePoints(
+                tx,
+                report.owner_id,
+                20,
+                `品牌上报收录奖励：${report.name}`,
+                `shop-report-reward:${report.owner_id}:${brandId}`,
+              )
+            : false;
         await tx.query(
-          "UPDATE shop_reports SET status=$2,brand_id=$3,review_note=$4,reviewed_by=$5,reviewed_at=now() WHERE id=$1",
+          "UPDATE shop_reports SET status=$2,brand_id=$3,review_note=$4,reviewed_by=$5,reviewed_at=now(),reward_points=$6 WHERE id=$1",
           [
             id,
             v.decision === "approve" ? "approved" : "rejected",
             brandId,
             v.note,
             ownerOf(req),
+            rewarded ? 20 : 0,
           ],
         );
-        return { brand_id: brandId };
+        return { brand_id: brandId, reward_points: rewarded ? 20 : 0 };
       });
       res.json(result);
     } catch (e) {
