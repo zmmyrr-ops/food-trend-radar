@@ -153,3 +153,31 @@
     margin: 0;
   }
 }
+
+.notification-dialog .notification-dialog-header {
+  min-height: 64px;
+  height: auto;
+  box-sizing: border-box;
+  gap: 16px;
+  padding: 12px 20px;
+}
+.notification-dialog-header .notification-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+.notification-close svg {
+  display: block;
+  flex: none;
+}
+.notification-dialog-header .notification-close:hover {
+  background: #e6eefb;
+  color: #286bd5;
+}

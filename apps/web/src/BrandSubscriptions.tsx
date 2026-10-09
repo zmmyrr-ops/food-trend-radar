@@ -25,12 +25,28 @@ function NotificationDialog({
         if (event.target === event.currentTarget) onClose?.();
       }}
     >
-      <header className="notification-dialog-header">
+      <div className="notification-dialog-header">
         <strong>消息通知</strong>
-        <button aria-label="关闭消息通知" onClick={onClose}>
-          ×
+        <button
+          type="button"
+          className="notification-close"
+          aria-label="关闭消息通知"
+          onClick={onClose}
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
         </button>
-      </header>
+      </div>
       {children}
     </dialog>,
     document.body,
