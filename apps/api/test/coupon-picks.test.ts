@@ -148,7 +148,7 @@ test("选券API先全量筛选排序再分页，CSV包含当前筛选全部记�
     assert.equal(all.items[0].product_id, "2");
     const ranked = await (await fetch(base + "?limit=1")).json();
     assert.equal(ranked.items[0].product_id, "1");
-    assert.equal(ranked.model.version, "priority-v6");
+    assert.equal(ranked.model.version, "priority-v7");
     assert.equal(ranked.context, null);
     const filtered = await (
       await fetch(base + "?view=value_rising&limit=1")
@@ -387,7 +387,7 @@ test("新上保留24小时，后续无变化轮次仍保留，临界点自动撤
     [discovery],
   )[0];
   assert.equal(fresh.is_new, true);
-  assert.equal(fresh.priority.score, regular.priority.score + 10);
+  assert.equal(fresh.priority.score, regular.priority.score + 12.5);
   assert.equal(
     selectPicks([fresh], { ...query, view: "new" }).filtered.length,
     1,

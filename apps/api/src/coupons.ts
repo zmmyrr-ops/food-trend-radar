@@ -64,6 +64,12 @@ const norm = (s: string) =>
     .normalize("NFKC")
     .toLowerCase()
     .replace(/[\s·•]/g, "");
+// Strip only a trailing, parenthesized branch name; never fuzzy-match other brands.
+const storeBrandName = (s: string) =>
+  norm(s).replace(/[（(][^()（）]*店[）)]$/, "");
+export function matchesShanghaiStore(name: string, names: string[]) {
+  return names.some((n) => n && norm(n) === storeBrandName(name));
+}
 export function parseLossless(text: string): unknown {
   return JSON.parse(text, ((
     _key: string,
@@ -161,7 +167,7 @@ export function normalizeCoupon(
       (!str(b.brand_name) &&
         str(record(record(poi.poi_display_info).poi_distance_display).value) ===
           "上海市" &&
-        names.some((n) => n && norm(n) === norm(str(poi.poi_name))))
+        matchesShanghaiStore(str(poi.poi_name), names))
         ? "name_match"
         : "unresolved",
     terms_status: "unknown",
@@ -318,6 +324,37 @@ export async function initCoupons(db: PGlite) {
   await initRules(db);
   await initStores(db);
   await initCouponStorage(db);
+  // Repair previously hidden exact Shanghai branch matches, retaining observation times.
+  const pendingIdentity = await db.query<{
+    brand_id: string;
+    product_id: string;
+    poi_name: string;
+    name: string;
+    aliases: string[];
+  }>(`
+    SELECT i.brand_id,i.product_id,i.payload->>'poi_name' AS poi_name,b.name,b.aliases
+    FROM coupon_items i JOIN coupon_baselines cb ON cb.brand_id=i.brand_id AND cb.run_id=i.run_id
+    JOIN brands b ON b.id=i.brand_id
+    WHERE i.payload->>'identity'='unresolved' AND coalesce(i.payload->>'platform_brand_name','')=''
+    AND i.payload->>'city_evidence'='上海市'`);
+  const repairedBrands = new Set<string>();
+  for (const row of pendingIdentity.rows) {
+    if (!matchesShanghaiStore(row.poi_name ?? "", [row.name, ...row.aliases]))
+      continue;
+    await db.query(
+      `UPDATE coupon_items SET payload=jsonb_set(payload,'{identity}','"name_match"'::jsonb)
+      WHERE brand_id=$1 AND product_id=$2 AND run_id=(SELECT run_id FROM coupon_baselines WHERE brand_id=$1)`,
+      [row.brand_id, row.product_id],
+    );
+    repairedBrands.add(row.brand_id);
+  }
+  for (const brand of repairedBrands) {
+    await captureCouponStorage(db, brand);
+    await db.query(
+      "UPDATE coupon_baselines SET run_id=run_id WHERE brand_id=$1",
+      [brand],
+    );
+  }
   await db.exec(`    INSERT INTO coupon_discoveries
       SELECT d.brand_id,d.product_id,min(d.observed_at) FROM coupon_diffs d
       WHERE d.kind='NEW_OBSERVED' AND d.observed_at>now()-interval '24 hours'

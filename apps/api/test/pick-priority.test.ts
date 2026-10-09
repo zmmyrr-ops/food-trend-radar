@@ -75,7 +75,7 @@ test("南京大牌档1%优惠降权，已知弱折扣不能被涨速或历史降
   };
   const result = pickPriority(input);
   assert.equal(result.raw_score, 35.9);
-  assert.equal(result.score, 1.8);
+  assert.equal(result.score, 2.2);
   assert.equal(result.value_gate.eligible, false);
   assert.equal(
     pickPriority({ ...input, reduction_rate: 0.5 }).value_gate.eligible,
@@ -98,4 +98,38 @@ test("南京大牌档1%优惠降权，已知弱折扣不能被涨速或历史降
       .value_gate.eligible,
     true,
   );
+});
+
+test("代金券卖点与有限缺失校正，保留低优惠约束", () => {
+  const input = {
+    title: "100元代金券|四店齐开•开业钜惠•叠加三张",
+    speed: 78.18748,
+    acceleration: null,
+    reduction_rate: null,
+    discount_rate: 0.31,
+    is_new: false,
+  };
+  const result = pickPriority(input);
+  assert.equal(result.raw_score, 43.9);
+  assert.equal(result.score, 65.5);
+  assert.equal(result.evidence_factor, 1.25);
+  assert.equal(result.selling_points[0].value, 4.65);
+  assert.equal(
+    pickPriority({ ...input, discount_rate: 0.5 }).selling_points[0].value,
+    7.5,
+  );
+  assert.equal(result.selling_points[1].value, 6);
+  assert.equal(
+    pickPriority({ ...input, title: "100元代金券 不可叠加三张" })
+      .selling_points[1].value,
+    0,
+  );
+  assert.equal(
+    pickPriority({ ...input, title: "三张叠加优惠套餐" }).selling_points[1]
+      .value,
+    0,
+  );
+  assert.ok(pickPriority({ ...input, discount_rate: 0.01 }).score < 5);
+  assert.equal(pickPriority({ ...input, discount_rate: null }).score, 0);
+  assert.equal(pickPriority({ ...input, speed: null }).evidence_factor, 1);
 });

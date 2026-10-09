@@ -1066,3 +1066,37 @@ test("新发现时间跨轮次固定，首次基准与历史券重新出现不�
     await db.close();
   }
 });
+
+test("上海空品牌元数据可用精确品牌加分店后缀匹配，拒绝相似名及外地", () => {
+  const raw = product();
+  const poi = raw.nearest_poi_info as any;
+  poi.brand_data = {};
+  poi.poi_display_info = { poi_distance_display: { value: "上海市" } };
+  for (const name of [
+    "酉坞里·Bistro醉鸡煲(世博天地店)",
+    "酉坞里·Bistro醉鸡煲（苏河湾万象天地店）",
+  ]) {
+    poi.poi_name = name;
+    assert.equal(
+      normalizeCoupon(raw, ["酉坞里·Bistro醉鸡煲"]).identity,
+      "name_match",
+    );
+  }
+  poi.poi_name = "酉坞里·Bistro醉鸡煲冒牌(上海店)";
+  assert.equal(
+    normalizeCoupon(raw, ["酉坞里·Bistro醉鸡煲"]).identity,
+    "unresolved",
+  );
+  poi.poi_name = "酉坞里·Bistro醉鸡煲(上海店)";
+  poi.brand_data = { brand_name: "其他品牌" };
+  assert.equal(
+    normalizeCoupon(raw, ["酉坞里·Bistro醉鸡煲"]).identity,
+    "unresolved",
+  );
+  poi.brand_data = {};
+  poi.poi_display_info.poi_distance_display.value = "杭州市";
+  assert.equal(
+    normalizeCoupon(raw, ["酉坞里·Bistro醉鸡煲"]).identity,
+    "unresolved",
+  );
+});

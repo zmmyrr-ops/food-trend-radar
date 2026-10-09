@@ -20,6 +20,7 @@ export function couponDiscount(
 
 /** Initial transparent ranking rules, not a calibrated probability or value verdict. */
 export function pickPriority(input: {
+  title?: string;
   is_new?: boolean;
   discount_rate?: number | null;
   brand_growth?: number | null;
@@ -104,11 +105,46 @@ export function pickPriority(input: {
     rate === null
       ? "优惠证据不足，暂不进入优先券"
       : `${basis}优惠 ${(rate * 100).toFixed(1)}%；${eligible ? "达到基础优惠评分门槛，优先券另需满足质量与增长条件" : "不足10%，不进入优先券"}；优惠不足20%时按比例降低总分`;
+  const coverage = parts.reduce(
+    (n, x) => n + (x.value === null ? 0 : x.weight),
+    0,
+  );
+  // Only compensate incomplete history when both price value and actual movement exist.
+  // At most 25% uplift; unknown evidence can never produce a perfect score.
+  const evidence_factor =
+    hasDiscount && valid(input.speed) ? 100 / Math.max(80, coverage) : 1;
+  const title = input.title ?? "";
+  const voucher = /代金券/.test(title);
+  const stackable =
+    voucher &&
+    !/(?:不|不可|不能|禁止|无法|仅限|限用).{0,4}叠加/.test(title) &&
+    /(?:叠加\s*(?:[2-9]|[1-9]\d+|[二两三四五六七八九十]+)\s*张|(?:[2-9]|[二两三四五六七八九十]+)张.{0,3}叠加)/.test(
+      title,
+    );
+  const selling_points = [
+    {
+      name: "代金券折扣分加成（1.3倍）",
+      value: voucher
+        ? Math.round(
+            (parts.find((x) => x.name === "原价折扣")?.value ?? 0) * 0.3 * 100,
+          ) / 100
+        : 0,
+    },
+    { name: "明确支持多张叠加", value: stackable ? 6 : 0 },
+  ];
+  const selling_score = selling_points.reduce((n, x) => n + x.value, 0);
+  const adjusted_score = Math.min(
+    100,
+    raw_score * evidence_factor + selling_score,
+  );
   return {
-    version: "priority-v6",
+    version: "priority-v7",
+    evidence_factor,
+    selling_points,
+    adjusted_score: Math.round(adjusted_score * 10) / 10,
     raw_score,
     value_gate: { rate, factor, eligible, reason },
-    score: Math.round(raw_score * factor * 10) / 10,
+    score: Math.round(adjusted_score * factor * 10) / 10,
     coverage: parts.reduce((n, x) => n + (x.value === null ? 0 : x.weight), 0),
     parts,
     missing: parts.filter((x) => x.value === null).map((x) => x.name),
