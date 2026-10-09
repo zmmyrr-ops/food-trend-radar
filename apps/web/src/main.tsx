@@ -22,6 +22,7 @@ import { createRoot } from "react-dom/client";
 import { AccountGate, useAccount } from "./AccountGate";
 import { AccountManagement } from "./AccountManagement";
 import { Admission } from "./Admission";
+import { AnalyticsAdmin } from "./AnalyticsAdmin";
 import { appFetch, appUrl } from "./app-url";
 import { BrandIcon } from "./BrandIcon";
 import { BrandSubscriptions } from "./BrandSubscriptions";
@@ -29,6 +30,7 @@ import { CouponRadar } from "./CouponRadar";
 import { MyWorkspace } from "./MyWorkspace";
 import { ShopReports } from "./ShopReports";
 import { Sources } from "./Sources";
+import { PageAnalytics } from "./telemetry";
 import { VideoStudio } from "./VideoStudio";
 
 import "./style.css";
@@ -111,6 +113,7 @@ function App() {
         "sources",
         "admission",
         "accounts",
+        "analytics",
       ]
         .filter(
           (v) =>
@@ -361,11 +364,16 @@ function App() {
         </nav>
         <details
           className="sidebar-tools admin-only"
-          open={tab === "accounts" ? true : undefined}
+          open={["accounts", "analytics"].includes(tab) ? true : undefined}
         >
           <summary>数据与设置</summary>
           {[
-            ...(account.role === "admin" ? [["accounts", "账号管理"]] : []),
+            ...(account.role === "admin"
+              ? [
+                  ["accounts", "账号管理"],
+                  ["analytics", "业务统计"],
+                ]
+              : []),
             ["events", "事件管理"],
             ["import", "数据导入"],
             ["sources", "数据源核验"],
@@ -486,6 +494,7 @@ function App() {
             <CouponRadar key={channel} channel={channel} />
           </>
         )}
+        {tab === "analytics" && account.role === "admin" && <AnalyticsAdmin />}
         {tab === "workspace" && <MyWorkspace brands={brands} />}
         {tab === "reports" && <ShopReports />}
         {tab === "accounts" && account.role === "admin" && (
@@ -1387,6 +1396,7 @@ if (root)
   createRoot(root).render(
     <StrictMode>
       <AccountGate>
+        <PageAnalytics />
         {new URLSearchParams(location.search).get("studio") === "1" ? (
           <VideoStudio />
         ) : (

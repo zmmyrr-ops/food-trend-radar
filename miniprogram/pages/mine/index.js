@@ -13,6 +13,7 @@ Page({
     errorDetail: "",
   },
   onShow() {
+    require("../../utils/telemetry").track("mine");
     this.refresh();
   },
   onPullDownRefresh() {

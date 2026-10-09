@@ -18,6 +18,7 @@ import { parse } from "csv-parse/sync";
 import express, { type ErrorRequestHandler } from "express";
 import { z } from "zod";
 import { registerAdmission } from "./admission.js";
+import { createAnalytics } from "./analytics.js";
 import { createAutoRadar } from "./auto-radar.js";
 import { registerBrandBlacklist } from "./brand-blacklist.js";
 import { registerBrandSubscriptions } from "./brand-subscriptions.js";
@@ -244,7 +245,10 @@ export function createApp(
     next();
   });
   app.use(express.json({ limit: "1mb" }));
+  const analytics = createAnalytics(db);
+  analytics.observe(app);
   accounts?.register(app);
+  analytics.register(app);
   registerShopReports(app, db);
   registerBrandSubscriptions(app, db);
   registerBrandBlacklist(app, db);

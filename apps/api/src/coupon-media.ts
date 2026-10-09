@@ -6,6 +6,7 @@ import type { PGlite } from "@electric-sql/pglite";
 import type { Express } from "express";
 import { z } from "zod";
 import { legacyOwner, ownerOf } from "./accounts.js";
+import { recordBusinessOutcome } from "./analytics.js";
 import { type MediaTextNote, summarizeMediaText } from "./media-text.js";
 import { changePoints, refundPoints } from "./points.js";
 
@@ -761,6 +762,14 @@ export async function createCouponMedia(
               job.id,
             ])
           ).rows[0];
+          if (final)
+            recordBusinessOutcome(
+              db,
+              final.owner_id,
+              `materials.${final.state}`,
+              `materials:${final.id}:${final.updated_at}`,
+              final.state === "complete",
+            );
           if (
             final?.point_charge_key &&
             final.point_charge_key === job.point_charge_key

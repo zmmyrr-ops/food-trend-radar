@@ -18,6 +18,7 @@ import { inChannel } from "@radar/contracts";
 import express, { type Express, type Request, type Response } from "express";
 import { z } from "zod";
 import { legacyOwner, ownerOf } from "./accounts.js";
+import { recordBusinessOutcome } from "./analytics.js";
 import { mediaUrl } from "./coupon-media.js";
 import { mediaFormat } from "./media-format.js";
 import { createObjectStorage } from "./object-storage.js";
@@ -84,7 +85,7 @@ export async function createVideoProjects(db: PGlite, root: string) {
       ].includes(state)
     )
       return;
-    await db.transaction(async (tx) => {
+    const settled = await db.transaction(async (tx) => {
       const row = (
         await tx.query<{ owner_id: string; point_charge_key: string }>(
           "SELECT owner_id,point_charge_key FROM video_projects WHERE id=$1 FOR UPDATE",
@@ -104,7 +105,16 @@ export async function createVideoProjects(db: PGlite, root: string) {
         "UPDATE video_projects SET point_charge_key=NULL,point_paid_revision=CASE WHEN $2 THEN (payload->>'revision')::int ELSE point_paid_revision END WHERE id=$1",
         [id, ["preview_ready", "completed"].includes(state)],
       );
+      return row;
     });
+    if (settled)
+      recordBusinessOutcome(
+        db,
+        settled.owner_id,
+        `video.${state}`,
+        `video:${settled.point_charge_key}:${state}`,
+        ["preview_ready", "completed"].includes(state),
+      );
   }
   for (const row of (
     await db.query<{ id: string; state: string }>(

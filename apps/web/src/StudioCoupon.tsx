@@ -11,6 +11,8 @@ type Coupon = {
   origin_price_fen: number | null;
   shop_name: string;
   address: string;
+  availability?: string;
+  availability_message?: string;
 };
 const money = (n: number) => `¥${(n / 100).toFixed(2)}`;
 export function StudioCoupon({
@@ -21,25 +23,28 @@ export function StudioCoupon({
   productId: string;
 }) {
   const [item, setItem] = useState<Coupon | null>(null);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [retry, setRetry] = useState(0);
   useEffect(() => {
     const controller = new AbortController();
     setItem(null);
-    setError(false);
+    setError(null);
     void appFetch(
       `/api/v3/coupons/${encodeURIComponent(productId)}/summary?brand_id=${encodeURIComponent(brandId)}`,
       { signal: controller.signal },
     )
       .then(async (r) => {
-        if (!r.ok) throw Error();
+        if (r.status === 404)
+          throw Error("暂无该券历史信息，无法确认是否下架。");
+        if (!r.ok) throw Error("券信息暂时无法读取。");
         return r.json();
       })
       .then((d) => {
         if (!controller.signal.aborted) setItem(d.item);
       })
-      .catch(() => {
-        if (!controller.signal.aborted) setError(true);
+      .catch((e) => {
+        if (!controller.signal.aborted)
+          setError(e.message || "券信息暂时无法读取。");
       });
     return () => controller.abort();
   }, [brandId, productId, retry]);
@@ -49,7 +54,7 @@ export function StudioCoupon({
         <p>
           {error ? (
             <>
-              券信息暂时无法读取。
+              {error}
               <button onClick={() => setRetry(retry + 1)}>重试</button>
             </>
           ) : (
@@ -58,6 +63,9 @@ export function StudioCoupon({
         </p>
       ) : (
         <>
+          {item.availability_message && (
+            <p role="status">{item.availability_message}</p>
+          )}
           <div className="studio-coupon-heading">
             <BrandIcon name={item.brand_name} url={item.icon_url} />
             <div>
@@ -85,7 +93,9 @@ export function StudioCoupon({
               {item.address ? ` · ${item.address}` : ""}
             </p>
           )}
-          <CouponUsageRules brandId={brandId} productId={productId} />
+          {item.availability === "available" && (
+            <CouponUsageRules brandId={brandId} productId={productId} />
+          )}
         </>
       )}
     </section>

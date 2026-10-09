@@ -7,6 +7,7 @@ import { BrandIcon } from "./BrandIcon";
 import { CouponStoreSummary } from "./CouponStoreSummary";
 import { CouponUsageRules } from "./CouponUsageRules";
 import { PickEvaluation } from "./PickEvaluation";
+import { track } from "./telemetry";
 import { AddToVisitPlan, type VisitPlan, visitRequest } from "./VisitPlans";
 
 type Pick = {
@@ -176,6 +177,15 @@ export function CouponPicks({
   useEffect(() => {
     setOffset(0);
   }, [brandId]);
+  useEffect(() => {
+    if (search) track("coupon_search");
+  }, [search]);
+  useEffect(() => {
+    track("coupon_filter");
+  }, [view, channel, category, brandId]);
+  useEffect(() => {
+    track("coupon_sort");
+  }, [order]);
   const query = new URLSearchParams({
     view,
     channel,

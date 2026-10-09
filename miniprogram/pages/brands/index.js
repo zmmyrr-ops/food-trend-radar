@@ -19,6 +19,7 @@ Page({
     if (q.mode === "blacklist") this.setData({ mode: "blacklist" });
   },
   onShow() {
+    require("../../utils/telemetry").track("brands");
     this.load();
   },
   onUnload() {

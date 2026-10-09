@@ -151,7 +151,7 @@ export async function createWechatMini(
             route,
           )) ||
         (req.method === "POST" &&
-          /^\/(brand-subscriptions(?:\/read)?|brand-blacklist|notification-consent|logout|profile)$/.test(
+          /^\/(brand-subscriptions(?:\/read)?|brand-blacklist|notification-consent|logout|profile|analytics\/events)$/.test(
             route,
           ));
       if (!allowed)

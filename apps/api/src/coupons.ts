@@ -16,6 +16,7 @@ import { assessCoupon } from "./coupon-evidence.js";
 import { createRuleWorker, initRules, RULES_ENDPOINT } from "./coupon-rules.js";
 import { captureCouponStorage, initCouponStorage } from "./coupon-storage.js";
 import { createStoreWorker, initStores } from "./coupon-stores.js";
+import { readCouponSummary } from "./coupon-summary.js";
 import { couponUseOutlook } from "./coupon-use-outlook.js";
 import { currentCouponDetail } from "./current-coupon-detail.js";
 import { salesEvidenceAssessment } from "./opportunity-score.js";
@@ -1077,19 +1078,14 @@ export function createCoupons(
     app.get("/api/v3/coupons/:id/summary", async (req, res) => {
       const id = z.string().regex(/^\d+$/).parse(req.params.id);
       const brand = z.uuid().parse(req.query.brand_id);
-      const item = (
-        await db.query(
-          `SELECT b.name AS brand_name,b.icon_url,i.payload->>'name' AS title,
-        i.payload->'price_min_fen' AS price_fen,i.payload->'origin_price_fen' AS origin_price_fen,
-        i.payload->>'poi_name' AS shop_name,i.payload->>'address' AS address,i.payload->>'sale_end' AS sale_end
-        FROM coupon_items i JOIN brands b ON b.id=i.brand_id
-        WHERE i.brand_id=$1 AND i.product_id=$2 AND i.payload->>'identity'='name_match'
-        ORDER BY i.observed_at DESC LIMIT 1`,
-          [brand, id],
-        )
-      ).rows[0];
+      const item = await readCouponSummary(db, brand, id);
       if (!item)
-        return res.status(404).json({ error: { message: "暂无该券信息" } });
+        return res.status(404).json({
+          error: {
+            code: "COUPON_UNKNOWN",
+            message: "暂无该券历史信息，无法确认是否下架",
+          },
+        });
       res.json({ item });
     });
     app.get("/api/v3/coupons/:id/condition-comparison", async (req, res) => {

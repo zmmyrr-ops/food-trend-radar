@@ -371,7 +371,14 @@ export async function createAccounts(
         ["/api/v3/studio-copy", "/api/v3/ai-recommendations"].includes(route);
       const topicPlays =
         ["GET", "HEAD"].includes(req.method) && route === "/api/v3/topic-plays";
-      if (personal || readOnly || studioCopy || topicPlays) return next();
+      if (
+        personal ||
+        readOnly ||
+        studioCopy ||
+        topicPlays ||
+        (req.method === "POST" && route === "/api/v3/analytics/events")
+      )
+        return next();
       res.status(403).json({
         error: { code: "ADMIN_REQUIRED", message: "此操作仅管理员可用" },
       });

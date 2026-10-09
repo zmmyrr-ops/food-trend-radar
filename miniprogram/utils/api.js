@@ -31,6 +31,7 @@ function raw(path, method, data, token) {
       data,
       header: {
         "content-type": "application/json",
+        "x-client-channel": "mini",
         ...(token ? { Authorization: "Bearer " + token } : {}),
       },
       timeout: 20000,

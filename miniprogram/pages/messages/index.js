@@ -2,6 +2,7 @@ const { request, notice } = require("../../utils/api");
 Page({
   data: { items: [], unread: 0, error: "", loading: false },
   onShow() {
+    require("../../utils/telemetry").track("messages");
     this.load();
     this.timer = setInterval(() => this.load(), 60000);
   },

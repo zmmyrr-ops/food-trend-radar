@@ -55,6 +55,7 @@ Page({
     if (q.brand_id) this.setData({ brand_id: q.brand_id, view: "all" });
   },
   async onShow() {
+    require("../../utils/telemetry").track("coupons");
     this.setData({ loggedIn: !!wx.getStorageSync("miniToken") });
     if (this.data.loggedIn) {
       await this.loadPreferences();
