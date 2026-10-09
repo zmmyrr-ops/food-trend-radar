@@ -40,6 +40,40 @@ test("users submit private reports; only admin can atomically review and enable 
     await db.query(
       "UPDATE accounts SET role='admin' WHERE phone='13800002103'",
     );
+    assert.equal((await call("/api/v3/feedback")).status, 401);
+    assert.equal(
+      (await call("/api/v3/feedback", a, { content: "页面加载后按钮没有反应" }))
+        .status,
+      201,
+    );
+    const feedback = (await (await call("/api/v3/feedback", a)).json())
+      .items[0];
+    assert.equal((await (await call("/api/v3/feedback", b)).json()).total, 0);
+    assert.equal(
+      (
+        await call(`/api/v3/feedback/${feedback.id}/reply`, a, {
+          reply: "越权修改",
+          status: "resolved",
+        })
+      ).status,
+      403,
+    );
+    assert.equal(
+      (
+        await call(`/api/v3/feedback/${feedback.id}/reply`, admin, {
+          reply: "已修复，请刷新页面",
+          status: "resolved",
+        })
+      ).status,
+      200,
+    );
+    const handled = (await (await call("/api/v3/feedback", a)).json()).items[0];
+    assert.equal(handled.status, "resolved");
+    assert.equal(handled.reply, "已修复，请刷新页面");
+    assert.equal(
+      (await call("/api/v3/feedback", a, { content: " " })).status,
+      422,
+    );
     const payload = {
       name: "测试新店",
       address: "上海市测试路1号",

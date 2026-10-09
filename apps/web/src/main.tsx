@@ -27,8 +27,8 @@ import { appFetch, appUrl } from "./app-url";
 import { BrandIcon } from "./BrandIcon";
 import { BrandSubscriptions } from "./BrandSubscriptions";
 import { CouponRadar } from "./CouponRadar";
+import { FeedbackPage } from "./FeedbackPage";
 import { MyWorkspace } from "./MyWorkspace";
-import { ShopReports } from "./ShopReports";
 import { Sources } from "./Sources";
 import { PageAnalytics } from "./telemetry";
 import { VideoStudio } from "./VideoStudio";
@@ -351,13 +351,13 @@ function App() {
             aria-pressed={tab === "reports"}
             onClick={() => navigate("reports")}
           >
-            <span>报</span>
+            <span>馈</span>
             <div>
-              店铺上报
+              我要反馈
               <small>
                 {account.role === "admin"
-                  ? "审核与补充收录"
-                  : "告诉我们你想找的店"}
+                  ? "店铺审核与问题处理"
+                  : "店铺上报与问题建议"}
               </small>
             </div>
           </button>
@@ -400,7 +400,7 @@ function App() {
             {tab === "radar"
               ? `${channelLabel}发现`
               : tab === "reports"
-                ? "店铺上报"
+                ? "我要反馈"
                 : tab === "workspace"
                   ? "我的工作台"
                   : tab === "accounts"
@@ -496,7 +496,7 @@ function App() {
         )}
         {tab === "analytics" && account.role === "admin" && <AnalyticsAdmin />}
         {tab === "workspace" && <MyWorkspace brands={brands} />}
-        {tab === "reports" && <ShopReports />}
+        {tab === "reports" && <FeedbackPage />}
         {tab === "accounts" && account.role === "admin" && (
           <AccountManagement />
         )}

@@ -4,6 +4,7 @@ import { brandInput, categories } from "@radar/contracts";
 import type { Express } from "express";
 import { z } from "zod";
 import { ownerOf } from "./accounts.js";
+import { registerFeedback } from "./feedback.js";
 import { changePoints } from "./points.js";
 
 const normalize = (s: string) =>
@@ -27,6 +28,7 @@ const submission = z
   })
   .strict();
 export function registerShopReports(app: Express, db: PGlite) {
+  registerFeedback(app, db);
   const ready =
     db.exec(`CREATE TABLE IF NOT EXISTS shop_reports(id uuid PRIMARY KEY,owner_id uuid NOT NULL,name text NOT NULL,address text NOT NULL,category text NOT NULL,url text NOT NULL,note text NOT NULL,dedupe text NOT NULL,status text NOT NULL DEFAULT 'pending',brand_id uuid,review_note text,reviewed_by uuid,created_at timestamptz NOT NULL DEFAULT now(),reviewed_at timestamptz);
     ALTER TABLE shop_reports ADD COLUMN IF NOT EXISTS reward_points int NOT NULL DEFAULT 0;

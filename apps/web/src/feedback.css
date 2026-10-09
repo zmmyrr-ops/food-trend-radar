@@ -1,0 +1,132 @@
+.feedback-page {
+  max-width: 1200px;
+  margin: auto;
+}
+.feedback-heading h1 {
+  margin: 0 0 8px;
+}
+.feedback-heading p,
+.feedback-other > p {
+  color: #738198;
+  font-size: 14px;
+}
+.feedback-tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid #e2e8f2;
+  margin: 24px 0;
+}
+.feedback-tabs button {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 12px 2px;
+  color: #738198;
+  border-bottom: 3px solid transparent;
+  font-weight: 600;
+}
+.feedback-tabs button[aria-pressed="true"] {
+  color: #3478ef;
+  border-bottom-color: #3478ef;
+}
+.feedback-page .shop-reports .section-title h1,
+.feedback-other h2 {
+  font-size: 19px;
+}
+.feedback-form,
+.feedback-item {
+  background: #fff;
+  border: 1px solid #e2e8f2;
+  border-radius: 14px;
+  padding: 20px;
+  margin: 18px 0;
+}
+.feedback-form label,
+.feedback-admin label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.feedback-page textarea {
+  box-sizing: border-box;
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #dce4f0;
+  border-radius: 8px;
+  padding: 12px;
+  font: inherit;
+  line-height: 1.6;
+}
+.feedback-form-footer,
+.feedback-meta,
+.feedback-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 12px;
+}
+.feedback-form-footer small,
+.feedback-meta time {
+  color: #738198;
+}
+.feedback-meta {
+  font-size: 13px;
+  margin: 0;
+}
+.feedback-meta > span {
+  color: #3478ef;
+}
+.feedback-content,
+.feedback-reply p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+.feedback-reply {
+  border-left: 3px solid #d8e5fa;
+  padding: 8px 14px;
+  background: #f6f9fe;
+}
+.feedback-reply p {
+  margin-bottom: 0;
+}
+.feedback-admin {
+  margin-top: 16px;
+}
+.feedback-admin button {
+  margin-top: 10px;
+}
+.feedback-error {
+  color: #b84242;
+}
+.feedback-pagination {
+  justify-content: center;
+}
+.feedback-form button,
+.feedback-admin button {
+  background: #3478ef;
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 18px;
+}
+.feedback-page button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+@media (max-width: 600px) {
+  .feedback-form,
+  .feedback-item {
+    padding: 14px;
+  }
+  .feedback-tabs {
+    gap: 20px;
+  }
+  .feedback-meta {
+    flex-wrap: wrap;
+  }
+  .feedback-heading h1 {
+    font-size: 24px;
+  }
+}

@@ -357,7 +357,7 @@ export async function createAccounts(
       if (res.locals.account.role === "admin") return next();
       const route = req.originalUrl.split("?")[0];
       const personal =
-        /^\/api\/v3\/(coupon-media|video-projects|video-assets|visit-plans|visit-stores|maps|shop-reports|brand-subscriptions|brand-blacklist|brand-boost)(\/|$)/.test(
+        /^\/api\/v3\/(coupon-media|video-projects|video-assets|visit-plans|visit-stores|maps|shop-reports|feedback|brand-subscriptions|brand-blacklist|brand-boost)(\/|$)/.test(
           route,
         );
       const readOnly =
