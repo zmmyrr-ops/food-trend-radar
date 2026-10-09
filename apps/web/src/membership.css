@@ -646,3 +646,31 @@ main.auth-loading {
   align-items: center;
   font-size: 14px;
 }
+
+.auth-form .auth-login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 4px 0 18px;
+}
+.auth-form .auth-login-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 14px;
+}
+.auth-form .auth-login-options input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: #3478ee;
+}
+.auth-form .auth-login-options button {
+  padding: 4px 0;
+  background: transparent;
+  border: 0;
+  color: #3478ee;
+  font-size: 14px;
+}

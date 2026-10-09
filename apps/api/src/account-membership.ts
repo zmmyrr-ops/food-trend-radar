@@ -38,13 +38,17 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
  CREATE TABLE IF NOT EXISTS sms_challenges(phone text PRIMARY KEY,id uuid NOT NULL,state text NOT NULL,attempts int NOT NULL DEFAULT 0,expires_at timestamptz NOT NULL);
  CREATE TABLE IF NOT EXISTS sms_ip_limits(key text PRIMARY KEY,count int NOT NULL);
  `);
+  await db.exec(
+    "ALTER TABLE sms_challenges ADD COLUMN IF NOT EXISTS purpose text NOT NULL DEFAULT 'register'",
+  );
   const checking = new Set<string>();
   function publicRoutes(app: Express) {
     app.post("/api/auth/sms", async (req, res) => {
       const v = z
         .object({
           phone: phoneSchema,
-          invitation_code: referralSchema,
+          invitation_code: referralSchema.optional(),
+          purpose: z.enum(["register", "reset"]).default("register"),
         })
         .strict()
         .safeParse(req.body);
@@ -52,7 +56,7 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
         return res
           .status(400)
           .json({ error: { message: "请填写手机号及6位邀请码" } });
-      const { phone, invitation_code } = v.data;
+      const { phone, invitation_code, purpose } = v.data;
       // Unknown invite attempts and send attempts share an IP budget.
       const day = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
       const ip = (
@@ -66,6 +70,7 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
           .status(429)
           .json({ error: { message: "请求过于频繁，请明天再试" } });
       if (
+        purpose === "register" &&
         !(
           await db.query("SELECT id FROM accounts WHERE referral_code=$1", [
             invitation_code,
@@ -75,13 +80,15 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
         return res
           .status(400)
           .json({ error: { message: "邀请码无效，请向邀请人确认" } });
-      if (
+      const exists =
         (await db.query("SELECT id FROM accounts WHERE phone=$1", [phone])).rows
-          .length
-      )
+          .length > 0;
+      if (purpose === "register" && exists)
         return res
           .status(409)
           .json({ error: { message: "该手机号已注册，请直接登录" } });
+      if (purpose === "reset" && !exists)
+        return res.json({ ok: true, retry_after: 60 });
       const id = randomUUID();
       try {
         await db.transaction(async (tx) => {
@@ -105,8 +112,8 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
             [phone, day, s.day === day ? s.count + 1 : 1],
           );
           await tx.query(
-            "INSERT INTO sms_challenges(phone,id,state,expires_at) VALUES($1,$2,'sending',now()+interval '5 minutes') ON CONFLICT(phone) DO UPDATE SET id=excluded.id,state='sending',attempts=0,expires_at=excluded.expires_at",
-            [phone, id],
+            "INSERT INTO sms_challenges(phone,id,state,expires_at,purpose) VALUES($1,$2,'sending',now()+interval '5 minutes',$3) ON CONFLICT(phone) DO UPDATE SET id=excluded.id,state='sending',attempts=0,expires_at=excluded.expires_at,purpose=excluded.purpose",
+            [phone, id, purpose],
           );
         });
       } catch (e) {
@@ -127,6 +134,62 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
           [phone, id],
         );
         res.status(503).json({ error: { message: (e as Error).message } });
+      }
+    });
+    app.post("/api/auth/reset-password", async (req, res) => {
+      const parsed = z
+        .object({
+          phone: phoneSchema,
+          code: z.string().regex(/^\d{6}$/),
+          password: passwordSchema,
+        })
+        .strict()
+        .safeParse(req.body);
+      if (!parsed.success)
+        return res
+          .status(400)
+          .json({ error: { message: "请填写手机号、验证码及8–72位新密码" } });
+      const { phone, code, password } = parsed.data;
+      if (checking.has(phone))
+        return res.status(429).json({ error: { message: "正在核验，请稍候" } });
+      checking.add(phone);
+      try {
+        const challenge = (
+          await db.query<{ id: string }>(
+            "UPDATE sms_challenges SET attempts=attempts+1 WHERE phone=$1 AND purpose='reset' AND state='sent' AND expires_at>now() AND attempts<5 RETURNING id",
+            [phone],
+          )
+        ).rows[0];
+        if (!challenge || !(await sms.check(phone, code)))
+          throw Error("验证码不正确或已失效，请重新获取");
+        const hash = await hashAccountPassword(password);
+        await db.transaction(async (tx) => {
+          const used = await tx.query(
+            "UPDATE sms_challenges SET state='used' WHERE phone=$1 AND id=$2 AND purpose='reset' AND state='sent' AND expires_at>now() RETURNING id",
+            [phone, challenge.id],
+          );
+          if (!used.rows.length)
+            throw Error("验证码已使用或已失效，请重新获取");
+          const account = (
+            await tx.query<{ id: string }>(
+              "UPDATE accounts SET password_hash=$2,invitation_hash=NULL,invitation_encrypted=NULL,phone_verified_at=now() WHERE phone=$1 RETURNING id",
+              [phone, hash],
+            )
+          ).rows[0];
+          if (!account) throw Error("无法重置，请检查手机号");
+          await tx.query("DELETE FROM account_sessions WHERE account_id=$1", [
+            account.id,
+          ]);
+          await tx.query("DELETE FROM account_login_limits WHERE key=$1", [
+            `phone:${phone}`,
+          ]);
+        });
+        res.setHeader("Cache-Control", "no-store");
+        res.json({ ok: true, message: "密码已重置，请使用新密码登录" });
+      } catch (e) {
+        res.status(400).json({ error: { message: (e as Error).message } });
+      } finally {
+        checking.delete(phone);
       }
     });
     app.post("/api/auth/register", async (req, res) => {
@@ -162,7 +225,7 @@ export async function createMembership(db: PGlite, sms: SmsAuth) {
           throw Error("该手机号已注册，请直接登录");
         const challenge = (
           await db.query<{ id: string }>(
-            "UPDATE sms_challenges SET attempts=attempts+1 WHERE phone=$1 AND state='sent' AND expires_at>now() AND attempts<5 RETURNING id",
+            "UPDATE sms_challenges SET attempts=attempts+1 WHERE phone=$1 AND purpose='register' AND state='sent' AND expires_at>now() AND attempts<5 RETURNING id",
             [phone],
           )
         ).rows[0];

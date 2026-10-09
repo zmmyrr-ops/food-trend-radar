@@ -273,6 +273,7 @@ export async function createAccounts(
         .object({
           phone: z.string().regex(/^1[3-9]\d{9}$/),
           password: z.string().min(1).max(128),
+          remember: z.boolean().optional().default(false),
         })
         .strict()
         .safeParse(req.body);
@@ -282,7 +283,8 @@ export async function createAccounts(
           .json({ error: { message: "请输入正确的手机号及登录凭据" } });
         return;
       }
-      const { phone, password } = parsed.data;
+      const { phone, password, remember } = parsed.data;
+      const lifetime = remember ? 30 * 86400 : 86400;
       for (const key of [`phone:${phone}`, `ip:${req.ip}`]) {
         const limit = (
           await db.query<{ attempts: number }>(
@@ -324,8 +326,8 @@ export async function createAccounts(
           [digest(cookie(req))],
         );
         await tx.query(
-          "INSERT INTO account_sessions(token_hash,account_id,expires_at) VALUES($1,$2,now()+interval '7 days')",
-          [digest(token), row.id],
+          "INSERT INTO account_sessions(token_hash,account_id,expires_at) VALUES($1,$2,now()+($3 * interval '1 second'))",
+          [digest(token), row.id, lifetime],
         );
         return row;
       });
@@ -338,10 +340,10 @@ export async function createAccounts(
       res
         .cookie("radar_session", token, {
           ...clearCookie,
-          maxAge: 7 * 86400000,
+          ...(remember ? { maxAge: lifetime * 1000 } : {}),
         })
         .setHeader("Cache-Control", "no-store")
-        .json({ account, token, expires_in: 604800 });
+        .json({ account, token, expires_in: lifetime });
     });
     app.get("/api/auth/me", authenticate, (_req, res) =>
       res.json({ account: res.locals.account }),

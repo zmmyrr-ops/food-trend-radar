@@ -20,6 +20,9 @@ export function AccountGate({ children }: { children: ReactNode }) {
   } | null>(null);
   const [loading, setLoading] = useState(true),
     [register, setRegister] = useState(false);
+  const [reset, setReset] = useState(false);
+  const [remember, setRemember] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [phone, setPhone] = useState(""),
     [password, setPassword] = useState(""),
     [invite, setInvite] = useState(""),
@@ -117,7 +120,20 @@ export function AccountGate({ children }: { children: ReactNode }) {
               setError("");
               setMessage("");
               try {
-                if (register) {
+                if (reset) {
+                  if (password !== confirmPassword)
+                    throw Error("两次输入的密码不一致");
+                  const d = await request("/api/auth/reset-password", {
+                    phone,
+                    code,
+                    password,
+                  });
+                  setMessage(d.message);
+                  setReset(false);
+                  setPassword("");
+                  setConfirmPassword("");
+                  setCode("");
+                } else if (register) {
                   const d = await request("/api/auth/register", {
                     phone,
                     code,
@@ -129,6 +145,7 @@ export function AccountGate({ children }: { children: ReactNode }) {
                   setCode("");
                 } else {
                   const d = await request("/api/auth/login", {
+                    remember,
                     phone,
                     password,
                   });
@@ -144,9 +161,13 @@ export function AccountGate({ children }: { children: ReactNode }) {
             <div className="auth-mode">
               <button
                 type="button"
-                aria-pressed={!register}
+                aria-pressed={!register && !reset}
                 onClick={() => {
                   setRegister(false);
+                  setReset(false);
+                  setMessage("");
+                  setCode("");
+                  setPassword("");
                   setError("");
                 }}
               >
@@ -157,17 +178,29 @@ export function AccountGate({ children }: { children: ReactNode }) {
                 aria-pressed={register}
                 onClick={() => {
                   setRegister(true);
+                  setReset(false);
+                  setMessage("");
+                  setCode("");
+                  setPassword("");
                   setError("");
                 }}
               >
                 邀请注册
               </button>
             </div>
-            <h2>{register ? "开启你的创作空间" : "欢迎回来"}</h2>
+            <h2>
+              {reset
+                ? "找回登录密码"
+                : register
+                  ? "开启你的创作空间"
+                  : "欢迎回来"}
+            </h2>
             <p className="auth-description">
-              {register
-                ? "完成手机验证，注册即获100积分。"
-                : "登录探好店，继续发现与创作。"}
+              {reset
+                ? "验证注册手机号，设置新的登录密码。"
+                : register
+                  ? "完成手机验证，注册即获100积分。"
+                  : "登录探好店，继续发现与创作。"}
             </p>
             <label>
               手机号码
@@ -183,25 +216,29 @@ export function AccountGate({ children }: { children: ReactNode }) {
                 placeholder="请输入手机号码"
               />
             </label>
-            {register && (
+            {(register || reset) && (
               <>
-                <label>
-                  邀请码
-                  <input
-                    required
-                    autoCapitalize="characters"
-                    autoComplete="off"
-                    pattern="[A-Za-z0-9]{6}"
-                    maxLength={6}
-                    value={invite}
-                    onChange={(e) =>
-                      setInvite(
-                        e.target.value.replace(/[^a-z0-9]/gi, "").toUpperCase(),
-                      )
-                    }
-                    placeholder="6位邀请码（字母与数字）"
-                  />
-                </label>
+                {register && (
+                  <label>
+                    邀请码
+                    <input
+                      required
+                      autoCapitalize="characters"
+                      autoComplete="off"
+                      pattern="[A-Za-z0-9]{6}"
+                      maxLength={6}
+                      value={invite}
+                      onChange={(e) =>
+                        setInvite(
+                          e.target.value
+                            .replace(/[^a-z0-9]/gi, "")
+                            .toUpperCase(),
+                        )
+                      }
+                      placeholder="6位邀请码（字母与数字）"
+                    />
+                  </label>
+                )}
                 <label>
                   短信验证码
                   <div className="auth-sms">
@@ -224,7 +261,7 @@ export function AccountGate({ children }: { children: ReactNode }) {
                         sending ||
                         cooldown > 0 ||
                         !/^1[3-9]\d{9}$/.test(phone) ||
-                        !/^[A-Z0-9]{6}$/.test(invite)
+                        (register && !/^[A-Z0-9]{6}$/.test(invite))
                       }
                       onClick={async () => {
                         setSending(true);
@@ -232,7 +269,9 @@ export function AccountGate({ children }: { children: ReactNode }) {
                         try {
                           await request("/api/auth/sms", {
                             phone,
-                            invitation_code: invite,
+                            ...(reset
+                              ? { purpose: "reset" }
+                              : { invitation_code: invite }),
                           });
                           setUntil(Date.now() + 60000);
                           setMessage("验证码已发送，5分钟内有效");
@@ -261,14 +300,58 @@ export function AccountGate({ children }: { children: ReactNode }) {
               <input
                 type="password"
                 required
-                minLength={register ? 8 : 1}
+                minLength={register || reset ? 8 : 1}
                 maxLength={72}
-                autoComplete={register ? "new-password" : "current-password"}
+                autoComplete={
+                  register || reset ? "new-password" : "current-password"
+                }
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder={register ? "设置8–72位密码" : "请输入登录密码"}
+                placeholder={
+                  register || reset ? "设置8–72位密码" : "请输入登录密码"
+                }
               />
             </label>
+            {reset && (
+              <label>
+                确认新密码
+                <input
+                  type="password"
+                  required
+                  minLength={8}
+                  maxLength={72}
+                  autoComplete="new-password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="再次输入新密码"
+                />
+              </label>
+            )}
+            {!register && !reset && (
+              <div className="auth-login-options">
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={remember}
+                    onChange={(e) => setRemember(e.target.checked)}
+                  />
+                  保持登录 30 天
+                </label>
+                <button
+                  type="button"
+                  disabled={busy || sending}
+                  onClick={() => {
+                    setReset(true);
+                    setPassword("");
+                    setCode("");
+                    setError("");
+                    setMessage("");
+                  }}
+                >
+                  忘记密码？
+                </button>
+              </div>
+            )}
             {error && (
               <p className="member-error" role="alert">
                 {error}
@@ -280,12 +363,20 @@ export function AccountGate({ children }: { children: ReactNode }) {
               </p>
             )}
             <button className="auth-submit" disabled={busy || sending}>
-              {busy ? "请稍候…" : register ? "注册并领取100积分" : "登录"}
+              {busy
+                ? "请稍候…"
+                : reset
+                  ? "重置密码"
+                  : register
+                    ? "注册并领取100积分"
+                    : "登录"}
             </button>
             <p className="auth-hint">
-              {register
-                ? "需要有效邀请码才能注册。"
-                : "原邀请码用户：首次请使用原8位专属邀请码作为密码。"}
+              {reset
+                ? "重置后需要在各设备重新登录。"
+                : register
+                  ? "需要有效邀请码才能注册。"
+                  : "原邀请码用户：首次请使用原8位专属邀请码作为密码。"}
             </p>
           </form>
         </section>
