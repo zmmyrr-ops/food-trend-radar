@@ -98,7 +98,7 @@ export function BrandSubscriptions({
             const n = new Notification(
               fresh.length > 1
                 ? `探好店 · ${fresh.length} 条订阅动态`
-                : `${m.brand_name} · ${m.kind === "new" ? "新上券" : "热度飙升"}`,
+                : `${m.brand_name} · ${m.kind === "boost_complete" ? "加速完成" : m.kind === "boost_failed" ? "加速已退款" : m.kind === "new" ? "新上券" : "热度飙升"}`,
               {
                 body:
                   fresh.length > 1
@@ -373,7 +373,15 @@ export function BrandSubscriptions({
                     >
                       <strong className="notification-message-heading">
                         {m.brand_name}
-                        <em>{m.kind === "new" ? "新上券" : "热度飙升"}</em>
+                        <em>
+                          {m.kind === "boost_complete"
+                            ? "加速完成"
+                            : m.kind === "boost_failed"
+                              ? "加速已退款"
+                              : m.kind === "new"
+                                ? "新上券"
+                                : "热度飙升"}
+                        </em>
                         {!m.read_at && <i aria-label="未读" />}
                       </strong>
                       <span>{m.title}</span>

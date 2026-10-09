@@ -23,7 +23,7 @@ export function miniTemplate(m: {
   return {
     thing1: {
       value: short(
-        `${m.brand_name} ${m.kind === "new" ? "新上券" : "热度飙升"}`,
+        `${m.brand_name} ${m.kind === "boost_complete" ? "加速完成" : m.kind === "boost_failed" ? "加速已退款" : m.kind === "new" ? "新上券" : "热度飙升"}`,
       ),
     },
     thing2: { value: "上海" },

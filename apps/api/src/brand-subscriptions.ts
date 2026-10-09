@@ -6,7 +6,7 @@ import { z } from "zod";
 import { ownerOf } from "./accounts.js";
 
 const readiness = new WeakMap<PGlite, Promise<unknown>>();
-function init(db: PGlite) {
+export function initSubscriptionMessages(db: PGlite) {
   let p = readiness.get(db);
   if (!p) {
     p =
@@ -21,7 +21,7 @@ function init(db: PGlite) {
 const lastSync = new WeakMap<PGlite, number>();
 export async function syncSubscriptionMessages(db: PGlite) {
   if (Date.now() - (lastSync.get(db) ?? 0) < 60000) return;
-  await init(db);
+  await initSubscriptionMessages(db);
   if (
     !(
       await db.query<{ present: boolean }>(
@@ -70,7 +70,7 @@ export async function syncSubscriptionMessages(db: PGlite) {
   lastSync.set(db, Date.now());
 }
 export function registerBrandSubscriptions(app: Express, db: PGlite) {
-  const ready = init(db);
+  const ready = initSubscriptionMessages(db);
   app.get("/api/v3/brand-subscriptions/search", async (req, res) => {
     await ready;
     const q = z.string().trim().min(1).max(80).parse(req.query.q);

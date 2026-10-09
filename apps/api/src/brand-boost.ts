@@ -3,9 +3,11 @@ import type { PGlite } from "@electric-sql/pglite";
 import type { Express } from "express";
 import { z } from "zod";
 import { ownerOf } from "./accounts.js";
+import { initSubscriptionMessages } from "./brand-subscriptions.js";
 import { changePoints } from "./points.js";
 
 export async function initBrandBoost(db: PGlite) {
+  await initSubscriptionMessages(db);
   await db.exec(`CREATE TABLE IF NOT EXISTS brand_boost_jobs(
     id uuid PRIMARY KEY,brand_id uuid NOT NULL,run_id uuid NOT NULL,
     votes int NOT NULL DEFAULT 1,state text NOT NULL DEFAULT 'queued',
@@ -26,7 +28,7 @@ export function createBrandBoost(
   async function settle() {
     await db.transaction(async (tx) => {
       const rows = (
-        await tx.query<any>(`SELECT j.*,t.state AS task_state,b.active,s.pause_reason
+        await tx.query<any>(`SELECT j.*,t.state AS task_state,b.active,b.name AS brand_name,s.pause_reason
         FROM brand_boost_jobs j JOIN coupon_tasks t ON t.run_id=j.run_id AND t.brand_id=j.brand_id
         JOIN brands b ON b.id=j.brand_id CROSS JOIN coupon_settings s
         WHERE j.state IN ('queued','running') AND (t.state<>'queued' OR NOT b.active OR s.pause_reason IS NOT NULL)`)
@@ -49,6 +51,38 @@ export function createBrandBoost(
               `boost-refund:${r.id}`,
             );
         }
+        const count = ok
+          ? (
+              await tx.query<{ n: number }>(
+                "SELECT count(*)::int AS n FROM coupon_diffs WHERE run_id=$1 AND brand_id=$2 AND kind='NEW_OBSERVED' AND new_payload->>'identity'='name_match'",
+                [j.run_id, j.brand_id],
+              )
+            ).rows[0].n
+          : 0;
+        const title = ok
+          ? count > 0
+            ? `加速刷新完成，发现${count}张新券，点击查看。`
+            : "加速刷新完成，暂无新券，点击查看品牌最新券信息。"
+          : "本次加速未完成，20积分及使用次数已退回。";
+        const recipients = (
+          await tx.query<{ owner_id: string }>(
+            "SELECT DISTINCT owner_id FROM brand_boost_requests WHERE job_id=$1 AND state='charged'",
+            [j.id],
+          )
+        ).rows;
+        for (const r of recipients)
+          await tx.query(
+            "INSERT INTO subscription_messages(id,owner_id,brand_id,product_id,kind,event_key,brand_name,title) VALUES($1,$2,$3,'',$4,$5,$6,$7) ON CONFLICT DO NOTHING",
+            [
+              randomUUID(),
+              r.owner_id,
+              j.brand_id,
+              ok ? "boost_complete" : "boost_failed",
+              `boost:${j.id}`,
+              j.brand_name,
+              title,
+            ],
+          );
         await tx.query(
           "UPDATE brand_boost_requests SET state=$2 WHERE job_id=$1",
           [j.id, ok ? "complete" : "refunded"],

@@ -63,6 +63,22 @@ test("品牌加速：扣费幂等、多人合并、每天两次、冷却、失�
       [brands[0]],
     );
     await service.settle();
+    await service.settle();
+    const notifications = (
+      await db.query<any>(
+        "SELECT owner_id,title,read_at FROM subscription_messages WHERE kind='boost_complete'",
+      )
+    ).rows;
+    assert.equal(notifications.length, 2);
+    assert.deepEqual(
+      new Set(notifications.map((n) => n.owner_id)),
+      new Set(users.slice(0, 2)),
+    );
+    assert.ok(
+      notifications.every(
+        (n) => n.title.includes("暂无新券") && n.read_at === null,
+      ),
+    );
     await assert.rejects(
       service.enqueue(users[2], brands[0], randomUUID()),
       /已经是最新/,
@@ -73,6 +89,14 @@ test("品牌加速：扣费幂等、多人合并、每天两次、冷却、失�
     );
     await service.settle();
     await service.settle();
+    assert.equal(
+      (
+        await db.query<any>(
+          "SELECT count(*)::int AS n FROM subscription_messages WHERE kind='boost_failed'",
+        )
+      ).rows[0].n,
+      1,
+    );
     assert.equal(
       (
         await db.query<any>(
@@ -119,6 +143,30 @@ test("品牌加速：扣费幂等、多人合并、每天两次、冷却、失�
         )
       ).rows[0].n,
       0,
+    );
+    const pending = (
+      await db.query<any>(
+        "SELECT run_id FROM brand_boost_jobs WHERE brand_id=$1 AND state='queued'",
+        [brands[1]],
+      )
+    ).rows[0];
+    await db.query(
+      "INSERT INTO coupon_diffs(run_id,brand_id,product_id,kind,new_payload) VALUES($1,$2,'new-test','NEW_OBSERVED',$3)",
+      [pending.run_id, brands[1], JSON.stringify({ identity: "name_match" })],
+    );
+    await db.query(
+      "UPDATE coupon_tasks SET state='complete',completed_at=now() WHERE run_id=$1 AND brand_id=$2",
+      [pending.run_id, brands[1]],
+    );
+    await service.settle();
+    assert.match(
+      (
+        await db.query<any>(
+          "SELECT title FROM subscription_messages WHERE brand_id=$1 AND kind='boost_complete'",
+          [brands[1]],
+        )
+      ).rows[0].title,
+      /发现1张新券/,
     );
   } finally {
     await db.close();
