@@ -532,26 +532,11 @@ export async function createVideoProjects(db: PGlite, root: string) {
         next();
       },
     );
-    app.patch(
-      "/api/v3/video-projects/:id/visit",
-      wrap(async (req, res) => {
-        const visit = await ownedVisitStore(
-          db,
-          uuid.parse(req.body.visit_store_id),
-          ownerOf(req),
-        );
-        if (!visit) throw Error("计划店铺不存在");
-        const p = await get(uuid.parse(req.params.id));
-        if (running(p.state)) throw Error("请等待制作结束再关联");
-        p.visit_store_id = visit.id;
-        p.visit_plan_id = visit.plan_id;
-        p.visit_store_name = visit.name;
-        p.visit_plan_name = visit.plan_name;
-        p.visit_date = visit.date;
-        await save(p);
-        res.json({ project: visible(p) });
-      }),
-    );
+    app.patch("/api/v3/video-projects/:id/visit", (_req, res) => {
+      res
+        .status(403)
+        .json({ error: { message: "视频关联店铺创建后不可修改" } });
+    });
     app.delete(
       "/api/v3/video-assets/:id",
       wrap(async (req, res) => {

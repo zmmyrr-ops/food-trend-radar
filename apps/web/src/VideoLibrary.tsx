@@ -1,7 +1,7 @@
 import { type Brand, type Channel, inChannel } from "@radar/contracts";
 import { useEffect, useState } from "react";
 import { appFetch, appUrl } from "./app-url";
-import { type VisitPlan, visitRequest } from "./VisitPlans";
+import { visitRequest } from "./VisitPlans";
 import { videoProgress } from "./video-progress";
 
 type Video = {
@@ -48,12 +48,6 @@ export function VideoLibrary({
   channel: Channel | "all";
   brands: Brand[];
 }) {
-  const [plans, setPlans] = useState<VisitPlan[]>([]);
-  useEffect(() => {
-    void visitRequest("visit-plans")
-      .then((d) => setPlans(d.items))
-      .catch((e) => setError(String(e)));
-  }, []);
   const [items, setItems] = useState<Video[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState("");
@@ -179,42 +173,9 @@ export function VideoLibrary({
                 <p>{p.title}</p>
                 <p className="studio-hint">
                   {p.visit_store_id
-                    ? `${p.visit_plan_name} · ${p.visit_date} · ${p.visit_store_name}`
+                    ? `关联店铺：${p.visit_store_name || "原计划店铺"} · ${[p.visit_plan_name, p.visit_date].filter(Boolean).join(" · ")}`
                     : "历史视频 · 尚未关联计划"}
                 </p>
-                <label>
-                  关联计划店铺
-                  <select
-                    aria-label={`关联计划店铺 ${p.title}`}
-                    value={
-                      plans.some((plan) =>
-                        plan.stores.some((s) => s.id === p.visit_store_id),
-                      )
-                        ? p.visit_store_id
-                        : ""
-                    }
-                    onChange={(e) => {
-                      const id = e.target.value;
-                      if (id)
-                        void visitRequest(
-                          `video-projects/${p.id}/visit`,
-                          "PATCH",
-                          { visit_store_id: id },
-                        )
-                          .then(() => setRefresh((n) => n + 1))
-                          .catch((e) => setError(String(e)));
-                    }}
-                  >
-                    <option value="">选择计划中的店铺</option>
-                    {plans.flatMap((plan) =>
-                      plan.stores.map((s) => (
-                        <option value={s.id} key={s.id}>
-                          {plan.date} · {plan.name} · {s.name}
-                        </option>
-                      )),
-                    )}
-                  </select>
-                </label>
                 <p className="studio-hint">
                   {expired ? "已过期" : labels[p.state] || p.state} ·{" "}
                   {new Date(p.updated_at).toLocaleString("zh-CN")}

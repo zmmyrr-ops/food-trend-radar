@@ -236,6 +236,19 @@ test("探店计划隔离、店铺去重、排序、视频归属及软删除保�
     const v = (await r.json()).project;
     assert.equal(v.visit_store_id, s);
     assert.equal(v.visit_plan_id, p);
+    assert.equal(
+      (
+        await call(`v3/video-projects/${v.id}/visit`, a.cookie, "PATCH", {
+          visit_store_id: s2,
+        })
+      ).status,
+      403,
+    );
+    assert.equal(
+      (await (await call(`v3/video-projects/${v.id}`, a.cookie)).json()).project
+        .visit_store_id,
+      s,
+    );
     assert.equal(v.brand_name, "新店名");
     const history = await (
       await call(`v3/video-projects?visit_store_id=${s}`, a.cookie)
