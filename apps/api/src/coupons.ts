@@ -4,6 +4,7 @@ import type { PGlite } from "@electric-sql/pglite";
 import { leisureCategories } from "@radar/contracts";
 import type { Express } from "express";
 import { z } from "zod";
+import { createBrandBoost, initBrandBoost } from "./brand-boost.js";
 import { brandCoverage } from "./brand-coverage.js";
 import {
   cacheBrandIcon,
@@ -311,6 +312,7 @@ export async function initCoupons(db: PGlite) {
         OR EXISTS(SELECT 1 FROM jsonb_array_elements_text(b.aliases) a(value) WHERE lower(trim(a.value))=lower(trim(i.payload->>'poi_name'))))
     RETURNING i.brand_id
   ) UPDATE coupon_baselines SET run_id=run_id WHERE brand_id IN (SELECT brand_id FROM repaired);`);
+  await initBrandBoost(db);
   await seedOfficialBrandIcons(db);
   await initRules(db);
   await initStores(db);
@@ -662,9 +664,11 @@ export function createCoupons(
     }
     return false;
   }
+  const boost = createBrandBoost(db, querySignature, kick);
   let selectionPagesSinceEnrichment = 0;
   async function process() {
     while (!stopping) {
+      await boost.settle();
       if ((await settings()).pause_reason) return;
       await db.exec(
         "UPDATE coupon_tasks t SET state='partial',error_code='BRAND_DISABLED' FROM brands b WHERE b.id=t.brand_id AND NOT b.active AND t.state='queued'",
@@ -686,7 +690,7 @@ export function createCoupons(
           retry_at: string | null;
           query_signature: string | null;
         }>(
-          "SELECT t.* FROM coupon_tasks t JOIN coupon_runs r ON r.id=t.run_id JOIN brands br ON br.id=t.brand_id AND br.active WHERE t.state='queued' AND r.status='running' AND (t.retry_at IS NULL OR t.retry_at<=now()) ORDER BY r.started_at,r.id,(t.pages/3),t.position,t.name,t.brand_id LIMIT 1",
+          "SELECT t.* FROM coupon_tasks t JOIN coupon_runs r ON r.id=t.run_id JOIN brands br ON br.id=t.brand_id AND br.active LEFT JOIN brand_boost_jobs boost ON boost.run_id=t.run_id AND boost.brand_id=t.brand_id AND boost.state IN ('queued','running') WHERE t.state='queued' AND r.status='running' AND (t.retry_at IS NULL OR t.retry_at<=now()) ORDER BY (boost.state='running') DESC NULLS LAST,boost.votes DESC NULLS LAST,boost.created_at,r.started_at,r.id,(t.pages/3),t.position,t.name,t.brand_id LIMIT 1",
         )
       ).rows[0];
       if (!t) {
@@ -694,6 +698,10 @@ export function createCoupons(
         if (await enrichOne()) continue;
         return;
       }
+      await db.query(
+        "UPDATE brand_boost_jobs SET state='running',started_at=coalesce(started_at,now()) WHERE run_id=$1 AND brand_id=$2 AND state='queued'",
+        [t.run_id, t.brand_id],
+      );
       try {
         if (t.query_signature !== querySignature(t.name, t.aliases, t.category))
           throw new Error("QUERY_CHANGED_DURING_RUN");
@@ -920,6 +928,7 @@ export function createCoupons(
             "UPDATE coupon_settings SET pause_reason=$1 WHERE id=1",
             [code],
           );
+          await boost.settle();
           return;
         }
         await db.query(
@@ -937,8 +946,12 @@ export function createCoupons(
             "UPDATE coupon_settings SET pause_reason='WORKER_ERROR' WHERE id=1",
           );
         })
-        .finally(() => {
-          worker = undefined;
+        .finally(async () => {
+          try {
+            await boost.settle();
+          } finally {
+            worker = undefined;
+          }
         });
   }
   async function start(ids?: string[], slot?: string) {
@@ -1046,6 +1059,7 @@ export function createCoupons(
     }
   }
   function register(app: Express) {
+    boost.register(app);
     app.get("/api/v3/brands/:id/icon", async (req, res) => {
       const id = z.uuid().parse(req.params.id);
       const item = (

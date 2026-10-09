@@ -2,6 +2,7 @@ import { type Channel, categories, inChannel } from "@radar/contracts";
 import { useEffect, useState } from "react";
 import { useAccount } from "./AccountGate";
 import { appFetch, appUrl } from "./app-url";
+import { useBrandBoost } from "./BrandBoost";
 import { BrandIcon } from "./BrandIcon";
 import { CouponStoreSummary } from "./CouponStoreSummary";
 import { CouponUsageRules } from "./CouponUsageRules";
@@ -111,6 +112,7 @@ export function CouponPicks({
   }[];
   onBrandChange: (id: string) => void;
 }) {
+  const boost = useBrandBoost();
   const isAdmin = useAccount().role === "admin";
   function clearBrandFilter() {
     onBrandChange("");
@@ -429,6 +431,12 @@ export function CouponPicks({
               当前没有符合条件的券。可以切换“全部券”或清空搜索；没有证据时不会补成推荐结果。
             </p>
           )}
+          {boost.message && (
+            <div className="brand-boost-message" role="status">
+              {boost.message}
+              <button onClick={boost.dismiss}>关闭</button>
+            </div>
+          )}
           <div className="coupon-grid">
             {data.items.map((x) => (
               <article
@@ -593,6 +601,7 @@ export function CouponPicks({
                     }))
                   }
                 />
+                {boost.button(x.brand_id, x.brand_name)}
               </article>
             ))}
           </div>

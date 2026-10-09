@@ -1,0 +1,41 @@
+.coupon-card .brand-boost-button {
+  width: 100%;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 5px 8px;
+  border: 1px solid #dde7f8;
+  border-radius: 8px;
+  background: #f7faff;
+  color: #4873b7;
+  font-size: 11px;
+}
+.brand-boost-button .points-badge {
+  font-size: 11px;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+.brand-boost-button .points-icon {
+  width: 15px;
+  height: 15px;
+}
+.brand-boost-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.brand-boost-message {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  margin: 12px 0;
+  border-radius: 10px;
+  background: #edf4ff;
+  color: #365f9d;
+  font-size: 13px;
+}
