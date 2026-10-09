@@ -42,6 +42,7 @@ export function updatePoolClock(x: Pick, now = Date.now()): Pick {
     priority: applyUsePenalty(
       pickPriority({
         title: x.title,
+        price_fen: x.price_fen,
         is_new: isNew,
         discount_rate: x.discount.rate,
         brand_growth: usable ? index!.mom : null,

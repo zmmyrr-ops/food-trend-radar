@@ -21,6 +21,7 @@ export function couponDiscount(
 /** Initial transparent ranking rules, not a calibrated probability or value verdict. */
 export function pickPriority(input: {
   title?: string;
+  price_fen?: number | null;
   is_new?: boolean;
   discount_rate?: number | null;
   brand_growth?: number | null;
@@ -32,11 +33,26 @@ export function pickPriority(input: {
   const parts = [
     {
       name: "销量升温",
-      weight: 30,
+      weight: 18,
       value: valid(input.speed)
-        ? 30 *
+        ? 18 *
           Math.min(1, Math.log1p(Math.max(0, input.speed!)) / Math.log(101))
         : null,
+    },
+    {
+      name: "销售额增速（估算）",
+      weight: 12,
+      value:
+        valid(input.speed) &&
+        Number.isSafeInteger(input.price_fen) &&
+        input.price_fen! > 0
+          ? 12 *
+            Math.min(
+              1,
+              Math.log1p(Math.max(0, input.speed!) * (input.price_fen! / 100)) /
+                Math.log(10001),
+            )
+          : null,
     },
     {
       name: "增长加快",
@@ -138,7 +154,7 @@ export function pickPriority(input: {
     raw_score * evidence_factor + selling_score,
   );
   return {
-    version: "priority-v7",
+    version: "priority-v8",
     evidence_factor,
     selling_points,
     adjusted_score: Math.round(adjusted_score * 10) / 10,

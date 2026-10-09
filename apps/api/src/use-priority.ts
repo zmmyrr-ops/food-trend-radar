@@ -36,7 +36,7 @@ export function applyUsePenalty(
       : "未命中明确禁用日期，可用性仍需核验";
   return {
     ...priority,
-    version: "priority-v7",
+    version: "priority-v8",
     score,
     availability_gate: {
       before_score: before,
